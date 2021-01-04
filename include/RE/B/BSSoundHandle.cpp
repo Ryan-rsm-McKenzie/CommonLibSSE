@@ -1,6 +1,5 @@
 #include "RE/B/BSSoundHandle.h"
 
-
 namespace RE
 {
 	BSSoundHandle::BSSoundHandle() :
@@ -11,14 +10,12 @@ namespace RE
 		state(AssumedState::kInitialized)
 	{}
 
-
 	bool BSSoundHandle::IsValid() const
 	{
 		using func_t = decltype(&BSSoundHandle::IsValid);
 		REL::Relocation<func_t> func{ Offset::BSSoundHandle::IsValid };
 		return func(this);
 	}
-
 
 	bool BSSoundHandle::SetPosition(NiPoint3 a_pos)
 	{
@@ -27,7 +24,6 @@ namespace RE
 		return func(this, a_pos);
 	}
 
-
 	void BSSoundHandle::SetObjectToFollow(NiAVObject* a_node)
 	{
 		using func_t = decltype(&BSSoundHandle::SetObjectToFollow);
@@ -35,14 +31,12 @@ namespace RE
 		return func(this, a_node);
 	}
 
-
 	bool BSSoundHandle::Stop()
 	{
 		using func_t = decltype(&BSSoundHandle::Stop);
 		REL::Relocation<func_t> func{ Offset::BSSoundHandle::Stop };
 		return func(this);
 	}
-
 
 	bool BSSoundHandle::Play()
 	{

@@ -4,11 +4,9 @@
 #include "RE/B/bhkCharacterProxy.h"
 #include "RE/H/hkpCharacterProxyListener.h"
 
-
 namespace RE
 {
 	class hkpCharacterProxy;
-
 
 	class bhkCharProxyController :
 		public hkpCharacterProxyListener,  // 000
@@ -16,7 +14,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharProxyController;
-
 
 		virtual ~bhkCharProxyController();	// 00
 
@@ -32,7 +29,6 @@ namespace RE
 		virtual void SetLinearVelocityImpl(const hkVector4& a_velocity) override;  // 07
 
 		hkpCharacterProxy* GetCharacterProxy() const;
-
 
 		// members
 		bhkCharacterProxy proxy;   // 340

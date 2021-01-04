@@ -5,7 +5,6 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	class ActorValueMeter;
@@ -13,7 +12,6 @@ namespace RE
 	class ShoutMeter;
 	class UserEventEnabledEvent;
 	struct BSRemoteGamepadEvent;
-
 
 	// menuDepth = 2
 	// flags = kAlwaysOpen | kRequiresUpdate | kAllowSaving | kCustomRendering | kAssignCursorToRenderer
@@ -26,7 +24,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_HUDMenu;
 		constexpr static std::string_view MENU_NAME = "HUD Menu";
-
 
 		virtual ~HUDMenu();	 // 00
 
@@ -41,7 +38,6 @@ namespace RE
 
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
-
 
 		// members
 		BSTArray<HUDObject*> objects;  // 40

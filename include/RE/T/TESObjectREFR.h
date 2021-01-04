@@ -15,7 +15,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	enum class LOCK_LEVEL;
@@ -51,7 +50,6 @@ namespace RE
 	struct BSAnimationUpdateData;
 	struct REFR_LOCK;
 
-
 	enum class ITEM_REMOVE_REASON
 	{
 		kRemove,
@@ -62,7 +60,6 @@ namespace RE
 		kStoreInTeammate
 	};
 
-
 	struct OBJ_REFR
 	{
 	public:
@@ -72,7 +69,6 @@ namespace RE
 		NiPoint3		location;		  // 14
 	};
 	static_assert(sizeof(OBJ_REFR) == 0x20);
-
 
 	struct LOADED_REF_DATA
 	{
@@ -97,9 +93,7 @@ namespace RE
 	};
 	static_assert(sizeof(LOADED_REF_DATA) == 0x78);
 
-
 	NiSmartPointer(TESObjectREFR);
-
 
 	class TESObjectREFR :
 		public TESForm,								 // 00
@@ -111,12 +105,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectREFR;
 		inline static constexpr auto FORMTYPE = FormType::Reference;
 
-
 		using Count = std::int32_t;
 		using InventoryCountMap = std::map<TESBoundObject*, Count>;
 		using InventoryItemMap = std::map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
 		using InventoryDropMap = std::map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
-
 
 		enum class MotionType  // hkpMotion::MotionType
 		{
@@ -128,7 +120,6 @@ namespace RE
 			kThinBoxInertia = 6,
 			kCharacter = 7
 		};
-
 
 		struct ChangeFlags
 		{
@@ -156,7 +147,6 @@ namespace RE
 				kGameOnlyExtra = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -201,7 +191,6 @@ namespace RE
 				kMultibound = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		virtual ~TESObjectREFR();  // 00
 
@@ -352,7 +341,6 @@ namespace RE
 		virtual void							  Unk_A0(void);																																																   // A0
 		virtual void							  UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);																																				   // A1 - { return; }
 
-
 		static NiPointer<TESObjectREFR> LookupByHandle(RefHandle a_refHandle);
 		static bool						LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 		static TESObjectREFR*			FindReferenceFor3D(NiAVObject* a_object3D);
@@ -431,7 +419,6 @@ namespace RE
 		bool									SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
 		void									SetPosition(float a_x, float a_y, float a_z);
 		void									SetPosition(NiPoint3 a_pos);
-
 
 		// members
 		OBJ_REFR		 data;			// 40

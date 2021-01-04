@@ -3,7 +3,6 @@
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/I/IMovementControllerRegisterInterface.h"
 
-
 namespace RE
 {
 	class MovementControllerAI :
@@ -13,7 +12,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementControllerAI;
 
-
 		virtual ~MovementControllerAI();  // 00
 
 		// add
@@ -22,7 +20,6 @@ namespace RE
 		virtual void Unk_07(void);	// 07
 		virtual void Unk_08(void);	// 08
 		virtual void Unk_09(void);	// 09 - { return 1; }
-
 
 		// members
 		std::uint32_t unk00C;  // 00C

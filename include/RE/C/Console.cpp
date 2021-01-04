@@ -2,7 +2,6 @@
 
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	NiPointer<TESObjectREFR> Console::GetSelectedRef()
@@ -11,13 +10,11 @@ namespace RE
 		return handle.get();
 	}
 
-
 	ObjectRefHandle Console::GetSelectedRefHandle()
 	{
 		REL::Relocation<ObjectRefHandle*> selectedRef{ Offset::Console::SelectedRef };
 		return *selectedRef;
 	}
-
 
 	void Console::SetSelectedRef(NiPointer<TESObjectREFR> a_refPtr)
 	{
@@ -25,19 +22,16 @@ namespace RE
 		SetSelectedRef_Impl(handle);
 	}
 
-
 	void Console::SetSelectedRef(TESObjectREFR* a_ref)
 	{
 		ObjectRefHandle handle(a_ref);
 		SetSelectedRef_Impl(handle);
 	}
 
-
 	void Console::SetSelectedRef(ObjectRefHandle a_handle)
 	{
 		SetSelectedRef_Impl(a_handle);
 	}
-
 
 	void Console::SetSelectedRef_Impl(ObjectRefHandle& a_handle)
 	{

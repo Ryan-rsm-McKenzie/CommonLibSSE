@@ -7,7 +7,6 @@
 #include "RE/T/TESImageSpaceModifiableForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	struct BGSHazardData  // DATA
@@ -23,7 +22,6 @@ namespace RE
 			kDropToGround = 1 << 4
 		};
 
-
 		std::uint32_t									limit;			   // 00
 		float											radius;			   // 04
 		float											lifetime;		   // 08
@@ -37,7 +35,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSHazardData) == 0x38);
 
-
 	class BGSHazard :
 		public TESBoundObject,				// 00
 		public TESFullName,					// 30
@@ -49,7 +46,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSHazard;
 		inline static constexpr auto FORMTYPE = FormType::Hazard;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -59,14 +55,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSHazard();  // 00
 
 		// override (TESBoundObject)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		BGSHazardData data;	 // 80 - DATA

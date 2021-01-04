@@ -5,7 +5,6 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	class InputEvent;
@@ -19,7 +18,6 @@ namespace RE
 	struct QuickSaveLoadHandler;
 	struct ScreenshotHandler;
 
-
 	class MenuControls :
 		public BSTEventSink<InputEvent*>,		  // 00
 		public BSTSingletonSDM<MenuControls>,	  // 10
@@ -32,7 +30,6 @@ namespace RE
 			QueuedReg(MenuEventHandler* a_handler, bool a_add);
 			~QueuedReg() = default;
 
-
 			// members
 			MenuEventHandler* handler;	// 00
 			bool			  add;		// 08
@@ -42,7 +39,6 @@ namespace RE
 		};
 		static_assert(sizeof(QueuedReg) == 0x10);
 
-
 		virtual ~MenuControls();  // 00
 
 		// override (BSTEventSink<InputEvent*>)
@@ -51,7 +47,6 @@ namespace RE
 		// override (BSTEventSink<MenuModeChangeEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;	 // 01
 
-
 		static MenuControls* GetSingleton();
 
 		void						 AddHandler(MenuEventHandler* a_handler);
@@ -59,7 +54,6 @@ namespace RE
 		void						 RegisterHandler(MenuEventHandler* a_handler);
 		void						 RemoveHandler(MenuEventHandler* a_handler);
 		void						 UnregisterHandler(MenuEventHandler* a_handler);
-
 
 		// members
 		std::uint8_t						  pad11;				 // 11

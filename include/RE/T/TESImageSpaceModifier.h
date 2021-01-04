@@ -6,12 +6,10 @@
 #include "RE/N/NiPoint2.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class NiColorInterpolator;
 	class NiFloatInterpolator;
-
 
 	struct ImageSpaceModifierData  // DNAM
 	{
@@ -25,7 +23,6 @@ namespace RE
 			T add;
 		};
 
-
 		template <typename T>
 		struct MinMax
 		{
@@ -34,7 +31,6 @@ namespace RE
 			MultAdd<T> min;
 			MultAdd<T> max;
 		};
-
 
 		struct HDR
 		{
@@ -51,7 +47,6 @@ namespace RE
 		};
 		static_assert(sizeof(HDR) == 0x70);
 
-
 		struct Bloom
 		{
 		public:
@@ -59,7 +54,6 @@ namespace RE
 			MultAdd<float> empty[3];  // 00
 		};
 		static_assert(sizeof(Bloom) == 0x18);
-
 
 		struct Cinematic
 		{
@@ -72,12 +66,10 @@ namespace RE
 		};
 		static_assert(sizeof(Cinematic) == 0x20);
 
-
 		struct DOF
 		{
 		public:
 			using Mode = ImageSpaceModifierInstanceDOF::DepthOfFieldMode;
-
 
 			// members
 			std::uint32_t						 strength;	 // 00
@@ -88,7 +80,6 @@ namespace RE
 			std::uint16_t						 pad0E;		 // 0E
 		};
 		static_assert(sizeof(DOF) == 0x10);
-
 
 		// members
 		bool		  animatable;			   // 00
@@ -116,13 +107,11 @@ namespace RE
 	};
 	static_assert(sizeof(ImageSpaceModifierData) == 0xF4);
 
-
 	class TESImageSpaceModifier : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESImageSpaceModifier;
 		inline static constexpr auto FORMTYPE = FormType::ImageAdapter;
-
 
 		struct RecordFlags
 		{
@@ -133,7 +122,6 @@ namespace RE
 			};
 		};
 
-
 		template <typename T>
 		struct MultAdd
 		{
@@ -141,14 +129,12 @@ namespace RE
 			T add;
 		};
 
-
 		template <typename T>
 		struct MinMax
 		{
 			MultAdd<T> min;
 			MultAdd<T> max;
 		};
-
 
 		struct HDR
 		{
@@ -163,13 +149,11 @@ namespace RE
 		};
 		static_assert(sizeof(HDR) == 0xE0);
 
-
 		struct Bloom
 		{
 			MultAdd<NiPointer<NiFloatInterpolator>> empty[3];  // 00 - oIAD - PIAD
 		};
 		static_assert(sizeof(Bloom) == 0x30);
-
 
 		struct Cinematic
 		{
@@ -179,7 +163,6 @@ namespace RE
 			MultAdd<NiPointer<NiFloatInterpolator>> empty;		 // 30 - uIAD - TIAD
 		};
 		static_assert(sizeof(Cinematic) == 0x40);
-
 
 		struct RadialBlur
 		{
@@ -191,7 +174,6 @@ namespace RE
 		};
 		static_assert(sizeof(RadialBlur) == 0x28);
 
-
 		struct DOF
 		{
 			NiPointer<NiFloatInterpolator> strength;  // 00 - WNAM
@@ -199,7 +181,6 @@ namespace RE
 			NiPointer<NiFloatInterpolator> range;	  // 10 - YNAM
 		};
 		static_assert(sizeof(DOF) == 0x18);
-
 
 		virtual ~TESImageSpaceModifier();  // 00
 
@@ -209,7 +190,6 @@ namespace RE
 		virtual bool		Load(TESFile* a_mod) override;				  // 06
 		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; }
-
 
 		// members
 		ImageSpaceModifierData		   data;				  // 020 - DNAM

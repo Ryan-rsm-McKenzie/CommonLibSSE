@@ -1,10 +1,8 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkMoppBvTreeShapeBase;
-
 
 	class hkpMoppAabbCastVirtualMachine
 	{

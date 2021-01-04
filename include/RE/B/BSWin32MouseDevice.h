@@ -3,14 +3,12 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSMouseDevice.h"
 
-
 namespace RE
 {
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32MouseDevice;
-
 
 		struct Keys
 		{
@@ -30,7 +28,6 @@ namespace RE
 		};
 		using Key = Keys::Key;
 
-
 		virtual ~BSWin32MouseDevice();	// 00
 
 		// override (BSMouseDevice)
@@ -39,7 +36,6 @@ namespace RE
 		virtual void Unk_03(void) override;			  // 03
 		virtual void Reset() override;				  // 08
 		virtual void Unk_09(void) override;			  // 09
-
 
 		// members
 		std::uint64_t	   unk78;  // 78

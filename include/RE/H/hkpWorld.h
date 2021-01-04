@@ -7,7 +7,6 @@
 #include "RE/H/hkpSolverInfo.h"
 #include "RE/H/hkpWorldCinfo.h"
 
-
 namespace RE
 {
 	class hkCriticalSection;
@@ -50,7 +49,6 @@ namespace RE
 	struct hkpWorldRayCastInput;
 	struct hkpWorldRayCastOutput;
 
-
 	struct hkpWorldDynamicsStepInfo
 	{
 	public:
@@ -60,12 +58,10 @@ namespace RE
 	};
 	static_assert(sizeof(hkpWorldDynamicsStepInfo) == 0x140);
 
-
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpWorld;
-
 
 		virtual ~hkpWorld();  // 00
 
@@ -78,7 +74,6 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(60551) };
 			return func(this, a_input, a_output);
 		}
-
 
 		// members
 		hkpSimulation*														  simulation;												  // 010

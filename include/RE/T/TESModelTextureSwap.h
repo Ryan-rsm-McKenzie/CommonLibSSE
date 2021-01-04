@@ -4,14 +4,12 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESModelTextureSwap : public TESModel
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModelTextureSwap;
-
 
 		struct AlternateTexture	 // MODS
 		{
@@ -22,7 +20,6 @@ namespace RE
 		};
 		static_assert(sizeof(AlternateTexture) == 0x18);
 
-
 		virtual ~TESModelTextureSwap();	 // 00
 
 		// override (TESModel)
@@ -30,7 +27,6 @@ namespace RE
 		virtual void				 ClearDataComponent() override;						// 02
 		virtual void				 CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 		virtual TESModelTextureSwap* GetAsModelTextureSwap() override;					// 06 - { return this; }
-
 
 		// members
 		AlternateTexture* alternateTextures;	 // 28 - MODS

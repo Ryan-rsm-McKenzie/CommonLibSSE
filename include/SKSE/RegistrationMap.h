@@ -12,7 +12,6 @@
 #include "SKSE/Impl/RegistrationTraits.h"
 #include "SKSE/Interfaces.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -49,10 +48,8 @@ namespace SKSE
 			mutable Lock					  _lock;
 		};
 
-
 		template <class Enable, class... Args>
 		class RegistrationMap;
-
 
 		template <class... Args>
 		class RegistrationMap<
@@ -101,7 +98,6 @@ namespace SKSE
 			}
 		};
 
-
 		template <>
 		class RegistrationMap<void> : public RegistrationMapBase
 		{
@@ -136,7 +132,6 @@ namespace SKSE
 			}
 		};
 	}
-
 
 	template <class... Args>
 	using RegistrationMap = Impl::RegistrationMap<void, Args...>;

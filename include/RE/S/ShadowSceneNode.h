@@ -11,7 +11,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ShadowSceneNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ShadowSceneNode;
 
-
 		struct LIGHT_CREATE_PARAMS
 		{
 		public:
@@ -22,13 +21,11 @@ namespace RE
 			bool		 affectLand;  // 3
 		};
 
-
 		virtual ~ShadowSceneNode();	 // 00
 
 		// override (NiNode)
 		virtual const NiRTTI* GetRTTI() const override;							// 02
 		virtual void		  OnVisible(NiCullingProcess& a_process) override;	// 34
-
 
 		// members
 		std::uint64_t	unk128;	 // 128

@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESBoundObject.h"
 
-
 namespace RE
 {
 	class BGSAcousticSpace : public TESBoundObject
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAcousticSpace;
 		inline static constexpr auto FORMTYPE = FormType::AcousticSpace;
-
 
 		struct RecordFlags
 		{
@@ -22,7 +20,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSAcousticSpace();  // 00
 
 		// override (TESBoundObject)
@@ -31,7 +28,6 @@ namespace RE
 		virtual void		InitItemImpl() override;				   // 13
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;  // 41
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;	   // 4A - { return 0; }
-
 
 		// members
 		BGSSoundDescriptorForm* loopingSound;  // 30 - SNAM

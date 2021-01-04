@@ -8,7 +8,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSImpactData :
@@ -19,14 +18,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSImpactData;
 		inline static constexpr auto FORMTYPE = FormType::Impact;
 
-
 		enum class ORIENTATION
 		{
 			kSurfaceNormal = 0,
 			kProjVector = 1,
 			kProjReflect = 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -37,7 +34,6 @@ namespace RE
 			};
 		};
 
-
 		struct IMPACT_DATA_DATA	 // DATA
 		{
 			enum class Flag
@@ -45,7 +41,6 @@ namespace RE
 				kNone = 0,
 				kNoDecalData = 1 << 0
 			};
-
 
 			float										 effectDuration;   // 00
 			stl::enumeration<ORIENTATION, std::uint32_t> orient;		   // 04
@@ -58,14 +53,12 @@ namespace RE
 		};
 		static_assert(sizeof(IMPACT_DATA_DATA) == 0x18);
 
-
 		virtual ~BGSImpactData();  // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		IMPACT_DATA_DATA		data;			   // 48 - DATA

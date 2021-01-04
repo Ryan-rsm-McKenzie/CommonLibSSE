@@ -4,7 +4,6 @@
 #include "RE/I/ImpactResults.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	class MissileProjectile : public Projectile
@@ -13,14 +12,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_MissileProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileMissile;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~MissileProjectile();  // 00
 
@@ -41,7 +38,6 @@ namespace RE
 		// add
 		virtual void Unk_C2(void);	// C2 - { return 0; }
 		virtual void Unk_C3(void);	// C3 - { return 0; }
-
 
 		// members
 		ImpactResult  impactResult;			  // 1D8

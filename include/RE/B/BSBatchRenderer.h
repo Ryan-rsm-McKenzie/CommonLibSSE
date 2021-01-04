@@ -3,7 +3,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 
-
 namespace RE
 {
 	class BSBatchRenderer
@@ -11,14 +10,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSBatchRenderer;
 
-
 		virtual ~BSBatchRenderer();	 // 00
 
 		// add
 		virtual void Unk_01(void);	// 01
 		virtual void Unk_02(void);	// 02
 		virtual void Unk_03(void);	// 03
-
 
 		// members
 		BSTArray<void*>				 unk008;	  // 008

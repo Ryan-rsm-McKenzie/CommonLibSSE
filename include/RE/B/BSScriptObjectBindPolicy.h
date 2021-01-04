@@ -4,7 +4,6 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -13,12 +12,10 @@ namespace RE
 		class Object;
 		struct IVMObjectBindInterface;
 
-
 		class ObjectBindPolicy
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__ObjectBindPolicy;
-
 
 			virtual ~ObjectBindPolicy();  // 00
 
@@ -37,7 +34,6 @@ namespace RE
 			virtual void Unk_0C(void) = 0;	// 0C
 
 			void BindObject(BSTSmartPointer<Object>& a_objectPtr, VMHandle a_handle);
-
 
 			// members
 			IVirtualMachine*			   vm;					 // 08

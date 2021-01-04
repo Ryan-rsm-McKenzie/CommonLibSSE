@@ -1,6 +1,5 @@
 #include "RE/G/GRenderer.h"
 
-
 namespace RE
 {
 	GRenderer::Stats::Stats() :
@@ -11,7 +10,6 @@ namespace RE
 		filters(0)
 	{}
 
-
 	void GRenderer::Stats::Clear()
 	{
 		triangles = 0;
@@ -21,24 +19,20 @@ namespace RE
 		filters = 0;
 	}
 
-
 	GRenderer::CachedData::CachedData() :
 		renderer(nullptr),
 		data(nullptr)
 	{}
-
 
 	GRenderer::CachedData::~CachedData()
 	{
 		assert(renderer == nullptr);
 	}
 
-
 	GRenderer* GRenderer::CachedData::GetRenderer() const
 	{
 		return renderer;
 	}
-
 
 	auto GRenderer::CachedData::GetRendererData() const
 		-> Handle
@@ -46,12 +40,10 @@ namespace RE
 		return data;
 	}
 
-
 	void GRenderer::CachedData::SetRendererData(Handle a_handle)
 	{
 		data = a_handle;
 	}
-
 
 	void GRenderer::CachedData::ReleaseData(CachedDataType a_type)
 	{
@@ -62,13 +54,11 @@ namespace RE
 		ReleaseDataByRenderer();
 	}
 
-
 	void GRenderer::CachedData::ReleaseDataByRenderer()
 	{
 		renderer = nullptr;
 		data = nullptr;
 	}
-
 
 	GRenderer::CacheProvider::CacheProvider(CachedData* a_cache) :
 		data(a_cache),
@@ -78,13 +68,11 @@ namespace RE
 		pad14(0)
 	{}
 
-
 	auto GRenderer::CacheProvider::GetCachedData(GRenderer* a_renderer)
 		-> CachedData*
 	{
 		return (a_renderer && (a_renderer == data->renderer)) ? data : nullptr;
 	}
-
 
 	auto GRenderer::CacheProvider::CreateCachedData(CachedDataType a_type, GRenderer* a_renderer, bool a_keepSharedData)
 		-> CachedData*
@@ -100,11 +88,9 @@ namespace RE
 		return data;
 	}
 
-
 	GRenderer::Cxform::Cxform() :
 		matrix{ 0.0 }
 	{}
-
 
 	bool GRenderer::Cxform::operator==(const Cxform& a_rhs) const
 	{
@@ -118,12 +104,10 @@ namespace RE
 			   matrix[kA][kAdd] == a_rhs.matrix[kA][kAdd];
 	}
 
-
 	bool GRenderer::CacheProvider::CanDiscardData()
 	{
 		return discardSharedData;
 	}
-
 
 	GRenderer::StereoParams::StereoParams() :
 		displayWidthCm(0),
@@ -132,7 +116,6 @@ namespace RE
 		displayAspectRatio(static_cast<float>(9.0 / 16.0)),
 		eyeSeparationCm(static_cast<float>(6.4))
 	{}
-
 
 	GRenderer::UserData::UserData() :
 		string(nullptr),
@@ -144,24 +127,19 @@ namespace RE
 		pad1E(0)
 	{}
 
-
 	void GRenderer::BeginFrame()
 	{}
 
-
 	void GRenderer::ReleaseTempRenderTargets(std::uint32_t)
 	{}
-
 
 	bool GRenderer::PushUserData(UserData*)
 	{
 		return false;
 	}
 
-
 	void GRenderer::PopUserData()
 	{}
-
 
 	void GRenderer::SetStereoParams(StereoParams a_params)
 	{
@@ -171,14 +149,11 @@ namespace RE
 		}
 	}
 
-
 	void GRenderer::SetStereoDisplay(StereoDisplay, bool)
 	{}
 
-
 	void GRenderer::DrawDistanceFieldBitmaps(BitmapDesc*, std::int32_t, std::int32_t, std::int32_t, const GTexture*, const Matrix&, const DistanceFieldParams&, CacheProvider*)
 	{}
-
 
 	void GRenderer::FillStyleBitmap(GTexture* a_texture, const Matrix& a_matrix, BitmapWrapMode a_wrapMode, BitmapSampleMode a_sampleMode)
 	{

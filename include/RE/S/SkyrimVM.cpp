@@ -1,6 +1,5 @@
 #include "RE/S/SkyrimVM.h"
 
-
 namespace RE
 {
 	SkyrimVM* SkyrimVM::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<SkyrimVM**> singleton{ Offset::SkyrimVM::Singleton };
 		return *singleton;
 	}
-
 
 	bool SkyrimVM::QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor)
 	{

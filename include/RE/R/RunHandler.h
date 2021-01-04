@@ -2,14 +2,12 @@
 
 #include "RE/H/HeldStateHandler.h"
 
-
 namespace RE
 {
 	struct RunHandler : public HeldStateHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_RunHandler;
-
 
 		virtual ~RunHandler();	// 00
 

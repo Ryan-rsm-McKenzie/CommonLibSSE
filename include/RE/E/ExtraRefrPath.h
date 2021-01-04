@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class ExtraRefrPath : public BSExtraData
@@ -13,17 +12,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRefrPath;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRefrPath;
 
-
 		enum class PATH_TYPE
 		{
 		};
-
 
 		virtual ~ExtraRefrPath();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kRefrPath; }
-
 
 		// members
 		NiPoint3								   startPos;		  // 10

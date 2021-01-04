@@ -6,7 +6,6 @@
 #include "RE/M/MagicItem.h"
 #include "RE/T/TESDescription.h"
 
-
 namespace RE
 {
 	class SpellItem :
@@ -18,7 +17,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SpellItem;
 		inline static constexpr auto FORMTYPE = FormType::Spell;
-
 
 		enum class SpellFlag
 		{
@@ -34,7 +32,6 @@ namespace RE
 			kNoDualCastMods = 1 << 23
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -43,7 +40,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		class Data	// SPIT
 		{
@@ -60,7 +56,6 @@ namespace RE
 			BGSPerk*								   castingPerk;	  // 20
 		};
 		static_assert(sizeof(Data) == 0x28);
-
 
 		virtual ~SpellItem();  // 00
 
@@ -96,7 +91,6 @@ namespace RE
 
 		// override (BGSMenuDisplayObject)
 		virtual TESBoundObject* GetMenuDisplayObject() const override;	// 04 - { return menuDispObject; }
-
 
 		// members
 		Data data;	// C0 - SPIT

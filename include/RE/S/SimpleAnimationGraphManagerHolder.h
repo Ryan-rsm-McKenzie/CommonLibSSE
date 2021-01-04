@@ -3,17 +3,14 @@
 #include "RE/I/IAnimationGraphManagerHolder.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class SimpleAnimationGraphManagerLoadingTask;
-
 
 	class SimpleAnimationGraphManagerHolder : public IAnimationGraphManagerHolder
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SimpleAnimationGraphManagerHolder;
-
 
 		// override (IAnimationGraphManagerHolder)
 		virtual bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;	// 02 - { a_out = animationGraphManager; return a_out; }
@@ -22,7 +19,6 @@ namespace RE
 
 		// add
 		virtual void Unk_13(void);	// 13 - { return; }
-
 
 		// members
 		BSTSmartPointer<BSAnimationGraphManager>		  animationGraphManager;  // 08

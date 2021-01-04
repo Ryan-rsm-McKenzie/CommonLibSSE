@@ -2,7 +2,6 @@
 
 #include "RE/B/BSExtraData.h"
 
-
 namespace RE
 {
 	class ExtraCannotWear : public BSExtraData
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCannotWear;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCannotWear;
-
 
 		ExtraCannotWear();
 		virtual ~ExtraCannotWear() = default;  // 00

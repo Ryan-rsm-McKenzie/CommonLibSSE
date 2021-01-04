@@ -2,7 +2,6 @@
 
 #include "RE/N/NiAnimationKey.h"
 
-
 namespace RE
 {
 	class NiFloatKey : public NiAnimationKey

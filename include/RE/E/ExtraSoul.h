@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/S/SoulLevels.h"
 
-
 namespace RE
 {
 	class ExtraSoul : public BSExtraData
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSoul;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSoul;
-
 
 		ExtraSoul();
 		explicit ExtraSoul(SOUL_LEVEL a_level);
@@ -23,7 +21,6 @@ namespace RE
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return soul != a_rhs->soul; }
 
 		SOUL_LEVEL GetContainedSoul() const;
-
 
 		// members
 		stl::enumeration<SOUL_LEVEL, std::uint8_t> soul;   // 10

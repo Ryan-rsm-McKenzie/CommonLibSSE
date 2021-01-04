@@ -2,7 +2,6 @@
 
 #include "SKSE/Logger.h"
 
-
 namespace SKSE
 {
 	namespace detail
@@ -70,7 +69,6 @@ namespace SKSE
 		}
 	}
 
-
 	void Init(const LoadInterface* a_intfc) noexcept
 	{
 		if (!a_intfc) {
@@ -121,7 +119,6 @@ namespace SKSE
 		}
 	}
 
-
 	void RegisterForAPIInitEvent(std::function<void()> a_fn)
 	{
 		{
@@ -136,115 +133,96 @@ namespace SKSE
 		a_fn();
 	}
 
-
 	PluginHandle GetPluginHandle() noexcept
 	{
 		return detail::APIStorage::get().pluginHandle;
 	}
-
 
 	std::uint32_t GetReleaseIndex() noexcept
 	{
 		return detail::APIStorage::get().releaseIndex;
 	}
 
-
 	const ScaleformInterface* GetScaleformInterface() noexcept
 	{
 		return detail::APIStorage::get().scaleformInterface;
 	}
-
 
 	const PapyrusInterface* GetPapyrusInterface() noexcept
 	{
 		return detail::APIStorage::get().papyrusInterface;
 	}
 
-
 	const SerializationInterface* GetSerializationInterface() noexcept
 	{
 		return detail::APIStorage::get().serializationInterface;
 	}
-
 
 	const TaskInterface* GetTaskInterface() noexcept
 	{
 		return detail::APIStorage::get().taskInterface;
 	}
 
-
 	const TrampolineInterface* GetTrampolineInterface() noexcept
 	{
 		return detail::APIStorage::get().trampolineInterface;
 	}
-
 
 	const MessagingInterface* GetMessagingInterface() noexcept
 	{
 		return detail::APIStorage::get().messagingInterface;
 	}
 
-
 	RE::BSTEventSource<ModCallbackEvent>* GetModCallbackEventSource() noexcept
 	{
 		return detail::APIStorage::get().modCallbackEventSource;
 	}
-
 
 	RE::BSTEventSource<CameraEvent>* GetCameraEventSource() noexcept
 	{
 		return detail::APIStorage::get().cameraEventSource;
 	}
 
-
 	RE::BSTEventSource<CrosshairRefEvent>* GetCrosshairRefEventSource() noexcept
 	{
 		return detail::APIStorage::get().crosshairRefEventSource;
 	}
-
 
 	RE::BSTEventSource<ActionEvent>* GetActionEventSource() noexcept
 	{
 		return detail::APIStorage::get().actionEventSource;
 	}
 
-
 	RE::BSTEventSource<NiNodeUpdateEvent>* GetNiNodeUpdateEventSource() noexcept
 	{
 		return detail::APIStorage::get().niNodeUpdateEventSource;
 	}
-
 
 	const ObjectInterface* GetObjectInterface() noexcept
 	{
 		return detail::APIStorage::get().objectInterface;
 	}
 
-
 	const SKSEDelayFunctorManager* GetDelayFunctorManager() noexcept
 	{
 		return detail::APIStorage::get().delayFunctorManager;
 	}
-
 
 	const SKSEObjectRegistry* GetObjectRegistry() noexcept
 	{
 		return detail::APIStorage::get().objectRegistry;
 	}
 
-
 	const SKSEPersistentObjectStorage* GetPersistentObjectStorage() noexcept
 	{
 		return detail::APIStorage::get().persistentObjectStorage;
 	}
-
 
 	Trampoline& GetTrampoline()
 	{
 		static Trampoline trampoline;
 		return trampoline;
 	}
-
 
 	void AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve)
 	{

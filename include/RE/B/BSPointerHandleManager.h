@@ -3,7 +3,6 @@
 #include "RE/B/BSHandleRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -20,13 +19,11 @@ namespace RE
 				//kInUseBit = kAgeInc << kAgeShift	// 0x4000000
 			};
 
-
 			// members
 			std::uint32_t				 handleEntryBits;  // 00
 			std::uint32_t				 pad04;			   // 04
 			NiPointer<BSHandleRefObject> pointer;		   // 08
 		};
-
 
 		static stl::span<Entry, 0x100000> GetHandleEntries()
 		{

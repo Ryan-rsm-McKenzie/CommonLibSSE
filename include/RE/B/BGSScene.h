@@ -5,11 +5,9 @@
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSSceneAction;
-
 
 	enum class SCENE_ACTOR_FLAG	 // LNAM
 	{
@@ -19,7 +17,6 @@ namespace RE
 		kRunOnlyScenePackages = 1 << 2,
 		kNoCommandState = 1 << 3
 	};
-
 
 	class BGSScenePhase
 	{
@@ -31,13 +28,11 @@ namespace RE
 	};
 	static_assert(sizeof(BGSScenePhase) == 0x18);
 
-
 	class BGSScene : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSScene;
 		inline static constexpr auto FORMTYPE = FormType::Scene;
-
 
 		enum class Flag
 		{
@@ -47,7 +42,6 @@ namespace RE
 			kRepeatConditionsWhileTrue = 1 << 3,
 			kInterruptible = 1 << 4
 		};
-
 
 		enum class BehaviourFlag  // DNAM
 		{
@@ -62,7 +56,6 @@ namespace RE
 			kOBS_COMEnd = 1 << 7
 		};
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -70,7 +63,6 @@ namespace RE
 				kActive = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -80,7 +72,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSScene();  // 00
 
@@ -92,7 +83,6 @@ namespace RE
 		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10
 		virtual void Revert(BGSLoadFormBuffer* a_buf) override;		   // 12
 		virtual void InitItemImpl() override;						   // 13
-
 
 		// members
 		BSTArray<BGSScenePhase*>									phases;					// 20

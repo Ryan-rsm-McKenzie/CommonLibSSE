@@ -1,6 +1,5 @@
 #include "RE/N/NiRefObject.h"
 
-
 namespace RE
 {
 	NiRefObject::NiRefObject()
@@ -9,26 +8,22 @@ namespace RE
 		++objectCount;
 	}
 
-
 	NiRefObject::~NiRefObject()
 	{
 		stl::atomic_ref objectCount{ *GetTotalObjectCount() };
 		--objectCount;
 	}
 
-
 	void NiRefObject::DeleteThis()
 	{
 		delete this;
 	}
-
 
 	void NiRefObject::IncRefCount()
 	{
 		stl::atomic_ref myRefCount{ _refCount };
 		++myRefCount;
 	}
-
 
 	void NiRefObject::DecRefCount()
 	{
@@ -37,7 +32,6 @@ namespace RE
 			DeleteThis();
 		}
 	}
-
 
 	volatile std::uint32_t* NiRefObject::GetTotalObjectCount()
 	{

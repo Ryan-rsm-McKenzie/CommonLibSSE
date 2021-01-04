@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSResource
@@ -19,9 +18,7 @@ namespace RE
 			};
 			static_assert(sizeof(Info) == 0x20);
 
-
 			BSSystemFile();
-
 
 			// members
 			std::uint32_t flags{ 1 };							 // 00

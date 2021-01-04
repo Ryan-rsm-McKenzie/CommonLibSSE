@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class BGSSoundCategory :
@@ -17,14 +16,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSSoundCategory;
 		inline static constexpr auto FORMTYPE = FormType::SoundCategory;
 
-
 		enum class Flag	 // FNAM
 		{
 			kNone = 0,
 			kMuteWhenSubmerged = 1 << 0,
 			kShouldAppearOnMenu = 1 << 1
 		};
-
 
 		struct RecordFlags
 		{
@@ -34,7 +31,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSSoundCategory();  // 00
 
@@ -57,7 +53,6 @@ namespace RE
 		bool  IsMenuCategory() const;
 		void  SetDefaultMenuValue(float a_val);
 		void  SetStaticVolumeMultiplier(float a_val);
-
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;			 // 38 - FNAM

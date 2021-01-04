@@ -2,14 +2,12 @@
 
 #include "RE/B/BSIntrusiveRefCounted.h"
 
-
 namespace RE
 {
 	class BSPathingCell : public BSIntrusiveRefCounted
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPathingCell;
-
 
 		virtual ~BSPathingCell();  // 00
 
@@ -24,7 +22,6 @@ namespace RE
 		virtual void		  Unk_08(void) = 0;		// 08
 		virtual void		  Unk_09(void) = 0;		// 09
 		virtual void		  Unk_0A(void) = 0;		// 0A
-
 
 		// members
 		std::uint32_t unk0C;  // 0C

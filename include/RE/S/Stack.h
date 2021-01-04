@@ -6,7 +6,6 @@
 #include "RE/M/MemoryPage.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -16,13 +15,11 @@ namespace RE
 			class CodeTasklet;
 		}
 
-
 		class IProfilePolicy;
 		class IStackCallbackFunctor;
 		class StackFrame;
 		class Variable;
 		struct IMemoryPagePolicy;
-
 
 		class Stack : public BSIntrusiveRefCounted
 		{
@@ -40,7 +37,6 @@ namespace RE
 				kRetryCall = 8
 			};
 
-
 			enum class FreezeState
 			{
 				kUnfrozen = 0,
@@ -48,11 +44,9 @@ namespace RE
 				kFrozen = 2
 			};
 
-
 			enum class StackType
 			{
 			};
-
 
 			struct MemoryPageData
 			{
@@ -64,12 +58,10 @@ namespace RE
 			};
 			static_assert(sizeof(MemoryPageData) == 0x10);
 
-
 			~Stack();
 
 			std::uint32_t GetPageForFrame(const StackFrame* a_frame) const;
 			Variable&	  GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint);
-
 
 			// members
 			std::uint32_t								 pad04;			 // 04

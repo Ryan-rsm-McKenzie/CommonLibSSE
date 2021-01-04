@@ -6,27 +6,22 @@
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class DetectionListener;
 	class DetectionState;
-
 
 	class ActorKnowledge : public NiRefObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorKnowledge;
 
-
 		enum class FLAGS
 		{
 			kNone = 0
 		};
 
-
 		virtual ~ActorKnowledge();	// 00
-
 
 		// members
 		ActorHandle										owner;						  // 10

@@ -2,17 +2,14 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class BGSKeyword;
-
 
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSKeywordForm;
-
 
 		virtual ~BGSKeywordForm();	// 00
 
@@ -28,7 +25,6 @@ namespace RE
 		bool					   HasKeyword(FormID a_formID) const;
 		std::optional<BGSKeyword*> GetKeywordAt(std::uint32_t a_idx) const;
 		std::uint32_t			   GetNumKeywords() const;
-
 
 		// members
 		BGSKeyword**  keywords;		// 08 - KWDA

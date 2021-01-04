@@ -2,7 +2,6 @@
 
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	// menuDepth = 3
@@ -14,12 +13,10 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_ConsoleNativeUIMenu;
 		constexpr static std::string_view MENU_NAME = "Console Native UI Menu";
 
-
 		virtual ~ConsoleNativeUIMenu();	 // 00
 
 		// override (IMenu)
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
-
 
 		// members
 		std::uint8_t  unk30;  // 30

@@ -4,7 +4,6 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	// menuDepth = 9
@@ -19,7 +18,6 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_ModManagerMenu;
 		constexpr static std::string_view MENU_NAME = "Mod Manager Menu";
 
-
 		virtual ~ModManagerMenu();	// 00
 
 		// override (IMenu)
@@ -32,7 +30,6 @@ namespace RE
 
 		// override (GFxFunctionHandler)
 		virtual void Call(Params& a_params) override;  // 01
-
 
 		// members
 		std::uint8_t  unk50;  // 50

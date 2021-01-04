@@ -3,17 +3,14 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/I/IAIWorldLocationHandle.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PackageLocation;
-
 
 		enum class Type
 		{
@@ -31,17 +28,14 @@ namespace RE
 			kNearSelf = 12,
 		};
 
-
 		union Data
 		{
 			~Data() {}
-
 
 			TESForm*		object;
 			ObjectRefHandle refHandle;
 		};
 		static_assert(sizeof(Data) == 0x8);
-
 
 		virtual ~PackageLocation();	 // 00
 
@@ -49,7 +43,6 @@ namespace RE
 		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;						// 01
 		virtual PackageLocation*		GetAsPackageLocation() override;													// 02 - { return this; }
 		virtual bool					IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;	// 03
-
 
 		// members
 		stl::enumeration<Type, std::uint8_t> locType;  // 08

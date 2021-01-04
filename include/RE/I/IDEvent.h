@@ -3,14 +3,12 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/I/InputEvent.h"
 
-
 namespace RE
 {
 	class IDEvent : public InputEvent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IDEvent;
-
 
 		virtual ~IDEvent();	 // 00
 
@@ -19,7 +17,6 @@ namespace RE
 		virtual const BSFixedString& QUserEvent() const override;  // 02 - { return userEvent; }
 
 		[[nodiscard]] constexpr std::uint32_t GetIDCode() const noexcept { return idCode; }
-
 
 		// members
 		BSFixedString userEvent;  // 18

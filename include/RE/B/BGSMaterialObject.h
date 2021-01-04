@@ -7,7 +7,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSMaterialObject :
@@ -19,7 +18,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMaterialObject;
 		inline static constexpr auto FORMTYPE = FormType::MaterialObject;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -29,7 +27,6 @@ namespace RE
 			};
 		};
 
-
 		struct FILE_DATA
 		{
 			char*		  buffer;	   // 00
@@ -37,7 +34,6 @@ namespace RE
 			std::uint32_t pad0C;	   // 0C
 		};
 		static_assert(sizeof(FILE_DATA) == 0x10);
-
 
 		virtual ~BGSMaterialObject();  // 00
 
@@ -47,7 +43,6 @@ namespace RE
 
 		// override (BSMaterialObject)
 		virtual void EnsureLoaded() override;  // 01
-
 
 		// members
 		BSTArray<FILE_DATA> fileData;  // A0 - DNAM

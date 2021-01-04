@@ -2,14 +2,12 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	struct MovementHandler : public PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementHandler;
-
 
 		virtual ~MovementHandler();	 // 00
 

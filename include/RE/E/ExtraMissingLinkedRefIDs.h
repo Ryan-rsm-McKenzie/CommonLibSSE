@@ -3,19 +3,16 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class BGSKeyword;
 	class TESObjectREFR;
-
 
 	class ExtraMissingLinkedRefIDs : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMissingLinkedRefIDs;
-
 
 		struct Entry
 		{
@@ -27,7 +24,6 @@ namespace RE
 		};
 		static_assert(sizeof(Entry) == 0x10);
 
-
 		// a variation of a small array
 		struct Array
 		{
@@ -37,7 +33,6 @@ namespace RE
 			using reference = value_type&;
 			using iterator = Entry*;
 
-
 			union Data
 			{
 				Entry* entryPtr;
@@ -45,12 +40,10 @@ namespace RE
 			};
 			static_assert(sizeof(Data) == 0x10);
 
-
 			reference operator[](size_type a_pos);
 			iterator  begin() noexcept;
 			iterator  end() noexcept;
 			size_type size() const noexcept;
-
 
 			// members
 			Data		  _data;   // 00
@@ -59,14 +52,12 @@ namespace RE
 		};
 		static_assert(sizeof(Array) == 0x18);
 
-
 		virtual ~ExtraMissingLinkedRefIDs();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kMissingLinkedRefIDs; }
 
 		TESObjectREFR* GetLinkedRef(BGSKeyword* a_keyword);
-
 
 		// members
 		Array entries;	// 10

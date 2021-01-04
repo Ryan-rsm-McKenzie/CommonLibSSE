@@ -3,11 +3,9 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	namespace BSScript
 	{
@@ -15,7 +13,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IObjectHandlePolicy;
-
 
 			virtual ~IObjectHandlePolicy();	 // 00
 

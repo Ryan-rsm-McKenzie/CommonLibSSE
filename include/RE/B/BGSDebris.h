@@ -6,14 +6,12 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	namespace BSResource
 	{
 		struct ID;
 	}
-
 
 	struct BGSDebrisData
 	{
@@ -23,7 +21,6 @@ namespace RE
 			kNone = 0,
 			kCollisionData = 1 << 0
 		};
-
 
 		// members
 		std::int8_t										   percentage;	// 00 - DATA~
@@ -36,7 +33,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSDebrisData) == 0x40);
 
-
 	class BGSDebris :
 		public TESForm,		   // 00
 		public BGSPreloadable  // 20
@@ -44,7 +40,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDebris;
 		inline static constexpr auto FORMTYPE = FormType::Debris;
-
 
 		struct RecordFlags
 		{
@@ -55,14 +50,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSDebris();  // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04 - { return; }
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
-
 
 		// members
 		BSSimpleList<BGSDebrisData*> data;	// 28

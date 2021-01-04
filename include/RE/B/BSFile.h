@@ -2,14 +2,12 @@
 
 #include "RE/N/NiFile.h"
 
-
 namespace RE
 {
 	class BSFile : public NiFile
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFile;
-
 
 		virtual ~BSFile();	// 00
 
@@ -31,7 +29,6 @@ namespace RE
 		virtual void Unk_10(void);	// 10
 		virtual void Unk_11(void);	// 11
 		virtual void Unk_12(void);	// 12
-
 
 		// members
 		bool		  useAuxBuffer;				   // 048

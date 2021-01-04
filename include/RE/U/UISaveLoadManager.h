@@ -5,12 +5,10 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 	struct BGSSaveLoadManagerEvent;
-
 
 	class UISaveLoadManager :
 		public BSTSingletonSDM<UISaveLoadManager>,	  // 10
@@ -20,7 +18,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
-
 		virtual ~UISaveLoadManager();  // 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
@@ -28,7 +25,6 @@ namespace RE
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	 // 01
-
 
 		// members
 		void*		  unk18;  // 18

@@ -5,19 +5,16 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkpCollisionFilter;
 	class hkpConvexListFilter;
 	class hkWorldMemoryAvailableWatchDog;
 
-
 	class hkpWorldCinfo : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpWorldCinfo;
-
 
 		enum class SolverType
 		{
@@ -35,7 +32,6 @@ namespace RE
 			kTotal
 		};
 
-
 		enum class SimulationType
 		{
 			kInvalid,
@@ -44,14 +40,12 @@ namespace RE
 			kMultithreaded,
 		};
 
-
 		enum class ContactPointGeneration
 		{
 			kAcceptAlways,
 			kRejectDubious,
 			kRejectMany
 		};
-
 
 		enum class BroadPhaseBorderBehaviour
 		{
@@ -61,16 +55,13 @@ namespace RE
 			kDoNothing
 		};
 
-
 		enum class TreeUpdateType
 		{
 			kActive,
 			kAll
 		};
 
-
 		virtual ~hkpWorldCinfo();  // 00
-
 
 		// members
 		hkVector4												 gravity;													 // 010

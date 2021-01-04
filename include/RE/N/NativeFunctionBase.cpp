@@ -1,6 +1,5 @@
 #include "RE/N/NativeFunctionBase.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -21,36 +20,30 @@ namespace RE
 				}
 			}
 
-
 			const BSFixedString& NativeFunctionBase::GetName() const
 			{
 				return _name;
 			}
-
 
 			const BSFixedString& NativeFunctionBase::GetObjectTypeName() const
 			{
 				return _objName;
 			}
 
-
 			const BSFixedString& NativeFunctionBase::GetStateName() const
 			{
 				return _stateName;
 			}
-
 
 			TypeInfo NativeFunctionBase::GetReturnType() const
 			{
 				return _retType;
 			}
 
-
 			std::uint32_t NativeFunctionBase::GetParamCount() const
 			{
 				return _descTable.totalEntries;
 			}
-
 
 			void NativeFunctionBase::GetParam(std::uint32_t a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const
 			{
@@ -64,30 +57,25 @@ namespace RE
 				}
 			}
 
-
 			std::uint32_t NativeFunctionBase::GetStackFrameSize() const
 			{
 				return _descTable.totalEntries;
 			}
-
 
 			bool NativeFunctionBase::GetIsNative() const
 			{
 				return true;
 			}
 
-
 			bool NativeFunctionBase::GetIsStatic() const
 			{
 				return _isStatic;
 			}
 
-
 			bool NativeFunctionBase::GetIsEmpty() const
 			{
 				return false;
 			}
-
 
 			auto NativeFunctionBase::GetFunctionType() const
 				-> FunctionType
@@ -95,24 +83,20 @@ namespace RE
 				return FunctionType::kNormal;
 			}
 
-
 			std::uint32_t NativeFunctionBase::GetUserFlags() const
 			{
 				return _userFlags;
 			}
-
 
 			const BSFixedString& NativeFunctionBase::GetDocString() const
 			{
 				return _docString;
 			}
 
-
 			void NativeFunctionBase::InsertLocals(StackFrame*)
 			{
 				return;
 			}
-
 
 			auto NativeFunctionBase::Call(const BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4)
 				-> CallResult
@@ -122,20 +106,17 @@ namespace RE
 				return func(this, a_stack, a_logger, a_vm, a_arg4);
 			}
 
-
 			const BSFixedString& NativeFunctionBase::GetSourceFilename() const
 			{
 				static BSFixedString native("<native>");
 				return native;
 			}
 
-
 			bool NativeFunctionBase::TranslateIPToLineNumber(std::uint32_t, std::uint32_t& a_lineNumberOut) const
 			{
 				a_lineNumberOut = 0;
 				return false;
 			}
-
 
 			bool NativeFunctionBase::GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const
 			{
@@ -148,12 +129,10 @@ namespace RE
 				}
 			}
 
-
 			bool NativeFunctionBase::CanBeCalledFromTasklets() const
 			{
 				return _isCallableFromTasklet;
 			}
-
 
 			void NativeFunctionBase::SetCallableFromTasklets(bool a_callable)
 			{

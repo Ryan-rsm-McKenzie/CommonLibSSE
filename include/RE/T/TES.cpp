@@ -1,6 +1,5 @@
 #include "RE/T/TES.h"
 
-
 namespace RE
 {
 	TES* TES::GetSingleton()

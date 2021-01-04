@@ -1,18 +1,15 @@
 #pragma once
 
-
 namespace RE
 {
 	using hkObjectIndex = std::uint16_t;
 	using hkTime = float;
-
 
 	enum class hkResult
 	{
 		kSuccess = 0,
 		kFailure = 1
 	};
-
 
 	// 16-bit float with 7-bit precision
 	class hkHalf
@@ -28,12 +25,10 @@ namespace RE
 		void  SetFloat(const float& a_val);
 		float GetFloat() const;
 
-
 		// members
 		std::int16_t _value;  // 0
 	};
 	static_assert(sizeof(hkHalf) == 0x2);
-
 
 	// 8-bit float ranging [0.01, 1000000.0]
 	// value is an index in a lookup table

@@ -4,18 +4,15 @@
 #include "RE/G/GPtr.h"
 #include "RE/G/GRenderer.h"
 
-
 namespace RE
 {
 	class GRenderer;
-
 
 	class GFxRenderConfig : public GFxState
 	{
 	public:
 		using RenderCapBits = GRenderer::RenderCapBits;
 		using VertexFormat = GRenderer::VertexFormat;
-
 
 		enum class RenderFlag
 		{
@@ -31,7 +28,6 @@ namespace RE
 			kNoViewCull = 1 << 8
 		};
 
-
 		bool		  IsUsingEdgeAA() const;
 		bool		  IsEdgeAATextured() const;
 		bool		  IsOptimizingTriangles() const;
@@ -46,7 +42,6 @@ namespace RE
 		float		  GetMaxCurvePixelError() const;
 		float		  GetStrokerAAWidth() const;
 		void		  SetStrokerAAWidth(float a_aawidth);
-
 
 		// members
 		GPtr<GRenderer>								   renderer;			// 18

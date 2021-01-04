@@ -2,7 +2,6 @@
 
 #include "RE/H/hkContainerAllocators.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -16,13 +15,11 @@ namespace RE
 		using iterator = T*;
 		using const_iterator = const T*;
 
-
 		reference operator[](size_type a_pos)
 		{
 			assert(a_pos >= 0 && a_pos < size());
 			return data()[a_pos];
 		}
-
 
 		const_reference operator[](size_type a_pos) const
 		{
@@ -30,90 +27,75 @@ namespace RE
 			return data()[a_pos];
 		}
 
-
 		T* data()
 		{
 			return _data;
 		}
-
 
 		const T* data() const
 		{
 			return _data;
 		}
 
-
 		reference front()
 		{
 			return operator[](0);
 		}
-
 
 		const_reference front() const
 		{
 			return operator[](0);
 		}
 
-
 		reference back()
 		{
 			return operator[](size() - 1);
 		}
-
 
 		const_reference back() const
 		{
 			return operator[](size() - 1);
 		}
 
-
 		iterator begin()
 		{
 			return empty() ? iterator{} : std::addressof(data()[0]);
 		}
-
 
 		const_iterator begin() const
 		{
 			return empty() ? const_iterator{} : std::addressof(data()[0]);
 		}
 
-
 		const_iterator cbegin() const
 		{
 			return begin();
 		}
-
 
 		iterator end()
 		{
 			return empty() ? iterator{} : std::addressof(data()[size()]);
 		}
 
-
 		const_iterator end() const
 		{
 			return empty() ? const_iterator{} : std::addressof(data()[size()]);
 		}
-
 
 		const_iterator cend() const
 		{
 			return end();
 		}
 
-
 		[[nodiscard]] bool empty() const
 		{
 			return size() == 0;
 		}
 
-
 		size_type size() const noexcept
 		{
 			return _size;
 		}
-
 
 		void reserve(size_type a_newCap)
 		{
@@ -138,12 +120,10 @@ namespace RE
 			_capacityAndFlags |= a_newCap & kCapacityMask;
 		}
 
-
 		size_type capacity() const noexcept
 		{
 			return _capacityAndFlags & kCapacityMask;
 		}
-
 
 		void push_back(const T& a_value)
 		{
@@ -152,7 +132,6 @@ namespace RE
 			}
 			_data[_size++] = a_value;
 		}
-
 
 		void resize(size_type a_count)
 		{
@@ -190,7 +169,6 @@ namespace RE
 			_capacityAndFlags |= a_count & kCapacityMask;
 		}
 
-
 		enum : std::uint32_t
 		{
 			kCapacityMask = 0x3FFFFFFF,
@@ -198,9 +176,7 @@ namespace RE
 			kDontDeallocFlag = (std::uint32_t)1 << 31
 		};
 
-
 		static constexpr float GROWTH_FACTOR = 1.5;	 // NOT PART OF NATIVE TYPE
-
 
 		T*			 _data;				 // 00
 		std::int32_t _size;				 // 08
@@ -208,14 +184,12 @@ namespace RE
 	};
 	static_assert(sizeof(hkArrayBase<void*>) == 0x10);
 
-
 	template <class T, class Allocator = void>
 	class hkArray : public hkArrayBase<T>
 	{
 	public:
 	};
 	static_assert(sizeof(hkArray<void*>) == 0x10);
-
 
 	template <class T, std::size_t N, class Allocator = void>
 	class hkInplaceArray : public hkArray<T, Allocator>

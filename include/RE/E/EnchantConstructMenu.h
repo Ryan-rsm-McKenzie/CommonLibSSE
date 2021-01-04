@@ -5,7 +5,6 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMessageBoxCallback.h"
 
-
 namespace RE
 {
 	namespace CraftingSubMenus
@@ -15,27 +14,22 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu;
 
-
 			class EnchantMenuCallback : public IMessageBoxCallback
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback;
 
-
 				virtual ~EnchantMenuCallback();	 // 00
-
 
 				// members
 				EnchantConstructMenu* subMenu;	// 10
 			};
 			static_assert(sizeof(EnchantMenuCallback) == 0x18);
 
-
 			class EnchantMenuDisenchantCallback : public EnchantMenuCallback
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
-
 
 				virtual ~EnchantMenuDisenchantCallback();  // 00
 
@@ -44,12 +38,10 @@ namespace RE
 			};
 			static_assert(sizeof(EnchantMenuDisenchantCallback) == 0x18);
 
-
 			class EnchantMenuCraftCallback : public EnchantMenuCallback
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
-
 
 				virtual ~EnchantMenuCraftCallback();  // 00
 
@@ -58,12 +50,10 @@ namespace RE
 			};
 			static_assert(sizeof(EnchantMenuCraftCallback) == 0x18);
 
-
 			class EnchantMenuExitCallback : public EnchantMenuCallback
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
-
 
 				virtual ~EnchantMenuExitCallback();	 // 00
 
@@ -72,7 +62,6 @@ namespace RE
 			};
 			static_assert(sizeof(EnchantMenuExitCallback) == 0x18);
 
-
 			virtual ~EnchantConstructMenu();  // 00
 
 			// override (CraftingSubMenu)
@@ -80,7 +69,6 @@ namespace RE
 			virtual void Unk_04(void) override;						   // 04 - { return unk20C != 3 || unk1A0; }
 			virtual void Unk_05(void) override;						   // 05
 			virtual void Unk_07(void) override;						   // 07
-
 
 			// members
 			std::uint64_t unk100;  // 100

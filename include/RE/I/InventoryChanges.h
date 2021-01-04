@@ -4,12 +4,10 @@
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class ExtraDataList;
 	class InventoryEntryData;
-
 
 	class InventoryChanges
 	{
@@ -19,7 +17,6 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
 
-
 			virtual ~IItemChangeVisitor();	// 00
 
 			// add
@@ -28,7 +25,6 @@ namespace RE
 			virtual void Unk_03(void);								  // 03
 		};
 		static_assert(sizeof(IItemChangeVisitor) == 0x8);
-
 
 		InventoryChanges();
 		explicit InventoryChanges(TESObjectREFR* a_ref);
@@ -44,7 +40,6 @@ namespace RE
 		void		   SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm);
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		BSSimpleList<InventoryEntryData*>* entryList{ nullptr };  // 00

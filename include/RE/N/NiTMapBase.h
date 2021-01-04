@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	template <class Key, class T>
@@ -12,14 +11,12 @@ namespace RE
 		using key_type = Key;
 		using mapped_type = T;
 
-
 		// members
 		NiTMapItem* next;	 // 00
 		key_type	first;	 // 08
 		mapped_type second;	 // ??
 	};
 	static_assert(sizeof(NiTMapItem<std::uint32_t, std::uint64_t>) == 0x18);
-
 
 	// hash table with separate chaining
 	template <class Allocator, class Key, class T>
@@ -35,7 +32,6 @@ namespace RE
 		using value_type = NiTMapItem<Key, T>;
 		using size_type = std::uint32_t;
 
-
 		template <class U>
 		struct iterator_base
 		{
@@ -46,20 +42,17 @@ namespace RE
 			using reference = U&;
 			using iterator_category = std::forward_iterator_tag;
 
-
 			iterator_base() :
 				_proxy(0),
 				_iter(0),
 				_idx(0)
 			{}
 
-
 			iterator_base(const iterator_base& a_rhs) :
 				_proxy(a_rhs._proxy),
 				_iter(a_rhs._iter),
 				_idx(a_rhs._idx)
 			{}
-
 
 			iterator_base(iterator_base&& a_rhs) :
 				_proxy(a_rhs._proxy),
@@ -70,7 +63,6 @@ namespace RE
 				a_rhs._iter = nullptr;
 				a_rhs._idx = a_rhs._proxy->_capacity;
 			}
-
 
 			iterator_base(NiTMapBase* a_proxy, std::uint32_t a_idx) :
 				_proxy(a_proxy),
@@ -85,7 +77,6 @@ namespace RE
 				}
 			}
 
-
 			iterator_base(NiTMapBase* a_proxy, value_type* a_iter, std::uint32_t a_idx) :
 				_proxy(a_proxy),
 				_iter(a_iter),
@@ -95,10 +86,8 @@ namespace RE
 				assert(_iter);
 			}
 
-
 			~iterator_base()
 			{}
-
 
 			iterator_base& operator=(const iterator_base& a_rhs)
 			{
@@ -106,7 +95,6 @@ namespace RE
 				_iter = a_rhs._iter;
 				_idx = a_rhs._idx;
 			}
-
 
 			iterator_base& operator=(iterator_base&& a_rhs)
 			{
@@ -119,14 +107,12 @@ namespace RE
 				a_rhs._idx = a_rhs._proxy->_capacity;
 			}
 
-
 			void swap(iterator_base& a_rhs)
 			{
 				assert(_proxy == a_rhs._proxy);
 				std::swap(_iter, a_rhs._iter);
 				std::swap(_idx, a_rhs._idx);
 			}
-
 
 			[[nodiscard]] reference operator*() const
 			{
@@ -135,14 +121,12 @@ namespace RE
 				return *_iter;
 			}
 
-
 			[[nodiscard]] pointer operator->() const
 			{
 				assert(_iter);
 				assert(_idx < _proxy->_capacity);
 				return _iter;
 			}
-
 
 			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
 			{
@@ -159,12 +143,10 @@ namespace RE
 				return true;
 			}
 
-
 			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
 			{
 				return !operator==(a_rhs);
 			}
-
 
 			// prefix
 			iterator_base& operator++()
@@ -185,7 +167,6 @@ namespace RE
 				return *this;
 			}
 
-
 			// postfix
 			iterator_base operator++(int)
 			{
@@ -200,10 +181,8 @@ namespace RE
 			std::uint32_t _idx;
 		};
 
-
 		using iterator = iterator_base<value_type>;
 		using const_iterator = iterator_base<const value_type>;
-
 
 		struct AntiBloatAllocator : public Allocator
 		{
@@ -212,11 +191,9 @@ namespace RE
 				size(0)
 			{}
 
-
 			// members
 			size_type size;	 // ??
 		};
-
 
 		NiTMapBase(size_type a_capacity = 37) :
 			_capacity(a_capacity),
@@ -228,7 +205,6 @@ namespace RE
 			_data = malloc<value_type*>(memSize);
 			std::memset(_data, 0, memSize);
 		}
-
 
 		virtual ~NiTMapBase()  // 00
 		{
@@ -254,48 +230,40 @@ namespace RE
 			return iterator(this, 0);
 		}
 
-
 		const_iterator begin() const
 		{
 			return const_iterator(this, 0);
 		}
-
 
 		const_iterator cbegin() const
 		{
 			return const_iterator(this, 0);
 		}
 
-
 		iterator end()
 		{
 			return iterator(this, _capacity);
 		}
-
 
 		const_iterator end() const
 		{
 			return const_iterator(this, _capacity);
 		}
 
-
 		const_iterator cend() const
 		{
 			return const_iterator(this, _capacity);
 		}
-
 
 		[[nodiscard]] bool empty() const noexcept
 		{
 			return _allocator.size == 0;
 		}
 
-
 		size_type size() const noexcept
 		{
 			return _allocator.size;
 		}
-
 
 		void clear()
 		{
@@ -310,7 +278,6 @@ namespace RE
 
 			_allocator.size = 0;
 		}
-
 
 		template <class M>
 		bool insert_or_assign(key_type&& a_key, M&& a_obj)
@@ -340,7 +307,6 @@ namespace RE
 			return true;
 		}
 
-
 		size_type erase(const key_type& a_key)
 		{
 			// look up hash table location for key
@@ -364,13 +330,11 @@ namespace RE
 			return 0;
 		}
 
-
 		iterator find(const Key& a_key)
 		{
 			auto result = do_find(a_key);
 			return result ? iterator(this, result->first, result->second) : end();
 		}
-
 
 		const_iterator find(const Key& a_key) const
 		{
@@ -385,7 +349,6 @@ namespace RE
 			free_value(a_value);
 			--_allocator.size;
 		}
-
 
 		std::optional<std::pair<value_type*, std::uint32_t>> do_find(const Key& a_key) const
 		{

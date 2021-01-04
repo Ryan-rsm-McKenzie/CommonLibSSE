@@ -5,14 +5,12 @@
 #include "RE/G/GFxValue.h"
 #include "RE/H/HUDObject.h"
 
-
 namespace RE
 {
 	class HUDNotifications : public HUDObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_HUDNotifications;
-
 
 		struct UnkData1
 		{
@@ -24,7 +22,6 @@ namespace RE
 				std::uint64_t unk18;  // 18
 			};
 			static_assert(sizeof(UnkData2) == 0x20);
-
 
 			const char*		   unk00;  // 00
 			std::uint64_t	   unk08;  // 08
@@ -39,7 +36,6 @@ namespace RE
 		};
 		static_assert(sizeof(UnkData1) == 0x60);
 
-
 		virtual ~HUDNotifications();  // 00
 
 		// override (HUDObject)
@@ -47,7 +43,6 @@ namespace RE
 		virtual bool ProcessMessage(UIMessage* a_message) override;			   // 02
 		virtual void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
 		virtual void CleanUp() override;									   // 04
-
 
 		// members
 		BSTArray<UnkData1> unk28;				   // 28

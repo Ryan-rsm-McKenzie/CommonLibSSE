@@ -1,6 +1,5 @@
 #include "RE/I/Inventory3DManager.h"
 
-
 namespace RE
 {
 	Inventory3DManager* Inventory3DManager::GetSingleton()

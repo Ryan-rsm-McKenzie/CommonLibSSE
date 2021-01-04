@@ -3,7 +3,6 @@
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSMultiIndexTriShape;
@@ -11,13 +10,11 @@ namespace RE
 	class NiProperty;
 	class NiSkinInstance;
 
-
 	class BSGeometry : public NiAVObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGeometry;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSGeometry;
-
 
 		enum class Type
 		{
@@ -38,7 +35,6 @@ namespace RE
 			kInstanceGroup = 14
 		};
 
-
 		struct States
 		{
 			enum State
@@ -48,7 +44,6 @@ namespace RE
 				kTotal
 			};
 		};
-
 
 		virtual ~BSGeometry();	// 00
 
@@ -74,7 +69,6 @@ namespace RE
 		virtual BSMultiIndexTriShape*	AsMultiIndexTriShape();	   // 35 - { return 0; }
 		virtual BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
 		virtual void					Unk_37(void);			   // 37 - { return 0; }
-
 
 		// members
 		NiBound								 modelBound;				  // 110

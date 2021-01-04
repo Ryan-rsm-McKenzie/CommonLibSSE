@@ -2,7 +2,6 @@
 
 #include "RE/C/Color.h"
 
-
 namespace RE
 {
 	class BGSDirectionalAmbientLightingColors
@@ -21,14 +20,12 @@ namespace RE
 			};
 			static_assert(sizeof(MaxMin<Color>) == 0x8);
 
-
 			// members
 			MaxMin<Color> x;  // 00
 			MaxMin<Color> y;  // 08
 			MaxMin<Color> z;  // 10
 		};
 		static_assert(sizeof(Directional) == 0x18);
-
 
 		// members
 		Directional directional;   // 00

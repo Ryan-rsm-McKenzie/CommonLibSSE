@@ -1,6 +1,5 @@
 #include "RE/A/AIFormulas.h"
 
-
 namespace RE
 {
 	namespace AIFormulas

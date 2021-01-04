@@ -8,7 +8,6 @@
 #include "RE/T/TESIcon.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSNote :
@@ -22,7 +21,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSNote;
 		inline static constexpr auto FORMTYPE = FormType::Note;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -31,14 +29,12 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BGSNote();	 // 00
 
@@ -50,7 +46,6 @@ namespace RE
 		virtual void Revert(BGSLoadFormBuffer* a_buf) override;																												   // 12
 		virtual void InitItemImpl() override;																																   // 13
 		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-
 
 		// members
 		TESTopic*				unk90;	// 90

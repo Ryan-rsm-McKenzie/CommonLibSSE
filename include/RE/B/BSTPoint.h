@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -9,7 +8,6 @@ namespace RE
 	public:
 	};
 	static_assert(sizeof(BSTPointDefaultOps<float>) == 0x1);
-
 
 	template <class T>
 	class BSTPoint2Base
@@ -21,7 +19,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSTPoint2Base<float>) == 0x8);
 
-
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint2 :
 		public BSTPoint2Base<T>,  // 00
@@ -30,7 +27,6 @@ namespace RE
 	public:
 	};
 	static_assert(sizeof(BSTPoint2<float>) == 0x8);
-
 
 	template <class T>
 	class BSTPoint3Base
@@ -42,7 +38,6 @@ namespace RE
 		T z;  // ??
 	};
 	static_assert(sizeof(BSTPoint3Base<float>) == 0xC);
-
 
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint3 :

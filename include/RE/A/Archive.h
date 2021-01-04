@@ -4,7 +4,6 @@
 #include "RE/B/BSFile.h"
 #include "RE/N/NiRefObject.h"
 
-
 namespace RE
 {
 	class Archive :
@@ -15,9 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Archive;
 
-
 		virtual ~Archive();	 // 00
-
 
 		// members
 		std::uint64_t unk1C0;  // 1C0

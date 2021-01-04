@@ -7,13 +7,11 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	class BSAnimationGraphChannel;
 	class BShkbAnimationGraph;
 	struct BSAnimationGraphEvent;
-
 
 	union hkbVariableValue
 	{
@@ -23,7 +21,6 @@ namespace RE
 	};
 	static_assert(sizeof(hkbVariableValue) == 0x4);
 
-
 	struct AnimVariableCacheInfo
 	{
 	public:
@@ -32,7 +29,6 @@ namespace RE
 		hkbVariableValue* variable;		 // 08
 	};
 	static_assert(sizeof(AnimVariableCacheInfo) == 0x10);
-
 
 	struct BSAnimationGraphVariableCache
 	{
@@ -44,9 +40,7 @@ namespace RE
 	};
 	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
 
-
 	BSSmartPointer(BSAnimationGraphManager);
-
 
 	class BSAnimationGraphManager :
 		public BSTEventSink<BSAnimationGraphEvent>,	 // 00
@@ -54,7 +48,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSAnimationGraphManager;
-
 
 		struct AnimationVariable
 		{
@@ -67,19 +60,16 @@ namespace RE
 			};
 			static_assert(sizeof(Value) == 0x4);
 
-
 			// members
 			BSFixedString name;	  // 00
 			Value*		  value;  // 08
 		};
 		static_assert(sizeof(AnimationVariable) == 0x10);
 
-
 		virtual ~BSAnimationGraphManager();	 // 00
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	 // 01
-
 
 		// members
 		std::uint32_t										pad0C;				   // 0C

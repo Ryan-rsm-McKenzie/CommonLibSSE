@@ -4,20 +4,17 @@
 #include "RE/B/BSNiNode.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSMultiBound;
 	class BSMultiBoundRoom;
 	class NiPoint3;
 
-
 	class BSMultiBoundNode : public BSNiNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMultiBoundNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiBoundNode;
-
 
 		virtual ~BSMultiBoundNode();  // 00
 
@@ -40,7 +37,6 @@ namespace RE
 		virtual bool			  QPointWithin(const NiPoint3& a_point);  // 3F
 		virtual void			  Unk_40(void);							  // 40
 		virtual void			  Unk_41(void);							  // 41
-
 
 		// members
 		NiPointer<BSMultiBound>			  multiBound;	  // 128

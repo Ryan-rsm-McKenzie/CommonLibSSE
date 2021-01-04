@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	// 0x8
@@ -76,7 +75,6 @@ namespace RE
 		union Storage
 		{
 			~Storage() noexcept {}
-
 
 			value_type	   ptr;
 			std::uintptr_t address{ 0 };

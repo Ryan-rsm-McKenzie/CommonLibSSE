@@ -5,7 +5,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSIdleMarker :
@@ -17,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSIdleMarker;
 		inline static constexpr auto FORMTYPE = FormType::IdleMarker;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -27,7 +25,6 @@ namespace RE
 				kChildCanUse = 1 << 29
 			};
 		};
-
 
 		virtual ~BGSIdleMarker();  // 00
 

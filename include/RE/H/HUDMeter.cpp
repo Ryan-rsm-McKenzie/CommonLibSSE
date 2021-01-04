@@ -1,6 +1,5 @@
 #include "RE/H/HUDMeter.h"
 
-
 namespace RE
 {
 	HUDMeter::HUDMeter(GFxMovieView* a_view) :
@@ -12,24 +11,20 @@ namespace RE
 		pad44(0)
 	{}
 
-
 	void HUDMeter::Update()
 	{
 		SetFillPct(false);
 	}
-
 
 	bool HUDMeter::ProcessMessage(UIMessage*)
 	{
 		return false;
 	}
 
-
 	float HUDMeter::GetFillPct()
 	{
 		return 100.0;
 	}
-
 
 	void HUDMeter::SetFillPct(bool a_forceUpdate)
 	{

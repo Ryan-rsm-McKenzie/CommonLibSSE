@@ -3,7 +3,6 @@
 #include "RE/H/hkRefPtr.h"
 #include "RE/H/hkReferencedObject.h"
 
-
 namespace RE
 {
 	class hkRefVariant : public hkRefPtr<hkReferencedObject>

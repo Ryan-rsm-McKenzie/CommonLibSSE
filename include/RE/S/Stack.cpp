@@ -3,7 +3,6 @@
 #include "RE/C/CodeTasklet.h"
 #include "RE/I/IStackCallbackFunctor.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -13,7 +12,6 @@ namespace RE
 			Dtor();
 			memzero(this);
 		}
-
 
 		std::uint32_t Stack::GetPageForFrame(const StackFrame* a_frame) const
 		{
@@ -27,14 +25,12 @@ namespace RE
 			return static_cast<std::uint32_t>(-1);
 		}
 
-
 		Variable& Stack::GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint)
 		{
 			using func_t = decltype(&Stack::GetStackFrameVariable);
 			REL::Relocation<func_t> func{ REL::ID(97746) };
 			return func(this, a_frame, a_index, a_pageHint);
 		}
-
 
 		void Stack::Dtor()
 		{

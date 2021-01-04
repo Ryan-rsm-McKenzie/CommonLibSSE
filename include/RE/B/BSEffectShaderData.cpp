@@ -2,7 +2,6 @@
 
 #include "RE/N/NiTexture.h"
 
-
 namespace RE
 {
 	BSEffectShaderData::BSEffectShaderData() :
@@ -37,7 +36,6 @@ namespace RE
 		alpha(false),
 		pad84(0)
 	{}
-
 
 	BSEffectShaderData::~BSEffectShaderData()
 	{}

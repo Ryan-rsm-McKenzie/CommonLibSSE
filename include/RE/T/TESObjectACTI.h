@@ -9,7 +9,6 @@
 #include "RE/T/TESMagicTargetForm.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class TESObjectACTI :
@@ -25,7 +24,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectACTI;
 		inline static constexpr auto FORMTYPE = FormType::Activator;
 
-
 		enum class ActiFlags
 		{
 			kNone = 0,
@@ -34,7 +32,6 @@ namespace RE
 			kIsProceduralWater = 1 << 2,
 			kIsLODWater = 1 << 3
 		};
-
 
 		struct RecordFlags
 		{
@@ -58,7 +55,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESObjectACTI();  // 00
 
 		// override (TESBoundAnimObject)
@@ -74,7 +70,6 @@ namespace RE
 		virtual TESWaterForm* GetWaterType() const override;																															// 3D - { return waterType; }
 		virtual bool		  GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					// 4C
 		virtual bool		  CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;													// 4D
-
 
 		// members
 		BGSSoundDescriptorForm*					   soundLoop;	   // A8 - SNAM

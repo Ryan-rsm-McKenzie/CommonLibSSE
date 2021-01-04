@@ -4,7 +4,6 @@
 #include "RE/G/GFxState.h"
 #include "RE/G/GPtr.h"
 
-
 namespace RE
 {
 	// StateBag collects accessor methods for properties that can be inherited from Loader to MovieDef and from MovieDef to Movie. These properties can be overwritten in any one of above mentioned instances.

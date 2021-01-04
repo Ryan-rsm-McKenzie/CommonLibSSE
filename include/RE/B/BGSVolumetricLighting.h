@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSVolumetricLighting :
@@ -15,7 +14,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSVolumetricLighting;
 		inline static constexpr auto FORMTYPE = FormType::VolumetricLighting;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -24,7 +22,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSVolumetricLighting();  // 00
 

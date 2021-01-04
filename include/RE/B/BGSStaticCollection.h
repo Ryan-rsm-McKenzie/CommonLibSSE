@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class BGSStaticCollection :
@@ -15,14 +14,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSStaticCollection;
 		inline static constexpr auto FORMTYPE = FormType::StaticCollection;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BGSStaticCollection();	 // 00
 

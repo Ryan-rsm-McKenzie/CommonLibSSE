@@ -7,7 +7,6 @@
 #include "RE/T/TESDescription.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSCollisionLayer :
@@ -18,7 +17,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSCollisionLayer;
 		inline static constexpr auto FORMTYPE = FormType::CollisionLayer;
 
-
 		enum class FLAG	 // GNAM
 		{
 			kNone = 0,
@@ -26,7 +24,6 @@ namespace RE
 			kSensor = 1 << 1,
 			kNavmeshObstacle = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -37,7 +34,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSCollisionLayer();  // 00
 
 		// override (TESForm)
@@ -45,7 +41,6 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;	  // 06
 		virtual void InitItemImpl() override;		  // 13
 		virtual void SetDelete(bool a_set) override;  // 23 - { TESForm::SetDelete(a_set); }
-
 
 		// members
 		std::uint32_t						  collisionIdx;	 // 30 - BNAM

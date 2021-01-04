@@ -133,7 +133,6 @@
 #include "RE/T/TESWordOfPower.h"
 #include "RE/T/TESWorldSpace.h"
 
-
 namespace RE
 {
 	template <
@@ -146,7 +145,6 @@ namespace RE
 		return const_cast<T*>(
 			static_cast<const TESForm*>(this)->As<T>());
 	}
-
 
 	template <
 		class T,

@@ -2,11 +2,9 @@
 
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	class TESGlobal;
-
 
 	class Calendar : public BSTSingletonSDM<Calendar>
 	{
@@ -26,7 +24,6 @@ namespace RE
 			31	 // Evening Star
 		};
 
-
 		struct Days
 		{
 			enum Day
@@ -42,7 +39,6 @@ namespace RE
 			};
 		};
 		using Day = Days::Day;
-
 
 		struct Months
 		{
@@ -65,7 +61,6 @@ namespace RE
 		};
 		using Month = Months::Month;
 
-
 		static Calendar* GetSingleton();
 
 		float		  GetCurrentGameTime() const;
@@ -81,7 +76,6 @@ namespace RE
 		std::tm		  GetTime() const;
 		float		  GetTimescale() const;
 		std::uint32_t GetYear() const;
-
 
 		// members
 		std::uint8_t  pad01;			// 01

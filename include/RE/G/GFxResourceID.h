@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxResourceID
@@ -24,7 +23,6 @@ namespace RE
 			};
 		};
 
-
 		struct IDTypes
 		{
 			enum IDType : std::uint32_t
@@ -37,13 +35,11 @@ namespace RE
 			};
 		};
 
-
 		class HashOp
 		{
 		public:
 			UPInt operator()(const GFxResourceID& a_idRef);
 		};
-
 
 		GFxResourceID();
 		explicit GFxResourceID(std::uint32_t a_resID);

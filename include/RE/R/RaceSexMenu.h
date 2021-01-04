@@ -5,7 +5,6 @@
 #include "RE/R/RaceSexCamera.h"
 #include "RE/S/Sexes.h"
 
-
 namespace RE
 {
 	// menuDepth = 3
@@ -18,7 +17,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_RaceSexMenu;
 		constexpr static std::string_view MENU_NAME = "RaceSex Menu";
-
 
 		virtual ~RaceSexMenu();	 // 00
 
@@ -33,7 +31,6 @@ namespace RE
 		virtual bool ProcessThumbstick(ThumbstickEvent* a_event);  // 03
 		virtual bool ProcessMouseMove(MouseMoveEvent* a_event);	   // 04
 		virtual bool ProcessButton(ButtonEvent* a_event);		   // 05
-
 
 		// members
 		BSTArray<void*>						 unk040[7];	 // 040

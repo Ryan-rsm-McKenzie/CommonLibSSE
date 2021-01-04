@@ -5,7 +5,6 @@
 #include "RE/N/NiColor.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSMaterialType : public TESForm
@@ -14,14 +13,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMaterialType;
 		inline static constexpr auto FORMTYPE = FormType::MaterialType;
 
-
 		enum class FLAG
 		{
 			kNone = 0,
 			kStairs = 1 << 0,
 			kArrowsStick = 1 << 1
 		};
-
 
 		struct RecordFlags
 		{
@@ -32,14 +29,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSMaterialType();	 // 00
 
 		// override (TESForm)
 		virtual void ClearData() override;			 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		BGSMaterialType*					  parentType;		   // 20 - PNAM

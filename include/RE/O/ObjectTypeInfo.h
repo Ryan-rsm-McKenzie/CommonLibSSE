@@ -7,13 +7,11 @@
 #include "RE/T/TypeInfo.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class IFunction;
-
 
 		class ObjectTypeInfo : public BSIntrusiveRefCounted
 		{
@@ -26,7 +24,6 @@ namespace RE
 				kLinkedValid
 			};
 
-
 			struct UnlinkedNativeFunction
 			{
 			public:
@@ -36,7 +33,6 @@ namespace RE
 			};
 			static_assert(sizeof(UnlinkedNativeFunction) == 0x10);
 
-
 			struct UserFlagInfo
 			{
 			public:
@@ -45,15 +41,12 @@ namespace RE
 					kSetOnObject = 1 << 0
 				};
 
-
 				BSFixedString GetUserFlag() const;
-
 
 				// members
 				std::uintptr_t data;  // 0
 			};
 			static_assert(sizeof(UserFlagInfo) == 0x8);
-
 
 			struct VariableInfo
 			{
@@ -63,7 +56,6 @@ namespace RE
 				TypeInfo	  type;	 // 08
 			};
 			static_assert(sizeof(VariableInfo) == 0x10);
-
 
 			struct InitialValueInfo
 			{
@@ -75,7 +67,6 @@ namespace RE
 			};
 			static_assert(sizeof(InitialValueInfo) == 0x18);
 
-
 			struct PropertyInfo
 			{
 			public:
@@ -85,7 +76,6 @@ namespace RE
 			};
 			static_assert(sizeof(PropertyInfo) == 0x48);
 
-
 			struct GlobalFuncInfo
 			{
 			public:
@@ -94,7 +84,6 @@ namespace RE
 			};
 			static_assert(sizeof(GlobalFuncInfo) == 0x8);
 
-
 			struct MemberFuncInfo
 			{
 			public:
@@ -102,7 +91,6 @@ namespace RE
 				BSTSmartPointer<IFunction> func;  // 00
 			};
 			static_assert(sizeof(MemberFuncInfo) == 0x8);
-
 
 			struct NamedStateInfo
 			{
@@ -113,7 +101,6 @@ namespace RE
 					kFuncOffsetShift = 9
 				};
 
-
 				struct Func
 				{
 				public:
@@ -122,11 +109,9 @@ namespace RE
 				};
 				static_assert(sizeof(Func) == 0x8);
 
-
 				[[nodiscard]] constexpr std::uint32_t GetNumFuncs() const noexcept { return memberFunctionCount; }
 				Func*								  GetFuncIter();
 				const Func*							  GetFuncIter() const;
-
 
 				// members
 				BSFixedString name;						 // 00
@@ -135,7 +120,6 @@ namespace RE
 				std::uint32_t pad0C;					 // 0C
 			};
 			static_assert(sizeof(NamedStateInfo) == 0x10);
-
 
 			~ObjectTypeInfo();
 
@@ -188,7 +172,6 @@ namespace RE
 			const NamedStateInfo*				  GetNamedStateIter() const;
 
 			std::uint32_t GetPropertyIndex(const BSFixedString& a_name) const;
-
 
 			// members
 			BSFixedString					name;								 // 08

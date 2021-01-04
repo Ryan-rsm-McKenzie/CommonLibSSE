@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BGSArtObject;
@@ -12,12 +11,10 @@ namespace RE
 	class TESEffectShader;
 	class TESObjectREFR;
 
-
 	class ReferenceEffectController
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ReferenceEffectController;
-
 
 		virtual ~ReferenceEffectController();  // 00
 

@@ -2,14 +2,12 @@
 
 #include "RE/T/TESRace.h"
 
-
 namespace RE
 {
 	TESNPC::HeadRelatedData::HeadRelatedData() :
 		hairColor(nullptr),
 		faceDetails(nullptr)
 	{}
-
 
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
@@ -18,7 +16,6 @@ namespace RE
 		return func(this, a_target);
 	}
 
-
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetBaseOverlays);
@@ -26,18 +23,15 @@ namespace RE
 		return func(this);
 	}
 
-
 	SEX TESNPC::GetSex() const
 	{
 		return IsFemale() ? SEX::kFemale : SEX::kMale;
 	}
 
-
 	BGSHeadPart* TESNPC::GetCurrentHeadPartByType(HeadPartType a_type)
 	{
 		return HasOverlays() ? GetHeadPartOverlayByType(a_type) : GetHeadPartByType(a_type);
 	}
-
 
 	BGSHeadPart* TESNPC::GetHeadPartByType(HeadPartType a_type)
 	{
@@ -50,7 +44,6 @@ namespace RE
 		}
 		return nullptr;
 	}
-
 
 	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(HeadPartType a_type)
 	{
@@ -65,7 +58,6 @@ namespace RE
 		}
 		return nullptr;
 	}
-
 
 	float TESNPC::GetHeight() const
 	{
@@ -83,7 +75,6 @@ namespace RE
 		}
 	}
 
-
 	std::uint32_t TESNPC::GetNumBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetNumBaseOverlays);
@@ -91,12 +82,10 @@ namespace RE
 		return func(this);
 	}
 
-
 	TESRace* TESNPC::GetRace()
 	{
 		return race;
 	}
-
 
 	TESNPC* TESNPC::GetRootFaceNPC()
 	{
@@ -107,7 +96,6 @@ namespace RE
 		return iter;
 	}
 
-
 	const TESNPC* TESNPC::GetRootFaceNPC() const
 	{
 		auto iter = this;
@@ -117,12 +105,10 @@ namespace RE
 		return iter;
 	}
 
-
 	float TESNPC::Layer::GetInterpolationValue() const
 	{
 		return static_cast<float>(interpolationValue) / static_cast<float>(100.0);
 	}
-
 
 	bool TESNPC::HasOverlays()
 	{
@@ -130,7 +116,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::TESNPC::HasOverlays };
 		return func(this);
 	}
-
 
 	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)
 	{
@@ -143,7 +128,6 @@ namespace RE
 		}
 	}
 
-
 	void TESNPC::SetHairColor(BGSColorForm* a_hairColor)
 	{
 		if (!headRelatedData && a_hairColor) {
@@ -155,14 +139,12 @@ namespace RE
 		}
 	}
 
-
 	void TESNPC::SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint)
 	{
 		using func_t = decltype(&TESNPC::SetSkinFromTint);
 		REL::Relocation<func_t> func{ Offset::TESNPC::SetSkinFromTint };
 		return func(this, a_result, a_tintMask, a_fromTint);
 	}
-
 
 	void TESNPC::UpdateNeck(BSFaceGenNiNode* a_faceNode)
 	{

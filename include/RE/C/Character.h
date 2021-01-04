@@ -2,7 +2,6 @@
 
 #include "RE/A/Actor.h"
 
-
 namespace RE
 {
 	class Character : public Actor
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Character;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
-
 
 		struct RecordFlags
 		{
@@ -25,7 +23,6 @@ namespace RE
 				kDontHavokSettle = 1 << 29
 			};
 		};
-
 
 		virtual ~Character();  // 000
 

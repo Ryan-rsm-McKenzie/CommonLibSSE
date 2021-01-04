@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/T/TESRegionData.h"
 
-
 namespace RE
 {
 	class TESRegionDataMap : public TESRegionData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataMap;
 		inline static constexpr auto TYPE = Type::kMap;
-
 
 		virtual ~TESRegionDataMap();  // 00
 
@@ -21,7 +19,6 @@ namespace RE
 		virtual void Unk_05(void) override;									// 05
 		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) override;	// 06
 		virtual bool IsLoaded() const override;								// 07 - { return true; }
-
 
 		// members
 		BSFixedString mapName;	// 10 - RDMP

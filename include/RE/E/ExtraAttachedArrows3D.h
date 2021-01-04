@@ -5,19 +5,16 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSProjectile;
 	class NiAVObject;
-
 
 	class ExtraAttachedArrows3D : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAttachedArrows3D;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAttachedArrows3D;
-
 
 		struct DataItem
 		{
@@ -29,13 +26,11 @@ namespace RE
 		};
 		static_assert(sizeof(DataItem) == 0x18);
 
-
 		virtual ~ExtraAttachedArrows3D();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kAttachedArrows3D; }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
 
 		// members
 		BSTArray<DataItem> data;		   // 10

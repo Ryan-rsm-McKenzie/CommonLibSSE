@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxLogConstants
@@ -27,7 +26,6 @@ namespace RE
 			kMessageType_Error = 0,
 			kMessageType_Warning = 1,
 			kMessageType_Message = 2,
-
 
 			// *** Combined Log Message types
 

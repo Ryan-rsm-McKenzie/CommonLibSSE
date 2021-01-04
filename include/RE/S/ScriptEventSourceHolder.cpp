@@ -2,7 +2,6 @@
 
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	ScriptEventSourceHolder* ScriptEventSourceHolder::GetSingleton()
@@ -12,14 +11,12 @@ namespace RE
 		return func();
 	}
 
-
 	void ScriptEventSourceHolder::SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef)
 	{
 		using func_t = decltype(&ScriptEventSourceHolder::SendActivateEvent);
 		REL::Relocation<func_t> func{ REL::ID(19666) };
 		return func(this, a_objectActivated, a_actionRef);
 	}
-
 
 	void ScriptEventSourceHolder::SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened)
 	{

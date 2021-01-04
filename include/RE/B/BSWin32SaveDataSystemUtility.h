@@ -2,14 +2,12 @@
 
 #include "RE/B/BSSaveDataSystemUtility.h"
 
-
 namespace RE
 {
 	class BSWin32SaveDataSystemUtility : public BSSaveDataSystemUtility
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32SaveDataSystemUtility;
-
 
 		virtual ~BSWin32SaveDataSystemUtility();
 
@@ -23,7 +21,6 @@ namespace RE
 		virtual void	Unk_09(void) override;																				  // 09 - { return; }
 		virtual void	Unk_0C(void) override;																				  // 0C
 		virtual void	Unk_11(void) override;																				  // 11 - { return; }
-
 
 		static BSWin32SaveDataSystemUtility* GetSingleton();
 	};

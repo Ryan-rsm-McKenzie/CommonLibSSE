@@ -3,12 +3,10 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	struct BottomBar;
 	struct ItemCard;
-
 
 	// menuDepth = 0
 	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
@@ -19,14 +17,12 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_MagicMenu;
 		constexpr static std::string_view MENU_NAME = "MagicMenu";
 
-
 		virtual ~MagicMenu();  // 00
 
 		// override (IMenu)
 		virtual void			   Accept(CallbackProcessor* a_processor) override;	 // 01
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;	 // 04
 		virtual void			   PostDisplay() override;							 // 06
-
 
 		// members
 		void*		  unk30;			// 30 - some variation of the item list

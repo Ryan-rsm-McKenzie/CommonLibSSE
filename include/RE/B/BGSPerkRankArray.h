@@ -2,11 +2,9 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class BGSPerk;
-
 
 	struct PerkRankData	 // PRKR
 	{
@@ -18,12 +16,10 @@ namespace RE
 	};
 	static_assert(sizeof(PerkRankData) == 0x10);
 
-
 	class BGSPerkRankArray : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPerkRankArray;
-
 
 		virtual ~BGSPerkRankArray();  // 00
 
@@ -31,7 +27,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;			  // 01 - { return; }
 		virtual void ClearDataComponent() override;					  // 02
 		virtual void CopyComponent(BaseFormComponent* rhs) override;  // 03
-
 
 		// members
 		PerkRankData* perks;	  // 08 - PRKR

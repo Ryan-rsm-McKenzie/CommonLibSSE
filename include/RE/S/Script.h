@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	enum class COMPILER_NAME
@@ -14,13 +13,11 @@ namespace RE
 		kDialogueCompiler
 	};
 
-
 	class ScriptCompiler
 	{
 	public:
 	};
 	static_assert(sizeof(ScriptCompiler) == 0x1);
-
 
 	class Script : public TESForm
 	{
@@ -28,14 +25,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_Script;
 		inline static constexpr auto FORMTYPE = FormType::Script;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~Script();	// 00
 
@@ -50,7 +45,6 @@ namespace RE
 		void		CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
 		std::string GetCommand() const;
 		void		SetCommand(std::string_view a_command);
-
 
 		// members
 		SCRIPT_HEADER							header;						  // 20

@@ -14,7 +14,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESSpellList.h"
 
-
 namespace RE
 {
 	class TESActorBase :
@@ -33,7 +32,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESActorBase;
-
 
 		virtual ~TESActorBase();  // 00
 

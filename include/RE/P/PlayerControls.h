@@ -6,7 +6,6 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/P/PlayerControlsData.h"
 
-
 namespace RE
 {
 	class InputEvent;
@@ -28,7 +27,6 @@ namespace RE
 	struct TogglePOVHandler;
 	struct ToggleRunHandler;
 
-
 	class PlayerControls :
 		public BSTEventSink<InputEvent*>,		   // 000
 		public BSTEventSink<MenuOpenCloseEvent>,   // 008
@@ -39,14 +37,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerControls;
 
-
 		PlayerControls();
 		virtual ~PlayerControls() = default;  // 00
 
 		static PlayerControls* GetSingleton();
 
 		constexpr ActivateHandler* GetActivateHandler() const noexcept { return activateHandler; }
-
 
 		// members
 		std::uint8_t				  pad021;				  // 021

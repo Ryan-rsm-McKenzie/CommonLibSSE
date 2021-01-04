@@ -11,7 +11,6 @@
 #include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	struct CONT_DATA
@@ -24,11 +23,9 @@ namespace RE
 			kShowOwner = 1 << 2
 		};
 
-
 		stl::enumeration<Flag, std::uint8_t> flags;	 // 0
 	};
 	static_assert(sizeof(CONT_DATA) == 0x1);
-
 
 	class TESObjectCONT :
 		public TESBoundAnimObject,		   // 00
@@ -45,7 +42,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectCONT;
 		inline static constexpr auto FORMTYPE = FormType::Container;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -61,7 +57,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESObjectCONT();  // 00
 
 		// override (TESBoundAnimObject)
@@ -75,7 +70,6 @@ namespace RE
 		// override (BGSOpenCloseForm)
 		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	 // 01
 		virtual void HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	 // 02
-
 
 		// members
 		CONT_DATA				data;		 // B9 - DATA

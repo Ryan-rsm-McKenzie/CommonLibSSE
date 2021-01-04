@@ -2,11 +2,9 @@
 
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	struct TESFurnitureEvent
 	{
@@ -16,7 +14,6 @@ namespace RE
 			kEnter = 0,
 			kExit = 1
 		};
-
 
 		// members
 		NiPointer<TESObjectREFR>							actor;			  // 00

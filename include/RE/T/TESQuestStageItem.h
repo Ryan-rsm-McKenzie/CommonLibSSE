@@ -3,12 +3,10 @@
 #include "RE/B/BGSLocalizedStringDL.h"
 #include "RE/T/TESCondition.h"
 
-
 namespace RE
 {
 	class TESQuest;
 	class TESQuestStage;
-
 
 	struct TESQuestStageItem
 	{

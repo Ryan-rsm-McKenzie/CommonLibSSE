@@ -5,12 +5,10 @@
 #include "RE/F/FORM.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BSFile;
 	struct TESBitArrayFile;
-
 
 	class TESFile
 	{
@@ -33,7 +31,6 @@ namespace RE
 			kCreateFailure = 13
 		};
 
-
 		enum class RecordFlag
 		{
 			kNone = 0,
@@ -48,7 +45,6 @@ namespace RE
 			kSmallFile = 1 << 9
 		};
 
-
 		TESFile*				Duplicate(std::uint32_t a_cacheSize = 0x4000);
 		std::uint32_t			GetCurrentSubRecordType();
 		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
@@ -58,7 +54,6 @@ namespace RE
 		void					ReadData(void* a_buf, std::uint32_t a_size);
 		bool					Seek(std::uint32_t a_offset);
 		bool					SeekNextSubrecord();
-
 
 		// members
 		stl::enumeration<Error, std::uint32_t>		lastError;						  // 000

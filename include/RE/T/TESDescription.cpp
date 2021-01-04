@@ -2,7 +2,6 @@
 
 #include "RE/B/BSString.h"
 
-
 namespace RE
 {
 	void TESDescription::GetDescription(BSString& a_out, TESForm* a_parent, std::uint32_t a_fieldType)

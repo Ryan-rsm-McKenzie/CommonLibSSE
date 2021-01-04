@@ -1,6 +1,5 @@
 #include "RE/T/TESHavokUtilities.h"
 
-
 namespace RE
 {
 	namespace TESHavokUtilities

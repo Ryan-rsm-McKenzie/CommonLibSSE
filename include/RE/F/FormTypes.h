@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESForm;
@@ -135,7 +134,6 @@ namespace RE
 	class BGSColorForm;
 	class BGSReverbParameters;
 	class BGSLensFlare;
-
 
 	enum class FormType
 	{

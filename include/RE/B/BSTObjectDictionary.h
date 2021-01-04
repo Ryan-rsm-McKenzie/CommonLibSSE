@@ -4,7 +4,6 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	template <

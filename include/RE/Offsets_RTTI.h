@@ -2,7 +2,6 @@
 
 #include "REL/Relocation.h"
 
-
 namespace RE
 {
 	inline constexpr REL::ID RTTI_AStarSearch_BSFastNavmeshTriLocation_BSFastNavmeshEdgeHandle_3_(static_cast<std::uint64_t>(686140));

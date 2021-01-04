@@ -4,19 +4,16 @@
 #include "RE/G/GPtr.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class FxDelegateArgs;
 	class GFxMovieView;
 	class UIMessage;
 
-
 	class HUDObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_HUDObject;
-
 
 		struct HudComponents
 		{
@@ -36,7 +33,6 @@ namespace RE
 		};
 		using HudComponent = HudComponents::HudComponent;
 
-
 		HUDObject(GFxMovieView* a_view);
 		virtual ~HUDObject();  // 00
 
@@ -47,7 +43,6 @@ namespace RE
 		virtual void CleanUp();										  // 04 - { return; }
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		GPtr<GFxMovieView> view;  // 08

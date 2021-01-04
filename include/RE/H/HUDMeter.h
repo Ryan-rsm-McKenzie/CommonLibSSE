@@ -3,14 +3,12 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/H/HUDObject.h"
 
-
 namespace RE
 {
 	class HUDMeter : public HUDObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_HUDMeter;
-
 
 		HUDMeter(GFxMovieView* a_view);
 		virtual ~HUDMeter() = default;	// 00
@@ -23,7 +21,6 @@ namespace RE
 		virtual float GetFillPct();	 // 05 - { return 100.0; }
 
 		void SetFillPct(bool a_forceUpdate);
-
 
 		// members
 		BSFixedString setPctName;		// 28

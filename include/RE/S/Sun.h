@@ -3,7 +3,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SkyObject.h"
 
-
 namespace RE
 {
 	class BSShaderAccumulator;
@@ -11,19 +10,16 @@ namespace RE
 	class NiBillboardNode;
 	class NiDirectionalLight;
 
-
 	class Sun : public SkyObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Sun;
-
 
 		virtual ~Sun();	 // 00
 
 		// override (SkyObject)
 		virtual void Unk_02(void) override;						 // 02
 		virtual void Update(Sky* a_sky, float a_arg2) override;	 // 03
-
 
 		// members
 		NiPointer<NiBillboardNode>	   sunBaseNode;		  // 10

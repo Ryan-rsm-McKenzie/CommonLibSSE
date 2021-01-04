@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	ExtraAliasInstanceArray::ExtraAliasInstanceArray() :
@@ -14,14 +13,12 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraAliasInstanceArray::~ExtraAliasInstanceArray()
 	{
 		for (auto& alias : aliases) {
 			free(alias);
 		}
 	}
-
 
 	ExtraDataType ExtraAliasInstanceArray::GetType() const
 	{

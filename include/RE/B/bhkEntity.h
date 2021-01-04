@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkWorldObject.h"
 
-
 namespace RE
 {
 	class bhkEntity : public bhkWorldObject
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkEntity;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkEntity;
-
 
 		virtual ~bhkEntity();  // 00
 

@@ -4,13 +4,11 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	struct BottomBar;
 	struct ItemCard;
 	struct ItemList;
-
 
 	// menuDepth = 0
 	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
@@ -21,7 +19,6 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_ContainerMenu;
 		constexpr static std::string_view MENU_NAME = "ContainerMenu";
 
-
 		enum class ContainerMode : std::uint32_t
 		{
 			kLoot = 0,
@@ -29,7 +26,6 @@ namespace RE
 			kPickpocket = 2,
 			kNPCMode = 3
 		};
-
 
 		virtual ~ContainerMenu();  // 00
 
@@ -40,7 +36,6 @@ namespace RE
 
 		[[nodiscard]] ContainerMode GetContainerMode();
 		[[nodiscard]] RefHandle		GetTargetRefHandle();
-
 
 		// members
 		GFxValue		root;			  // 30 - "Menu_mc"

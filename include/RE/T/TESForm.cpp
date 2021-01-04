@@ -10,7 +10,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/V/VirtualMachine.h"
 
-
 namespace RE
 {
 	void TESForm::AddCompileIndex(FormID& a_id, TESFile* a_file)
@@ -20,7 +19,6 @@ namespace RE
 		return func(a_id, a_file);
 	}
 
-
 	std::pair<BSTHashMap<FormID, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllForms()
 	{
 		REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
@@ -28,14 +26,12 @@ namespace RE
 		return { *allForms, std::ref(*allFormsMapLock) };
 	}
 
-
 	std::pair<BSTHashMap<BSFixedString, TESForm*>*, std::reference_wrapper<BSReadWriteLock>> TESForm::GetAllFormsByEditorID()
 	{
 		REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
 		REL::Relocation<BSReadWriteLock*>					   allFormsEditorIDMapLock{ REL::ID(514361) };
 		return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 	}
-
 
 	TESForm* TESForm::LookupByID(FormID a_formID)
 	{
@@ -50,7 +46,6 @@ namespace RE
 		return it != formIDs.end() ? it->second : nullptr;
 	}
 
-
 	TESForm* TESForm::LookupByEditorID(const std::string_view& a_editorID)
 	{
 		auto			allFormsByEditorID = GetAllFormsByEditorID();
@@ -64,18 +59,15 @@ namespace RE
 		return it != editorIDs.end() ? it->second : nullptr;
 	}
 
-
 	TESObjectREFR* TESForm::AsReference()
 	{
 		return AsReference1();
 	}
 
-
 	const TESObjectREFR* TESForm::AsReference() const
 	{
 		return AsReference2();
 	}
-
 
 	TESFile* TESForm::GetFile(std::int32_t a_idx) const
 	{
@@ -90,7 +82,6 @@ namespace RE
 			return (*array)[a_idx];
 		}
 	}
-
 
 	std::int32_t TESForm::GetGoldValue() const
 	{
@@ -120,7 +111,6 @@ namespace RE
 		return value;
 	}
 
-
 	const char* TESForm::GetName() const
 	{
 		auto fullName = As<TESFullName>();
@@ -131,7 +121,6 @@ namespace RE
 			return "";
 		}
 	}
-
 
 	float TESForm::GetWeight() const
 	{
@@ -149,7 +138,6 @@ namespace RE
 		}
 	}
 
-
 	bool TESForm::HasVMAD() const
 	{
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -166,12 +154,10 @@ namespace RE
 		return handle != policy->EmptyHandle();
 	}
 
-
 	bool TESForm::HasWorldModel() const noexcept
 	{
 		return As<TESModel>() != nullptr;
 	}
-
 
 	void TESForm::InitItem()
 	{

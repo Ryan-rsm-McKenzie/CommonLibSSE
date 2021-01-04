@@ -3,14 +3,12 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESFullName : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFullName;
-
 
 		virtual ~TESFullName();
 
@@ -22,7 +20,6 @@ namespace RE
 		// add
 		virtual std::uint32_t GetFullNameLength() const;  // 04
 		virtual const char*	  GetFullName() const;		  // 05
-
 
 		// members
 		BSFixedString fullName;	 // 08 - FULL

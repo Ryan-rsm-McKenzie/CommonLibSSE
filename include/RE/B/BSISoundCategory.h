@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSISoundCategory
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSISoundCategory;
-
 
 		virtual ~BSISoundCategory();  // 00
 

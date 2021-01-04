@@ -4,7 +4,6 @@
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpShapeCollection.h"
 
-
 namespace RE
 {
 	class hkpListShape : public hkpShapeCollection
@@ -12,20 +11,17 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpListShape;
 
-
 		enum
 		{
 			kMaxChildrenForSPUMidPhase = 252,
 			kMaxDisabledChildren = 256
 		};
 
-
 		enum class ListShapeFlags
 		{
 			kNone = 0,
 			kDisableSPUCacheForListChildInfo = 1 << 0
 		};
-
 
 		struct ChildInfo
 		{
@@ -39,7 +35,6 @@ namespace RE
 			std::uint64_t		 pad18;				   // 18
 		};
 		static_assert(sizeof(ChildInfo) == 0x20);
-
 
 		virtual ~hkpListShape();  // 00
 
@@ -56,7 +51,6 @@ namespace RE
 		virtual hkpShapeKey		GetNextKey(hkpShapeKey a_oldKey) const override;							// 03
 		virtual std::uint32_t	GetCollisionFilterInfo(hkpShapeKey a_key) const override;					// 04
 		virtual const hkpShape* GetChildShape(hkpShapeKey a_key, hkpShapeBuffer& a_buffer) const override;	// 05
-
 
 		// members
 		hkArray<ChildInfo> childInfo;			 // 30

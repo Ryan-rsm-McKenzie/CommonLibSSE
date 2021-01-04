@@ -2,14 +2,12 @@
 
 #include "RE/I/IMemoryStore.h"
 
-
 namespace RE
 {
 	class ScrapHeap : public IMemoryStore
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ScrapHeap;
-
 
 		struct Block
 		{
@@ -20,7 +18,6 @@ namespace RE
 		};
 		static_assert(sizeof(Block) == 0x10);
 
-
 		struct FreeBlock : public Block
 		{
 		public:
@@ -29,7 +26,6 @@ namespace RE
 			FreeBlock* right;  // 18
 		};
 		static_assert(sizeof(FreeBlock) == 0x20);
-
 
 		struct FreeTreeNode : public Block
 		{
@@ -42,7 +38,6 @@ namespace RE
 		};
 		static_assert(sizeof(FreeTreeNode) == 0x30);
 
-
 		virtual ~ScrapHeap() { WinAPI::VirtualFree(baseAddress, 0, WinAPI::MEM_RELEASE); }	// 00
 
 		// override (IMemoryStore)
@@ -54,7 +49,6 @@ namespace RE
 
 		void* Allocate(std::size_t a_size, std::size_t a_alignment);
 		void  Deallocate(void* a_mem);
-
 
 		// members
 		FreeBlock*	  smallBlocks[6]{ nullptr };  // 08

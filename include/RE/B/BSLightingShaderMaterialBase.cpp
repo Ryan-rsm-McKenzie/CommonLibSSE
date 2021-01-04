@@ -2,7 +2,6 @@
 
 #include "RE/B/BSTextureSet.h"
 
-
 namespace RE
 {
 	BSLightingShaderMaterialBase* BSLightingShaderMaterialBase::CreateMaterial(Feature a_feature)
@@ -12,12 +11,10 @@ namespace RE
 		return func(a_feature);
 	}
 
-
 	NiPointer<BSTextureSet> BSLightingShaderMaterialBase::GetTextureSet() const
 	{
 		return textureSet;
 	}
-
 
 	void BSLightingShaderMaterialBase::SetTextureSet(NiPointer<BSTextureSet> a_textureSet)
 	{

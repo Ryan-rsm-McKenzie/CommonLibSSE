@@ -9,11 +9,9 @@
 #include "RE/T/TESModel.h"
 #include "RE/T/TESTexture1024.h"
 
-
 namespace RE
 {
 	class BGSVolumetricLighting;
-
 
 	class TESWeather : public TESForm
 	{
@@ -21,12 +19,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESWeather;
 		inline static constexpr auto FORMTYPE = FormType::Weather;
 
-
 		enum
 		{
 			kTotalLayers = 32
 		};
-
 
 		enum class SoundType
 		{
@@ -35,7 +31,6 @@ namespace RE
 			kWind = 2,
 			kThunder = 3
 		};
-
 
 		enum class WeatherDataFlag
 		{
@@ -47,7 +42,6 @@ namespace RE
 			kPermAurora = 1 << 4,
 			kAuroraFollowsSun = 1 << 5
 		};
-
 
 		struct ColorTimes
 		{
@@ -62,7 +56,6 @@ namespace RE
 			};
 		};
 		using ColorTime = ColorTimes::ColorTime;
-
 
 		struct ColorTypes
 		{
@@ -90,7 +83,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -99,7 +91,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Data	 // DATA
 		{
@@ -113,7 +104,6 @@ namespace RE
 				std::int8_t blue;	// 2
 			};
 			static_assert(sizeof(Color3) == 0x3);
-
 
 			// members
 			std::int8_t										windSpeed;					  // 00
@@ -137,7 +127,6 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x14);
 
-
 		struct FogData	// FNAM
 		{
 		public:
@@ -153,7 +142,6 @@ namespace RE
 		};
 		static_assert(sizeof(FogData) == 0x20);
 
-
 		struct WeatherSound	 // SNAM
 		{
 		public:
@@ -163,10 +151,8 @@ namespace RE
 		};
 		static_assert(sizeof(WeatherSound) == 0x8);
 
-
 		struct WeatherSoundList : public BSSimpleList<WeatherSound*>
 		{};
-
 
 		virtual ~TESWeather();	// 00
 
@@ -175,7 +161,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		TESTexture1024						cloudTextures[kTotalLayers];						  // 020 - 00TX - L0TX

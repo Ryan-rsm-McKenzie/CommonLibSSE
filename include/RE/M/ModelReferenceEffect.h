@@ -7,13 +7,11 @@
 #include "RE/R/ReferenceEffect.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
-
 namespace RE
 {
 	class BGSArtObject;
 	class NiAVObject;
 	struct BSAnimationGraphEvent;
-
 
 	class ModelReferenceEffect :
 		public ReferenceEffect,						// 00
@@ -23,7 +21,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ModelReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ModelReferenceEffect;
-
 
 		virtual ~ModelReferenceEffect();  // 00
 
@@ -40,7 +37,6 @@ namespace RE
 		virtual void			 Unk_3C(void) override;						   // 3C
 		virtual void			 Unk_3D(void) override;						   // 3D - { return unkD0 & 1; }
 		virtual void			 Unk_3E(void) override;						   // 3E
-
 
 		// members
 		RefAttachTechniqueInput hitEffectArtData;  // 68

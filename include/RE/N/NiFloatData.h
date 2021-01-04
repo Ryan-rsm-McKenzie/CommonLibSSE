@@ -3,7 +3,6 @@
 #include "RE/N/NiFloatKey.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiFloatData : public NiObject
@@ -12,9 +11,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiFloatData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiFloatData;
 
-
 		using KeyType = NiFloatKey::KeyType;
-
 
 		NiFloatData();
 		virtual ~NiFloatData();	 // 00
@@ -25,10 +22,8 @@ namespace RE
 		virtual void		  SaveBinary(NiStream& a_stream) override;	// 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;		// 1C
 
-
 		std::uint32_t GetNumKeys() const;
 		NiFloatKey*	  GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const;
-
 
 		// members
 		std::uint32_t numKeys;	// 10

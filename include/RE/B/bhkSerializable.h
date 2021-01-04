@@ -2,18 +2,15 @@
 
 #include "RE/B/bhkRefObject.h"
 
-
 namespace RE
 {
 	class hkpWorld;
-
 
 	class bhkSerializable : public bhkRefObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkSerializable;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkSerializable;
-
 
 		virtual ~bhkSerializable();	 // 00
 
@@ -37,7 +34,6 @@ namespace RE
 		virtual void	  Unk_2F(void) = 0;	 // 2F
 		virtual void	  Unk_30(void);		 // 30
 		virtual void	  Unk_31(void);		 // 31
-
 
 		// members
 		bhkSerializable* serializable;	// 18

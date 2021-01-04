@@ -3,14 +3,12 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/D/DelayFunctor.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class IVirtualMachine;
 	}
-
 
 	namespace SkyrimScript
 	{
@@ -19,14 +17,12 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript____SendPlayerToJailFunctor;
 
-
 			enum class Flag
 			{
 				kNone = 0,
 				kRemoveInventory = 1 << 0,
 				kRealJail = 1 << 1
 			};
-
 
 			virtual ~SendPlayerToJailFunctor();	 // 00
 
@@ -36,7 +32,6 @@ namespace RE
 			virtual bool				   SaveImpl(BSStorage& a_storage) const override;									   // 04
 			virtual FunctorType			   GetType() const override;														   // 05 - { return 19; }
 			virtual bool				   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3) override;  // 06
-
 
 			// members
 			FormID									   faction;	 // 10

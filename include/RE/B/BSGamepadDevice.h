@@ -3,11 +3,9 @@
 #include "RE/B/BSInputDevice.h"
 #include "RE/B/BSTEvent.h"
 
-
 namespace RE
 {
 	struct BSGamepadEvent;
-
 
 	class BSGamepadDevice :
 		public BSInputDevice,				   // 00
@@ -15,7 +13,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGamepadDevice;
-
 
 		virtual ~BSGamepadDevice();	 // 00
 
@@ -29,7 +26,6 @@ namespace RE
 		virtual void Unk_0C(void);		// 0C - { return 0; }
 		virtual void Unk_0D(void);		// 0D
 		virtual void Unk_0E(void);		// 0E - { return; }
-
 
 		// members
 		std::int32_t  userIndex;		  // C8

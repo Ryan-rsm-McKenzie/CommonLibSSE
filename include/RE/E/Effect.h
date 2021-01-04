@@ -3,11 +3,9 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/T/TESCondition.h"
 
-
 namespace RE
 {
 	class EffectSetting;
-
 
 	struct Effect
 	{
@@ -18,7 +16,6 @@ namespace RE
 			EffectItem();
 			~EffectItem() = default;
 
-
 			// members
 			float		  magnitude;  // 0
 			std::uint32_t area;		  // 4
@@ -26,12 +23,10 @@ namespace RE
 		};
 		static_assert(sizeof(EffectItem) == 0xC);
 
-
 		Effect();
 		~Effect() = default;
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		EffectItem	   effectItem;	// 00 - EFIT

@@ -1,6 +1,5 @@
 #include "RE/Z/ZeroFunctionArguments.h"
 
-
 namespace RE
 {
 	namespace BSScript

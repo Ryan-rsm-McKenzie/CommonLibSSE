@@ -2,19 +2,16 @@
 
 #include "RE/N/NiNode.h"
 
-
 namespace RE
 {
 	class BSLeafAnimNode;
 	class BSTreeNode;
-
 
 	class BSFadeNode : public NiNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFadeNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSFadeNode;
-
 
 		virtual ~BSFadeNode();	// 00
 
@@ -33,7 +30,6 @@ namespace RE
 		// add
 		virtual BSTreeNode*		AsTreeNode();	   // 3E - { return 0; }
 		virtual BSLeafAnimNode* AsLeafAnimNode();  // 3F - { return 0; }
-
 
 		// members
 		float		  unk128;		// 128

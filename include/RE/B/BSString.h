@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	template <class T, std::uint32_t N>
@@ -34,16 +33,13 @@ namespace RE
 		void deallocate(value_type* a_ptr) { free(a_ptr); }
 	};
 
-
 	template <class T, std::uint32_t N>
 	class FixedLengthMemoryManagementPol
 	{
 	public:
 		using value_type = T;
 
-
 		constexpr FixedLengthMemoryManagementPol() noexcept = default;
-
 
 		FixedLengthMemoryManagementPol(const FixedLengthMemoryManagementPol& a_rhs) { copy_from(a_rhs); }
 		FixedLengthMemoryManagementPol(FixedLengthMemoryManagementPol&& a_rhs) { copy_from(a_rhs); }
@@ -81,7 +77,6 @@ namespace RE
 
 		value_type _buffer[N]{ 0 };	 // 00
 	};
-
 
 	template <class CharT, std::uint32_t N, template <class, std::uint32_t> class Allocator>
 	class BSStringT : public Allocator<CharT, N>
@@ -225,7 +220,6 @@ namespace RE
 		[[nodiscard]] static int stricmp(const char* a_lhs, const char* a_rhs) { return _stricmp(a_lhs, a_rhs); }
 
 		[[nodiscard]] static int stricmp(const wchar_t* a_lhs, const wchar_t* a_rhs) { return _wcsicmp(a_lhs, a_rhs); }
-
 
 		[[nodiscard]] pointer allocate(std::uint32_t a_num) { return allocator_type::allocate(a_num); }
 

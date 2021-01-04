@@ -3,14 +3,12 @@
 #include "RE/B/BGSNamedPackageData.h"
 #include "RE/I/IPackageData.h"
 
-
 namespace RE
 {
 	class BGSPackageDataBool : public BGSNamedPackageData<IPackageData>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPackageDataBool;
-
 
 		virtual ~BGSPackageDataBool();	// 00
 

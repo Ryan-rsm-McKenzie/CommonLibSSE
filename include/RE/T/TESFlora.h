@@ -4,7 +4,6 @@
 #include "RE/T/TESObjectACTI.h"
 #include "RE/T/TESProduceForm.h"
 
-
 namespace RE
 {
 	class TESFlora :
@@ -15,7 +14,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESFlora;
 		inline static constexpr auto FORMTYPE = FormType::Flora;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -24,7 +22,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESFlora();  // 00
 

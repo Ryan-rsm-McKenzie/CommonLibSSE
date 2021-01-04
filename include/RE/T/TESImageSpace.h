@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct ImageSpaceBaseData
@@ -24,7 +23,6 @@ namespace RE
 		};
 		static_assert(sizeof(HDR) == 0x24);
 
-
 		struct Cinematic  // CNAM
 		{
 		public:
@@ -34,7 +32,6 @@ namespace RE
 			float contrast;	   // 8
 		};
 		static_assert(sizeof(Cinematic) == 0xC);
-
 
 		struct Tint	 // TNAM
 		{
@@ -49,13 +46,11 @@ namespace RE
 			};
 			static_assert(sizeof(ColorF) == 0xC);
 
-
 			// members
 			float  amount;	// 00
 			ColorF color;	// 04
 		};
 		static_assert(sizeof(Tint) == 0x10);
-
 
 		struct DepthOfField	 // DNAM
 		{
@@ -80,7 +75,6 @@ namespace RE
 				kNoSky_Radius7 = 17016	 // 0x4278
 			};
 
-
 			// members
 			float										   strength;	   // 00
 			float										   distance;	   // 04
@@ -90,7 +84,6 @@ namespace RE
 		};
 		static_assert(sizeof(DepthOfField) == 0x10);
 
-
 		// members
 		HDR			 hdr;			// 00 - HNAM
 		Cinematic	 cinematic;		// 24 - CNAM
@@ -99,13 +92,11 @@ namespace RE
 	};
 	static_assert(sizeof(ImageSpaceBaseData) == 0x50);
 
-
 	class TESImageSpace : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESImageSpace;
 		inline static constexpr auto FORMTYPE = FormType::ImageSpace;
-
 
 		struct RecordFlags
 		{
@@ -116,13 +107,11 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESImageSpace();  // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
-
 
 		// members
 		ImageSpaceBaseData data;  // 20

@@ -2,7 +2,6 @@
 
 #include "RE/N/NiSkinInstance.h"
 
-
 namespace RE
 {
 	class BSDismemberSkinInstance : public NiSkinInstance
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSDismemberSkinInstance;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
-
 
 		struct Data
 		{
@@ -21,7 +19,6 @@ namespace RE
 			std::uint16_t slot;				// 2 - https://wiki.nexusmods.com/index.php/Skyrim_bodyparts_number
 		};
 		static_assert(sizeof(Data) == 0x4);
-
 
 		virtual ~BSDismemberSkinInstance();	 // 00
 
@@ -34,7 +31,6 @@ namespace RE
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C
 		virtual void		  Unk_25(void) override;							  // 25
-
 
 		// members
 		std::int32_t  numPartitions;  // 88

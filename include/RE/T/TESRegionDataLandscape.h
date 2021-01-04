@@ -3,19 +3,16 @@
 #include "RE/B/BSString.h"
 #include "RE/T/TESRegionData.h"
 
-
 namespace RE
 {
 	class TESFile;
 	class TESTexture;
-
 
 	class TESRegionDataLandscape : public TESRegionData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataLandscape;
 		inline static constexpr auto TYPE = Type::kLand;
-
 
 		virtual ~TESRegionDataLandscape();	// 00
 
@@ -30,7 +27,6 @@ namespace RE
 		virtual bool LoadIcon(TESFile* a_mod);			 // 08
 		virtual void GetIconFileName(BSString* a_dst);	 // 09
 		virtual bool SetIconFileName(BSString* a_name);	 // 0A
-
 
 		// members
 		TESTexture* icon;  // 10

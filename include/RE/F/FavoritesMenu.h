@@ -5,12 +5,10 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class InventoryEntryData;
 	class TESForm;
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
@@ -23,14 +21,12 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_FavoritesMenu;
 		constexpr static std::string_view MENU_NAME = "FavoritesMenu";
 
-
 		struct Entry
 		{
 			TESForm*			item;		// 00
 			InventoryEntryData* entryData;	// 08
 		};
 		static_assert(sizeof(Entry) == 0x10);
-
 
 		virtual ~FavoritesMenu();  // 00
 
@@ -42,7 +38,6 @@ namespace RE
 		virtual bool CanProcess(InputEvent* a_event) override;		// 01
 		virtual bool ProcessKinect(KinectEvent* a_event) override;	// 02
 		virtual bool ProcessButton(ButtonEvent* a_event) override;	// 05
-
 
 		// members
 		GFxValue		root;			  // 40 - "Menu_mc"

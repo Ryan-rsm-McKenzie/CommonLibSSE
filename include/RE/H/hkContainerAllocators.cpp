@@ -1,6 +1,5 @@
 #include "RE/H/hkContainerAllocators.h"
 
-
 namespace RE
 {
 	hkContainerHeapAllocator::Allocator* hkContainerHeapAllocator::GetSingleton()

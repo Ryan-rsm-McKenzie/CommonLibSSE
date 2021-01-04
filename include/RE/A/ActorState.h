@@ -2,7 +2,6 @@
 
 #include "RE/I/IMovementState.h"
 
-
 namespace RE
 {
 	enum class ACTOR_LIFE_STATE : std::uint32_t
@@ -17,7 +16,6 @@ namespace RE
 		kEssentialDown = 7,
 		kBleedout = 8
 	};
-
 
 	enum class ATTACK_STATE_ENUM : std::uint32_t
 	{
@@ -40,7 +38,6 @@ namespace RE
 		kFired = 17
 	};
 
-
 	enum class FLY_STATE : std::uint32_t
 	{
 		kNone = 0,
@@ -51,7 +48,6 @@ namespace RE
 		kPerching = 5,
 		kAction = 6
 	};
-
 
 	enum class KNOCK_STATE_ENUM : std::uint32_t
 	{
@@ -65,7 +61,6 @@ namespace RE
 		kDown = 7,
 		kWaitForTaskQueue = 8
 	};
-
 
 	enum class SIT_SLEEP_STATE : std::uint32_t
 	{
@@ -84,7 +79,6 @@ namespace RE
 		kWantToWake = 8
 	};
 
-
 	enum class WEAPON_STATE : std::uint32_t
 	{
 		kSheathed = 0,
@@ -95,12 +89,10 @@ namespace RE
 		kSheathing = 5
 	};
 
-
 	class ActorState : public IMovementState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorState;
-
 
 		struct ActorState1
 		{
@@ -125,7 +117,6 @@ namespace RE
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
 
-
 		struct ActorState2
 		{
 		public:
@@ -144,7 +135,6 @@ namespace RE
 			std::uint32_t unk14 : 18;			// 0:14
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
-
 
 		virtual ~ActorState();	// 00
 
@@ -207,7 +197,6 @@ namespace RE
 				return false;
 			}
 		}
-
 
 		// members
 		ActorState1 actorState1;  // 08

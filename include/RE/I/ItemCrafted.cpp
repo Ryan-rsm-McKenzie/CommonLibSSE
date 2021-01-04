@@ -1,6 +1,5 @@
 #include "RE/I/ItemCrafted.h"
 
-
 namespace RE
 {
 	BSTEventSource<ItemCrafted::Event>* ItemCrafted::GetEventSource()

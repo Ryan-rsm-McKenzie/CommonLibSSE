@@ -2,7 +2,6 @@
 
 #include "RE/N/NiNode.h"
 
-
 namespace RE
 {
 	class BSNiNode : public NiNode
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSNiNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSNiNode;
-
 
 		virtual ~BSNiNode();  // 00
 

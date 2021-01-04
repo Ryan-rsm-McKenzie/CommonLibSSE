@@ -2,18 +2,15 @@
 
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiSourceTexture;
-
 
 	class BSTextureSet : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTextureSet;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTextureSet;
-
 
 		struct Textures
 		{
@@ -36,7 +33,6 @@ namespace RE
 			};
 		};
 		using Texture = Textures::Texture;
-
 
 		virtual ~BSTextureSet();  // 00
 

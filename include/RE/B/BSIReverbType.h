@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSIReverbType
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSIReverbType;
-
 
 		// add
 		virtual std::int32_t DoGetRoomLevel() const = 0;		// 00

@@ -7,11 +7,9 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	class hkpSphereShape;
-
 
 	class ConeProjectile : public Projectile
 	{
@@ -19,14 +17,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ConeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileCone;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~ConeProjectile();	// 00
 
@@ -47,7 +43,6 @@ namespace RE
 
 		// add
 		virtual void Unk_C2(void);	// C2 - { return 1; }
-
 
 		// members
 		ImpactResult			 impactResult;					// 1D8

@@ -4,7 +4,6 @@
 
 #define NiTDefaultAllocator DFALL
 
-
 namespace RE
 {
 	template <class T>
@@ -15,7 +14,6 @@ namespace RE
 		{
 			return NiMalloc(sizeof(T));
 		}
-
 
 		void Deallocate(void* a_ptr)
 		{

@@ -2,13 +2,11 @@
 
 #include "RE/I/InventoryChanges.h"
 
-
 namespace RE
 {
 	ExtraContainerChanges::ExtraContainerChanges() :
 		ExtraContainerChanges(nullptr)
 	{}
-
 
 	ExtraContainerChanges::ExtraContainerChanges(InventoryChanges* a_changes) :
 		BSExtraData(),
@@ -18,12 +16,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraContainerChanges::~ExtraContainerChanges()
 	{
 		delete changes;
 	}
-
 
 	ExtraDataType ExtraContainerChanges::GetType() const
 	{

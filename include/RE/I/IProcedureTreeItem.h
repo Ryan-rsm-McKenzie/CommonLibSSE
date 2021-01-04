@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESFile;
-
 
 	class IProcedureTreeItem
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IProcedureTreeItem;
-
 
 		virtual ~IProcedureTreeItem();	// 00
 

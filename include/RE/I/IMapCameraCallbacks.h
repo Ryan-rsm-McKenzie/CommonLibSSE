@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	struct IMapCameraCallbacks
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMapCameraCallbacks;
-
 
 		// add
 		virtual void Unk_00(void);	// 00

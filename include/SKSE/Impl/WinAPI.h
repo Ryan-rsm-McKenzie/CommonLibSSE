@@ -104,15 +104,12 @@ namespace SKSE::WinAPI
 		wchar_t*	  a_filename,
 		std::uint32_t a_size) noexcept;
 
-	[[nodiscard]] void*(GetModuleHandle)(
-		const char* a_moduleName) noexcept;
+	[[nodiscard]] void*(GetModuleHandle)(const char* a_moduleName) noexcept;
 
-	[[nodiscard]] void*(GetModuleHandle)(
-		const wchar_t* a_moduleName) noexcept;
+	[[nodiscard]] void*(GetModuleHandle)(const wchar_t* a_moduleName) noexcept;
 
-	[[nodiscard]] void*(GetProcAddress)(
-		void*		a_module,
-		const char* a_procName) noexcept;
+	[[nodiscard]] void*(GetProcAddress)(void* a_module,
+		const char*							  a_procName) noexcept;
 
 	std::int32_t(MessageBox)(
 		void*		 a_wnd,
@@ -136,8 +133,7 @@ namespace SKSE::WinAPI
 		void*		 a_process,
 		unsigned int a_exitCode) noexcept;
 
-	[[nodiscard]] void*(TlsGetValue)(
-		std::uint32_t a_tlsIndex) noexcept;
+	[[nodiscard]] void*(TlsGetValue)(std::uint32_t a_tlsIndex) noexcept;
 
 	bool(TlsSetValue)(
 		std::uint32_t a_tlsIndex,

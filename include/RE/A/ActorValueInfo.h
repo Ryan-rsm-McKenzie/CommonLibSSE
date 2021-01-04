@@ -7,11 +7,9 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESIcon.h"
 
-
 namespace RE
 {
 	class BGSSkillPerkTreeNode;
-
 
 	class ActorValueInfo :
 		public TESForm,			// 000
@@ -23,7 +21,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ActorValueInfo;
 		inline static constexpr auto FORMTYPE = FormType::ActorValueInfo;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -32,7 +29,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Skill  // AVSK
 		{
@@ -43,7 +39,6 @@ namespace RE
 		};
 		static_assert(sizeof(Skill) == 0x10);
 
-
 		virtual ~ActorValueInfo();	// 00
 
 		// override (TESForm)
@@ -53,7 +48,6 @@ namespace RE
 
 		// override (TESIcon)
 		virtual const char* GetDefaultPath() const override;  // 06 - { return "Textures\\"; }
-
 
 		// members
 		const char*			  enumName;		 // 050

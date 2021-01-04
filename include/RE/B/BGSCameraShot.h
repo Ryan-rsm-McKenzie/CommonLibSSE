@@ -5,7 +5,6 @@
 #include "RE/T/TESImageSpaceModifiableForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSCameraShot :
@@ -17,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSCameraShot;
 		inline static constexpr auto FORMTYPE = FormType::CameraShot;
 
-
 		enum class CAM_ACTION
 		{
 			kShoot = 0,
@@ -25,7 +23,6 @@ namespace RE
 			kHit = 2,
 			kZoom = 3
 		};
-
 
 		enum class CAM_OBJECT
 		{
@@ -35,7 +32,6 @@ namespace RE
 			kLeadActor = 3
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -44,7 +40,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct CAMERA_SHOT_DATA	 // DATA
 		{
@@ -59,7 +54,6 @@ namespace RE
 				kNoTracer = 1 << 4,
 				kStartAtTimeZero = 1 << 5
 			};
-
 
 			// members
 			stl::enumeration<CAM_ACTION, std::uint32_t> cameraAction;				 // 00
@@ -76,14 +70,12 @@ namespace RE
 		};
 		static_assert(sizeof(CAMERA_SHOT_DATA) == 0x2C);
 
-
 		virtual ~BGSCameraShot();  // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		CAMERA_SHOT_DATA data;	 // 58 - DATA

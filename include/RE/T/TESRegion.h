@@ -6,11 +6,9 @@
 #include "RE/N/NiPoint2.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct TESRegionDataList;
-
 
 	class TESRegionPoint
 	{
@@ -18,7 +16,6 @@ namespace RE
 		NiPoint2 point;	 // 00
 	};
 	static_assert(sizeof(TESRegionPoint) == 0x8);
-
 
 	class TESRegionPointList : public BSSimpleList<TESRegionPoint*>	 // RPLD
 	{
@@ -30,7 +27,6 @@ namespace RE
 			float		   scale;  // 0C
 		};
 		static_assert(sizeof(ScaleResult) == 0x10);
-
 
 		ScaleResult*  lastScaleResult;		// 10
 		bool		  ownsPointMemory;		// 18
@@ -44,13 +40,11 @@ namespace RE
 	};
 	static_assert(sizeof(TESRegionPointList) == 0x38);
 
-
 	class TESRegion : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegion;
 		inline static constexpr auto FORMTYPE = FormType::Region;
-
 
 		struct RecordFlags
 		{
@@ -62,7 +56,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESRegion();  // 00
 
 		// override (TESForm)
@@ -72,7 +65,6 @@ namespace RE
 
 		// add
 		virtual bool Validate();  // 3B
-
 
 		// members
 		TESRegionDataList*				   dataList;		// 20

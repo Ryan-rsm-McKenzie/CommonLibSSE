@@ -4,7 +4,6 @@
 #include "RE/H/hkpPhantomType.h"
 #include "RE/H/hkpWorldObject.h"
 
-
 namespace RE
 {
 	class hkAabb;
@@ -12,12 +11,10 @@ namespace RE
 	class hkpPhantomListener;
 	class hkpPhantomOverlapListener;
 
-
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpPhantom;
-
 
 		virtual ~hkpPhantom();	// 00
 
@@ -34,7 +31,6 @@ namespace RE
 		virtual hkpPhantom*	   Clone() const = 0;													 // 0C
 		virtual void		   UpdateShapeCollectionFilter();										 // 0D - { return; }
 		virtual void		   DeallocateInternalArrays();											 // 0E
-
 
 		// members
 		hkArray<hkpPhantomOverlapListener*> overlapListeners;  // D0

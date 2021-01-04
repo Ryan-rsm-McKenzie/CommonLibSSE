@@ -4,11 +4,9 @@
 #include "RE/H/hkpShape.h"
 #include "RE/H/hkpTypedBroadPhaseHandle.h"
 
-
 namespace RE
 {
 	struct hkAabbUint32;
-
 
 	class hkpCollidable : public hkpCdBody
 	{
@@ -20,7 +18,6 @@ namespace RE
 			kModifierRequest = 1 << 2,
 			kShapeUnchecked = 1 << 3
 		};
-
 
 		struct BoundingVolumeData
 		{
@@ -40,14 +37,12 @@ namespace RE
 		};
 		static_assert(sizeof(BoundingVolumeData) == 0x38);
 
-
 		void* GetOwner() const;
 		template <class T>
 		T* GetOwner() const
 		{
 			return static_cast<T*>(GetOwner());
 		}
-
 
 		// members
 		std::int8_t				 ownerOffset;			   // 20

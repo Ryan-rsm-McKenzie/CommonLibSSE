@@ -3,17 +3,14 @@
 #include "RE/B/BGSProcedureTreeConditionalItem.h"
 #include "RE/B/BGSTypedItem.h"
 
-
 namespace RE
 {
 	class BGSProcedureBase;
-
 
 	class BGSProcedureTreeProcedure : public BGSTypedItem<BGSProcedureTreeProcedure, BGSProcedureTreeConditionalItem>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeProcedure;
-
 
 		virtual ~BGSProcedureTreeProcedure();  // 00
 
@@ -34,7 +31,6 @@ namespace RE
 		virtual void Unk_0E(void) override;			 // 0E
 		virtual void Unk_0F(void) override;			 // 0F - { return 1; }
 		virtual void Unk_10(void) override;			 // 10
-
 
 		// members
 		BGSProcedureBase* procedure;  // 10

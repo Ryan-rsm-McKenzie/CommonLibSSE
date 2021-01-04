@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	// auto registers the factory with the manager

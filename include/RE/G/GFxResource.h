@@ -5,12 +5,10 @@
 #include "RE/G/GNewOverrideBase.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	class GFxResourceLibBase;
 	class GFxResourceReport;
-
 
 	// Resource is an interface for casting to different types of resources.
 	class GFxResource : public GNewOverrideBase<GStatGroups::kGStat_Default_Mem>
@@ -46,7 +44,6 @@ namespace RE
 			kTypeCode_Shift = 8
 		};
 
-
 		// An enumeration listing the attributes of the image resource to use such as bitmap, gradient or font texture etc.
 		enum class ResourceUse
 		{
@@ -59,7 +56,6 @@ namespace RE
 			// Use mask within TypeCode
 			kTypeCode_Mask = 0xFF
 		};
-
 
 		GFxResource();
 		virtual ~GFxResource();	 // 00

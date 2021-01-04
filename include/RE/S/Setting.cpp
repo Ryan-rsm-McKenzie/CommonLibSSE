@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	Setting::~Setting()
@@ -13,18 +12,15 @@ namespace RE
 		name = nullptr;
 	}
 
-
 	bool Setting::Unk_01()
 	{
 		return false;
 	}
 
-
 	bool Setting::IsManaged() const
 	{
 		return name && name[0] == 'S';
 	}
-
 
 	auto Setting::GetType() const
 		-> Type
@@ -52,42 +48,35 @@ namespace RE
 		}
 	}
 
-
 	const char* Setting::GetName() const
 	{
 		return name ? name : "";
 	}
-
 
 	bool Setting::GetBool() const
 	{
 		return data.b;
 	}
 
-
 	float Setting::GetFloat() const
 	{
 		return data.f;
 	}
-
 
 	std::int32_t Setting::GetSInt() const
 	{
 		return data.i;
 	}
 
-
 	Color Setting::GetColor() const
 	{
 		return data.r;
 	}
 
-
 	const char* Setting::GetString() const
 	{
 		return data.s ? data.s : "";
 	}
-
 
 	std::uint32_t Setting::GetUInt() const
 	{

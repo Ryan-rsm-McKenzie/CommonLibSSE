@@ -2,7 +2,6 @@
 
 #include "RE/N/NiMemManager.h"
 
-
 namespace RE
 {
 	void* NiMalloc(std::size_t a_sizeInBytes)
@@ -13,7 +12,6 @@ namespace RE
 		return mem;
 	}
 
-
 	void* NiAlignedMalloc(std::size_t a_sizeInBytes, std::size_t a_alignment)
 	{
 		auto memManager = NiMemManager::GetSingleton();
@@ -21,7 +19,6 @@ namespace RE
 		assert(mem != nullptr);
 		return mem;
 	}
-
 
 	void* NiRealloc(void* a_mem, std::size_t a_sizeInBytes)
 	{
@@ -38,7 +35,6 @@ namespace RE
 		return mem;
 	}
 
-
 	void* NiAlignedRealloc(void* a_mem, std::size_t a_sizeInBytes, std::size_t a_alignment)
 	{
 		if (a_sizeInBytes == 0 && a_mem) {
@@ -54,7 +50,6 @@ namespace RE
 		return mem;
 	}
 
-
 	void NiFree(void* a_mem)
 	{
 		if (a_mem) {
@@ -62,7 +57,6 @@ namespace RE
 			memManager->Deallocate(a_mem, NiMemEventType::kFree);
 		}
 	}
-
 
 	void NiAlignedFree(void* a_mem)
 	{

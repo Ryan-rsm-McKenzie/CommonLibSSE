@@ -17,7 +17,6 @@
 #include "RE/N/NiTMap.h"
 #include "RE/P/PositionPlayerEvent.h"
 
-
 namespace RE
 {
 	class Actor;
@@ -45,7 +44,6 @@ namespace RE
 	struct TESQuestStageItem;
 	struct TESTrackedStatsEvent;
 
-
 	enum class PLAYER_ACTION
 	{
 		kNone = 0,
@@ -68,7 +66,6 @@ namespace RE
 		kInvalidMarker
 	};
 
-
 	struct CrimeGoldStruct
 	{
 	public:
@@ -80,7 +77,6 @@ namespace RE
 	};
 	static_assert(sizeof(CrimeGoldStruct) == 0x10);
 
-
 	struct StolenItemValueStruct
 	{
 	public:
@@ -90,7 +86,6 @@ namespace RE
 	};
 	static_assert(sizeof(StolenItemValueStruct) == 0x8);
 
-
 	struct FriendshipFactionsStruct
 	{
 	public:
@@ -99,12 +94,10 @@ namespace RE
 	};
 	static_assert(sizeof(FriendshipFactionsStruct) == 0x8);
 
-
 	class PLAYER_TARGET_LOC
 	{
 	public:
 		using ArrivalFunc_t = void(std::int64_t);
-
 
 		// members
 		TESWorldSpace* world;			  // 00
@@ -123,7 +116,6 @@ namespace RE
 	};
 	static_assert(sizeof(PLAYER_TARGET_LOC) == 0x48);
 
-
 	struct PlayerActionObject
 	{
 	public:
@@ -133,7 +125,6 @@ namespace RE
 		stl::enumeration<PLAYER_ACTION, std::uint32_t> next;	// 8
 	};
 	static_assert(sizeof(PlayerActionObject) == 0xC);
-
 
 	class PlayerCharacter :
 		public Character,							 // 000
@@ -149,14 +140,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
-
 		enum class EventType
 		{
 			kThief = 3,
 			kContainer = 5,
 			kDeadBody = 6
 		};
-
 
 		enum class GrabbingType
 		{
@@ -165,13 +154,11 @@ namespace RE
 			kTelekinesis,
 		};
 
-
 		enum class ByCharGenFlag
 		{
 			kNone = 0,
 			kHandsBound = 1 << 2
 		};
-
 
 		enum class FlagBD9
 		{
@@ -180,13 +167,11 @@ namespace RE
 			kGreetingPlayer = 1 << 6
 		};
 
-
 		enum class FlagBDB
 		{
 			kNone = 0,
 			kIsInCombat = 1 << 5
 		};
-
 
 		enum class FlagBDC
 		{
@@ -197,7 +182,6 @@ namespace RE
 			kGoToJailQueued = 1 << 6
 		};
 
-
 		enum class FlagBDD
 		{
 			kNone = 0,
@@ -206,7 +190,6 @@ namespace RE
 			kEverModded = 1 << 3,
 			kServingJailTime = 1 << 4
 		};
-
 
 		struct Data928
 		{
@@ -219,7 +202,6 @@ namespace RE
 			std::uint64_t	   unk40;  // 40
 		};
 		static_assert(sizeof(Data928) == 0x48);
-
 
 		struct PlayerSkills
 		{
@@ -254,7 +236,6 @@ namespace RE
 				};
 				using Skill = Skills::Skill;
 
-
 				struct SkillData
 				{
 				public:
@@ -265,7 +246,6 @@ namespace RE
 				};
 				static_assert(sizeof(SkillData) == 0xC);
 
-
 				// members
 				float		  xp;							   // 000
 				float		  levelThreshold;				   // 004
@@ -274,15 +254,12 @@ namespace RE
 			};
 			static_assert(sizeof(Data) == 0x128);
 
-
 			void AdvanceLevel(bool a_addThreshold);
-
 
 			// members
 			Data* data;	 // 0
 		};
 		static_assert(sizeof(PlayerSkills) == 0x8);
-
 
 		virtual ~PlayerCharacter();	 // 000
 
@@ -312,7 +289,6 @@ namespace RE
 		bool					 IsGrabbing() const;
 		void					 PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void					 StartGrabObject();
-
 
 		// members
 		std::uint32_t											unk3D8;										  // 3D8

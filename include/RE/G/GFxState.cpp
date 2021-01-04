@@ -1,6 +1,5 @@
 #include "RE/G/GFxState.h"
 
-
 namespace RE
 {
 	GFxState::GFxState(StateType a_st) :
@@ -8,7 +7,6 @@ namespace RE
 		stateType(a_st),
 		pad14(0)
 	{}
-
 
 	auto GFxState::GetStateType() const
 		-> StateType

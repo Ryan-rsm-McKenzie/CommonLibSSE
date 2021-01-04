@@ -5,7 +5,6 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -20,7 +19,6 @@ namespace RE
 					paramCount(a_numParams),
 					totalEntries(static_cast<std::uint16_t>(a_numParams + a_numLocals))
 				{}
-
 
 				// members
 				SimpleArray<BSTTuple<BSFixedString, TypeInfo>> entries;		  // 00

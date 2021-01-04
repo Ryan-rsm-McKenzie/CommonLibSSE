@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class IAnimationSetCallbackFunctor
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IAnimationSetCallbackFunctor;
-
 
 		virtual ~IAnimationSetCallbackFunctor();  // 00
 

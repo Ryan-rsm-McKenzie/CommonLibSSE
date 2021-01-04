@@ -3,7 +3,6 @@
 #include "RE/G/GImageBase.h"
 #include "RE/G/GRefCountBaseNTS.h"
 
-
 namespace RE
 {
 	class GImage :

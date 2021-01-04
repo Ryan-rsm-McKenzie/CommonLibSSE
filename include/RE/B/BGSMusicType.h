@@ -5,7 +5,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSMusicType :
@@ -16,7 +15,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMusicType;
 		inline static constexpr auto FORMTYPE = FormType::MusicType;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -25,7 +23,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSMusicType();  // 00
 
@@ -44,7 +41,6 @@ namespace RE
 		virtual void DoApplyDuckingAttenuation(std::uint16_t a_arg1) override;	// 04
 		virtual void DoClearDucking() override;									// 05
 		virtual void DoPrepare() override;										// 06
-
 
 		// members
 		BSFixedString formEditorID;	 // 70 - EDID

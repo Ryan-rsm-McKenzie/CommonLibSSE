@@ -3,11 +3,9 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESPackage;
-
 
 	enum class ACTOR_AGGRESSION
 	{
@@ -17,7 +15,6 @@ namespace RE
 		kVeryAggressive = 2,
 		kFrenzied = 3
 	};
-
 
 	struct ACTOR_AGGRO_RADIUS
 	{
@@ -31,14 +28,12 @@ namespace RE
 		};
 	};
 
-
 	enum class ACTOR_ASSISTANCE
 	{
 		kHelpsNobody = 0,
 		kHelpsAllies = 1,
 		kHelpsFriends = 2
 	};
-
 
 	enum class ACTOR_CONFIDENCE
 	{
@@ -48,7 +43,6 @@ namespace RE
 		kBrave = 3,
 		kFoolhardy = 4
 	};
-
 
 	enum class ACTOR_MOOD
 	{
@@ -62,7 +56,6 @@ namespace RE
 		kDisgusted = 7
 	};
 
-
 	enum class ACTOR_MORALITY
 	{
 		kAnyCrime = 0,
@@ -70,7 +63,6 @@ namespace RE
 		kPropertyCrimeOnly = 2,
 		kNoCrime = 3
 	};
-
 
 	struct AIDATA_GAME
 	{
@@ -114,7 +106,6 @@ namespace RE
 	};
 	static_assert(sizeof(AIDATA_GAME) == 0xC);
 
-
 	struct PackageList
 	{
 	public:
@@ -123,12 +114,10 @@ namespace RE
 	};
 	static_assert(sizeof(PackageList) == 0x10);
 
-
 	class TESAIForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESAIForm;
-
 
 		virtual ~TESAIForm();  // 00
 
@@ -145,7 +134,6 @@ namespace RE
 		ACTOR_MOOD		 GetMoodLevel() const;
 		ACTOR_MORALITY	 GetMoralityLevel() const;
 		bool			 NoSlowApproach() const;
-
 
 		// members
 		AIDATA_GAME aiData;		 // 08 - AIDT

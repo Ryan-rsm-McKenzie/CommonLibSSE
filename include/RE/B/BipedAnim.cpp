@@ -2,7 +2,6 @@
 
 #include "RE/N/NiAVObject.h"
 
-
 namespace RE
 {
 	BipedAnim::~BipedAnim()
@@ -11,14 +10,12 @@ namespace RE
 		memzero(this);
 	}
 
-
 	void BipedAnim::RemoveAllParts()
 	{
 		using func_t = decltype(&BipedAnim::RemoveAllParts);
 		REL::Relocation<func_t> func{ Offset::BipedAnim::RemoveAllParts };
 		return func(this);
 	}
-
 
 	void BipedAnim::Dtor()
 	{

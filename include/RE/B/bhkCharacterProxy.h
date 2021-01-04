@@ -3,7 +3,6 @@
 #include "RE/B/bhkCharacterPointCollector.h"
 #include "RE/B/bhkSerializable.h"
 
-
 namespace RE
 {
 	class bhkCharacterProxy : public bhkSerializable
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterProxy;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCharacterProxy;
-
 
 		virtual ~bhkCharacterProxy();  // 00
 
@@ -29,7 +27,6 @@ namespace RE
 		virtual void		  Unk_2C(void) override;							  // 2C - { return 0x90; }
 		virtual void		  Unk_2E(void) override;							  // 2E
 		virtual void		  Unk_2F(void) override;							  // 2F
-
 
 		// members
 		bhkCharacterPointCollector ignoredCollisionStartCollector;	// 020

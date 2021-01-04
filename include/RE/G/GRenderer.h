@@ -8,14 +8,12 @@
 #include "RE/G/GRendererEventHandler.h"
 #include "RE/G/GTexture.h"
 
-
 namespace RE
 {
 	class GImageBase;
 	class GMatrix3D;
 	class GRenderTarget;
 	class GViewport;
-
 
 	class GRenderer : public GRefCountBase<GRenderer, GStatRenderer::kMem>
 	{
@@ -24,7 +22,6 @@ namespace RE
 		using Matrix = GMatrix2D;
 		using Point = GPointF;
 		using Rect = GRectF;
-
 
 		enum class BlendType
 		{
@@ -45,7 +42,6 @@ namespace RE
 			kHardLight = 14
 		};
 
-
 		enum class ResizeImageType
 		{
 			kRGBToRGB,
@@ -53,7 +49,6 @@ namespace RE
 			kRGBToRGBA,
 			kGray
 		};
-
 
 		enum class VertexFormat
 		{
@@ -70,7 +65,6 @@ namespace RE
 			k16 = 1,
 			k32 = 2
 		};
-
 
 		enum class RenderCapBits
 		{
@@ -101,7 +95,6 @@ namespace RE
 			kFilter_ColorMatrix = 1 << 23,
 		};
 
-
 		enum class StereoDisplay
 		{
 			kStereoCenter,
@@ -109,14 +102,12 @@ namespace RE
 			kStereoRight
 		};
 
-
 		enum class CachedDataType
 		{
 			kVertex = 1,
 			kIndex = 2,
 			kBitmapList = 3
 		};
-
 
 		enum class UserDataPropertyFlag
 		{
@@ -126,20 +117,17 @@ namespace RE
 			kHasMatrix
 		};
 
-
 		enum class BitmapWrapMode
 		{
 			kRepeat,
 			kClamp
 		};
 
-
 		enum class BitmapSampleMode
 		{
 			kPoint,
 			kLinear
 		};
-
 
 		enum class GouraudFillType
 		{
@@ -151,14 +139,12 @@ namespace RE
 			k3Texture
 		};
 
-
 		enum class SubmitMaskMode
 		{
 			kClear,
 			kIncrement,
 			kDecrement
 		};
-
 
 		enum class FilterModes
 		{
@@ -175,7 +161,6 @@ namespace RE
 			Filter_LastPassOnly = 1 << 17
 		};
 
-
 		enum class FilterSupport
 		{
 			kNone = 0,
@@ -184,14 +169,12 @@ namespace RE
 			kSlow = 1 << 2,
 		};
 
-
 		class Stats
 		{
 		public:
 			Stats();
 
 			void Clear();
-
 
 			// members
 			std::uint32_t triangles;   // 00
@@ -201,7 +184,6 @@ namespace RE
 			std::uint32_t filters;	   // 10
 		};
 		static_assert(sizeof(Stats) == 0x14);
-
 
 		class CachedData
 		{
@@ -215,13 +197,11 @@ namespace RE
 			void	   ReleaseData(CachedDataType a_type);
 			void	   ReleaseDataByRenderer();
 
-
 			// members
 			GRenderer* renderer;  // 00
 			Handle	   data;	  // 08
 		};
 		static_assert(sizeof(CachedData) == 0x10);
-
 
 		class CacheProvider
 		{
@@ -233,7 +213,6 @@ namespace RE
 			CachedData* CreateCachedData(CachedDataType a_type, GRenderer* a_renderer, bool a_keepSharedData = true);
 			bool		CanDiscardData();
 
-
 			// members
 			CachedData*	  data;				  // 00
 			bool		  discardSharedData;  // 10
@@ -242,7 +221,6 @@ namespace RE
 			std::uint32_t pad14;			  // 14
 		};
 		static_assert(sizeof(CacheProvider) == 0x10);
-
 
 		class Cxform
 		{
@@ -256,7 +234,6 @@ namespace RE
 				kRGBA
 			};
 
-
 			enum
 			{
 				kMult,
@@ -264,23 +241,19 @@ namespace RE
 				kMultAdd
 			};
 
-
 			Cxform();
 
 			bool operator==(const Cxform& a_rhs) const;
-
 
 			// members
 			float matrix[kRGBA][kMultAdd];	// 00
 		};
 		static_assert(sizeof(Cxform) == 0x20);
 
-
 		struct StereoParams
 		{
 		public:
 			StereoParams();
-
 
 			// members
 			float displayWidthCm;	   // 00
@@ -290,7 +263,6 @@ namespace RE
 			float eyeSeparationCm;	   // 10
 		};
 		static_assert(sizeof(StereoParams) == 0x14);
-
 
 		struct RenderCaps
 		{
@@ -303,12 +275,10 @@ namespace RE
 		};
 		static_assert(sizeof(RenderCaps) == 0x10);
 
-
 		struct UserData
 		{
 		public:
 			UserData();
-
 
 			// members
 			const char*											 string;	  // 00
@@ -321,7 +291,6 @@ namespace RE
 		};
 		static_assert(sizeof(UserData) == 0x20);
 
-
 		struct FillTexture
 		{
 		public:
@@ -333,7 +302,6 @@ namespace RE
 		};
 		static_assert(sizeof(FillTexture) == 0x28);
 
-
 		struct VertexXY16i
 		{
 		public:
@@ -343,7 +311,6 @@ namespace RE
 		};
 		static_assert(sizeof(VertexXY16i) == 0x4);
 
-
 		struct VertexXY16iC32
 		{
 		public:
@@ -352,14 +319,12 @@ namespace RE
 				kVFormat = VertexFormat::kXY16iC32
 			};
 
-
 			// members
 			std::int16_t  x;	  // 0
 			std::int16_t  y;	  // 2
 			std::uint32_t color;  // 4
 		};
 		static_assert(sizeof(VertexXY16iC32) == 0x8);
-
 
 		struct VertexXY16iCF32
 		{
@@ -369,7 +334,6 @@ namespace RE
 				kVFormat = VertexFormat::kXY16iCF32
 			};
 
-
 			// members
 			std::int16_t  x;		// 0
 			std::int16_t  y;		// 2
@@ -377,7 +341,6 @@ namespace RE
 			std::uint32_t factors;	// 8
 		};
 		static_assert(sizeof(VertexXY16iCF32) == 0xC);
-
 
 		struct BitmapDesc
 		{
@@ -388,7 +351,6 @@ namespace RE
 			GColor Color;		   // 20
 		};
 		static_assert(sizeof(BitmapDesc) == 0x24);
-
 
 		struct DistanceFieldParams
 		{
@@ -402,7 +364,6 @@ namespace RE
 			float	glowSize[2];   // 18
 		};
 		static_assert(sizeof(DistanceFieldParams) == 0x20);
-
 
 		struct BlurFilterParams
 		{
@@ -419,7 +380,6 @@ namespace RE
 			Cxform		  cxform;	 // 24
 		};
 		static_assert(sizeof(BlurFilterParams) == 0x44);
-
 
 		virtual ~GRenderer();  // 00
 
@@ -476,7 +436,6 @@ namespace RE
 		virtual void		   RemoveEventHandler(GRendererEventHandler* a_handler);																																															  // 32
 
 		void FillStyleBitmap(GTexture* a_texture, const Matrix& a_matrix, BitmapWrapMode a_wrapMode, BitmapSampleMode a_sampleMode);
-
 
 		// members
 		GList<GRendererEventHandler>				   handlers;	// 10

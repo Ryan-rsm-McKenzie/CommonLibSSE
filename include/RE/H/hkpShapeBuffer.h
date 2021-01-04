@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct alignas(0x10) hkpShapeBuffer

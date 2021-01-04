@@ -3,18 +3,15 @@
 #include "RE/N/NiKeyBasedInterpolator.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiFloatData;
-
 
 	class NiFloatInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiFloatInterpolator;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiFloatInterpolator;
-
 
 		virtual ~NiFloatInterpolator();	 // 00
 
@@ -43,7 +40,6 @@ namespace RE
 		virtual void*			GetKeyArray(std::uint16_t a_channel) const override;									// 3D - { return floatData ? floatData->keys : 0; }
 		virtual std::uint8_t	GetKeyStride(std::uint16_t a_channel) const override;									// 3E - { return floatData ? floatData->keySize : 0; }
 		virtual bool			GetChannelPosed(std::uint16_t a_channel) const override;								// 3F - { return !floatData && floatValue != -3.4028235e38; }
-
 
 		// members
 		float				   floatValue;	// 18

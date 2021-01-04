@@ -5,18 +5,15 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 
-
 namespace RE
 {
 	class NiSkinPartition;
-
 
 	class NiSkinData : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSkinData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinData;
-
 
 		class BoneVertData
 		{
@@ -27,7 +24,6 @@ namespace RE
 			float		  weight;  // 4
 		};
 		static_assert(sizeof(BoneVertData) == 0x8);
-
 
 		class BoneData
 		{
@@ -43,7 +39,6 @@ namespace RE
 		};
 		static_assert(sizeof(BoneData) == 0x58);
 
-
 		virtual ~NiSkinData();	// 00
 
 		// override (NiObject)
@@ -53,7 +48,6 @@ namespace RE
 		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	 // 1A - { NiObject::RegisterStreamables(a_stream) != false; }
 		virtual void		  SaveBinary(NiStream& a_stream) override;			 // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				 // 1C
-
 
 		// members
 		NiPointer<NiSkinPartition> skinPartition;	  // 10

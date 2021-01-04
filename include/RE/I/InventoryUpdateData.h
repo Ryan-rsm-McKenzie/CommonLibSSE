@@ -11,7 +11,6 @@ namespace RE
 
 		virtual ~InventoryUpdateData() = default;  // 00
 
-
 		// members
 		RefHandle	  unk10;  // 10
 		std::uint32_t pad14;  // 14

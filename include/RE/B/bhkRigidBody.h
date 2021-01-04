@@ -3,7 +3,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/bhkEntity.h"
 
-
 namespace RE
 {
 	class bhkRigidBody : public bhkEntity
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkRigidBody;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRigidBody;
-
 
 		virtual ~bhkRigidBody();  // 00
 
@@ -45,7 +43,6 @@ namespace RE
 		virtual void Unk_3A(void);	// 3A
 		virtual void Unk_3B(void);	// 3B
 		virtual void Unk_3C(void);	// 3C
-
 
 		// members
 		BSTArray<void*> unk28;	// 28 - array of smart ptrs

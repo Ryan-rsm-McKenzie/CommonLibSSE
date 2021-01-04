@@ -2,7 +2,6 @@
 
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSCullingProcess;
@@ -10,12 +9,10 @@ namespace RE
 	class BSShaderAccumulator;
 	class NiCamera;
 
-
 	class Precipitation
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Precipitation;
-
 
 		class OcclusionMapData
 		{
@@ -29,9 +26,7 @@ namespace RE
 		};
 		static_assert(sizeof(OcclusionMapData) == 0x60);
 
-
 		virtual ~Precipitation();  // 00
-
 
 		// members
 		OcclusionMapData	  occlusionData;		   // 10

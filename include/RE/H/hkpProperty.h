@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct hkpPropertyValue
@@ -8,7 +7,6 @@ namespace RE
 		std::uint64_t data;	 // 0
 	};
 	static_assert(sizeof(hkpPropertyValue) == 0x8);
-
 
 	class hkpProperty
 	{

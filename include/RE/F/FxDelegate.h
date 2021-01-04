@@ -6,18 +6,15 @@
 #include "RE/G/GPtr.h"
 #include "RE/G/GString.h"
 
-
 namespace RE
 {
 	class FxResponseArgsBase;
 	class GFxMovieView;
 
-
 	class FxDelegate : public GFxExternalInterface
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_FxDelegate;
-
 
 		struct CallbackDefn
 		{
@@ -28,7 +25,6 @@ namespace RE
 		};
 		static_assert(sizeof(CallbackDefn) == 0x10);
 
-
 		struct CallbackHashFunctor
 		{
 		public:
@@ -36,9 +32,7 @@ namespace RE
 		};
 		static_assert(std::is_empty_v<CallbackHashFunctor>);
 
-
 		using CallbackHash = GHash<GString, CallbackDefn, CallbackHashFunctor>;
-
 
 		FxDelegate() = default;
 		virtual ~FxDelegate() = default;  // 00
@@ -51,7 +45,6 @@ namespace RE
 
 		void RegisterHandler(FxDelegateHandler* a_callback);
 		void UnregisterHandler(FxDelegateHandler* a_callback);
-
 
 		// members
 		CallbackHash callbacks;	 // 18

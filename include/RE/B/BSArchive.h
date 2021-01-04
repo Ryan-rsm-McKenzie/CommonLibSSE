@@ -2,11 +2,9 @@
 
 #include "RE/B/BSArchiveHeader.h"
 
-
 namespace RE
 {
 	struct BSDirectoryEntry;
-
 
 	class BSArchive : public BSArchiveHeader
 	{

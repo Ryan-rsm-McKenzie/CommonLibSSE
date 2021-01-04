@@ -2,7 +2,6 @@
 
 #include "RE/G/GMemory.h"
 
-
 namespace RE
 {
 	GString::DataDesc::DataDesc() :
@@ -11,19 +10,16 @@ namespace RE
 		data{ 0 }
 	{}
 
-
 	GString::DataDesc::~DataDesc()
 	{
 		Release();
 	}
-
 
 	void GString::DataDesc::AddRef()
 	{
 		stl::atomic_ref myRefCount{ refCount };
 		++myRefCount;
 	}
-
 
 	void GString::DataDesc::Release()
 	{
@@ -33,18 +29,15 @@ namespace RE
 		}
 	}
 
-
 	UPInt GString::DataDesc::GetCapacity() const
 	{
 		return capacity & ~kFullFlag;
 	}
 
-
 	bool GString::DataDesc::IsFull() const
 	{
 		return (capacity & kFullFlag) != 0;
 	}
-
 
 	void GString::DataDesc::SetFull(bool a_set)
 	{
@@ -55,11 +48,9 @@ namespace RE
 		}
 	}
 
-
 	GString::DataDescUnion::DataDescUnion() :
 		data(nullptr)
 	{}
-
 
 	GString::GString() :
 		_dataDesc()
@@ -67,7 +58,6 @@ namespace RE
 		std::string_view view("");
 						 operator=(view);
 	}
-
 
 	GString::GString(const GString& a_rhs) :
 		_dataDesc()
@@ -77,7 +67,6 @@ namespace RE
 		desc->AddRef();
 	}
 
-
 	GString::GString(GString&& a_rhs) :
 		_dataDesc()
 	{
@@ -86,13 +75,11 @@ namespace RE
 		a_rhs.set_desc(nullptr);
 	}
 
-
 	GString::GString(const char* a_rhs) :
 		_dataDesc()
 	{
 		ctor(a_rhs);
 	}
-
 
 	GString::~GString()
 	{
@@ -101,7 +88,6 @@ namespace RE
 			desc->Release();
 		}
 	}
-
 
 	GString& GString::operator=(const GString& a_rhs)
 	{
@@ -117,7 +103,6 @@ namespace RE
 		return *this;
 	}
 
-
 	GString& GString::operator=(GString&& a_rhs)
 	{
 		auto desc = get_desc();
@@ -130,13 +115,11 @@ namespace RE
 		return *this;
 	}
 
-
 	GString& GString::operator=(const char* a_rhs)
 	{
 		std::string_view view(a_rhs);
 		return			 operator=(view);
 	}
-
 
 	GString& GString::operator=(const std::string_view& a_rhs)
 	{
@@ -159,7 +142,6 @@ namespace RE
 		return *this;
 	}
 
-
 	auto GString::operator[](size_type a_pos)
 		-> reference
 	{
@@ -167,7 +149,6 @@ namespace RE
 		assert(desc != nullptr);
 		return desc->data[a_pos];
 	}
-
 
 	auto GString::operator[](size_type a_pos) const
 		-> const_reference
@@ -177,30 +158,25 @@ namespace RE
 		return desc->data[a_pos];
 	}
 
-
 	char& GString::front()
 	{
 		return operator[](0);
 	}
-
 
 	const char& GString::front() const
 	{
 		return operator[](0);
 	}
 
-
 	char& GString::back()
 	{
 		return operator[](size() - 1);
 	}
 
-
 	const char& GString::back() const
 	{
 		return operator[](size() - 1);
 	}
-
 
 	const char* GString::data() const noexcept
 	{
@@ -208,31 +184,26 @@ namespace RE
 		return desc ? desc->data : "";
 	}
 
-
 	char* GString::data() noexcept
 	{
 		auto desc = get_desc();
 		return desc ? desc->data : const_cast<char*>("");
 	}
 
-
 	const char* GString::c_str() const noexcept
 	{
 		return data();
 	}
-
 
 	GString::operator std::string_view() const noexcept
 	{
 		return { data(), size() };
 	}
 
-
 	[[nodiscard]] bool GString::empty() const noexcept
 	{
 		return size() == 0;
 	}
-
 
 	auto GString::size() const noexcept
 		-> size_type
@@ -245,13 +216,11 @@ namespace RE
 		}
 	}
 
-
 	auto GString::length() const noexcept
 		-> size_type
 	{
 		return size();
 	}
-
 
 	void GString::clear() noexcept
 	{
@@ -260,7 +229,6 @@ namespace RE
 			desc->data[0] = '\0';
 		}
 	}
-
 
 	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
 	{
@@ -274,7 +242,6 @@ namespace RE
 		return hash;
 	}
 
-
 	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
@@ -282,12 +249,10 @@ namespace RE
 		return func(this, a_str);
 	}
 
-
 	GString::HeapType GString::heap_type() const
 	{
 		return *(_dataDesc.heapType & HeapType::kMask);
 	}
-
 
 	GString::DataDesc* GString::get_desc() const
 	{
@@ -296,7 +261,6 @@ namespace RE
 		desc.heapType.reset(HeapType::kMask);
 		return desc.data;
 	}
-
 
 	void GString::set_desc(DataDesc* a_desc)
 	{

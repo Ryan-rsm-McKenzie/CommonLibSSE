@@ -13,7 +13,6 @@
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class bhkCharacterMoveFinishEvent;
@@ -22,7 +21,6 @@ namespace RE
 	class hkpRigidBody;
 	class hkTransform;
 	class hkVector4;
-
 
 	enum class CHARACTER_FLAGS
 	{
@@ -62,14 +60,12 @@ namespace RE
 		kSwimAtWaterSurface = 1 << 31,
 	};
 
-
 	class bhkCharacterController :
 		public NiRefObject,									// 000
 		public BSTEventSource<bhkCharacterMoveFinishEvent>	// 010
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterController;
-
 
 		virtual ~bhkCharacterController();	// 00
 
@@ -94,7 +90,6 @@ namespace RE
 		virtual void  Unk_13(void) = 0;																			// 13
 
 		inline void GetPosition(hkVector4& a_pos, bool a_applyCenterOffset) const { return GetPositionImpl(a_pos, a_applyCenterOffset); }
-
 
 		// members
 		//std::uint64_t						pad068;						// 068

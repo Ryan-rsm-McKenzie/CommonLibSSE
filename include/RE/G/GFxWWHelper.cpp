@@ -2,7 +2,6 @@
 
 #include "RE/G/GStd.h"
 
-
 namespace RE
 {
 	bool GFxWWHelper::FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags)
@@ -27,7 +26,6 @@ namespace RE
 		return it->flags.all(a_charBreakFlags);
 	}
 
-
 	bool GFxWWHelper::IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch)
 	{
 		if ((a_wwMode & WordWrappingType::kNoHangulWrap) != WordWrappingType::kNone) {
@@ -39,18 +37,15 @@ namespace RE
 		return (a_ch >= 0x1100 && a_ch <= 0x11FF) || (a_ch >= 0x3000 && a_ch <= 0xD7AF) || (a_ch >= 0xF900 && a_ch <= 0xFAFF) || (a_ch >= 0xFF00 && a_ch <= 0xFFDC);
 	}
 
-
 	bool GFxWWHelper::IsNonStartingChar(WordWrappingType a_wwMode, wchar_t a_ch)
 	{
 		return FindCharWithFlags(a_wwMode, a_ch, BreakInfoFlags::kNonStartingChar);
 	}
 
-
 	bool GFxWWHelper::IsNonTerminatingChar(WordWrappingType a_wwMode, wchar_t a_ch)
 	{
 		return FindCharWithFlags(a_wwMode, a_ch, BreakInfoFlags::kNonTerminatingChar);
 	}
-
 
 	bool GFxWWHelper::IsWhiteSpaceChar(wchar_t a_ch)
 	{
@@ -67,12 +62,10 @@ namespace RE
 		}
 	}
 
-
 	bool GFxWWHelper::IsLineFeedChar(wchar_t a_ch)
 	{
 		return a_ch == L'\n';
 	}
-
 
 	bool GFxWWHelper::IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index)
 	{
@@ -84,7 +77,6 @@ namespace RE
 		return IsLineBreakOpportunityAt(a_wwMode, a_wstr[a_index - 1], a_wstr[a_index]);
 	}
 
-
 	bool GFxWWHelper::IsLineBreakOpportunityAt(WordWrappingType a_wwMode, wchar_t a_prevChar, wchar_t a_curChar)
 	{
 		if (a_prevChar == 0) {
@@ -93,7 +85,6 @@ namespace RE
 
 		return ((IsWhiteSpaceChar(a_prevChar) || IsAsianChar(a_wwMode, a_curChar) || IsAsianChar(a_wwMode, a_prevChar) || a_prevChar == L'-')) && !IsNonStartingChar(a_wwMode, a_curChar) && !IsNonTerminatingChar(a_wwMode, a_prevChar);
 	}
-
 
 	UPInt GFxWWHelper::FindNextNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos, UPInt a_maxPos)
 	{
@@ -109,7 +100,6 @@ namespace RE
 		return a_pos <= a_maxPos ? a_pos : UPINT_MAX;
 	}
 
-
 	UPInt GFxWWHelper::FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos)
 	{
 		assert(a_wstr);
@@ -120,7 +110,6 @@ namespace RE
 
 		return p < 0 ? UPINT_MAX : static_cast<UPInt>(p);
 	}
-
 
 	bool GFxWWHelper::IsVowel(wchar_t a_ch)
 	{
@@ -135,7 +124,6 @@ namespace RE
 			return false;
 		}
 	}
-
 
 	UPInt GFxWWHelper::FindWordWrapPos(WordWrappingType a_wwMode, [[maybe_unused]] UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen)
 	{

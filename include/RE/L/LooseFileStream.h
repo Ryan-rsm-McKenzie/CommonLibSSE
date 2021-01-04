@@ -4,13 +4,11 @@
 #include "RE/L/LooseFileStreamBase.h"
 #include "RE/S/Stream.h"
 
-
 namespace RE
 {
 	namespace BSResource
 	{
 		class Location;
-
 
 		class LooseFileStream :
 			public LooseFileStreamBase,	 // 10
@@ -18,7 +16,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource____LooseFileStream;
-
 
 			virtual ~LooseFileStream();	 // 00
 
@@ -34,9 +31,7 @@ namespace RE
 			virtual bool	  DoGetName(BSFixedString& a_dst) const override;													// 0A
 			virtual ErrorCode DoCreateAsync(BSTSmartPointer<AsyncStream>& a_streamOut) const override;							// 0B
 
-
 			static LooseFileStream* Create(BSFixedString a_prefix, BSFixedString a_dirName, BSFixedString a_fileName, std::uint32_t a_fileSize, bool a_readOnly, Location* a_location);
-
 
 			// members
 			Location*	  location;	 // 38

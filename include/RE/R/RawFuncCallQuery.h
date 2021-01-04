@@ -6,13 +6,11 @@
 #include "RE/I/IFuncCallQuery.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class ObjectTypeInfo;
-
 
 		namespace Internal
 		{
@@ -21,12 +19,10 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
 
-
 				virtual ~RawFuncCallQuery();  // 00
 
 				// override (IFuncCallQuery)
 				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;	// 01
-
 
 				// members
 				CallType						callType;  // 10

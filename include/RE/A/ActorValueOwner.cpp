@@ -1,6 +1,5 @@
 #include "RE/A/ActorValueOwner.h"
 
-
 namespace RE
 {
 	float ActorValueOwner::GetArmorRatingSkillMultiplier(float a_skillLevel) const
@@ -9,7 +8,6 @@ namespace RE
 		REL::Relocation<func_t> func(REL::ID(25858));
 		return func(this, a_skillLevel);
 	}
-
 
 	float ActorValueOwner::GetClampedActorValue(ActorValue a_akValue) const
 	{

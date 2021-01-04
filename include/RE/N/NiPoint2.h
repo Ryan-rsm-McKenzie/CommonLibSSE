@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiPoint2

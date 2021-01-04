@@ -6,12 +6,10 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTTuple.h"
 
-
 namespace RE
 {
 	class TESQuest;
 	struct TESQuestStageItemDoneEvent;
-
 
 	class BGSStoryTeller :
 		public BSTSingletonSDM<BGSStoryTeller>,			 // 08
@@ -19,7 +17,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryTeller;
-
 
 		virtual ~BGSStoryTeller();	// 00
 
@@ -30,7 +27,6 @@ namespace RE
 
 		void BeginShutDownQuest(TESQuest* a_quest);
 		void BeginStartUpQuest(TESQuest* a_quest);
-
 
 		// members
 		std::uint8_t																 pad09;						// 09

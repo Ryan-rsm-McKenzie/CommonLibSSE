@@ -5,11 +5,9 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
-
 namespace RE
 {
 	struct BSAnimationGraphEvent;
-
 
 	class StatsNode :
 		public SimpleAnimationGraphManagerHolder,	// 00
@@ -19,7 +17,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_StatsNode;
 
-
 		virtual ~StatsNode();  // 00
 
 		// override (SimpleAnimationGraphManagerHolder)
@@ -28,7 +25,6 @@ namespace RE
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;	 // 01 - runs PlaySound on BSAnimationGraphEvent::optionalStr
-
 
 		// members
 		std::uint32_t									 unk24;	 // 24

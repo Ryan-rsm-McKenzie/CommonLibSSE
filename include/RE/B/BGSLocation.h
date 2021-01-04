@@ -10,11 +10,9 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class QueuedPromoteLocationReferencesTask;
-
 
 	struct UnloadedRefData
 	{
@@ -26,14 +24,12 @@ namespace RE
 		};
 		static_assert(sizeof(CellKey) == 0x4);
 
-
 		// members
 		FormID	refID;			// 0
 		FormID	parentSpaceID;	// 4
 		CellKey cellKey;		// 8
 	};
 	static_assert(sizeof(UnloadedRefData) == 0xC);
-
 
 	struct SpecialRefData  // LCSR
 	{
@@ -44,7 +40,6 @@ namespace RE
 		std::uint32_t		pad14;	  // 14
 	};
 	static_assert(sizeof(SpecialRefData) == 0x18);
-
 
 	struct UniqueNPCData  // LCUN
 	{
@@ -57,7 +52,6 @@ namespace RE
 	};
 	static_assert(sizeof(UniqueNPCData) == 0x18);
 
-
 	struct OverrideData
 	{
 	public:
@@ -66,7 +60,6 @@ namespace RE
 		BSTSet<FormID>			  removedData;	// 18 - RCPR
 	};
 	static_assert(sizeof(OverrideData) == 0x48);
-
 
 	class BGSLocation :
 		public TESForm,		   // 00
@@ -77,7 +70,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSLocation;
 		inline static constexpr auto FORMTYPE = FormType::Location;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -86,7 +78,6 @@ namespace RE
 				kCleared = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -98,7 +89,6 @@ namespace RE
 			};
 		};
 
-
 		struct KEYWORD_DATA
 		{
 		public:
@@ -108,7 +98,6 @@ namespace RE
 			std::uint32_t pad0C;	// 0C
 		};
 		static_assert(sizeof(KEYWORD_DATA) == 0x10);
-
 
 		virtual ~BGSLocation();	 // 00
 
@@ -125,7 +114,6 @@ namespace RE
 		bool IsChild(const BGSLocation* a_possibleChild) const;
 		bool IsParent(const BGSLocation* a_possibleParent) const;
 		bool IsLoaded() const;
-
 
 		// members
 		BGSLocation*								   parentLoc;				// 48 - PNAM

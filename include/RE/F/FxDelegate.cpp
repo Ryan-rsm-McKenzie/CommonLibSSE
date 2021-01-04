@@ -7,14 +7,12 @@
 #include "RE/G/GFxValue.h"
 #include "RE/R/RemoveCallbackVisitor.h"
 
-
 namespace RE
 {
 	UPInt FxDelegate::CallbackHashFunctor::operator()(const GString& a_data) const
 	{
 		return GString::BernsteinHashFunction(a_data.c_str(), a_data.length());
 	}
-
 
 	void FxDelegate::Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, std::uint32_t a_argCount)
 	{
@@ -24,7 +22,6 @@ namespace RE
 			cbDef->callback(params);
 		}
 	}
-
 
 	void FxDelegate::Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
 	{
@@ -37,7 +34,6 @@ namespace RE
 		}
 	}
 
-
 	void FxDelegate::Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
 	{
 		assert(a_movieView);
@@ -48,14 +44,12 @@ namespace RE
 		}
 	}
 
-
 	void FxDelegate::RegisterHandler(FxDelegateHandler* a_callback)
 	{
 		assert(a_callback);
 		AddCallbackVisitor reg(a_callback, &callbacks);
 		a_callback->Accept(&reg);
 	}
-
 
 	void FxDelegate::UnregisterHandler(FxDelegateHandler* a_callback)
 	{

@@ -6,7 +6,6 @@ class SKSEPersistentObjectStorage;
 class TaskDelegate;
 class UIDelegate_v1;
 
-
 namespace SKSE
 {
 	using PluginHandle = std::uint32_t;
@@ -14,7 +13,6 @@ namespace SKSE
 	{
 		kInvalidPluginHandle = static_cast<PluginHandle>(-1)
 	};
-
 
 	namespace detail
 	{
@@ -24,7 +22,6 @@ namespace SKSE
 			const char*	  name;
 			std::uint32_t version;
 		};
-
 
 		struct SKSEInterface
 		{
@@ -38,7 +35,6 @@ namespace SKSE
 			const void* (*GetPluginInfo)(const char*);
 		};
 
-
 		struct SKSEMessagingInterface
 		{
 			std::uint32_t interfaceVersion;
@@ -46,7 +42,6 @@ namespace SKSE
 			bool (*Dispatch)(PluginHandle, std::uint32_t, void*, std::uint32_t, const char*);
 			void* (*GetEventDispatcher)(std::uint32_t);
 		};
-
 
 		struct SKSEObjectInterface
 		{
@@ -56,13 +51,11 @@ namespace SKSE
 			SKSEPersistentObjectStorage& (*GetPersistentObjectStorage)();
 		};
 
-
 		struct SKSEPapyrusInterface
 		{
 			std::uint32_t interfaceVersion;
 			bool (*Register)(void*);
 		};
-
 
 		struct SKSEScaleformInterface
 		{
@@ -70,7 +63,6 @@ namespace SKSE
 			bool (*Register)(const char*, void*);
 			void (*RegisterForInventory)(void*);
 		};
-
 
 		struct SKSESerializationInterface
 		{
@@ -89,14 +81,12 @@ namespace SKSE
 			bool (*ResolveFormId)(std::uint32_t, std::uint32_t*);
 		};
 
-
 		struct SKSETaskInterface
 		{
 			std::uint32_t interfaceVersion;
 			void (*AddTask)(void*);
 			void (*AddUITask)(void*);
 		};
-
 
 		struct SKSETrampolineInterface
 		{
@@ -105,14 +95,12 @@ namespace SKSE
 			void* (*AllocateFromLocalPool)(PluginHandle, std::size_t);
 		};
 
-
 		class TaskDelegate
 		{
 		public:
 			virtual void Run() = 0;
 			virtual void Dispose() = 0;
 		};
-
 
 		class UIDelegate_v1
 		{

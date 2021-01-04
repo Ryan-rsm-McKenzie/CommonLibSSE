@@ -7,7 +7,6 @@
 #include "RE/T/TESTexture.h"
 #include "RE/W/WeatherType.h"
 
-
 namespace RE
 {
 	class TESClimate : public TESForm
@@ -15,7 +14,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESClimate;
 		inline static constexpr auto FORMTYPE = FormType::Climate;
-
 
 		struct SkyObjects
 		{
@@ -29,7 +27,6 @@ namespace RE
 		};
 		using SkyObject = SkyObjects::SkyObject;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -38,7 +35,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Timing
 		{
@@ -52,7 +48,6 @@ namespace RE
 				kSecunda = 1 << 7
 			};
 
-
 			struct Interval
 			{
 			public:
@@ -60,18 +55,15 @@ namespace RE
 				std::tm GetBeginTime() const;
 				std::tm GetEndTime() const;
 
-
 				// members
 				std::uint8_t begin;	 // 0
 				std::uint8_t end;	 // 1
 			};
 			static_assert(sizeof(Interval) == 0x2);
 
-
 			bool		 IncludesMasser() const;
 			bool		 IncludesSecunda() const;
 			std::uint8_t GetPhaseLength() const;
-
 
 			// members
 			Interval										sunrise;		  // 0
@@ -83,13 +75,11 @@ namespace RE
 		};
 		static_assert(sizeof(Timing) == 0x8);
 
-
 		virtual ~TESClimate();	// 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
-
 
 		// members
 		TESModel				   nightSky;						// 20

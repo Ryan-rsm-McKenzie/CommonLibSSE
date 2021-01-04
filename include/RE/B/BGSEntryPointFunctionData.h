@@ -2,17 +2,14 @@
 
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class TESFile;
-
 
 	class BGSEntryPointFunctionData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionData;
-
 
 		enum class FunctionType
 		{
@@ -25,7 +22,6 @@ namespace RE
 			kBooleanGraphVariable = 6,
 			kText = 7
 		};
-
 
 		virtual ~BGSEntryPointFunctionData();  // 00
 

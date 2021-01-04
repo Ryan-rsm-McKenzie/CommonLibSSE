@@ -4,7 +4,6 @@
 #include "RE/M/MiddleHighProcessData.h"
 #include "SKSE/API.h"
 
-
 namespace RE
 {
 	float AIProcess::GetCachedHeight() const
@@ -12,36 +11,30 @@ namespace RE
 		return high ? high->cachedActorHeight : static_cast<float>(-1.0);
 	}
 
-
 	bhkCharacterController* AIProcess::GetCharController()
 	{
 		return middleHigh ? middleHigh->charController.get() : nullptr;
 	}
-
 
 	ActorHandle AIProcess::GetCommandingActor() const
 	{
 		return middleHigh ? middleHigh->commandingActor : ActorHandle{};
 	}
 
-
 	TESForm* AIProcess::GetEquippedLeftHand()
 	{
 		return equippedObjects[Hands::kLeft];
 	}
-
 
 	TESForm* AIProcess::GetEquippedRightHand()
 	{
 		return equippedObjects[Hands::kRight];
 	}
 
-
 	bool AIProcess::GetIsSummonedCreature() const noexcept
 	{
 		return middleHigh && middleHigh->summonedCreature;
 	}
-
 
 	ObjectRefHandle AIProcess::GetOccupiedFurniture() const
 	{
@@ -52,7 +45,6 @@ namespace RE
 		}
 	}
 
-
 	bool AIProcess::InHighProcess() const
 	{
 		switch (*processLevel) {
@@ -62,7 +54,6 @@ namespace RE
 			return false;
 		}
 	}
-
 
 	bool AIProcess::InMiddleHighProcess() const
 	{
@@ -75,7 +66,6 @@ namespace RE
 		}
 	}
 
-
 	bool AIProcess::InMiddleLowProcess() const
 	{
 		switch (*processLevel) {
@@ -87,7 +77,6 @@ namespace RE
 			return false;
 		}
 	}
-
 
 	bool AIProcess::InLowProcess() const
 	{
@@ -102,18 +91,15 @@ namespace RE
 		}
 	}
 
-
 	bool AIProcess::IsArrested() const
 	{
 		return high && high->arrested;
 	}
 
-
 	bool AIProcess::IsGhost() const
 	{
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
-
 
 	void AIProcess::SetArrested(bool a_arrested)
 	{
@@ -122,7 +108,6 @@ namespace RE
 		}
 	}
 
-
 	void AIProcess::SetCachedHeight(float a_height)
 	{
 		if (high) {
@@ -130,14 +115,12 @@ namespace RE
 		}
 	}
 
-
 	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
 	{
 		if (middleHigh) {
 			middleHigh->update3DModel.set(a_flags);
 		}
 	}
-
 
 	void AIProcess::Update3DModel(Actor* a_actor)
 	{
@@ -148,7 +131,6 @@ namespace RE
 			source->SendEvent(std::addressof(event));
 		}
 	}
-
 
 	void AIProcess::Update3DModel_Impl(Actor* a_actor)
 	{

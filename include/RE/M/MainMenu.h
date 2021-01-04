@@ -5,12 +5,10 @@
 #include "RE/I/IMenu.h"
 #include "RE/I/ImageData.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 	class BSSystemEvent;
-
 
 	// menuDepth = 0
 	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate | kUpdateUsesCursor | kApplicationMenu
@@ -24,7 +22,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_MainMenu;
 		constexpr static std::string_view MENU_NAME = "Main Menu";
-
 
 		virtual ~MainMenu();  // 00
 
@@ -41,7 +38,6 @@ namespace RE
 
 		// override (GFxFunctionHandler)
 		virtual void Call(Params& a_params) override;  // 01
-
 
 		// members
 		ImageData	  unk50;  // 50

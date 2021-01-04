@@ -3,14 +3,12 @@
 #include "RE/H/hkMoppBvTreeShapeBase.h"
 #include "RE/H/hkpSingleShapeContainer.h"
 
-
 namespace RE
 {
 	class hkpMoppBvTreeShape : public hkMoppBvTreeShapeBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpMoppBvTreeShape;
-
 
 		virtual ~hkpMoppBvTreeShape();	// 00
 
@@ -22,7 +20,6 @@ namespace RE
 		virtual bool					 CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;														 // 08
 		virtual void					 CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;				 // 09
 		virtual hkVector4Comparison		 CastRayBundleImpl(const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask) const override;	 // 0A
-
 
 		// members
 		hkpSingleShapeContainer child;		// 50

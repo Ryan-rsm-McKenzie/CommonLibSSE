@@ -1,6 +1,5 @@
 #include "RE/N/NiCamera.h"
 
-
 namespace RE
 {
 	bool NiCamera::WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance)

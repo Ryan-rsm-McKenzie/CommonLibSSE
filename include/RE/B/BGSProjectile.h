@@ -8,7 +8,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	struct BGSProjectileData  // DATA
@@ -30,7 +29,6 @@ namespace RE
 			kContinuousUpdate = 1 << 11
 		};
 
-
 		enum class Type
 		{
 			kMissile = 1 << 0,
@@ -41,7 +39,6 @@ namespace RE
 			kBarrier = 1 << 5,
 			kArrow = 1 << 6
 		};
-
 
 		// members
 		stl::enumeration<BGSProjectileFlags, std::uint16_t> flags;				  // 00
@@ -73,7 +70,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSProjectileData) == 0x88);
 
-
 	class BGSProjectile :
 		public TESBoundObject,			  // 000
 		public TESFullName,				  // 030
@@ -85,7 +81,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSProjectile;
 		inline static constexpr auto FORMTYPE = FormType::Projectile;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -94,7 +89,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSProjectile();  // 00
 
@@ -107,7 +101,6 @@ namespace RE
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;																									  // 40
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;																												  // 41
 		virtual bool		GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					  // 4C
-
 
 		// members
 		BGSProjectileData data;				 // 080 - DATA

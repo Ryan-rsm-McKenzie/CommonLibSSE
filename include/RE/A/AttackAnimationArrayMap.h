@@ -5,7 +5,6 @@
 #include "RE/N/NiRefObject.h"
 #include "RE/S/SetEventData.h"
 
-
 namespace RE
 {
 	class AttackAnimationArrayMap :
@@ -14,7 +13,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AttackAnimationArrayMap;
-
 
 		// hash key (hiword = right hand | loward = left hand)
 		enum HashKey : std::uint32_t
@@ -32,7 +30,6 @@ namespace RE
 			kSpell,
 			kShield
 		};
-
 
 		virtual ~AttackAnimationArrayMap();	 // 00
 	};

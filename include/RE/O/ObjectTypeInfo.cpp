@@ -1,6 +1,5 @@
 #include "RE/O/ObjectTypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -11,13 +10,11 @@ namespace RE
 			return *reinterpret_cast<BSFixedString*>(&sanitizedType);
 		}
 
-
 		auto ObjectTypeInfo::NamedStateInfo::GetFuncIter()
 			-> Func*
 		{
 			return reinterpret_cast<Func*>((std::uintptr_t)this + memberFunctionOffset);
 		}
-
 
 		auto ObjectTypeInfo::NamedStateInfo::GetFuncIter() const
 			-> const Func*
@@ -25,36 +22,30 @@ namespace RE
 			return reinterpret_cast<const Func*>((std::uintptr_t)this + memberFunctionOffset);
 		}
 
-
 		ObjectTypeInfo::~ObjectTypeInfo()
 		{
 			ReleaseData();
 		}
-
 
 		const char* ObjectTypeInfo::GetName() const
 		{
 			return name.c_str();
 		}
 
-
 		ObjectTypeInfo* ObjectTypeInfo::GetParent()
 		{
 			return parentTypeInfo.get();
 		}
-
 
 		const ObjectTypeInfo* ObjectTypeInfo::GetParent() const
 		{
 			return parentTypeInfo.get();
 		}
 
-
 		TypeInfo::RawType ObjectTypeInfo::GetRawType() const
 		{
 			return unrestricted_cast<TypeInfo::RawType>(this);
 		}
-
 
 		auto ObjectTypeInfo::GetUnlinkedFunctionIter()
 			-> UnlinkedNativeFunction*
@@ -62,13 +53,11 @@ namespace RE
 			return reinterpret_cast<UnlinkedNativeFunction*>(data);
 		}
 
-
 		auto ObjectTypeInfo::GetUnlinkedFunctionIter() const
 			-> const UnlinkedNativeFunction*
 		{
 			return reinterpret_cast<const UnlinkedNativeFunction*>(data);
 		}
-
 
 		auto ObjectTypeInfo::GetUserFlagIter()
 			-> UserFlagInfo*
@@ -76,13 +65,11 @@ namespace RE
 			return reinterpret_cast<UserFlagInfo*>(data);
 		}
 
-
 		auto ObjectTypeInfo::GetUserFlagIter() const
 			-> const UserFlagInfo*
 		{
 			return reinterpret_cast<const UserFlagInfo*>(data);
 		}
-
 
 		std::uint32_t ObjectTypeInfo::GetTotalNumVariables() const
 		{
@@ -93,13 +80,11 @@ namespace RE
 			return numVars;
 		}
 
-
 		auto ObjectTypeInfo::GetVariableIter()
 			-> VariableInfo*
 		{
 			return reinterpret_cast<VariableInfo*>(GetUserFlagIter() + GetNumUserFlags());
 		}
-
 
 		auto ObjectTypeInfo::GetVariableIter() const
 			-> const VariableInfo*
@@ -107,13 +92,11 @@ namespace RE
 			return reinterpret_cast<const VariableInfo*>(GetUserFlagIter() + GetNumUserFlags());
 		}
 
-
 		auto ObjectTypeInfo::GetInitialValueIter()
 			-> InitialValueInfo*
 		{
 			return reinterpret_cast<InitialValueInfo*>(GetVariableIter() + GetNumVariables());
 		}
-
 
 		auto ObjectTypeInfo::GetInitialValueIter() const
 			-> const InitialValueInfo*
@@ -121,13 +104,11 @@ namespace RE
 			return reinterpret_cast<const InitialValueInfo*>(GetVariableIter() + GetNumVariables());
 		}
 
-
 		auto ObjectTypeInfo::GetPropertyIter()
 			-> PropertyInfo*
 		{
 			return reinterpret_cast<PropertyInfo*>(GetInitialValueIter() + GetNumInitalValues());
 		}
-
 
 		auto ObjectTypeInfo::GetPropertyIter() const
 			-> const PropertyInfo*
@@ -135,13 +116,11 @@ namespace RE
 			return reinterpret_cast<const PropertyInfo*>(GetInitialValueIter() + GetNumInitalValues());
 		}
 
-
 		auto ObjectTypeInfo::GetGlobalFuncIter()
 			-> GlobalFuncInfo*
 		{
 			return reinterpret_cast<GlobalFuncInfo*>(GetPropertyIter() + GetNumProperties());
 		}
-
 
 		auto ObjectTypeInfo::GetGlobalFuncIter() const
 			-> const GlobalFuncInfo*
@@ -149,13 +128,11 @@ namespace RE
 			return reinterpret_cast<const GlobalFuncInfo*>(GetPropertyIter() + GetNumProperties());
 		}
 
-
 		auto ObjectTypeInfo::GetMemberFuncIter()
 			-> MemberFuncInfo*
 		{
 			return reinterpret_cast<MemberFuncInfo*>(GetGlobalFuncIter() + GetNumGlobalFuncs());
 		}
-
 
 		auto ObjectTypeInfo::GetMemberFuncIter() const
 			-> const MemberFuncInfo*
@@ -163,20 +140,17 @@ namespace RE
 			return reinterpret_cast<const MemberFuncInfo*>(GetGlobalFuncIter() + GetNumGlobalFuncs());
 		}
 
-
 		auto ObjectTypeInfo::GetNamedStateIter()
 			-> NamedStateInfo*
 		{
 			return reinterpret_cast<NamedStateInfo*>(GetMemberFuncIter() + GetNumMemberFuncs());
 		}
 
-
 		auto ObjectTypeInfo::GetNamedStateIter() const
 			-> const NamedStateInfo*
 		{
 			return reinterpret_cast<const NamedStateInfo*>(GetMemberFuncIter() + GetNumMemberFuncs());
 		}
-
 
 		std::uint32_t ObjectTypeInfo::GetPropertyIndex(const BSFixedString& a_name) const
 		{
@@ -191,7 +165,6 @@ namespace RE
 			}
 			return static_cast<std::uint32_t>(-1);
 		}
-
 
 		void ObjectTypeInfo::ReleaseData()
 		{

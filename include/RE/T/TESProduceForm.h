@@ -2,12 +2,10 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class BGSSoundDescriptorForm;
 	class TESBoundObject;
-
 
 	struct SEASON
 	{
@@ -23,12 +21,10 @@ namespace RE
 		};
 	};
 
-
 	class TESProduceForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESProduceForm;
-
 
 		virtual ~TESProduceForm();	// 00
 
@@ -36,7 +32,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;			  // 01
 		virtual void ClearDataComponent() override;					  // 02 - { return; }
 		virtual void CopyComponent(BaseFormComponent* rhs) override;  // 03
-
 
 		// members
 		BGSSoundDescriptorForm* harvestSound;					// 08 - SNAM

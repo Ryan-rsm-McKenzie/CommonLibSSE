@@ -2,14 +2,12 @@
 
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class TESTexture1024 : public TESTexture
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture1024;
-
 
 		virtual ~TESTexture1024();	// 00
 

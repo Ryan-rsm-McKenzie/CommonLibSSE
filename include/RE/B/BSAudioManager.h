@@ -4,13 +4,11 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTHashMap.h"
 
-
 namespace RE
 {
 	class BSISoundDescriptor;
 	class BSXAudio2GameSound;
 	struct BSSoundHandle;
-
 
 	class BSAudioManager
 	{
@@ -20,7 +18,6 @@ namespace RE
 		bool Play(FormID a_soundFormID);
 		bool Play(BSISoundDescriptor* a_descriptor);
 		bool BuildSoundDataFromDescriptor(BSSoundHandle& a_soundHandle, BSISoundDescriptor* a_descriptor, std::uint32_t a_flags = 0x1A);
-
 
 		// members
 		std::uint64_t								   unk000;	// 000

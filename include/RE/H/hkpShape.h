@@ -5,7 +5,6 @@
 #include "RE/H/hkpShapeBuffer.h"
 #include "RE/H/hkpShapeType.h"
 
-
 namespace RE
 {
 	class hkAabb;
@@ -22,19 +21,16 @@ namespace RE
 	struct hkpShapeRayCastInput;
 	struct hkpShapeRayCastOutput;
 
-
 	using hkpVertexID = std::uint16_t;
 	constexpr hkpVertexID HK_INVALID_VERTEX_ID = static_cast<hkpVertexID>(-1);
 
 	using hkpShapeKey = std::uint32_t;
 	constexpr hkpShapeKey HK_INVALID_SHAPE_KEY = static_cast<hkpShapeKey>(-1);
 
-
 	class hkpShape : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpShape;
-
 
 		using GetSupportingVertexFunc = void(const void* a_this, const hkVector4& a_direction, hkpCdVertex& a_supportVertex);
 		using ConvertVertexIdsToVerticesFunc = void(const void* a_this, const hkpVertexID* a_ids, std::int32_t a_numIDs, class hkpCdVertex* a_verticesOut);
@@ -49,7 +45,6 @@ namespace RE
 		using GetChildShapeFunc = const hkpShape*(const void* a_this, hkpShapeKey a_key, hkpShapeBuffer& a_buffer);
 		using GetCollisionFilterInfoFunc = std::uint32_t(const void* a_this, hkpShapeKey a_key);
 
-
 		struct CalcSizeForSpuInput
 		{
 		public:
@@ -59,7 +54,6 @@ namespace RE
 			bool hasDynamicMotionSaved;		// 2
 		};
 		static_assert(sizeof(CalcSizeForSpuInput) == 0x3);
-
 
 		struct ShapeFuncs
 		{
@@ -79,7 +73,6 @@ namespace RE
 			GetCollisionFilterInfoFunc*		getCollisionFilterInfoFunc;	 // 58
 		};
 		static_assert(sizeof(ShapeFuncs) == 0x60);
-
 
 		struct ShapeFuncs2
 		{
@@ -104,9 +97,7 @@ namespace RE
 		};
 		static_assert(sizeof(ShapeFuncs2) == 0x80);
 
-
 		using RegsiterFunc = void(ShapeFuncs& a_sf);
-
 
 		virtual ~hkpShape();  // 00
 
@@ -119,7 +110,6 @@ namespace RE
 		virtual bool					 CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const = 0;													// 08
 		virtual void					 CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const = 0;			// 09
 		virtual hkVector4Comparison		 CastRayBundleImpl(const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask) const;	// 0A
-
 
 		// members
 		std::uint64_t userData;	 // 10

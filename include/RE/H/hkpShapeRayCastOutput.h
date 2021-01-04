@@ -13,7 +13,6 @@ namespace RE
 			kMaxHierarchyDepth = 8
 		};
 
-
 		constexpr void ChangeLevel(std::int32_t a_delta) noexcept
 		{
 			assert(shapeKeyIndex + a_delta < kMaxHierarchyDepth);
@@ -28,7 +27,6 @@ namespace RE
 			shapeKeys[0] = HK_INVALID_SHAPE_KEY;
 			shapeKeyIndex = 0;
 		}
-
 
 		// members
 		hkpShapeKey	 shapeKeys[kMaxHierarchyDepth]{ HK_INVALID_SHAPE_KEY };	 // 20

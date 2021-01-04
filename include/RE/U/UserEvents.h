@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	class UserEvents : public BSTSingletonSDM<UserEvents>
@@ -38,7 +37,6 @@ namespace RE
 		};
 		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;
 
-
 		enum class USER_EVENT_FLAG
 		{
 			kNone = 0,
@@ -59,9 +57,7 @@ namespace RE
 			kAll = static_cast<std::underlying_type_t<USER_EVENT_FLAG>>(-1)
 		};
 
-
 		static UserEvents* GetSingleton();
-
 
 		// members
 		std::uint8_t  pad001;			  // 001

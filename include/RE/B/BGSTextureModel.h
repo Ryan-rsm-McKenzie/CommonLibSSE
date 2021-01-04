@@ -2,14 +2,12 @@
 
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSTextureModel : public TESModel
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSTextureModel;
-
 
 		virtual ~BGSTextureModel();	 // 00
 

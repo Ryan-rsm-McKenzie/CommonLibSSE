@@ -3,7 +3,6 @@
 #include "RE/N/NiColorKey.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiColorData : public NiObject
@@ -12,9 +11,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiColorData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiColorData;
 
-
 		using KeyType = NiColorKey::KeyType;
-
 
 		NiColorData();
 		virtual ~NiColorData();	 // 00
@@ -27,7 +24,6 @@ namespace RE
 
 		std::uint32_t GetNumKeys() const;
 		NiColorKey*	  GetAnim(std::uint32_t& a_numKeys, NiColorKey::KeyType& a_type, std::uint8_t& a_size) const;
-
 
 		// members
 		std::uint32_t numKeys;	// 10

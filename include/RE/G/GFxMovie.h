@@ -3,13 +3,11 @@
 #include "RE/G/GFxPlayerStats.h"
 #include "RE/G/GRefCountBase.h"
 
-
 namespace RE
 {
 	class GFxFunctionHandler;
 	class GFxMovieDef;
 	class GFxValue;
-
 
 	class GFxMovie : public GRefCountBase<GFxMovie, GFxStatMovieViews::kGFxStatMV_Other_Mem>
 	{
@@ -21,7 +19,6 @@ namespace RE
 			kStopped   // The movie is stopped at its current clip. Child clips may still be playing
 		};
 
-
 		// SetVarType describes the delayed assignment queuing behavior of SetVariable and SetVariableDouble functions; the use of this flag allows developers to control the type of effect the variable assignment will have on target objects that have not yet been created at the time of SetVariable call
 		enum class SetVarType
 		{
@@ -29,7 +26,6 @@ namespace RE
 			kSticky,	// Sets variable if target clip is found, otherwise queues a set until the clip is created at path. When the target clip is created, value will be lost
 			kPermanent	// Sets variable applied to this and all future clips at given path
 		};
-
 
 		// SetArrayType sets the type of array.
 		enum class SetArrayType
@@ -41,7 +37,6 @@ namespace RE
 			kStringW,  // Array of 'const wchar_t*'. (Deprecated; use kValue)
 			kValue	   // Array of Value
 		};
-
 
 		// add
 		virtual GFxMovieDef*  GetMovieDef() const;																																								   // 01 - pure - Obtains the movie definition that created this instance.

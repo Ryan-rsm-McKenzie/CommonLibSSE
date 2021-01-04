@@ -1,17 +1,14 @@
 #pragma once
 
-
 namespace RE
 {
 	class BGSLoadGameBuffer;
 	class TESFile;
 
-
 	class BGSSceneAction
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSceneAction;
-
 
 		enum class Type
 		{
@@ -19,7 +16,6 @@ namespace RE
 			kPackage = 1,
 			kTimer = 2
 		};
-
 
 		enum class EmotionType
 		{
@@ -33,7 +29,6 @@ namespace RE
 			kPuzzled = 7,
 		};
 
-
 		enum class Flag
 		{
 			kNone = 0,
@@ -41,7 +36,6 @@ namespace RE
 			kLooping = 1 << 16,
 			kHeadTrackPlayer = 1 << 17
 		};
-
 
 		virtual ~BGSSceneAction();	// 00
 
@@ -65,7 +59,6 @@ namespace RE
 		virtual void		  Unk_11(void);										   // 11
 		virtual void		  Unk_12(void);										   // 12 - { return; }
 		virtual void		  Unk_13(void);										   // 13 - { return; }
-
 
 		// members
 		std::uint32_t						  actorID;	   // 08 - ALID

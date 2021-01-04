@@ -2,11 +2,9 @@
 
 #include "RE/B/BSTEvent.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	struct ItemCrafted
 	{
@@ -23,7 +21,6 @@ namespace RE
 			std::uint32_t pad0C;  // 0C
 		};
 		static_assert(sizeof(Event) == 0x10);
-
 
 		static BSTEventSource<ItemCrafted::Event>* GetEventSource();
 	};

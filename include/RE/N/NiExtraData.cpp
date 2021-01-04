@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	const BSFixedString& NiExtraData::GetName() const
@@ -10,12 +9,10 @@ namespace RE
 		return name;
 	}
 
-
 	void NiExtraData::SetName(const BSFixedString& a_name)
 	{
 		name = a_name;
 	}
-
 
 	NiExtraData* NiExtraData::Create(std::size_t a_size, std::uintptr_t a_vtbl)
 	{

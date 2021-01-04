@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkStringPtr
@@ -8,7 +7,6 @@ namespace RE
 	public:
 		// member types
 		using size_type = std::int32_t;
-
 
 		// members access
 		const char* data() const noexcept;
@@ -24,7 +22,6 @@ namespace RE
 		{
 			kManaged = 1 << 0
 		};
-
 
 		const char* _data;	// 0
 	};

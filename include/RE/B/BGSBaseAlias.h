@@ -2,20 +2,17 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class TESFile;
 	class TESForm;
 	class TESQuest;
 
-
 	class BGSBaseAlias
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
-
 
 		enum class FLAGS
 		{
@@ -47,7 +44,6 @@ namespace RE
 			kCreateIn = 1 << 31	 // BGSRefAlias
 		};
 
-
 		enum class FILL_TYPE  // BGSRefAlias
 		{
 			kConditions = 0,
@@ -60,7 +56,6 @@ namespace RE
 			kNearAlias = 7
 		};
 
-
 		virtual ~BGSBaseAlias();  // 00
 
 		// add
@@ -71,7 +66,6 @@ namespace RE
 		const BSFixedString& GetTypeString() const;
 		VMTypeID			 GetVMTypeID() const;
 		bool				 IsQuestObject() const;
-
 
 		// members
 		BSFixedString							   aliasName;	 // 08 - ALID

@@ -44,7 +44,6 @@
 
 #include <Windows.h>
 
-
 namespace RE
 {
 	BSSemaphoreBase::BSSemaphoreBase() :
@@ -54,19 +53,16 @@ namespace RE
 		semaphore = ::CreateSemaphoreA(nullptr, 0, 40, nullptr);
 	}
 
-
 	BSSemaphoreBase::~BSSemaphoreBase()
 	{
 		::CloseHandle(semaphore);
 		memzero(&semaphore);
 	}
 
-
 	BSSpinLock::BSSpinLock() :
 		_owningThread(0),
 		_lockCount(0)
 	{}
-
 
 	void BSSpinLock::Lock(std::uint32_t a_pauseAttempts)
 	{
@@ -97,7 +93,6 @@ namespace RE
 		}
 	}
 
-
 	void BSSpinLock::Unlock()
 	{
 		std::uint32_t myThreadID = GetCurrentThreadId();
@@ -114,12 +109,10 @@ namespace RE
 		}
 	}
 
-
 	BSReadWriteLock::BSReadWriteLock() :
 		_writerThread(0),
 		_lock(0)
 	{}
-
 
 	void BSReadWriteLock::LockForRead()
 	{
@@ -128,14 +121,12 @@ namespace RE
 		func(this);
 	}
 
-
 	void BSReadWriteLock::UnlockForRead()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForRead);
 		REL::Relocation<func_t> func{ Offset::BSReadWriteLock::UnlockForRead };
 		func(this);
 	}
-
 
 	void BSReadWriteLock::LockForWrite()
 	{
@@ -144,7 +135,6 @@ namespace RE
 		func(this);
 	}
 
-
 	void BSReadWriteLock::UnlockForWrite()
 	{
 		using func_t = decltype(&BSReadWriteLock::UnlockForWrite);
@@ -152,19 +142,16 @@ namespace RE
 		func(this);
 	}
 
-
 	BSSpinLockGuard::BSSpinLockGuard(BSSpinLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.Lock();
 	}
 
-
 	BSSpinLockGuard::~BSSpinLockGuard()
 	{
 		_lock.Unlock();
 	}
-
 
 	BSReadLockGuard::BSReadLockGuard(BSReadWriteLock& a_lock) :
 		_lock(a_lock)
@@ -172,19 +159,16 @@ namespace RE
 		_lock.LockForRead();
 	}
 
-
 	BSReadLockGuard::~BSReadLockGuard()
 	{
 		_lock.UnlockForRead();
 	}
-
 
 	BSWriteLockGuard::BSWriteLockGuard(BSReadWriteLock& a_lock) :
 		_lock(a_lock)
 	{
 		_lock.LockForWrite();
 	}
-
 
 	BSWriteLockGuard::~BSWriteLockGuard()
 	{

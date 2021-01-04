@@ -2,7 +2,6 @@
 
 #include "RE/T/TESTopic.h"
 
-
 namespace RE
 {
 	TESTopicInfo::ResponseData::~ResponseData()
@@ -17,12 +16,10 @@ namespace RE
 		return func(this, a_file);
 	}
 
-
 	float TOPIC_INFO_DATA::GetResetHours() const
 	{
 		return static_cast<float>(timeUntilReset);
 	}
-
 
 	DialogueItem TESTopicInfo::GetDialogueData(Actor* a_speaker)
 	{

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	//=====================================================
@@ -11,7 +10,6 @@ namespace RE
 	struct BSTSingletonExplicit
 	{};
 
-
 	//=====================================================
 	// BSTSingletonImplicit
 	//=====================================================
@@ -20,7 +18,6 @@ namespace RE
 	struct BSTSingletonImplicit
 	{};
 
-
 	//=====================================================
 	// BSTSingletonSDM
 	//=====================================================
@@ -28,11 +25,9 @@ namespace RE
 	template <class>
 	struct BSTSingletonSDMBase;
 
-
 	template <class T>
 	struct BSTSingletonSDMOpStaticBuffer
 	{};
-
 
 	template <class T, class Alloc = BSTSingletonSDMOpStaticBuffer<T>>
 	struct BSTSDMTraits
@@ -40,7 +35,6 @@ namespace RE
 		using Type = T;
 		using Allocator = Alloc;
 	};
-
 
 	template <class Traits>
 	struct BSTSingletonSDMBase :
@@ -50,7 +44,6 @@ namespace RE
 		using Type = typename Traits::Type;
 		using Allocator = typename Traits::Allocator;
 	};
-
 
 	template <class T, template <class> class Singleton = BSTSingletonSDMOpStaticBuffer>
 	struct BSTSingletonSDM : public BSTSingletonSDMBase<BSTSDMTraits<T, Singleton<T>>>

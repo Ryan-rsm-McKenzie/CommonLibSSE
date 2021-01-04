@@ -5,7 +5,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/EffectArchetypes.h"
 
-
 namespace RE
 {
 	class Actor;
@@ -16,21 +15,17 @@ namespace RE
 	class TESBoundObject;
 	class TESObjectREFR;
 
-
 	class MagicTarget
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MagicTarget;
 
-
 		using Archetype = EffectArchetypes::ArchetypeID;
-
 
 		class ForEachActiveEffectVisitor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
-
 
 			virtual ~ForEachActiveEffectVisitor();	// 00
 
@@ -38,7 +33,6 @@ namespace RE
 			virtual bool Accept(ActiveEffect* a_effect) = 0;  // 01
 		};
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
-
 
 		struct SpellDispelData
 		{
@@ -49,7 +43,6 @@ namespace RE
 			SpellDispelData*			  next;			 // 18
 		};
 		static_assert(sizeof(SpellDispelData) == 0x20);
-
 
 		virtual ~MagicTarget();	 // 00
 
@@ -69,7 +62,6 @@ namespace RE
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 		bool HasEffectWithArchetype(Archetype a_type);
 		bool HasMagicEffect(EffectSetting* a_effect);
-
 
 		// members
 		SpellDispelData* postUpdateDispelList;	// 08

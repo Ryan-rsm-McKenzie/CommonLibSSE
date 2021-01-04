@@ -2,14 +2,12 @@
 
 #include "RE/H/HeldStateHandler.h"
 
-
 namespace RE
 {
 	struct AttackBlockHandler : public HeldStateHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AttackBlockHandler;
-
 
 		virtual ~AttackBlockHandler();	// 00
 
@@ -18,7 +16,6 @@ namespace RE
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;	// 04
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event) override;				// 05
 		virtual void SetHeldStateActive(bool a_flag) override;									// 06
-
 
 		// members
 		std::uint64_t unk18;  // 18

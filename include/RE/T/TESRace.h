@@ -20,17 +20,14 @@
 #include "RE/T/TESSpellList.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class AttackAnimationArrayMap;
-
 
 	namespace BSResource
 	{
 		struct ID;
 	}
-
 
 	enum class RACE_SIZE
 	{
@@ -40,7 +37,6 @@ namespace RE
 		kExtraLarge = 3
 	};
 
-
 	struct RACE_DATA
 	{
 	public:
@@ -48,7 +44,6 @@ namespace RE
 		{
 			kNumSkillBoosts = 7
 		};
-
 
 		enum class Flag
 		{
@@ -87,7 +82,6 @@ namespace RE
 			kAvoidsRoads = 1 << 31,
 		};
 
-
 		enum class Flag2
 		{
 			kNone = 0,
@@ -95,7 +89,6 @@ namespace RE
 			kNonHostile = 1 << 1,
 			kAllowMountedCombat = 1 << 4
 		};
-
 
 		struct SkillBoost
 		{
@@ -105,7 +98,6 @@ namespace RE
 			std::uint8_t							   bonus;  // 1
 		};
 		static_assert(sizeof(SkillBoost) == 0x2);
-
 
 		// members
 		SkillBoost									  skillBoosts[kNumSkillBoosts];	 // 00
@@ -142,7 +134,6 @@ namespace RE
 	};
 	static_assert(sizeof(RACE_DATA) == 0xA4);
 
-
 	class TESRace :
 		public TESForm,				// 000
 		public TESFullName,			// 020
@@ -156,7 +147,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRace;
 		inline static constexpr auto FORMTYPE = FormType::Race;
-
 
 		enum class EquipmentFlag
 		{
@@ -176,7 +166,6 @@ namespace RE
 			kCrossbow = 1 << 12
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -186,7 +175,6 @@ namespace RE
 				kCritter = 1 << 19	// ?
 			};
 		};
-
 
 		struct MovementTypes
 		{
@@ -202,7 +190,6 @@ namespace RE
 			};
 		};
 
-
 		struct FaceRelatedData
 		{
 			enum
@@ -214,7 +201,6 @@ namespace RE
 
 				kNumVariants
 			};
-
 
 			struct Morph
 			{
@@ -230,7 +216,6 @@ namespace RE
 				std::uint32_t unk1C;	   // 1C
 			};
 			static_assert(sizeof(Morph) == 0x20);
-
 
 			struct TintAsset
 			{
@@ -257,7 +242,6 @@ namespace RE
 						kDirt = 14,
 					};
 
-
 					// members
 					std::uint16_t							 index;			 // 00 - TINI
 					stl::enumeration<SkinTone, std::uint8_t> skinTone;		 // 02 - TINP
@@ -267,7 +251,6 @@ namespace RE
 					BGSColorForm*							 presetDefault;	 // 18 - TIND
 				};
 				static_assert(sizeof(TintLayer) == 0x20);
-
 
 				struct Presets
 				{
@@ -279,13 +262,11 @@ namespace RE
 				};
 				static_assert(sizeof(Presets) == 0x48);
 
-
 				// members
 				TintLayer texture;	// 00
 				Presets	  presets;	// 20
 			};
 			static_assert(sizeof(TintAsset) == 0x68);
-
 
 			// members
 			Morph					  availableMorphs[kNumVariants];  // 00
@@ -300,7 +281,6 @@ namespace RE
 		};
 		static_assert(sizeof(FaceRelatedData) == 0xC8);
 
-
 		struct UnkData
 		{
 		public:
@@ -312,7 +292,6 @@ namespace RE
 			std::uint32_t	 pad14;			 // 14
 		};
 		static_assert(sizeof(UnkData) == 0x18);
-
 
 		virtual ~TESRace();	 // 00
 
@@ -327,7 +306,6 @@ namespace RE
 
 		bool AllowsPCDialogue() const;
 		bool AllowsPickpocket() const;
-
 
 		// members
 		TESModel									   skeletonModels[SEXES::kTotal];				   // 098 - ANAM

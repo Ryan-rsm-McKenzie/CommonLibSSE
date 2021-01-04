@@ -5,18 +5,15 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	class ExtraForcedTarget : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraForcedTarget;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
-
 
 		ExtraForcedTarget();
 		explicit ExtraForcedTarget(ObjectRefHandle a_target);
@@ -27,7 +24,6 @@ namespace RE
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return target != a_rhs->target; }
 
 		NiPointer<TESObjectREFR> GetTarget();
-
 
 		// members
 		ObjectRefHandle target;	 // 10

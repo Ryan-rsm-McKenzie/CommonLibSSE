@@ -2,7 +2,6 @@
 
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	MenuControls::QueuedReg::QueuedReg(MenuEventHandler* a_handler, bool a_add) :
@@ -13,19 +12,16 @@ namespace RE
 		pad0A(0)
 	{}
 
-
 	MenuControls* MenuControls::GetSingleton()
 	{
 		REL::Relocation<MenuControls**> singelton{ Offset::MenuControls::Singleton };
 		return *singelton;
 	}
 
-
 	void MenuControls::AddHandler(MenuEventHandler* a_handler)
 	{
 		return RegisterHandler(a_handler);
 	}
-
 
 	void MenuControls::RegisterHandler(MenuEventHandler* a_handler)
 	{
@@ -52,12 +48,10 @@ namespace RE
 		}
 	}
 
-
 	void MenuControls::RemoveHandler(MenuEventHandler* a_handler)
 	{
 		return UnregisterHandler(a_handler);
 	}
-
 
 	void MenuControls::UnregisterHandler(MenuEventHandler* a_handler)
 	{

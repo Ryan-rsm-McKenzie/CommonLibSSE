@@ -1,6 +1,5 @@
 #include "RE/P/PackedInstructionStream.h"
 
-
 namespace RE
 {
 	namespace BSScript

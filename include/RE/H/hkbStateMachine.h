@@ -7,17 +7,14 @@
 #include "RE/H/hkbEvent.h"
 #include "RE/H/hkbGenerator.h"
 
-
 namespace RE
 {
 	class hkbStateChooser;
-
 
 	class hkbStateMachine : public hkbGenerator
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbStateMachine;
-
 
 		enum class StartStateMode
 		{
@@ -27,7 +24,6 @@ namespace RE
 			kChooser = 3
 		};
 
-
 		enum class StateMachineSelfTransitionMode
 		{
 			kNoTransition = 0,
@@ -35,15 +31,12 @@ namespace RE
 			kForceTransitionToStartState = 2
 		};
 
-
 		class StateInfo : public hkbBindable
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_hkbStateMachine__StateInfo;
 
-
 			virtual ~StateInfo();  // 00
-
 
 			// members
 			std::uint64_t unk30;  // 30
@@ -58,22 +51,18 @@ namespace RE
 		};
 		static_assert(sizeof(StateInfo) == 0x78);
 
-
 		class TransitionInfoArray : public hkReferencedObject
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
 
-
 			virtual ~TransitionInfoArray();	 // 00
-
 
 			// members
 			std::uint64_t unk10;  // 10
 			std::uint64_t unk18;  // 18
 		};
 		static_assert(sizeof(TransitionInfoArray) == 0x20);
-
 
 		virtual ~hkbStateMachine();	 // 00
 
@@ -100,7 +89,6 @@ namespace RE
 		virtual void	 Unk_18(void) override;																				// 18 - { return 1; }
 		virtual void	 Unk_19(void) override;																				// 19
 		virtual void	 Unk_1B(void) override;																				// 1B - { echoNextUpdate = true; }
-
 
 		// members
 		hkbEvent													   eventToSendWhenStateOrTransitionChanges;	 // 048

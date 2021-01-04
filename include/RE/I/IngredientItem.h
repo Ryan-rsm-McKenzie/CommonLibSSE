@@ -10,7 +10,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class IngredientItem :
@@ -27,7 +26,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_IngredientItem;
 		inline static constexpr auto FORMTYPE = FormType::Ingredient;
 
-
 		enum class IngredientFlag
 		{
 			kNone = 0,
@@ -37,7 +35,6 @@ namespace RE
 			kReferencesPersist = 1 << 8
 		};
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -45,7 +42,6 @@ namespace RE
 				kIngredientUse = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -56,7 +52,6 @@ namespace RE
 			};
 		};
 
-
 		class Data	// ENIT
 		{
 		public:
@@ -66,7 +61,6 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-
 		struct GameData
 		{
 		public:
@@ -75,7 +69,6 @@ namespace RE
 			std::uint16_t playerUses;
 		};
 		static_assert(sizeof(GameData) == 0x4);
-
 
 		virtual ~IngredientItem();	// 00
 
@@ -104,7 +97,6 @@ namespace RE
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
-
 
 		// members
 		Data		  data;		 // 130 - ENIT

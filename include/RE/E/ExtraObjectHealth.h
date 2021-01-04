@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraObjectHealth : public BSExtraData
@@ -12,12 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraObjectHealth;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kObjectHealth;
 
-
 		virtual ~ExtraObjectHealth();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kObjectHealth; }
-
 
 		// members
 		float		  health;  // 10

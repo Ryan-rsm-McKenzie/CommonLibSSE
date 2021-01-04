@@ -1,10 +1,8 @@
 #pragma once
 
-
 namespace RE
 {
 	class type_info;
-
 
 	namespace RTTI
 	{
@@ -35,12 +33,10 @@ namespace RE
 		protected:
 			[[nodiscard]] bool is_good() const noexcept { return _rva != 0; }
 
-
 			// members
 			std::uint32_t _rva;	 // 00
 		};
 		static_assert(sizeof(RVA<void*>) == 0x4);
-
 
 		struct TypeDescriptor
 		{
@@ -52,7 +48,6 @@ namespace RE
 		};
 		static_assert(sizeof(TypeDescriptor) == 0x18);	// can be larger
 
-
 		struct PMD
 		{
 		public:
@@ -63,7 +58,6 @@ namespace RE
 		};
 		static_assert(sizeof(PMD) == 0xC);
 
-
 		struct BaseClassArray
 		{
 		public:
@@ -72,7 +66,6 @@ namespace RE
 				kNone = 0
 			};
 
-
 			// members
 			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
 			std::uint32_t							   numContainedBases;  // 04
@@ -80,7 +73,6 @@ namespace RE
 			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
 		};
 		static_assert(sizeof(BaseClassArray) == 0x18);
-
 
 		struct ClassHierarchyDescriptor
 		{
@@ -93,7 +85,6 @@ namespace RE
 				kAmbiguousInheritance = 1 << 2
 			};
 
-
 			// members
 			std::uint32_t							   signature;		// 00
 			stl::enumeration<Attribute, std::uint32_t> attributes;		// 04
@@ -101,7 +92,6 @@ namespace RE
 			RVA<BaseClassArray>						   baseClassArray;	// 0C
 		};
 		static_assert(sizeof(ClassHierarchyDescriptor) == 0x10);
-
 
 		struct CompleteObjectLocator
 		{
@@ -112,7 +102,6 @@ namespace RE
 				kX64 = 1
 			};
 
-
 			// members
 			stl::enumeration<Signature, std::uint32_t> signature;		 // 00
 			std::uint32_t							   offset;			 // 04
@@ -121,7 +110,6 @@ namespace RE
 			RVA<ClassHierarchyDescriptor>			   classDescriptor;	 // 10
 		};
 		static_assert(sizeof(CompleteObjectLocator) == 0x14);
-
 
 		struct BaseClassDescriptor
 		{
@@ -138,7 +126,6 @@ namespace RE
 				kHasHierarchyDescriptor = 1 << 6
 			};
 
-
 			// members
 			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
 			std::uint32_t							   numContainedBases;  // 04
@@ -147,10 +134,8 @@ namespace RE
 		};
 		static_assert(sizeof(BaseClassDescriptor) == 0x18);
 
-
 		void DumpTypeName(void* a_obj);
 	}
-
 
 	namespace SK_Impl
 	{
@@ -159,7 +144,6 @@ namespace RE
 			std::remove_pointer_t<
 				std::remove_reference_t<
 					std::remove_cv_t<T>>>;
-
 
 		template <class T>
 		struct target_is_valid :
@@ -170,7 +154,6 @@ namespace RE
 					void*,
 					std::remove_cv_t<T>>>
 		{};
-
 
 		template <class To, class From>
 		struct types_are_compat :
@@ -191,7 +174,6 @@ namespace RE
 					From>>
 		{};
 
-
 		template <class To, class From>
 		struct cast_is_valid :
 			std::conjunction<
@@ -206,7 +188,6 @@ namespace RE
 		inline constexpr bool cast_is_valid_v = cast_is_valid<To, From>::value;
 	}
 
-
 	inline void* RTDynamicCast(void* a_inptr, std::int32_t a_vfDelta, void* a_srcType, void* a_targetType, std::int32_t a_isReference)
 	{
 		using func_t = decltype(&RTDynamicCast);
@@ -214,7 +195,6 @@ namespace RE
 		return func(a_inptr, a_vfDelta, a_srcType, a_targetType, a_isReference);
 	}
 }
-
 
 template <
 	class To,

@@ -2,7 +2,6 @@
 
 #include "RE/P/PlayerCharacter.h"
 
-
 namespace RE
 {
 	auto ItemList::GetSelectedItem()
@@ -26,19 +25,16 @@ namespace RE
 		return items[idx];
 	}
 
-
 	void ItemList::Update()
 	{
 		auto player = RE::PlayerCharacter::GetSingleton();
 		Update(player);
 	}
 
-
 	void ItemList::Update(TESObjectREFR* a_owner)
 	{
 		Update_Impl(a_owner);
 	}
-
 
 	void ItemList::Update_Impl(TESObjectREFR* a_owner)
 	{

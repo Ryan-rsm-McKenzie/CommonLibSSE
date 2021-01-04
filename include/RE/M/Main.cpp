@@ -1,6 +1,5 @@
 #include "RE/M/Main.h"
 
-
 namespace RE
 {
 	Main* Main::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<Main**> singleton{ Offset::Main::Singleton };
 		return *singleton;
 	}
-
 
 	float Main::QFrameAnimTime()
 	{

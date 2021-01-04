@@ -8,7 +8,6 @@
 #include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESModelTri.h"
 
-
 namespace RE
 {
 	class BGSHeadPart :
@@ -20,7 +19,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSHeadPart;
 		inline static constexpr auto FORMTYPE = FormType::HeadPart;
 
-
 		enum class Flag	 // DATA
 		{
 			kNone = 0,
@@ -30,7 +28,6 @@ namespace RE
 			kIsExtraPart = 1 << 3,
 			kUseSolidTint = 1 << 4
 		};
-
 
 		enum class HeadPartType	 // PNAM
 		{
@@ -45,7 +42,6 @@ namespace RE
 			kTotal
 		};
 
-
 		struct MorphIndices
 		{
 			enum MorphIndex : std::uint32_t
@@ -59,7 +55,6 @@ namespace RE
 		};
 		using MorphIndex = MorphIndices::MorphIndex;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -69,7 +64,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSHeadPart();	 // 00
 
@@ -82,7 +76,6 @@ namespace RE
 		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		bool IsExtraPart();
-
 
 		// members
 		stl::enumeration<Flag, std::uint8_t>		  flags;						 // 068 - DATA

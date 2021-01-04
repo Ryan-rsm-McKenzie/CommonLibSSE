@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraHotkey : public BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHotkey;
-
 
 		enum class Hotkey
 		{
@@ -26,7 +24,6 @@ namespace RE
 			kSlot8 = 7
 		};
 
-
 		ExtraHotkey();
 		explicit ExtraHotkey(Hotkey a_hotkey);
 		virtual ~ExtraHotkey() = default;  // 00
@@ -34,7 +31,6 @@ namespace RE
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kHotkey }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { hotkey != a_rhs->hotkey; }
-
 
 		// members
 		stl::enumeration<Hotkey, std::uint8_t> hotkey;	// 10

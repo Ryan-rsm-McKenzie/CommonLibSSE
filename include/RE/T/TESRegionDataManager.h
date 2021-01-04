@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class REGION_DATA_ID;
@@ -15,12 +14,10 @@ namespace RE
 	class TESRegionDataSound;
 	class TESRegionDataWeather;
 
-
 	class TESRegionDataManager
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataManager;
-
 
 		virtual ~TESRegionDataManager();  // 00
 
@@ -34,7 +31,6 @@ namespace RE
 		virtual TESRegionDataGrass*		AsRegionDataGrass(TESRegionData* a_data) const;		   // 07
 		virtual TESRegionDataSound*		AsRegionDataSound(TESRegionData* a_data) const;		   // 08
 		virtual bool					LoadRegionData(TESFile* a_file, TESRegion* a_region);  // 09
-
 
 		// members
 		TESRegion* lastLoadedRegion;  // 08

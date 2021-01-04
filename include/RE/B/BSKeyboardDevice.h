@@ -2,14 +2,12 @@
 
 #include "RE/B/BSInputDevice.h"
 
-
 namespace RE
 {
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSKeyboardDevice;
-
 
 		struct Keys
 		{
@@ -128,7 +126,6 @@ namespace RE
 			};
 		};
 		using Key = Keys::Key;
-
 
 		virtual ~BSKeyboardDevice();  // 00
 

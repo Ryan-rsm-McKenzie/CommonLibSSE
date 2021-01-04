@@ -5,11 +5,9 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class BGSAnimationSequencer;
-
 
 	class ExtraAnimationSequencer : public BSExtraData
 	{
@@ -17,12 +15,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAnimationSequencer;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAnimationSequencer;
 
-
 		virtual ~ExtraAnimationSequencer();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimationSequencer; }
-
 
 		// members
 		BGSAnimationSequencer* sequencer;  // 10

@@ -10,7 +10,6 @@
 #include "RE/L/LocalMapMenu.h"
 #include "RE/M/MapCamera.h"
 
-
 namespace RE
 {
 	class BSAudioManager;
@@ -19,7 +18,6 @@ namespace RE
 	class MapZoomHandler;
 	class MenuOpenCloseEvent;
 	class TESWorldSpace;
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesCursor | kRendersOffscreenTargets | kCustomRendering
@@ -33,7 +31,6 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_MapMenu;
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
-
 		virtual ~MapMenu();	 // 00
 
 		// override (IMenu)
@@ -44,7 +41,6 @@ namespace RE
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
-
 
 		// members
 		BSTSmartPointer<MapMoveHandler> moveHandler;   // 00040

@@ -10,7 +10,6 @@
 #include "RE/T/TESModel.h"
 #include "RE/T/TESProduceForm.h"
 
-
 namespace RE
 {
 	struct OBJ_TREE	 // CNAM
@@ -30,7 +29,6 @@ namespace RE
 	};
 	static_assert(sizeof(OBJ_TREE) == 0x30);
 
-
 	struct BoneData
 	{
 		NiMatrix3	  localBoneRotation;			 // 00
@@ -39,7 +37,6 @@ namespace RE
 	};
 	static_assert(sizeof(BoneData) == 0x34);
 
-
 	struct BaseTreeData : public BSIntrusiveRefCounted
 	{
 		std::uint32_t		pad04;					   // 04
@@ -47,7 +44,6 @@ namespace RE
 		BSTArray<NiMatrix3> parentWorldBoneRotations;  // 20
 	};
 	static_assert(sizeof(BaseTreeData) == 0x38);
-
 
 	class TESObjectTREE :
 		public TESBoundObject,	// 00
@@ -59,7 +55,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectTREE;
 		inline static constexpr auto FORMTYPE = FormType::Tree;
 
-
 		enum class etTreeType
 		{
 			kShortAndThin = 0,
@@ -67,7 +62,6 @@ namespace RE
 			kTallAndThin = 2,
 			kTallAndThick = 3
 		};
-
 
 		struct RecordFlags
 		{
@@ -78,7 +72,6 @@ namespace RE
 				kHasDistantLOD = 1 << 15
 			};
 		};
-
 
 		virtual ~TESObjectTREE();  // 00
 
@@ -93,7 +86,6 @@ namespace RE
 		virtual void OnCheckModels() override;																																   // 50 - { return; }
 		virtual void OnCopyReference() override;																															   // 51 - { return; }
 		virtual void OnFinishScale() override;																																   // 52 - { return; }
-
 
 		// members
 		OBJ_TREE									data;	   // 88

@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	struct BSIntrusiveRefCounted
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		template <class>
 		friend struct BSTSmartPointerIntrusiveRefCount;
-
 
 		std::uint32_t IncRef() const
 		{

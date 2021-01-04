@@ -44,7 +44,6 @@
 
 #include <Windows.h>
 
-
 namespace RE
 {
 	GLock::Locker::Locker(GLock* a_lock)
@@ -53,12 +52,10 @@ namespace RE
 		lock->Lock();
 	}
 
-
 	GLock::Locker::~Locker()
 	{
 		lock->Unlock();
 	}
-
 
 	GLock::GLock(std::uint32_t a_spinCount)
 	{
@@ -67,18 +64,15 @@ namespace RE
 			a_spinCount);
 	}
 
-
 	GLock::~GLock()
 	{
 		::DeleteCriticalSection(reinterpret_cast<::LPCRITICAL_SECTION>(&cs));
 	}
 
-
 	void GLock::Lock()
 	{
 		::EnterCriticalSection(reinterpret_cast<::LPCRITICAL_SECTION>(&cs));
 	}
-
 
 	void GLock::Unlock()
 	{

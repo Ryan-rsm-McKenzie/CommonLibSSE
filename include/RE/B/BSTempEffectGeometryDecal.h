@@ -6,7 +6,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSGeometry;
@@ -14,13 +13,11 @@ namespace RE
 	class BGSTextureSet;
 	class QueuedTempEffect;
 
-
 	class BSTempEffectGeometryDecal : public BSTempEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectGeometryDecal;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectGeometryDecal;
-
 
 		virtual ~BSTempEffectGeometryDecal();  // 00
 
@@ -30,7 +27,6 @@ namespace RE
 		virtual bool			 Update(float a_arg1) override;	 // 28
 		virtual NiAVObject*		 Get3D() const override;		 // 29
 		virtual TEMP_EFFECT_TYPE GetType() const override;		 // 2C - { return kGeometryDecal; }
-
 
 		// members
 		NiPointer<BSGeometry>			  decal;				   // 30

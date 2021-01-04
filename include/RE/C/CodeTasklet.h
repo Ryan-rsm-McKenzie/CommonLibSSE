@@ -2,7 +2,6 @@
 
 #include "RE/I/IFuncCallQuery.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -11,17 +10,14 @@ namespace RE
 		class Stack;
 		class StackFrame;
 
-
 		namespace Internal
 		{
 			class VirtualMachine;
-
 
 			class CodeTasklet : public IFuncCallQuery
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__CodeTasklet;
-
 
 				enum class ResumeReason
 				{
@@ -32,7 +28,6 @@ namespace RE
 					kRetryInstruction = 4,
 					kFunctionCall = 5
 				};
-
 
 				enum class OpCode
 				{
@@ -74,12 +69,10 @@ namespace RE
 					kARRAY_RFINDELEMENT
 				};
 
-
 				virtual ~CodeTasklet();	 // 00
 
 				// override (IFuncCallQuery)
 				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;	// 01
-
 
 				// members
 				Stack*										  stack;					// 10

@@ -8,7 +8,6 @@
 #include "RE/T/TESObject.h"
 #include "RE/T/TESRaceForm.h"
 
-
 namespace RE
 {
 	struct OBJ_ARMA	 // DNAM
@@ -22,7 +21,6 @@ namespace RE
 	};
 	static_assert(sizeof(OBJ_ARMA) == 0xC);
 
-
 	class TESObjectARMA :
 		public TESObject,		   // 00
 		public TESRaceForm,		   // 20
@@ -32,7 +30,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectARMA;
 		inline static constexpr auto FORMTYPE = FormType::Armature;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -41,7 +38,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESObjectARMA();  // 00
 
@@ -53,7 +49,6 @@ namespace RE
 
 		bool IsValidRace(TESRace* a_sourceRace) const;
 		void GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);
-
 
 		// members
 		OBJ_ARMA			data;								  // 040 - DNAM

@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -22,7 +21,6 @@ namespace RE
 			void* GetHead();
 			void* GetTail();
 			bool  IsInRange(const void* a_ptr);
-
 
 			// members
 			std::uint32_t pageSize;	 // 00

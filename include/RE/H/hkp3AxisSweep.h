@@ -5,20 +5,16 @@
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpBroadPhase.h"
 
-
 namespace RE
 {
 	class hkpBroadPhaseHandle;
-
 
 	class hkp3AxisSweep : public hkpBroadPhase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkp3AxisSweep;
 
-
 		using BpInt = std::uint16_t;
-
 
 		enum class MarkerHandling
 		{
@@ -26,7 +22,6 @@ namespace RE
 			kIgnore,
 			kRemoveNewOverlaps
 		};
-
 
 		class hkpBpMarker
 		{
@@ -38,7 +33,6 @@ namespace RE
 			hkArray<BpInt> overlappingObjects;	// 08
 		};
 		static_assert(sizeof(hkpBpMarker) == 0x18);
-
 
 		class hkpBpNode
 		{
@@ -55,7 +49,6 @@ namespace RE
 		};
 		static_assert(sizeof(hkpBpNode) == 0x18);
 
-
 		class hkpBpEndPoint
 		{
 		public:
@@ -65,7 +58,6 @@ namespace RE
 		};
 		static_assert(sizeof(hkpBpEndPoint) == 0x4);
 
-
 		class hkpBpAxis
 		{
 		public:
@@ -73,7 +65,6 @@ namespace RE
 			hkArray<hkpBpEndPoint> endPoints;  // 00
 		};
 		static_assert(sizeof(hkpBpAxis) == 0x10);
-
 
 		virtual ~hkp3AxisSweep();  // 00
 
@@ -106,7 +97,6 @@ namespace RE
 		virtual void		   CalcAabbCache2(const hkArrayBase<hkpCollidable*>& a_overlappingCollidables, hkpBroadPhaseAabbCache* a_aabbCacheOut) const override;																						// 1C
 		virtual void		   CastAabb(const hkpCastAabbInput& a_input, hkpBroadPhaseCastCollector& a_collector) const override;																														// 1D
 		virtual void		   Set32BitOffsetAndScale(const hkVector4& a_offsetLow, const hkVector4& a_offsetHigh, const hkVector4& a_scale) override;																									// 1E
-
 
 		// members
 		hkAabb			   aabb;					   // 030

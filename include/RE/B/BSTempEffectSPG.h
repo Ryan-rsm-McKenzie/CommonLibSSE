@@ -3,19 +3,16 @@
 #include "RE/B/BSTempEffect.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSShaderParticleGeometryData;
 	class NiAVObject;
-
 
 	class BSTempEffectSPG : public BSTempEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectSPG;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectSPG;
-
 
 		virtual ~BSTempEffectSPG();	 // 00
 
@@ -26,7 +23,6 @@ namespace RE
 		virtual void			 SaveGame(BGSSaveGameBuffer* a_buf) override;		 // 2D
 		virtual void			 LoadGame(BGSLoadGameBuffer* a_buf) override;		 // 2E
 		virtual void			 FinishLoadGame(BGSLoadGameBuffer* a_buf) override;	 // 2F
-
 
 		// members;
 		BGSShaderParticleGeometryData* data;   // 30

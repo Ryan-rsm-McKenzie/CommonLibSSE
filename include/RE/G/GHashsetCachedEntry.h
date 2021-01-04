@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T, class Hash>
@@ -13,13 +12,11 @@ namespace RE
 			value{}
 		{}
 
-
 		GHashsetCachedEntry(const GHashsetCachedEntry& a_entry) :
 			nextInChain(a_entry.nextInChain),
 			hashValue(a_entry.hashValue),
 			value(a_entry.value)
 		{}
-
 
 		GHashsetCachedEntry(const T& a_key, SPInt a_next) :
 			nextInChain(a_next),
@@ -27,30 +24,25 @@ namespace RE
 			value(a_key)
 		{}
 
-
 		bool IsEmpty() const
 		{
 			return nextInChain == -2;
 		}
-
 
 		bool IsEndOfChain() const
 		{
 			return nextInChain == -1;
 		}
 
-
 		UPInt GetCachedHash(UPInt a_maskValue) const
 		{
 			return hashValue;
 		}
 
-
 		void SetCachedHash(UPInt a_hashValue)
 		{
 			hashValue = a_hashValue;
 		}
-
 
 		void Clear()
 		{
@@ -58,12 +50,10 @@ namespace RE
 			nextInChain = -2;
 		}
 
-
 		void Free()
 		{
 			Clear();
 		}
-
 
 		// members
 		SPInt nextInChain;	// 00

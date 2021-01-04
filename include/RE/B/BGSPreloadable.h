@@ -2,14 +2,12 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class BGSPreloadable : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPreloadable;
-
 
 		virtual ~BGSPreloadable();	// 00
 

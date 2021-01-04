@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct BSTLocklessQueue
@@ -16,7 +15,6 @@ namespace RE
 		};
 		static_assert(sizeof(PtrMultiProdCons<void*, 1, 1>) == 0x18);
 
-
 		template <class QueueContainer, class T, std::uint32_t SIZE, std::uint32_t UNKNOWN>
 		struct ObjQueueBase
 		{
@@ -24,7 +22,6 @@ namespace RE
 			QueueContainer queued;		// ??
 			QueueContainer free;		// ??
 		};
-
 
 		template <class T, std::uint32_t SIZE, std::uint32_t UNKNOWN>
 		class ObjMultiProdCons : public ObjQueueBase<PtrMultiProdCons<T, SIZE * 2, UNKNOWN>, T, SIZE, UNKNOWN>

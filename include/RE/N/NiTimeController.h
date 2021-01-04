@@ -3,21 +3,17 @@
 #include "RE/N/NiObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiObjectNET;
 
-
 	NiSmartPointer(NiTimeController);
-
 
 	class NiTimeController : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiTimeController;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiTimeController;
-
 
 		enum class CycleType
 		{
@@ -27,7 +23,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		enum class Flag
 		{
@@ -46,7 +41,6 @@ namespace RE
 			kComputeScaledTime = 1 << 6,
 			kForceUpdate = 1 << 7
 		};
-
 
 		inline NiTimeController() { ctor(); }
 		virtual ~NiTimeController() { dtor(); }	 // 00
@@ -73,7 +67,6 @@ namespace RE
 		virtual bool  TargetIsRequiredType() const = 0;				   // 2E
 
 		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
-
 
 		// members
 		stl::enumeration<Flag, std::uint16_t> flags;			 // 10

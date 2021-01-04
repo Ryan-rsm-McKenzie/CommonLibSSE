@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSScript
@@ -11,7 +10,6 @@ namespace RE
 			{
 			public:
 				PackedInstructionStream();
-
 
 				// members
 				std::uint32_t numInstructionBits;	   // 00

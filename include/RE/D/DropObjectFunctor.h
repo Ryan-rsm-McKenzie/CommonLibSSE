@@ -4,7 +4,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/D/DelayFunctor.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -12,14 +11,12 @@ namespace RE
 		class IVirtualMachine;
 	}
 
-
 	namespace SkyrimScript
 	{
 		class DropObjectFunctor : public DelayFunctor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript____DropObjectFunctor;
-
 
 			virtual ~DropObjectFunctor();  // 00
 
@@ -29,7 +26,6 @@ namespace RE
 			virtual bool				   SaveImpl(BSStorage& a_storage) const override;									   // 04
 			virtual FunctorType			   GetType() const override;														   // 05 - { return 12; }
 			virtual bool				   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3) override;  // 06
-
 
 			// members
 			ObjectRefHandle							   dropper;		 // 10

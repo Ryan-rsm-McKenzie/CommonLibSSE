@@ -2,7 +2,6 @@
 
 #include "SKSE/Logger.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -12,7 +11,6 @@ namespace SKSE
 			_eventName(a_eventName),
 			_lock()
 		{}
-
 
 		RegistrationSetBase::RegistrationSetBase(const RegistrationSetBase& a_rhs) :
 			_handles(),
@@ -32,7 +30,6 @@ namespace SKSE
 			}
 		}
 
-
 		RegistrationSetBase::RegistrationSetBase(RegistrationSetBase&& a_rhs) :
 			_handles(),
 			_eventName(a_rhs._eventName),
@@ -42,7 +39,6 @@ namespace SKSE
 			_handles = std::move(a_rhs._handles);
 			a_rhs._handles.clear();
 		}
-
 
 		RegistrationSetBase::~RegistrationSetBase()
 		{
@@ -54,7 +50,6 @@ namespace SKSE
 				}
 			}
 		}
-
 
 		RegistrationSetBase& RegistrationSetBase::operator=(const RegistrationSetBase& a_rhs)
 		{
@@ -82,7 +77,6 @@ namespace SKSE
 			return *this;
 		}
 
-
 		RegistrationSetBase& RegistrationSetBase::operator=(RegistrationSetBase&& a_rhs)
 		{
 			if (this == &a_rhs) {
@@ -102,13 +96,11 @@ namespace SKSE
 			return *this;
 		}
 
-
 		bool RegistrationSetBase::Register(const RE::TESForm* a_form)
 		{
 			assert(a_form);
 			return Register(a_form, static_cast<RE::VMTypeID>(a_form->GetFormType()));
 		}
-
 
 		bool RegistrationSetBase::Register(const RE::BGSBaseAlias* a_alias)
 		{
@@ -116,13 +108,11 @@ namespace SKSE
 			return Register(a_alias, a_alias->GetVMTypeID());
 		}
 
-
 		bool RegistrationSetBase::Register(const RE::ActiveEffect* a_effect)
 		{
 			assert(a_effect);
 			return Register(a_effect, RE::ActiveEffect::VMTYPEID);
 		}
-
 
 		bool RegistrationSetBase::Unregister(const RE::TESForm* a_form)
 		{
@@ -130,20 +120,17 @@ namespace SKSE
 			return Unregister(a_form, static_cast<RE::VMTypeID>(a_form->GetFormType()));
 		}
 
-
 		bool RegistrationSetBase::Unregister(const RE::BGSBaseAlias* a_alias)
 		{
 			assert(a_alias);
 			return Unregister(a_alias, a_alias->GetVMTypeID());
 		}
 
-
 		bool RegistrationSetBase::Unregister(const RE::ActiveEffect* a_effect)
 		{
 			assert(a_effect);
 			return Unregister(a_effect, RE::ActiveEffect::VMTYPEID);
 		}
-
 
 		void RegistrationSetBase::Clear()
 		{
@@ -158,7 +145,6 @@ namespace SKSE
 			_handles.clear();
 		}
 
-
 		bool RegistrationSetBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
 		{
 			assert(a_intfc);
@@ -169,7 +155,6 @@ namespace SKSE
 
 			return Save(a_intfc);
 		}
-
 
 		bool RegistrationSetBase::Save(SerializationInterface* a_intfc)
 		{
@@ -190,7 +175,6 @@ namespace SKSE
 
 			return true;
 		}
-
 
 		bool RegistrationSetBase::Load(SerializationInterface* a_intfc)
 		{
@@ -215,7 +199,6 @@ namespace SKSE
 
 			return true;
 		}
-
 
 		bool RegistrationSetBase::Register(const void* a_object, RE::VMTypeID a_typeID)
 		{
@@ -245,7 +228,6 @@ namespace SKSE
 			}
 			return result.second;
 		}
-
 
 		bool RegistrationSetBase::Unregister(const void* a_object, RE::VMTypeID a_typeID)
 		{

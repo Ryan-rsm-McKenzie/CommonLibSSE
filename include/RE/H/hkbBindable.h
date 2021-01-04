@@ -4,24 +4,20 @@
 #include "RE/H/hkRefPtr.h"
 #include "RE/H/hkReferencedObject.h"
 
-
 namespace RE
 {
 	class hkRefVariant;
 	class hkbVariableBindingSet;
-
 
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbBindable;
 
-
 		virtual ~hkbBindable();	 // 00
 
 		// add
 		virtual void Unk_03(void);	// 03
-
 
 		// members
 		hkRefPtr<hkbVariableBindingSet> variableBindingSet;	 // 10

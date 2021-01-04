@@ -1,6 +1,5 @@
 #include "RE/H/hkReferencedObject.h"
 
-
 namespace RE
 {
 	hkReferencedObject::hkReferencedObject() :
@@ -9,18 +8,15 @@ namespace RE
 		pad0C(0)
 	{}
 
-
 	const hkClass* hkReferencedObject::GetClassType() const
 	{
 		return nullptr;
 	}
 
-
 	void hkReferencedObject::CalcContentStatistics(hkStatisticsCollector*, const hkClass*) const
 	{
 		return;
 	}
-
 
 	void hkReferencedObject::AddReference() const
 	{
@@ -29,18 +25,15 @@ namespace RE
 		return func(this);
 	}
 
-
 	std::int32_t hkReferencedObject::GetAllocatedSize() const
 	{
 		return memSizeAndFlags & kMemSize;
 	}
 
-
 	std::int32_t hkReferencedObject::GetReferenceCount() const
 	{
 		return referenceCount;
 	}
-
 
 	void hkReferencedObject::RemoveReference() const
 	{

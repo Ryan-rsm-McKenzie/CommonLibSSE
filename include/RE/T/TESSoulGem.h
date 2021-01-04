@@ -4,7 +4,6 @@
 #include "RE/S/SoulLevels.h"
 #include "RE/T/TESObjectMISC.h"
 
-
 namespace RE
 {
 	class TESSoulGem : public TESObjectMISC
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESSoulGem;
 		inline static constexpr auto FORMTYPE = FormType::SoulGem;
-
 
 		struct RecordFlags
 		{
@@ -23,7 +21,6 @@ namespace RE
 				kCanHoldNPCSoul = 1 << 17
 			};
 		};
-
 
 		virtual ~TESSoulGem();	// 00
 
@@ -37,7 +34,6 @@ namespace RE
 
 		[[nodiscard]] constexpr SOUL_LEVEL GetContainedSoul() const noexcept { return *currentSoul; }
 		[[nodiscard]] constexpr SOUL_LEVEL GetMaximumCapacity() const noexcept { return *soulCapacity; }
-
 
 		// members
 		TESSoulGem*								   linkedSoulGem;  // 100 - NAM0

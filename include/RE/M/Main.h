@@ -4,7 +4,6 @@
 #include "RE/B/BSTMessageQueue.h"
 #include "RE/S/ScrapHeap.h"
 
-
 namespace RE
 {
 	class ScrapHeap;
@@ -12,12 +11,10 @@ namespace RE
 	struct BSPackedTask;
 	struct PositionPlayerEvent;
 
-
 	struct BSPackedTaskQueue
 	{
 	public:
 		using UnpackFunc_t = void(const BSPackedTask*);
-
 
 		struct Semaphore
 		{
@@ -29,14 +26,12 @@ namespace RE
 		};
 		static_assert(sizeof(Semaphore) == 0x10);
 
-
 		// members
 		BSTCommonScrapHeapMessageQueue<BSPackedTask> queue;		  // 00
 		mutable Semaphore							 semaphore;	  // 28
 		UnpackFunc_t*								 unpackFunc;  // 38
 	};
 	static_assert(sizeof(BSPackedTaskQueue) == 0x40);
-
 
 	struct BSSaveDataSystemUtilityImage
 	{
@@ -50,14 +45,12 @@ namespace RE
 	};
 	static_assert(sizeof(BSSaveDataSystemUtilityImage) == 0x18);
 
-
 	class Main :
 		public BSTEventSink<PositionPlayerEvent>,  // 00
 		public BSTEventSink<BSGamerProfileEvent>   // 08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Main;
-
 
 		virtual ~Main();  // 00
 
@@ -70,7 +63,6 @@ namespace RE
 		static Main* GetSingleton();
 
 		static float QFrameAnimTime();
-
 
 		// members
 		bool						 quitGame;					   // 010

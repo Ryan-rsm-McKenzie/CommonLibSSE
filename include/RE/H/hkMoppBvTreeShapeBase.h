@@ -4,18 +4,15 @@
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpBvTreeShape.h"
 
-
 namespace RE
 {
 	class hkpMoppCode;
 	class hkTransform;
 
-
 	class hkMoppBvTreeShapeBase : public hkpBvTreeShape
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkMoppBvTreeShapeBase;
-
 
 		virtual ~hkMoppBvTreeShapeBase();  // 00
 
@@ -26,7 +23,6 @@ namespace RE
 
 		// add
 		virtual void QueryObb(const hkTransform& a_obbToMopp, const hkVector4& a_extent, float tolerance, hkArray<hkpShapeKey>& a_hits) const;	// 0E
-
 
 		// members
 		const hkpMoppCode*	code;		   // 28

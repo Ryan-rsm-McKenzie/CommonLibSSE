@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSISoundOutputModel
@@ -8,11 +7,9 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSISoundOutputModel;
 
-
 		struct BSIAttenuationCharacteristics
 		{
 			inline static constexpr auto RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
-
 
 			virtual ~BSIAttenuationCharacteristics();  // 00
 
@@ -22,7 +19,6 @@ namespace RE
 			virtual std::uint8_t GetCurveValue(std::uint32_t a_idx) const = 0;	// 03
 		};
 		static_assert(sizeof(BSIAttenuationCharacteristics) == 0x8);
-
 
 		virtual ~BSISoundOutputModel();	 // 00
 

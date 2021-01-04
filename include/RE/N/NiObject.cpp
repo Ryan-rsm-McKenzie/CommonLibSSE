@@ -3,7 +3,6 @@
 #include "RE/N/NiRTTI.h"
 #include "RE/N/NiStream.h"
 
-
 namespace RE
 {
 	const NiRTTI* NiObject::GetRTTI() const
@@ -12,12 +11,10 @@ namespace RE
 		return rtti.type();
 	}
 
-
 	bool NiObject::RegisterStreamables(NiStream& a_stream)
 	{
 		return a_stream.RegisterSaveObject(this);
 	}
-
 
 	bool NiObject::IsEqual(NiObject* a_object)
 	{
@@ -26,14 +23,12 @@ namespace RE
 					 false;
 	}
 
-
 	void NiObject::ProcessClone(NiCloningProcess& a_cloning)
 	{
 		using func_t = decltype(&NiObject::ProcessClone);
 		REL::Relocation<func_t> func{ REL::ID(68838) };
 		return func(this, a_cloning);
 	}
-
 
 	void NiObject::CreateDeepCopy(NiPointer<NiObject>& a_object)
 	{

@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraIgnoredBySandbox : public BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraIgnoredBySandbox;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kIgnoredBySandbox;
-
 
 		virtual ~ExtraIgnoredBySandbox();  // 00
 

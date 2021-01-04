@@ -6,11 +6,9 @@
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class NiFormArray;
-
 
 	struct IDLE_DATA  // DATA
 	{
@@ -24,7 +22,6 @@ namespace RE
 			kBlocking = 1 << 3
 		};
 
-
 		// members
 		std::int8_t							 loopMin;				   // 0
 		std::int8_t							 loopMax;				   // 1
@@ -34,13 +31,11 @@ namespace RE
 	};
 	static_assert(sizeof(IDLE_DATA) == 0x6);
 
-
 	class TESIdleForm : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESIdleForm;
 		inline static constexpr auto FORMTYPE = FormType::Idle;
-
 
 		struct RecordFlags
 		{
@@ -50,7 +45,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESIdleForm();	 // 00
 
@@ -62,7 +56,6 @@ namespace RE
 		virtual void		InitItemImpl() override;											// 13
 		virtual const char* GetFormEditorID() const override;									// 32 - { return formEditorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;						// 33
-
 
 		// members
 		TESCondition  conditions;	  // 20

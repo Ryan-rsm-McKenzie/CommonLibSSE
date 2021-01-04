@@ -4,7 +4,6 @@
 #include "RE/S/Setting.h"
 #include "RE/T/TESGlobal.h"
 
-
 namespace RE
 {
 	Calendar* Calendar::GetSingleton()
@@ -13,18 +12,15 @@ namespace RE
 		return *singleton;
 	}
 
-
 	float Calendar::GetCurrentGameTime() const
 	{
 		return gameDaysPassed ? gameDaysPassed->value : 1.0F;
 	}
 
-
 	float Calendar::GetDay() const
 	{
 		return gameDay ? gameDay->value : 17.0F;
 	}
-
 
 	std::string Calendar::GetDayName() const
 	{
@@ -63,12 +59,10 @@ namespace RE
 		return setting ? setting->GetString() : "Bad Day";
 	}
 
-
 	std::uint32_t Calendar::GetDayOfWeek() const
 	{
 		return static_cast<std::uint32_t>(GetDaysPassed()) % 7;
 	}
-
 
 	float Calendar::GetDaysPassed() const
 	{
@@ -82,24 +76,20 @@ namespace RE
 		return func(this, a_dest, a_max, a_showYear);
 	}
 
-
 	float Calendar::GetHour() const
 	{
 		return gameHour ? gameHour->value : 12.0F;
 	}
-
 
 	float Calendar::GetHoursPassed() const
 	{
 		return GetDaysPassed() * 24.0F;
 	}
 
-
 	std::uint32_t Calendar::GetMonth() const
 	{
 		return gameMonth ? static_cast<std::uint32_t>(gameMonth->value) : 7;
 	}
-
 
 	std::string Calendar::GetMonthName() const
 	{
@@ -151,7 +141,6 @@ namespace RE
 		return setting ? setting->GetString() : "Bad Month";
 	}
 
-
 	std::tm Calendar::GetTime() const
 	{
 		std::tm time;
@@ -174,12 +163,10 @@ namespace RE
 		return time;
 	}
 
-
 	float Calendar::GetTimescale() const
 	{
 		return timeScale->value;
 	}
-
 
 	std::uint32_t Calendar::GetYear() const
 	{

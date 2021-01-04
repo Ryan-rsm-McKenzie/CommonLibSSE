@@ -2,14 +2,12 @@
 
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class BGSLoadGameBuffer;
 	class BGSSaveGameBuffer;
 	class NiAVObject;
 	class TESObjectCELL;
-
 
 	enum class TEMP_EFFECT_TYPE
 	{
@@ -27,13 +25,11 @@ namespace RE
 		kMagicSummon = 11
 	};
 
-
 	class BSTempEffect : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffect;
-
 
 		virtual ~BSTempEffect();  // 00
 
@@ -78,7 +74,6 @@ namespace RE
 		virtual bool			 GetStackableMatch(BSTempEffect* a_effect) const;  // 33 - { return false; }
 		virtual void			 Push();										   // 34 - { return; }
 		virtual void			 Pop();											   // 35 - { return; }
-
 
 		// members
 		float		   lifetime;	 // 10

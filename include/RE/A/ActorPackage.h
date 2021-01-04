@@ -3,12 +3,10 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 
-
 namespace RE
 {
 	class ActorPackageData;
 	class TESPackage;
-
 
 	class ActorPackage
 	{
@@ -18,7 +16,6 @@ namespace RE
 			kNone = 0,
 			kSaveLoadSharedPackage = 1 << 0
 		};
-
 
 		// members
 		mutable BSSpinLock								  packageLock;			  // 00

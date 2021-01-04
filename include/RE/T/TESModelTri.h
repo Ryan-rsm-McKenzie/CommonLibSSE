@@ -2,14 +2,12 @@
 
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESModelTri : public TESModel
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModelTri;
-
 
 		virtual ~TESModelTri();	 // 00
 

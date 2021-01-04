@@ -3,14 +3,12 @@
 #include "RE/B/BGSMusicTrack.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class BGSMusicPaletteTrack : public BGSMusicTrack
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicPaletteTrack;
-
 
 		virtual ~BGSMusicPaletteTrack();  // 00
 
@@ -23,7 +21,6 @@ namespace RE
 		virtual TrackType GetType() const override;						 // 06 - "BGSMusicPaletteTrack"
 		virtual void	  InitItem(TESForm* a_form) override;			 // 0B
 		virtual void	  Load(TESFile* a_mod) override;				 // 0C
-
 
 		// members
 		BSTArray<BSIMusicTrack*> layers[3];			 // 20 - SNAM - tracks are split based on null entries on the record

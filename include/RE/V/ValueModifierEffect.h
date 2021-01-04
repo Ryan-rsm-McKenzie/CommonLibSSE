@@ -3,14 +3,12 @@
 #include "RE/A/ActiveEffect.h"
 #include "RE/A/ActorValues.h"
 
-
 namespace RE
 {
 	class ValueModifierEffect : public ActiveEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ValueModifierEffect;
-
 
 		// override (ActiveEffect)
 		virtual void Unk_01(void) override;	 // 01
@@ -35,7 +33,6 @@ namespace RE
 		virtual void Unk_1E(void);	// 1E
 		virtual void Unk_1F(void);	// 1F
 		virtual void Unk_20(void);	// 20
-
 
 		// members
 		ActorValue	  actorValue;  // 90

@@ -2,7 +2,6 @@
 
 #include "RE/N/NiExtraData.h"
 
-
 namespace RE
 {
 	class NiStringsExtraData : public NiExtraData
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiStringsExtraData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiStringsExtraData;
-
 
 		virtual ~NiStringsExtraData();	// 00
 
@@ -22,7 +20,6 @@ namespace RE
 		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return NiExtraData::RegisterStreamables(a_stream); }
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C
-
 
 		// members
 		std::uint32_t size;	  // 18

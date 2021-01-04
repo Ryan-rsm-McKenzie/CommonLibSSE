@@ -1,6 +1,5 @@
 #include "RE/B/BSResponse.h"
 
-
 namespace RE
 {
 	ResponseDictionary* ResponseDictionary::GetSingleton()

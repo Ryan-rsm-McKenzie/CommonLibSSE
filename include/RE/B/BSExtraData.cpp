@@ -2,25 +2,21 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	BSExtraData::BSExtraData() :
 		next(nullptr)
 	{}
 
-
 	bool BSExtraData::IsNotEqual(const BSExtraData*) const
 	{
 		return false;
 	}
 
-
 	bool BSExtraData::operator==(const BSExtraData& a_rhs) const
 	{
 		return !operator!=(a_rhs);
 	}
-
 
 	bool BSExtraData::operator!=(const BSExtraData& a_rhs) const
 	{
@@ -30,7 +26,6 @@ namespace RE
 			return IsNotEqual(&a_rhs);
 		}
 	}
-
 
 	BSExtraData* BSExtraData::Create(std::size_t a_size, std::uintptr_t a_vtbl)
 	{

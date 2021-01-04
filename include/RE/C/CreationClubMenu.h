@@ -6,11 +6,9 @@
 #include "RE/I/ImageData.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class MenuOpenCloseEvent;
-
 
 	// menuDepth = 0
 	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
@@ -24,7 +22,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_CreationClubMenu;
 		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
-
 
 		virtual ~CreationClubMenu();  // 00
 
@@ -40,7 +37,6 @@ namespace RE
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
-
 
 		// members
 		ImageData background;  // 58

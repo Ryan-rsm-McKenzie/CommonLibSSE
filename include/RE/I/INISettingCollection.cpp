@@ -1,6 +1,5 @@
 #include "RE/I/INISettingCollection.h"
 
-
 namespace RE
 {
 	INISettingCollection* INISettingCollection::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<INISettingCollection**> singleton{ Offset::INISettingCollection::Singleton };
 		return *singleton;
 	}
-
 
 	Setting* INISettingCollection::GetSetting(const char* a_name)
 	{

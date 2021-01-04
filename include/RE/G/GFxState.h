@@ -3,14 +3,12 @@
 #include "RE/G/GRefCountBase.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	class GFxState : public GRefCountBase<GFxState, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GFxState;
-
 
 		// An enumeration type defining the type of a State object, such as kRenderConfig, kFSCommandHandler, State_Log, etc. Only one State object of each type can be set on the loader or a movie.
 		enum class StateType
@@ -59,7 +57,6 @@ namespace RE
 			kSharedObject,	// SharedObjectManagerBase state for handling shared objects
 			kLocSupport
 		};
-
 
 		// State constructor, only invoked from derived classes. The constructor takes a StateType as an argument, which defines the state type; this value cannot be changed after object creation
 		GFxState(StateType a_st = StateType::kNone);

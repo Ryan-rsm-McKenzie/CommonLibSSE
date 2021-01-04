@@ -2,17 +2,14 @@
 
 #include "RE/B/BSIInputDevice.h"
 
-
 namespace RE
 {
 	class BSPCGamepadDeviceDelegate;
-
 
 	class BSPCGamepadDeviceHandler : public BSIInputDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceHandler;
-
 
 		virtual ~BSPCGamepadDeviceHandler();  // 00
 
@@ -25,7 +22,6 @@ namespace RE
 		virtual void		  Unk_06() override;													  // 06
 		virtual bool		  IsEnabled() const override;											  // 07 - { return currentPCGamePadDelegate != 0; }
 		virtual void		  Reset() override;														  // 08
-
 
 		// members
 		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08

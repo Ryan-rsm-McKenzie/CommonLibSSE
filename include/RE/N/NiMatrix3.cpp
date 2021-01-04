@@ -3,14 +3,12 @@
 #include "RE/N/NiMath.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	bool NiMatrix3::ToEulerAnglesXYZ(NiPoint3& a_angle) const
 	{
 		return ToEulerAnglesXYZ(a_angle.x, a_angle.y, a_angle.z);
 	}
-
 
 	bool NiMatrix3::ToEulerAnglesXYZ(float& a_xAngle, float& a_yAngle, float& a_zAngle) const
 	{

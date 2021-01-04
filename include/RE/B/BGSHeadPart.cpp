@@ -1,6 +1,5 @@
 #include "RE/B/BGSHeadPart.h"
 
-
 namespace RE
 {
 	bool BGSHeadPart::IsExtraPart()

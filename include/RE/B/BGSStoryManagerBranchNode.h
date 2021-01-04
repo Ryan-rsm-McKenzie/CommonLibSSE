@@ -4,7 +4,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSStoryManagerBranchNode : public BGSStoryManagerNodeBase
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerBranchNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerBranchNode;
-
 
 		struct RecordFlags
 		{
@@ -23,7 +21,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSStoryManagerBranchNode();  // 00
 
 		// override (BGSStoryManagerNodeBase)
@@ -32,7 +29,6 @@ namespace RE
 		virtual std::uint32_t							 QChildCount() const override;									 // 3B - { return nodeChildren.size(); }
 		virtual BGSStoryManagerTreeForm*				 GetChild(std::uint32_t a_idx) const override;					 // 3C - { return children[a_idx]; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	 // 3E - { return a_visitor->VisitBranchNode(this); }
-
 
 		// members
 		BSTArray<BGSStoryManagerNodeBase*> children;  // 48

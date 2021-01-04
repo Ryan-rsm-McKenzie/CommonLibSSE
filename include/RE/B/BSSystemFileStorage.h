@@ -2,14 +2,12 @@
 
 #include "RE/B/BSStorage.h"
 
-
 namespace RE
 {
 	class BSSystemFileStorage : public BSStorage
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSSystemFileStorage;
-
 
 		struct Attributes
 		{
@@ -28,14 +26,12 @@ namespace RE
 				kUnkFlag = 1 << 31	// top bit isn't part of the error, mask 0x7FFFFFFF to get the error
 			};
 
-
 			// members
 			stl::enumeration<Error, std::uint32_t> lastError;  // 00
 			std::uint32_t						   pad24;	   // 04
 			void*								   handle;	   // 08
 		};
 		static_assert(sizeof(Attributes) == 0x10);
-
 
 		virtual ~BSSystemFileStorage();	 // 00
 
@@ -47,7 +43,6 @@ namespace RE
 		virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;				 // 05
 
 		bool IsGoodForRead() const;
-
 
 		// members
 		Attributes	  attributes;	// 20

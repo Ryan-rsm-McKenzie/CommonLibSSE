@@ -4,7 +4,6 @@
 #include "RE/E/ErrorCodes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -14,12 +13,10 @@ namespace RE
 		class Stream;
 		struct Info;
 
-
 		class Location
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__Location;
-
 
 			Location();
 			virtual ~Location();  // 00
@@ -41,7 +38,6 @@ namespace RE
 
 			ErrorCode DoGetInfo(const char* a_path, Info& a_info, Location*& a_location);
 			ErrorCode DoGetInfo(const char* a_path, Info& a_info, LocationTraverser* a_traverser);
-
 
 			// members
 			bool		  mounted;	// 08

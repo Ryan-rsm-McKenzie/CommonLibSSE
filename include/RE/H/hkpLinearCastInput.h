@@ -2,7 +2,6 @@
 
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	struct hkpLinearCastInput

@@ -7,7 +7,6 @@
 #include "RE/H/hkpMaterial.h"
 #include "RE/H/hkpWorldObject.h"
 
-
 namespace RE
 {
 	class hkLocalFrame;
@@ -20,12 +19,10 @@ namespace RE
 	class hkpSimulationIsland;
 	struct hkConstraintInternal;
 
-
 	class hkpEntity : public hkpWorldObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpEntity;
-
 
 		enum class SpuCollisionCallbackEventFilter
 		{
@@ -35,7 +32,6 @@ namespace RE
 			kContactPointRemoved = 1 << 2,
 			kContactPointAddedOrProcess = kContactPointAdded | kContactPointProcess
 		};
-
 
 		class SmallArraySerializeOverrideType
 		{
@@ -47,7 +43,6 @@ namespace RE
 			std::uint32_t pad0C;			 // 0C
 		};
 		static_assert(sizeof(SmallArraySerializeOverrideType) == 0x10);
-
 
 		struct SpuCollisionCallback
 		{
@@ -61,7 +56,6 @@ namespace RE
 		};
 		static_assert(sizeof(SpuCollisionCallback) == 0x10);
 
-
 		struct ExtendedListeners
 		{
 		public:
@@ -71,7 +65,6 @@ namespace RE
 		};
 		static_assert(sizeof(ExtendedListeners) == 0x20);
 
-
 		virtual ~hkpEntity();  // 00
 
 		// override (hkpWorldObject)
@@ -80,7 +73,6 @@ namespace RE
 
 		// add
 		virtual void DeallocateInternalArrays();  // 06
-
 
 		// members
 		hkpMaterial						   material;							  // 0D0

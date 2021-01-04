@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	// forward list
@@ -408,7 +407,6 @@ namespace RE
 				// already required size
 			}
 		}
-
 
 		// members
 		Node _listHead;	 // 00

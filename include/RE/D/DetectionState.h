@@ -3,7 +3,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiRefObject.h"
 
-
 namespace RE
 {
 	class DetectionState : public NiRefObject
@@ -11,9 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_DetectionState;
 
-
 		virtual ~DetectionState();	// 00
-
 
 		// members
 		std::int32_t level;	 // 10

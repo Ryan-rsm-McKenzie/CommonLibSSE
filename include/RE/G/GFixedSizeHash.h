@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -17,7 +16,6 @@ namespace RE
 			}
 			return hash;
 		}
-
 
 		UPInt operator()(const T& a_data) const
 		{

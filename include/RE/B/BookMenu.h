@@ -6,13 +6,11 @@
 #include "RE/I/ImageData.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
-
 namespace RE
 {
 	struct BSAnimationGraphEvent;
 
 	class TESObjectREFR;
-
 
 	// menuDepth = 1
 	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kRequiresUpdate | kTopmostRenderedMenu | kRendersOffscreenTargets
@@ -25,7 +23,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
-
 
 		virtual ~BookMenu();  // 00
 

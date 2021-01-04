@@ -1,6 +1,5 @@
 #include "RE/M/MemoryPage.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -10,12 +9,10 @@ namespace RE
 			return buf;
 		}
 
-
 		void* MemoryPage::GetTail()
 		{
 			return adjust_pointer<void>(GetHead(), pageSize);
 		}
-
 
 		bool MemoryPage::IsInRange(const void* a_ptr)
 		{

@@ -3,18 +3,15 @@
 #include "RE/B/BGSSceneAction.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class TESPackage;
-
 
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSceneActionPackage;
 		inline static constexpr auto TYPE = Type::kPackage;
-
 
 		virtual ~BGSSceneActionPackage();  // 00
 
@@ -30,7 +27,6 @@ namespace RE
 		virtual void Unk_11(void) override;										   // 11
 		virtual void Unk_12(void) override;										   // 12
 		virtual void Unk_13(void) override;										   // 13
-
 
 		// members
 		std::uint64_t		  unk20;	 // 20

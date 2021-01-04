@@ -13,7 +13,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	enum class TES_LIGHT_FLAGS
@@ -35,7 +34,6 @@ namespace RE
 		kPortalStrict = 1 << 13
 	};
 
-
 	struct OBJ_LIGH	 // DATA
 	{
 	public:
@@ -53,7 +51,6 @@ namespace RE
 	};
 	static_assert(sizeof(OBJ_LIGH) == 0x28);
 
-
 	class TESObjectLIGH :
 		public TESBoundAnimObject,		   // 000
 		public TESFullName,				   // 030
@@ -69,7 +66,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectLIGH;
 		inline static constexpr auto FORMTYPE = FormType::Light;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -81,7 +77,6 @@ namespace RE
 				kObstacle = 1 << 25
 			};
 		};
-
 
 		virtual ~TESObjectLIGH();  // 00
 
@@ -101,7 +96,6 @@ namespace RE
 		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot) override;	// 05 - { return; }
 
 		[[nodiscard]] constexpr bool CanBeCarried() const noexcept { return data.flags.all(TES_LIGHT_FLAGS::kCanCarry); }
-
 
 		// members
 		OBJ_LIGH				data;			 // 0E0 - DATA

@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSListForm : public TESForm
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSListForm;
 		inline static constexpr auto FORMTYPE = FormType::FormList;
-
 
 		struct ChangeFlags
 		{
@@ -22,7 +20,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -31,7 +28,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSListForm();	 // 00
 
@@ -46,7 +42,6 @@ namespace RE
 		void AddForm(TESForm* a_form);
 		bool HasForm(const TESForm* a_form) const;
 		bool HasForm(FormID a_formID) const;
-
 
 		// members
 		BSTArray<TESForm*> forms;				  // 20 - LNAM

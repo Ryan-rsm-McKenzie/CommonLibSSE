@@ -9,13 +9,11 @@
 #include "RE/C/Crime.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class Actor;
 	class BSTempEffect;
 	class SyncQueueObj;
-
 
 	class ProcessLists : public BSTSingletonSDM<ProcessLists>
 	{
@@ -25,7 +23,6 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_ProcessLists__GetActorsFilter;
 
-
 			virtual ~GetActorsFilter();	 // 00
 
 			// add
@@ -33,12 +30,10 @@ namespace RE
 		};
 		static_assert(sizeof(GetActorsFilter) == 0x8);
 
-
 		static ProcessLists* GetSingleton();
 
 		void ClearCachedFactionFightReactions() const;
 		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
-
 
 		// members
 		bool									runDetection;								   // 001

@@ -2,7 +2,6 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	namespace Movement
@@ -22,7 +21,6 @@ namespace RE
 		};
 		using SPEED_DIRECTION = SPEED_DIRECTIONS::SPEED_DIRECTION;
 
-
 		struct MaxSpeeds
 		{
 		public:
@@ -34,13 +32,11 @@ namespace RE
 				kTotal
 			};
 
-
 			// members
 			float speeds[SPEED_DIRECTIONS::kTotal][kTotal];	 // 00
 			float rotateWhileMovingRun;						 // 28
 		};
 		static_assert(sizeof(MaxSpeeds) == 0x2C);
-
 
 		struct TypeData
 		{

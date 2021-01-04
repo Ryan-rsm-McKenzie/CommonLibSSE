@@ -3,18 +3,15 @@
 #include "RE/B/BSTList.h"
 #include "RE/T/TESRegionData.h"
 
-
 namespace RE
 {
 	struct WeatherType;
-
 
 	class TESRegionDataWeather : public TESRegionData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataWeather;
 		inline static constexpr auto TYPE = Type::kWeather;
-
 
 		virtual ~TESRegionDataWeather();  // 00
 
@@ -27,7 +24,6 @@ namespace RE
 
 		// add
 		virtual void Unk_08(void);	// 08
-
 
 		// members
 		BSSimpleList<WeatherType*> weatherTypes;  // 10

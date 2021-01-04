@@ -12,7 +12,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class TESObjectMISC :
@@ -31,7 +30,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectMISC;
 		inline static constexpr auto FORMTYPE = FormType::Misc;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -41,7 +39,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESObjectMISC();  // 00
 

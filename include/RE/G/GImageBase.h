@@ -3,7 +3,6 @@
 #include "RE/G/GArray.h"
 #include "RE/G/GColor.h"
 
-
 namespace RE
 {
 	class GImageBase
@@ -25,7 +24,6 @@ namespace RE
 			kYUV_822 = 200,
 			kYUVA_8228 = 201,
 		};
-
 
 		stl::enumeration<ImageFormat, std::uint32_t> format;	   // 00
 		std::uint32_t								 width;		   // 04

@@ -5,12 +5,10 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/M/MagicTarget.h"
 
-
 namespace RE
 {
 	class ActiveEffect;
 	class TESObjectREFR;
-
 
 	class NonActorMagicTarget :
 		public BSExtraData,	 // 00
@@ -19,7 +17,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NonActorMagicTarget;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNonActorMagicTarget;
-
 
 		virtual ~NonActorMagicTarget();	 // 00
 
@@ -31,7 +28,6 @@ namespace RE
 		virtual TESObjectREFR*				 GetTargetStatsObject() override;  // 02 - { return targetObject; }
 		virtual bool						 CanAddActiveEffect() override;	   // 06 - { return true; }
 		virtual BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;   // 07 - { return &activeEffects; }
-
 
 		// members
 		TESObjectREFR*				targetObject;	// 28

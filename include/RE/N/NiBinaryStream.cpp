@@ -1,6 +1,5 @@
 #include "RE/N/NiBinaryStream.h"
 
-
 namespace RE
 {
 	NiBinaryStream::NiBinaryStream() :
@@ -10,20 +9,16 @@ namespace RE
 		_writeFn(nullptr)
 	{}
 
-
 	NiBinaryStream::~NiBinaryStream()
 	{}
-
 
 	std::uint32_t NiBinaryStream::tell() const
 	{
 		return _absoluteCurrentPos;
 	}
 
-
 	void NiBinaryStream::get_info([[maybe_unused]] BufferInfo& a_buf)
 	{}
-
 
 	std::uint32_t NiBinaryStream::binary_read(void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents)
 	{
@@ -33,7 +28,6 @@ namespace RE
 		_absoluteCurrentPos += bytesRead;
 		return bytesRead;
 	}
-
 
 	std::uint32_t NiBinaryStream::binary_write(const void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents)
 	{

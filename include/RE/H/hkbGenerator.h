@@ -2,14 +2,12 @@
 
 #include "RE/H/hkbNode.h"
 
-
 namespace RE
 {
 	class hkbGenerator : public hkbNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbGenerator;
-
 
 		virtual ~hkbGenerator();  // 00
 

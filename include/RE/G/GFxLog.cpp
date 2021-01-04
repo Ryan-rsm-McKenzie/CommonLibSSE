@@ -1,12 +1,10 @@
 #include "RE/G/GFxLog.h"
 
-
 namespace RE
 {
 	GFxLog::GFxLog() :
 		GFxState(StateType::kLog)
 	{}
-
 
 	void GFxLog::LogMessageVarg([[maybe_unused]] LogMessageType a_messageType, const char* a_fmt, va_list a_argList)
 	{
@@ -17,7 +15,6 @@ namespace RE
 		va_end(args);
 		WinAPI::OutputDebugString(buf.data());
 	}
-
 
 	void GFxLog::LogMessageByType(LogMessageType a_messageType, const char* a_fmt, ...)
 	{

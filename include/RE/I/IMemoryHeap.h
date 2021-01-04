@@ -2,11 +2,9 @@
 
 #include "RE/I/IMemoryStore.h"
 
-
 namespace RE
 {
 	enum class MEM_CONTEXT : std::int32_t;
-
 
 	struct HeapStats
 	{
@@ -29,12 +27,10 @@ namespace RE
 	};
 	static_assert(sizeof(HeapStats) == 0x68);
 
-
 	class IMemoryHeap : public IMemoryStore
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMemoryHeap;
-
 
 		virtual ~IMemoryHeap() = default;  // 00
 

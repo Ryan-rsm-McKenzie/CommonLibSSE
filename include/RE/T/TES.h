@@ -6,7 +6,6 @@
 #include "RE/I/ICellAttachDetachEventSource.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -34,24 +33,20 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TES;
 
-
 		class SystemEventAdapter : public BSTEventSink<BSSystemEvent>
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_TES;
-
 
 			virtual ~SystemEventAdapter();	// 00
 
 			// override (BSTEventSink<BSSystemEvent>)
 			virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	 // 01
 
-
 			// members
 			std::uint64_t unk08;  // 08
 		};
 		static_assert(sizeof(SystemEventAdapter) == 0x10);
-
 
 		virtual ~TES();	 // 00
 
@@ -62,7 +57,6 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;	 // 01
 
 		static TES* GetSingleton();
-
 
 		// members
 		std::uint64_t										  unk070;					  // 070

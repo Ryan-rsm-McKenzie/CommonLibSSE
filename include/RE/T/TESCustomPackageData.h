@@ -6,13 +6,11 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/T/TESPackageData.h"
 
-
 namespace RE
 {
 	class IPackageData;
 	class IProcedureTreeItem;
 	class TESPackage;
-
 
 	struct BGSPackageDataList
 	{
@@ -24,7 +22,6 @@ namespace RE
 		std::uint32_t  pad14;	  // 14
 	};
 	static_assert(sizeof(BGSPackageDataList) == 0x18);
-
 
 	struct BGSPackageDataNameMap : public BSIntrusiveRefCounted
 	{
@@ -38,7 +35,6 @@ namespace RE
 				kPublic = 1 << 0
 			};
 
-
 			// members
 			BSFixedString name;		 // 00 - BNAM
 			std::int8_t	  uid;		 // 08 - UNAM
@@ -49,19 +45,16 @@ namespace RE
 		};
 		static_assert(sizeof(NameMapData) == 0x10);
 
-
 		// members
 		std::uint32_t		  pad04;	// 04
 		BSTArray<NameMapData> nameMap;	// 08
 	};
 	static_assert(sizeof(BGSPackageDataNameMap) == 0x20);
 
-
 	class TESCustomPackageData : public TESPackageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCustomPackageData;
-
 
 		virtual ~TESCustomPackageData();  // 00
 
@@ -70,7 +63,6 @@ namespace RE
 		virtual void InitItem(TESForm* a_form) override;						 // 03
 		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;				 // 04 - { return; }
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;				 // 05 - { return; }
-
 
 		// members
 		BGSPackageDataList					   data;					 // 08

@@ -2,7 +2,6 @@
 
 #include "RE/H/hkpCharacterProxy.h"
 
-
 namespace RE
 {
 	hkpCharacterProxy* bhkCharProxyController::GetCharacterProxy() const

@@ -4,14 +4,12 @@
 #include "RE/B/BSString.h"
 #include "RE/I/IUIMessageData.h"
 
-
 namespace RE
 {
 	class BSUIMessageData : public IUIMessageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSUIMessageData;
-
 
 		union Data
 		{
@@ -22,9 +20,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-
 		virtual ~BSUIMessageData();	 // 00
-
 
 		// members
 		BSString*	  str;		 // 10

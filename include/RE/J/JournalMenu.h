@@ -7,11 +7,9 @@
 #include "RE/J/Journal_SystemTab.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class BSSystemEvent;
-
 
 	// menuDepth = 5
 	// flags = kPausesGame | kUsesMenuContext | kFreezeFrameBackground | kRequiresUpdate | kTopmostRenderedMenu | kUpdateUsesCursor | kAllowSaving
@@ -25,7 +23,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_JournalMenu;
 		constexpr static std::string_view MENU_NAME = "Journal Menu";
-
 
 		virtual ~JournalMenu();	 // 00
 
@@ -41,7 +38,6 @@ namespace RE
 
 		// override (BSTEventSink<BSSystemEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	 // 01
-
 
 		// members
 		Journal_QuestsTab questsTab;  // 48

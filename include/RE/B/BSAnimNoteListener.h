@@ -3,11 +3,9 @@
 #include "RE/B/BSAnimNote.h"
 #include "RE/N/NiTArray.h"
 
-
 namespace RE
 {
 	class IBSAnimNoteReceiver;
-
 
 	class BSAnimNoteListener
 	{
@@ -21,7 +19,6 @@ namespace RE
 			IBSAnimNoteReceiver*									  receiver;	 // 08
 		};
 		static_assert(sizeof(BSAnimReceiverType) == 0x10);
-
 
 		// members
 		NiTPrimitiveArray<BSAnimReceiverType*> receivers;  // 00

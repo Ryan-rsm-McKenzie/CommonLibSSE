@@ -5,7 +5,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/R/ReferenceEffect.h"
 
-
 namespace RE
 {
 	class BSEffectShaderData;
@@ -13,13 +12,11 @@ namespace RE
 	class TESBoundObject;
 	class TESEffectShader;
 
-
 	class ShaderReferenceEffect : public ReferenceEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ShaderReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ShaderReferenceEffect;
-
 
 		struct Data048
 		{
@@ -28,14 +25,12 @@ namespace RE
 		};
 		static_assert(sizeof(Data048) == 0x10);
 
-
 		struct Data090
 		{
 			std::uint64_t unk00;  // 00 - smart ptr
 			std::uint64_t unk08;  // 08 - smart ptr
 		};
 		static_assert(sizeof(Data090) == 0x10);
-
 
 		virtual ~ShaderReferenceEffect();  // 00
 
@@ -60,7 +55,6 @@ namespace RE
 		virtual void			 UpdatePosition() override;									// 3B
 		virtual void			 Unk_3C(void) override;										// 3C
 		virtual void			 Unk_3E(void) override;										// 3E
-
 
 		// members
 		BSTArray<Data048>	  unk048;			 // 048

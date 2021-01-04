@@ -1,10 +1,8 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESFile;
-
 
 	template <class T>
 	class SettingCollection
@@ -22,7 +20,6 @@ namespace RE
 		virtual void Unk_07(void);					   // 07 - { return 0; }
 		virtual void Unk_08(void);					   // 08 - { return handle != 0; }
 		virtual void Unk_09(void);					   // 09 - { return handle != 0; }
-
 
 		// members
 		const char*	  subKey;  // 008

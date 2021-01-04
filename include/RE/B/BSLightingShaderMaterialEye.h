@@ -4,17 +4,14 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiSourceTexture;
-
 
 	class BSLightingShaderMaterialEye : public BSLightingShaderMaterialBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialEye;
-
 
 		virtual ~BSLightingShaderMaterialEye();	 // 00
 
@@ -29,7 +26,6 @@ namespace RE
 		virtual void			  GetTextures(void) override;						// 0B
 		virtual void			  SaveBinary(void) override;						// 0C
 		virtual void			  LoadBinary(void) override;						// 0D
-
 
 		// members
 		NiPointer<NiSourceTexture> envTexture;		// A0

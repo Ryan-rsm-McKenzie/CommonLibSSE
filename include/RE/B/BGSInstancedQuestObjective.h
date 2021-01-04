@@ -2,11 +2,9 @@
 
 #include "RE/Q/QuestObjectiveStates.h"
 
-
 namespace RE
 {
 	class BGSQuestObjective;
-
 
 	class BGSInstancedQuestObjective
 	{

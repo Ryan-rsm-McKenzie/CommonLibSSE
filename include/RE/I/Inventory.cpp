@@ -1,6 +1,5 @@
 #include "RE/I/Inventory.h"
 
-
 namespace RE
 {
 	BSTEventSource<Inventory::Event>* Inventory::GetEventSource()

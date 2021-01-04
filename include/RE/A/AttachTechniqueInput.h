@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSAttachTechniques
@@ -10,12 +9,10 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSAttachTechniques__AttachTechniqueInput;
 
-
 			virtual ~AttachTechniqueInput();  // 00
 
 			// add
 			virtual void Unk_01(void);	// 01
-
 
 			// members
 			void*		  unk08;  // 08 - smart ptr

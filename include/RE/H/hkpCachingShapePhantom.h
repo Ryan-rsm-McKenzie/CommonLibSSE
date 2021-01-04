@@ -2,24 +2,20 @@
 
 #include "RE/H/hkpShapePhantom.h"
 
-
 namespace RE
 {
 	class hkpCollisionAgent;
-
 
 	class hkpCachingShapePhantom : public hkpShapePhantom
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCachingShapePhantom;
 
-
 		class OrderByUid
 		{
 		public:
 		};
 		static_assert(sizeof(OrderByUid) == 0x1);
-
 
 		struct CollisionDetail
 		{
@@ -28,9 +24,7 @@ namespace RE
 		};
 		static_assert(sizeof(CollisionDetail) == 0x10);
 
-
 		using hkpCollisionDetail = CollisionDetail;
-
 
 		virtual ~hkpCachingShapePhantom();	// 00
 
@@ -48,7 +42,6 @@ namespace RE
 		virtual void		   SetTransformAndLinearCast(const hkTransform& a_transform, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) override;	// 10
 		virtual void		   GetClosestPoints(hkpCdPointCollector& a_collector, const hkpCollisionInput* a_input = 0) override;																					// 11
 		virtual void		   GetPenetrations(hkpCdBodyPairCollector& a_collector, const hkpCollisionInput* a_input = 0) override;																					// 12
-
 
 		// members
 		hkArray<CollisionDetail> collisionDetails;	// 1A0

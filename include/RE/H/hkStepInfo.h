@@ -2,7 +2,6 @@
 
 #include "RE/H/hkBaseTypes.h"
 
-
 namespace RE
 {
 	class hkStepInfo

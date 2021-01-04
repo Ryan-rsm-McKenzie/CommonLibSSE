@@ -1,6 +1,5 @@
 #include "RE/E/ExtraLightData.h"
 
-
 namespace RE
 {
 	ExtraLightDataStruct::ExtraLightDataStruct() :
@@ -13,7 +12,6 @@ namespace RE
 		pad12(0)
 	{}
 
-
 	ExtraLightData::ExtraLightData() :
 		BSExtraData(),
 		data(),
@@ -23,12 +21,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraLightData::GetType() const
 	{
 		return ExtraDataType::kLightData;
 	}
-
 
 	bool ExtraLightData::IsNotEqual(const BSExtraData* a_rhs) const
 	{

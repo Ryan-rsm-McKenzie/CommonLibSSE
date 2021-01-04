@@ -2,17 +2,14 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESIdleForm;
-
 
 	class BGSIdleCollection : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSIdleCollection;
-
 
 		enum class IdleFlags
 		{
@@ -24,14 +21,12 @@ namespace RE
 			kNoSandbox = 1 << 4
 		};
 
-
 		virtual ~BGSIdleCollection();  // 00
 
 		// override (BaseFormComponent)
 		virtual void InitializeDataComponent() override;				// 01
 		virtual void ClearDataComponent() override;						// 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
-
 
 		// members
 		stl::enumeration<IdleFlags, std::int8_t> idleFlags;			 // 08 - IDLF

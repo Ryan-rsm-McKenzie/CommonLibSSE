@@ -2,14 +2,12 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	struct LookHandler : public PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_LookHandler;
-
 
 		virtual ~LookHandler();	 // 00
 

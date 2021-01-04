@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -13,15 +12,12 @@ namespace RE
 			class IFuncCallQuery;
 		}
 
-
 		class Variable;
-
 
 		class IProfilePolicy
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IProfilePolicy;
-
 
 			virtual ~IProfilePolicy();	// 00
 

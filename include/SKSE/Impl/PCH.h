@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <algorithm>
 #include <array>
 #include <bitset>
@@ -62,7 +61,6 @@ namespace SKSE
 {
 	using namespace std::literals;
 
-
 	namespace stl
 	{
 		using nonstd::span;
@@ -98,7 +96,6 @@ namespace SKSE
 			inline constexpr bool can_construct_at_v = can_construct_at<T, Args...>::value;
 		}
 
-
 		template <class T>
 		struct is_bounded_array :
 			std::false_type
@@ -112,7 +109,6 @@ namespace SKSE
 		template <class T>
 		inline constexpr bool is_bounded_array_v = is_bounded_array<T>::value;
 
-
 		template <class T>
 		struct is_unbounded_array :
 			std::false_type
@@ -125,7 +121,6 @@ namespace SKSE
 
 		template <class T>
 		inline constexpr bool is_unbounded_array_v = is_unbounded_array<T>::value;
-
 
 		template <
 			class T,
@@ -142,7 +137,6 @@ namespace SKSE
 					static_cast<const volatile void*>(a_ptr)))
 				T(std::forward<Args>(a_args)...);
 		}
-
 
 		template <class T>
 		void destroy_at(T* a_ptr)
@@ -197,7 +191,6 @@ namespace SKSE
 			const char*			_fileName{ "" };
 			const char*			_functionName{ "" };
 		};
-
 
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg, source_location a_loc = source_location::current())
 		{
@@ -261,7 +254,6 @@ namespace SKSE
 			WinAPI::MessageBox(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
 			WinAPI::TerminateProcess(WinAPI::GetCurrentProcess(), EXIT_FAILURE);
 		}
-
 
 		template <
 			class Enum,
@@ -596,7 +588,6 @@ namespace SKSE
 		static_assert(atomic_ref<std::uint64_t>::is_always_lock_free);
 	}
 
-
 	inline namespace util
 	{
 		// owning pointer
@@ -606,7 +597,6 @@ namespace SKSE
 				std::is_pointer_v<T>>>
 		using owner = T;
 
-
 		// non-owning pointer
 		template <
 			class T,
@@ -614,14 +604,12 @@ namespace SKSE
 				std::is_pointer_v<T>>>
 		using observer = T;
 
-
 		// non-null pointer
 		template <
 			class T,
 			class = std::enable_if_t<
 				std::is_pointer_v<T>>>
 		using not_null = T;
-
 
 		template <class T>
 		struct ssizeof
@@ -633,10 +621,8 @@ namespace SKSE
 			static constexpr auto value = static_cast<std::ptrdiff_t>(sizeof(T));
 		};
 
-
 		template <class T>
 		inline constexpr auto ssizeof_v = ssizeof<T>::value;
-
 
 		// + operator
 		template <
@@ -653,7 +639,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// += operator
 		template <
 			class Enum,
@@ -665,7 +650,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs + a_rhs;
 		}
-
 
 		// - operator
 		template <
@@ -682,7 +666,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// -= operator
 		template <
 			class Enum,
@@ -694,7 +677,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs - a_rhs;
 		}
-
 
 		// ~ operator
 		template <
@@ -708,7 +690,6 @@ namespace SKSE
 			using underlying_type_t = std::underlying_type_t<Enum>;
 			return static_cast<Enum>(~static_cast<underlying_type_t>(a_val));
 		}
-
 
 		// & operator
 		template <
@@ -725,7 +706,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// &= operator
 		template <
 			class Enum,
@@ -737,7 +717,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs & a_rhs;
 		}
-
 
 		// | operator
 		template <
@@ -754,7 +733,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// |= operator
 		template <
 			class Enum,
@@ -766,7 +744,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs | a_rhs;
 		}
-
 
 		// ^ operator
 		template <
@@ -783,7 +760,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// ^= operator
 		template <
 			class Enum,
@@ -795,7 +771,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs ^ a_rhs;
 		}
-
 
 		// << operator
 		template <
@@ -812,7 +787,6 @@ namespace SKSE
 				<< static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// <<= operator
 		template <
 			class Enum,
@@ -824,7 +798,6 @@ namespace SKSE
 		{
 			return a_lhs = a_lhs << a_rhs;
 		}
-
 
 		// >> operator
 		template <
@@ -841,7 +814,6 @@ namespace SKSE
 				static_cast<underlying_type_t>(a_rhs));
 		}
 
-
 		// >>= operator
 		template <
 			class Enum,
@@ -854,7 +826,6 @@ namespace SKSE
 			return a_lhs = a_lhs >> a_rhs;
 		}
 
-
 		// prefix ++ operator
 		template <
 			class Enum,
@@ -866,7 +837,6 @@ namespace SKSE
 		{
 			return a_this += static_cast<Enum>(1);
 		}
-
 
 		// postfix ++ operator
 		template <
@@ -882,7 +852,6 @@ namespace SKSE
 			return tmp;
 		}
 
-
 		// prefix -- operator
 		template <
 			class Enum,
@@ -894,7 +863,6 @@ namespace SKSE
 		{
 			return a_this -= static_cast<Enum>(1);
 		}
-
 
 		// postfix ++ operator
 		template <
@@ -910,7 +878,6 @@ namespace SKSE
 			return tmp;
 		}
 
-
 		template <
 			class Enum,
 			std::enable_if_t<
@@ -922,7 +889,6 @@ namespace SKSE
 			using underlying_type_t = std::underlying_type_t<Enum>;
 			return static_cast<underlying_type_t>(a_val);
 		}
-
 
 		template <class To, class From>
 		[[nodiscard]] To unrestricted_cast(From a_from)
@@ -963,7 +929,6 @@ namespace SKSE
 			}
 		}
 
-
 		template <class T, class U>
 		[[nodiscard]] auto adjust_pointer(U* a_ptr, std::ptrdiff_t a_adjust) noexcept
 		{
@@ -979,7 +944,6 @@ namespace SKSE
 			}
 		}
 
-
 		inline void memzero(void* a_dst, std::size_t a_size)
 		{
 			// msvc stl bug
@@ -989,13 +953,11 @@ namespace SKSE
 			std::fill(beg, end, val);
 		}
 
-
 		template <class T>
 		void memzero(T* a_dst)
 		{
 			memzero(a_dst, sizeof(T));
 		}
-
 
 		template <
 			class... Args,

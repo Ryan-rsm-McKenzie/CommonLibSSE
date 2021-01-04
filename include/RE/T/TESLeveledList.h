@@ -5,13 +5,11 @@
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class TESFaction;
 	class TESForm;
 	class TESGlobal;
-
 
 	struct LEVELED_OBJECT
 	{
@@ -25,12 +23,10 @@ namespace RE
 	};
 	static_assert(sizeof(LEVELED_OBJECT) == 0x18);
 
-
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLeveledList;
-
 
 		enum Flag : std::uint8_t  // LVLF
 		{
@@ -39,7 +35,6 @@ namespace RE
 			kUseAll = 1 << 2,
 			kSpecialLoot = 1 << 3
 		};
-
 
 		virtual ~TESLeveledList();	// 00
 
@@ -55,7 +50,6 @@ namespace RE
 		virtual bool		 GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
 
 		std::vector<TESForm*> GetContainedForms() const;
-
 
 		// members
 		SimpleArray<LEVELED_OBJECT> entries;	   // 08

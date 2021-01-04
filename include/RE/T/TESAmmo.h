@@ -13,7 +13,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	struct AMMO_DATA  // DATA
@@ -27,7 +26,6 @@ namespace RE
 			kNonBolt = 1 << 2
 		};
 
-
 		// members
 		BGSProjectile*						 projectile;  // 00
 		stl::enumeration<Flag, std::uint8_t> flags;		  // 08
@@ -36,7 +34,6 @@ namespace RE
 		float								 damage;	  // 0C
 	};
 	static_assert(sizeof(AMMO_DATA) == 0x10);
-
 
 	class TESAmmo :
 		public TESBoundObject,			   // 000
@@ -55,7 +52,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESAmmo;
 		inline static constexpr auto FORMTYPE = FormType::Ammo;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -65,7 +61,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESAmmo();	 // 00
 
@@ -84,7 +79,6 @@ namespace RE
 
 		bool IgnoresNormalWeaponResistance();
 		bool IsBolt();
-
 
 		// members
 		AMMO_DATA	  data;		  // 110 - DATA

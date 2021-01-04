@@ -5,7 +5,6 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkAabb;
@@ -16,15 +15,12 @@ namespace RE
 	class hkpCollidable;
 	struct hkAabbUint32;
 
-
 	using hkpBroadPhaseAabbCache = char;
-
 
 	class hkpBroadPhase : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpBroadPhase;
-
 
 		enum class BroadPhaseType
 		{
@@ -32,7 +28,6 @@ namespace RE
 			k32Bit,
 			kHybrid
 		};
-
 
 		enum class Capabilities
 		{
@@ -44,7 +39,6 @@ namespace RE
 			kCharProxyInt = 1 << 4,
 			kISASweepAndPrune = 1 << 12
 		};
-
 
 		struct hkpCastRayInput
 		{
@@ -60,7 +54,6 @@ namespace RE
 		};
 		static_assert(sizeof(hkpCastRayInput) == 0x30);
 
-
 		struct hkpCastAabbInput
 		{
 		public:
@@ -72,7 +65,6 @@ namespace RE
 			std::uint64_t				  pad38;		  // 38
 		};
 		static_assert(sizeof(hkpCastAabbInput) == 0x40);
-
 
 		virtual ~hkpBroadPhase();  // 00
 
@@ -110,7 +102,6 @@ namespace RE
 		void AddObject(hkpBroadPhaseHandle* a_object, const hkAabb& a_aabb, hkArray<hkpBroadPhaseHandlePair>& a_pairsOut);
 		void CalcAabbCache(const hkAabb& a_aabb, hkpBroadPhaseAabbCache* a_aabbCacheOut) const;
 		void CalcAabbCache(const hkArrayBase<hkpCollidable*>& a_overlappingCollidables, hkpBroadPhaseAabbCache* a_aabbCacheOut) const;
-
 
 		// members
 		const stl::enumeration<BroadPhaseType, std::uint16_t> type;				 // 10

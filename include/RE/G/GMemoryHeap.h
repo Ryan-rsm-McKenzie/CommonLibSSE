@@ -4,7 +4,6 @@
 #include "RE/G/GList.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	struct GAllocDebugInfo;
@@ -12,7 +11,6 @@ namespace RE
 	struct GHeapSegVisitor;
 	struct GStatBag;
 	struct GSysAllocPaged;
-
 
 	class GMemoryHeap : public GListNode<GMemoryHeap>
 	{
@@ -35,7 +33,6 @@ namespace RE
 			kHeapsOnly
 		};
 
-
 		enum class HeapFlags
 		{
 			kNone = 0,
@@ -46,7 +43,6 @@ namespace RE
 			kNoDebugInfo = 1 << 4,
 			kUserDebug = 1 << 12
 		};
-
 
 		struct RootHeapParameters
 		{
@@ -59,7 +55,6 @@ namespace RE
 				kLimit = 0
 			};
 		};
-
 
 		struct HeapDesc
 		{
@@ -75,7 +70,6 @@ namespace RE
 
 			void Clear();
 
-
 			// members
 			stl::enumeration<HeapFlags, std::uint32_t> flags;		 // 00
 			std::uint32_t							   pad04;		 // 04
@@ -89,14 +83,12 @@ namespace RE
 		};
 		static_assert(sizeof(HeapDesc) == 0x40);
 
-
 		struct RootHeapDesc : public HeapDesc
 		{
 		public:
 			RootHeapDesc();
 		};
 		static_assert(sizeof(RootHeapDesc) == 0x40);
-
 
 		struct HeapInfo
 		{
@@ -108,7 +100,6 @@ namespace RE
 		};
 		static_assert(sizeof(HeapInfo) == 0x50);
 
-
 		struct HeapVisitor
 		{
 		public:
@@ -118,7 +109,6 @@ namespace RE
 			virtual void Visit(GMemoryHeap* a_parentHeap, GMemoryHeap* a_childHeap) = 0;  // 01
 		};
 		static_assert(sizeof(HeapVisitor) == 0x8);
-
 
 		struct LimitHandler
 		{
@@ -130,7 +120,6 @@ namespace RE
 			virtual void OnFreeSegment(GMemoryHeap* a_heap, UPInt a_freeingSize) = 0;  // 02
 		};
 		static_assert(sizeof(LimitHandler) == 0x8);
-
 
 		struct HeapTracer
 		{
@@ -145,7 +134,6 @@ namespace RE
 			virtual void OnFree(const GMemoryHeap* a_heap, const void* a_ptr) = 0;												  // 05
 		};
 		static_assert(sizeof(HeapTracer) == 0x8);
-
 
 		struct RootStats
 		{
@@ -233,7 +221,6 @@ namespace RE
 
 	protected:
 		using ChildListType = GList<GMemoryHeap>;
-
 
 		// members
 		UPInt				   _selfSize;		 // 18

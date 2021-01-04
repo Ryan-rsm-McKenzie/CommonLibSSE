@@ -3,7 +3,6 @@
 #include "RE/B/BSGameSound.h"
 #include "RE/I/IXAudio2VoiceCallback.h"
 
-
 namespace RE
 {
 	class BSXAudio2GameSound :
@@ -12,7 +11,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSXAudio2GameSound;
-
 
 		// override (BSGameSound)
 		virtual void Unk_00(void) override;	 // 00
@@ -39,7 +37,6 @@ namespace RE
 		virtual void Unk_16(void) override;	 // 16
 		virtual void Unk_17(void) override;	 // 17
 		virtual void Unk_18(void) override;	 // 18
-
 
 		// members
 		std::uint64_t unk0C8;  // 0C8

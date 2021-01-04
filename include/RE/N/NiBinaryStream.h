@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiBinaryStream
@@ -8,11 +7,9 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiBinaryStream;
 
-
 		using int_type = std::int32_t;
 		using pos_type = std::uint32_t;
 		using off_type = std::int32_t;
-
 
 		struct BufferInfo
 		{
@@ -27,7 +24,6 @@ namespace RE
 			std::uint32_t pad1C;			// 1C
 		};
 		static_assert(sizeof(BufferInfo) == 0x20);
-
 
 		NiBinaryStream();
 		virtual ~NiBinaryStream();	// 00
@@ -52,10 +48,8 @@ namespace RE
 		using ReadFn = std::uint32_t(NiBinaryStream* a_this, void* a_buffer, std::uint32_t a_bytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents);
 		using WriteFn = std::uint32_t(NiBinaryStream* a_this, const void* a_buffer, std::uint32_t a_bytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents);
 
-
 		std::uint32_t binary_read(void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents = 1);
 		std::uint32_t binary_write(const void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents = 1);
-
 
 		// members
 		std::uint32_t _absoluteCurrentPos;	// 08
@@ -65,13 +59,11 @@ namespace RE
 	};
 	static_assert(sizeof(NiBinaryStream) == 0x20);
 
-
 	template <class CharT>
 	inline bool NiBinaryStream::get(CharT& a_ch)
 	{
 		return read(&a_ch, 1);
 	}
-
 
 	template <class CharT>
 	inline bool NiBinaryStream::read(CharT* a_str, std::uint32_t a_count)
@@ -82,13 +74,11 @@ namespace RE
 		return bytesRead == toRead;
 	}
 
-
 	template <class CharT>
 	inline bool NiBinaryStream::put(CharT a_ch)
 	{
 		return write(&a_ch, 1);
 	}
-
 
 	template <class CharT>
 	inline bool NiBinaryStream::write(const CharT* a_str, std::uint32_t a_count)
@@ -100,7 +90,6 @@ namespace RE
 	}
 }
 
-
 namespace std
 {
 	template <class CharT, class Traits, class Allocator>
@@ -109,7 +98,6 @@ namespace std
 		CharT delim = std::use_facet<std::ctype<CharT>>(std::locale()).widen('\n');
 		return getline(a_input, a_str, delim);
 	}
-
 
 	template <class CharT, class Traits, class Allocator>
 	inline bool getline(RE::NiBinaryStream& a_input, std::basic_string<CharT, Traits, Allocator>& a_str, CharT a_delim)

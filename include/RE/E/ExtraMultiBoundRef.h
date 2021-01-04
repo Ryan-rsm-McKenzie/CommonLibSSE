@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class ExtraMultiBoundRef : public BSExtraData
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMultiBoundRef;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMultiBoundRef;
-
 
 		virtual ~ExtraMultiBoundRef();	// 00
 

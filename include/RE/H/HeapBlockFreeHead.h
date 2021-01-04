@@ -2,7 +2,6 @@
 
 #include "RE/H/HeapBlock.h"
 
-
 namespace RE
 {
 	class HeapBlockFreeHead : public HeapBlock

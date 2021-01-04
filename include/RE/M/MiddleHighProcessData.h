@@ -14,7 +14,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class ActiveEffect;
@@ -36,7 +35,6 @@ namespace RE
 	struct AnimationVariableData;
 	struct BSAnimationGraphVariableCache;
 
-
 	enum class RESET_3D_FLAGS
 	{
 		kNone = 0,
@@ -50,7 +48,6 @@ namespace RE
 		kSkyCellSkin = 1 << 7
 	};
 
-
 	struct CommandedActorData
 	{
 	public:
@@ -60,7 +57,6 @@ namespace RE
 		ActiveEffect* activeEffect;	   // 10
 	};
 	static_assert(sizeof(CommandedActorData) == 0x10);
-
 
 	struct ObjectEquipParams
 	{
@@ -81,7 +77,6 @@ namespace RE
 	};
 	static_assert(sizeof(ObjectEquipParams) == 0x28);
 
-
 	class QueuedItem
 	{
 	public:
@@ -96,7 +91,6 @@ namespace RE
 		std::uint32_t		  pad44;		// 44
 	};
 	static_assert(sizeof(QueuedItem) == 0x48);
-
 
 	class HitData
 	{
@@ -160,7 +154,6 @@ namespace RE
 	};
 	static_assert(sizeof(HitData) == 0x90);
 
-
 	struct DeferredHideLimb
 	{
 	public:
@@ -177,7 +170,6 @@ namespace RE
 	};
 	static_assert(sizeof(DeferredHideLimb) == 0x28);
 
-
 	struct AIPerkData
 	{
 	public:
@@ -186,19 +178,16 @@ namespace RE
 			return operator[](a_pos);
 		}
 
-
 		BSTArray<BGSPerkEntry*>& operator[](BGSEntryPoint::ENTRY_POINT a_pos)
 		{
 			assert(a_pos < BGSEntryPoint::ENTRY_POINT::kTotal);
 			return perkEntryArrays[to_underlying(a_pos)];
 		}
 
-
 		// members
 		BSTArray<BGSPerkEntry*> perkEntryArrays[BGSEntryPoint::ENTRY_POINTS::kTotal];  // 000
 	};
 	static_assert(sizeof(AIPerkData) == 0x8A0);
-
 
 	struct MiddleHighProcessData
 	{

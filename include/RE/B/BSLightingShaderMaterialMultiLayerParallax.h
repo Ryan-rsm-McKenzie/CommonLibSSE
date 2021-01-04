@@ -3,17 +3,14 @@
 #include "RE/B/BSLightingShaderMaterialBase.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiSourceTexture;
-
 
 	class BSLightingShaderMaterialMultiLayerParallax : public BSLightingShaderMaterialBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialMultiLayerParallax;
-
 
 		virtual ~BSLightingShaderMaterialMultiLayerParallax();	// 00
 
@@ -28,7 +25,6 @@ namespace RE
 		virtual void			  GetTextures(void) override;					  // 0B
 		virtual void			  SaveBinary(void) override;					  // 0C
 		virtual void			  LoadBinary(void) override;					  // 0D
-
 
 		// members
 		NiPointer<NiSourceTexture> layerTexture;			  // A0

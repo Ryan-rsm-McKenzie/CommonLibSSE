@@ -3,19 +3,16 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	template <class T>
 	class BSTEventSink;
-
 
 	enum class BSEventNotifyControl
 	{
 		kContinue = 0,
 		kStop = 1
 	};
-
 
 	struct BSContainer
 	{
@@ -26,13 +23,11 @@ namespace RE
 		};
 	};
 
-
 	template <class Event>
 	class BSTEventSource
 	{
 	public:
 		using Sink = BSTEventSink<Event>;
-
 
 		BSTEventSource() :
 			sinks(),
@@ -44,7 +39,6 @@ namespace RE
 			pad52(0),
 			pad54(0)
 		{}
-
 
 		void AddEventSink(Sink* a_eventSink)
 		{
@@ -70,7 +64,6 @@ namespace RE
 			}
 		}
 
-
 		void RemoveEventSink(Sink* a_eventSink)
 		{
 			if (!a_eventSink) {
@@ -95,7 +88,6 @@ namespace RE
 				pendingRegisters.erase(it);
 			}
 		}
-
 
 		void SendEvent(const Event* a_event)
 		{
@@ -132,12 +124,10 @@ namespace RE
 			}
 		}
 
-
 		void operator()(const Event* a_event)
 		{
 			return SendEvent(a_event);
 		}
-
 
 		// members
 		BSTArray<Sink*>	   sinks;				// 00
@@ -150,7 +140,6 @@ namespace RE
 		std::uint32_t	   pad54;				// 54
 	};
 	static_assert(sizeof(BSTEventSource<void*>) == 0x58);
-
 
 	template <class Event>
 	class BSTEventSink

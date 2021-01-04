@@ -6,7 +6,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class ExtraGroupConstraint : public BSExtraData
@@ -15,12 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraGroupConstraint;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGroupConstraint;
 
-
 		virtual ~ExtraGroupConstraint();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kGroupConstraint; }
-
 
 		// members
 		std::int32_t	constraintType;			  // 10

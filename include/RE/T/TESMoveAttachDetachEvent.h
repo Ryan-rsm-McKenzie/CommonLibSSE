@@ -2,11 +2,9 @@
 
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	struct TESMoveAttachDetachEvent
 	{

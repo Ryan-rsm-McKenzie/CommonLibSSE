@@ -4,12 +4,10 @@
 #include "RE/F/FormTypes.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	class BSProceduralGeomEvent;
 	struct BeamProjectileImpactEvent;
-
 
 	class BeamProjectile :
 		public Projectile,								   // 000
@@ -20,14 +18,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BeamProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBeam;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BeamProjectile();	// 00
 
@@ -47,7 +43,6 @@ namespace RE
 
 		// override (BSTEventSink<BSProceduralGeomEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSProceduralGeomEvent* a_event, BSTEventSource<BSProceduralGeomEvent>* a_eventSource) override;	 // 01
-
 
 		// members
 		std::uint64_t unk238;  // 238

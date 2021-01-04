@@ -2,11 +2,9 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class IUIMessageData;
-
 
 	enum class UI_MESSAGE_TYPE
 	{
@@ -25,7 +23,6 @@ namespace RE
 		kUpdateController = 12,
 		kChatterEvent = 13
 	};
-
 
 	class UIMessage
 	{

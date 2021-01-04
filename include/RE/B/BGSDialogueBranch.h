@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSDialogueBranch : public TESForm
@@ -13,7 +12,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSDialogueBranch;
 		inline static constexpr auto FORMTYPE = FormType::DialogueBranch;
 
-
 		enum class Flag
 		{
 			kNone = 0,
@@ -21,7 +19,6 @@ namespace RE
 			kBlocking = 1 << 1,
 			kExclusive = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -32,7 +29,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSDialogueBranch();  // 00
 
 		// override (TESForm)
@@ -40,7 +36,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;		  // 20 - DNAM

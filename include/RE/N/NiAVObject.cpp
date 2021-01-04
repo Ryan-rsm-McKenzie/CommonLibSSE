@@ -15,7 +15,6 @@
 #include "RE/N/NiRTTI.h"
 #include "RE/S/State.h"
 
-
 namespace RE
 {
 	bool NiAVObject::GetAppCulled() const
@@ -23,14 +22,12 @@ namespace RE
 		return flags.all(Flag::kHidden);
 	}
 
-
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);
 		REL::Relocation<func_t> func{ Offset::NiAVObject::SetMotionType };
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
 	}
-
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
 	{
@@ -53,14 +50,12 @@ namespace RE
 		});
 	}
 
-
 	void NiAVObject::Update(NiUpdateData& a_data)
 	{
 		using func_t = decltype(&NiAVObject::Update);
 		REL::Relocation<func_t> func{ Offset::NiAVObject::Update };
 		return func(this, a_data);
 	}
-
 
 	void NiAVObject::UpdateBodyTint(const NiColor& a_color)
 	{
@@ -83,7 +78,6 @@ namespace RE
 			return BSVisit::BSVisitControl::kContinue;
 		});
 	}
-
 
 	void NiAVObject::UpdateHairColor(const NiColor& a_color)
 	{

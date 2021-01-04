@@ -2,7 +2,6 @@
 
 #include "RE/H/hkpWorld.h"
 
-
 namespace RE
 {
 	class ahkpWorld : public hkpWorld
@@ -10,9 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ahkpWorld;
 
-
 		virtual ~ahkpWorld();  // 00
-
 
 		// members
 		std::uint64_t unk430;  // 430

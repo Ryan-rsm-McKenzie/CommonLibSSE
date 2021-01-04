@@ -22,7 +22,6 @@
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	class ActorMagicCaster;
@@ -44,7 +43,6 @@ namespace RE
 	struct ActorMotionFeedbackData;
 	struct ActorMotionFeedbackOutput;
 
-
 	enum class ACTOR_CRITICAL_STAGE
 	{
 		kNone = 0,
@@ -56,7 +54,6 @@ namespace RE
 		kTotal
 	};
 
-
 	struct Modifiers
 	{
 	public:
@@ -64,7 +61,6 @@ namespace RE
 		float modifiers[ACTOR_VALUE_MODIFIERS::kTotal];	 // 0
 	};
 	static_assert(sizeof(Modifiers) == 0xC);
-
 
 	struct ActorValueStorage
 	{
@@ -78,12 +74,10 @@ namespace RE
 				return GetAt(static_cast<char>(a_actorValue));
 			}
 
-
 			const T* operator[](ActorValue a_actorValue) const
 			{
 				return GetAt(static_cast<char>(a_actorValue));
 			}
-
 
 			// members
 			BSFixedString actorValues;	// 00
@@ -111,16 +105,13 @@ namespace RE
 		};
 		static_assert(sizeof(LocalMap<float>) == 0x10);
 
-
 		// members
 		LocalMap<float>		baseValues;	 // 00
 		LocalMap<Modifiers> modifiers;	 // 10
 	};
 	static_assert(sizeof(ActorValueStorage) == 0x20);
 
-
 	NiSmartPointer(Actor);
-
 
 	class Actor :
 		public TESObjectREFR,							   // 000
@@ -138,7 +129,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_Actor;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
-
 		struct SlotTypes
 		{
 			enum
@@ -151,7 +141,6 @@ namespace RE
 				kTotal
 			};
 		};
-
 
 		enum class BOOL_BITS
 		{
@@ -190,7 +179,6 @@ namespace RE
 			kParalyzed = 1 << 31
 		};
 
-
 		enum class BOOL_FLAGS
 		{
 			kNone = 0,
@@ -228,7 +216,6 @@ namespace RE
 			kUnderwater = 1 << 31
 		};
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -246,7 +233,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -260,7 +246,6 @@ namespace RE
 				kDontHavokSettle = 1 << 29
 			};
 		};
-
 
 		virtual ~Actor();  // 000
 
@@ -543,7 +528,6 @@ namespace RE
 		void						 UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
 		bool						 VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool						 WouldBeStealing(const TESObjectREFR* a_target) const;
-
 
 		// members
 		stl::enumeration<BOOL_BITS, std::uint32_t>			  boolBits;							  // 0E0

@@ -3,20 +3,17 @@
 #include "RE/B/BSTArray.h"
 #include "RE/T/TESRegionData.h"
 
-
 namespace RE
 {
 	class BGSMusicType;
 	class BGSSoundDescriptorForm;
 	class TESFile;
 
-
 	class TESRegionDataSound : public TESRegionData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionDataSound;
 		inline static constexpr auto TYPE = Type::kSound;
-
 
 		struct Sound
 		{
@@ -29,13 +26,11 @@ namespace RE
 				kSnowy = 1 << 3
 			};
 
-
 			BGSSoundDescriptorForm*				  sound;   // 00
 			stl::enumeration<Flag, std::uint32_t> flags;   // 08
 			float								  chance;  // 0C
 		};
 		static_assert(sizeof(Sound) == 0x10);
-
 
 		virtual ~TESRegionDataSound();	// 00
 
@@ -49,7 +44,6 @@ namespace RE
 
 		// add
 		virtual void Load(TESFile* a_mod);	// 08
-
 
 		// members
 		BGSMusicType*	 music;	  // 10 - RDMO

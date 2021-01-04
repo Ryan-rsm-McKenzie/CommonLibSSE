@@ -3,7 +3,6 @@
 #include "RE/N/NiExtraData.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class BSBound : public NiExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSBound;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSBound;
-
 
 		virtual ~BSBound();	 // 00
 
@@ -23,7 +21,6 @@ namespace RE
 		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return NiExtraData::RegisterStreamables(a_stream) == false; }
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C
-
 
 		// members
 		NiPoint3 center;   // 18

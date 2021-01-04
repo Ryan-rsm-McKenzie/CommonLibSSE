@@ -1,6 +1,5 @@
 #include "RE/E/ExtraLock.h"
 
-
 namespace RE
 {
 	LOCK_LEVEL REFR_LOCK::GetLockLevel(const TESObjectREFR* a_containerRef) const
@@ -13,7 +12,6 @@ namespace RE
 			return LOCK_LEVEL::kUnlocked;
 		}
 	}
-
 
 	void REFR_LOCK::SetLocked(bool a_locked)
 	{

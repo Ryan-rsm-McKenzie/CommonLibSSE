@@ -3,7 +3,6 @@
 #include "RE/A/AutoRegisterFactory.h"
 #include "RE/B/BSTDerivedCreator.h"
 
-
 namespace RE
 {
 	// 08

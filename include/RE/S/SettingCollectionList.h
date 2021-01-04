@@ -3,7 +3,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/S/SettingCollection.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -17,7 +16,6 @@ namespace RE
 		virtual void RemoveSetting(T* a_setting) override;	// 02
 		virtual void Unk_08(void) override;					// 08
 		virtual void Unk_09(void) override;					// 09
-
 
 		// members
 		BSSimpleList<T*> settings;	// 118

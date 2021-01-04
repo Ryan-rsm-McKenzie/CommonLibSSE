@@ -1,6 +1,5 @@
 #include "RE/B/BSWin32KeyboardDevice.h"
 
-
 namespace RE
 {
 	bool BSWin32KeyboardDevice::IsPressed(std::uint32_t a_keyCode) const

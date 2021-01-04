@@ -7,7 +7,6 @@
 #include "RE/E/ErrorLogger.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSJobs
@@ -15,9 +14,7 @@ namespace RE
 		class JobList;
 	}
 
-
 	class TESForm;
-
 
 	namespace BSScript
 	{
@@ -37,15 +34,12 @@ namespace RE
 		struct LogEvent;
 		struct StatsEvent;
 
-
 		class IVirtualMachine : public BSIntrusiveRefCounted
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IVirtualMachine;
 
-
 			using Severity = BSScript::ErrorLogger::Severity;
-
 
 			virtual ~IVirtualMachine();	 // 00
 
@@ -128,7 +122,6 @@ namespace RE
 			void SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable);
 			void TraceForm(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity);
 			void VTraceStack(const char* a_fmt, VMStackID a_stackID, Severity a_severity = Severity::kInfo, ...);
-
 
 			// members
 			std::uint32_t pad0C;  // 0C

@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkShapeCollection.h"
 
-
 namespace RE
 {
 	class bhkListShape : public bhkShapeCollection
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkListShape;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkListShape;
-
 
 		virtual ~bhkListShape();  // 00
 
@@ -30,7 +28,6 @@ namespace RE
 		virtual void		  Unk_32(void) override;							  // 32
 		virtual void		  Unk_35(void) override;							  // 35
 		virtual void		  Unk_36(void) override;							  // 36
-
 
 		// members
 		std::uint64_t unk28;  // 28

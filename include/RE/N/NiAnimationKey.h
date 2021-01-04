@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiAnimationKey
@@ -18,7 +17,6 @@ namespace RE
 			kTotal
 		};
 
-
 		enum class KeyType
 		{
 			kNoInterp,
@@ -30,7 +28,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		NiAnimationKey();
 		NiAnimationKey(float a_time);

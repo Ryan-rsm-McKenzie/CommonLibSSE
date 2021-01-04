@@ -8,19 +8,16 @@
 #include "RE/N/NiTSet.h"
 #include "RE/N/NiTimeController.h"
 
-
 namespace RE
 {
 	class NiAVObjectPalette;
 	class NiControllerSequence;
-
 
 	class NiControllerManager : public NiTimeController
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiControllerManager;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiControllerManager;
-
 
 		virtual ~NiControllerManager();	 // 00
 
@@ -45,7 +42,6 @@ namespace RE
 		virtual void Start();  // 2F - { return; }
 
 		NiControllerSequence* GetSequenceByName(std::string_view a_name);
-
 
 		// members
 		NiTObjectArray<NiPointer<NiControllerSequence>>	 sequenceArray;	   // 48

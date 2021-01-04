@@ -3,7 +3,6 @@
 #include "RE/F/FxDelegateArgs.h"
 #include "RE/G/GFxMovieView.h"
 
-
 namespace RE
 {
 	HUDObject::HUDObject(GFxMovieView* a_view) :
@@ -11,22 +10,18 @@ namespace RE
 		root()
 	{}
 
-
 	HUDObject::~HUDObject()
 	{}
-
 
 	bool HUDObject::ProcessMessage(UIMessage*)
 	{
 		return false;
 	}
 
-
 	void HUDObject::RegisterHUDComponent(FxDelegateArgs& a_params)
 	{
 		root = a_params[HudComponent::kThis];
 	}
-
 
 	void HUDObject::CleanUp()
 	{

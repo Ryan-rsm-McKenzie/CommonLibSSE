@@ -4,7 +4,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/P/PlayerCamera.h"
 
-
 namespace RE
 {
 	class BGSLoadFormBuffer;
@@ -13,12 +12,10 @@ namespace RE
 	class NiQuaternion;
 	class TESCamera;
 
-
 	class TESCameraState : public BSIntrusiveRefCounted
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCameraState;
-
 
 		virtual ~TESCameraState();	// 00
 
@@ -31,7 +28,6 @@ namespace RE
 		virtual void SaveGame(BGSSaveFormBuffer* a_buf);					// 06 - { return; }
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf);					// 07 - { return; }
 		virtual void Revert(BGSLoadFormBuffer* a_buf);						// 08 - { return; }
-
 
 		// members
 		std::uint32_t pad0C;   // 0C

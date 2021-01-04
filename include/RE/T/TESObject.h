@@ -2,18 +2,15 @@
 
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class NiAVObject;
 	class TESObjectREFR;
 
-
 	class TESObject : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObject;
-
 
 		struct ChangeFlags
 		{
@@ -23,7 +20,6 @@ namespace RE
 				kObjectFullName = 1 << 2
 			};
 		};
-
 
 		virtual ~TESObject();  // 00
 

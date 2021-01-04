@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxState.h"
 
-
 namespace RE
 {
 	class GFxActionControl : public GFxState
@@ -18,13 +17,11 @@ namespace RE
 			kLongFilenames = 1 << 4		  // Display full path
 		};
 
-
 		inline GFxActionControl(ActionControlFlags a_actionFlags = ActionControlFlags::kLogChildFilenames) :
 			GFxState(StateType::kActionControl),
 			actionFlags(a_actionFlags),
 			pad1C(0)
 		{}
-
 
 		constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
 		constexpr void				 SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
@@ -46,7 +43,6 @@ namespace RE
 
 		constexpr void SetLongFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLongFilenames); }
 		constexpr void UnsetLongFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLongFilenames); }
-
 
 		// members
 		stl::enumeration<ActionControlFlags, std::uint32_t> actionFlags;  // 18

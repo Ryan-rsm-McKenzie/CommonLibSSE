@@ -1,6 +1,5 @@
 #include "RE/C/CommandTable.h"
 
-
 namespace RE
 {
 	auto SCRIPT_FUNCTION::Chunk::AsString()
@@ -9,19 +8,16 @@ namespace RE
 		return static_cast<StringChunk*>(this);
 	}
 
-
 	auto SCRIPT_FUNCTION::Chunk::AsInteger()
 		-> IntegerChunk*
 	{
 		return static_cast<IntegerChunk*>(this);
 	}
 
-
 	std::string SCRIPT_FUNCTION::StringChunk::GetString() const
 	{
 		return length ? std::string(str, length) : "";
 	}
-
 
 	auto SCRIPT_FUNCTION::StringChunk::GetNext()
 		-> Chunk*
@@ -29,12 +25,10 @@ namespace RE
 		return reinterpret_cast<Chunk*>(str + length);
 	}
 
-
 	int SCRIPT_FUNCTION::IntegerChunk::GetInteger() const
 	{
 		return *(int*)((std::uintptr_t)this + 1);
 	}
-
 
 	auto SCRIPT_FUNCTION::IntegerChunk::GetNext()
 		-> Chunk*
@@ -42,13 +36,11 @@ namespace RE
 		return reinterpret_cast<Chunk*>(this + 1);
 	}
 
-
 	auto SCRIPT_FUNCTION::ScriptData::GetChunk()
 		-> Chunk*
 	{
 		return reinterpret_cast<Chunk*>(this + 1);
 	}
-
 
 	auto SCRIPT_FUNCTION::ScriptData::GetStringChunk()
 		-> StringChunk*
@@ -56,20 +48,17 @@ namespace RE
 		return static_cast<StringChunk*>(GetChunk());
 	}
 
-
 	auto SCRIPT_FUNCTION::ScriptData::GetIntegerChunk()
 		-> IntegerChunk*
 	{
 		return static_cast<IntegerChunk*>(GetChunk());
 	}
 
-
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstScriptCommand()
 	{
 		REL::Relocation<SCRIPT_FUNCTION*> ptr{ Offset::SCRIPT_FUNCTION::FirstScriptCommand };
 		return ptr.type();
 	}
-
 
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateScriptCommand(const char* a_longName)
 	{
@@ -82,13 +71,11 @@ namespace RE
 		return nullptr;
 	}
 
-
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstConsoleCommand()
 	{
 		REL::Relocation<SCRIPT_FUNCTION*> ptr{ Offset::SCRIPT_FUNCTION::FirstConsoleCommand };
 		return ptr.type();
 	}
-
 
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateConsoleCommand(const char* a_longName)
 	{
@@ -100,7 +87,6 @@ namespace RE
 		}
 		return nullptr;
 	}
-
 
 	void SCRIPT_FUNCTION::SetParameters()
 	{

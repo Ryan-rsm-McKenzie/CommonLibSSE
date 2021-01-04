@@ -4,7 +4,6 @@
 #include "RE/N/NiExtraData.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class BSFaceGenAnimationData : public NiExtraData
@@ -13,14 +12,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSFaceGenAnimationData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenAnimationData;
 
-
 		virtual ~BSFaceGenAnimationData();	// 00
 
 		// override (NiExtraData)
 		virtual const NiRTTI* GetRTTI() const override;	 // 02
 
 		void ClearExpressionOverride();
-
 
 		// members
 		std::uint64_t			  unk018;			   // 018

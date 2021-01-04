@@ -1,6 +1,5 @@
 #include "RE/N/NiFloatData.h"
 
-
 namespace RE
 {
 	NiFloatData::NiFloatData() :
@@ -13,12 +12,10 @@ namespace RE
 		pad26(0)
 	{}
 
-
 	std::uint32_t NiFloatData::GetNumKeys() const
 	{
 		return numKeys;
 	}
-
 
 	NiFloatKey* NiFloatData::GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const
 	{

@@ -7,7 +7,6 @@
 #include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class BSEffectShaderProperty;
@@ -19,12 +18,10 @@ namespace RE
 	class NiNode;
 	class StatsNode;
 
-
 	namespace BSResource
 	{
 		struct ID;
 	}
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kRequiresUpdate | kCustomRendering
@@ -38,12 +35,10 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_StatsMenu;
 		constexpr static std::string_view MENU_NAME = "StatsMenu";
 
-
 		enum
 		{
 			kTotalTrees = 18
 		};
-
 
 		struct UnkData
 		{
@@ -55,14 +50,12 @@ namespace RE
 				kExiting = 2
 			};
 
-
 			// members
 			BSEffectShaderProperty*				   unk00;  // 00
 			stl::enumeration<State, std::uint32_t> state;  // 08
 			std::uint32_t						   unk0C;  // 0C
 		};
 		static_assert(sizeof(UnkData) == 0x10);
-
 
 		virtual ~StatsMenu();  // 00
 
@@ -76,7 +69,6 @@ namespace RE
 		virtual bool CanProcess(InputEvent* a_event) override;				// 01
 		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
 		virtual bool ProcessButton(ButtonEvent* a_event) override;			// 05
-
 
 		// members
 		NiCamera*				  unk040;				   // 040

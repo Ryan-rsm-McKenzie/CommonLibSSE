@@ -8,7 +8,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class InventoryEntryData;
@@ -16,7 +15,6 @@ namespace RE
 	class NiAVObject;
 	class TESBoundObject;
 	class TESObjectREFR;
-
 
 	struct LoadedInventoryModel
 	{
@@ -28,7 +26,6 @@ namespace RE
 		std::uint64_t		  unk18;	 // 18
 	};
 	static_assert(sizeof(LoadedInventoryModel) == 0x20);
-
 
 	class Inventory3DManager :
 		public BSTSingletonSDM<Inventory3DManager>,	 // 10

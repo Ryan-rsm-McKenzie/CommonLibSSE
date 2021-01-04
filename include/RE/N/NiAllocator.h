@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class NiMemEventType
@@ -20,12 +19,10 @@ namespace RE
 		kExternalFree = 12
 	};
 
-
 	class NiAllocator
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAllocator;
-
 
 		virtual ~NiAllocator();	 // 00
 

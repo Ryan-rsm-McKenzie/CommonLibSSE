@@ -3,7 +3,6 @@
 #include "RE/N/NiFrustum.h"
 #include "RE/N/NiFrustumPlanes.h"
 
-
 namespace RE
 {
 	class BSDynamicTriShape;
@@ -31,13 +30,11 @@ namespace RE
 	class NiTriStrips;
 	class NiVisibleArray;
 
-
 	class NiCullingProcess
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiCullingProcess;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiCullingProcess;
-
 
 		// add
 		virtual const NiRTTI*				  GetRTTI() const;						// 00
@@ -67,7 +64,6 @@ namespace RE
 		virtual void Process1(NiAVObject* a_object, std::uint32_t a_arg2);									 // 16
 		virtual void Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet);	 // 17 - { return; }
 		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2);							 // 18
-
 
 		// members
 		const bool		useVirtualAppend;	   // 008

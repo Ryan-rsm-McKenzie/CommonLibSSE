@@ -3,18 +3,15 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTempEffect.h"
 
-
 namespace RE
 {
 	class ReferenceEffectController;
-
 
 	class ReferenceEffect : public BSTempEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ReferenceEffect;
-
 
 		virtual ~ReferenceEffect();	 // 00
 
@@ -39,7 +36,6 @@ namespace RE
 		virtual void Unk_3C(void);		// 3C
 		virtual void Unk_3D(void);		// 3D - { return 1; }
 		virtual void Unk_3E(void);		// 3E - { return; }
-
 
 		// members
 		ReferenceEffectController* controller;	   // 30

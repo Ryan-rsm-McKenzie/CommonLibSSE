@@ -5,7 +5,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraFollower : public BSExtraData
@@ -14,7 +13,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraFollower;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFollower;
 
-
 		struct FollowerInfo
 		{
 			ActorHandle actor;					 // 0
@@ -22,12 +20,10 @@ namespace RE
 		};
 		static_assert(sizeof(FollowerInfo) == 0x8);
 
-
 		virtual ~ExtraFollower();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kFollower; }
-
 
 		// members
 		BSTArray<FollowerInfo> actorFollowers;	// 10

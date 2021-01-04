@@ -1,12 +1,10 @@
 #include "RE/E/ExtraHotkey.h"
 
-
 namespace RE
 {
 	ExtraHotkey::ExtraHotkey() :
 		ExtraHotkey(Hotkey::kUnbound)
 	{}
-
 
 	ExtraHotkey::ExtraHotkey(Hotkey a_hotkey) :
 		BSExtraData(),
@@ -19,12 +17,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraHotkey::GetType() const
 	{
 		return ExtraDataType::kHotkey;
 	}
-
 
 	bool ExtraHotkey::IsNotEqual(const BSExtraData* a_rhs) const
 	{

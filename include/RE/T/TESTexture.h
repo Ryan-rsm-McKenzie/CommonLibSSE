@@ -4,14 +4,12 @@
 #include "RE/B/BSString.h"
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESTexture : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture;
-
 
 		virtual ~TESTexture();	// 00
 
@@ -24,7 +22,6 @@ namespace RE
 		virtual std::uint32_t GetMaxAllowedSize();					   // 04 - { return 0; }
 		virtual const char*	  GetAsNormalFile(BSString& a_out) const;  // 05
 		virtual const char*	  GetDefaultPath() const;				   // 06 - { return "Textures\\"; }
-
 
 		// members
 		BSFixedString textureName;	// 08 - ICON

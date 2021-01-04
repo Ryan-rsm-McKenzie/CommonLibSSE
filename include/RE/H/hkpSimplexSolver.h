@@ -2,7 +2,6 @@
 
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	struct hkpSurfaceConstraintInfo
@@ -18,7 +17,6 @@ namespace RE
 		std::uint64_t pad38;					// 38
 	};
 	static_assert(sizeof(hkpSurfaceConstraintInfo) == 0x40);
-
 
 	struct hkpSimplexSolverInput
 	{

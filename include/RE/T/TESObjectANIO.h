@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class TESObjectANIO :
@@ -16,7 +15,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectANIO;
 		inline static constexpr auto FORMTYPE = FormType::AnimatedObject;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -26,7 +24,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESObjectANIO();  // 00
 
 		// override (TESForm)
@@ -34,7 +31,6 @@ namespace RE
 		virtual void		InitItemImpl() override;					  // 13
 		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { if (formEditorID == a_str) return false; formEditorID = a_str; return true; }
-
 
 		// members
 		BSFixedString formEditorID;		// 58 - EDID

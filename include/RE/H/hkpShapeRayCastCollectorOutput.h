@@ -1,9 +1,7 @@
 #pragma once
 
-
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpShape.h"
-
 
 namespace RE
 {
@@ -18,7 +16,6 @@ namespace RE
 			shapeKey = HK_INVALID_SHAPE_KEY;
 			extraInfo = -1;
 		}
-
 
 		// members
 		hkVector4	 normal;							// 00

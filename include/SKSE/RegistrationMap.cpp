@@ -2,7 +2,6 @@
 
 #include "SKSE/Logger.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -11,7 +10,6 @@ namespace SKSE
 			_regs(),
 			_lock()
 		{}
-
 
 		RegistrationMapBase::RegistrationMapBase(const RegistrationMapBase& a_rhs) :
 			_regs(),
@@ -30,7 +28,6 @@ namespace SKSE
 			}
 		}
 
-
 		RegistrationMapBase::RegistrationMapBase(RegistrationMapBase&& a_rhs) :
 			_regs(),
 			_lock()
@@ -39,7 +36,6 @@ namespace SKSE
 			_regs = std::move(a_rhs._regs);
 			a_rhs._regs.clear();
 		}
-
 
 		RegistrationMapBase::~RegistrationMapBase()
 		{
@@ -51,7 +47,6 @@ namespace SKSE
 				}
 			}
 		}
-
 
 		RegistrationMapBase& RegistrationMapBase::operator=(const RegistrationMapBase& a_rhs)
 		{
@@ -78,7 +73,6 @@ namespace SKSE
 			return *this;
 		}
 
-
 		RegistrationMapBase& RegistrationMapBase::operator=(RegistrationMapBase&& a_rhs)
 		{
 			if (this == &a_rhs) {
@@ -96,13 +90,11 @@ namespace SKSE
 			return *this;
 		}
 
-
 		bool RegistrationMapBase::Register(const RE::TESForm* a_form, RE::BSFixedString a_callback)
 		{
 			assert(a_form);
 			return Register(a_form, std::move(a_callback), static_cast<RE::VMTypeID>(a_form->GetFormType()));
 		}
-
 
 		bool RegistrationMapBase::Register(const RE::BGSBaseAlias* a_alias, RE::BSFixedString a_callback)
 		{
@@ -110,20 +102,17 @@ namespace SKSE
 			return Register(a_alias, std::move(a_callback), a_alias->GetVMTypeID());
 		}
 
-
 		bool RegistrationMapBase::Unregister(const RE::TESForm* a_form)
 		{
 			assert(a_form);
 			return Unregister(a_form, static_cast<RE::VMTypeID>(a_form->GetFormType()));
 		}
 
-
 		bool RegistrationMapBase::Unregister(const RE::BGSBaseAlias* a_alias)
 		{
 			assert(a_alias);
 			return Unregister(a_alias, a_alias->GetVMTypeID());
 		}
-
 
 		void RegistrationMapBase::Clear()
 		{
@@ -138,7 +127,6 @@ namespace SKSE
 			_regs.clear();
 		}
 
-
 		bool RegistrationMapBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
 		{
 			assert(a_intfc);
@@ -149,7 +137,6 @@ namespace SKSE
 
 			return Save(a_intfc);
 		}
-
 
 		bool RegistrationMapBase::Save(SerializationInterface* a_intfc)
 		{
@@ -177,7 +164,6 @@ namespace SKSE
 
 			return true;
 		}
-
 
 		bool RegistrationMapBase::Load(SerializationInterface* a_intfc)
 		{
@@ -208,7 +194,6 @@ namespace SKSE
 			return true;
 		}
 
-
 		bool RegistrationMapBase::Register(const void* a_object, RE::BSFixedString a_callback, RE::VMTypeID a_typeID)
 		{
 			assert(a_object);
@@ -237,7 +222,6 @@ namespace SKSE
 			}
 			return result.second;
 		}
-
 
 		bool RegistrationMapBase::Unregister(const void* a_object, RE::VMTypeID a_typeID)
 		{

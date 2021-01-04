@@ -4,11 +4,9 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	class MenuOpenCloseEvent;
-
 
 	// menuDepth = 3
 	// flags = kUpdateUsesCursor | kDontHideCursorWhenTopmost
@@ -21,14 +19,12 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_DialogueMenu;
 		constexpr static std::string_view MENU_NAME = "Dialogue Menu";
 
-
 		struct Data
 		{
 			void*		  unk00;  // 00
 			std::uint64_t unk08;  // 08
 		};
 		static_assert(sizeof(Data) == 0x10);
-
 
 		virtual ~DialogueMenu();  // 00
 
@@ -38,7 +34,6 @@ namespace RE
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
-
 
 		// members
 		BSTArray<Data> unk38;  // 38

@@ -3,18 +3,15 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/I/IMemoryHeap.h"
 
-
 namespace RE
 {
 	class HeapBlock;
 	class HeapBlockFreeHead;
 
-
 	class AbstractHeap : public IMemoryHeap
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_AbstractHeap;
-
 
 		virtual ~AbstractHeap();  // 00
 
@@ -35,7 +32,6 @@ namespace RE
 		virtual std::size_t CleanExtraPages(void* a_memory, std::size_t a_currentSize, std::size_t a_freeBytes);	   // 12 - { return 0; }
 		virtual void		DecommitPages(HeapBlock* a_block);														   // 13 - { return; }
 		virtual void		CommitPages(HeapBlock*, std::size_t);													   // 14 - { return; }
-
 
 		// members
 		BSCriticalSection  criticalSection;		// 008

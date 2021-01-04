@@ -9,14 +9,12 @@
 #include "RE/B/BSTimer.h"
 #include "RE/G/GPtr.h"
 
-
 namespace RE
 {
 	class GFxMovieView;
 	class IMenu;
 	class MenuModeChangeEvent;
 	class MenuOpenCloseEvent;
-
 
 	namespace UIImpl
 	{
@@ -41,7 +39,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool has_menu_name_v = has_menu_name<T>::value;
 
-
 		template <class T>
 		struct is_menu_ptr :
 			std::is_convertible<
@@ -53,7 +50,6 @@ namespace RE
 		inline constexpr bool is_menu_ptr_v = is_menu_ptr<T>::value;
 	}
 
-
 	class UI :
 		public BSTSingletonSDM<UI>,					 // 000
 		public BSTEventSource<MenuOpenCloseEvent>,	 // 008
@@ -63,7 +59,6 @@ namespace RE
 	public:
 		using Create_t = IMenu*();
 
-
 		struct UIMenuEntry
 		{
 		public:
@@ -72,7 +67,6 @@ namespace RE
 			Create_t*	create;	 // 08
 		};
 		static_assert(sizeof(UIMenuEntry) == 0x10);
-
 
 		static UI* GetSingleton();
 
@@ -120,7 +114,6 @@ namespace RE
 			return GPtr<T>(static_cast<T*>(GetMenu(a_menuName).get()));
 		}
 
-
 		// members
 		BSTArray<GPtr<IMenu>>				   menuStack;					  // 110
 		BSTHashMap<BSFixedString, UIMenuEntry> menuMap;						  // 128
@@ -143,20 +136,17 @@ namespace RE
 	};
 	static_assert(sizeof(UI) == 0x1C8);
 
-
 	template <class T>
 	void UI::AddEventSink(BSTEventSink<T>* a_sink)
 	{
 		GetEventSource<T>()->AddEventSink(a_sink);
 	}
 
-
 	template <class T>
 	BSTEventSource<T>* UI::GetEventSource()
 	{
 		return static_cast<BSTEventSource<T>*>(this);
 	}
-
 
 	template <class T>
 	inline void UI::RemoveEventSink(BSTEventSink<T>* a_sink)

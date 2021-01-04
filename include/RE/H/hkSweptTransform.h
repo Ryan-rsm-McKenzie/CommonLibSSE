@@ -3,7 +3,6 @@
 #include "RE/H/hkQuaternion.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkSweptTransform

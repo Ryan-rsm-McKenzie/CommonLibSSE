@@ -4,7 +4,6 @@
 #include "RE/H/hkpShapeContainer.h"
 #include "RE/H/hkpWeldingUtility.h"
 
-
 namespace RE
 {
 	class hkpShapeCollection :
@@ -13,7 +12,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpShapeCollection;
-
 
 		enum class CollectionType
 		{
@@ -27,7 +25,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		virtual ~hkpShapeCollection();	// 00
 
@@ -45,7 +42,6 @@ namespace RE
 		// add
 		virtual void InitWeldingInfo(hkpWeldingUtility::WeldingType a_weldingType);	 // 0B - { return; }
 		virtual void SetWeldingInfo(hkpShapeKey a_key, std::int16_t a_weldingInfo);	 // 0C - { return; }
-
 
 		// members
 		bool										   disableWelding;	// 28

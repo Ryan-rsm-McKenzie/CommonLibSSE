@@ -2,14 +2,12 @@
 
 #include "RE/U/UserEvents.h"
 
-
 namespace RE
 {
 	class UserEventEnabled
 	{
 	public:
 		using UEFlag = UserEvents::USER_EVENT_FLAG;
-
 
 		// members
 		stl::enumeration<UEFlag, std::uint32_t> newUserEventFlag;  // 0

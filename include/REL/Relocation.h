@@ -1,6 +1,5 @@
 #pragma once
 
-
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
 		class R,                                                                                  \
@@ -57,7 +56,6 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
-
 namespace REL
 {
 	namespace detail
@@ -102,7 +100,6 @@ namespace REL
 			void* _mapping{ nullptr };
 			void* _view{ nullptr };
 		};
-
 
 		template <class>
 		struct member_function_pod_type;
@@ -196,11 +193,9 @@ namespace REL
 		}
 	}
 
-
 	inline constexpr std::uint8_t NOP = 0x90;
 	inline constexpr std::uint8_t RET = 0xC3;
 	inline constexpr std::uint8_t INT3 = 0xCC;
-
 
 	template <
 		class F,
@@ -223,7 +218,6 @@ namespace REL
 			return std::forward<F>(a_func)(std::forward<Args>(a_args)...);
 		}
 	}
-
 
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
@@ -253,13 +247,11 @@ namespace REL
 		safe_write(a_dst, std::addressof(a_data), sizeof(T));
 	}
 
-
 	template <class T>
 	void safe_write(std::uintptr_t a_dst, stl::span<T> a_data)
 	{
 		safe_write(a_dst, a_data.data(), a_data.size_bytes());
 	}
-
 
 	inline void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count)
 	{
@@ -282,7 +274,6 @@ namespace REL
 
 		assert(success != 0);
 	}
-
 
 	class Version
 	{
@@ -418,7 +409,6 @@ namespace REL
 		std::size_t	   _size{ 0 };
 	};
 
-
 	class Module
 	{
 	public:
@@ -495,7 +485,6 @@ namespace REL
 		Version								_version;
 		std::uintptr_t						_base{ 0 };
 	};
-
 
 	class IDDatabase
 	{
@@ -786,7 +775,6 @@ namespace REL
 #endif
 	};
 
-
 	// converts an id within the database to its equivalent offset
 	class ID
 	{
@@ -811,7 +799,6 @@ namespace REL
 
 		std::uint64_t _id{ 0 };
 	};
-
 
 	// relocates the given address in the exe and reinterprets it as the given type
 	template <class T>
@@ -929,7 +916,6 @@ namespace REL
 	template <class T>
 	using Offset [[deprecated("use Relocation")]] = Relocation<T>;
 }
-
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER

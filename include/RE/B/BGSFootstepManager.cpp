@@ -1,6 +1,5 @@
 #include "RE/B/BGSFootstepManager.h"
 
-
 namespace RE
 {
 	BGSFootstepManager* BGSFootstepManager::GetSingleton()

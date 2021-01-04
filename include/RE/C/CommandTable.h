@@ -4,7 +4,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class ScriptLocals;
@@ -19,7 +18,6 @@ namespace RE
 	struct SCRIPT_LOCAL;
 	struct SCRIPT_PARAMETER;
 	struct SCRIPT_REFERENCED_OBJECT;
-
 
 	enum class SCRIPT_PARAM_TYPE
 	{
@@ -106,17 +104,14 @@ namespace RE
 		kRegion = 0x52
 	};
 
-
 	// basically the unique id for the function, there's ~5000 of these
 	enum class SCRIPT_OUTPUT
 	{
 	};
 
-
 	enum class SCRIPT_ERROR
 	{
 	};
-
 
 	struct SCRIPT_HEADER
 	{
@@ -133,7 +128,6 @@ namespace RE
 	};
 	static_assert(sizeof(SCRIPT_HEADER) == 0x14);
 
-
 	struct SCRIPT_PARAMETER
 	{
 	public:
@@ -146,7 +140,6 @@ namespace RE
 	};
 	static_assert(sizeof(SCRIPT_PARAMETER) == 0x10);
 
-
 	struct SCRIPT_REFERENCED_OBJECT
 	{
 	public:
@@ -158,7 +151,6 @@ namespace RE
 	};
 	static_assert(sizeof(SCRIPT_REFERENCED_OBJECT) == 0x20);
 
-
 	struct ACTION_OBJECT
 	{
 	public:
@@ -168,7 +160,6 @@ namespace RE
 		std::uint32_t pad0C;  // 0C
 	};
 	static_assert(sizeof(ACTION_OBJECT) == 0x10);
-
 
 	struct SCRIPT_LOCAL
 	{
@@ -182,7 +173,6 @@ namespace RE
 	};
 	static_assert(sizeof(SCRIPT_LOCAL) == 0xC);
 
-
 	struct SCRIPT_EFFECT_DATA
 	{
 	public:
@@ -193,7 +183,6 @@ namespace RE
 		float		  secondsElapsed;	   // 04
 	};
 	static_assert(sizeof(SCRIPT_EFFECT_DATA) == 0x8);
-
 
 	class ScriptLocals
 	{
@@ -210,7 +199,6 @@ namespace RE
 	};
 	static_assert(sizeof(ScriptLocals) == 0x28);
 
-
 	struct ScriptVariable
 	{
 	public:
@@ -220,7 +208,6 @@ namespace RE
 		BSString	  name;	  // 10
 	};
 	static_assert(sizeof(ScriptVariable) == 0x20);
-
 
 	struct SCRIPT_LINE
 	{
@@ -238,7 +225,6 @@ namespace RE
 	};
 	static_assert(sizeof(SCRIPT_LINE) == 0x41C);
 
-
 	struct SCRIPT_FUNCTION
 	{
 		struct Commands
@@ -253,10 +239,8 @@ namespace RE
 			};
 		};
 
-
 		struct StringChunk;
 		struct IntegerChunk;
-
 
 		struct Chunk
 		{
@@ -265,13 +249,11 @@ namespace RE
 			IntegerChunk* AsInteger();
 		};
 
-
 		struct StringChunk : public Chunk
 		{
 		public:
 			std::string GetString() const;
 			Chunk*		GetNext();
-
 
 			// members
 			std::uint16_t length;  // 00
@@ -279,14 +261,12 @@ namespace RE
 		};
 		static_assert(sizeof(StringChunk) == 0x2);
 
-
 #pragma pack(push, 1)
 		struct IntegerChunk : public Chunk
 		{
 		public:
 			int	   GetInteger() const;
 			Chunk* GetNext();
-
 
 			// members
 			char		 magic;	 // 00
@@ -296,14 +276,12 @@ namespace RE
 		static_assert(sizeof(IntegerChunk) == 0x5);
 #pragma pack(pop)
 
-
 		struct ScriptData
 		{
 		public:
 			Chunk*		  GetChunk();
 			StringChunk*  GetStringChunk();
 			IntegerChunk* GetIntegerChunk();
-
 
 			// members
 			std::uint16_t opcode;	  // 00
@@ -312,11 +290,9 @@ namespace RE
 		};
 		static_assert(sizeof(ScriptData) == 0x6);
 
-
 		using Execute_t = bool(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, std::uint32_t& a_opcodeOffsetPtr);
 		using Compile_t = bool(std::uint16_t a_numParams, const SCRIPT_PARAMETER* a_paramInfo, SCRIPT_LINE* a_lineBuf, ScriptCompileData* a_scriptBuf);
 		using Condition_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
-
 
 		static SCRIPT_FUNCTION* GetFirstScriptCommand();
 		static SCRIPT_FUNCTION* LocateScriptCommand(const char* a_longName);
@@ -332,7 +308,6 @@ namespace RE
 		}
 
 		void SetParameters();
-
 
 		// members
 		const char*		  functionName;			// 00

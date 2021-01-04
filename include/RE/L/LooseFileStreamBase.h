@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSSystemFile.h"
 
-
 namespace RE
 {
 	namespace BSResource

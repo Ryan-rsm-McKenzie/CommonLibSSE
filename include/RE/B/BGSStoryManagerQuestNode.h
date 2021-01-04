@@ -5,7 +5,6 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSStoryManagerQuestNode : public BGSStoryManagerNodeBase
@@ -13,7 +12,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerQuestNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerQuestNode;
-
 
 		struct ChangeFlags
 		{
@@ -23,7 +21,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -32,7 +29,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSStoryManagerQuestNode();  // 00
 
@@ -46,7 +42,6 @@ namespace RE
 		virtual std::uint32_t							 QChildCount() const override;									 // 3B - { return quests.size(); }
 		virtual BGSStoryManagerTreeForm*				 GetChild(std::uint32_t a_idx) const override;					 // 3C - { return quests[a_idx]; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;	 // 3E - { return a_visitor->VisitQuestNode(this); }
-
 
 		// members
 		BSTArray<TESQuest*>					 quests;				   // 48 - NNAM

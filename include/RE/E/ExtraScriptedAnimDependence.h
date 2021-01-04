@@ -6,7 +6,6 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraScriptedAnimDependence : public BSExtraData
@@ -15,12 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraScriptedAnimDependence;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kScriptedAnimDependence;
 
-
 		virtual ~ExtraScriptedAnimDependence();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kScriptedAnimDependence; }
-
 
 		// members
 		BSTArray<BSTTuple<ObjectRefHandle, std::uint32_t>> dependentManagers;  // 10

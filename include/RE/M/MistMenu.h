@@ -5,7 +5,6 @@
 #include "RE/N/NiColor.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
-
 namespace RE
 {
 	// menuDepth = 8
@@ -19,7 +18,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_MistMenu;
 		constexpr static std::string_view MENU_NAME = "Mist Menu";
-
 
 		struct Colors
 		{
@@ -36,7 +34,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~MistMenu();  // 00
 
 		// override (IMenu)
@@ -49,7 +46,6 @@ namespace RE
 		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
 		virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;	// 04
 		virtual bool ProcessButton(ButtonEvent* a_event) override;			// 05
-
 
 		// members
 		NiColor		  ambientColors[Colors::kTotal];  // 058

@@ -2,7 +2,6 @@
 
 #include "RE/N/NiTCollection.h"
 
-
 namespace RE
 {
 	template <class T, class Allocator>
@@ -17,7 +16,6 @@ namespace RE
 		using iterator = T*;
 		using const_iterator = const T*;
 
-
 		NiTSet(std::uint32_t a_initialSize = 0) :
 			_data(0),
 			_capacity(a_initialSize),
@@ -28,12 +26,10 @@ namespace RE
 			}
 		}
 
-
 		~NiTSet()
 		{
 			allocator_type::Deallocate(_data);
 		}
-
 
 		reference operator[](size_type a_pos)
 		{
@@ -41,85 +37,71 @@ namespace RE
 			return _data[a_pos];
 		}
 
-
 		const_reference operator[](size_type a_pos) const
 		{
 			assert(a_pos < size());
 			return _data[a_pos];
 		}
 
-
 		reference front()
 		{
 			return operator[](0);
 		}
-
 
 		const_reference front() const
 		{
 			return operator[](0);
 		}
 
-
 		reference back()
 		{
 			return operator[](size() - 1);
 		}
-
 
 		const_reference back() const
 		{
 			return operator[](size() - 1);
 		}
 
-
 		iterator begin()
 		{
 			return _data;
 		}
-
 
 		const_iterator begin() const
 		{
 			return _data;
 		}
 
-
 		const_iterator cbegin() const
 		{
 			return _data;
 		}
-
 
 		iterator end()
 		{
 			return _data + _size;
 		}
 
-
 		const_iterator end() const
 		{
 			return _data + _size;
 		}
-
 
 		const_iterator cend() const
 		{
 			return _data + _size;
 		}
 
-
 		bool empty() const
 		{
 			return _capacity == 0;
 		}
 
-
 		size_type size() const
 		{
 			return _size;
 		}
-
 
 		size_type capacity() const
 		{
@@ -133,7 +115,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTSet<void*, NiTMallocInterface<void*>>) == 0x10);
 
-
 	template <class T>
 	class NiTObjectSet : public NiTSet<T, NiTNewInterface<T>>
 	{
@@ -143,7 +124,6 @@ namespace RE
 		{}
 	};
 	static_assert(sizeof(NiTObjectSet<void*>) == 0x10);
-
 
 	template <class T>
 	class NiTPrimitiveSet : public NiTSet<T, NiTMallocInterface<T>>

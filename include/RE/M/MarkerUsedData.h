@@ -3,7 +3,6 @@
 #include "RE/A/AITimeStamp.h"
 #include "RE/B/BSPointerHandle.h"
 
-
 namespace RE
 {
 	struct MarkerUsedData

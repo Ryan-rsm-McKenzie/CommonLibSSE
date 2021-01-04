@@ -4,11 +4,9 @@
 #include "RE/F/FxDelegateHandler.h"
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	struct TESFurnitureEvent;
-
 
 	namespace CraftingSubMenus
 	{
@@ -19,7 +17,6 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__CraftingSubMenu;
 
-
 			virtual ~CraftingSubMenu();	 // 00
 
 			// add
@@ -29,7 +26,6 @@ namespace RE
 			virtual void Unk_05(void);	// 05 - { return 0; }
 			virtual void Unk_06(void);	// 06 - { return; }
 			virtual void Unk_07(void);	// 07 - { return; }
-
 
 			// members
 			std::uint64_t unk018;  // 018

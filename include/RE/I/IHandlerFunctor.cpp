@@ -1,6 +1,5 @@
 #include "RE/I/IHandlerFunctor.h"
 
-
 namespace RE
 {
 	HandlerDictionary* HandlerDictionary::GetSingleton()

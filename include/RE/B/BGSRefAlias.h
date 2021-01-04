@@ -5,20 +5,17 @@
 #include "RE/F/FormTypes.h"
 #include "RE/Q/QuestEvents.h"
 
-
 namespace RE
 {
 	class BGSLocationRefType;
 	class TESBoundObject;
 	class TESCondition;
 
-
 	class BGSRefAlias : public BGSBaseAlias
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRefAlias;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(140);
-
 
 		struct ForcedFillData  // kForced
 		{
@@ -27,7 +24,6 @@ namespace RE
 			ObjectRefHandle forcedRef;	// 0 - ALFR
 		};
 		static_assert(sizeof(ForcedFillData) == 0x4);
-
 
 		struct FromAliasFillData  // kFromAlias
 		{
@@ -39,7 +35,6 @@ namespace RE
 		};
 		static_assert(sizeof(FromAliasFillData) == 0x10);
 
-
 		struct FromEventFillData  // kFromEvent
 		{
 		public:
@@ -48,7 +43,6 @@ namespace RE
 			std::uint32_t forcedEventData;	// ALFD
 		};
 		static_assert(sizeof(FromEventFillData) == 0x8);
-
 
 		struct CreatedFillData	// kCreated
 		{
@@ -62,7 +56,6 @@ namespace RE
 				kNone = 4
 			};
 
-
 			struct Alias  // ALCA
 			{
 			public:
@@ -72,13 +65,11 @@ namespace RE
 					kIn = 0x8000
 				};
 
-
 				// members
 				std::uint16_t							alias;	 // 0
 				stl::enumeration<Create, std::uint16_t> create;	 // 2
 			};
 			static_assert(sizeof(Alias) == 0x4);
-
 
 			// members
 			TESBoundObject*						   object;	// 00 - ALCO
@@ -87,7 +78,6 @@ namespace RE
 			std::uint16_t						   pad0E;	// 0E
 		};
 		static_assert(sizeof(CreatedFillData) == 0x10);
-
 
 		struct FromExternalFillData	 // kFromExternal
 		{
@@ -99,7 +89,6 @@ namespace RE
 		};
 		static_assert(sizeof(FromExternalFillData) == 0x10);
 
-
 		struct UniqueActorFillData	// kUniqueActor
 		{
 		public:
@@ -107,7 +96,6 @@ namespace RE
 			TESNPC* uniqueActor;  // 0 - ALUA
 		};
 		static_assert(sizeof(UniqueActorFillData) == 0x8);
-
 
 		struct NearAliasFillData  // kNearAlias
 		{
@@ -118,13 +106,11 @@ namespace RE
 				kLinkedParents = 1
 			};
 
-
 			// members
 			std::uint32_t								  nearAlias;	 // 0 - ALNA
 			stl::enumeration<NEARFILLTYPE, std::uint32_t> nearFillType;	 // 4 - ALNT
 		};
 		static_assert(sizeof(NearAliasFillData) == 0x8);
-
 
 		union GenericFillData
 		{
@@ -139,9 +125,7 @@ namespace RE
 			};
 			static_assert(sizeof(Padding) == 0x18);
 
-
 			~GenericFillData() {}
-
 
 			// members
 			Padding				 padding;
@@ -155,14 +139,12 @@ namespace RE
 		};
 		static_assert(sizeof(GenericFillData) == 0x18);
 
-
 		virtual ~BGSRefAlias();	 // 00
 
 		// override (BGSBaseAlias)
 		virtual bool				 Load(TESFile* a_mod) override;		  // 01
 		virtual void				 InitItem(TESForm* a_form) override;  // 02
 		virtual const BSFixedString& QType() const override;			  // 03 - { return "Ref"; }
-
 
 		// members
 		GenericFillData fillData;	 // 28

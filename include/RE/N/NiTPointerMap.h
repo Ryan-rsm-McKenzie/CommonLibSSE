@@ -3,7 +3,6 @@
 #include "RE/N/NiTMapBase.h"
 #include "RE/N/NiTPointerAllocator.h"
 
-
 namespace RE
 {
 	template <class Key, class T>
@@ -18,11 +17,9 @@ namespace RE
 		using value_type = typename Base::value_type;
 		using size_type = typename Base::size_type;
 
-
 		NiTPointerMap(std::uint32_t a_hashSize = 37) :
 			NiTMapBase(a_hashSize)
 		{}
-
 
 		virtual ~NiTPointerMap()  // 00
 		{}
@@ -30,13 +27,11 @@ namespace RE
 	protected:
 		using Base::_allocator;
 
-
 		// override (NiTMapBase)
 		virtual value_type* malloc_value() override	 // 05
 		{
 			return static_cast<value_type*>(_allocator.Allocate());
 		}
-
 
 		virtual void free_value(value_type* a_value) override  // 06
 		{

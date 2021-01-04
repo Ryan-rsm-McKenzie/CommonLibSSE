@@ -1,6 +1,5 @@
 #include "RE/T/TESClimate.h"
 
-
 namespace RE
 {
 	std::tm TESClimate::Timing::Interval::ConvertInterval(std::uint8_t a_time) const
@@ -18,30 +17,25 @@ namespace RE
 		return result;
 	}
 
-
 	std::tm TESClimate::Timing::Interval::GetBeginTime() const
 	{
 		return ConvertInterval(begin);
 	}
-
 
 	std::tm TESClimate::Timing::Interval::GetEndTime() const
 	{
 		return ConvertInterval(end);
 	}
 
-
 	bool TESClimate::Timing::IncludesMasser() const
 	{
 		return moonPhaseLength.all(MoonPhaseLength::kMasser);
 	}
 
-
 	bool TESClimate::Timing::IncludesSecunda() const
 	{
 		return moonPhaseLength.all(MoonPhaseLength::kSecunda);
 	}
-
 
 	std::uint8_t TESClimate::Timing::GetPhaseLength() const
 	{

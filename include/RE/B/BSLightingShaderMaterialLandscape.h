@@ -4,17 +4,14 @@
 #include "RE/N/NiColor.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiSourceTexture;
-
 
 	class BSLightingShaderMaterialLandscape : public BSLightingShaderMaterialBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
-
 
 		virtual ~BSLightingShaderMaterialLandscape();  // 00
 
@@ -25,7 +22,6 @@ namespace RE
 		virtual void			  ClearTextures(void) override;					  // 09
 		virtual void			  ReceiveValuesFromRootMaterial(void) override;	  // 0A
 		virtual void			  GetTextures(void) override;					  // 0B
-
 
 		// members
 		std::uint32_t			   numLandscapeTextures;		// 0A0

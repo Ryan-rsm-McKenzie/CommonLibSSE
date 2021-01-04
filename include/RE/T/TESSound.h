@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESBoundAnimObject.h"
 
-
 namespace RE
 {
 	class TESSound : public TESBoundAnimObject
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESSound;
 		inline static constexpr auto FORMTYPE = FormType::Sound;
-
 
 		struct RecordFlags
 		{
@@ -22,7 +20,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESSound();  // 00
 
 		// override (TESBoundAnimObject)
@@ -32,7 +29,6 @@ namespace RE
 		virtual bool		SetFormEditorID(const char* a_str) override;  // 33
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;	  // 41
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;		  // 4A - { return 0; }
-
 
 		// members
 		BGSSoundDescriptorForm* descriptor;	 // 30 - SDSC

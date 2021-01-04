@@ -2,19 +2,16 @@
 
 #include "RE/N/NiInterpController.h"
 
-
 namespace RE
 {
 	class NiAVObject;
 	class NiBlendTransformInterpolator;
-
 
 	class NiMultiTargetTransformController : public NiInterpController
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiMultiTargetTransformController;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiMultiTargetTransformController;
-
 
 		virtual ~NiMultiTargetTransformController();  // 00
 
@@ -41,7 +38,6 @@ namespace RE
 		virtual NiBlendInterpolator* CreateBlendInterpolator(std::uint16_t a_index = 0, bool a_managerControlled = false, bool a_accumulateAnimations = false, float a_weightThreshold = 0.0, std::uint8_t a_arraySize = 2) const override;	 // 39
 		virtual void				 GuaranteeTimeRange(float a_startTime, float a_endTime) override;																																		 // 3A
 		virtual bool				 InterpolatorIsCorrectType(NiInterpolator* a_interpolator, std::uint16_t a_index) const override;																										 // 3B
-
 
 		// members
 		NiBlendTransformInterpolator* blendInterps;	 // 48

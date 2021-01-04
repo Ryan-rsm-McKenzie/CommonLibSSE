@@ -3,7 +3,6 @@
 #include "RE/G/GFxValue.h"
 #include "RE/J/JournalTab.h"
 
-
 namespace RE
 {
 	class Journal_QuestsTab : public JournalTab
@@ -11,12 +10,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Journal_QuestsTab;
 
-
 		virtual ~Journal_QuestsTab();  // 00
 
 		// override (JournalTab)
 		virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-
 
 		// members
 		GFxValue	  unk18;  // 18

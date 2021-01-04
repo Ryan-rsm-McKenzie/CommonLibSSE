@@ -2,14 +2,12 @@
 
 #include "RE/B/BSFaceGenKeyframe.h"
 
-
 namespace RE
 {
 	class BSFaceGenKeyframeMultiple : public BSFaceGenKeyframe
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFaceGenKeyframeMultiple;
-
 
 		virtual ~BSFaceGenKeyframeMultiple();  // 00
 
@@ -30,7 +28,6 @@ namespace RE
 		// add
 		virtual void Unk_0E(void);	// 0E
 		virtual void Unk_0F(void);	// 0F
-
 
 		// members
 		float*		  values;	  // 10

@@ -2,7 +2,6 @@
 
 #include "RE/N/NiProperty.h"
 
-
 namespace RE
 {
 	class NiAlphaProperty : public NiProperty
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAlphaProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiAlphaProperty;
-
 
 		enum class AlphaFunction
 		{
@@ -27,7 +25,6 @@ namespace RE
 			kSrcAlphaSat = 10
 		};
 
-
 		virtual ~NiAlphaProperty();	 // 00
 
 		// override (NiProperty)
@@ -39,7 +36,6 @@ namespace RE
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C
 		virtual Type		  GetType() const override;							  // 25 - { return Type::kAlpha; }
-
 
 		// members
 		std::uint64_t unk30;  // 30

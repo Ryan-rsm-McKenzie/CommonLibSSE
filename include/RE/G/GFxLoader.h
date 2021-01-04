@@ -3,7 +3,6 @@
 #include "RE/G/GFxStateBag.h"
 #include "RE/G/GPtr.h"
 
-
 namespace RE
 {
 	class GFxFileOpenerBase;
@@ -13,7 +12,6 @@ namespace RE
 	class GFxMovieDef;
 	class GFxMovieInfo;
 	class GFxResourceLib;
-
 
 	class GFxLoader : public GFxStateBag
 	{
@@ -34,7 +32,6 @@ namespace RE
 			kLoadDebugHeap = 1 << 28
 		};
 
-
 		struct LoaderConfig
 		{
 			std::uint32_t			 defLoadFlags;
@@ -42,7 +39,6 @@ namespace RE
 			GPtr<GFxZlibSupportBase> zLibSupport;
 			GPtr<GFxJpegSupportBase> jpegSupport;
 		};
-
 
 		// override (GFxStateBag)
 		virtual GFxStateBag* GetStateBagImpl() const override;	// 00
@@ -52,10 +48,8 @@ namespace RE
 		// add
 		virtual bool CheckTagLoader(std::int32_t a_tagType) const;	// 05
 
-
 		GFxMovieDef*   CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
 		GFxLoaderImpl* GetLoaderImpl() const;
-
 
 		// members
 		GFxLoaderImpl*	impl;				// 08

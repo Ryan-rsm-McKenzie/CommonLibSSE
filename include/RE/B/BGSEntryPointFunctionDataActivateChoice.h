@@ -4,7 +4,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSEntryPointFunctionDataActivateChoice : public BGSEntryPointFunctionData
@@ -12,14 +11,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
 
-
 		enum class Flag1
 		{
 			kNone = 0,
 			kRunImmediately = 1,
 			kReplaceDefault = 2
 		};
-
 
 		virtual ~BGSEntryPointFunctionDataActivateChoice();	 // 00
 
@@ -33,7 +30,6 @@ namespace RE
 
 		bool ReplacesDefault() const;
 		bool RunsImmediately() const;
-
 
 		// members
 		BSFixedString						   label;		  // 08

@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class MoviePlayer
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MoviePlayer;
-
 
 		virtual ~MoviePlayer();	 // 00
 
@@ -25,7 +23,6 @@ namespace RE
 		virtual void Unk_0B(void) = 0;	// 0B
 		virtual void Unk_0C(void) = 0;	// 0C
 		virtual void Unk_0D(void);		// 0D
-
 
 		// members
 		std::uint64_t unk08;  // 08

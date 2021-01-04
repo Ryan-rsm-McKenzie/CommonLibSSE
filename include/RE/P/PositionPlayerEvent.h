@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	// related to cell transitions
@@ -15,7 +14,6 @@ namespace RE
 			kPost = 3,
 			kFinish = 4
 		};
-
 
 		// members
 		stl::enumeration<EVENT_TYPE, std::uint32_t> type;  // 0

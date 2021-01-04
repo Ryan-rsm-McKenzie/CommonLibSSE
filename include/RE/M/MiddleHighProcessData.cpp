@@ -1,7 +1,6 @@
 #include "RE/M/MiddleHighProcessData.h"
 #include "SKSE/API.h"
 
-
 namespace RE
 {
 	void HitData::Populate(Actor* a_aggressor, Actor* a_target, InventoryEntryData* a_weapon)

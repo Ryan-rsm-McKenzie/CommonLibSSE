@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSStorage.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -12,7 +11,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IStore;
-
 
 			virtual ~IStore();	// 00
 

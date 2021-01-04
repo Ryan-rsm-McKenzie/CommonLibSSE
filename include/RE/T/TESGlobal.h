@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class TESGlobal : public TESForm
@@ -13,14 +12,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESGlobal;
 		inline static constexpr auto FORMTYPE = FormType::Global;
 
-
 		enum class Type
 		{
 			kFloat = 'f',
 			kLong = 'l',
 			kShort = 's'
 		};
-
 
 		struct RecordFlags
 		{
@@ -32,14 +29,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESGlobal();  // 00
 
 		// override (TESform)
 		virtual bool		Load(TESFile* a_mod) override;				  // 06
 		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
 		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
-
 
 		// members
 		BSString							 formEditorID;	// 20 - EDID

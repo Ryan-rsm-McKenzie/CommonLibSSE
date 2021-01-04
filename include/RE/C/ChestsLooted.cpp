@@ -1,6 +1,5 @@
 #include "RE/C/ChestsLooted.h"
 
-
 namespace RE
 {
 	BSTEventSource<ChestsLooted::Event>* ChestsLooted::GetEventSource()
@@ -9,7 +8,6 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(50257) };
 		return func();
 	}
-
 
 	void ChestsLooted::SendEvent()
 	{

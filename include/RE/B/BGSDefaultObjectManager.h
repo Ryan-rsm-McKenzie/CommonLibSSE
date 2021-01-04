@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct DEFAULT_OBJECTS
@@ -381,7 +380,6 @@ namespace RE
 	};
 	using DEFAULT_OBJECT = DEFAULT_OBJECTS::DEFAULT_OBJECT;
 
-
 	enum class DEFAULT_OBJECT_TYPE
 	{
 		kMisc = 0,
@@ -392,7 +390,6 @@ namespace RE
 		kSounds = 5,
 		kKeywords = 6
 	};
-
 
 	struct DEFAULT_OBJECT_DATA
 	{
@@ -408,7 +405,6 @@ namespace RE
 	};
 	static_assert(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
 
-
 	class BGSDefaultObjectManager :
 		public TESForm,										  // 000
 		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 020
@@ -416,10 +412,8 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
 
-
 		using DefaultObject = DEFAULT_OBJECT;
 		inline static constexpr auto FORMTYPE = FormType::DefaultObject;
-
 
 		struct RecordFlags
 		{
@@ -427,7 +421,6 @@ namespace RE
 			{
 			};
 		};
-
 
 		virtual ~BGSDefaultObjectManager();	 // 00
 
@@ -458,7 +451,6 @@ namespace RE
 				return nullptr;
 			}
 		}
-
 
 		// members
 		TESForm*	  objects[DEFAULT_OBJECTS::kTotal];		// 020 - DNAM

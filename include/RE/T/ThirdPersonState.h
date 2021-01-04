@@ -7,11 +7,9 @@
 #include "RE/P/PlayerInputHandler.h"
 #include "RE/T/TESCameraState.h"
 
-
 namespace RE
 {
 	class NiNode;
-
 
 	class ThirdPersonState :
 		public TESCameraState,	   // 00
@@ -19,7 +17,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ThirdPersonState;
-
 
 		virtual ~ThirdPersonState();  // 00
 
@@ -37,7 +34,6 @@ namespace RE
 		virtual bool CanProcess(InputEvent* a_event) override;											// 01
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;	// 04
 
-
 		// add
 		virtual void SetCameraHandle(RefHandle& a_handle);		  // 09 - { return; }
 		virtual void Unk_0A(void);								  // 0A - { return; }
@@ -46,7 +42,6 @@ namespace RE
 		virtual void SetFreeRotationMode(bool a_weaponSheathed);  // 0D
 		virtual void UpdateRotation();							  // 0E
 		virtual void HandleLookInput(const NiPoint2& a_input);	  // 0F
-
 
 		// members
 		NiAVObject*	  thirdPersonCameraObj;	  // 30

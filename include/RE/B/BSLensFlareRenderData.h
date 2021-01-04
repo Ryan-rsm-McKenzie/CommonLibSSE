@@ -3,11 +3,9 @@
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSLensFlareSpriteRenderData;
-
 
 	class BSLensFlareRenderData
 	{

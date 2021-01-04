@@ -3,17 +3,14 @@
 #include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BSIMusicTrack;
-
 
 	class BSIMusicType
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSIMusicType;
-
 
 		enum class Flag	 // FNAM
 		{
@@ -26,7 +23,6 @@ namespace RE
 			kDoesntQueue = 1 << 6
 		};
 
-
 		enum class MUSIC_STATUS
 		{
 			kInactive = 0,
@@ -35,7 +31,6 @@ namespace RE
 			kFinishing = 3,
 			kFinished = 4
 		};
-
 
 		// add
 		virtual void DoUpdate() = 0;								   // 00
@@ -47,7 +42,6 @@ namespace RE
 		virtual void DoPrepare();									   // 06 - { return; }
 
 		virtual ~BSIMusicType();  // 07
-
 
 		// members
 		stl::enumeration<Flag, std::uint32_t>		  flags;			  // 08 - FNAM

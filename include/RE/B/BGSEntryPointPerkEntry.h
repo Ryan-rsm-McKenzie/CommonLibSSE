@@ -4,18 +4,15 @@
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class BGSEntryPointFunctionData;
 	class TESCondition;
 
-
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEntryPointPerkEntry;
-
 
 		struct EntryData  // DATA
 		{
@@ -39,7 +36,6 @@ namespace RE
 				kSetText = 15
 			};
 
-
 			// members
 			stl::enumeration<EntryPoint, std::uint8_t> entryPoint;	// 0
 			stl::enumeration<Function, std::uint8_t>   function;	// 1
@@ -48,7 +44,6 @@ namespace RE
 			std::uint32_t							   unk4;		// 4
 		};
 		static_assert(sizeof(EntryData) == 0x8);
-
 
 		// override (BGSPerkEntry)
 		virtual bool	   CheckConditionFilters(std::uint32_t a_numArgs, void* a_args) override;  // 00
@@ -67,7 +62,6 @@ namespace RE
 		virtual void			RemovePerkEntry(Actor* a_actor) override;  // 0B
 
 		bool IsEntryPoint(EntryPoint a_entryPoint) const;
-
 
 		// members
 		EntryData				   entryData;	  // 10 - DATA

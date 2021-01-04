@@ -3,7 +3,6 @@
 #include "RE/F/FxResponseArgsBase.h"
 #include "RE/G/GFxMovieView.h"
 
-
 namespace RE
 {
 	FxDelegateArgs::FxDelegateArgs(GFxValue a_responseID, FxDelegateHandler* a_handler, GFxMovieView* a_movie, const GFxValue* a_vals, std::uint32_t a_numArgs) :
@@ -15,7 +14,6 @@ namespace RE
 		_pad34(0)
 	{}
 
-
 	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
 	{
 		GFxValue*			values = nullptr;
@@ -26,25 +24,21 @@ namespace RE
 		}
 	}
 
-
 	const GFxValue& FxDelegateArgs::operator[](UPInt a_pos) const
 	{
 		assert(a_pos < _numArgs);
 		return _args[a_pos];
 	}
 
-
 	FxDelegateHandler* FxDelegateArgs::GetHandler() const
 	{
 		return _handler;
 	}
 
-
 	GFxMovieView* FxDelegateArgs::GetMovie() const
 	{
 		return _movieView;
 	}
-
 
 	std::uint32_t FxDelegateArgs::GetArgCount() const
 	{

@@ -1,6 +1,5 @@
 #include "RE/B/BSWin32SaveDataSystemUtility.h"
 
-
 namespace RE
 {
 	BSWin32SaveDataSystemUtility* BSWin32SaveDataSystemUtility::GetSingleton()

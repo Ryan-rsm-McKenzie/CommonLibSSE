@@ -1,25 +1,21 @@
 #include "RE/I/InventoryChanges.h"
 
-
 namespace RE
 {
 	InventoryChanges::InventoryChanges() :
 		InventoryChanges(nullptr)
 	{}
 
-
 	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
 	{
 		Ctor(a_ref);
 	}
-
 
 	InventoryChanges::~InventoryChanges()
 	{
 		Dtor();
 		memzero(this);
 	}
-
 
 	void InventoryChanges::AddEntryData(InventoryEntryData* a_entry)
 	{
@@ -31,14 +27,12 @@ namespace RE
 		changed = true;
 	}
 
-
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 		REL::Relocation<func_t> func{ REL::ID(15873) };
 		return func(this, a_slot);
 	}
-
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
@@ -47,14 +41,12 @@ namespace RE
 		return func(this);
 	}
 
-
 	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count)
 	{
 		using func_t = decltype(&InventoryChanges::SendContainerChangedEvent);
 		REL::Relocation<func_t> func{ Offset::InventoryChanges::SendContainerChangedEvent };
 		return func(this, a_itemExtraList, a_fromRefr, a_item, a_count);
 	}
-
 
 	void InventoryChanges::SetUniqueID(ExtraDataList* a_itemList, TESForm* a_oldForm, TESForm* a_newForm)
 	{
@@ -63,14 +55,12 @@ namespace RE
 		return func(this, a_itemList, a_oldForm, a_newForm);
 	}
 
-
 	void InventoryChanges::InitFromContainerExtra()
 	{
 		using func_t = decltype(&InventoryChanges::InitFromContainerExtra);
 		REL::Relocation<func_t> func{ REL::ID(15890) };
 		return func(this);
 	}
-
 
 	void InventoryChanges::InitLeveledItems()
 	{
@@ -79,7 +69,6 @@ namespace RE
 		return func(this);
 	}
 
-
 	void InventoryChanges::InitScripts()
 	{
 		using func_t = decltype(&InventoryChanges::InitScripts);
@@ -87,14 +76,12 @@ namespace RE
 		return func(this);
 	}
 
-
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
 		REL::Relocation<func_t> func{ REL::ID(15812) };
 		return func(this, a_ref);
 	}
-
 
 	void InventoryChanges::Dtor()
 	{

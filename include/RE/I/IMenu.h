@@ -6,12 +6,10 @@
 #include "RE/G/GPtr.h"
 #include "RE/U/UserEvents.h"
 
-
 namespace RE
 {
 	class CallbackProcessor;
 	class UIMessage;
-
 
 	enum class UI_MENU_FLAGS
 	{
@@ -46,7 +44,6 @@ namespace RE
 		kUsesMovementToDirection = 1 << 27
 	};
 
-
 	enum class UI_MESSAGE_RESULTS
 	{
 		kHandled = 0,
@@ -54,16 +51,13 @@ namespace RE
 		kPassOn = 2
 	};
 
-
 	class IMenu : public FxDelegateHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMenu;
 
-
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;
-
 
 		virtual ~IMenu() = default;	 // 00
 
@@ -107,7 +101,6 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesCursor() const noexcept { return menuFlags.all(Flag::kUsesMenuContext); }
 		[[nodiscard]] constexpr bool UsesMenuContext() const noexcept { return menuFlags.all(Flag::kUsesMovementToDirection); }
 		[[nodiscard]] constexpr bool UsesMovementToDirection() const noexcept { return menuFlags.all(Flag::kUpdateUsesCursor); }
-
 
 		// members
 		GPtr<GFxMovieView>							   uiMovie{ nullptr };				// 10

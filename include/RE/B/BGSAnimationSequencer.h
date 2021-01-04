@@ -3,11 +3,9 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTHashMap.h"
 
-
 namespace RE
 {
 	class BGSActionData;
-
 
 	class BGSAnimationSequencer
 	{

@@ -4,18 +4,15 @@
 #include "RE/N/NiGeometryData.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	struct ID3D11Buffer;
-
 
 	class NiSkinPartition : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSkinPartition;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinPartition;
-
 
 		struct TriShape
 		{
@@ -28,7 +25,6 @@ namespace RE
 			std::uint16_t*		   rawIndexData;   // 28
 		};
 		static_assert(sizeof(TriShape) == 0x30);
-
 
 		class Partition
 		{
@@ -51,7 +47,6 @@ namespace RE
 		};
 		static_assert(sizeof(Partition) == 0x50);
 
-
 		virtual ~NiSkinPartition();	 // 00
 
 		// override (NiObject)
@@ -64,7 +59,6 @@ namespace RE
 
 		// add
 		virtual void Unk_25(void);	// 25
-
 
 		// members
 		std::uint32_t		   numPartitions;  // 10

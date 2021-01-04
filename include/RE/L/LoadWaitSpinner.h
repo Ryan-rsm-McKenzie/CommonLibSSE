@@ -4,13 +4,11 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	class BSSystemEvent;
 	struct BGSSaveLoadManagerEvent;
 	struct BSGamerProfileEvent;
-
 
 	// menuDepth = 10
 	// flags = kAlwaysOpen | kAllowSaving
@@ -24,7 +22,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_LoadWaitSpinner;
 		constexpr static std::string_view MENU_NAME = "LoadWaitSpinner";
-
 
 		virtual ~LoadWaitSpinner();	 // 00
 
@@ -40,7 +37,6 @@ namespace RE
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	 // 01
-
 
 		// members
 		GFxValue			  root;	   // 48 - "Menu_mc"

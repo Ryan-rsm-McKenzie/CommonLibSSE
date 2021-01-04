@@ -16,7 +16,6 @@ namespace RE
 	class TESTopicInfo;
 	struct PositionPlayerEvent;
 
-
 	class MenuTopicManager :
 		public BSTSingletonSDM<MenuTopicManager>,  // 0x10
 		public BSTEventSink<MenuOpenCloseEvent>,   // 0x00
@@ -24,7 +23,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MenuTopicManager;
-
 
 		struct Dialogue
 		{
@@ -49,7 +47,6 @@ namespace RE
 		};
 		static_assert(sizeof(Dialogue) == 0x58);
 
-
 		virtual ~MenuTopicManager();  // 00
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
@@ -58,13 +55,11 @@ namespace RE
 		// override (BSTEventSink<PositionPlayerEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;	 // 01
 
-
 		static MenuTopicManager* GetSingleton()
 		{
 			REL::Relocation<MenuTopicManager**> singleton{ REL::ID(514959) };
 			return *singleton;
 		}
-
 
 		// members
 		BSSimpleList<Dialogue*>*	 selectedResponseNode;	// 18

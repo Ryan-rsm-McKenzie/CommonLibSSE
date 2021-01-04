@@ -8,7 +8,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class Actor;
@@ -21,7 +20,6 @@ namespace RE
 	class TESObjectWEAP;
 	struct Effect;
 
-
 	class MagicItem :
 		public TESBoundObject,	// 00
 		public TESFullName,		// 30
@@ -29,7 +27,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MagicItem;
-
 
 		class PreloadableVisitor
 		{
@@ -39,7 +36,6 @@ namespace RE
 			virtual void VisitWeapon(TESObjectWEAP* a_weapon) = 0;	// 01
 		};
 		static_assert(sizeof(PreloadableVisitor) == 0x8);
-
 
 		struct SkillUsageData
 		{
@@ -55,7 +51,6 @@ namespace RE
 		};
 		static_assert(sizeof(SkillUsageData) == 0x18);
 
-
 		class Data
 		{
 		public:
@@ -64,7 +59,6 @@ namespace RE
 			std::uint32_t flags;		 // 4
 		};
 		static_assert(sizeof(Data) == 0x8);
-
 
 		virtual ~MagicItem();  // 00
 
@@ -116,7 +110,6 @@ namespace RE
 		Effect*		GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
 		Data*		GetData();
 		const Data* GetData() const;
-
 
 		// members
 		BSTArray<Effect*>			effects;		  // 58

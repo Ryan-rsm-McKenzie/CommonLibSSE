@@ -2,18 +2,15 @@
 
 #include "RE/B/BGSSceneAction.h"
 
-
 namespace RE
 {
 	class TESTopic;
-
 
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSceneActionDialogue;
 		inline static constexpr auto TYPE = Type::kDialogue;
-
 
 		virtual ~BGSSceneActionDialogue();	// 00
 
@@ -33,7 +30,6 @@ namespace RE
 		virtual void		  Unk_10(void) override;										// 10
 		virtual void		  Unk_11(void) override;										// 11
 		virtual void		  Unk_13(void) override;										// 13
-
 
 		// members
 		TESTopic*	  topic;			 // 20 - DATA

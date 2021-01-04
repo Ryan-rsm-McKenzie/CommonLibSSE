@@ -5,7 +5,6 @@
 #include "RE/T/TypeInfo.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -24,7 +23,6 @@ namespace RE
 			using const_iterator = const value_type*;
 			using reverse_iterator = std::reverse_iterator<iterator>;
 			using const_reverse_iterator = std::reverse_iterator<const_iterator>;
-
 
 			~Array();
 

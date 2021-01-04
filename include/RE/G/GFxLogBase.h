@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxLogConstants.h"
 
-
 namespace RE
 {
 	template <class Derived>

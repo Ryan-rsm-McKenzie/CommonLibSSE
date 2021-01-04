@@ -3,14 +3,12 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSEquipType : public BaseFormComponent  // EQUP
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEquipType;
-
 
 		enum class EQUIPPED_ITEM_TYPE
 		{
@@ -20,7 +18,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		virtual ~BGSEquipType();  // 00
 
@@ -32,7 +29,6 @@ namespace RE
 		// add
 		virtual BGSEquipSlot* GetEquipSlot() const;				   // 04 - { return equipSlot; }
 		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot);  // 05 - { equipSlot = a_slot; }
-
 
 		// members
 		BGSEquipSlot* equipSlot;  // 08 - ETYP

@@ -6,7 +6,6 @@
 #include "RE/H/hkpEntityListener.h"
 #include "RE/H/hkpPhantomListener.h"
 
-
 namespace RE
 {
 	class hkpAllCdPointCollector;
@@ -18,7 +17,6 @@ namespace RE
 	struct hkpRootCdPoint;
 	struct hkpSurfaceConstraintInfo;
 
-
 	class hkpCharacterProxy :
 		public hkReferencedObject,	// 00
 		public hkpEntityListener,	// 10
@@ -26,7 +24,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterProxy;
-
 
 		virtual ~hkpCharacterProxy();  // 00
 
@@ -42,7 +39,6 @@ namespace RE
 		// add
 		virtual void UpdateManifold(const hkpAllCdPointCollector& a_startPointCollector, const hkpAllCdPointCollector& a_castCollector, hkArray<hkpRootCdPoint>& a_manifold, hkArray<hkpRigidBody*>& a_bodies, hkArray<hkpPhantom*>& a_phantoms, bool a_isMultithreaded = false);  // 03
 		virtual void ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;																															   // 04
-
 
 		// members
 		hkArray<hkpRootCdPoint>				manifold;						// 20

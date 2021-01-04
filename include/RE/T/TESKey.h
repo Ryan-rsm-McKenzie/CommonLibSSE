@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESObjectMISC.h"
 
-
 namespace RE
 {
 	class TESKey : public TESObjectMISC
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESKey;
 		inline static constexpr auto FORMTYPE = FormType::KeyMaster;
-
 
 		struct RecordFlags
 		{
@@ -22,7 +20,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESKey();	// 00
 

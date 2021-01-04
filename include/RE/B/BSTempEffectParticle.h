@@ -8,13 +8,11 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 
-
 namespace RE
 {
 	class BGSParticleObjectCloneTask;
 	class NiAVObject;
 	class NiNode;
-
 
 	class BSTempEffectParticle : public BSTempEffect
 	{
@@ -22,14 +20,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSTempEffectParticle;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectParticle;
 
-
 		virtual ~BSTempEffectParticle();  // 00
 
 		virtual const NiRTTI*	 GetRTTI() const override;		 // 02
 		virtual void			 Detach() override;				 // 27
 		virtual bool			 Update(float a_arg1) override;	 // 28
 		virtual TEMP_EFFECT_TYPE GetType() const override;		 // 2C - { return kParticle; }
-
 
 		// members
 		NiPointer<NiAVObject>						particle3D;			// 30

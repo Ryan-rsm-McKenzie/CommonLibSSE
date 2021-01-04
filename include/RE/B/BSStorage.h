@@ -2,7 +2,6 @@
 
 #include "RE/B/BSIntrusiveRefCounted.h"
 
-
 namespace RE
 {
 	namespace BSStorageDefs
@@ -16,7 +15,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSStorage;
 
-
 		struct UnkData
 		{
 		public:
@@ -27,7 +25,6 @@ namespace RE
 		};
 		static_assert(sizeof(UnkData) == 0x18);
 
-
 		virtual ~BSStorage();  // 00
 
 		// add
@@ -36,7 +33,6 @@ namespace RE
 		virtual BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const = 0;	// 03
 		virtual BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const = 0;				// 04
 		virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) = 0;				// 05
-
 
 		// members
 		std::uint32_t unk0C;  // 0C

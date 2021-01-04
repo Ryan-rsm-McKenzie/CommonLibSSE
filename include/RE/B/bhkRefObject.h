@@ -3,18 +3,15 @@
 #include "RE/H/hkRefPtr.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class hkReferencedObject;
-
 
 	class bhkRefObject : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkRefObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRefObject;
-
 
 		virtual ~bhkRefObject();  // 00
 
@@ -24,7 +21,6 @@ namespace RE
 		// add
 		virtual void Unk_25(void);	// 25
 		virtual void Unk_26(void);	// 26
-
 
 		// members
 		hkRefPtr<hkReferencedObject> referencedObject;	// 10

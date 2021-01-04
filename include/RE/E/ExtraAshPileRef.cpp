@@ -1,12 +1,10 @@
 #include "RE/E/ExtraAshPileRef.h"
 
-
 namespace RE
 {
 	ExtraAshPileRef::ExtraAshPileRef() :
 		ExtraAshPileRef(ObjectRefHandle())
 	{}
-
 
 	ExtraAshPileRef::ExtraAshPileRef(ObjectRefHandle ashPileRef) :
 		BSExtraData(),
@@ -16,7 +14,6 @@ namespace RE
 		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraAshPileRef::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
-
 
 	ExtraDataType ExtraAshPileRef::GetType() const
 	{

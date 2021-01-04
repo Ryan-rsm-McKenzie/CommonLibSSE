@@ -5,7 +5,6 @@
 #include "RE/T/TESLeveledList.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class TESLevCharacter :
@@ -17,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESLevCharacter;
 		inline static constexpr auto FORMTYPE = FormType::LeveledNPC;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -25,7 +23,6 @@ namespace RE
 				kAddedObject = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -35,7 +32,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESLevCharacter();	 // 00
 

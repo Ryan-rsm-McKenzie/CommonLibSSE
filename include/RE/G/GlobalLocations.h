@@ -4,7 +4,6 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/L/Location.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -15,7 +14,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource____GlobalLocations;
-
 
 			struct Entry
 			{
@@ -28,7 +26,6 @@ namespace RE
 			};
 			static_assert(sizeof(Entry) == 0x18);
 
-
 			virtual ~GlobalLocations();	 // 00
 
 			// override (Location)
@@ -40,7 +37,6 @@ namespace RE
 			virtual ErrorCode DoGetInfo1(const char* a_path, Info& a_info, Location*& a_location) override;													  // 06
 			virtual ErrorCode DoGetInfo2(const char* a_path, Info& a_info, LocationTraverser* a_traverser) override;										  // 07
 			virtual ErrorCode DoDelete(const char* a_path) override;																						  // 08
-
 
 			// members
 			std::uint8_t	   pad11;		  // 11

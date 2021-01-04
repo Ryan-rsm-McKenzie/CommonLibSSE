@@ -1,12 +1,10 @@
 #include "RE/E/ExtraEnchantment.h"
 
-
 namespace RE
 {
 	ExtraEnchantment::ExtraEnchantment() :
 		ExtraEnchantment(nullptr, 0)
 	{}
-
 
 	ExtraEnchantment::ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip) :
 		BSExtraData(),
@@ -20,12 +18,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraEnchantment::GetType() const
 	{
 		return ExtraDataType::kEnchantment;
 	}
-
 
 	bool ExtraEnchantment::IsNotEqual(const BSExtraData* a_rhs) const
 	{

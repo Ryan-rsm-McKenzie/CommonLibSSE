@@ -3,11 +3,9 @@
 #include "RE/B/BSShaderProperty.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class NiColor;
-
 
 	class BSLightingShaderProperty : public BSShaderProperty
 	{
@@ -15,14 +13,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSLightingShaderProperty;
 
-
 		struct Data
 		{
 			std::uint64_t unk00;  // 00
 			std::uint64_t unk08;  // 08
 		};
 		static_assert(sizeof(Data) == 0x10);
-
 
 		virtual ~BSLightingShaderProperty();  // 00
 
@@ -53,7 +49,6 @@ namespace RE
 		virtual void		  Unk_3B(void) override;							  // 3B
 		virtual void		  Unk_3D(void) override;							  // 3D
 		virtual void		  Unk_3E(void) override;							  // 3E - { return 2; }
-
 
 		// members
 		Data			unk088[3];		// 088

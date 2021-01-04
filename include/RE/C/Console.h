@@ -4,11 +4,9 @@
 #include "RE/I/IMenu.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	// menuDepth = 12
 	// flags = kPausesGame | kAlwaysOpen | kUsesCursor | kAllowSaving
@@ -18,7 +16,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_Console;
 		constexpr static std::string_view MENU_NAME = "Console";
-
 
 		virtual ~Console();	 // 00
 
@@ -32,7 +29,6 @@ namespace RE
 		void SetSelectedRef(NiPointer<TESObjectREFR> a_refPtr);
 		void SetSelectedRef(TESObjectREFR* a_ref);
 		void SetSelectedRef(ObjectRefHandle a_handle);
-
 
 		// members
 		void*		  opcode;  // 30

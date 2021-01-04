@@ -2,7 +2,6 @@
 
 #include "RE/N/NiObjectNET.h"
 
-
 namespace RE
 {
 	class NiProperty : public NiObjectNET
@@ -11,13 +10,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiProperty;
 
-
 		enum class Type
 		{
 			kAlpha = 0,
 			kShade = 1
 		};
-
 
 		virtual ~NiProperty();	// 00
 

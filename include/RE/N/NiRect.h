@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -14,12 +13,10 @@ namespace RE
 			bottom(a_bottom)
 		{}
 
-
 		T GetWidth() const
 		{
 			return right > left ? (right - left) : (left - right);
 		}
-
 
 		T GetHeight() const
 		{

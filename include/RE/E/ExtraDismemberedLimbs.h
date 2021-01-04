@@ -6,11 +6,9 @@
 #include "RE/B/BSTArray.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	struct DismemberedLimb
 	{
@@ -23,19 +21,16 @@ namespace RE
 	};
 	static_assert(sizeof(DismemberedLimb) == 0x20);
 
-
 	class ExtraDismemberedLimbs : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
-
 		virtual ~ExtraDismemberedLimbs();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kDismemberedLimbs; }
-
 
 		// members
 		std::uint16_t												limbs;			   // 10

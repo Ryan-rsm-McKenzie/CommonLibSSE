@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 
-
 namespace RE
 {
 	class BSAnimationGraphChannel : public BSIntrusiveRefCounted
@@ -11,13 +10,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSAnimationGraphChannel;
 
-
 		virtual ~BSAnimationGraphChannel();	 // 00
 
 		// add
 		virtual void PollChannelUpdateImpl(bool a_arg1) = 0;  // 01
 		virtual void ResetImpl() = 0;						  // 02
-
 
 		// members
 		std::uint32_t		pad0C;		  // 0C

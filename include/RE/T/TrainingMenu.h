@@ -5,11 +5,9 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	class MenuOpenCloseEvent;
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesMenuContext | kUpdateUsesCursor
@@ -23,7 +21,6 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_TrainingMenu;
 		constexpr static std::string_view MENU_NAME = "Training Menu";
 
-
 		virtual ~TrainingMenu();  // 00
 
 		// override (IMenu)
@@ -32,7 +29,6 @@ namespace RE
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
-
 
 		// members
 		void*		  unk38;			// 38 - smart ptr

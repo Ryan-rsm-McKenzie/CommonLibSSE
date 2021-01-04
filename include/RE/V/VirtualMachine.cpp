@@ -2,7 +2,6 @@
 
 #include "RE/S/SkyrimVM.h"
 
-
 namespace RE
 {
 	namespace BSScript

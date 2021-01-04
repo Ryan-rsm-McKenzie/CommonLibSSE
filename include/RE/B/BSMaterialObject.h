@@ -5,17 +5,14 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiProperty;
-
 
 	class BSMaterialObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMaterialObject;
-
 
 		struct DIRECTIONAL_DATA	 // DATA
 		{
@@ -25,7 +22,6 @@ namespace RE
 				kNone = 0,
 				kSnow = 1 << 0
 			};
-
 
 			// members
 			float								  falloffScale;		// 00
@@ -41,12 +37,10 @@ namespace RE
 		};
 		static_assert(sizeof(DIRECTIONAL_DATA) == 0x38);
 
-
 		virtual ~BSMaterialObject();  // 00
 
 		// add
 		virtual void EnsureLoaded();  // 01 - { return; }
-
 
 		// members
 		DIRECTIONAL_DATA				directionalData;  // 08 - DATA

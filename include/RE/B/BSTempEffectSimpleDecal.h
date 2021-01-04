@@ -7,7 +7,6 @@
 #include "RE/N/NiMatrix3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSDecalNode;
@@ -15,13 +14,11 @@ namespace RE
 	class BSTriShape;
 	class NiAVObject;
 
-
 	class BSTempEffectSimpleDecal : public BSTempEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectSimpleDecal;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectSimpleDecal;
-
 
 		virtual ~BSTempEffectSimpleDecal();	 // 00
 
@@ -30,7 +27,6 @@ namespace RE
 		virtual void		  Attach() override;			  // 26
 		virtual bool		  Update(float a_arg1) override;  // 28
 		virtual NiAVObject*	  Get3D() const override;		  // 29
-
 
 		// members
 		std::uint8_t			unk30;			  // 030

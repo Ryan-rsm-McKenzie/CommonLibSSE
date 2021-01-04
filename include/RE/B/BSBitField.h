@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSBitFieldHeapAllocator
@@ -11,7 +10,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSBitFieldHeapAllocator) == 0x8);
 
-
 	template <class Allocator = BSBitFieldHeapAllocator>
 	class BSBitField : public Allocator
 	{
@@ -21,7 +19,6 @@ namespace RE
 			std::uint32_t  local;
 			std::uint32_t* heap;
 		};
-
 
 		// members
 		Buffer		  buffer;

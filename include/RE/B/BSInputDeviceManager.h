@@ -4,7 +4,6 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/I/InputDevices.h"
 
-
 namespace RE
 {
 	class BSIInputDevice;
@@ -15,7 +14,6 @@ namespace RE
 	class BSWin32VirtualKeyboardDevice;
 	class InputEvent;
 	struct BSRemoteGamepadEvent;
-
 
 	class BSInputDeviceManager :
 		public BSTEventSource<InputEvent*>,			  // 00
@@ -31,7 +29,6 @@ namespace RE
 		BSWin32VirtualKeyboardDevice* GetVirtualKeyboard();
 		bool						  IsGamepadConnected();
 		bool						  IsGamepadEnabled();
-
 
 		// members
 		std::uint8_t						 pad59;							  // 59

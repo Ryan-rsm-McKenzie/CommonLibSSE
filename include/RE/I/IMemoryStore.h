@@ -2,14 +2,12 @@
 
 #include "RE/I/IMemoryStoreBase.h"
 
-
 namespace RE
 {
 	class IMemoryStore : public IMemoryStoreBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMemoryStore;
-
 
 		virtual ~IMemoryStore() = default;	// 00
 

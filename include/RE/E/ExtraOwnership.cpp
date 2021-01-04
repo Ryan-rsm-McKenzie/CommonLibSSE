@@ -1,12 +1,10 @@
 #include "RE/E/ExtraOwnership.h"
 
-
 namespace RE
 {
 	ExtraOwnership::ExtraOwnership() :
 		ExtraOwnership(nullptr)
 	{}
-
 
 	ExtraOwnership::ExtraOwnership(TESForm* a_owner) :
 		BSExtraData(),
@@ -16,12 +14,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraOwnership::GetType() const
 	{
 		return ExtraDataType::kOwnership;
 	}
-
 
 	bool ExtraOwnership::IsNotEqual(const BSExtraData* a_rhs) const
 	{

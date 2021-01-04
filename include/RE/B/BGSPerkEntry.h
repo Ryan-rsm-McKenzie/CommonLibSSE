@@ -3,13 +3,11 @@
 #include "RE/B/BGSEntryPoint.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class Actor;
 	class BGSEntryPointFunctionData;
 	class TESFile;
-
 
 	enum class PERK_ENTRY_TYPE
 	{
@@ -18,15 +16,12 @@ namespace RE
 		kEntryPoint = 2
 	};
 
-
 	class BGSPerkEntry
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPerkEntry;
 
-
 		using EntryPoint = BGSEntryPoint::ENTRY_POINT;
-
 
 		struct Header  // PRKE
 		{
@@ -38,7 +33,6 @@ namespace RE
 			std::uint32_t unk4;		 // 4
 		};
 		static_assert(sizeof(Header) == 0x8);
-
 
 		virtual bool	   CheckConditionFilters(std::uint32_t a_numArgs, void* a_args);  // 00 - { return false; }
 		virtual EntryPoint GetFunction();												  // 01 - { return 0; }
@@ -57,7 +51,6 @@ namespace RE
 
 		std::uint8_t GetRank() const;
 		std::uint8_t GetPriority() const;
-
 
 		// members
 		Header header;	// 08 - PRKE

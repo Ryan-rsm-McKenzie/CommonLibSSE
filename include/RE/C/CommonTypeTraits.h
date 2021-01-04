@@ -5,7 +5,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -19,7 +18,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_not_const_v = is_not_const<T>::value;
 
-
 		template <class T>
 		struct is_not_volatile :
 			std::negation<
@@ -28,7 +26,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_not_volatile_v = is_not_volatile<T>::value;
-
 
 		template <class T>
 		struct is_not_reference :
@@ -39,7 +36,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_not_reference_v = is_not_reference<T>::value;
 
-
 		template <class T>
 		struct is_not_pointer :
 			std::negation<
@@ -48,7 +44,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_not_pointer_v = is_not_pointer<T>::value;
-
 
 		template <class, class = void>
 		struct defines_value_type :
@@ -66,7 +61,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool defines_value_type_v = defines_value_type<T>::value;
 
-
 		template <class, class = void>
 		struct defines_size_type :
 			std::false_type
@@ -83,7 +77,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool defines_size_type_v = defines_size_type<T>::value;
 
-
 		template <class, class = void>
 		struct defines_iterator :
 			std::false_type
@@ -99,7 +92,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool defines_iterator_v = defines_iterator<T>::value;
-
 
 		template <class, class = void>
 		struct implements_begin :
@@ -119,7 +111,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool implements_begin_v = implements_begin<T>::value;
 
-
 		template <class, class = void>
 		struct implements_end :
 			std::false_type
@@ -137,7 +128,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool implements_end_v = implements_end<T>::value;
-
 
 		template <class, class = void>
 		struct implements_size :
@@ -158,7 +148,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool implements_size_v = implements_size<T>::value;
 
-
 		template <class, class = void>
 		struct implements_push_back :
 			std::false_type
@@ -174,7 +163,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool implements_push_back_v = implements_push_back<T>::value;
-
 
 		template <class T>
 		struct _is_integer :
@@ -195,14 +183,12 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_integer_v = is_integer<T>::value;
 
-
 		template <class T>
 		struct index_sequence_for_tuple :
 			std::make_index_sequence<
 				std::tuple_size_v<
 					std::decay_t<T>>>
 		{};
-
 
 		template <class T>
 		struct decay_pointer :
@@ -213,7 +199,6 @@ namespace RE
 		template <class T>
 		using decay_pointer_t = typename decay_pointer<T>::type;
 
-
 		template <class T>
 		struct is_string :
 			std::is_same<
@@ -223,7 +208,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_string_v = is_string<T>::value;
-
 
 		template <class T>
 		struct is_signed_integral :
@@ -236,7 +220,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_signed_integral_v = is_signed_integral<T>::value;
 
-
 		template <class T>
 		struct is_unsigned_integral :
 			std::conjunction<
@@ -248,7 +231,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_unsigned_integral_v = is_unsigned_integral<T>::value;
 
-
 		template <class T>
 		struct is_integral :
 			std::disjunction<
@@ -258,7 +240,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_integral_v = is_integral<T>::value;
-
 
 		template <class T>
 		struct is_floating_point :
@@ -270,7 +251,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_floating_point_v = is_floating_point<T>::value;
 
-
 		template <class T>
 		struct is_boolean :
 			std::is_same<
@@ -280,7 +260,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_boolean_v = is_boolean<T>::value;
-
 
 		template <class T>
 		struct is_builtin :
@@ -296,7 +275,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_builtin_v = is_builtin<T>::value;
 
-
 		template <class T>
 		struct is_string_convertible :
 			std::is_convertible<T, std::string_view>
@@ -304,7 +282,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_string_convertible_v = is_string_convertible<T>::value;
-
 
 		template <class T, class = void>
 		struct is_signed_integral_convertible :
@@ -325,7 +302,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_signed_integral_convertible_v = is_signed_integral_convertible<T>::value;
 
-
 		template <class T, class = void>
 		struct is_unsigned_integral_convertible :
 			std::conjunction<
@@ -345,7 +321,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_unsigned_integral_convertible_v = is_unsigned_integral_convertible<T>::value;
 
-
 		template <class T>
 		struct is_integral_convertible :
 			std::disjunction<
@@ -356,7 +331,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_integral_convertible_v = is_integral_convertible<T>::value;
 
-
 		template <class T>
 		struct is_floating_point_convertible :
 			std::is_floating_point<T>
@@ -364,7 +338,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_floating_point_convertible_v = is_floating_point_convertible<T>::value;
-
 
 		template <class T>
 		struct is_builtin_convertible :
@@ -380,7 +353,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_builtin_convertible_v = is_builtin_convertible<T>::value;
 
-
 		template <class T>
 		struct is_form :
 			std::is_base_of<
@@ -390,7 +362,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_form_v = is_form<T>::value;
-
 
 		template <class T>
 		struct is_form_pointer :
@@ -403,7 +374,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_form_pointer_v = is_form_pointer<T>::value;
 
-
 		template <class T>
 		struct is_alias :
 			std::is_base_of<
@@ -413,7 +383,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_alias_v = is_alias<T>::value;
-
 
 		template <class T>
 		struct is_alias_pointer :
@@ -426,7 +395,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_alias_pointer_v = is_alias_pointer<T>::value;
 
-
 		template <class T>
 		struct is_active_effect :
 			std::is_base_of<
@@ -436,7 +404,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_active_effect_v = is_active_effect<T>::value;
-
 
 		template <class T>
 		struct is_active_effect_pointer :
@@ -448,7 +415,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_active_effect_pointer_v = is_active_effect_pointer<T>::value;
-
 
 		template <class T>
 		struct _is_array :

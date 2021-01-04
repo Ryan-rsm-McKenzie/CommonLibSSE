@@ -2,14 +2,12 @@
 
 #include "RE/I/IMovementInterface.h"
 
-
 namespace RE
 {
 	class IMovementState : public IMovementInterface
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMovementState;
-
 
 		virtual ~IMovementState();	// 00
 

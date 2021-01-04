@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -13,7 +12,6 @@ namespace RE
 		T right;   // ??
 		T bottom;  // ??
 	};
-
 
 	using GRectF = GRect<float>;
 	static_assert(sizeof(GRectF) == 0x10);

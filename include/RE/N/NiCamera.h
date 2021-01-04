@@ -5,7 +5,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiRect.h"
 
-
 namespace RE
 {
 	class NiCamera : public NiAVObject
@@ -13,7 +12,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiCamera;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiCamera;
-
 
 		virtual ~NiCamera();  // 00
 
@@ -29,7 +27,6 @@ namespace RE
 		virtual void		  UpdateWorldData(NiUpdateData* a_data) override;	  // 30
 
 		static bool WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
-
 
 		// members
 		float		  worldToCam[4][4];	 // 110

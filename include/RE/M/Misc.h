@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class Actor;
@@ -10,7 +9,6 @@ namespace RE
 	class TESObjectREFR;
 	class TESForm;
 	class InventoryEntryData;
-
 
 	void	 ApplyPerkEntries(std::uint8_t a_perkEntryCode, Actor* a_perkOwner, TESForm* a_item, float* a_value);
 	void	 CreateRefHandle(RefHandle& a_handleOut, TESObjectREFR* a_refrTo);

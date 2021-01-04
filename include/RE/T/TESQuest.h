@@ -14,12 +14,10 @@
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class BGSBaseAlias;
 	class QueuedPromoteQuestTask;
-
 
 	enum class QuestFlag
 	{
@@ -43,14 +41,12 @@ namespace RE
 		kHasDialogueData = 1 << 15
 	};
 
-
 	enum class QUEST_OBJECTIVE_FLAGS
 	{
 		kNone = 0,
 		kORWithPrevious = 1 << 0,
 		kNoStatsTracking = 1 << 1
 	};
-
 
 	struct BGSQuestInstanceText
 	{
@@ -64,7 +60,6 @@ namespace RE
 		};
 		static_assert(sizeof(StringData) == 0x8);
 
-
 		struct GlobalValueData
 		{
 		public:
@@ -74,7 +69,6 @@ namespace RE
 			std::uint32_t	 pad0C;	  // 0C
 		};
 		static_assert(sizeof(GlobalValueData) == 0x10);
-
 
 		// members
 		std::uint32_t			  id;				 // 00
@@ -87,7 +81,6 @@ namespace RE
 		std::uint32_t			  pad3C;			 // 3C
 	};
 	static_assert(sizeof(BGSQuestInstanceText) == 0x40);
-
 
 	struct QUEST_DATA  // DNAM
 	{
@@ -108,7 +101,6 @@ namespace RE
 			kDLC02_Dragonborn = 11
 		};
 
-
 		// members
 		float									   questDelayTime;	// 0
 		stl::enumeration<QuestFlag, std::uint16_t> flags;			// 4
@@ -116,7 +108,6 @@ namespace RE
 		stl::enumeration<Type, std::uint8_t>	   questType;		// 7
 	};
 	static_assert(sizeof(QUEST_DATA) == 0x8);
-
 
 	struct QUEST_STAGE_DATA
 	{
@@ -129,7 +120,6 @@ namespace RE
 			kKeepInstanceDataFromHereOn = 1 << 3
 		};
 
-
 		// members
 		std::uint16_t						 index;	 // 0
 		stl::enumeration<Flag, std::uint8_t> flags;	 // 2
@@ -138,18 +128,15 @@ namespace RE
 	};
 	static_assert(sizeof(QUEST_STAGE_DATA) == 0x8);
 
-
 	class TESQuestStage
 	{
 	public:
 		explicit operator bool() const;
 
-
 		// members
 		QUEST_STAGE_DATA data;	// 0
 	};
 	static_assert(sizeof(TESQuestStage) == 0x8);
-
 
 	class TESQuestTarget  // QSTA
 	{
@@ -160,7 +147,6 @@ namespace RE
 			kCompassMarkerIgnoresLocks = 1 << 0
 		};
 
-
 		// members
 		std::uint64_t unk00;	   // 00
 		TESCondition  conditions;  // 08
@@ -170,7 +156,6 @@ namespace RE
 		std::uint32_t unk14;	   // 14
 	};
 	static_assert(sizeof(TESQuestTarget) == 0x18);
-
 
 	class BGSQuestObjective
 	{
@@ -188,7 +173,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSQuestObjective) == 0x28);
 
-
 	class BGSStoryEvent
 	{
 	public:
@@ -199,7 +183,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSStoryEvent) == 0x38);
 
-
 	class TESQuest :
 		public BGSStoryManagerTreeForm,	 // 000
 		public TESFullName				 // 028
@@ -207,10 +190,8 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESQuest;
 
-
 		using DT = DIALOGUE_TYPE;
 		inline static constexpr auto FORMTYPE = FormType::Quest;
-
 
 		struct ChangeFlags
 		{
@@ -227,7 +208,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -236,7 +216,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESQuest();  // 00
 
@@ -269,7 +248,6 @@ namespace RE
 		bool		  Start();
 		bool		  StartsEnabled() const;
 		void		  Stop();
-
 
 		// members
 		BSTArray<BGSQuestInstanceText*>						 instanceData;							   // 038

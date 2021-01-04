@@ -2,14 +2,12 @@
 
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_FavoritesHandler;
-
 
 		virtual ~FavoritesHandler();  // 00
 

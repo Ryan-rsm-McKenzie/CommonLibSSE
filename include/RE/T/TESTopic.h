@@ -6,7 +6,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	struct DIALOGUE_DATA  // DATA
@@ -16,7 +15,6 @@ namespace RE
 			kNone = 0,
 			kDoAllBeforeRepeating = 1 << 0
 		};
-
 
 		enum class Subtype
 		{
@@ -125,13 +123,11 @@ namespace RE
 			kLeaveWaterBreath = 102
 		};
 
-
 		stl::enumeration<TopicFlag, std::uint8_t>	  topicFlags;  // 0
 		stl::enumeration<DIALOGUE_TYPE, std::uint8_t> type;		   // 1
 		stl::enumeration<Subtype, std::uint16_t>	  subtype;	   // 2
 	};
 	static_assert(sizeof(DIALOGUE_DATA) == 0x4);
-
 
 	class TESTopic :
 		public TESForm,		// 00
@@ -141,7 +137,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESTopic;
 		inline static constexpr auto FORMTYPE = FormType::Dialogue;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -150,7 +145,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESTopic();  // 00
 
@@ -167,7 +161,6 @@ namespace RE
 		virtual const char*	  GetFullName() const override;		   // 05
 
 		float GetPriority() const;
-
 
 		// members
 		DIALOGUE_DATA	   data;					 // 30 - DATA

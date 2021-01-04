@@ -2,7 +2,6 @@
 
 #include "RE/N/NiProperty.h"
 
-
 namespace RE
 {
 	class NiShadeProperty : public NiProperty
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiShadeProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiShadeProperty;
-
 
 		virtual ~NiShadeProperty();	 // 00
 

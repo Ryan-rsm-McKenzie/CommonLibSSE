@@ -21,7 +21,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	enum class WEAPONHITBEHAVIOR
@@ -32,7 +31,6 @@ namespace RE
 		kNoDismemberOrExplode = 3
 	};
 
-
 	enum class WEAPON_RUMBLE_PATTERN
 	{
 		kConstant = 0,
@@ -40,7 +38,6 @@ namespace RE
 		kPeriodicTriangle = 2,
 		kPeriodicSawtooth = 3
 	};
-
 
 	enum class WEAPON_TYPE
 	{
@@ -55,7 +52,6 @@ namespace RE
 		kStaff = 8,
 		kCrossbow = 9
 	};
-
 
 	class TESObjectWEAP :
 		public TESBoundObject,			   // 000
@@ -79,7 +75,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectWEAP;
 		inline static constexpr auto FORMTYPE = FormType::Weapon;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -89,7 +84,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct RangedData
 		{
@@ -106,7 +100,6 @@ namespace RE
 			std::uint16_t										   pad1A;							// 1A
 		};
 		static_assert(sizeof(RangedData) == 0x1C);
-
 
 		struct Data	 // DNAM
 		{
@@ -127,7 +120,6 @@ namespace RE
 				kNonHostile = 1 << 12,
 				kBoundWeapon = 1 << 13
 			};
-
 
 			enum class AttackAnimation
 			{
@@ -151,7 +143,6 @@ namespace RE
 				kDefault = 255
 			};
 
-
 			enum class Flag
 			{
 				kNone = 0,
@@ -164,7 +155,6 @@ namespace RE
 				kDontUseFirstPersonISAnim = 1 << 6,	 // unused
 				kNonPlayable = 1 << 7
 			};
-
 
 			// members
 			RangedData*										   rangedData;			 // 00
@@ -188,7 +178,6 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x38);
 
-
 		struct CriticalData	 // CRDT
 		{
 		public:
@@ -197,7 +186,6 @@ namespace RE
 				kNone = 0,
 				kOnDeath = 1 << 0
 			};
-
 
 			// members
 			float								 prcntMult;	 // 00
@@ -210,7 +198,6 @@ namespace RE
 		};
 		static_assert(sizeof(CriticalData) == 0x18);
 
-
 		struct Unk1B8
 		{
 		public:
@@ -219,7 +206,6 @@ namespace RE
 			TESEffectShader* unk28;	 // 28
 		};
 		static_assert(sizeof(Unk1B8) == 0x30);
-
 
 		virtual ~TESObjectWEAP();  // 00
 
@@ -258,7 +244,6 @@ namespace RE
 		bool		  IsBow() const;
 		bool		  IsStaff() const;
 		bool		  IsCrossbow() const;
-
 
 		// members
 		Data										 weaponData;			  // 168 - DNAM

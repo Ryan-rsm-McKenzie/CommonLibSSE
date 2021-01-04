@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	void*		   NiMalloc(std::size_t a_sizeInBytes);
@@ -14,7 +13,6 @@ namespace RE
 	constexpr bool NiTrackAlloc([[maybe_unused]] void* a_mem, [[maybe_unused]] std::size_t a_sizeInBytes) { return false; }
 	constexpr bool NiTrackFree([[maybe_unused]] void* a_mem) { return false; }
 
-
 	// calloc
 	template <class T>
 	T* NiAlloc(std::size_t a_count)
@@ -22,14 +20,12 @@ namespace RE
 		return static_cast<T*>(NiMalloc(sizeof(T) * a_count));
 	}
 
-
 	// aligned calloc
 	template <class T>
 	T* NiAlignedAlloc(std::size_t a_count, std::size_t a_alignment)
 	{
 		return static_cast<T*>(NiAlignedMalloc(sizeof(T) * a_count, a_alignment));
 	}
-
 
 	template <class T>
 	class NiTMallocInterface
@@ -40,13 +36,11 @@ namespace RE
 			return NiMalloc(sizeof(T) * a_numElements);
 		};
 
-
 		inline static void Deallocate(T* a_array)
 		{
 			NiFree(a_array);
 		};
 	};
-
 
 	template <class T>
 	class NiTNewInterface
@@ -60,7 +54,6 @@ namespace RE
 			mem = head + 1;
 			return static_cast<T*>(mem);
 		};
-
 
 		inline static void Deallocate(T* a_array)
 		{

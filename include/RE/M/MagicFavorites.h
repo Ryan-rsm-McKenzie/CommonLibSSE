@@ -3,11 +3,9 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	class MagicFavorites :
 		public BSTSingletonSDM<MagicFavorites>	// 08
@@ -15,11 +13,9 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MagicFavorites;
 
-
 		virtual ~MagicFavorites();	// 00
 
 		static MagicFavorites* GetSingleton();
-
 
 		// members
 		std::uint8_t	   pad09;	 // 09

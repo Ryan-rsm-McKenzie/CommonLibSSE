@@ -4,7 +4,6 @@
 #include "RE/N/NiBoneMatrixSetterI.h"
 #include "RE/N/NiRefObject.h"
 
-
 namespace RE
 {
 	class BSShader :
@@ -14,7 +13,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShader;
-
 
 		virtual ~BSShader();  // 00
 

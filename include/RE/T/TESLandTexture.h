@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct TEXTURE_HAVOK_DATA  // HNAM
@@ -14,13 +13,11 @@ namespace RE
 	};
 	static_assert(sizeof(TEXTURE_HAVOK_DATA) == 0x8);
 
-
 	class TESLandTexture : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLandTexture;
 		inline static constexpr auto FORMTYPE = FormType::LandTexture;
-
 
 		struct RecordFlags
 		{
@@ -31,7 +28,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESLandTexture();	// 00
 
 		// override (TESForm)
@@ -39,7 +35,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		BGSTextureSet*			textureSet;			 // 20 - TNAM

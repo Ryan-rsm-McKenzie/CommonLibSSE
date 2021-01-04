@@ -8,12 +8,10 @@
 #include "RE/T/TESChildCell.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class NiNode;
 	class QueuedFile;
-
 
 	struct OBJ_LAND
 	{
@@ -27,12 +25,10 @@ namespace RE
 			kMPCD = 1 << 10
 		};
 
-
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 0
 	};
 	static_assert(sizeof(OBJ_LAND) == 0x4);
-
 
 	struct CHAR_NORM
 	{
@@ -44,7 +40,6 @@ namespace RE
 	};
 	static_assert(sizeof(CHAR_NORM) == 0x3);
 
-
 	class TESObjectLAND :
 		public TESForm,		 // 00
 		public TESChildCell	 // 20
@@ -52,7 +47,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectLAND;
 		inline static constexpr auto FORMTYPE = FormType::Land;
-
 
 		struct RecordFlags
 		{
@@ -63,7 +57,6 @@ namespace RE
 				kCompressed = 1 << 18
 			};
 		};
-
 
 		struct LoadedLandData
 		{
@@ -87,7 +80,6 @@ namespace RE
 		};
 		static_assert(sizeof(LoadedLandData) == 0x49D0);
 
-
 		virtual ~TESObjectLAND();  // 00
 
 		// override (TESForm)
@@ -99,7 +91,6 @@ namespace RE
 
 		// override (TESChildCell)
 		virtual TESObjectCELL* GetSaveParentCell() override;  // 01 - { return parentCell; }
-
 
 		// members
 		OBJ_LAND			  data;			   // 28 - DATA

@@ -5,7 +5,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	enum class BREADCRUMB_STATE
@@ -14,7 +13,6 @@ namespace RE
 		kOnGround = 1,
 		kInWater = 2
 	};
-
 
 	struct ExtraFollowerSwimBreadcrumb
 	{
@@ -28,19 +26,16 @@ namespace RE
 	};
 	static_assert(sizeof(ExtraFollowerSwimBreadcrumb) == 0x24);
 
-
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFollowerSwimBreadcrumbs;
 
-
 		virtual ~ExtraFollowerSwimBreadcrumbs();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kFollowerSwimBreadcrumbs; }
-
 
 		// members
 		stl::enumeration<BREADCRUMB_STATE, std::uint32_t> leaderState;		// 10

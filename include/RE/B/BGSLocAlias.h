@@ -2,11 +2,9 @@
 
 #include "RE/B/BGSBaseAlias.h"
 
-
 namespace RE
 {
 	class TESCondition;
-
 
 	class BGSLocAlias : public BGSBaseAlias
 	{
@@ -14,9 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSLocAlias;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(141);
 
-
 		virtual ~BGSLocAlias();	 // 00
-
 
 		// members
 		std::uint64_t unk28;	   // 28

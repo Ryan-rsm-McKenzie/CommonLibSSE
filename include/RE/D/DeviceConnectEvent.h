@@ -2,7 +2,6 @@
 
 #include "RE/I/InputEvent.h"
 
-
 namespace RE
 {
 	class DeviceConnectEvent : public InputEvent
@@ -10,9 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_DeviceConnectEvent;
 
-
 		virtual ~DeviceConnectEvent();	// 00
-
 
 		// members
 		bool		  connected;  // 18

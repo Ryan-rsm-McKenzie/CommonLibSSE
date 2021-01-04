@@ -3,7 +3,6 @@
 #include "RE/A/Actor.h"
 #include "RE/E/Effect.h"
 
-
 namespace RE
 {
 	void ActiveEffect::Dispel(bool a_force)
@@ -13,24 +12,20 @@ namespace RE
 		return func(this, a_force);
 	}
 
-
 	EffectSetting* ActiveEffect::GetBaseObject() noexcept
 	{
 		return effect ? effect->baseEffect : nullptr;
 	}
-
 
 	const EffectSetting* ActiveEffect::GetBaseObject() const noexcept
 	{
 		return effect ? effect->baseEffect : nullptr;
 	}
 
-
 	NiPointer<Actor> ActiveEffect::GetCasterActor() const
 	{
 		return caster.get();
 	}
-
 
 	Actor* ActiveEffect::GetTargetActor()
 	{
@@ -40,7 +35,6 @@ namespace RE
 			return nullptr;
 		}
 	}
-
 
 	const Actor* ActiveEffect::GetTargetActor() const
 	{

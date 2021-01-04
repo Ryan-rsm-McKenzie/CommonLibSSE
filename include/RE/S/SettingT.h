@@ -2,7 +2,6 @@
 
 #include "RE/S/Setting.h"
 
-
 namespace RE
 {
 	// auto registers/unregisters with the templated collection

@@ -1,6 +1,5 @@
 #include "RE/B/BGSOpenCloseForm.h"
 
-
 namespace RE
 {
 	auto BGSOpenCloseForm::GetOpenState(const TESObjectREFR* a_ref)
@@ -10,7 +9,6 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(14180) };
 		return func(a_ref);
 	}
-
 
 	void BGSOpenCloseForm::SetOpenState(TESObjectREFR* a_ref, bool a_open, bool a_snap)
 	{

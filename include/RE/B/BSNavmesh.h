@@ -7,14 +7,12 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSNavmeshObstacleData;
 	class BSNavmeshObstacleUndoData;
 	class BSPathingCell;
 	class BSPathingDoor;
-
 
 	enum class EDGE_EXTRA_INFO_TYPE
 	{
@@ -25,7 +23,6 @@ namespace RE
 		kEnableDisablePortal = 3
 	};
 
-
 	struct BSNavmeshVertex
 	{
 	public:
@@ -33,7 +30,6 @@ namespace RE
 		NiPoint3 location;	// 0
 	};
 	static_assert(sizeof(BSNavmeshVertex) == 0xC);
-
 
 	struct BSNavmeshTriangle
 	{
@@ -53,7 +49,6 @@ namespace RE
 			kOverlapping = 1 << 5,
 			kPreferred = 1 << 6,
 		};
-
 
 		// reference:
 		// quarter = 1/4
@@ -77,7 +72,6 @@ namespace RE
 			kEdge1_Right = 1 << 11
 		};
 
-
 		// members
 		std::uint16_t								   vertices[3];		// 00
 		std::uint16_t								   triangles[3];	// 06 - 0xFF == NONE
@@ -85,7 +79,6 @@ namespace RE
 		stl::enumeration<TraversalFlag, std::uint16_t> traversalFlags;	// 0E
 	};
 	static_assert(sizeof(BSNavmeshTriangle) == 0x10);
-
 
 	struct BSNavmeshTriangleEdgePortal
 	{
@@ -98,7 +91,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSNavmeshTriangleEdgePortal) == 0x8);
 
-
 	struct BSNavmeshEdgeExtraInfo
 	{
 	public:
@@ -107,7 +99,6 @@ namespace RE
 		BSNavmeshTriangleEdgePortal							  portal;  // 4
 	};
 	static_assert(sizeof(BSNavmeshEdgeExtraInfo) == 0xC);
-
 
 	struct BSNavmeshTriangleDoorPortal
 	{
@@ -120,7 +111,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSNavmeshTriangleDoorPortal) == 0x10);
 
-
 	struct BSNavmeshClosedDoorInfo
 	{
 	public:
@@ -132,7 +122,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSNavmeshClosedDoorInfo) == 0x10);
 
-
 	struct BSNavmeshCoverEdge
 	{
 	public:
@@ -141,7 +130,6 @@ namespace RE
 		std::uint32_t data;			// 08
 	};
 	static_assert(sizeof(BSNavmeshCoverEdge) == 0x8);
-
 
 	struct BSNavmeshGrid
 	{
@@ -157,18 +145,15 @@ namespace RE
 	};
 	static_assert(sizeof(BSNavmeshGrid) == 0x30);
 
-
 	class BSNavmesh : public BSIntrusiveRefCounted	// NVNM
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSNavmesh;
 
-
 		virtual ~BSNavmesh();  // 00
 
 		// add
 		virtual std::uint32_t QNavmeshID() = 0;	 // 01
-
 
 		// members
 		std::uint32_t												 pad00C;				 // 00C

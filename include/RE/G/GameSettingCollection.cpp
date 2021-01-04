@@ -1,6 +1,5 @@
 #include "RE/G/GameSettingCollection.h"
 
-
 namespace RE
 {
 	GameSettingCollection* GameSettingCollection::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<GameSettingCollection**> singleton{ Offset::GameSettingCollection::Singleton };
 		return *singleton;
 	}
-
 
 	Setting* GameSettingCollection::GetSetting(const char* a_name)
 	{

@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class TESWordOfPower :
@@ -16,7 +15,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESWordOfPower;
 		inline static constexpr auto FORMTYPE = FormType::WordOfPower;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -26,12 +24,10 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESWordOfPower();	// 00
 
 		// override (TESForm)
 		virtual bool Load(TESFile* a_mod) override;	 // 06
-
 
 		// members
 		BSFixedString translation;	// 30 - TNAM

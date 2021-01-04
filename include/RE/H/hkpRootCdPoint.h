@@ -3,11 +3,9 @@
 #include "RE/H/hkContactPoint.h"
 #include "RE/H/hkpShape.h"
 
-
 namespace RE
 {
 	class hkpCollidable;
-
 
 	struct hkpRootCdPoint
 	{

@@ -4,12 +4,10 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	struct ItemCard;
 	struct ItemList;
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kCustomRendering
@@ -20,7 +18,6 @@ namespace RE
 		inline static constexpr auto	  RTTI = RTTI_GiftMenu;
 		constexpr static std::string_view MENU_NAME = "GiftMenu";
 
-
 		virtual ~GiftMenu();  // 00
 
 		// override (IMenu)
@@ -29,7 +26,6 @@ namespace RE
 		virtual void			   PostDisplay() override;							 // 06
 
 		[[nodiscard]] RefHandle GetTargetRefHandle();
-
 
 		// members
 		GFxValue		root;			  // 30 - "Menu_mc"

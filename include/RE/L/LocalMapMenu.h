@@ -10,13 +10,11 @@
 #include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSShaderAccumulator;
 	class NiCamera;
 	class NiNode;
-
 
 	struct LocalMapMenu
 	{
@@ -40,7 +38,6 @@ namespace RE
 			};
 			static_assert(sizeof(Data) == 0x48);
 
-
 			// members
 			BSCullingProcess			   cullingProcess;	// 00000
 			Data						   unk301F8;		// 301F8
@@ -56,12 +53,10 @@ namespace RE
 		};
 		static_assert(sizeof(LocalMapCullingProcess) == 0x30360);
 
-
 		class InputHandler : public MenuEventHandler
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_LocalMapMenu__InputHandler;
-
 
 			virtual ~InputHandler();  // 00
 
@@ -71,12 +66,10 @@ namespace RE
 			virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;	// 04
 			virtual bool ProcessButton(ButtonEvent* a_event) override;			// 05
 
-
 			// members
 			LocalMapMenu* localMapMenu;	 // 10
 		};
 		static_assert(sizeof(InputHandler) == 0x18);
-
 
 		// members
 		BSTArray<void*>				  unk00000;				// 00000

@@ -1,6 +1,5 @@
 #include "RE/S/State.h"
 
-
 namespace RE
 {
 	namespace BSGraphics

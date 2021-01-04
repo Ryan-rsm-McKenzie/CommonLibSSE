@@ -3,11 +3,9 @@
 #include "RE/B/BGSNamedPackageData.h"
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class TESFile;
-
 
 	template <class Parent, class Pointer /*, const BSFixedString& TYPE_NAME*/>
 	class BGSPackageDataPointerTemplate : public BGSNamedPackageData<Parent>
@@ -21,7 +19,6 @@ namespace RE
 
 		// add
 		virtual void LoadPointer(TESFile* a_mod) = 0;  // ??
-
 
 		// members
 		Pointer* pointer;  // ??

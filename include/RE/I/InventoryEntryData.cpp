@@ -11,7 +11,6 @@
 #include "RE/T/TESEnchantableForm.h"
 #include "RE/T/TESSoulGem.h"
 
-
 namespace RE
 {
 	InventoryEntryData::InventoryEntryData() :
@@ -20,7 +19,6 @@ namespace RE
 		countDelta(0),
 		pad14(0)
 	{}
-
 
 	InventoryEntryData::InventoryEntryData(const InventoryEntryData& a_rhs) :
 		object(a_rhs.object),
@@ -33,7 +31,6 @@ namespace RE
 		}
 	}
 
-
 	InventoryEntryData::InventoryEntryData(InventoryEntryData&& a_rhs) :
 		object(std::move(a_rhs.object)),
 		extraLists(std::move(a_rhs.extraLists)),
@@ -45,7 +42,6 @@ namespace RE
 		a_rhs.countDelta = 0;
 	}
 
-
 	InventoryEntryData::InventoryEntryData(TESBoundObject* a_object, std::int32_t a_countDelta) :
 		object(a_object),
 		extraLists(nullptr),
@@ -55,12 +51,10 @@ namespace RE
 		extraLists = new BSSimpleList<ExtraDataList*>;
 	}
 
-
 	InventoryEntryData::~InventoryEntryData()
 	{
 		delete extraLists;
 	}
-
 
 	InventoryEntryData& InventoryEntryData::operator=(const InventoryEntryData& a_rhs)
 	{
@@ -78,7 +72,6 @@ namespace RE
 		return *this;
 	}
 
-
 	InventoryEntryData& InventoryEntryData::operator=(InventoryEntryData&& a_rhs)
 	{
 		if (this != std::addressof(a_rhs)) {
@@ -95,7 +88,6 @@ namespace RE
 		return *this;
 	}
 
-
 	void InventoryEntryData::AddExtraList(ExtraDataList* a_extra)
 	{
 		if (!a_extra) {
@@ -108,7 +100,6 @@ namespace RE
 
 		extraLists->push_front(a_extra);
 	}
-
 
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
 	{
@@ -146,7 +137,6 @@ namespace RE
 		return result;
 	}
 
-
 	const char* InventoryEntryData::GetDisplayName()
 	{
 		const char* name = nullptr;
@@ -171,7 +161,6 @@ namespace RE
 		return name;
 	}
 
-
 	TESForm* InventoryEntryData::GetOwner()
 	{
 		if (extraLists) {
@@ -184,7 +173,6 @@ namespace RE
 		}
 		return nullptr;
 	}
-
 
 	SOUL_LEVEL InventoryEntryData::GetSoulLevel() const
 	{
@@ -207,7 +195,6 @@ namespace RE
 		return SOUL_LEVEL::kNone;
 	}
 
-
 	std::int32_t InventoryEntryData::GetValue()
 	{
 		using func_t = decltype(&InventoryEntryData::GetValue);
@@ -215,12 +202,10 @@ namespace RE
 		return func(this);
 	}
 
-
 	float InventoryEntryData::GetWeight() const
 	{
 		return object ? object->GetWeight() : -1.0F;
 	}
-
 
 	bool InventoryEntryData::IsEnchanted() const
 	{
@@ -243,7 +228,6 @@ namespace RE
 		return false;
 	}
 
-
 	bool InventoryEntryData::IsLeveled() const
 	{
 		if (extraLists) {
@@ -257,18 +241,15 @@ namespace RE
 		return false;
 	}
 
-
 	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, bool a_defaultTo)
 	{
 		return IsOwnedBy(a_testOwner, GetOwner(), a_defaultTo);
 	}
 
-
 	bool InventoryEntryData::IsOwnedBy(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 	{
 		return IsOwnedBy_Impl(a_testOwner, a_itemOwner, a_defaultTo);
 	}
-
 
 	bool InventoryEntryData::IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 	{
@@ -276,7 +257,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsOwnedBy };
 		return func(this, a_testOwner, a_itemOwner, a_defaultTo);
 	}
-
 
 	bool InventoryEntryData::IsQuestObject() const
 	{

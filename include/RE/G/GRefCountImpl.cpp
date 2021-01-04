@@ -1,6 +1,5 @@
 #include "RE/G/GRefCountImpl.h"
 
-
 namespace RE
 {
 	void GRefCountImpl::AddRef()
@@ -8,7 +7,6 @@ namespace RE
 		stl::atomic_ref myRefCount{ _refCount };
 		++myRefCount;
 	}
-
 
 	void GRefCountImpl::Release()
 	{

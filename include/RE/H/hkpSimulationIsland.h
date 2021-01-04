@@ -6,19 +6,16 @@
 #include "RE/H/hkpAgentNnTrack.h"
 #include "RE/H/hkpConstraintOwner.h"
 
-
 namespace RE
 {
 	class hkpAction;
 	class hkpEntity;
 	class hkpWorld;
 
-
 	class hkpSimulationIsland : public hkpConstraintOwner
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpSimulationIsland;
-
 
 		virtual ~hkpSimulationIsland();	 // 00
 
@@ -28,7 +25,6 @@ namespace RE
 		virtual void		   AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;				  // 03
 		virtual void		   RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;			  // 04
 		virtual void		   AddCallbackRequest(hkpConstraintInstance* a_constraint, std::int32_t a_request) override;		  // 05
-
 
 		// members
 		hkpWorld*	  world;				   // 20

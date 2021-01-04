@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -10,7 +9,6 @@ namespace RE
 	struct BSTFreeListElem;
 
 	class ScrapHeap;
-
 
 	template <class T>
 	class BSTMessageQueue
@@ -25,7 +23,6 @@ namespace RE
 		virtual bool TryPop(T* a_obj) = 0;	 // 04 - Try for lock, return false if taken, else remove
 	};
 	static_assert(sizeof(BSTMessageQueue<void*>) == 0x8);
-
 
 	template <class T>
 	class BSTCommonMessageQueue : public BSTMessageQueue<T>
@@ -50,7 +47,6 @@ namespace RE
 	};
 	static_assert(sizeof(BSTCommonMessageQueue<void*>) == 0x10);
 
-
 	template <class T>
 	class BSTCommonScrapHeapMessageQueue : public BSTCommonMessageQueue<T>
 	{
@@ -61,7 +57,6 @@ namespace RE
 		std::uint64_t unk20;  // 20
 	};
 	static_assert(sizeof(BSTCommonScrapHeapMessageQueue<void*>) == 0x28);
-
 
 	template <class T>
 	class BSTCommonLLMessageQueue : public BSTCommonMessageQueue<T>
@@ -80,7 +75,6 @@ namespace RE
 		BSTFreeListElem<T>** tail;		// 20
 	};
 	static_assert(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
-
 
 	template <class T, std::size_t SIZE>
 	class BSTCommonStaticMessageQueue : public BSTCommonMessageQueue<T>

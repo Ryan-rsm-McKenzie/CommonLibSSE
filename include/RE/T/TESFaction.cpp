@@ -5,14 +5,12 @@
 #include "RE/P/ProcessLists.h"
 #include "SKSE/Logger.h"
 
-
 namespace RE
 {
 	bool TESFaction::CanBeOwner() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kCanBeOwner) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::CanPayCrimeGold() const
 	{
@@ -25,13 +23,11 @@ namespace RE
 		return player->GetGoldAmount() >= static_cast<std::int32_t>(bounty);
 	}
 
-
 	std::int32_t TESFaction::GetCrimeGold() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		return player ? player->GetCrimeGoldValue(this) : 0;
 	}
-
 
 	std::int32_t TESFaction::GetCrimeGoldNonViolent() const
 	{
@@ -39,13 +35,11 @@ namespace RE
 		return player ? player->GetNonViolentCrimeGoldValue(this) : 0;
 	}
 
-
 	std::int32_t TESFaction::GetCrimeGoldViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
 		return player ? player->GetViolentCrimeGoldValue(this) : 0;
 	}
-
 
 	std::int32_t TESFaction::GetInfamy() const
 	{
@@ -62,7 +56,6 @@ namespace RE
 		}
 	}
 
-
 	std::int32_t TESFaction::GetInfamyNonViolent() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -77,7 +70,6 @@ namespace RE
 			return 0;
 		}
 	}
-
 
 	std::int32_t TESFaction::GetInfamyViolent() const
 	{
@@ -94,7 +86,6 @@ namespace RE
 		}
 	}
 
-
 	std::int32_t TESFaction::GetStolenItemValueCrime() const
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -109,7 +100,6 @@ namespace RE
 			return 0;
 		}
 	}
-
 
 	std::int32_t TESFaction::GetStolenItemValueNoCrime() const
 	{
@@ -126,60 +116,50 @@ namespace RE
 		}
 	}
 
-
 	bool TESFaction::HasSpecialCombatState() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kSpecialCombat) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::HasStealMultiplier() const
 	{
 		return crimeData.crimevalues.stealCrimeGoldMult > 0.0;
 	}
 
-
 	bool TESFaction::HiddenFromNPC() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kHiddenFromNPC) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::IgnoresAssault() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Assult) != FACTION_DATA::Flag::kNone;
 	}
 
-
 	bool TESFaction::IgnoresMurder() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Murder) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::IgnoresPickpocket() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Pickpocket) != FACTION_DATA::Flag::kNone;
 	}
 
-
 	bool TESFaction::IgnoresStealing() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Stealing) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::IgnoresTrespass() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIngoresCrimes_Trespass) != FACTION_DATA::Flag::kNone;
 	}
 
-
 	bool TESFaction::IgnoresWerewolf() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kIgnoresCrimes_Werewolf) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::IsFactionInCrimeGroup(const TESFaction* a_other) const
 	{
@@ -187,24 +167,20 @@ namespace RE
 		return list && list->HasForm(a_other);
 	}
 
-
 	bool TESFaction::IsPlayerEnemy() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kPlayerIsEnemy) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::IsPlayerExpelled() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kPlayerIsExpelled) != FACTION_DATA::Flag::kNone;
 	}
 
-
 	bool TESFaction::IsVendor() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kVendor) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	void TESFaction::ModCrimeGold(std::int32_t a_amount, bool a_violent)
 	{
@@ -214,7 +190,6 @@ namespace RE
 		}
 	}
 
-
 	void TESFaction::PlayerPayCrimeGold(bool a_removeStolenItems, bool a_goToJail)
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -223,12 +198,10 @@ namespace RE
 		}
 	}
 
-
 	bool TESFaction::ReportsCrimesAgainstMembers() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kDoNotReportCrimesAgainstMembers) == FACTION_DATA::Flag::kNone;
 	}
-
 
 	void TESFaction::SendPlayerToJail(bool a_removeInventory, bool a_realJail)
 	{
@@ -237,7 +210,6 @@ namespace RE
 			player->GoToPrison(this, a_removeInventory, a_realJail);
 		}
 	}
-
 
 	void TESFaction::SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther, bool a_otherIsFriendToSelf)
 	{
@@ -253,7 +225,6 @@ namespace RE
 		}
 	}
 
-
 	void TESFaction::SetCrimeGold(std::int32_t a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -262,7 +233,6 @@ namespace RE
 		}
 	}
 
-
 	void TESFaction::SetCrimeGoldViolent(std::int32_t a_gold)
 	{
 		auto player = PlayerCharacter::GetSingleton();
@@ -270,7 +240,6 @@ namespace RE
 			player->SetCrimeGoldValue(this, true, a_gold);
 		}
 	}
-
 
 	void TESFaction::SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther, bool a_otherIsNeutralToSelf)
 	{
@@ -286,7 +255,6 @@ namespace RE
 		}
 	}
 
-
 	void TESFaction::SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction)
 	{
 		using func_t = decltype(&TESFaction::SetFactionFightReaction);
@@ -294,12 +262,10 @@ namespace RE
 		return func(this, a_faction, a_fightReaction);
 	}
 
-
 	bool TESFaction::TracksCrimes() const
 	{
 		return (data.flags & FACTION_DATA::Flag::kTrackCrime) != FACTION_DATA::Flag::kNone;
 	}
-
 
 	bool TESFaction::UsesCrimeGoldDefaults() const
 	{

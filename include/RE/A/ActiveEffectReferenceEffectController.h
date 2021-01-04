@@ -4,17 +4,14 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/R/ReferenceEffectController.h"
 
-
 namespace RE
 {
 	class ActiveEffect;
-
 
 	class ActiveEffectReferenceEffectController : public ReferenceEffectController
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActiveEffectReferenceEffectController;
-
 
 		virtual ~ActiveEffectReferenceEffectController();  // 00
 
@@ -40,7 +37,6 @@ namespace RE
 		virtual bool			 GetAllowNo3D() override;								  // 20
 		virtual void			 SaveGame(BGSSaveGameBuffer* a_buf) override;			  // 21
 		virtual void			 LoadGame(BGSLoadGameBuffer* a_buf) override;			  // 22
-
 
 		// members
 		ActiveEffect*	effect;		// 08

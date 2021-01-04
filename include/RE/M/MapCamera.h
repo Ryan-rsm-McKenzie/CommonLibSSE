@@ -3,7 +3,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/T/TESCamera.h"
 
-
 namespace RE
 {
 	namespace MapCameraStates
@@ -13,22 +12,18 @@ namespace RE
 		class World;
 	}
 
-
 	class TESWorldSpace;
 	struct IMapCameraCallbacks;
-
 
 	class MapCamera : public TESCamera
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MapCamera;
 
-
 		virtual ~MapCamera();  // 00
 
 		// add
 		virtual void Unk_03(void);	// 03
-
 
 		// members
 		float										 unk38;		  // 38

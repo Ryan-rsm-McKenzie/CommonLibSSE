@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class ButtonEvent;
@@ -9,12 +8,10 @@ namespace RE
 	class PlayerControlsData;
 	class ThumbstickEvent;
 
-
 	class PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerInputHandler;
-
 
 		virtual ~PlayerInputHandler();	// 00
 
@@ -25,7 +22,6 @@ namespace RE
 
 		bool IsInputEventHandlingEnabled() const;
 		void SetInputEventHandlingEnabled(bool a_enabled);
-
 
 		// members
 		bool		  inputEventHandlingEnabled;  // 08

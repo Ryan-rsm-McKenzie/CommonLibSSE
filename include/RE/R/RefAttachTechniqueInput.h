@@ -3,7 +3,6 @@
 #include "RE/A/AttachTechniqueInput.h"
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class RefAttachTechniqueInput : public BSAttachTechniques::AttachTechniqueInput
@@ -11,12 +10,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_RefAttachTechniqueInput;
 
-
 		virtual ~RefAttachTechniqueInput();	 // 00
 
 		// override (BSAttachTechniques::AttachTechniqueInput)
 		virtual void Unk_01(void) override;	 // 01
-
 
 		// members
 		std::uint64_t unk20;  // 20

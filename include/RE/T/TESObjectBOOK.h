@@ -14,7 +14,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	struct OBJ_BOOK	 // DATA
@@ -28,13 +27,11 @@ namespace RE
 			kHasBeenRead = 1 << 3
 		};
 
-
 		enum class Type
 		{
 			kBookTome = 0x00,
 			kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
 		};
-
 
 		union Teaches
 		{
@@ -43,9 +40,7 @@ namespace RE
 		};
 		static_assert(sizeof(Teaches) == 0x8);
 
-
 		Flag GetSanitizedType() const;
-
 
 		// members
 		stl::enumeration<Flag, std::uint8_t> flags;	   // 00
@@ -55,7 +50,6 @@ namespace RE
 		Teaches								 teaches;  // 08
 	};
 	static_assert(sizeof(OBJ_BOOK) == 0x10);
-
 
 	class TESObjectBOOK :
 		public TESBoundObject,			   // 00
@@ -74,7 +68,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
 		inline static constexpr auto FORMTYPE = FormType::Book;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -83,7 +76,6 @@ namespace RE
 				kRead = 1 << 6
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -117,7 +109,6 @@ namespace RE
 		bool	   IsNoteScroll() const;
 		ActorValue GetSkill() const;
 		SpellItem* GetSpell();
-
 
 		// members
 		OBJ_BOOK	   data;				 // 110 - DATA

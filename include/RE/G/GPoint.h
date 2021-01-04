@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -17,7 +16,6 @@ namespace RE
 		T x;  // 00
 		T y;  // ??
 	};
-
 
 	using GPointF = GPoint<float>;
 	static_assert(sizeof(GPointF) == 0x8);

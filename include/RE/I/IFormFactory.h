@@ -2,28 +2,23 @@
 
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	template <class T, FormType>
 	class ConcreteFormFactory;
 
-
 	enum class OBJECT_TYPE
 	{
 	};
-
 
 	enum class OBJECT_CATEGORY_TYPE
 	{
 	};
 
-
 	class IFormFactory
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IFormFactory;
-
 
 		virtual ~IFormFactory();  // 00
 

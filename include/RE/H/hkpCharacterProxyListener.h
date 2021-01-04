@@ -4,7 +4,6 @@
 #include "RE/H/hkVector4.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class hkContactPoint;
@@ -12,7 +11,6 @@ namespace RE
 	class hkpRigidBody;
 	struct hkpRootCdPoint;
 	struct hkpSimplexSolverInput;
-
 
 	struct hkpCharacterObjectInteractionEvent
 	{
@@ -29,7 +27,6 @@ namespace RE
 	};
 	static_assert(sizeof(hkpCharacterObjectInteractionEvent) == 0x40);
 
-
 	struct hkpCharacterObjectInteractionResult
 	{
 	public:
@@ -39,12 +36,10 @@ namespace RE
 	};
 	static_assert(sizeof(hkpCharacterObjectInteractionResult) == 0x20);
 
-
 	class hkpCharacterProxyListener
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterProxyListener;
-
 
 		virtual ~hkpCharacterProxyListener();  // 00
 

@@ -2,14 +2,12 @@
 
 #include "RE/R/ReferenceEffectController.h"
 
-
 namespace RE
 {
 	class SkyEffectController : public ReferenceEffectController
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyEffectController;
-
 
 		virtual ~SkyEffectController();	 // 00
 

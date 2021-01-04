@@ -6,7 +6,6 @@
 #include "RE/N/NiTCollection.h"
 #include "RE/N/NiTimeController.h"
 
-
 namespace RE
 {
 	bool NiObjectNET::AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra)
@@ -27,7 +26,6 @@ namespace RE
 
 		return InsertExtraData(a_extra);
 	}
-
 
 	bool NiObjectNET::AddExtraData(NiExtraData* a_extra)
 	{
@@ -66,7 +64,6 @@ namespace RE
 		return InsertExtraData(a_extra);
 	}
 
-
 	void NiObjectNET::DeleteExtraData(std::uint16_t a_extraDataIndex)
 	{
 		if (a_extraDataIndex >= extraDataSize) {
@@ -85,12 +82,10 @@ namespace RE
 		extra[extraDataSize] = nullptr;
 	}
 
-
 	NiTimeController* NiObjectNET::GetControllers() const
 	{
 		return controllers.get();
 	}
-
 
 	NiTimeController* NiObjectNET::GetController(const NiRTTI* a_rtti) const
 	{
@@ -101,7 +96,6 @@ namespace RE
 		}
 		return nullptr;
 	}
-
 
 	NiExtraData* NiObjectNET::GetExtraData(const BSFixedString& a_key) const
 	{
@@ -132,19 +126,16 @@ namespace RE
 		return nullptr;
 	}
 
-
 	NiExtraData* NiObjectNET::GetExtraDataAt(std::uint16_t a_extraDataIndex) const
 	{
 		assert(a_extraDataIndex < extraDataSize);
 		return extra[a_extraDataIndex];
 	}
 
-
 	std::uint16_t NiObjectNET::GetExtraDataSize() const
 	{
 		return extraDataSize;
 	}
-
 
 	bool NiObjectNET::InsertExtraData(NiExtraData* a_extra)
 	{
@@ -197,7 +188,6 @@ namespace RE
 		return true;
 	}
 
-
 	void NiObjectNET::RemoveAllExtraData()
 	{
 		for (std::int16_t i = (static_cast<std::int16_t>(extraDataSize) - 1); i >= 0; --i) {
@@ -209,7 +199,6 @@ namespace RE
 		extraDataSize = 0;
 		maxSize = 0;
 	}
-
 
 	bool NiObjectNET::RemoveExtraData(const BSFixedString& a_key)
 	{
@@ -245,7 +234,6 @@ namespace RE
 		return false;
 	}
 
-
 	bool NiObjectNET::RemoveExtraDataAt(std::uint16_t a_extraDataIndex)
 	{
 		if (a_extraDataIndex < extraDataSize) {
@@ -255,7 +243,6 @@ namespace RE
 
 		return false;
 	}
-
 
 	bool NiObjectNET::SetExtraDataSize(std::uint16_t a_size)
 	{

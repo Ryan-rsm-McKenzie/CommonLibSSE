@@ -7,7 +7,6 @@
 #include "RE/S/Setting.h"
 #include "RE/S/State.h"
 
-
 namespace RE
 {
 	BSScaleformManager* BSScaleformManager::GetSingleton()
@@ -16,7 +15,6 @@ namespace RE
 		return *singleton;
 	}
 
-
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
@@ -24,18 +22,15 @@ namespace RE
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 
-
 	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, std::function<void(GFxMovieDef*)> a_callback)
 	{
 		return LoadMovieEx(a_menu, a_fileName, ScaleModeType::kShowAll, 0.0F, a_callback);
 	}
 
-
 	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, std::function<void(GFxMovieDef*)> a_callback)
 	{
 		return LoadMovieEx(a_menu, a_fileName, a_mode, 0.0F, a_callback);
 	}
-
 
 	bool BSScaleformManager::LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, std::function<void(GFxMovieDef*)> a_callback)
 	{
@@ -94,7 +89,6 @@ namespace RE
 
 		return true;
 	}
-
 
 	bool BSScaleformManager::LoadMovie_Impl(IMenu* a_menu, GPtr<RE::GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
@@ -156,7 +150,6 @@ namespace RE
 		return true;
 	}
 
-
 	std::optional<std::string> BSScaleformManager::BuildFilePath(std::string_view a_fileName)
 	{
 		std::string filePath;
@@ -173,7 +166,6 @@ namespace RE
 		}
 		return filePath;
 	}
-
 
 	std::tuple<float, float, std::int32_t, std::int32_t> BSScaleformManager::CollectDisplayInfo()
 	{
@@ -203,7 +195,6 @@ namespace RE
 
 		return { safeZoneX, safeZoneY, static_cast<std::int32_t>(width), static_cast<std::int32_t>(height) };
 	}
-
 
 	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{

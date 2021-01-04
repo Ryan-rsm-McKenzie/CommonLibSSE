@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct GStatGroups
@@ -48,7 +47,6 @@ namespace RE
 	};
 	using GStatGroup = GStatGroups::GStatGroup;
 
-
 	struct GStatRenderers
 	{
 		enum GStatRenderer
@@ -76,7 +74,6 @@ namespace RE
 		};
 	};
 	using GStatRenderer = GStatRenderers::GStatRenderer;
-
 
 	enum class GHeapID : UPInt
 	{

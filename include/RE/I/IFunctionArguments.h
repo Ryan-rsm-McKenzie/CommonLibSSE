@@ -4,7 +4,6 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -13,7 +12,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IFunctionArguments;
-
 
 			IFunctionArguments() = default;
 			virtual ~IFunctionArguments() = default;  // 00

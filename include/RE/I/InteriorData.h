@@ -3,7 +3,6 @@
 #include "RE/B/BGSDirectionalAmbientLightingColors.h"
 #include "RE/C/Color.h"
 
-
 namespace RE
 {
 	struct INTERIOR_DATA
@@ -23,7 +22,6 @@ namespace RE
 			kFogMax = 1 << 9,
 			kLightFadeDistances = 1 << 10
 		};
-
 
 		// members
 		Color									 ambient;							// 00

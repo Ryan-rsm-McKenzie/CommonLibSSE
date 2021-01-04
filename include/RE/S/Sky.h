@@ -8,7 +8,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SkyEffectController.h"
 
-
 namespace RE
 {
 	class Atmosphere;
@@ -28,12 +27,10 @@ namespace RE
 	class TESRegion;
 	class TESWeather;
 
-
 	class Sky
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Sky;
-
 
 		enum class Mode
 		{
@@ -45,17 +42,14 @@ namespace RE
 			kTotal
 		};
 
-
 		struct SkyStaticRefData
 		{
 		public:
 		};
 
-
 		virtual ~Sky();	 // 00
 
 		static Sky* GetSingleton();
-
 
 		// members
 		NiPointer<BSMultiBoundNode>			  root;							   // 008

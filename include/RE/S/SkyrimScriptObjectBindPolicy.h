@@ -3,7 +3,6 @@
 #include "RE/B/BSScriptObjectBindPolicy.h"
 #include "RE/B/BSTHashMap.h"
 
-
 namespace RE
 {
 	namespace SkyrimScript
@@ -12,7 +11,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
-
 
 			virtual ~ObjectBindPolicy();  // 00
 
@@ -29,7 +27,6 @@ namespace RE
 			virtual void Unk_0A(void) override;	 // 0A
 			virtual void Unk_0B(void) override;	 // 0B
 			virtual void Unk_0C(void) override;	 // 0C
-
 
 			// members
 			std::uint64_t				 unk50;	 // 50

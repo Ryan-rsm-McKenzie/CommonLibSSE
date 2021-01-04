@@ -4,7 +4,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	struct RunOncePackage
@@ -17,19 +16,16 @@ namespace RE
 	};
 	static_assert(sizeof(RunOncePackage) == 0x10);
 
-
 	class ExtraRunOncePacks : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRunOncePacks;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRunOncePacks;
 
-
 		virtual ~ExtraRunOncePacks();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kRunOncePacks; }
-
 
 		// members
 		BSSimpleList<RunOncePackage*>* packages;  // 10

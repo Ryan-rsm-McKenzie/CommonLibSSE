@@ -2,11 +2,9 @@
 
 #include "RE/H/hkRefPtr.h"
 
-
 namespace RE
 {
 	class hkbEventPayload;
-
 
 	class hkbEventBase
 	{
@@ -15,7 +13,6 @@ namespace RE
 		{
 			kNull = static_cast<std::underlying_type_t<SystemEventIDs>>(-1)
 		};
-
 
 		// members
 		SystemEventIDs			  id;		// 00

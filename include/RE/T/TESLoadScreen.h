@@ -6,7 +6,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESLoadScreen : public TESForm
@@ -14,7 +13,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLoadScreen;
 		inline static constexpr auto FORMTYPE = FormType::LoadScreen;
-
 
 		struct RecordFlags
 		{
@@ -25,7 +23,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct LoadNIFData
 		{
@@ -40,7 +37,6 @@ namespace RE
 		};
 		static_assert(sizeof(LoadNIFData) == 0x50);
 
-
 		virtual ~TESLoadScreen();  // 00
 
 		// override (TESForm)
@@ -48,7 +44,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		TESCondition  conditions;	// 20

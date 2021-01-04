@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class NiRefObject
@@ -23,7 +22,6 @@ namespace RE
 		[[nodiscard]] static volatile std::uint32_t* GetTotalObjectCount();
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		volatile std::uint32_t _refCount{ 0 };	// 08

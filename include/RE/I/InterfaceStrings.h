@@ -3,14 +3,12 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	class InterfaceStrings : public BSTSingletonSDM<InterfaceStrings>
 	{
 	public:
 		static InterfaceStrings* GetSingleton();
-
 
 		// members
 		std::uint8_t  pad001;					// 001

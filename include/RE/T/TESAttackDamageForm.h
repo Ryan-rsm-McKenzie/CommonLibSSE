@@ -2,14 +2,12 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESAttackDamageForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESAttackDamageForm;
-
 
 		virtual ~TESAttackDamageForm();	 // 00
 
@@ -20,7 +18,6 @@ namespace RE
 
 		// add
 		virtual std::uint16_t GetAttackDamage() const;	// 04 - { return attackDamage; }
-
 
 		// members
 		std::uint16_t attackDamage;	 // 08

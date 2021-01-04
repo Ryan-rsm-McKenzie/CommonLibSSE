@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraRefractionProperty : public BSExtraData
@@ -12,12 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRefractionProperty;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRefractionProperty;
 
-
 		virtual ~ExtraRefractionProperty();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kRefractionProperty; }
-
 
 		// members
 		float		  refractionPower;	// 10

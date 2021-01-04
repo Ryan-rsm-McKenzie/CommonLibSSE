@@ -8,7 +8,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class TESObjectDOOR :
@@ -22,7 +21,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectDOOR;
 		inline static constexpr auto FORMTYPE = FormType::Door;
 
-
 		enum class Flag
 		{
 			kNone = 0,
@@ -33,7 +31,6 @@ namespace RE
 			kDoNotOpenInCombatSearch = 1 << 5
 		};
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -41,7 +38,6 @@ namespace RE
 				kTeleportExtra = 1 << 17
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -54,7 +50,6 @@ namespace RE
 				kIsMarker = 1 << 23
 			};
 		};
-
 
 		virtual ~TESObjectDOOR();  // 00
 
@@ -70,7 +65,6 @@ namespace RE
 
 		// override (BGSOpenCloseForm)
 		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;	// 01
-
 
 		// members
 		std::uint64_t						 unk90;			   // 90

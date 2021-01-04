@@ -1,13 +1,11 @@
 #include "RE/N/NiMath.h"
 
-
 namespace RE
 {
 	float NiAbs(float a_value)
 	{
 		return std::fabs(a_value);
 	}
-
 
 	float NiASin(float a_value)
 	{
@@ -21,7 +19,6 @@ namespace RE
 			return -NI_HALF_PI;
 		}
 	}
-
 
 	float NiFastATan2(float a_y, float a_x)
 	{

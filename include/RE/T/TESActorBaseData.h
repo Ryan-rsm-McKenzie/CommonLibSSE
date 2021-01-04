@@ -4,7 +4,6 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/F/FactionRank.h"
 
-
 namespace RE
 {
 	class BGSVoiceType;
@@ -13,7 +12,6 @@ namespace RE
 	class TESForm;
 	class TESLevItem;
 	class TESNPC;
-
 
 	struct ACTOR_BASE_DATA
 	{
@@ -42,7 +40,6 @@ namespace RE
 			kInvulnerable = 1 << 31
 		};
 
-
 		enum class TEMPLATE_USE_FLAG
 		{
 			kNone = 0,
@@ -61,7 +58,6 @@ namespace RE
 			kKeywords = 1 << 12
 		};
 
-
 		// members
 		stl::enumeration<Flag, std::uint32_t>			   actorBaseFlags;	  // 00
 		std::int16_t									   magickaOffset;	  // 04
@@ -77,12 +73,10 @@ namespace RE
 	};
 	static_assert(sizeof(ACTOR_BASE_DATA) == 0x18);
 
-
 	class TESActorBaseData : public BaseFormComponent  // ACBS
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESActorBaseData;
-
 
 		virtual ~TESActorBaseData();
 
@@ -115,7 +109,6 @@ namespace RE
 		[[nodiscard]] constexpr bool Respawns() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kRespawn); }
 		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderanims); }
 		[[nodiscard]] constexpr bool UsesTemplate() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUsesTemplate); }
-
 
 		// members
 		ACTOR_BASE_DATA		   actorData;		  // 08

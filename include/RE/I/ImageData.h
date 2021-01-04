@@ -2,7 +2,6 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	struct ImageData

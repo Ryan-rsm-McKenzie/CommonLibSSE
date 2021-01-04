@@ -4,11 +4,9 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSSoundDescriptor;
-
 
 	class BGSSoundDescriptorForm :
 		public TESForm,			   // 00
@@ -18,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptorForm;
 		inline static constexpr auto FORMTYPE = FormType::SoundRecord;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -27,7 +24,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSSoundDescriptorForm();	// 00
 
@@ -39,7 +35,6 @@ namespace RE
 
 		// add
 		virtual std::uint32_t GetDescriptorType();	// 3B - { return soundDescriptor->GetType(); }
-
 
 		// members
 		BGSSoundDescriptor* soundDescriptor;  // 28

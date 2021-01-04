@@ -3,18 +3,15 @@
 #include "RE/N/NiCollisionObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class bhkWorldObject;
-
 
 	class bhkNiCollisionObject : public NiCollisionObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkNiCollisionObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkNiCollisionObject;
-
 
 		enum class Flag
 		{
@@ -29,7 +26,6 @@ namespace RE
 			kAnimTargeted = 1 << 10,
 			kDismemberLimb = 1 << 11
 		};
-
 
 		virtual ~bhkNiCollisionObject();  // 00
 
@@ -53,7 +49,6 @@ namespace RE
 		virtual void Unk_2E(void) = 0;	// 2E
 		virtual void Unk_2F(void);		// 2F
 		virtual void Unk_30(void);		// 30 - { return 1; }
-
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 18

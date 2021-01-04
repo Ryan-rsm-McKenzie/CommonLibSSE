@@ -4,11 +4,9 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/N/NiShadeProperty.h"
 
-
 namespace RE
 {
 	class BSShaderMaterial;
-
 
 	class BSShaderProperty : public NiShadeProperty
 	{
@@ -18,7 +16,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSShaderProperty;
-
 
 		enum class EShaderPropertyFlag : std::uint64_t
 		{
@@ -88,7 +85,6 @@ namespace RE
 			kRefractionWritesDepth = BIT64 << 63
 		};
 
-
 		virtual ~BSShaderProperty();  // 00
 
 		// override (NiShadeProperty)
@@ -127,7 +123,6 @@ namespace RE
 		virtual void Unk_3E(void);				 // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
-
 
 		// members
 		float												 alpha;				   // 30

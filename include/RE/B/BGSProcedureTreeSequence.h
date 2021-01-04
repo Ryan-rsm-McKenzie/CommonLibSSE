@@ -3,14 +3,12 @@
 #include "RE/B/BGSProcedureTreeBranch.h"
 #include "RE/B/BGSTypedItem.h"
 
-
 namespace RE
 {
 	class BGSProcedureTreeSequence : public BGSTypedItem<BGSProcedureTreeSequence, BGSProcedureTreeBranch>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeSequence;
-
 
 		virtual ~BGSProcedureTreeSequence();  // 00
 

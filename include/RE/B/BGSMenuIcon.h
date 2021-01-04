@@ -4,7 +4,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESIcon.h"
 
-
 namespace RE
 {
 	class BGSMenuIcon :
@@ -15,14 +14,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMenuIcon;
 		inline static constexpr auto FORMTYPE = FormType::MenuIcon;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BGSMenuIcon();	 // 00
 

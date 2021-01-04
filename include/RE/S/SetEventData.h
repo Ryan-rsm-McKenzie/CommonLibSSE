@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	struct SetEventData

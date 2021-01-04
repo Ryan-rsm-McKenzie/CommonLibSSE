@@ -1,6 +1,5 @@
 #include "RE/I/IStackCallbackFunctor.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -8,7 +7,6 @@ namespace RE
 		IStackCallbackFunctor::IStackCallbackFunctor() :
 			pad0C(0)
 		{}
-
 
 		bool IStackCallbackFunctor::CanSave() const
 		{

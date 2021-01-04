@@ -4,7 +4,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/E/EffectSetting.h"
 
-
 namespace RE
 {
 	void MagicTarget::DispelEffectsWithArchetype(Archetype a_type, bool a_force)
@@ -27,7 +26,6 @@ namespace RE
 		}
 	}
 
-
 	bool MagicTarget::HasEffectWithArchetype(Archetype a_type)
 	{
 		auto effects = GetActiveEffectList();
@@ -44,7 +42,6 @@ namespace RE
 		}
 		return false;
 	}
-
 
 	bool MagicTarget::HasMagicEffect(EffectSetting* a_effect)
 	{

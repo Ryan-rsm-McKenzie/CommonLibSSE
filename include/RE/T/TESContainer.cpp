@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	auto TESContainer::GetContainerObjectAt(std::uint32_t a_idx) const
@@ -15,7 +14,6 @@ namespace RE
 			return std::nullopt;
 		}
 	}
-
 
 	std::int32_t TESContainer::CountObjectsInContainer(TESBoundObject* a_object) const
 	{

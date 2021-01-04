@@ -2,14 +2,12 @@
 
 #include "RE/N/NiRefObject.h"
 
-
 namespace RE
 {
 	class DetectionListener : public NiRefObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_DetectionListener;
-
 
 		virtual ~DetectionListener();  // 00
 

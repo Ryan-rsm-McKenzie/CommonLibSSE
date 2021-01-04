@@ -6,7 +6,6 @@
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESWorldSpace.h"
 
-
 namespace RE
 {
 	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR&)> a_callback) const
@@ -37,12 +36,10 @@ namespace RE
 		return owner && owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
 	}
 
-
 	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
 		return IsExteriorCell() ? cellData.exterior : nullptr;
 	}
-
 
 	TESFaction* TESObjectCELL::GetFactionOwner()
 	{
@@ -50,12 +47,10 @@ namespace RE
 		return owner && owner->Is(FormType::Faction) ? static_cast<TESFaction*>(owner) : nullptr;
 	}
 
-
 	INTERIOR_DATA* TESObjectCELL::GetLighting()
 	{
 		return IsInteriorCell() ? cellData.interior : nullptr;
 	}
-
 
 	float TESObjectCELL::GetNorthRotation()
 	{
@@ -66,7 +61,6 @@ namespace RE
 			return xNorth ? xNorth->northRot : static_cast<float>(0.0);
 		}
 	}
-
 
 	TESForm* TESObjectCELL::GetOwner()
 	{
@@ -88,36 +82,30 @@ namespace RE
 		return zone ? zone->data.zoneOwner : nullptr;
 	}
 
-
 	bool TESObjectCELL::IsAttached() const
 	{
 		return cellState == CellState::kAttached;
 	}
-
 
 	bool TESObjectCELL::IsExteriorCell() const
 	{
 		return !IsInteriorCell();
 	}
 
-
 	bool TESObjectCELL::IsInteriorCell() const
 	{
 		return cellFlags.all(Flag::kIsInteriorCell);
 	}
-
 
 	void TESObjectCELL::SetActorOwner(TESNPC* a_owner)
 	{
 		SetOwner(a_owner);
 	}
 
-
 	void TESObjectCELL::SetFactionOwner(TESFaction* a_owner)
 	{
 		SetOwner(a_owner);
 	}
-
 
 	void TESObjectCELL::SetFogColor(Color a_near, Color a_far)
 	{
@@ -130,7 +118,6 @@ namespace RE
 		}
 	}
 
-
 	void TESObjectCELL::SetFogPlanes(float a_near, float a_far)
 	{
 		if (!UsesSkyLighting()) {
@@ -142,7 +129,6 @@ namespace RE
 		}
 	}
 
-
 	void TESObjectCELL::SetFogPower(float a_power)
 	{
 		if (!UsesSkyLighting()) {
@@ -152,7 +138,6 @@ namespace RE
 			}
 		}
 	}
-
 
 	void TESObjectCELL::SetHandChanged(bool a_changed)
 	{
@@ -164,13 +149,11 @@ namespace RE
 		AddChange(ChangeFlags::kFlags);
 	}
 
-
 	void TESObjectCELL::SetOwner(TESForm* a_owner)
 	{
 		extraList.SetOwner(a_owner);
 		AddChange(ChangeFlags::kOwnership);
 	}
-
 
 	void TESObjectCELL::SetPublic(bool a_public)
 	{
@@ -181,7 +164,6 @@ namespace RE
 		}
 		AddChange(ChangeFlags::kFlags);
 	}
-
 
 	bool TESObjectCELL::UsesSkyLighting() const
 	{

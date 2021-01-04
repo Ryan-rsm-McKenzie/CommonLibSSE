@@ -1,11 +1,9 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESForm;
 	class TESGlobal;
-
 
 	struct ContainerItemExtra  // COED
 	{
@@ -16,7 +14,6 @@ namespace RE
 			std::int32_t rank;
 		};
 		static_assert(sizeof(Conditional) == 0x8);
-
 
 		// members
 		TESForm*	  owner;		// 00

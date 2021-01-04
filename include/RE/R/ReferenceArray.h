@@ -5,14 +5,12 @@
 #include "RE/C/CommonTypeTraits.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		template <class, class = void>
 		class reference_array;
-
 
 		template <class T>
 		class reference_array<
@@ -147,14 +145,12 @@ namespace RE
 			BSTSmartPointer<Array> _wrapped;
 		};
 
-
 		template <class T>
 		void swap(reference_array<T>& a_lhs, reference_array<T>& a_rhs)
 		{
 			a_lhs.swap(a_rhs);
 		}
 	}
-
 
 	template <class T>
 	using reference_array = BSScript::reference_array<T>;

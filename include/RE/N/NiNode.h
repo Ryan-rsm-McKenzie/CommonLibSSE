@@ -4,18 +4,15 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTArray.h"
 
-
 namespace RE
 {
 	class NiUpdateData;
-
 
 	class NiNode : public NiAVObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiNode;
-
 
 		virtual ~NiNode();	// 00
 
@@ -60,7 +57,6 @@ namespace RE
 		void DetachChildAt(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);
 		void SetAt(std::uint32_t a_idx, NiAVObject* a_child);
 		void SetAt(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
-
 
 		// members
 		NiTObjectArray<NiPointer<NiAVObject>> children;	 // 110

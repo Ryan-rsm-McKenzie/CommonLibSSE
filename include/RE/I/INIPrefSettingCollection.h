@@ -2,14 +2,12 @@
 
 #include "RE/I/INISettingCollection.h"
 
-
 namespace RE
 {
 	class INIPrefSettingCollection : public INISettingCollection
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_INIPrefSettingCollection;
-
 
 		virtual ~INIPrefSettingCollection();  // 00
 

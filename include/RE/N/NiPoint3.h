@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiPoint3
@@ -35,7 +34,6 @@ namespace RE
 		float				Unitize();
 		NiPoint3			Cross(const NiPoint3& pt) const;
 		NiPoint3			UnitCross(const NiPoint3& a_pt) const;
-
 
 		// members
 		float x{ 0.0F };  // 0

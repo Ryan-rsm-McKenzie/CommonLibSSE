@@ -10,7 +10,6 @@
 
 #define SKSEAPI __cdecl
 
-
 namespace SKSE
 {
 	void Init(const LoadInterface* a_intfc) noexcept;

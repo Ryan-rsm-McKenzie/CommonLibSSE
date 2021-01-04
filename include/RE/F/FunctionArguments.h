@@ -4,7 +4,6 @@
 #include "RE/T/TypeTraits.h"
 #include "RE/Z/ZeroFunctionArguments.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -17,7 +16,6 @@ namespace RE
 				(a_dst[I].Pack(std::get<I>(a_tuple)), ...);
 			}
 
-
 			template <class... Args>
 			void CopyArgs(std::tuple<Args...>& a_tuple, BSScrapArray<Variable>& a_dst)
 			{
@@ -25,10 +23,8 @@ namespace RE
 			}
 		}
 
-
 		template <class Enable, class... Args>
 		class FunctionArguments;
-
 
 		template <class... Args>
 		class FunctionArguments<
@@ -77,17 +73,14 @@ namespace RE
 		};
 	}
 
-
 	template <class... Args>
 	using FunctionArguments = BSScript::FunctionArguments<void, Args...>;
-
 
 	template <class... Args>
 	inline BSScript::IFunctionArguments* MakeFunctionArguments(Args&&... a_args)
 	{
 		return new FunctionArguments<Args...>(std::forward<Args>(a_args)...);
 	}
-
 
 	template <>
 	inline BSScript::IFunctionArguments* MakeFunctionArguments()

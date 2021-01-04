@@ -3,13 +3,11 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class BGSDialogueBranch;
 	class DialogueItem;
 	class TESTopic;
-
 
 	class ExtraSayToTopicInfo : public BSExtraData
 	{
@@ -17,12 +15,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSayToTopicInfo;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
 
-
 		virtual ~ExtraSayToTopicInfo();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kSayTopicInfo; }
-
 
 		// members
 		TESTopic*		   topic;				 // 10

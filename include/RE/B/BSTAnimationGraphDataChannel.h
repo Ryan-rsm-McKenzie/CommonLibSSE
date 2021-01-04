@@ -2,7 +2,6 @@
 
 #include "RE/B/BSAnimationGraphChannel.h"
 
-
 namespace RE
 {
 	template <class T, class Val, template <class T, class Val> class Channel>

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct MemoryStats
@@ -17,12 +16,10 @@ namespace RE
 	};
 	static_assert(sizeof(MemoryStats) == 0x30);
 
-
 	class IMemoryStoreBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMemoryStoreBase;
-
 
 		virtual ~IMemoryStoreBase() = default;	// 00
 

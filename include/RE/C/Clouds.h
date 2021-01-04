@@ -4,31 +4,26 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SkyObject.h"
 
-
 namespace RE
 {
 	class BSGeometry;
 	class NiTexture;
-
 
 	class Clouds : public SkyObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Clouds;
 
-
 		enum
 		{
 			kTotalLayers = 32
 		};
-
 
 		virtual ~Clouds();	// 00
 
 		// override (SkyObject)
 		virtual void Unk_02(void) override;						 // 02
 		virtual void Update(Sky* a_sky, float a_arg2) override;	 // 03
-
 
 		// members
 		NiPointer<BSGeometry> clouds[kTotalLayers];		   // 010

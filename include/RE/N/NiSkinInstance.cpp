@@ -1,6 +1,5 @@
 #include "RE/N/NiSkinInstance.h"
 
-
 namespace RE
 {
 	NiSkinInstance* NiSkinInstance::Create()

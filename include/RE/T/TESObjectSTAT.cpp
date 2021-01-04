@@ -1,6 +1,5 @@
 #include "RE/T/TESObjectSTAT.h"
 
-
 namespace RE
 {
 	bool TESObjectSTAT::HasTreeLOD() const

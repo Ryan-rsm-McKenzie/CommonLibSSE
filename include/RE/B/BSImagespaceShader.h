@@ -3,7 +3,6 @@
 #include "RE/B/BSShader.h"
 #include "RE/I/ImageSpaceEffect.h"
 
-
 namespace RE
 {
 	class BSImagespaceShader :
@@ -12,7 +11,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSImagespaceShader;
-
 
 		virtual ~BSImagespaceShader();	// 00
 
@@ -29,7 +27,6 @@ namespace RE
 		virtual void Unk_0C(void);	// 0C
 		virtual void Unk_0D(void);	// 0D
 		virtual void Unk_0E(void);	// 0E
-
 
 		// members
 		std::uint64_t unk120;  // 120

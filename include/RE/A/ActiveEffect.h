@@ -7,7 +7,6 @@
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class Actor;
@@ -19,13 +18,11 @@ namespace RE
 	class TESBoundObject;
 	struct Effect;
 
-
 	class ActiveEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActiveEffect;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(142);
-
 
 		enum class Flag
 		{
@@ -35,14 +32,12 @@ namespace RE
 			kDispelled = 1 << 18
 		};
 
-
 		enum class ConditionStatus
 		{
 			kNA = static_cast<std::underlying_type_t<ConditionStatus>>(-1),
 			kFalse = 0,
 			kTrue = 1,
 		};
-
 
 		// add
 		virtual void		   Unk_00(void);		// 00
@@ -79,7 +74,6 @@ namespace RE
 		NiPointer<Actor>				   GetCasterActor() const;
 		Actor*							   GetTargetActor();
 		const Actor*					   GetTargetActor() const;
-
 
 		ActiveEffectReferenceEffectController			 hitEffectController;  // 08
 		BSSoundHandle									 persistentSound;	   // 28

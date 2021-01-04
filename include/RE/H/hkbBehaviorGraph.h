@@ -4,24 +4,20 @@
 #include "RE/H/hkRefVariant.h"
 #include "RE/H/hkbGenerator.h"
 
-
 namespace RE
 {
 	class hkbBehaviorGraphData;
-
 
 	class hkbBehaviorGraph : public hkbGenerator
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbBehaviorGraph;
 
-
 		enum class VariableMode
 		{
 			kDiscardWhenActive = 0,
 			kMaintainValuesWhenInactive = 1,
 		};
-
 
 		virtual ~hkbBehaviorGraph();  // 00
 
@@ -38,7 +34,6 @@ namespace RE
 		virtual void	 Unk_17(void) override;																	   // 17
 		virtual void	 Unk_18(void) override;																	   // 18 - { return 1; }
 		virtual void	 Unk_19(void) override;																	   // 19
-
 
 		// members
 		stl::enumeration<VariableMode, std::uint8_t> variableMode;					   // 048

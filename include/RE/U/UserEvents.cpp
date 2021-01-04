@@ -1,6 +1,5 @@
 #include "RE/U/UserEvents.h"
 
-
 namespace RE
 {
 	UserEvents* UserEvents::GetSingleton()

@@ -5,7 +5,6 @@
 #include "RE/N/NiCullingProcess.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSCompoundFrustum;
@@ -14,13 +13,11 @@ namespace RE
 	class NiAVObject;
 	class NiBound;
 
-
 	class BSCullingProcess : public NiCullingProcess
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSCullingProcess;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSCullingProcess;
-
 
 		enum class BSCPCullingType
 		{
@@ -31,7 +28,6 @@ namespace RE
 			kForceMultiBoundsNoUpdate = 4
 		};
 
-
 		struct Data
 		{
 		public:
@@ -39,7 +35,6 @@ namespace RE
 			std::uint8_t unk00[0x10];  // 00
 		};
 		static_assert(sizeof(Data) == 0x10);
-
 
 		// override (NiCullingProcess)
 		virtual const NiRTTI* GetRTTI() const override;	 // 00
@@ -55,7 +50,6 @@ namespace RE
 		virtual bool TestBaseVisibility1(BSMultiBound& a_bound);		 // 1A
 		virtual bool TestBaseVisibility2(BSOcclusionPlane& a_bound);	 // 1B
 		virtual bool TestBaseVisibility3(const NiBound& a_bound) const;	 // 1C
-
 
 		BSTArray<NiPointer<NiAVObject>>					  unk00128;			  // 00128
 		BSTLocklessQueue::ObjMultiProdCons<Data, 4096, 0> cullQueue;		  // 00140

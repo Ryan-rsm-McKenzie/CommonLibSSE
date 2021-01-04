@@ -3,7 +3,6 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/I/IMemoryStoreBase.h"
 
-
 namespace RE
 {
 	namespace CompactingStore
@@ -12,12 +11,10 @@ namespace RE
 		class FreeBlock;
 		class StoreBlock;
 
-
 		class Store : public IMemoryStoreBase
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_CompactingStore__Store;
-
 
 			virtual ~Store();  // 00
 
@@ -25,7 +22,6 @@ namespace RE
 			virtual std::size_t Size(const void* a_block) const override;				// 01
 			virtual void		GetMemoryStats(MemoryStats* a_stats) override;			// 02
 			virtual bool		ContainsBlockImpl(const void* a_block) const override;	// 03
-
 
 			// members
 			BSNonReentrantSpinLock lock;

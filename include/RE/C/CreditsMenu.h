@@ -3,7 +3,6 @@
 #include "RE/G/GFxFunctionHandler.h"
 #include "RE/I/IMenu.h"
 
-
 namespace RE
 {
 	// menuDepth = 10
@@ -16,7 +15,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_CreditsMenu;
 		constexpr static std::string_view MENU_NAME = "Credits Menu";
-
 
 		virtual ~CreditsMenu();	 // 00
 

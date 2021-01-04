@@ -4,18 +4,15 @@
 #include "RE/N/NiKeyBasedInterpolator.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiColorData;
-
 
 	class NiColorInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiColorInterpolator;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiColorInterpolator;
-
 
 		virtual ~NiColorInterpolator();	 // 00
 
@@ -44,7 +41,6 @@ namespace RE
 		virtual void*			GetKeyArray(std::uint16_t a_channel) const override;									// 3D - { return colorData ? colorData->keys : 0; }
 		virtual std::uint8_t	GetKeyStride(std::uint16_t a_channel) const override;									// 3E - { return colorData ? colorData->keySize : 0; }
 		virtual bool			GetChannelPosed(std::uint16_t a_channel) const override;								// 3F
-
 
 		// members
 		NiColorA			   colorValue;	// 18

@@ -3,7 +3,6 @@
 #include "RE/I/IFormFactory.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	template <class T, FormType FORM_TYPE>
@@ -30,7 +29,6 @@ namespace RE
 		const char* _name;	// 08
 	};
 	static_assert(sizeof(ConcreteFormFactory<TESForm, FormType::None>) == 0x10);
-
 
 	template <class T>
 	inline ConcreteFormFactory<T, T::FORMTYPE>* IFormFactory::GetConcreteFormFactoryByType()

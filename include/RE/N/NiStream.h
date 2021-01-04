@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiStream
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiStream;
-
 
 		virtual ~NiStream();  // 00
 
@@ -35,7 +33,6 @@ namespace RE
 		virtual void Unk_15(void);							  // 15
 		virtual void Unk_16(void);							  // 16
 		virtual void Unk_17(void);							  // 17
-
 
 		// members
 		std::uint8_t unk008[0x618];

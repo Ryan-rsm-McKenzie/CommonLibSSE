@@ -2,13 +2,11 @@
 
 #include "RE/H/hkReferencedObject.h"
 
-
 namespace RE
 {
 	class hkpCharacterContext;
 	struct hkpCharacterInput;
 	struct hkpCharacterOutput;
-
 
 	struct hkpCharacterStateTypes
 	{
@@ -34,12 +32,10 @@ namespace RE
 	};
 	using hkpCharacterStateType = hkpCharacterStateTypes::hkpCharacterStateType;
 
-
 	class hkpCharacterState : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterState;
-
 
 		virtual ~hkpCharacterState();  // 00
 

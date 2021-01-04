@@ -6,7 +6,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 
-
 namespace RE
 {
 	class NiAlphaProperty;
@@ -19,7 +18,6 @@ namespace RE
 	class NiPoint3;
 	class TESObjectREFR;
 
-
 	class NiUpdateData
 	{
 	public:
@@ -28,12 +26,10 @@ namespace RE
 			kDirty = 1 << 0,
 		};
 
-
 		float								  time;	  // 0
 		stl::enumeration<Flag, std::uint32_t> flags;  // 4
 	};
 	static_assert(sizeof(NiUpdateData) == 0x8);
-
 
 	class PerformOpFunc
 	{
@@ -45,13 +41,11 @@ namespace RE
 	};
 	static_assert(sizeof(PerformOpFunc) == 0x8);
 
-
 	class NiAVObject : public NiObjectNET
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAVObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiAVObject;
-
 
 		enum class Flag
 		{
@@ -83,7 +77,6 @@ namespace RE
 			kForceUpdate = 1 << 25,
 			kPreProcessedNode = 1 << 26
 		};
-
 
 		virtual ~NiAVObject();	// 00
 
@@ -120,7 +113,6 @@ namespace RE
 		void Update(NiUpdateData& a_data);
 		void UpdateBodyTint(const NiColor& a_color);
 		void UpdateHairColor(const NiColor& a_color);
-
 
 		// members
 		NiNode*								  parent;					// 030

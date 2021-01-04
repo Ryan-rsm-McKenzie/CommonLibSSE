@@ -1,10 +1,8 @@
 #pragma once
 
-
 namespace RE
 {
 	class GStringBuffer;
-
 
 	class GString
 	{
@@ -14,7 +12,6 @@ namespace RE
 		using reference = value_type&;
 		using const_reference = const value_type&;
 
-
 		enum class HeapType
 		{
 			kGlobal = 0,   // Global
@@ -22,7 +19,6 @@ namespace RE
 			kDynamic = 2,  // Part of class
 			kMask = 3
 		};
-
 
 		struct FlagConstants
 		{
@@ -32,7 +28,6 @@ namespace RE
 			};
 		};
 		using FlagConstant = FlagConstants::FlagConstant;
-
 
 		struct DataDesc
 		{
@@ -44,7 +39,6 @@ namespace RE
 			};
 #pragma warning(pop)
 
-
 			DataDesc();
 			~DataDesc();
 
@@ -54,7 +48,6 @@ namespace RE
 			bool  IsFull() const;
 			void  SetFull(bool a_set);
 
-
 			// members
 			UPInt				  capacity;	 // 00
 			volatile std::int32_t refCount;	 // 08
@@ -62,17 +55,14 @@ namespace RE
 		};
 		static_assert(sizeof(DataDesc) == 0x10);
 
-
 		union DataDescUnion
 		{
 			DataDescUnion();
-
 
 			DataDesc*						  data;
 			stl::enumeration<HeapType, UPInt> heapType;
 		};
 		static_assert(sizeof(DataDescUnion) == 0x8);
-
 
 		// (constructor)
 		GString();
@@ -135,7 +125,6 @@ namespace RE
 		HeapType  heap_type() const;
 		DataDesc* get_desc() const;
 		void	  set_desc(DataDesc* a_desc);
-
 
 		// members
 		DataDescUnion _dataDesc;  // 0

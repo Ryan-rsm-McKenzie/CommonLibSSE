@@ -1,6 +1,5 @@
 #include "RE/P/ProcessLists.h"
 
-
 namespace RE
 {
 	ProcessLists* ProcessLists::GetSingleton()
@@ -9,14 +8,12 @@ namespace RE
 		return *singleton;
 	}
 
-
 	void ProcessLists::ClearCachedFactionFightReactions() const
 	{
 		using func_t = decltype(&ProcessLists::ClearCachedFactionFightReactions);
 		REL::Relocation<func_t> func{ REL::ID(40396) };
 		return func(this);
 	}
-
 
 	void ProcessLists::StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm)
 	{

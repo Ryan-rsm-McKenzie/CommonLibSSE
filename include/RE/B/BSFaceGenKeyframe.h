@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSFaceGenKeyframe
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFaceGenKeyframe;
-
 
 		virtual ~BSFaceGenKeyframe();  // 00
 
@@ -25,7 +23,6 @@ namespace RE
 		virtual void Unk_0B(void) = 0;	// 0B
 		virtual void Unk_0C(void);		// 0C - { return 0; }
 		virtual void Unk_0D(void);		// 0D - { return 0; }
-
 
 		// members
 		std::uint32_t type;	  // 08

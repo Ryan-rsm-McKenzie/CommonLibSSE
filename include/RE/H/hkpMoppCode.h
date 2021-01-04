@@ -4,7 +4,6 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkpMoppCode : public hkReferencedObject
@@ -12,14 +11,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpMoppCode;
 
-
 		enum class BuildType
 		{
 			kBuildWithChunkSubdivision = 0,
 			kBuildWithoutChunkSubdivision = 1,
 			kBuildNotSet = 2
 		};
-
 
 		struct CodeInfo
 		{
@@ -29,9 +26,7 @@ namespace RE
 		};
 		static_assert(sizeof(CodeInfo) == 0x10);
 
-
 		virtual ~hkpMoppCode();	 // 00
-
 
 		// members
 		CodeInfo								 info;		 // 10

@@ -3,19 +3,16 @@
 #include "RE/E/ErrorCodes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	namespace BSResource
 	{
 		struct Info;
 
-
 		class StreamBase
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__StreamBase;
-
 
 			enum : std::uint32_t
 			{
@@ -23,7 +20,6 @@ namespace RE
 				kRefCountBeg = 0x1000,
 				kRefCountMask = (std::uint32_t)0xFFFFF000
 			};
-
 
 			StreamBase();
 			StreamBase(const StreamBase& a_rhs);
@@ -39,11 +35,9 @@ namespace RE
 
 			TES_HEAP_REDEFINE_NEW();
 
-
 			std::uint32_t DecRef();
 			std::uint32_t IncRef();
 			bool		  IsWritable() const;
-
 
 			// members
 			std::uint32_t totalSize;  // 08

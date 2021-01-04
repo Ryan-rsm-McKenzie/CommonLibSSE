@@ -13,14 +13,12 @@
 #include "RE/T/TESActorBase.h"
 #include "RE/T/TESRaceForm.h"
 
-
 namespace RE
 {
 	class BSFaceGenNiNode;
 	class MenuOpenCloseEvent;
 	class NiColorA;
 	class TintMask;
-
 
 	class CreatureSounds
 	{
@@ -29,7 +27,6 @@ namespace RE
 		BSTArray<void*>* unk00[8];	// 00
 	};
 	static_assert(sizeof(CreatureSounds) == 0x40);
-
 
 	class TESNPC :
 		public TESActorBase,					 // 000
@@ -40,10 +37,8 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESNPC;
 
-
 		using HeadPartType = BGSHeadPart::HeadPartType;
 		inline static constexpr auto FORMTYPE = FormType::NPC;
-
 
 		struct ChangeFlags
 		{
@@ -65,7 +60,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -76,7 +70,6 @@ namespace RE
 				kBleedoutOverride = 1 << 29
 			};
 		};
-
 
 		struct Skills
 		{
@@ -105,7 +98,6 @@ namespace RE
 				kTotal
 			};
 
-
 			// members
 			std::uint8_t  values[kTotal];		 // 00
 			std::uint8_t  offsets[kTotal];		 // 12
@@ -117,7 +109,6 @@ namespace RE
 		};
 		static_assert(sizeof(Skills) == 0x30);
 
-
 		struct HeadRelatedData
 		{
 		public:
@@ -126,13 +117,11 @@ namespace RE
 
 			TES_HEAP_REDEFINE_NEW();
 
-
 			// members
 			BGSColorForm*  hairColor;	 // 00 - HCLF
 			BGSTextureSet* faceDetails;	 // 08 - FTST
 		};
 		static_assert(sizeof(HeadRelatedData) == 0x10);
-
 
 		union Sounds
 		{
@@ -140,7 +129,6 @@ namespace RE
 			CreatureSounds* creatureSounds;
 		};
 		static_assert(sizeof(Sounds) == 0x8);
-
 
 		struct FaceData
 		{
@@ -173,7 +161,6 @@ namespace RE
 				};
 			};
 
-
 			struct Parts
 			{
 				enum
@@ -187,13 +174,11 @@ namespace RE
 				};
 			};
 
-
 			enum
 			{
 				kDefault = 0x7F7FFFFF,
 				kTotalPresets = 4
 			};
-
 
 			// members
 			float		 morphs[Morphs::kTotal];  // 00 - NAM9
@@ -201,12 +186,10 @@ namespace RE
 		};
 		static_assert(sizeof(FaceData) == 0x5C);
 
-
 		struct Layer
 		{
 		public:
 			float GetInterpolationValue() const;
-
 
 			// members
 			Color		  tintColor;		   // 00 - TINC
@@ -217,7 +200,6 @@ namespace RE
 			std::uint32_t pad0C;			   // 0C
 		};
 		static_assert(sizeof(Layer) == 0x10);
-
 
 		virtual ~TESNPC();	// 00
 
@@ -268,7 +250,6 @@ namespace RE
 		void		  SetHairColor(BGSColorForm* a_hairColor);
 		void		  SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
 		void		  UpdateNeck(BSFaceGenNiNode* a_faceNode);
-
 
 		// members
 		Skills										playerSkills;	  // 190 - DNAM

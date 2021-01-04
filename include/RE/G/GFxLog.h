@@ -3,7 +3,6 @@
 #include "RE/G/GFxLogBase.h"
 #include "RE/G/GFxState.h"
 
-
 namespace RE
 {
 	class GFxLog :
@@ -12,7 +11,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GFxLog;
-
 
 		GFxLog();
 		virtual ~GFxLog() = default;  // 00

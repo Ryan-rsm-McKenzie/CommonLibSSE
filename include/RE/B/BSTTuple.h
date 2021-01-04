@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T1, class T2>

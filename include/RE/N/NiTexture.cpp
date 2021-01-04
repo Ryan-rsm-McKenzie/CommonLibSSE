@@ -1,6 +1,5 @@
 #include "RE/N/NiTexture.h"
 
-
 namespace RE
 {
 	NiTexture::FormatPrefs::FormatPrefs() :

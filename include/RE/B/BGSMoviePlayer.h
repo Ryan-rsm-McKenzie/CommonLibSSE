@@ -3,12 +3,10 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/M/MoviePlayer.h"
 
-
 namespace RE
 {
 	class InputEvent;
 	struct BSMusicEvent;
-
 
 	class BGSMoviePlayer :
 		public MoviePlayer,					 // 00
@@ -17,7 +15,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMoviePlayer;
-
 
 		virtual ~BGSMoviePlayer();	// 00
 
@@ -35,7 +32,6 @@ namespace RE
 		virtual void Unk_0B(void) override;	 // 0B
 		virtual void Unk_0C(void) override;	 // 0C
 		virtual void Unk_0D(void) override;	 // 0D
-
 
 		// members
 		std::uint64_t unkB8;  // B8

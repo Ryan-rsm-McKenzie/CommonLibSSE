@@ -3,19 +3,16 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SkyObject.h"
 
-
 namespace RE
 {
 	class BSFogProperty;
 	class BSTriShape;
 	class NiNode;
 
-
 	class Atmosphere : public SkyObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Atmosphere;
-
 
 		virtual ~Atmosphere();	// 00
 
@@ -24,7 +21,6 @@ namespace RE
 
 		// add
 		virtual void Unk_04(void);	// 04
-
 
 		// members
 		NiPointer<BSTriShape>	 atmosphere;		 // 10

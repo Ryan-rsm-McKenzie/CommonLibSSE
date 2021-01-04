@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkSerializable.h"
 
-
 namespace RE
 {
 	class bhkShape : public bhkSerializable
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkShape;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkShape;
-
 
 		virtual ~bhkShape();  // 00
 
@@ -28,7 +26,6 @@ namespace RE
 		virtual void Unk_33(void);	// 33
 		virtual void Unk_34(void);	// 34 - { return 0; }
 		virtual void Unk_35(void);	// 35
-
 
 		// members
 		std::uint64_t unk20;  // 20

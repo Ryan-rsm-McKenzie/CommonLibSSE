@@ -2,14 +2,12 @@
 
 #include "RE/A/ActorValues.h"
 
-
 namespace RE
 {
 	class ActorValueOwner
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorValueOwner;
-
 
 		virtual ~ActorValueOwner();	 // 00
 

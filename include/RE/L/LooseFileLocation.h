@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/L/Location.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -20,12 +19,10 @@ namespace RE
 		};
 		static_assert(sizeof(BSSystemDir) == 0x258);
 
-
 		class LooseFileLocation : public Location
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__LooseFileLocation;
-
 
 			virtual ~LooseFileLocation();  // 00
 
@@ -38,7 +35,6 @@ namespace RE
 			virtual ErrorCode	  DoDelete(const char* a_path) override;																						  // 08
 			virtual const char*	  DoGetName() const override;																									  // 09 - { return directory.c_str(); }
 			virtual std::uint32_t DoGetMinimumAsyncPacketSize() const override;																					  // 0B - { return minimumAsyncPacketSize; }
-
 
 			// members
 			BSFixedString prefix;				   // 10

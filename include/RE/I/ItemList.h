@@ -5,12 +5,10 @@
 #include "RE/G/GPtr.h"
 #include "RE/S/StandardItemData.h"
 
-
 namespace RE
 {
 	class GFxMovieView;
 	class TESObjectREFR;
-
 
 	struct ItemList
 	{
@@ -26,11 +24,9 @@ namespace RE
 		};
 		static_assert(sizeof(Item) == 0x40);
 
-
 		Item* GetSelectedItem();
 		void  Update();
 		void  Update(TESObjectREFR* a_owner);
-
 
 		// members
 		GPtr<GFxMovieView> view;	   // 00

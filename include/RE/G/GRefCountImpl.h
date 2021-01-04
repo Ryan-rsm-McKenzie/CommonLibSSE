@@ -2,14 +2,12 @@
 
 #include "RE/G/GRefCountImplCore.h"
 
-
 namespace RE
 {
 	class GRefCountImpl : GRefCountImplCore
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
-
 
 		virtual ~GRefCountImpl() = default;	 // 00
 

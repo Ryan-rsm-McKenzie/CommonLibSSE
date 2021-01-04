@@ -6,7 +6,6 @@
 #include "RE/T/TESObjectREFR.h"
 #include "RE/T/TESRace.h"
 
-
 namespace RE
 {
 	bool HasArmorRace(const TESRace* a_sourceRace, const TESRace* a_targetRace)
@@ -27,7 +26,6 @@ namespace RE
 		return false;
 	}
 
-
 	bool TESObjectARMA::IsValidRace(TESRace* a_sourceRace) const
 	{
 		// Found race is the race this armor is designed for, or inherits a race this armor is designed for
@@ -44,7 +42,6 @@ namespace RE
 
 		return false;
 	}
-
 
 	void TESObjectARMA::GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride)
 	{

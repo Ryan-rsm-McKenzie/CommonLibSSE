@@ -9,11 +9,9 @@
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"
 
-
 namespace SKSE
 {
 	struct PluginInfo;
-
 
 	class QueryInterface
 	{
@@ -26,7 +24,6 @@ namespace SKSE
 	protected:
 		const detail::SKSEInterface* GetProxy() const;
 	};
-
 
 	class LoadInterface : public QueryInterface
 	{
@@ -50,7 +47,6 @@ namespace SKSE
 		void*			  QueryInterface(std::uint32_t a_id) const;
 	};
 
-
 	class ScaleformInterface
 	{
 	public:
@@ -70,7 +66,6 @@ namespace SKSE
 	protected:
 		const detail::SKSEScaleformInterface* GetProxy() const;
 	};
-
 
 	class SerializationInterface
 	{
@@ -175,7 +170,6 @@ namespace SKSE
 		const detail::SKSESerializationInterface* GetProxy() const;
 	};
 
-
 	class TaskInterface
 	{
 	public:
@@ -221,7 +215,6 @@ namespace SKSE
 		const detail::SKSETaskInterface* GetProxy() const;
 	};
 
-
 	class PapyrusInterface
 	{
 	public:
@@ -254,7 +247,6 @@ namespace SKSE
 		bool Register_Impl(RegFunction1* a_fn) const;
 		bool Register_Impl(RegFunction2* a_fn) const;
 	};
-
 
 	class MessagingInterface
 	{
@@ -311,7 +303,6 @@ namespace SKSE
 		const detail::SKSEMessagingInterface* GetProxy() const;
 	};
 
-
 	class ObjectInterface
 	{
 	public:
@@ -330,7 +321,6 @@ namespace SKSE
 		const detail::SKSEObjectInterface* GetProxy() const;
 	};
 
-
 	class TrampolineInterface
 	{
 	public:
@@ -347,7 +337,6 @@ namespace SKSE
 	private:
 		const detail::SKSETrampolineInterface* GetProxy() const;
 	};
-
 
 	struct PluginInfo
 	{

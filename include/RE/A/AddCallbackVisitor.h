@@ -3,7 +3,6 @@
 #include "RE/F/FxDelegate.h"
 #include "RE/F/FxDelegateHandler.h"
 
-
 namespace RE
 {
 	class AddCallbackVisitor : public FxDelegateHandler::CallbackProcessor
@@ -11,13 +10,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_AddCallbackVisitor;
 
-
 		AddCallbackVisitor(FxDelegateHandler* a_handler, FxDelegate::CallbackHash* a_hash);
 		virtual ~AddCallbackVisitor() = default;  // 00
 
 		// override (FxDelegateHandler::CallbackProcessor)
 		virtual void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn* a_method) override;  // 01
-
 
 		// members
 		FxDelegateHandler*		  handler;	// 08

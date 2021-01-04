@@ -2,7 +2,6 @@
 
 #include "RE/N/NiIntegerExtraData.h"
 
-
 namespace RE
 {
 	class BSXFlags : public NiIntegerExtraData
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSXFlags;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSXFlags;
-
 
 		enum class Flag
 		{
@@ -31,7 +29,6 @@ namespace RE
 			kSearchedBreakable = 1 << 13
 		};
 
-
 		virtual ~BSXFlags();  // 00
 
 		// override (NiIntegerExtraData)
@@ -42,7 +39,6 @@ namespace RE
 		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return NiIntegerExtraData::RegisterStreamables(a_stream); }
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B - { NiIntegerExtraData::SaveBinary(a_stream); }
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C - { return NiIntegerExtraData::IsEqual(a_object); }
-
 
 		Flag GetFlags() const;
 		void SetFlags(Flag a_flags);

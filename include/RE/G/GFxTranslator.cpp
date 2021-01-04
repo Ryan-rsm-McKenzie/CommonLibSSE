@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxWStringBuffer.h"
 
-
 namespace RE
 {
 	GFxTranslator::TranslateInfo::TranslateInfo() :
@@ -15,24 +14,20 @@ namespace RE
 		pad1C(0)
 	{}
 
-
 	const char* GFxTranslator::TranslateInfo::GetInstanceName() const
 	{
 		return instanceName;
 	}
-
 
 	const wchar_t* GFxTranslator::TranslateInfo::GetKey() const
 	{
 		return key;
 	}
 
-
 	bool GFxTranslator::TranslateInfo::IsKeyHTML() const
 	{
 		return flags.all(Flag::kResultSourceHTML);
 	}
-
 
 	void GFxTranslator::TranslateInfo::SetResult(const wchar_t* a_resultText, UPInt a_resultLen)
 	{
@@ -49,13 +44,11 @@ namespace RE
 		flags.set(Flag::kTranslated);
 	}
 
-
 	void GFxTranslator::TranslateInfo::SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen)
 	{
 		SetResult(a_resultHTML, a_resultLen);
 		flags.set(Flag::kResultHTML);
 	}
-
 
 	GFxTranslator::GFxTranslator() :
 		GFxState(StateType::kTranslator),
@@ -63,13 +56,11 @@ namespace RE
 		pad1C(0)
 	{}
 
-
 	GFxTranslator::GFxTranslator(WordWrappingType a_wwMode) :
 		GFxState(StateType::kTranslator),
 		wwMode(a_wwMode),
 		pad1C(0)
 	{}
-
 
 	auto GFxTranslator::GetCaps() const
 		-> TranslateCap
@@ -77,12 +68,10 @@ namespace RE
 		return TranslateCap::kNone;
 	}
 
-
 	void GFxTranslator::Translate(TranslateInfo*)
 	{
 		return;
 	}
-
 
 	bool GFxTranslator::OnWordWrapping(LineFormatDesc* a_desc)
 	{
@@ -109,18 +98,15 @@ namespace RE
 		}
 	}
 
-
 	bool GFxTranslator::CanReceiveHTML() const
 	{
 		return (GetCaps() & TranslateCap::kReceiveHTML) != TranslateCap::kNone;
 	}
 
-
 	bool GFxTranslator::NeedStripNewLines() const
 	{
 		return (GetCaps() & TranslateCap::kStripTrailingNewLines) != TranslateCap::kNone;
 	}
-
 
 	bool GFxTranslator::HandlesCustomWordWrapping() const
 	{

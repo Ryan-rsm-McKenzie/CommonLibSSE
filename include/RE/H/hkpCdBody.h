@@ -2,14 +2,12 @@
 
 #include "RE/H/hkpShape.h"
 
-
 namespace RE
 {
 	class hkpCdBody
 	{
 	public:
 		const hkpShape* GetShape() const;
-
 
 		// members
 		const hkpShape*	 shape;		// 00

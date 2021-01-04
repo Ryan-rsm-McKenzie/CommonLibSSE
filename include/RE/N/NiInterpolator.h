@@ -2,7 +2,6 @@
 
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiAVObjectPalette;
@@ -13,13 +12,11 @@ namespace RE
 	class NiQuaternion;
 	class NiQuatTransform;
 
-
 	class NiInterpolator : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiInterpolator;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiInterpolator;
-
 
 		virtual ~NiInterpolator();	// 00
 
@@ -59,7 +56,6 @@ namespace RE
 		bool Update(float a_time, NiObjectNET* a_interpTarget, NiQuaternion& a_value);
 		bool Update(float a_time, NiObjectNET* a_interpTarget, float& a_value);
 		bool Update(float a_time, NiObjectNET* a_interpTarget, bool& a_value);
-
 
 		// members
 		float		  lastTime;	 // 10

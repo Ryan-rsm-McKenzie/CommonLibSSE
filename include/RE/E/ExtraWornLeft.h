@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraWornLeft : public BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraWornLeft;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWornLeft;
-
 
 		virtual ~ExtraWornLeft();  // 00
 

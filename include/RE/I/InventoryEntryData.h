@@ -5,12 +5,10 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"
 
-
 namespace RE
 {
 	class ExtraDataList;
 	class TESBoundObject;
-
 
 	class InventoryEntryData
 	{
@@ -40,7 +38,6 @@ namespace RE
 		bool										  IsQuestObject() const;
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		TESBoundObject*				  object;	   // 00

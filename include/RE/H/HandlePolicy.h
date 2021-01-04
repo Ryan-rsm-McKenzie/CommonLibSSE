@@ -3,7 +3,6 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/I/IObjectHandlePolicy.h"
 
-
 namespace RE
 {
 	namespace SkyrimScript
@@ -12,7 +11,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__HandlePolicy;
-
 
 			virtual ~HandlePolicy();  // 00
 
@@ -28,7 +26,6 @@ namespace RE
 			virtual void	 PersistHandle(VMHandle a_handle) override;											// 09
 			virtual void	 ReleaseHandle(VMHandle a_handle) override;											// 0A
 			virtual void	 ConvertHandleToString(VMHandle a_handle, BSFixedString& a_strOut) const override;	// 0B
-
 
 			// members
 			std::uint64_t				 unk08;	 // 08

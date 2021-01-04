@@ -6,7 +6,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	struct CLASS_DATA  // DATA
@@ -34,7 +33,6 @@ namespace RE
 			kEnchanting = 17,
 		};
 
-
 		struct SkillWeights
 		{
 		public:
@@ -60,7 +58,6 @@ namespace RE
 		};
 		static_assert(sizeof(SkillWeights) == 0x12);
 
-
 		struct AttributeWeights
 		{
 		public:
@@ -70,7 +67,6 @@ namespace RE
 			std::uint8_t stamina;  // 2
 		};
 		static_assert(sizeof(AttributeWeights) == 0x3);
-
 
 		// members
 		std::uint32_t						  unk00;				 // 00
@@ -84,7 +80,6 @@ namespace RE
 	};
 	static_assert(sizeof(CLASS_DATA) == 0x24);
 
-
 	class TESClass :
 		public TESForm,			// 00
 		public TESFullName,		// 20
@@ -95,7 +90,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESClass;
 		inline static constexpr auto FORMTYPE = FormType::Class;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -103,7 +97,6 @@ namespace RE
 				kTagSkills = 1 << 1
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -114,13 +107,11 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESClass();  // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
-
 
 		// members
 		CLASS_DATA	  data;	  // 50 - DATA

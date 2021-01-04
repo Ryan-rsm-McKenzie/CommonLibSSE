@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSLensFlare :
@@ -15,14 +14,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSLensFlare;
 		inline static constexpr auto FORMTYPE = FormType::LensFlare;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BGSLensFlare();  // 00
 

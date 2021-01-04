@@ -5,7 +5,6 @@
 #include "RE/T/TESObjectMISC.h"
 #include "RE/T/TESQualityForm.h"
 
-
 namespace RE
 {
 	class BGSApparatus :
@@ -17,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSApparatus;
 		inline static constexpr auto FORMTYPE = FormType::Apparatus;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -26,7 +24,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSApparatus();  // 00
 

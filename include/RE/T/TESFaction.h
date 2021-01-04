@@ -11,12 +11,10 @@
 #include "RE/T/TESReactionForm.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class TESCondition;
 	class PackageLocation;
-
 
 	struct FACTION_DATA
 	{
@@ -40,11 +38,9 @@ namespace RE
 			kIgnoresCrimes_Werewolf = 1 << 16
 		};
 
-
 		Flag flags;	 // 0
 	};
 	static_assert(sizeof(FACTION_DATA) == 0x4);
-
 
 	struct FACTION_CRIME_DATA_VALUES  // CRVA
 	{
@@ -63,7 +59,6 @@ namespace RE
 	};
 	static_assert(sizeof(FACTION_CRIME_DATA_VALUES) == 0x14);
 
-
 	struct FACTION_CRIME_DATA
 	{
 	public:
@@ -79,7 +74,6 @@ namespace RE
 	};
 	static_assert(sizeof(FACTION_CRIME_DATA) == 0x48);
 
-
 	struct FACTION_VENDOR_DATA_VALUES  // VENV
 	{
 	public:
@@ -93,7 +87,6 @@ namespace RE
 		std::uint8_t  padB;			   // B
 	};
 	static_assert(sizeof(FACTION_VENDOR_DATA_VALUES) == 0xC);
-
 
 	struct FACTION_VENDOR_DATA	// VENV
 	{
@@ -110,7 +103,6 @@ namespace RE
 	};
 	static_assert(sizeof(FACTION_VENDOR_DATA) == 0x38);
 
-
 	struct RANK_DATA
 	{
 	public:
@@ -121,7 +113,6 @@ namespace RE
 	};
 	static_assert(sizeof(RANK_DATA) == 0x20);
 
-
 	class TESFaction :
 		public TESForm,			// 000
 		public TESFullName,		// 020
@@ -130,7 +121,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFaction;
 		inline static constexpr auto FORMTYPE = FormType::Faction;
-
 
 		struct ChangeFlags
 		{
@@ -142,7 +132,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -151,7 +140,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESFaction();	// 00
 
@@ -198,7 +186,6 @@ namespace RE
 		void		 SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
 		bool		 TracksCrimes() const;
 		bool		 UsesCrimeGoldDefaults() const;
-
 
 		// members
 		BSTHashMap<const TESNPC*, std::uint32_t>* crimeGoldMap;			  // 050

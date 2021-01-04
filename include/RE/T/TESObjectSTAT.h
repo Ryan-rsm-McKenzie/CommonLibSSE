@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	struct TESObjectSTATData  // DNAM
@@ -15,7 +14,6 @@ namespace RE
 			kNone = 0
 		};
 
-
 		// members
 		float								  materialThresholdAngle;  // 00 - (30 - 120)
 		std::uint32_t						  pad04;				   // 04
@@ -25,7 +23,6 @@ namespace RE
 	};
 	static_assert(sizeof(TESObjectSTATData) == 0x18);
 
-
 	class TESObjectSTAT :
 		public TESBoundObject,		// 00
 		public TESModelTextureSwap	// 30
@@ -33,7 +30,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectSTAT;
 		inline static constexpr auto FORMTYPE = FormType::Static;
-
 
 		struct RecordFlags
 		{
@@ -56,7 +52,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESObjectSTAT();  // 00
 
 		// override (TESBoundObject)
@@ -67,7 +62,6 @@ namespace RE
 		virtual bool IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
 
 		bool HasTreeLOD() const;
-
 
 		// members
 		TESObjectSTATData data;	 // 68 - DNAM

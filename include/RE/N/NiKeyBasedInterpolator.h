@@ -3,7 +3,6 @@
 #include "RE/N/NiAnimationKey.h"
 #include "RE/N/NiInterpolator.h"
 
-
 namespace RE
 {
 	class NiKeyBasedInterpolator : public NiInterpolator
@@ -12,10 +11,8 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiKeyBasedInterpolator;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
 
-
 		using KeyType = NiAnimationKey::KeyType;
 		using KeyContent = NiAnimationKey::KeyContent;
-
 
 		virtual ~NiKeyBasedInterpolator();	// 00
 

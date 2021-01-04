@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GColor
@@ -15,14 +14,12 @@ namespace RE
 		};
 		static_assert(sizeof(RGB32) == 0x4);
 
-
 		union ColorData
 		{
 			RGB32		  channels;
 			std::uint32_t raw;
 		};
 		static_assert(sizeof(ColorData) == 0x4);
-
 
 		// members
 		ColorData colorData;  // 0

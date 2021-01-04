@@ -1,6 +1,5 @@
 #include "RE/U/UIBlurManager.h"
 
-
 namespace RE
 {
 	UIBlurManager* UIBlurManager::GetSingleton()
@@ -9,14 +8,12 @@ namespace RE
 		return *singleton;
 	}
 
-
 	void UIBlurManager::DecrementBlurCount()
 	{
 		using func_t = decltype(&UIBlurManager::DecrementBlurCount);
 		REL::Relocation<func_t> func{ Offset::UIBlurManager::DecrementBlurCount };
 		return func(this);
 	}
-
 
 	void UIBlurManager::IncrementBlurCount()
 	{

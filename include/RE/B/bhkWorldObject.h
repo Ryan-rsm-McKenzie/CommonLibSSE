@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkSerializable.h"
 
-
 namespace RE
 {
 	class bhkWorldObject : public bhkSerializable
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkWorldObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkWorldObject;
-
 
 		virtual ~bhkWorldObject();	// 00
 
@@ -25,10 +23,8 @@ namespace RE
 		virtual void		  Unk_28(void) override;							 // 28 - { return world; }
 		virtual void		  Unk_29(void) override;							 // 29
 
-
 		// add
 		virtual void Unk_32(void);	// 32 - { return Unk_29(); }
-
 
 		// members
 		hkpWorld* world;  // 20

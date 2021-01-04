@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESLeveledList.h"
 
-
 namespace RE
 {
 	class TESLevItem :
@@ -15,7 +14,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESLevItem;
 		inline static constexpr auto FORMTYPE = FormType::LeveledItem;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -23,7 +21,6 @@ namespace RE
 				kAddedObject = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -33,7 +30,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~TESLevItem();	// 00
 

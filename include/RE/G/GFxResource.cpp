@@ -1,6 +1,5 @@
 #include "RE/G/GFxResource.h"
 
-
 namespace RE
 {
 	GFxResource::GFxResource() :
@@ -9,35 +8,29 @@ namespace RE
 		_lib(nullptr)
 	{}
 
-
 	GFxResource::~GFxResource()
 	{}
-
 
 	GFxResourceKey GFxResource::GetKey()
 	{
 		return GFxResourceKey();
 	}
 
-
 	std::uint32_t GFxResource::GetResourceTypeCode() const
 	{
 		return MakeTypeCode(ResourceType::kNone);
 	}
-
 
 	GFxResourceReport* GFxResource::GetResourceReport()
 	{
 		return nullptr;
 	}
 
-
 	void GFxResource::AddRef()
 	{
 		stl::atomic_ref myRefCount{ _refCount.value };
 		++myRefCount;
 	}
-
 
 	bool GFxResource::AddRef_NotZero()
 	{
@@ -50,12 +43,10 @@ namespace RE
 		}
 	}
 
-
 	std::int32_t GFxResource::GetRefCount() const
 	{
 		return _refCount.value;
 	}
-
 
 	void GFxResource::SetOwnerResourceLib(GFxResourceLibBase* a_lib)
 	{
@@ -63,18 +54,15 @@ namespace RE
 		_lib = a_lib;
 	}
 
-
 	GFxResource::ResourceType GFxResource::GetResourceType() const
 	{
 		return (static_cast<ResourceType>(GetResourceTypeCode()) & ResourceType::kTypeCode_Mask) >> ResourceType::kTypeCode_Shift;
 	}
 
-
 	GFxResource::ResourceUse GFxResource::GetResourceUse() const
 	{
 		return static_cast<ResourceUse>(GetResourceTypeCode()) & ResourceUse::kTypeCode_Mask;
 	}
-
 
 	std::uint32_t GFxResource::MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse)
 	{

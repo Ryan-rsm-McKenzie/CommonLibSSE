@@ -5,7 +5,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class TESEyes :
@@ -17,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESEyes;
 		inline static constexpr auto FORMTYPE = FormType::Eyes;
 
-
 		enum class Flag
 		{
 			kNone = 0,
@@ -25,7 +23,6 @@ namespace RE
 			kNotMale = 1 << 1,
 			kNotFemale = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -37,13 +34,11 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESEyes();	 // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04 - { flags = 0; }
 		virtual bool Load(TESFile* a_mod) override;	 // 06 - { return true; }
-
 
 		// members
 		stl::enumeration<Flag, std::uint8_t> flags;	 // 40 - DATA

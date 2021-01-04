@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkShape.h"
 
-
 namespace RE
 {
 	class bhkShapeCollection : public bhkShape
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkShapeCollection;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkShapeCollection;
-
 
 		virtual ~bhkShapeCollection();	// 00
 

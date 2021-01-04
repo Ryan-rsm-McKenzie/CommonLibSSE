@@ -1,11 +1,9 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESGlobal;
 	class TESWeather;
-
 
 	struct WeatherType
 	{

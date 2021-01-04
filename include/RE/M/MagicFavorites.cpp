@@ -1,6 +1,5 @@
 #include "RE/M/MagicFavorites.h"
 
-
 namespace RE
 {
 	MagicFavorites* MagicFavorites::GetSingleton()

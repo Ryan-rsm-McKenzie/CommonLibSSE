@@ -14,7 +14,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESShout.h"
 
-
 namespace RE
 {
 	class ActorKnowledge;
@@ -27,7 +26,6 @@ namespace RE
 	struct Crime;
 	struct QueuedDialogueType;
 
-
 	enum class VOICE_STATE
 	{
 		kNone = 0,
@@ -39,7 +37,6 @@ namespace RE
 		kFail = 6
 	};
 
-
 	struct DetectionEvent
 	{
 	public:
@@ -50,7 +47,6 @@ namespace RE
 		ObjectRefHandle ref;		  // 10
 	};
 	static_assert(sizeof(DetectionEvent) == 0x18);
-
 
 	struct HighProcessData
 	{
@@ -65,7 +61,6 @@ namespace RE
 			kOutDisable = 5,
 			kOutDelete = 6
 		};
-
 
 		struct Data190 : public BSIntrusiveRefCounted
 		{
@@ -94,13 +89,11 @@ namespace RE
 				};
 				static_assert(sizeof(UnkData) == 0x80);
 
-
 				// members
 				UnkData*	  unk00;  // 00
 				std::uint64_t unk08;  // 08
 			};
 			static_assert(sizeof(Data) == 0x10);
-
 
 			// members
 			std::uint32_t		unk04;	// 00
@@ -108,7 +101,6 @@ namespace RE
 			std::uint64_t		unk28;	// 28
 		};
 		static_assert(sizeof(Data190) == 0x30);
-
 
 		struct Data208
 		{
@@ -124,7 +116,6 @@ namespace RE
 		};
 		static_assert(sizeof(Data208) == 0x38);
 
-
 		struct Data3C8
 		{
 		public:
@@ -139,7 +130,6 @@ namespace RE
 			std::uint64_t		   unk38;  // 38
 		};
 		static_assert(sizeof(Data3C8) == 0x40);
-
 
 		// members
 		stl::enumeration<VOICE_STATE, std::uint32_t>		  voiceState;					  // 000

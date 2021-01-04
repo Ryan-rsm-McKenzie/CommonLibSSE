@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct ENCOUNTER_ZONE_DATA	// DATA
@@ -17,7 +16,6 @@ namespace RE
 			kDisableCombatBoundary = 1 << 2
 		};
 
-
 		// members
 		TESFaction*							 zoneOwner;	 // 00
 		BGSLocation*						 location;	 // 08
@@ -28,7 +26,6 @@ namespace RE
 		std::uint32_t						 pad14;		 // 14
 	};
 	static_assert(sizeof(ENCOUNTER_ZONE_DATA) == 0x18);
-
 
 	struct ENCOUNTER_ZONE_GAME_DATA
 	{
@@ -42,13 +39,11 @@ namespace RE
 	};
 	static_assert(sizeof(ENCOUNTER_ZONE_GAME_DATA) == 0x10);
 
-
 	class BGSEncounterZone : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEncounterZone;
 		inline static constexpr auto FORMTYPE = FormType::EncounterZone;
-
 
 		struct ChangeFlags
 		{
@@ -59,7 +54,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -68,7 +62,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSEncounterZone();  // 00
 
@@ -79,7 +72,6 @@ namespace RE
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
 		virtual void Revert(BGSLoadFormBuffer* a_buf) override;	   // 12
 		virtual void InitItemImpl() override;					   // 13
-
 
 		// members
 		ENCOUNTER_ZONE_DATA		 data;		// 20 - DATA

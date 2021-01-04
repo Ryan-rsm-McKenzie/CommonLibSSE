@@ -5,12 +5,10 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESObject.h"
 
-
 namespace RE
 {
 	class NiAVObject;
 	class TESObjectREFR;
-
 
 	class NiNPShortPoint3
 	{
@@ -22,12 +20,10 @@ namespace RE
 	};
 	static_assert(sizeof(NiNPShortPoint3) == 0x6);
 
-
 	class TESBoundObject : public TESObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESBoundObject;
-
 
 		struct BOUND_DATA  // OBND
 		{
@@ -37,7 +33,6 @@ namespace RE
 			NiNPShortPoint3 boundMax;  // 6
 		};
 		static_assert(sizeof(BOUND_DATA) == 0xC);
-
 
 		virtual ~TESBoundObject();	// 00
 
@@ -60,7 +55,6 @@ namespace RE
 		virtual void		  OnCheckModels();																				 // 50 - { return; }
 		virtual void		  OnCopyReference();																			 // 51 - { return; }
 		virtual void		  OnFinishScale();																				 // 52 - { return; }
-
 
 		// members
 		BOUND_DATA	  boundData;  // 20 - OBND

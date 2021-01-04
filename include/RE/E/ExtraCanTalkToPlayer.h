@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraCanTalkToPlayer : public BSExtraData
@@ -12,14 +11,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCanTalkToPlayer;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCanTalkToPlayer;
 
-
 		ExtraCanTalkToPlayer();
 		explicit ExtraCanTalkToPlayer(bool a_canTalk);
 		virtual ~ExtraCanTalkToPlayer() = default;	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kCanTalkToPlayer; }
-
 
 		// members
 		bool		  talk;	  // 10

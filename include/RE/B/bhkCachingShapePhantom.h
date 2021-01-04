@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkShapePhantom.h"
 
-
 namespace RE
 {
 	class bhkCachingShapePhantom : public bhkShapePhantom
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCachingShapePhantom;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCachingShapePhantom;
-
 
 		virtual ~bhkCachingShapePhantom();	// 00
 

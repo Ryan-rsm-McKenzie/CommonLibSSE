@@ -4,19 +4,16 @@
 #include "RE/N/NiObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiExtraData;
 	class NiTimeController;
-
 
 	class NiObjectNET : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiObjectNET;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiObjectNET;
-
 
 		virtual ~NiObjectNET();	 // 00
 
@@ -43,7 +40,6 @@ namespace RE
 		bool			  RemoveExtraData(const BSFixedString& a_key);
 		bool			  RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
 		bool			  SetExtraDataSize(std::uint16_t a_size);
-
 
 		// members
 		BSFixedString				name;			// 10

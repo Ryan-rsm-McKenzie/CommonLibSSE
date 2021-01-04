@@ -2,7 +2,6 @@
 
 #include "RE/N/NiTCollection.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -17,12 +16,10 @@ namespace RE
 			T		   element;	 // 10
 		};
 
-
 		void* Allocate()
 		{
 			return NiMalloc(sizeof(AllocNode));
 		}
-
 
 		void Deallocate(void* a_ptr)
 		{

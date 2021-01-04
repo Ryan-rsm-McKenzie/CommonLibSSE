@@ -2,17 +2,14 @@
 
 #include "RE/H/hkpMotion.h"
 
-
 namespace RE
 {
 	class hkpMaxSizeMotion;
-
 
 	class hkpKeyframedRigidMotion : public hkpMotion
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpKeyframedRigidMotion;
-
 
 		virtual ~hkpKeyframedRigidMotion();	 // 00
 
@@ -38,7 +35,6 @@ namespace RE
 		virtual void SetStoredMotion(hkpMaxSizeMotion* a_savedMotion);	   // 1B
 	};
 	static_assert(sizeof(hkpKeyframedRigidMotion) == 0x140);
-
 
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
 	{

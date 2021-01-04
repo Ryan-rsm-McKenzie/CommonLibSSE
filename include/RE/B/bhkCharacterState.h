@@ -2,14 +2,12 @@
 
 #include "RE/H/hkpCharacterState.h"
 
-
 namespace RE
 {
 	class bhkCharacterState : public hkpCharacterState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterState;
-
 
 		virtual ~bhkCharacterState();  // 00
 

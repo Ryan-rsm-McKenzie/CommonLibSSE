@@ -4,11 +4,9 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class TESPackage;
-
 
 	class ExtraPackage : public BSExtraData
 	{
@@ -16,12 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPackage;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPackage;
 
-
 		virtual ~ExtraPackage();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kPackage; }
-
 
 		// members
 		TESPackage*		unk10;			 // 10

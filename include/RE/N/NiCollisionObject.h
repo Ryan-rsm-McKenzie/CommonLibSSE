@@ -2,18 +2,15 @@
 
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiAVObject;
-
 
 	class NiCollisionObject : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiCollisionObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiCollisionObject;
-
 
 		virtual ~NiCollisionObject() = 0;  // 00
 
@@ -31,7 +28,6 @@ namespace RE
 		virtual void Unk_27(void) = 0;	// 27
 		virtual void Unk_28(void);		// 28 - { return; }
 		virtual void Unk_29(void);		// 29 - { return; }
-
 
 		// members
 		NiAVObject* sceneObject;  // 10

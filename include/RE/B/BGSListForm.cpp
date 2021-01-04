@@ -1,6 +1,5 @@
 #include "RE/B/BGSListForm.h"
 
-
 namespace RE
 {
 	void BGSListForm::AddForm(TESForm* a_form)
@@ -9,7 +8,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::BGSListForm::AddForm };
 		return func(this, a_form);
 	}
-
 
 	bool BGSListForm::HasForm(const TESForm* a_form) const
 	{
@@ -33,7 +31,6 @@ namespace RE
 
 		return false;
 	}
-
 
 	bool BGSListForm::HasForm(FormID a_formID) const
 	{

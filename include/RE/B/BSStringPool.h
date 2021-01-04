@@ -2,12 +2,10 @@
 
 #include "RE/B/BSAtomic.h"
 
-
 namespace RE
 {
 	using GlobalStringHandle = char*;
 	using GlobalStringHandleW = wchar_t*;
-
 
 	struct BSStringPool
 	{

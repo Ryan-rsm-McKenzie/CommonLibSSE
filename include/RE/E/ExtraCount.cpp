@@ -1,12 +1,10 @@
 #include "RE/E/ExtraCount.h"
 
-
 namespace RE
 {
 	ExtraCount::ExtraCount() :
 		ExtraCount(0)
 	{}
-
 
 	ExtraCount::ExtraCount(std::int16_t a_count) :
 		BSExtraData(),
@@ -18,12 +16,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraCount::GetType() const
 	{
 		return ExtraDataType::kCount;
 	}
-
 
 	bool ExtraCount::IsNotEqual(const BSExtraData* a_rhs) const
 	{

@@ -1,6 +1,5 @@
 #include "RE/E/ExtraTextDisplayData.h"
 
-
 namespace RE
 {
 	ExtraTextDisplayData::ExtraTextDisplayData() :
@@ -18,7 +17,6 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
 		BSExtraData(),
 		displayName(""),
@@ -34,7 +32,6 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 		SetName(a_name);
 	}
-
 
 	ExtraTextDisplayData::ExtraTextDisplayData(TESBoundObject* a_baseObject, float a_temperFactor) :
 		BSExtraData(),
@@ -52,12 +49,10 @@ namespace RE
 		GetDisplayName(a_baseObject, a_temperFactor);
 	}
 
-
 	ExtraDataType ExtraTextDisplayData::GetType() const
 	{
 		return ExtraDataType::kTextDisplayData;
 	}
-
 
 	const char* ExtraTextDisplayData::GetDisplayName(TESBoundObject* a_baseObject, float a_temperFactor)
 	{
@@ -66,12 +61,10 @@ namespace RE
 		return func(this, a_baseObject, a_temperFactor);
 	}
 
-
 	bool ExtraTextDisplayData::IsPlayerSet() const
 	{
 		return ownerInstance == DisplayDataType::kCustomName;
 	}
-
 
 	void ExtraTextDisplayData::SetName(const char* a_name)
 	{

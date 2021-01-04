@@ -5,14 +5,12 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/I/InputDevices.h"
 
-
 namespace RE
 {
 	class BSInputDevice : public BSIInputDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSInputDevice;
-
 
 		struct InputButton
 		{
@@ -21,7 +19,6 @@ namespace RE
 			std::uint32_t keycode;		 // 0C
 		};
 		static_assert(sizeof(InputButton) == 0x10);
-
 
 		virtual ~BSInputDevice();  // 00
 
@@ -35,7 +32,6 @@ namespace RE
 		bool IsMouse() const;
 		bool IsGamepad() const;
 		bool IsPressed(std::uint32_t a_keyCode) const;
-
 
 		// members
 		INPUT_DEVICE							 device;		   // 08

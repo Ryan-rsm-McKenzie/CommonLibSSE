@@ -2,7 +2,6 @@
 
 #include "RE/B/BSIntrusiveRefCounted.h"
 
-
 namespace RE
 {
 	class ButtonEvent;
@@ -11,12 +10,10 @@ namespace RE
 	class MouseMoveEvent;
 	class ThumbstickEvent;
 
-
 	class MenuEventHandler : public BSIntrusiveRefCounted
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MenuEventHandler;
-
 
 		MenuEventHandler() = default;
 		virtual ~MenuEventHandler() = default;	// 00
@@ -26,7 +23,6 @@ namespace RE
 		virtual bool ProcessThumbstick(ThumbstickEvent* a_event);  // 03 - { return false; }
 		virtual bool ProcessMouseMove(MouseMoveEvent* a_event);	   // 04 - { return false; }
 		virtual bool ProcessButton(ButtonEvent* a_event);		   // 05 - { return false; }
-
 
 		// members
 		bool		  registered;  // 0C

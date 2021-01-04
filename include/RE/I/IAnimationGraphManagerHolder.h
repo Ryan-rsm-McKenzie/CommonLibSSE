@@ -4,19 +4,16 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	class BSAnimationGraphManager;
 	class BShkbAnimationGraph;
 	class NiAVObject;
 
-
 	class IAnimationGraphManagerHolder
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IAnimationGraphManagerHolder;
-
 
 		virtual ~IAnimationGraphManagerHolder();  // 00
 

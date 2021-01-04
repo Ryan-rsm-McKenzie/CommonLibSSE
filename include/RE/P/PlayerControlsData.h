@@ -2,7 +2,6 @@
 
 #include "RE/N/NiPoint2.h"
 
-
 namespace RE
 {
 	class PlayerControlsData

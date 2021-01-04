@@ -8,14 +8,12 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/T/TESCamera.h"
 
-
 namespace RE
 {
 	class bhkRigidBody;
 	class bhkSimpleShapePhantom;
 	class NiRefObject;
 	class TESCameraState;
-
 
 	struct CameraStates
 	{
@@ -40,7 +38,6 @@ namespace RE
 	};
 	using CameraState = CameraStates::CameraState;
 
-
 	class PlayerCamera :
 		public TESCamera,					  // 000
 		public BSTSingletonSDM<PlayerCamera>  // 038
@@ -48,14 +45,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCamera;
 
-
 		struct Unk120
 		{
 			NiPointer<bhkSimpleShapePhantom*> unk00;  // 00
 			NiPointer<bhkSimpleShapePhantom*> unk08;  // 08
 		};
 		static_assert(sizeof(Unk120) == 0x10);
-
 
 		virtual ~PlayerCamera();  // 00
 
@@ -65,7 +60,6 @@ namespace RE
 		static PlayerCamera* GetSingleton();
 
 		void UpdateThirdPerson(bool a_weaponDrawn);
-
 
 		// members
 		std::uint8_t										 pad039;							  // 039

@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class bhkWorld;
-
 
 	class BSIRagdollDriver
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSIRagdollDriver;
-
 
 		virtual ~BSIRagdollDriver();  // 00
 

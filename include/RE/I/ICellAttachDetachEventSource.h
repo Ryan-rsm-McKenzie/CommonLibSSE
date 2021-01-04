@@ -3,11 +3,9 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	struct CellAttachDetachEvent;
-
 
 	class ICellAttachDetachEventSource :
 		BSTSingletonExplicit<ICellAttachDetachEventSource>,	 // 08
@@ -15,7 +13,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ICellAttachDetachEventSource;
-
 
 		virtual ~ICellAttachDetachEventSource();  // 00
 	};

@@ -3,7 +3,6 @@
 #include "RE/N/NiAnimationKey.h"
 #include "RE/N/NiColor.h"
 
-
 namespace RE
 {
 	class NiColorKey : public NiAnimationKey

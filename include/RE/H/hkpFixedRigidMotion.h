@@ -2,14 +2,12 @@
 
 #include "RE/H/hkpKeyframedRigidMotion.h"
 
-
 namespace RE
 {
 	class hkpFixedRigidMotion : public hkpKeyframedRigidMotion
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpFixedRigidMotion;
-
 
 		virtual ~hkpFixedRigidMotion();	 // 00
 

@@ -3,14 +3,12 @@
 #include "RE/B/BSLightingShaderMaterialBase.h"
 #include "RE/N/NiColor.h"
 
-
 namespace RE
 {
 	class BSLightingShaderMaterialHairTint : public BSLightingShaderMaterialBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
-
 
 		virtual ~BSLightingShaderMaterialHairTint();  // 00
 
@@ -21,7 +19,6 @@ namespace RE
 		virtual Feature			  GetFeature() const override;						// 06 - { return Feature::kHairTint; }
 		virtual void			  SaveBinary(void) override;						// 0C
 		virtual void			  LoadBinary(void) override;						// 0D
-
 
 		// members
 		NiColor		  tintColor;  // A0

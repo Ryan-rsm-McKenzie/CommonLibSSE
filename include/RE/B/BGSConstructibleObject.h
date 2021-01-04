@@ -5,7 +5,6 @@
 #include "RE/T/TESContainer.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSConstructibleObject : public TESForm
@@ -13,7 +12,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSConstructibleObject;
 		inline static constexpr auto FORMTYPE = FormType::ConstructibleObject;
-
 
 		struct RecordFlags
 		{
@@ -24,13 +22,11 @@ namespace RE
 			};
 		};
 
-
 		struct ConstructibleObjectData
 		{
 			std::uint16_t numConstructed;  // 0 - NAM1
 		};
 		static_assert(sizeof(ConstructibleObjectData) == 0x2);
-
 
 		virtual ~BGSConstructibleObject();	// 00
 
@@ -39,7 +35,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		TESContainer			requiredItems;	// 20

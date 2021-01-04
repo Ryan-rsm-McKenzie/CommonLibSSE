@@ -2,7 +2,6 @@
 
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class BSAnimNote : public NiObject
@@ -11,14 +10,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSAnimNote;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSAnimNote;
 
-
 		enum class AnimNoteType
 		{
 			kInvalid = 0,
 			kGrabIK = 1,
 			kLookIK = 2
 		};
-
 
 		virtual ~BSAnimNote() = 0;	// 00
 

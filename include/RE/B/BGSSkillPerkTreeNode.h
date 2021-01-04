@@ -2,21 +2,17 @@
 
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class ActorValueInfo;
 	class BGSPerk;
-
 
 	class BGSSkillPerkTreeNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSkillPerkTreeNode;
 
-
 		virtual ~BGSSkillPerkTreeNode();  // 00
-
 
 		// members
 		std::uint32_t					index;				 // 08 - INAM

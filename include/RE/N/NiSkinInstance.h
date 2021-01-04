@@ -3,7 +3,6 @@
 #include "RE/N/NiObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class NiAVObject;
@@ -11,13 +10,11 @@ namespace RE
 	class NiSkinData;
 	class NiSkinPartition;
 
-
 	class NiSkinInstance : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSkinInstance;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinInstance;
-
 
 		virtual ~NiSkinInstance();	// 00
 
@@ -35,7 +32,6 @@ namespace RE
 		virtual void Unk_25(void);	// 25
 
 		static NiSkinInstance* Create();
-
 
 		// members
 		NiPointer<NiSkinData>	   skinData;					  // 10

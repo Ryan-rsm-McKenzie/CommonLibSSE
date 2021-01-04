@@ -3,14 +3,12 @@
 #include "RE/B/BGSLocAlias.h"
 #include "RE/B/BGSRefAlias.h"
 
-
 namespace RE
 {
 	const BSFixedString& BGSBaseAlias::GetTypeString() const
 	{
 		return QType();
 	}
-
 
 	VMTypeID BGSBaseAlias::GetVMTypeID() const
 	{
@@ -23,7 +21,6 @@ namespace RE
 			return BGSBaseAlias::VMTYPEID;
 		}
 	}
-
 
 	bool BGSBaseAlias::IsQuestObject() const
 	{

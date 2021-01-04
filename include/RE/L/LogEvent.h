@@ -2,7 +2,6 @@
 
 #include "RE/E/ErrorLogger.h"
 
-
 namespace RE
 {
 	namespace BSScript

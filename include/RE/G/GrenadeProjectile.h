@@ -3,11 +3,9 @@
 #include "RE/F/FormTypes.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	struct BGSDecalGroup;
-
 
 	class GrenadeProjectile : public Projectile
 	{
@@ -15,14 +13,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_GrenadeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileGrenade;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~GrenadeProjectile();  // 00
 
@@ -46,7 +42,6 @@ namespace RE
 		virtual void		   Unk_BD(void) override;							   // BD
 		virtual void		   Unk_BF(void) override;							   // BF - { flags |= 1 << 30; }
 		virtual void		   Handle3DLoaded() override;						   // C0
-
 
 		// members
 		BGSDecalGroup* decalGroup;			 // 1D8

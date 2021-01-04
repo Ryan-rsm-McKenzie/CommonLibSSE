@@ -1,6 +1,5 @@
 #include "RE/G/GViewport.h"
 
-
 namespace RE
 {
 	GViewport::GViewport() :
@@ -20,7 +19,6 @@ namespace RE
 		pad34(0)
 	{}
 
-
 	GViewport::GViewport(const GViewport& a_rhs) :
 		bufferWidth(a_rhs.bufferWidth),
 		bufferHeight(a_rhs.bufferHeight),
@@ -37,7 +35,6 @@ namespace RE
 		flags(a_rhs.flags),
 		pad34(0)
 	{}
-
 
 	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH, Flag a_flags) :
 		bufferWidth(a_bufW),
@@ -56,7 +53,6 @@ namespace RE
 		pad34(0)
 	{}
 
-
 	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH, float a_scale, float a_ratio, Flag a_flags) :
 		bufferWidth(a_bufW),
 		bufferHeight(a_bufH),
@@ -73,7 +69,6 @@ namespace RE
 		flags(a_flags, Flag::kUseScissorRect),
 		pad34(0)
 	{}
-
 
 	GViewport::GViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, Flag a_flags) :
 		bufferWidth(a_bufW),
@@ -92,7 +87,6 @@ namespace RE
 		pad34(0)
 	{}
 
-
 	void GViewport::SetViewport(std::int32_t a_bufW, std::int32_t a_bufH, std::int32_t a_left, std::int32_t a_top, std::int32_t a_width, std::int32_t a_height, Flag a_flags)
 	{
 		bufferWidth = a_bufW;
@@ -109,7 +103,6 @@ namespace RE
 		scale = 1.0;
 		aspectRatio = 1.0;
 	}
-
 
 	void GViewport::SetScissorRect(std::int32_t a_scLeft, std::int32_t a_scTop, std::int32_t a_scW, std::int32_t a_scH)
 	{

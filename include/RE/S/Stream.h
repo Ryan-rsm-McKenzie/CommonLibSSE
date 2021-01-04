@@ -4,13 +4,11 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/S/StreamBase.h"
 
-
 namespace RE
 {
 	namespace BSResource
 	{
 		class AsyncStream;
-
 
 		enum class SeekMode
 		{
@@ -19,12 +17,10 @@ namespace RE
 			kEnd = 2
 		};
 
-
 		class Stream : public StreamBase
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__Stream;
-
 
 			Stream();
 			Stream(const Stream& a_rhs);

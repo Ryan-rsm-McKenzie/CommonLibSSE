@@ -3,19 +3,16 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Object;
 
-
 		struct IVMObjectBindInterface
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IVMObjectBindInterface;
-
 
 			virtual ~IVMObjectBindInterface();	// 00
 

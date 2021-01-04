@@ -3,12 +3,10 @@
 #include "RE/H/hkMemoryAllocator.h"
 #include "RE/I/IMemoryHeap.h"
 
-
 namespace RE
 {
 	class HeapBlock;
 	class HeapBlockFreeHead;
-
 
 	class bhkThreadMemorySource :
 		public hkMemoryAllocator,  // 00
@@ -17,7 +15,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkThreadMemorySource;
 
-
 		struct FreeBlock
 		{
 		public:
@@ -25,7 +22,6 @@ namespace RE
 			FreeBlock* next;  // 0
 		};
 		static_assert(sizeof(FreeBlock) == 0x8);
-
 
 		struct BlockPage
 		{
@@ -40,7 +36,6 @@ namespace RE
 		};
 		static_assert(sizeof(BlockPage) == 0x20);
 
-
 		struct Row
 		{
 		public:
@@ -53,7 +48,6 @@ namespace RE
 			std::int32_t elemSize;				// 1C
 		};
 		static_assert(sizeof(Row) == 0x20);
-
 
 		struct MegaBlockPage
 		{
@@ -71,7 +65,6 @@ namespace RE
 			std::uint16_t  pad1FFFFE;						   // 1FFFFE
 		};
 		static_assert(sizeof(MegaBlockPage) == 0x200000);
-
 
 		virtual ~bhkThreadMemorySource();  // 00
 
@@ -97,7 +90,6 @@ namespace RE
 		virtual void		  GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;				 // 0C
 		virtual bool		  ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;	 // 0D
 		virtual std::uint32_t GetPageSize() const override;													 // 0E
-
 
 		// members
 		BSCriticalSection  lock;					// 10

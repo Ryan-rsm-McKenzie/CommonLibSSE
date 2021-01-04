@@ -4,13 +4,11 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class TESBoundObject;
 	class TESFaction;
 	class TESForm;
-
 
 	namespace PackageNS
 	{
@@ -32,7 +30,6 @@ namespace RE
 		};
 		using CRIME_TYPE = CRIME_TYPES::CRIME_TYPE;
 	}
-
 
 	struct Crime
 	{

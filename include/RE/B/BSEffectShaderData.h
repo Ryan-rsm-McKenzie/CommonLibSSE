@@ -8,21 +8,17 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TextureAddressModes.h"
 
-
 namespace RE
 {
 	class NiTexture;
-
 
 	class BSEffectShaderData : public BSIntrusiveRefCounted
 	{
 	public:
 		using NodeFilterFunction_t = bool(const BSFixedString*);
 
-
 		BSEffectShaderData();
 		~BSEffectShaderData();
-
 
 		// members
 		std::uint32_t					  pad04;					// 04

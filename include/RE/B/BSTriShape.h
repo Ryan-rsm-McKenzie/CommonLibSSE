@@ -2,7 +2,6 @@
 
 #include "RE/B/BSGeometry.h"
 
-
 namespace RE
 {
 	class BSTriShape : public BSGeometry
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTriShape;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTriShape;
-
 
 		virtual ~BSTriShape();	// 00
 
@@ -23,7 +21,6 @@ namespace RE
 		virtual bool		  RegisterStreamables(NiStream& a_stream) override;	  // 1A - { return BSGeometry::RegisterStreamables(a_stream); }
 		virtual void		  SaveBinary(NiStream& a_stream) override;			  // 1B
 		virtual bool		  IsEqual(NiObject* a_object) override;				  // 1C - { return false; }
-
 
 		// members
 		std::uint16_t triangleCount;  // 158

@@ -4,11 +4,9 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSMusicTrack;
-
 
 	class BGSMusicTrackFormWrapper :
 		public TESForm,		  // 00
@@ -18,7 +16,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSMusicTrackFormWrapper;
 		inline static constexpr auto FORMTYPE = FormType::MusicTrack;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -27,7 +24,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSMusicTrackFormWrapper();  // 00
 
@@ -47,7 +43,6 @@ namespace RE
 		virtual MUSIC_STATUS GetMusicStatus() const override;						 // 08
 		virtual void		 DoSetDuckingAttenuation(std::uint16_t a_val) override;	 // 09
 		virtual void		 DoClearDucking() override;								 // 0A
-
 
 		// members
 		BGSMusicTrack* track;  // 30

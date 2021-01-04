@@ -4,14 +4,12 @@
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
 
-
 namespace RE
 {
 	class ButtonEvent : public IDEvent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
-
 
 		virtual ~ButtonEvent();	 // 00
 
@@ -22,7 +20,6 @@ namespace RE
 		constexpr bool	IsDown() const noexcept { return IsPressed() && (HeldDuration() == 0.0F); }
 		constexpr bool	IsHeld() const noexcept { return IsPressed() && IsRepeating(); }
 		constexpr bool	IsUp() const noexcept { return (Value() == 0.0F) && IsRepeating(); }
-
 
 		// members
 		float value;		 // 28

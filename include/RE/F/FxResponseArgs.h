@@ -3,7 +3,6 @@
 #include "RE/F/FxResponseArgsBase.h"
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	template <std::uint32_t SIZE>
@@ -17,9 +16,7 @@ namespace RE
 			_pad(0)
 		{}
 
-
 		virtual ~FxResponseArgs() = default;  // 00
-
 
 		// override (FxResponseArgsBase)
 		virtual std::uint32_t GetValues(GFxValue** a_params) override  // 01
@@ -27,7 +24,6 @@ namespace RE
 			*a_params = _values;
 			return _index;
 		}
-
 
 		void Add(const GFxValue& a_val)
 		{
@@ -44,7 +40,6 @@ namespace RE
 		std::uint32_t _pad;				  // ??
 	};
 	static_assert(sizeof(FxResponseArgs<1>) == 0x40);
-
 
 	template <std::size_t N>
 	class FxResponseArgsEx : public FxResponseArgsBase

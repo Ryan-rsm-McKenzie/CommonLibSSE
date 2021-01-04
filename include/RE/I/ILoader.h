@@ -2,7 +2,6 @@
 
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -12,15 +11,12 @@ namespace RE
 			class Object;
 		}
 
-
 		class IStore;
-
 
 		struct ILoader
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__ILoader;
-
 
 			virtual ~ILoader();	 // 00
 

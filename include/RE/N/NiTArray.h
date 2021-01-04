@@ -3,7 +3,6 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/N/NiTCollection.h"
 
-
 namespace RE
 {
 	template <class T, class Allocator>
@@ -18,7 +17,6 @@ namespace RE
 		using iterator = T*;
 		using const_iterator = const T*;
 
-
 		NiTArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			_data(0),
 			_capacity(static_cast<std::uint16_t>(a_maxSize)),
@@ -31,12 +29,10 @@ namespace RE
 			}
 		}
 
-
 		virtual ~NiTArray()	 // 00
 		{
 			allocator_type::Deallocate(_data);
 		}
-
 
 		reference operator[](size_type a_pos)
 		{
@@ -44,85 +40,71 @@ namespace RE
 			return _data[a_pos];
 		}
 
-
 		const_reference operator[](size_type a_pos) const
 		{
 			assert(a_pos < size());
 			return _data[a_pos];
 		}
 
-
 		reference front()
 		{
 			return operator[](0);
 		}
-
 
 		const_reference front() const
 		{
 			return operator[](0);
 		}
 
-
 		reference back()
 		{
 			return operator[](size() - 1);
 		}
-
 
 		const_reference back() const
 		{
 			return operator[](size() - 1);
 		}
 
-
 		iterator begin()
 		{
 			return _data;
 		}
-
 
 		const_iterator begin() const
 		{
 			return _data;
 		}
 
-
 		const_iterator cbegin() const
 		{
 			return _data;
 		}
-
 
 		iterator end()
 		{
 			return _data + _size;
 		}
 
-
 		const_iterator end() const
 		{
 			return _data + _size;
 		}
-
 
 		const_iterator cend() const
 		{
 			return _data + _size;
 		}
 
-
 		bool empty() const
 		{
 			return _capacity == 0;
 		}
 
-
 		size_type size() const
 		{
 			return _size;
 		}
-
 
 		size_type capacity() const
 		{
@@ -139,7 +121,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTArray<void*, NiTMallocInterface<void*>>) == 0x18);
 
-
 	template <class T>
 	class NiTObjectArray : public NiTArray<T, NiTNewInterface<T>>
 	{
@@ -150,7 +131,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTObjectArray<void*>) == 0x18);
 
-
 	template <class T>
 	class NiTPrimitiveArray : public NiTArray<T, NiTMallocInterface<T>>
 	{
@@ -160,7 +140,6 @@ namespace RE
 		{}
 	};
 	static_assert(sizeof(NiTPrimitiveArray<void*>) == 0x18);
-
 
 	template <class T, class Allocator>
 	class NiTLargeArray
@@ -174,7 +153,6 @@ namespace RE
 		using iterator = T*;
 		using const_iterator = const T*;
 
-
 		NiTLargeArray(std::uint32_t a_maxSize = 0, std::uint32_t a_growBy = 1) :
 			_data(0),
 			_capacity(a_maxSize),
@@ -187,12 +165,10 @@ namespace RE
 			}
 		}
 
-
 		virtual ~NiTLargeArray()  // 00
 		{
 			allocator_type::Deallocate(_data);
 		}
-
 
 		reference operator[](size_type a_pos)
 		{
@@ -200,85 +176,71 @@ namespace RE
 			return _data[a_pos];
 		}
 
-
 		const_reference operator[](size_type a_pos) const
 		{
 			assert(a_pos < size());
 			return _data[a_pos];
 		}
 
-
 		reference front()
 		{
 			return operator[](0);
 		}
-
 
 		const_reference front() const
 		{
 			return operator[](0);
 		}
 
-
 		reference back()
 		{
 			return operator[](size() - 1);
 		}
-
 
 		const_reference back() const
 		{
 			return operator[](size() - 1);
 		}
 
-
 		iterator begin()
 		{
 			return _data;
 		}
-
 
 		const_iterator begin() const
 		{
 			return _data;
 		}
 
-
 		const_iterator cbegin() const
 		{
 			return _data;
 		}
-
 
 		iterator end()
 		{
 			return _data + _size;
 		}
 
-
 		const_iterator end() const
 		{
 			return _data + _size;
 		}
-
 
 		const_iterator cend() const
 		{
 			return _data + _size;
 		}
 
-
 		bool empty() const
 		{
 			return _capacity == 0;
 		}
 
-
 		size_type size() const
 		{
 			return _size;
 		}
-
 
 		size_type capacity() const
 		{
@@ -295,7 +257,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTLargeArray<void*, NiTMallocInterface<void*>>) == 0x20);
 
-
 	template <class T>
 	class NiTLargeObjectArray : public NiTLargeArray<T, NiTNewInterface<T>>
 	{
@@ -306,7 +267,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTLargeObjectArray<void*>) == 0x20);
 
-
 	template <class T>
 	class NiTLargePrimitiveArray : public NiTLargeArray<T, NiTMallocInterface<T>>
 	{
@@ -316,7 +276,6 @@ namespace RE
 		{}
 	};
 	static_assert(sizeof(NiTLargePrimitiveArray<void*>) == 0x20);
-
 
 	class TESForm;
 	class NiFormArray : public NiTLargePrimitiveArray<TESForm*>

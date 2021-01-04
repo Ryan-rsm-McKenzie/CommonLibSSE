@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkpShapeContainer
@@ -8,13 +7,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpShapeContainer;
 
-
 		enum class ReferencePolicy
 		{
 			kIgnore,
 			kIncrement
 		};
-
 
 		virtual ~hkpShapeContainer();  // 00
 

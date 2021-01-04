@@ -8,14 +8,12 @@
 #include "RE/R/ReferenceEffect.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
-
 namespace RE
 {
 	class BGSArtObject;
 	class BGSArtObjectCloneTask;
 	class NiAVObject;
 	struct BSAnimationGraphEvent;
-
 
 	class SummonPlacementEffect :
 		public ReferenceEffect,						// 00
@@ -25,7 +23,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SummonPlacementEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_SummonPlacementEffect;
-
 
 		virtual ~SummonPlacementEffect();  // 00
 
@@ -37,7 +34,6 @@ namespace RE
 		virtual void			 LoadGame(BGSLoadGameBuffer* a_buf) override;		 // 2E
 		virtual void			 FinishLoadGame(BGSLoadGameBuffer* a_buf) override;	 // 2F
 		virtual void			 Unk_36(void) override;								 // 36
-
 
 		// members
 		BGSArtObject*						   effectArt;  // 68

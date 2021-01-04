@@ -2,11 +2,9 @@
 
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	enum class ACTOR_COMBAT_STATE
 	{
@@ -14,7 +12,6 @@ namespace RE
 		kCombat = 1,
 		kSearching = 2
 	};
-
 
 	struct TESCombatEvent
 	{

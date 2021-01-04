@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	class FlameProjectile : public Projectile
@@ -12,14 +11,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_FlameProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileFlame;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~FlameProjectile();	 // 00
 
@@ -36,7 +33,6 @@ namespace RE
 		virtual void Unk_BD(void) override;								 // BD
 		virtual void Handle3DLoaded() override;							 // C0 - { flags = flags & 0xFFFFFFCC | 8; }
 		virtual void Unk_C1(void) override;								 // C1
-
 
 		// members
 		float expirationTimer;	// 1D8

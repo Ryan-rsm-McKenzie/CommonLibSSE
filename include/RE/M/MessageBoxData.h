@@ -5,20 +5,16 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/I/IUIMessageData.h"
 
-
 namespace RE
 {
 	class IMessageBoxCallback;
-
 
 	class MessageBoxData : public IUIMessageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MessageBoxData;
 
-
 		virtual ~MessageBoxData();	// 00
-
 
 		// members
 		BSString							 bodyText;	  // 10

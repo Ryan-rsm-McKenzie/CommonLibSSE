@@ -10,7 +10,6 @@
 #include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class AlchemyItem :
@@ -27,7 +26,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_AlchemyItem;
 		inline static constexpr auto FORMTYPE = FormType::AlchemyItem;
 
-
 		enum class AlchemyFlag
 		{
 			kNone = 0,
@@ -38,7 +36,6 @@ namespace RE
 			kPoison = 1 << 17
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -48,7 +45,6 @@ namespace RE
 				kMedicine = 1 << 29
 			};
 		};
-
 
 		class Data	// ENIT
 		{
@@ -61,7 +57,6 @@ namespace RE
 			BGSSoundDescriptorForm*						 consumptionSound;	// 18
 		};
 		static_assert(sizeof(Data) == 0x20);
-
 
 		virtual ~AlchemyItem();	 // 00
 
@@ -87,7 +82,6 @@ namespace RE
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
-
 
 		// members
 		Data	data;		  // 138 - ENIT

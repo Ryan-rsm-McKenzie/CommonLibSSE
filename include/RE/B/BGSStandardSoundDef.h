@@ -5,23 +5,19 @@
 #include "RE/F/FormTypes.h"
 #include "RE/I/ID.h"
 
-
 namespace RE
 {
 	class TESCondition;
-
 
 	class BGSStandardSoundDef : public BGSSoundDescriptor
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef;
 
-
 		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics	 // BNAM
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
-
 
 			// override (BSIPlaybackCharacteristics)
 			virtual std::uint8_t  GetFrequencyShift() override;		// 01 - { return frequencyShift; }
@@ -29,7 +25,6 @@ namespace RE
 			virtual std::uint8_t  GetPriority() override;			// 03 - { return priority; }
 			virtual std::uint16_t GetStaticAttenuation() override;	// 04 - { return staticAttenuation; }
 			virtual std::uint8_t  GetDBVariance() override;			// 05 - { return dbVariance; }
-
 
 			// members
 			std::uint8_t  frequencyShift;	  // 08
@@ -41,7 +36,6 @@ namespace RE
 		};
 		static_assert(sizeof(SoundPlaybackCharacteristics) == 0x10);
 
-
 		struct LengthCharacteristics  // LNAM
 		{
 			enum class Looping
@@ -52,14 +46,12 @@ namespace RE
 				kEnvelopeSlow = 1 << 5
 			};
 
-
 			std::uint8_t							unk0;			  // 0
 			stl::enumeration<Looping, std::uint8_t> looping;		  // 1
 			std::uint8_t							unk2;			  // 2
 			std::uint8_t							rumbleSendValue;  // 3
 		};
 		static_assert(sizeof(LengthCharacteristics) == 0x4);
-
 
 		virtual ~BGSStandardSoundDef();	 // 00
 
@@ -70,7 +62,6 @@ namespace RE
 		virtual bool		  LoadSound(TESFile* a_mod) override;  // 04
 		virtual std::uint32_t GetType() const override;			   // 05 - "BGSStandardSoundDef"
 		virtual void		  Unk_06(void) override;			   // 06
-
 
 		// members
 		BSTArray<BSResource::ID>	 soundFiles;			 // 18 - ANAM

@@ -2,7 +2,6 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	struct BIPED_MODEL	// BOD2
@@ -30,7 +29,6 @@ namespace RE
 			kFX01 = 1 << 31
 		};
 
-
 		enum class ArmorType
 		{
 			kLightArmor,
@@ -38,24 +36,20 @@ namespace RE
 			kClothing
 		};
 
-
 		// members
 		stl::enumeration<BipedObjectSlot, std::uint32_t> bipedObjectSlots;	// 0
 		stl::enumeration<ArmorType, std::uint32_t>		 armorType;			// 4
 	};
 	static_assert(sizeof(BIPED_MODEL) == 0x8);
 
-
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBipedObjectForm;
 
-
 		using ArmorType = BIPED_MODEL::ArmorType;
 		using BipedObjectSlot = BIPED_MODEL::BipedObjectSlot;
 		using FirstPersonFlag = BIPED_MODEL::BipedObjectSlot;
-
 
 		virtual ~BGSBipedObjectForm();	// 00
 
@@ -63,7 +57,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;				// 01
 		virtual void ClearDataComponent() override;						// 02 - { return; }
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
-
 
 		BipedObjectSlot AddSlotToMask(BipedObjectSlot a_slot);
 		ArmorType		GetArmorType() const;
@@ -75,7 +68,6 @@ namespace RE
 		bool			IsShield() const;
 		BipedObjectSlot RemoveSlotFromMask(BipedObjectSlot a_slot);
 		void			SetSlotMask(BipedObjectSlot a_mask);
-
 
 		// members
 		BIPED_MODEL bipedModelData;	 // 08 - BOD2

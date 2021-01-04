@@ -3,7 +3,6 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/I/IMemoryStore.h"
 
-
 namespace RE
 {
 	namespace BSSmallBlockAllocatorUtil
@@ -15,7 +14,6 @@ namespace RE
 			FreeBlock* next;  // 0
 		};
 		static_assert(sizeof(FreeBlock) == 0x8);
-
 
 		struct BlockPage
 		{
@@ -29,7 +27,6 @@ namespace RE
 			std::uint32_t pad1C;	  // 1C
 		};
 		static_assert(sizeof(BlockPage) == 0x20);
-
 
 		struct Pool
 		{
@@ -46,7 +43,6 @@ namespace RE
 		static_assert(sizeof(Pool) == 0x48);
 	}
 
-
 	struct BlockPageInternal
 	{
 	public:
@@ -61,19 +57,16 @@ namespace RE
 	};
 	static_assert(sizeof(BlockPageInternal) == 0x20);
 
-
 	class BSSmallBlockAllocator : public IMemoryStore
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSSmallBlockAllocator;
-
 
 		struct Pool : public BSSmallBlockAllocatorUtil::Pool
 		{
 		public:
 		};
 		static_assert(sizeof(Pool) == 0x48);
-
 
 		struct MegaBlockPage
 		{
@@ -92,7 +85,6 @@ namespace RE
 		};
 		static_assert(sizeof(MegaBlockPage) == 0x200000);
 
-
 		virtual ~BSSmallBlockAllocator();  // 00
 
 		// override (IMemoryStore)
@@ -102,7 +94,6 @@ namespace RE
 		virtual void*		AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override;	// 04
 		virtual void		DeallocateAlignImpl(void*& a_freeBlock) override;							// 05
 		virtual void*		TryAllocateImpl(std::size_t a_size, std::uint32_t a_alignment) override;	// 06
-
 
 		// members
 		Pool			  pools[64];			// 0008

@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/I/IStore.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -11,14 +10,12 @@ namespace RE
 		class Stream;
 	}
 
-
 	namespace SkyrimScript
 	{
 		class Store : public BSScript::IStore
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__Store;
-
 
 			virtual ~Store();  // 00
 
@@ -33,7 +30,6 @@ namespace RE
 			virtual bool					 HasOpenFile() override;														 // 09 - { return hasOpenFile; }
 			virtual bool					 FileIsGood() override;															 // 0A - { return fileIsGood; }
 			virtual void					 Unk_0B(void) override;															 // 0B
-
 
 			// members
 			std::uint64_t		unk20;		  // 20

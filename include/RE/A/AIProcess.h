@@ -4,7 +4,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
 
-
 namespace RE
 {
 	enum class RESET_3D_FLAGS;
@@ -15,7 +14,6 @@ namespace RE
 	struct HighProcessData;
 	struct MiddleHighProcessData;
 
-
 	enum class PROCESS_TYPE
 	{
 		kNone = static_cast<std::underlying_type_t<PROCESS_TYPE>>(-1),
@@ -25,7 +23,6 @@ namespace RE
 		kLow = 3
 	};
 
-
 	class MiddleLowProcessData
 	{
 	public:
@@ -33,7 +30,6 @@ namespace RE
 		std::int32_t hourPackageEvaluated;	// 0
 	};
 	static_assert(sizeof(MiddleLowProcessData) == 0x4);
-
 
 	struct CachedValueData
 	{
@@ -45,7 +41,6 @@ namespace RE
 		float		  value;  // 4
 	};
 	static_assert(sizeof(CachedValueData) == 0x8);
-
 
 	struct CachedValues
 	{
@@ -70,7 +65,6 @@ namespace RE
 			kOwnerIsInCombatantFaction = 1 << 27
 		};
 
-
 		enum class BooleanValue
 		{
 			kNone = 0,
@@ -79,7 +73,6 @@ namespace RE
 			kOwnerIsUndead = 1 << 2,
 			kOwnerIsInCombatantFaction = 1 << 3
 		};
-
 
 		float										  cachedRadius;				 // 00
 		float										  cachedWidth;				 // 04
@@ -98,7 +91,6 @@ namespace RE
 	};
 	static_assert(sizeof(CachedValues) == 0x60);
 
-
 	struct ObjectstoAcquire
 	{
 	public:
@@ -111,7 +103,6 @@ namespace RE
 	};
 	static_assert(sizeof(ObjectstoAcquire) == 0x28);
 
-
 	class AIProcess
 	{
 	public:
@@ -120,7 +111,6 @@ namespace RE
 			kNone = 0,
 			kAlert = 1 << 3,
 		};
-
 
 		struct Hands
 		{
@@ -132,7 +122,6 @@ namespace RE
 			};
 		};
 		using Hand = Hands::Hand;
-
 
 		struct Data0B8
 		{
@@ -148,7 +137,6 @@ namespace RE
 			std::uint32_t pad34;  // 34
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
-
 
 		float					GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
@@ -167,7 +155,6 @@ namespace RE
 		void					SetCachedHeight(float a_height);
 		void					Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
 		void					Update3DModel(Actor* a_actor);
-
 
 		// members
 		MiddleLowProcessData*							middleLow;						// 000

@@ -2,11 +2,9 @@
 
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	struct TESHitEvent
 	{
@@ -20,11 +18,9 @@ namespace RE
 			kHitBlocked = 1 << 3
 		};
 
-
 		TESHitEvent();
 		TESHitEvent(TESObjectREFR* a_target, TESObjectREFR* a_aggressor, FormID a_weapon, FormID a_projectile, Flag a_flags);
 		~TESHitEvent() = default;
-
 
 		// members
 		NiPointer<TESObjectREFR>			 target;	  // 00

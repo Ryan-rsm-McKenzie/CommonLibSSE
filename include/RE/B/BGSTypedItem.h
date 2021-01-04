@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class Child, class Parent>

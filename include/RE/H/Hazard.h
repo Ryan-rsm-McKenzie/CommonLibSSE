@@ -6,12 +6,10 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	class BGSHazard;
 	class NiLight;
-
 
 	class Hazard : public TESObjectREFR
 	{
@@ -19,11 +17,9 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_Hazard;
 		inline static constexpr auto FORMTYPE = FormType::PlacedHazard;
 
-
 		enum class Flags
 		{
 		};
-
 
 		struct RecordFlags
 		{
@@ -31,7 +27,6 @@ namespace RE
 			{
 			};
 		};
-
 
 		virtual ~Hazard();	// 00
 
@@ -49,7 +44,6 @@ namespace RE
 		virtual void Unk_A2(void);				  // A2
 		virtual void Unk_A3(void);				  // A3 - { return; }
 		virtual bool IsNotGeneratedForm() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
-
 
 		// members
 		void*								   hazardDBHandle;	// 98

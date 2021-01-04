@@ -9,11 +9,9 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESIcon.h"
 
-
 namespace RE
 {
 	class BGSPerkEntry;
-
 
 	struct PerkData	 // DATA
 	{
@@ -25,7 +23,6 @@ namespace RE
 	};
 	static_assert(sizeof(PerkData) == 0x5);
 
-
 	class BGSPerk :
 		public TESForm,			// 00
 		public TESFullName,		// 20
@@ -35,7 +32,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPerk;
 		inline static constexpr auto FORMTYPE = FormType::Perk;
-
 
 		struct RecordFlags
 		{
@@ -47,7 +43,6 @@ namespace RE
 			};
 		};
 
-
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
@@ -57,7 +52,6 @@ namespace RE
 			virtual bool operator()(const PerkRankData* a_entry) override;	// 00
 		};
 		static_assert(sizeof(FindPerkInRanksVisitor) == 0x8);
-
 
 		class ApplyPerksVisitor : public PerkRankVisitor
 		{
@@ -69,7 +63,6 @@ namespace RE
 		};
 		static_assert(sizeof(ApplyPerksVisitor) == 0x8);
 
-
 		class AddPerkVisitor : public PerkRankVisitor
 		{
 		public:
@@ -80,7 +73,6 @@ namespace RE
 		};
 		static_assert(sizeof(AddPerkVisitor) == 0x8);
 
-
 		virtual ~BGSPerk();	 // 00
 
 		// override (TESForm)
@@ -88,7 +80,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		PerkData				data;			 // 50 - DATA

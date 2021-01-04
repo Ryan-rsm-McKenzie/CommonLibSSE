@@ -2,11 +2,9 @@
 
 #include "RE/H/hkArray.h"
 
-
 namespace RE
 {
 	struct hkpAgentNnSector;
-
 
 	enum class hkpAgentNnTrackType
 	{
@@ -14,7 +12,6 @@ namespace RE
 		kMidPhase = 1,
 		kNarrowPhase = 2
 	};
-
 
 	struct hkpAgentNnTrack
 	{

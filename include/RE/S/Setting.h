@@ -2,14 +2,12 @@
 
 #include "RE/C/Color.h"
 
-
 namespace RE
 {
 	class Setting
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Setting;
-
 
 		enum class Type
 		{
@@ -22,7 +20,6 @@ namespace RE
 			kUnsignedInteger
 		};
 
-
 		union Data
 		{
 			bool		  b;
@@ -33,7 +30,6 @@ namespace RE
 			std::uint32_t u;
 		};
 		static_assert(sizeof(Data) == 0x8);
-
 
 		virtual ~Setting();	 // 00
 
@@ -50,7 +46,6 @@ namespace RE
 		Color		  GetColor() const;
 		const char*	  GetString() const;
 		std::uint32_t GetUInt() const;
-
 
 		// members
 		Data  data;	 // 08

@@ -3,7 +3,6 @@
 #include "RE/G/GFxValue.h"
 #include "RE/H/HUDObject.h"
 
-
 namespace RE
 {
 	class StealthMeter : public HUDObject
@@ -11,14 +10,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_StealthMeter;
 
-
 		virtual ~StealthMeter();  // 00
 
 		// override (HUDObject)
 		virtual void Update() override;										   // 01
 		virtual bool ProcessMessage(UIMessage* a_message) override;			   // 02
 		virtual void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
-
 
 		// members
 		GFxValue	  stealthMeter;		// 28

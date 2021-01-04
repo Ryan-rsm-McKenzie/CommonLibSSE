@@ -2,13 +2,11 @@
 
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	class FxDelegateHandler;
 	class FxResponseArgsBase;
 	class GFxMovieView;
-
 
 	class FxDelegateArgs
 	{

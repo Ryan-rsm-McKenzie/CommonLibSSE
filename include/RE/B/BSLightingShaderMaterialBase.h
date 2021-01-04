@@ -4,18 +4,15 @@
 #include "RE/N/NiColor.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSTextureSet;
 	class NiSourceTexture;
 
-
 	class BSLightingShaderMaterialBase : public BSShaderMaterial
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialBase;
-
 
 		virtual ~BSLightingShaderMaterialBase();  // 00
 
@@ -40,7 +37,6 @@ namespace RE
 
 		NiPointer<BSTextureSet> GetTextureSet() const;
 		void					SetTextureSet(NiPointer<BSTextureSet> a_textureSet);
-
 
 		// members
 		NiColor					   specularColor;					// 38

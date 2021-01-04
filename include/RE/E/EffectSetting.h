@@ -14,7 +14,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class EffectSetting :
@@ -26,11 +25,9 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_EffectSetting;
 
-
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);
 		inline static constexpr auto FORMTYPE = FormType::MagicEffect;
-
 
 		struct RecordFlags
 		{
@@ -40,7 +37,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct EffectSettingData  // DATA
 		{
@@ -67,7 +63,6 @@ namespace RE
 				kNoHitEffect = 1 << 27,
 				kNoDeathDispel = 1 << 28
 			};
-
 
 			// members
 			stl::enumeration<Flag, std::uint32_t> flags;				  // 00
@@ -117,7 +112,6 @@ namespace RE
 		};
 		static_assert(sizeof(EffectSettingData) == 0xF0);
 
-
 		struct SoundPair  // SNDD
 		{
 		public:
@@ -127,7 +121,6 @@ namespace RE
 			BGSSoundDescriptorForm* sound;	// 08
 		};
 		static_assert(sizeof(SoundPair) == 0x10);
-
 
 		virtual ~EffectSetting();  // 00
 
@@ -145,7 +138,6 @@ namespace RE
 		[[nodiscard]] constexpr ActorValue	 GetMagickSkill() const noexcept { return data.associatedSkill; }
 		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
 		[[nodiscard]] constexpr bool		 HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
-
 
 		// members
 		FilterValidation_t*			 filterValidationFunction;	 // 058

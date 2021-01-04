@@ -2,14 +2,12 @@
 
 #include "RE/I/InventoryChanges.h"
 
-
 namespace RE
 {
 	class ArmorRatingVisitorBase : public InventoryChanges::IItemChangeVisitor
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI___ArmorRatingVisitorBase;
-
 
 		virtual ~ArmorRatingVisitorBase();	// 00
 
@@ -19,7 +17,6 @@ namespace RE
 		// add
 		virtual bool HaveNotVisitedArmor(TESObjectARMO* a_armor);  // 04 - { return true; }
 		virtual void VisitArmor(TESObjectARMO* a_armor);		   // 05 - { return; }
-
 
 		// members
 		Actor* actor;			  // 08

@@ -3,7 +3,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTexture.h"
 
-
 namespace RE
 {
 	namespace BSGraphics
@@ -12,7 +11,6 @@ namespace RE
 		{
 		public:
 			static State* GetSingleton();
-
 
 			// members
 			std::uint64_t		 unk00;						// 000

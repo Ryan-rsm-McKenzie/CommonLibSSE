@@ -3,11 +3,9 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/C/ContainerItemExtra.h"
 
-
 namespace RE
 {
 	class TESBoundObject;
-
 
 	struct ContainerObject
 	{
@@ -20,12 +18,10 @@ namespace RE
 	};
 	static_assert(sizeof(ContainerObject) == 0x18);
 
-
 	class TESContainer : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESContainer;
-
 
 		virtual ~TESContainer();  // 00
 
@@ -33,7 +29,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;				// 01 - { return; }
 		virtual void ClearDataComponent() override;						// 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
-
 
 		inline void ForEachContainerObject(std::function<bool(ContainerObject&)> a_fn) const
 		{
@@ -49,7 +44,6 @@ namespace RE
 
 		std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
 		std::int32_t					CountObjectsInContainer(TESBoundObject* a_object) const;
-
 
 		// members
 		ContainerObject** containerObjects;		// 08

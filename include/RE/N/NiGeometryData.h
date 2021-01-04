@@ -3,7 +3,6 @@
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiAdditionalGeometryData;
@@ -13,13 +12,11 @@ namespace RE
 	class NiTriShapeData;
 	class NiTriStripsData;
 
-
 	class NiGeometryData : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiGeometryData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiGeometryData;
-
 
 		enum class DataFlag
 		{
@@ -28,7 +25,6 @@ namespace RE
 			kMax = 1 << 13,
 			kATI = kNDL | kMax,
 		};
-
 
 		enum class DirtyFlag
 		{
@@ -42,7 +38,6 @@ namespace RE
 			kVolatile = 1 << 15
 		};
 
-
 		enum class KeepFlag
 		{
 			kXYZ = 1 << 0,
@@ -55,7 +50,6 @@ namespace RE
 			kAll = kXYZ | kNorm | kColor | kUV | kIndices | kBonedata
 		};
 
-
 		enum class CompressFlag
 		{
 			kNorm = 1 << 0,
@@ -66,7 +60,6 @@ namespace RE
 
 			kAll = kNorm | kColor | kUV | kWeight | kPosition
 		};
-
 
 		virtual ~NiGeometryData();	// 00
 
@@ -84,7 +77,6 @@ namespace RE
 		virtual NiTriStripsData* AsTriStripsData();							   // 27 - { return 0; }
 		virtual NiTriShapeData*	 AsTriShapeData();							   // 28 - { return 0; }
 		virtual void			 Unk_29(void) = 0;							   // 29
-
 
 		// members
 		std::uint16_t								 vertices;			  // 10

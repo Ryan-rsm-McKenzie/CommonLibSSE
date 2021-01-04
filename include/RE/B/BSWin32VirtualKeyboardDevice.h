@@ -2,14 +2,12 @@
 
 #include "RE/B/BSVirtualKeyboardDevice.h"
 
-
 namespace RE
 {
 	class BSWin32VirtualKeyboardDevice : public BSVirtualKeyboardDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32VirtualKeyboardDevice;
-
 
 		virtual ~BSWin32VirtualKeyboardDevice();  // 00
 

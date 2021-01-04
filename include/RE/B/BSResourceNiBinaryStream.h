@@ -5,7 +5,6 @@
 #include "RE/N/NiBinaryStream.h"
 #include "RE/S/Stream.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -13,18 +12,15 @@ namespace RE
 		class Location;
 	}
 
-
 	class BSResourceNiBinaryStream : public NiBinaryStream
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSResourceNiBinaryStream;
 
-
 		struct BufferType
 		{
 		public:
 		};
-
 
 		BSResourceNiBinaryStream();
 		BSResourceNiBinaryStream(const char* a_fileName);
@@ -37,7 +33,6 @@ namespace RE
 		virtual std::uint32_t tell() const override;					// 03 - { return streamPos; }
 		virtual void		  get_info(BufferInfo& a_buf) override;		// 04
 		virtual void		  set_endian_swap(bool a_doSwap) override;	// 05
-
 
 		// members
 		BSTSmartPointer<BSResource::Stream> stream;		// 20

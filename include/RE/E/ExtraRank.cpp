@@ -1,12 +1,10 @@
 #include "RE/E/ExtraRank.h"
 
-
 namespace RE
 {
 	ExtraRank::ExtraRank() :
 		ExtraRank(0)
 	{}
-
 
 	ExtraRank::ExtraRank(std::int32_t a_rank) :
 		BSExtraData(),
@@ -17,12 +15,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraRank::GetType() const
 	{
 		return ExtraDataType::kRank;
 	}
-
 
 	bool ExtraRank::IsNotEqual(const BSExtraData* a_rhs) const
 	{

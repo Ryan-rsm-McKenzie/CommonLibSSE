@@ -2,7 +2,6 @@
 
 #include "RE/H/hkpBroadPhaseHandle.h"
 
-
 namespace RE
 {
 	class hkpTypedBroadPhaseHandle : public hkpBroadPhaseHandle
@@ -12,7 +11,6 @@ namespace RE
 		{
 			kInvalidOffset = 127
 		};
-
 
 		std::int8_t	  type;					// 4
 		std::int8_t	  ownerOffset;			// 5

@@ -1,6 +1,5 @@
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	namespace detail

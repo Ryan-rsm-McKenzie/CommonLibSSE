@@ -3,7 +3,6 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSTHashMap.h"
 
-
 namespace RE
 {
 	namespace SkyrimScript

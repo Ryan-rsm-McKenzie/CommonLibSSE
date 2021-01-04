@@ -3,14 +3,12 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/I/IMemoryHeap.h"
 
-
 namespace RE
 {
 	class ZeroOverheadHeap : public IMemoryHeap
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ZeroOverheadHeap;
-
 
 		virtual ~ZeroOverheadHeap();  // 00
 
@@ -27,7 +25,6 @@ namespace RE
 		virtual void		  GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;				 // 0C
 		virtual bool		  ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;	 // 0D - { return 0; }
 		virtual std::uint32_t GetPageSize() const override;													 // 0E - { return 0; }
-
 
 		// members
 		std::size_t		   memSize;		 // 08

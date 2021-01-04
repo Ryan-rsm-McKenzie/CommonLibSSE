@@ -2,7 +2,6 @@
 
 #include "RE/F/FileID.h"
 
-
 namespace RE
 {
 	namespace BSResource

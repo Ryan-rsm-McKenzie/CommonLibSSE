@@ -1,6 +1,5 @@
 #include "RE/B/BSScriptObjectBindPolicy.h"
 
-
 namespace RE
 {
 	namespace BSScript

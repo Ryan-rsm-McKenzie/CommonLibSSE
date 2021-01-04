@@ -2,7 +2,6 @@
 
 #include "hkSseMathTypes.h"
 
-
 namespace RE
 {
 	class hkVector4

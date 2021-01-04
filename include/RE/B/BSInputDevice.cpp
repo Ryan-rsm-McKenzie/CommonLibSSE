@@ -1,6 +1,5 @@
 #include "RE/B/BSInputDevice.h"
 
-
 namespace RE
 {
 	bool BSInputDevice::IsKeyboard() const
@@ -8,18 +7,15 @@ namespace RE
 		return device == INPUT_DEVICE::kKeyboard;
 	}
 
-
 	bool BSInputDevice::IsMouse() const
 	{
 		return device == INPUT_DEVICE::kMouse;
 	}
 
-
 	bool BSInputDevice::IsGamepad() const
 	{
 		return device == INPUT_DEVICE::kGamepad;
 	}
-
 
 	bool BSInputDevice::IsPressed(std::uint32_t a_keyCode) const
 	{

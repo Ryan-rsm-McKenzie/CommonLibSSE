@@ -2,14 +2,12 @@
 
 #include "RE/B/BSPathingCell.h"
 
-
 namespace RE
 {
 	class PathingCell : public BSPathingCell
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PathingCell;
-
 
 		virtual ~PathingCell();	 // 00
 
@@ -24,7 +22,6 @@ namespace RE
 		virtual void		  Unk_08(void) override;	 // 08
 		virtual void		  Unk_09(void) override;	 // 09
 		virtual void		  Unk_0A(void) override;	 // 0A
-
 
 		// members
 		FormID unk10;	// 10

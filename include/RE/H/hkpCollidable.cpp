@@ -1,6 +1,5 @@
 #include "RE/H/hkpCollidable.h"
 
-
 namespace RE
 {
 	void* hkpCollidable::GetOwner() const

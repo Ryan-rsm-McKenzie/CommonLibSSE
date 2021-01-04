@@ -1,6 +1,5 @@
 #include "RE/N/NiSystem.h"
 
-
 namespace RE
 {
 	int NiMemcpy(void* a_dest, std::size_t a_destSize, const void* a_src, std::size_t a_count)
@@ -9,7 +8,6 @@ namespace RE
 		assert(result == 0);
 		return result;
 	}
-
 
 	int NiSprintf(char* a_dest, std::size_t a_destSize, const char* a_format, ...)
 	{
@@ -23,20 +21,17 @@ namespace RE
 		return ret;
 	}
 
-
 	char* NiStrcat(char* a_dest, std::size_t a_destSize, const char* a_src)
 	{
 		strcat_s(a_dest, a_destSize, a_src);
 		return a_dest;
 	}
 
-
 	char* NiStrncpy(char* a_dest, std::size_t a_destSize, const char* a_src, std::size_t a_count)
 	{
 		strncpy_s(a_dest, a_destSize, a_src, a_count);
 		return a_dest;
 	}
-
 
 	int NiVsnprintf(char* a_dest, std::size_t a_destSize, std::size_t a_count, const char* a_format, std::va_list a_args)
 	{
@@ -60,7 +55,6 @@ namespace RE
 
 		return result;
 	}
-
 
 	int NiVsprintf(char* a_dest, std::size_t a_destSize, const char* a_format, std::va_list a_args)
 	{

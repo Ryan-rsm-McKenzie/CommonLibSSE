@@ -3,18 +3,15 @@
 #include "RE/B/BSString.h"
 #include "RE/S/SkyObject.h"
 
-
 namespace RE
 {
 	class BSTriShape;
 	class NiNode;
 
-
 	class Moon : public SkyObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Moon;
-
 
 		enum class UpdateStatus
 		{
@@ -22,7 +19,6 @@ namespace RE
 			kWhenCulled,
 			kInitialize
 		};
-
 
 		struct Phases
 		{
@@ -42,13 +38,11 @@ namespace RE
 		};
 		using Phase = Phases::Phase;
 
-
 		virtual ~Moon();  // 00
 
 		// override (SkyObject)
 		virtual void Unk_02(void) override;						 // 02
 		virtual void Update(Sky* a_sky, float a_arg2) override;	 // 03
-
 
 		// members
 		NiPointer<NiNode>							  moonNode;						 // 10

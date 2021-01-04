@@ -2,7 +2,6 @@
 
 #include "RE/C/CRC.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -248,7 +247,6 @@ namespace RE
 		}
 	};
 }
-
 
 #define NiSmartPointer(className) \
 	class className;              \

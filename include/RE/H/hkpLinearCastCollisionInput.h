@@ -3,11 +3,9 @@
 #include "RE/H/hkVector4.h"
 #include "RE/H/hkpCollisionInput.h"
 
-
 namespace RE
 {
 	struct hkpCollisionAgentConfig;
-
 
 	struct hkpLinearCastCollisionInput : public hkpCollisionInput
 	{

@@ -3,7 +3,6 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class ActorCause
@@ -22,7 +21,6 @@ namespace RE
 		}
 
 		[[nodiscard]] std::int32_t GetRefCount() const noexcept { return refCount; }
-
 
 		// members
 		ActorHandle					  actor;		 // 00

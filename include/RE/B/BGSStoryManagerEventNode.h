@@ -5,7 +5,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	struct BGSStoryEventMember
@@ -14,13 +13,11 @@ namespace RE
 		{
 		};
 
-
 		stl::enumeration<DATA_TYPE, std::uint32_t> type;	  // 00
 		std::uint32_t							   uniqueID;  // 04
 		BSString								   name;	  // 08
 	};
 	static_assert(sizeof(BGSStoryEventMember) == 0x18);
-
 
 	struct BGSRegisteredStoryEvent	// ENAM
 	{
@@ -35,13 +32,11 @@ namespace RE
 	};
 	static_assert(sizeof(BGSRegisteredStoryEvent) == 0x28);
 
-
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerEventNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerEventNode;
-
 
 		struct RecordFlags
 		{
@@ -52,7 +47,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSStoryManagerEventNode();  // 00
 
 		// override (BGSStoryManagerBranchNode)
@@ -61,7 +55,6 @@ namespace RE
 		virtual bool		Load(TESFile* a_mod) override;	   // 06
 		virtual void		InitItemImpl() override;		   // 13
 		virtual const char* GetFormEditorID() const override;  // 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return event ? event->name.c_str() : "(No event)"; }
-
 
 		// members
 		const BGSRegisteredStoryEvent* event;  // 60 - ENAM

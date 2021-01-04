@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESGrass :
@@ -14,7 +13,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESGrass;
 		inline static constexpr auto FORMTYPE = FormType::Grass;
-
 
 		enum class GRASS_WATER_STATE
 		{
@@ -28,7 +26,6 @@ namespace RE
 			kBothAtMostBelow = 7
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -37,7 +34,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct GRASS_DATA  // DATA
 		{
@@ -48,7 +44,6 @@ namespace RE
 				kUniformScale = 1 << 1,
 				kFitSlope = 1 << 2
 			};
-
 
 			std::int8_t										   density;					// 00
 			std::int8_t										   minSlopeDegrees;			// 01
@@ -66,7 +61,6 @@ namespace RE
 			std::uint16_t									   pad1E;					// 1E
 		};
 		static_assert(sizeof(GRASS_DATA) == 0x20);
-
 
 		virtual ~TESGrass();  // 00
 
@@ -102,7 +96,6 @@ namespace RE
 		virtual void			  SetUniformScaling(bool a_set);							  // 6A - { if (a_set) data.flags |= 0x2; else data.flags &= 0xFD; }
 		virtual bool			  GetFitToSlope() const;									  // 6B - { return (data.flags >> 2) & 1; }
 		virtual void			  SetFitToSlope(bool a_set);								  // 6C - { if (a_set) data.flags |= 0x4; else data.flags &= 0xFB; }
-
 
 		// members
 		GRASS_DATA data;  // 58 - DATA

@@ -10,7 +10,6 @@
 #include "RE/T/TESModel.h"
 #include "RE/T/TESModelPSA.h"
 
-
 namespace RE
 {
 	struct PART_DATA  // BPND
@@ -27,7 +26,6 @@ namespace RE
 			kIKData_HeadTracking = 1 << 5,
 			kToHitChance_Absolute = 1 << 6
 		};
-
 
 		// members
 		float													   damageMult;					 // 00
@@ -63,7 +61,6 @@ namespace RE
 	};
 	static_assert(sizeof(PART_DATA) == 0x78);
 
-
 	class BGSBodyPart
 	{
 	public:
@@ -79,7 +76,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSBodyPart) == 0xF0);
 
-
 	class BGSBodyPartData :
 		public TESForm,		   // 00
 		public TESModel,	   // 20
@@ -88,7 +84,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBodyPartData;
 		inline static constexpr auto FORMTYPE = FormType::BodyPartData;
-
 
 		struct RecordFlags
 		{
@@ -99,7 +94,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSBodyPartData();	 // 00
 
 		// override (TESForm)
@@ -107,7 +101,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		BGSBodyPart* parts[BGSBodyPartDefs::LIMB_ENUM::kTotal];	 // 50

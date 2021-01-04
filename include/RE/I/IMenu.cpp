@@ -8,20 +8,16 @@
 #include "RE/U/UIMessage.h"
 #include "RE/U/UIMessageQueue.h"
 
-
 namespace RE
 {
 	void IMenu::Accept(CallbackProcessor*)
 	{}
 
-
 	void IMenu::PostCreate()
 	{}
 
-
 	void IMenu::Unk_03(void)
 	{}
-
 
 	UI_MESSAGE_RESULTS IMenu::ProcessMessage(UIMessage& a_message)
 	{
@@ -42,7 +38,6 @@ namespace RE
 		return UI_MESSAGE_RESULTS::kHandled;
 	}
 
-
 	void IMenu::AdvanceMovie(float, std::uint32_t a_currentTime)
 	{
 		if (uiMovie) {
@@ -52,7 +47,6 @@ namespace RE
 		}
 	}
 
-
 	void IMenu::PostDisplay()
 	{
 		if (uiMovie) {
@@ -60,10 +54,8 @@ namespace RE
 		}
 	}
 
-
 	void IMenu::PreDisplay()
 	{}
-
 
 	void IMenu::RefreshPlatform()
 	{

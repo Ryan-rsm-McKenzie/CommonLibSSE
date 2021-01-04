@@ -1,6 +1,5 @@
 #include "RE/B/BSStringPool.h"
 
-
 namespace RE
 {
 	BucketTable* BucketTable::GetSingleton()

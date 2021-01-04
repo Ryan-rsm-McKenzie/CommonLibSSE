@@ -2,7 +2,6 @@
 
 #include "RE/S/StreamBase.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -11,7 +10,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__AsyncStream;
-
 
 			virtual ~AsyncStream() = default;  // 00
 
@@ -22,7 +20,6 @@ namespace RE
 			virtual void Unk_08(void);	// 08
 			virtual void Unk_09(void);	// 09
 			virtual void Unk_0A(void);	// 0A
-
 
 			// members
 			std::uint32_t minPacketSize;  // 10

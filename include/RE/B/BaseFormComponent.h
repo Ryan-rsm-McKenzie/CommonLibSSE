@@ -2,14 +2,12 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BaseFormComponent;
-
 
 		virtual ~BaseFormComponent();  // 00
 

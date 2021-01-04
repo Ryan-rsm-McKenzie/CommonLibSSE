@@ -5,7 +5,6 @@
 #include "RE/H/hkTransform.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkMotionState

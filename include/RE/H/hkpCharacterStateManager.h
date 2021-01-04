@@ -3,7 +3,6 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkpCharacterState.h"
 
-
 namespace RE
 {
 	class hkpCharacterStateManager : public hkReferencedObject
@@ -11,9 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterStateManager;
 
-
 		virtual ~hkpCharacterStateManager();  // 00
-
 
 		// members
 		hkpCharacterState* registeredState[hkpCharacterStateType::kTotal];	// 00

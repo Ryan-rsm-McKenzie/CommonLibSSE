@@ -2,14 +2,12 @@
 
 #include "RE/A/AbstractHeap.h"
 
-
 namespace RE
 {
 	class MemoryHeap : public AbstractHeap
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MemoryHeap;
-
 
 		virtual ~MemoryHeap();	// 00
 
@@ -24,7 +22,6 @@ namespace RE
 		virtual std::size_t CreateMorePages(void* a_memory, std::size_t a_currentSize, std::size_t a_requestedBytes) override;	// 11
 		virtual std::size_t CleanExtraPages(void* a_memory, std::size_t a_currentSize, std::size_t a_freeBytes) override;		// 12
 		virtual void		DecommitPages(HeapBlock* a_block) override;															// 13
-
 
 		// members
 		bool		  deletingHeap;	 // 2A8

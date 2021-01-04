@@ -4,7 +4,6 @@
 #include "RE/O/ObjectTypeInfo.h"
 #include "RE/V/VirtualMachine.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -15,7 +14,6 @@ namespace RE
 			memzero(this);
 		}
 
-
 		VMHandle Object::GetHandle() const
 		{
 			using func_t = decltype(&Object::GetHandle);
@@ -23,18 +21,15 @@ namespace RE
 			return func(this);
 		}
 
-
 		ObjectTypeInfo* Object::GetTypeInfo()
 		{
 			return type.get();
 		}
 
-
 		const ObjectTypeInfo* Object::GetTypeInfo() const
 		{
 			return type.get();
 		}
-
 
 		void* Object::Resolve(VMTypeID a_typeID) const
 		{
@@ -48,14 +43,12 @@ namespace RE
 			}
 		}
 
-
 		void Object::IncRef()
 		{
 			using func_t = decltype(&Object::IncRef);
 			REL::Relocation<func_t> func{ REL::ID(97468) };
 			return func(this);
 		}
-
 
 		std::uint32_t Object::DecRef()
 		{
@@ -64,13 +57,11 @@ namespace RE
 			return func(this);
 		}
 
-
 		Variable* Object::GetProperty(const BSFixedString& a_name)
 		{
 			return const_cast<Variable*>(
 				const_cast<const Object*>(this)->GetProperty(a_name));
 		}
-
 
 		const Variable* Object::GetProperty(const BSFixedString& a_name) const
 		{
@@ -83,7 +74,6 @@ namespace RE
 
 			return idx != INVALID ? std::addressof(variables[idx]) : nullptr;
 		}
-
 
 		void Object::Dtor()
 		{

@@ -3,7 +3,6 @@
 #include "RE/B/BGSKeyword.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSAction : public BGSKeyword
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAction;
 		inline static constexpr auto FORMTYPE = FormType::Action;
-
 
 		struct RecordFlags
 		{
@@ -22,9 +20,7 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSAction();  // 00
-
 
 		// members
 		std::uint32_t index;  // 28

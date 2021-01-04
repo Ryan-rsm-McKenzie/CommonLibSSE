@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	enum class D3DBLEND;
@@ -36,7 +35,6 @@ namespace RE
 			kParticleGreyscaleAlpha = 1 << 17,
 			kUseBloodGeometry = 1 << 24
 		};
-
 
 		// members
 		std::uint32_t unk00;  // 000
@@ -169,13 +167,11 @@ namespace RE
 	};
 	static_assert(sizeof(EffectShaderData) == 0x1A0);
 
-
 	class TESEffectShader : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESEffectShader;
 		inline static constexpr auto FORMTYPE = FormType::EffectShader;
-
 
 		struct RecordFlags
 		{
@@ -186,14 +182,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESEffectShader();	 // 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		EffectShaderData data;					  // 020 - DATA

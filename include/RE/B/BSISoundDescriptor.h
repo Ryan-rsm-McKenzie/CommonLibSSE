@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSISoundDescriptor
@@ -8,12 +7,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSISoundDescriptor;
 
-
 		class BSIPlaybackCharacteristics
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics;
-
 
 			virtual ~BSIPlaybackCharacteristics();	// 00
 
@@ -25,7 +22,6 @@ namespace RE
 			virtual std::uint8_t  GetDBVariance() = 0;		   // 05
 		};
 		static_assert(sizeof(BSIPlaybackCharacteristics) == 0x8);
-
 
 		virtual ~BSISoundDescriptor();	// 00
 

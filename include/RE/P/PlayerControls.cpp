@@ -3,7 +3,6 @@
 #include "RE/A/ActivateHandler.h"
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	PlayerControls::PlayerControls()
@@ -11,13 +10,11 @@ namespace RE
 		Ctor();
 	}
 
-
 	PlayerControls* PlayerControls::GetSingleton()
 	{
 		REL::Relocation<PlayerControls**> singleton{ Offset::PlayerControls::Singleton };
 		return *singleton;
 	}
-
 
 	PlayerControls* PlayerControls::Ctor()
 	{

@@ -6,7 +6,6 @@
 #include "RE/T/TypeInfo.h"
 #include "RE/V/VDescTable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -17,7 +16,6 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
-
 
 				virtual ~ScriptFunction();	// 00
 
@@ -42,7 +40,6 @@ namespace RE
 				virtual bool				 GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const override;										// 12
 				virtual bool				 CanBeCalledFromTasklets() const override;																					// 13 - { return true; }
 				virtual void				 SetCallableFromTasklets(bool a_callable) override;																			// 14 - { return; }
-
 
 				// members
 				BSFixedString								  name;				// 10

@@ -2,7 +2,6 @@
 
 #include "RE/B/BSInputDevice.h"
 
-
 namespace RE
 {
 	class BSMouseDevice : public BSInputDevice
@@ -10,12 +9,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMouseDevice;
 
-
 		virtual ~BSMouseDevice();  // 00
 
 		// add
 		virtual void Unk_09(void);	// 09 - { return; }
-
 
 		// members
 		bool		  backgroundMouse;	// 70

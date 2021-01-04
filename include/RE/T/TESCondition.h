@@ -3,12 +3,10 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class TESGlobal;
 	class TESObjectREFR;
-
 
 	enum class CONDITIONITEMOBJECT
 	{
@@ -22,7 +20,6 @@ namespace RE
 		kEventData = 7,
 		kCommandTarget = 8
 	};
-
 
 	struct FUNCTION_DATA
 	{
@@ -883,10 +880,8 @@ namespace RE
 			kTotal
 		};
 
-
 		FUNCTION_DATA();
 		~FUNCTION_DATA() = default;
-
 
 		// members
 		stl::enumeration<FunctionID, std::uint16_t> function;	// 00
@@ -895,7 +890,6 @@ namespace RE
 		void*										params[2];	// 08
 	};
 	static_assert(sizeof(FUNCTION_DATA) == 0x18);
-
 
 	struct CONDITION_ITEM_DATA
 	{
@@ -910,25 +904,21 @@ namespace RE
 			kLessThanOrEqualTo,		// <=
 		};
 
-
 		union GlobalOrFloat
 		{
 			GlobalOrFloat();
 			~GlobalOrFloat() = default;
-
 
 			TESGlobal* g;
 			float	   f;
 		};
 		static_assert(sizeof(GlobalOrFloat) == 0x8);
 
-
 		struct Flags
 		{
 		public:
 			Flags();
 			~Flags() = default;
-
 
 			// members
 			bool   isOR : 1;		 // 0 - false == AND, true == OR
@@ -940,10 +930,8 @@ namespace RE
 		};
 		static_assert(sizeof(Flags) == 0x1);
 
-
 		CONDITION_ITEM_DATA();
 		~CONDITION_ITEM_DATA() = default;
-
 
 		// members
 		GlobalOrFloat										comparisonValue;  // 08
@@ -957,7 +945,6 @@ namespace RE
 	};
 	static_assert(sizeof(CONDITION_ITEM_DATA) == 0x30);
 
-
 	struct ConditionCheckParams
 	{
 	public:
@@ -970,7 +957,6 @@ namespace RE
 			unk28(nullptr)
 		{}
 
-
 		// members
 		TESObjectREFR* actionRef;  // 00
 		TESObjectREFR* targetRef;  // 08
@@ -980,7 +966,6 @@ namespace RE
 		void*		   unk28;	   // 28
 	};
 	static_assert(sizeof(ConditionCheckParams) == 0x30);
-
 
 	struct TESConditionItem	 // CTDA
 	{
@@ -992,13 +977,11 @@ namespace RE
 		bool operator()(ConditionCheckParams& a_solution) const;
 		bool IsTrue(ConditionCheckParams& a_solution) const;
 
-
 		// members
 		TESConditionItem*	next;  // 00
 		CONDITION_ITEM_DATA data;  // 08
 	};
 	static_assert(sizeof(TESConditionItem) == 0x38);
-
 
 	class TESCondition
 	{
@@ -1012,7 +995,6 @@ namespace RE
 
 		bool operator()(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const;
 		bool IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const;	// Perk fragments will short circuit
-
 
 		// members
 		TESConditionItem* head;	 // 0

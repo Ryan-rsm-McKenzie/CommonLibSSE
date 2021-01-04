@@ -9,7 +9,6 @@
 #include "RE/T/TESImageSpaceModifiableForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	struct BGSExplosionData	 // DATA
@@ -26,7 +25,6 @@ namespace RE
 			kChain = 1 << 7,
 			kNoControllerVibration = 1 << 8
 		};
-
 
 		TESObjectLIGH*								 light;				  // 00
 		BGSSoundDescriptorForm*						 sound1;			  // 08
@@ -45,7 +43,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSExplosionData) == 0x50);
 
-
 	class BGSExplosion :
 		public TESBoundObject,				// 00
 		public TESFullName,					// 30
@@ -58,7 +55,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSExplosion;
 		inline static constexpr auto FORMTYPE = FormType::Explosion;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -68,7 +64,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSExplosion();  // 00
 
 		// override (TESBoundObject)
@@ -77,7 +72,6 @@ namespace RE
 		virtual void		InitItemImpl() override;							  // 13
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;			  // 41
-
 
 		// members
 		BGSExplosionData data;	// 98 - DATA

@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSReverbParameters :
@@ -15,7 +14,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSReverbParameters;
 		inline static constexpr auto FORMTYPE = FormType::ReverbParam;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -24,7 +22,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct ReverbParams	 // DATA
 		{
@@ -42,7 +39,6 @@ namespace RE
 			std::uint8_t  pad0D;			// 0D
 		};
 		static_assert(sizeof(ReverbParams) == 0xE);
-
 
 		virtual ~BGSReverbParameters();	 // 00
 
@@ -62,7 +58,6 @@ namespace RE
 		virtual float		 DoGetDiffusion() const override;		 // 08 - { return data.diffusionPct; }
 		virtual float		 DoGetDensity() const override;			 // 09 - { return data.densityPct; }
 		virtual float		 DoGetHFReference() const override;		 // 0A - { return data.hfReference; }
-
 
 		// members
 		ReverbParams  data;	  // 28 - DATA

@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	union SETTING_VALUE
@@ -15,13 +14,11 @@ namespace RE
 	};
 	static_assert(sizeof(SETTING_VALUE) == 0x4);
 
-
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSShaderParticleGeometryData;
 		inline static constexpr auto FORMTYPE = FormType::ShaderParticleGeometryData;
-
 
 		enum class DataID
 		{
@@ -41,13 +38,11 @@ namespace RE
 			kTotal
 		};
 
-
 		enum class ParticleType
 		{
 			kRain = 0,
 			kSnow = 1
 		};
-
 
 		struct RecordFlags
 		{
@@ -58,7 +53,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSShaderParticleGeometryData();  // 00
 
 		// override (TESForm)
@@ -66,7 +60,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		BSTArray<SETTING_VALUE> data;			  // 20 - DATA - size == DataID::kTotal
 		TESTexture				particleTexture;  // 38 - ICON

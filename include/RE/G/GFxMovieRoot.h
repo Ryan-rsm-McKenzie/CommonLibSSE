@@ -4,7 +4,6 @@
 #include "RE/G/GFxKeyboardState.h"
 #include "RE/G/GFxMovieView.h"
 
-
 namespace RE
 {
 	class GFxMovieRoot : public GFxMovieView
@@ -16,7 +15,6 @@ namespace RE
 			kMovieFocused = 1 << 18,
 			kPaused = 1 << 20
 		};
-
 
 		virtual ~GFxMovieRoot();  // 00
 
@@ -95,7 +93,6 @@ namespace RE
 		virtual void Unk_46(void);	// 46
 		virtual void Unk_47(void);	// 47
 		virtual void Unk_48(void);	// 48
-
 
 		// members
 		std::uint64_t						  unk0018;							// 0018

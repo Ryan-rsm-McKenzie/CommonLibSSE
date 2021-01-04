@@ -5,11 +5,9 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	struct BGSFootstepEvent;
-
 
 	class BGSFootstepManager :
 		public BSTEventSource<BGSFootstepEvent>,	// 00
@@ -17,7 +15,6 @@ namespace RE
 	{
 	public:
 		static BGSFootstepManager* GetSingleton();
-
 
 		// members
 		std::uint8_t			pad59;	// 59

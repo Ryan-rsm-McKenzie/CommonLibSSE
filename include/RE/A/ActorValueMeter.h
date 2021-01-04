@@ -3,7 +3,6 @@
 #include "RE/A/ActorValues.h"
 #include "RE/H/HUDMeter.h"
 
-
 namespace RE
 {
 	class ActorValueMeter : public HUDMeter
@@ -11,13 +10,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorValueMeter;
 
-
 		virtual ~ActorValueMeter();	 // 00
 
 		// override (HUDMeter)
 		virtual bool  ProcessMessage(UIMessage* a_message) override;  // 02
 		virtual float GetFillPct() override;						  // 05
-
 
 		// members
 		ActorValue	  actorValue;  // 48

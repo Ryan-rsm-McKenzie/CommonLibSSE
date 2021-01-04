@@ -7,14 +7,12 @@
 #include "RE/H/hkpLinkedCollidable.h"
 #include "RE/H/hkpProperty.h"
 
-
 namespace RE
 {
 	class hkMotionState;
 	class hkpCollidable;
 	class hkpShapeModifier;
 	class hkpWorld;
-
 
 	namespace hkWorldOperation
 	{
@@ -25,19 +23,16 @@ namespace RE
 		};
 	}
 
-
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpWorldObject;
-
 
 		enum class MultiThreadingChecks
 		{
 			kEnable,
 			kIgnore
 		};
-
 
 		enum class BroadPhaseType
 		{
@@ -48,7 +43,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		virtual ~hkpWorldObject();	// 00
 
@@ -62,7 +56,6 @@ namespace RE
 
 		const hkpCollidable* GetCollidable() const;
 		hkpCollidable*		 GetCollidableRW();
-
 
 		// members
 		hkpWorld*			 world;				// 10

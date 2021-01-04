@@ -3,14 +3,12 @@
 #include "RE/S/Setting.h"
 #include "RE/S/SettingCollectionList.h"
 
-
 namespace RE
 {
 	class RegSettingCollection : public SettingCollectionList<Setting>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_RegSettingCollection;
-
 
 		virtual ~RegSettingCollection();  // 00
 

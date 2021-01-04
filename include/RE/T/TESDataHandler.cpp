@@ -3,7 +3,6 @@
 #include "RE/T/TESFile.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	TESDataHandler* TESDataHandler::GetSingleton()
@@ -12,14 +11,12 @@ namespace RE
 		return *singleton;
 	}
 
-
 	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
 		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
 		return func(this);
 	}
-
 
 	TESForm* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
 	{
@@ -35,7 +32,6 @@ namespace RE
 		return TESForm::LookupByID(formID);
 	}
 
-
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
 	{
 		for (auto& file : files) {
@@ -46,13 +42,11 @@ namespace RE
 		return nullptr;
 	}
 
-
 	std::optional<std::uint8_t> TESDataHandler::GetModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
 	}
-
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
@@ -64,7 +58,6 @@ namespace RE
 		return nullptr;
 	}
 
-
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
 		for (auto& file : compiledFileCollection.files) {
@@ -75,13 +68,11 @@ namespace RE
 		return nullptr;
 	}
 
-
 	std::optional<std::uint8_t> TESDataHandler::GetLoadedModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupLoadedModByName(a_modName);
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
 	}
-
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
@@ -93,7 +84,6 @@ namespace RE
 		return nullptr;
 	}
 
-
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t a_index)
 	{
 		for (auto& smallFile : compiledFileCollection.smallFiles) {
@@ -104,19 +94,16 @@ namespace RE
 		return nullptr;
 	}
 
-
 	std::optional<std::uint16_t> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)
 	{
 		auto mod = LookupLoadedLightModByName(a_modName);
 		return mod ? std::make_optional(mod->smallFileCompileIndex) : std::nullopt;
 	}
 
-
 	bool TESDataHandler::IsGeneratedID(FormID a_formID)
 	{
 		return a_formID >= 0xFF000000;
 	}
-
 
 	BSTArray<TESForm*>& TESDataHandler::GetFormArray(FormType a_formType)
 	{

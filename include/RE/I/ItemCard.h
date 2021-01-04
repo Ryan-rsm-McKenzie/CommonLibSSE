@@ -4,11 +4,9 @@
 #include "RE/G/GFxValue.h"
 #include "RE/G/GPtr.h"
 
-
 namespace RE
 {
 	class GFxMovieView;
-
 
 	struct ItemCard
 	{

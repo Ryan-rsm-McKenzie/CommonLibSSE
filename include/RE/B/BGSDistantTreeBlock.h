@@ -4,12 +4,10 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSTerrainNode;
 	class BSMultiStreamInstanceTriShape;
-
 
 	class BGSDistantTreeBlock
 	{
@@ -31,7 +29,6 @@ namespace RE
 		};
 		static_assert(sizeof(InstanceData) == 0x14);
 
-
 		struct TreeGroup
 		{
 		public:
@@ -44,7 +41,6 @@ namespace RE
 			std::uint16_t							 pad26;					  // 26
 		};
 		static_assert(sizeof(TreeGroup) == 0x28);
-
 
 		// members
 		BSTArray<TreeGroup*>					 treeGroups;   // 00

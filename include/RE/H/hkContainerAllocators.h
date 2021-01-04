@@ -2,7 +2,6 @@
 
 #include "RE/H/hkMemoryAllocator.h"
 
-
 namespace RE
 {
 	struct hkContainerHeapAllocator
@@ -10,7 +9,6 @@ namespace RE
 		struct Allocator : public hkMemoryAllocator
 		{
 			inline static constexpr auto RTTI = RTTI_hkContainerHeapAllocator__Allocator;
-
 
 			virtual ~Allocator();  // 00
 
@@ -22,7 +20,6 @@ namespace RE
 			virtual std::int32_t GetAllocatedSize(const void* a_obj, std::int32_t a_numBytes) override;	 // 09
 		};
 		static_assert(sizeof(Allocator) == 0x8);
-
 
 		static Allocator* GetSingleton();
 	};

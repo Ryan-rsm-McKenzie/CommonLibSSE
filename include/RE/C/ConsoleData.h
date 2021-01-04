@@ -4,25 +4,20 @@
 #include "RE/B/BSString.h"
 #include "RE/I/IUIMessageData.h"
 
-
 namespace RE
 {
 	class NiBinaryStream;
-
 
 	class ConsoleData : public IUIMessageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ConsoleData;
 
-
 		enum class DataType
 		{
 		};
 
-
 		virtual ~ConsoleData();	 // 00
-
 
 		// members
 		BSString*								  str;		// 10

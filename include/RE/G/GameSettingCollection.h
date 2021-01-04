@@ -3,14 +3,12 @@
 #include "RE/S/Setting.h"
 #include "RE/S/SettingCollectionMap.h"
 
-
 namespace RE
 {
 	class GameSettingCollection : public SettingCollectionMap<Setting>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GameSettingCollection;
-
 
 		virtual ~GameSettingCollection();  // 00
 

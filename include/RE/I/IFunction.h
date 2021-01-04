@@ -4,7 +4,6 @@
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -14,19 +13,16 @@ namespace RE
 			class VirtualMachine;
 		}
 
-
 		class ErrorLogger;
 		class Stack;
 		class StackFrame;
 		class TypeInfo;
 		class VMState;
 
-
 		class IFunction : public BSIntrusiveRefCounted
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IFunction;
-
 
 			enum class FunctionType
 			{
@@ -34,7 +30,6 @@ namespace RE
 				kGetter = 1,
 				kSetter = 2
 			};
-
 
 			enum class CallResult
 			{
@@ -44,7 +39,6 @@ namespace RE
 				kFailedRetry = 3,
 				kFailedAbort = 4
 			};
-
 
 			IFunction();
 			virtual ~IFunction() = default;	 // 00
@@ -70,7 +64,6 @@ namespace RE
 			virtual bool				 GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const = 0;									   // 12
 			virtual bool				 CanBeCalledFromTasklets() const = 0;																				   // 13
 			virtual void				 SetCallableFromTasklets(bool a_callable) = 0;																		   // 14
-
 
 			// members
 			std::uint32_t pad0C;  // 0C

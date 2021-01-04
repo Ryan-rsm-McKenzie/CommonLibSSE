@@ -5,7 +5,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class BGSColorForm :
@@ -16,13 +15,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSColorForm;
 		inline static constexpr auto FORMTYPE = FormType::ColorForm;
 
-
 		enum class Flag	 // FNAM
 		{
 			kNone = 0,
 			kPlayable = 1 << 0
 		};
-
 
 		struct RecordFlags
 		{
@@ -33,7 +30,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSColorForm();  // 00
 
 		// override (TESForm)
@@ -42,7 +38,6 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 
 		bool IsPlayable() const;
-
 
 		// memebrs
 		Color								  color;  // 30 - CNAM

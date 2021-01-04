@@ -2,19 +2,16 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		struct ILoader;
 
-
 		class IObjectProcessor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IObjectProcessor;
-
 
 			virtual ~IObjectProcessor();  // 00
 

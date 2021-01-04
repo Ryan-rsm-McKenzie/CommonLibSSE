@@ -3,7 +3,6 @@
 #include "RE/C/CraftingSubMenu.h"
 #include "RE/I/IMessageBoxCallback.h"
 
-
 namespace RE
 {
 	namespace CraftingSubMenus
@@ -13,24 +12,20 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu;
 
-
 			class SmithingConfirmCallback : public IMessageBoxCallback
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu__SmithingConfirmCallback;
-
 
 				virtual ~SmithingConfirmCallback();	 // 00
 
 				// override (IMessageBoxCallback)
 				virtual void Run(Message a_msg) override;  // 01
 
-
 				// members
 				SmithingMenu* subMenu;	// 10
 			};
 			static_assert(sizeof(SmithingConfirmCallback) == 0x18);
-
 
 			virtual ~SmithingMenu();  // 00
 
@@ -38,7 +33,6 @@ namespace RE
 			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
 			virtual void Unk_02(void) override;						   // 02
 			virtual void Unk_05(void) override;						   // 05
-
 
 			// members
 			void*		  unk100;  // 100

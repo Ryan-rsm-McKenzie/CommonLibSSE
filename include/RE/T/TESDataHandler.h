@@ -8,13 +8,11 @@
 #include "RE/N/NiTList.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class TESFile;
 	class TESRegionDataManager;
 	class TESRegionList;
-
 
 	struct TESObjectList
 	{
@@ -24,7 +22,6 @@ namespace RE
 	};
 	static_assert(sizeof(TESObjectList) == 0x1);
 
-
 	struct TESFileCollection
 	{
 	public:
@@ -33,7 +30,6 @@ namespace RE
 		BSTArray<TESFile*> smallFiles;	// 18
 	};
 	static_assert(sizeof(TESFileCollection) == 0x30);
-
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
@@ -61,7 +57,6 @@ namespace RE
 		BSTArray<TESForm*>& GetFormArray(FormType a_formType);
 		template <class T>
 		BSTArray<T*>& GetFormArray();
-
 
 		// members
 		std::uint8_t					  pad001;									 // 001
@@ -96,7 +91,6 @@ namespace RE
 	};
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
 
-
 	template <class T>
 	T* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
 	{
@@ -107,7 +101,6 @@ namespace RE
 
 		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : 0;
 	}
-
 
 	template <class T>
 	BSTArray<T*>& TESDataHandler::GetFormArray()

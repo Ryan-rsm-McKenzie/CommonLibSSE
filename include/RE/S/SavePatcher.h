@@ -2,7 +2,6 @@
 
 #include "RE/I/ISavePatcherInterface.h"
 
-
 namespace RE
 {
 	namespace SkyrimScript
@@ -11,7 +10,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__SavePatcher;
-
 
 			virtual ~SavePatcher();	 // 00
 

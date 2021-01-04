@@ -2,14 +2,12 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	struct JumpHandler : public PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_JumpHandler;
-
 
 		virtual ~JumpHandler();	 // 00
 

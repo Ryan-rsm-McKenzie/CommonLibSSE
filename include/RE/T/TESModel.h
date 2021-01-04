@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -11,15 +10,12 @@ namespace RE
 		struct ID;
 	}
 
-
 	class TESModelTextureSwap;
-
 
 	class TESModel : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModel;
-
 
 		virtual ~TESModel();  // 00
 
@@ -32,7 +28,6 @@ namespace RE
 		virtual const char*			 GetModel() const;				 // 04 - { return model.c_str(); }
 		virtual void				 SetModel(const char* a_model);	 // 05 - { model = a_model; }
 		virtual TESModelTextureSwap* GetAsModelTextureSwap();		 // 06 - { return 0; }
-
 
 		// members
 		BSFixedString	model;		  // 08 - MODL

@@ -17,7 +17,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class TESObjectARMO :
@@ -40,7 +39,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESObjectARMO;
 		inline static constexpr auto FORMTYPE = FormType::Armor;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -51,7 +49,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		// override (TESBoundObject)
 		virtual void	 InitializeData() override;					   // 04
@@ -66,7 +63,6 @@ namespace RE
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 
 		float GetArmorRating();
-
 
 		// members
 		std::uint32_t			 armorRating;	 // 200 - DNAM - CK value * 100 as a std::uint32_t

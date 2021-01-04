@@ -4,7 +4,6 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/I/IProfilePolicy.h"
 
-
 namespace RE
 {
 	namespace SkyrimScript
@@ -14,7 +13,6 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_SkyrimScript__Profiler;
 
-
 			virtual ~Profiler();  // 00
 
 			// override (BSScript::IProfilePolicy)
@@ -22,7 +20,6 @@ namespace RE
 			virtual void StackFramePushed(std::uint32_t a_arg1, std::uint32_t a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;	 // 02
 			virtual void StackFramePopQueued(std::uint32_t a_arg1, std::uint32_t a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;	 // 03
 			virtual void StackFramePopped(std::uint32_t a_arg1, std::uint32_t a_arg2, const BSScript::Variable& a_arg3, const BSFixedString& a_arg4, const BSFixedString& a_arg5, const BSFixedString& a_arg6) override;	 // 04
-
 
 			// members
 			mutable BSSpinLock			 unk08;	 // 08

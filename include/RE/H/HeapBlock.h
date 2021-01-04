@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class HeapBlock
@@ -14,14 +13,12 @@ namespace RE
 		};
 		static_assert(sizeof(Free) == 0x8);
 
-
 		struct Used
 		{
 		public:
 			std::uint32_t GetCheckPoint() const;
 			std::uint32_t GetMemContext() const;
 			std::uint32_t GetStackTrace() const;
-
 
 			// members
 			bool memContext1 : 1;	// 0 - 0
@@ -59,14 +56,12 @@ namespace RE
 		};
 		static_assert(sizeof(Used) == 0x4);
 
-
 		union FreeOrUsed
 		{
 			Free free;
 			Used used;
 		};
 		static_assert(sizeof(FreeOrUsed) == 0x8);
-
 
 		// members
 		std::size_t memSize;	 // 00

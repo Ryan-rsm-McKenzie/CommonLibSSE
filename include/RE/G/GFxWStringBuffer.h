@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxWStringBuffer
@@ -10,7 +9,6 @@ namespace RE
 		using size_type = UPInt;
 		using reference = value_type&;
 		using const_reference = const value_type&;
-
 
 		struct ReserveHeader
 		{
@@ -23,13 +21,11 @@ namespace RE
 			ReserveHeader& operator=(const ReserveHeader& a_rhs);
 			ReserveHeader& operator=(ReserveHeader&& a_rhs);
 
-
 			// members
 			wchar_t* buffer;  // 00
 			UPInt	 size;	  // 08
 		};
 		static_assert(sizeof(ReserveHeader) == 0x10);
-
 
 		template <std::uint32_t SIZE>
 		struct Reserve : public ReserveHeader
@@ -38,11 +34,9 @@ namespace RE
 				ReserveHeader(buffer, SIZE)
 			{}
 
-
 			// members
 			wchar_t buffer[SIZE];  // 10
 		};
-
 
 		// (constructor)
 		GFxWStringBuffer();
@@ -92,7 +86,6 @@ namespace RE
 	protected:
 		wchar_t* alloc(size_type a_count);
 		void	 release();
-
 
 		// members
 		wchar_t*	  _text;	  // 00

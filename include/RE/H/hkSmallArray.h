@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -14,7 +13,6 @@ namespace RE
 			kLocked = 0x4000,
 			kForceSigned = static_cast<std::underlying_type_t<CapacityAndFlags>>(-1)
 		};
-
 
 		T*												  data;				 // 00
 		std::uint16_t									  size;				 // 08

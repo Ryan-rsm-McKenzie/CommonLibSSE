@@ -3,7 +3,6 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -11,7 +10,6 @@ namespace RE
 	{
 	public:
 	};
-
 
 	class Actor;
 	using ActorHandlePtr = BSPointerHandleSmartPointer<BSPointerHandleManagerInterface<Actor>>;

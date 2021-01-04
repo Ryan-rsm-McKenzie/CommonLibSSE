@@ -2,14 +2,12 @@
 
 #include "RE/B/BSLightingShaderMaterialBase.h"
 
-
 namespace RE
 {
 	class BSLightingShaderMaterial : public BSLightingShaderMaterialBase
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterial;
-
 
 		virtual ~BSLightingShaderMaterial();  // 00
 

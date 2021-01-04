@@ -6,7 +6,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class Actor;
@@ -17,7 +16,6 @@ namespace RE
 	class TESQuest;
 	class TESTopic;
 	class TESTopicInfo;
-
 
 	class DialogueResponse
 	{
@@ -33,7 +31,6 @@ namespace RE
 			kSurprise = 6,
 			kPuzzled = 7
 		};
-
 
 		// members
 		BSString									 text;				// 00
@@ -51,7 +48,6 @@ namespace RE
 	};
 	static_assert(sizeof(DialogueResponse) == 0x40);
 
-
 	class DialogueItem : public BSIntrusiveRefCounted
 	{
 	public:
@@ -63,7 +59,6 @@ namespace RE
 		~DialogueItem() = default;
 
 		TES_HEAP_REDEFINE_NEW();
-
 
 		// members
 		std::uint32_t						   pad04{ 0 };					// 04

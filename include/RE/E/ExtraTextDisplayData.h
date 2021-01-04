@@ -4,13 +4,11 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class BGSMessage;
 	class TESBoundObject;
 	class TESQuest;
-
 
 	class ExtraTextDisplayData : public BSExtraData
 	{
@@ -18,13 +16,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTextDisplayData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
-
 		enum class DisplayDataType
 		{
 			kUninitialized = -1,
 			kCustomName = -2
 		};
-
 
 		ExtraTextDisplayData();
 		explicit ExtraTextDisplayData(const char* a_name);
@@ -37,7 +33,6 @@ namespace RE
 		const char* GetDisplayName(TESBoundObject* a_form, float a_temperFactor);
 		bool		IsPlayerSet() const;
 		void		SetName(const char* a_name);
-
 
 		// members
 		BSFixedString									displayName;	   // 10

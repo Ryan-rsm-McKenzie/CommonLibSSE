@@ -2,14 +2,12 @@
 
 #include "RE/B/BSPCGamepadDeviceDelegate.h"
 
-
 namespace RE
 {
 	class BSWin32GamepadDevice : public BSPCGamepadDeviceDelegate
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32GamepadDevice;
-
 
 		struct Keys
 		{
@@ -37,7 +35,6 @@ namespace RE
 		};
 		using Key = Keys::Key;
 
-
 		virtual ~BSWin32GamepadDevice();  // 00
 
 		// override (BSPCGamepadDeviceDelegate)
@@ -46,7 +43,6 @@ namespace RE
 		virtual void Unk_03(void) override;			  // 03 - { return; }
 		virtual void Reset() override;				  // 08 - { std::memset(&unk0D8, 0, 0x50); }
 		virtual void Unk_09(void) override;			  // 09 - { return; }
-
 
 		// members
 		std::uint32_t unk0D8;	  // 0D8

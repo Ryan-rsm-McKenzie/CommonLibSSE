@@ -5,7 +5,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	struct DoorTeleportData
@@ -19,20 +18,17 @@ namespace RE
 	};
 	static_assert(sizeof(DoorTeleportData) == 0x20);
 
-
 	class ExtraTeleport : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTeleport;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTeleport;
 
-
 		virtual ~ExtraTeleport();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kTeleport; }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
 
 		// members
 		DoorTeleportData* teleportData;	 // 10

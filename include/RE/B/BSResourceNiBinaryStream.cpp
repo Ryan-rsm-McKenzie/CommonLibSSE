@@ -1,6 +1,5 @@
 #include "RE/B/BSResourceNiBinaryStream.h"
 
-
 namespace RE
 {
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream() :
@@ -10,7 +9,6 @@ namespace RE
 		streamPos(0),
 		lastError(BSResource::ErrorCode::kNone)
 	{}
-
 
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const char* a_fileName) :
 		NiBinaryStream(),
@@ -22,23 +20,19 @@ namespace RE
 		ctor(a_fileName);
 	}
 
-
 	BSResourceNiBinaryStream::BSResourceNiBinaryStream(const std::string& a_fileName) :
 		BSResourceNiBinaryStream(a_fileName.c_str())
 	{}
-
 
 	BSResourceNiBinaryStream::~BSResourceNiBinaryStream()
 	{
 		dtor();
 	}
 
-
 	bool BSResourceNiBinaryStream::good() const
 	{
 		return static_cast<bool>(stream);
 	}
-
 
 	void BSResourceNiBinaryStream::seek(std::int32_t a_numBytes)
 	{
@@ -47,16 +41,13 @@ namespace RE
 		return func(this, a_numBytes);
 	}
 
-
 	std::uint32_t BSResourceNiBinaryStream::tell() const
 	{
 		return streamPos;
 	}
 
-
 	void BSResourceNiBinaryStream::get_info([[maybe_unused]] BufferInfo& a_buf)
 	{}
-
 
 	void BSResourceNiBinaryStream::set_endian_swap(bool a_doSwap)
 	{
@@ -65,14 +56,12 @@ namespace RE
 		return func(this, a_doSwap);
 	}
 
-
 	BSResourceNiBinaryStream* BSResourceNiBinaryStream::ctor(const char* a_name, bool a_writeable, BSResource::Location* a_optionalStart)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::ctor);
 		REL::Relocation<func_t> func{ Offset::BSResourceNiBinaryStream::Ctor };
 		return func(this, a_name, a_writeable, a_optionalStart);
 	}
-
 
 	void BSResourceNiBinaryStream::dtor()
 	{

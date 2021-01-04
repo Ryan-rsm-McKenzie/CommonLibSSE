@@ -2,7 +2,6 @@
 
 #include "RE/N/NiPlane.h"
 
-
 namespace RE
 {
 	class NiFrustumPlanes
@@ -23,7 +22,6 @@ namespace RE
 			};
 		};
 
-
 		enum class ActivePlane
 		{
 			kNear = 1 << 0,
@@ -33,7 +31,6 @@ namespace RE
 			kTop = 1 << 4,
 			kBottom = 1 << 5
 		};
-
 
 		// members
 		NiPlane										 cullingPlanes[Planes::kTotal];	 // 00

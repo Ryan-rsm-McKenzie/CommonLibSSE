@@ -8,7 +8,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class BGSTextureSet :
@@ -19,7 +18,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSTextureSet;
 		inline static constexpr auto FORMTYPE = FormType::TextureSet;
 
-
 		enum class Flag
 		{
 			kNone = 0,
@@ -27,7 +25,6 @@ namespace RE
 			kFacegenTextures = 1 << 1,
 			kHasModelSpaceNormalMap = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -38,7 +35,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSTextureSet();  // 00
 
 		// override (TESBoundObject)
@@ -47,7 +43,6 @@ namespace RE
 		virtual bool		Load(TESFile* a_mod) override;						  // 06
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
 		virtual void		UnClone3D(TESObjectREFR* a_ref) override;			  // 41
-
 
 		// members
 		TESTexture							  textures[Textures::kTotal];		 // 040 - TX00 - TX07

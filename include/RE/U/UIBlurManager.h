@@ -4,11 +4,9 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/D/DefaultObjectsReadyEvent.h"
 
-
 namespace RE
 {
 	class TESImageSpaceModifier;
-
 
 	class UIBlurManager :
 		public BSTSingletonSDM<UIBlurManager>,				  // 08
@@ -17,14 +15,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_UIBlurManager;
 
-
 		virtual ~UIBlurManager();  // 00
 
 		static UIBlurManager* GetSingleton();
 
 		void DecrementBlurCount();
 		void IncrementBlurCount();
-
 
 		// members
 		std::uint8_t		   pad09;		// 09

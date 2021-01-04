@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -11,13 +10,11 @@ namespace RE
 	};
 	// size == sizeof(T) + 0x8
 
-
 	template <class T>
 	class BSTFreeList
 	{
 	public:
 		virtual ~BSTFreeList();	 // 00
-
 
 		// members
 		std::uint32_t		lock;	// 08
@@ -26,12 +23,10 @@ namespace RE
 	};
 	static_assert(sizeof(BSTFreeList<void*>) == 0x18);
 
-
 	template <class T, std::size_t SIZE>
 	class BSTStaticFreeList : public BSTFreeList<T>
 	{
 		virtual ~BSTStaticFreeList();  // 00
-
 
 		// members
 		BSTFreeListElem<T> elems[SIZE];	 // 18

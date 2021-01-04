@@ -2,14 +2,12 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	struct ToggleRunHandler : public PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ToggleRunHandler;
-
 
 		virtual ~ToggleRunHandler();  // 00
 

@@ -1,6 +1,5 @@
 #include "RE/E/ExtraCharge.h"
 
-
 namespace RE
 {
 	ExtraCharge::ExtraCharge() :
@@ -12,12 +11,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraCharge::GetType() const
 	{
 		return ExtraDataType::kCannotWear;
 	}
-
 
 	bool ExtraCharge::IsNotEqual(const BSExtraData* a_rhs) const
 	{

@@ -2,14 +2,12 @@
 
 #include "RE/H/HeldStateHandler.h"
 
-
 namespace RE
 {
 	struct ActivateHandler : public HeldStateHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActivateHandler;
-
 
 		virtual ~ActivateHandler();	 // 00
 
@@ -18,7 +16,6 @@ namespace RE
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;	// 04
 
 		constexpr inline void SetHeldButtonActionSuccess(bool a_success) noexcept { heldButtonActionSuccess = a_success; }
-
 
 		// members
 		std::uint8_t  unk18;					// 18

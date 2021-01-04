@@ -3,11 +3,9 @@
 #include "RE/F/FormTypes.h"
 #include "RE/M/MissileProjectile.h"
 
-
 namespace RE
 {
 	class AlchemyItem;
-
 
 	class ArrowProjectile : public MissileProjectile
 	{
@@ -15,14 +13,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ArrowProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileArrow;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~ArrowProjectile();	 // 00
 
@@ -42,7 +38,6 @@ namespace RE
 		virtual void Handle3DLoaded() override;					   // C0
 		virtual void Unk_C2(void) override;						   // C2 - { return 1; }
 		virtual void Unk_C3(void) override;						   // C3 - { return 1; }
-
 
 		// members
 		std::uint64_t unk1E0;  // 1E0

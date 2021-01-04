@@ -3,14 +3,12 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/S/SyncQueueObj.h"
 
-
 namespace RE
 {
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_RefrInteraction;
-
 
 		virtual ~RefrInteraction();	 // 00
 
@@ -29,7 +27,6 @@ namespace RE
 		virtual void Unk_0D(void) = 0;	// 0D
 		virtual void Unk_0E(void) = 0;	// 0E
 		virtual void Unk_0F(void) = 0;	// 0F
-
 
 		// members
 		ActorHandle		actor;		 // 10

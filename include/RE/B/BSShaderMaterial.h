@@ -3,14 +3,12 @@
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/N/NiPoint2.h"
 
-
 namespace RE
 {
 	class BSShaderMaterial : public BSIntrusiveRefCounted
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderMaterial;
-
 
 		enum class Feature
 		{
@@ -35,7 +33,6 @@ namespace RE
 			kMultiTexLandLODBlend = 19
 		};
 
-
 		enum class Type
 		{
 			kBase = 0,
@@ -43,7 +40,6 @@ namespace RE
 			kLighting = 2,
 			kWater = 3
 		};
-
 
 		virtual ~BSShaderMaterial();  // 00
 
@@ -55,7 +51,6 @@ namespace RE
 		virtual BSShaderMaterial* GetDefault();							   // 05
 		virtual Feature			  GetFeature() const;					   // 06 - { return Feature::kDefault; }
 		virtual Type			  GetType() const;						   // 07 - { return Type::kBase; }
-
 
 		// members
 		NiPoint2	  texCoordOffset[2];  // 0C

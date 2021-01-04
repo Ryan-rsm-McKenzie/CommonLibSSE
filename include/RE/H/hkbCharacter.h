@@ -5,7 +5,6 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkStringPtr.h"
 
-
 namespace RE
 {
 	class hkbBehaviorGraph;
@@ -13,19 +12,16 @@ namespace RE
 	class hkbProjectData;
 	class hkbRagdollDriver;
 
-
 	class hkbCharacter : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbCharacter;
-
 
 		virtual ~hkbCharacter();  // 00
 
 		// add
 		virtual void Unk_03(void);	// 03
 		virtual void Unk_04(void);	// 04
-
 
 		// members
 		hkArray<hkbCharacter*>		nearbyCharacters;			// 10

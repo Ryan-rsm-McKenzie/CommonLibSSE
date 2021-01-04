@@ -6,12 +6,10 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class AddCellGrassTask;
 	class BSInstanceTriShape;
-
 
 	struct CellGrassData
 	{
@@ -23,19 +21,16 @@ namespace RE
 	};
 	static_assert(sizeof(CellGrassData) == 0x48);
 
-
 	class ExtraCellGrassData : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCellGrassData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellGrassData;
 
-
 		virtual ~ExtraCellGrassData();	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kCellGrassData; }
-
 
 		// members
 		BSTArray<CellGrassData*>	grassHandles;  // 10

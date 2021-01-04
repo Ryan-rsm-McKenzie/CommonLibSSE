@@ -2,14 +2,12 @@
 
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class TESIcon : public TESTexture
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture;
-
 
 		virtual ~TESIcon();	 // 00
 

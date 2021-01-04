@@ -7,7 +7,6 @@
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct TOPIC_INFO_DATA	// ENAM
@@ -32,22 +31,18 @@ namespace RE
 			kSpendsFavorPoints = 1 << 14
 		};
 
-
 		float GetResetHours() const;
-
 
 		stl::enumeration<TOPIC_INFO_FLAGS, std::uint16_t> flags;		   // 0
 		std::uint16_t									  timeUntilReset;  // 2 - reset hours as a std::uint16_t
 	};
 	static_assert(sizeof(TOPIC_INFO_DATA) == 0x4);
 
-
 	class TESTopicInfo : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTopicInfo;
 		inline static constexpr auto FORMTYPE = FormType::Info;
-
 
 		enum class FavorLevel  // CNAM
 		{
@@ -57,7 +52,6 @@ namespace RE
 			kLarge = 3
 		};
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -65,7 +59,6 @@ namespace RE
 				kSaidOnce = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -75,7 +68,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct ResponseData	 // TRDT
 		{
@@ -91,19 +83,16 @@ namespace RE
 				kPuzzled = 7
 			};
 
-
 			enum class Flag
 			{
 				kNone = 0,
 				kUseEmotionAnimation = 1 << 0
 			};
 
-
 			~ResponseData();
 			void PopulateResponseText(TESFile* a_file);
 
 			TES_HEAP_REDEFINE_NEW();
-
 
 			// members
 			stl::enumeration<EmotionType, std::uint32_t> emotionType;	  // 00
@@ -125,7 +114,6 @@ namespace RE
 		};
 		static_assert(sizeof(ResponseData) == 0x48);
 
-
 		virtual ~TESTopicInfo();  // 00
 
 		// override (TESForm)
@@ -141,7 +129,6 @@ namespace RE
 		virtual void CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;						   // 31
 
 		DialogueItem GetDialogueData(Actor* a_speaker);
-
 
 		// members
 		TESTopic*								   parentTopic;	   // 20

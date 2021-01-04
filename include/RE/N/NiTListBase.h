@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -13,7 +12,6 @@ namespace RE
 	};
 	static_assert(sizeof(NiTListItem<void*>) == 0x18);
 
-
 	template <class Allocator, class T>
 	class NiTListBase
 	{
@@ -23,7 +21,6 @@ namespace RE
 			// members
 			std::uint32_t size;	 // ??
 		};
-
 
 		// members
 		NiTListItem<T>*	   head;	   // 00

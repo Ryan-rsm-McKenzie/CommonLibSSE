@@ -10,12 +10,10 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class BSWaterShaderMaterial;
 	class NiTexture;
-
 
 	struct WaterShaderData	// DNAM
 	{
@@ -27,7 +25,6 @@ namespace RE
 			float specularLighting;	 // DC
 		};
 		static_assert(sizeof(DepthProperties) == 0x10);
-
 
 		float			unk00;					 // 00
 		float			unk04;					 // 04
@@ -79,7 +76,6 @@ namespace RE
 	};
 	static_assert(sizeof(WaterShaderData) == 0xE8);
 
-
 	class TESWaterForm :
 		public TESForm,				// 000
 		public TESFullName,			// 020
@@ -89,7 +85,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESWaterForm;
 		inline static constexpr auto FORMTYPE = FormType::Water;
 
-
 		enum class Flag	 // FNAM
 		{
 			kNone = 0,
@@ -97,7 +92,6 @@ namespace RE
 			kEnableFlowmap = 1 << 3,
 			kBlendNormals = 1 << 4
 		};
-
 
 		struct RecordFlags
 		{
@@ -108,7 +102,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESWaterForm();  // 00
 
 		// override (TESForm)
@@ -117,7 +110,6 @@ namespace RE
 		virtual void InitItemImpl() override;																																   // 13
 		virtual bool GetDangerous() const override;																															   // 1B - { return flags & 1; }
 		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-
 
 		// members
 		bool								 needUpdate;			   // 040

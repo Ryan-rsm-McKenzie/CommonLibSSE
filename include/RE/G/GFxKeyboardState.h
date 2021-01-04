@@ -6,11 +6,9 @@
 #include "RE/G/GFxSpecialKeysState.h"
 #include "RE/G/GRefCountBaseNTS.h"
 
-
 namespace RE
 {
 	class GASStringContext;
-
 
 	class GFxKeyboardState : public GRefCountBaseNTS<GFxKeyboardState, GFxStatMovieViews::kGFxStatMV_Other_Mem>
 	{
@@ -27,7 +25,6 @@ namespace RE
 		};
 		static_assert(sizeof(IListener) == 0x8);
 
-
 		class KeyQueue
 		{
 		public:
@@ -35,7 +32,6 @@ namespace RE
 			{
 				kKeyQueueSize = 100
 			};
-
 
 			struct KeyRecord
 			{
@@ -50,7 +46,6 @@ namespace RE
 			};
 			static_assert(sizeof(KeyRecord) == 0x10);
 
-
 			// members
 			KeyRecord	  buffer[kKeyQueueSize];  // 000
 			std::uint32_t putIdx;				  // 640
@@ -58,7 +53,6 @@ namespace RE
 			std::uint32_t count;				  // 648
 		};
 		static_assert(sizeof(KeyQueue) == 0x64C);
-
 
 		// members
 		IListener*	 listener;						  // 010

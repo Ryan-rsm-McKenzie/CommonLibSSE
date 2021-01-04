@@ -4,11 +4,9 @@
 #include "RE/P/PlayerInputHandler.h"
 #include "RE/T/TESCameraState.h"
 
-
 namespace RE
 {
 	class NiNode;
-
 
 	class FirstPersonState :
 		public TESCameraState,	   // 00
@@ -16,7 +14,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_FirstPersonState;
-
 
 		virtual ~FirstPersonState();  // 00
 
@@ -33,7 +30,6 @@ namespace RE
 		// override (PlayerInputHandler)
 		virtual bool CanProcess(InputEvent* a_event) override;											// 01
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;	// 04
-
 
 		// members
 		NiPoint3	  lastPosition;				// 30

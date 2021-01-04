@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSArchiveHeader
@@ -13,7 +12,6 @@ namespace RE
 			std::uint32_t flag;	 // 0
 		};
 		static_assert(sizeof(ArchiveFlag) == 0x4);
-
 
 		// members
 		std::uint32_t tag;					 // 00

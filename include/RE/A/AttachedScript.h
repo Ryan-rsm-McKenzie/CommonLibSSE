@@ -4,7 +4,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/O/Object.h"
 
-
 namespace RE
 {
 	namespace BSScript

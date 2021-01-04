@@ -2,7 +2,6 @@
 
 #include "RE/N/NiBinaryStream.h"
 
-
 namespace RE
 {
 	class NiFile : public NiBinaryStream
@@ -10,14 +9,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiFile;
 
-
 		enum class OpenMode
 		{
 			kReadOnly = 0,
 			kWriteOnly = 1,
 			kAppendOnly = 2
 		};
-
 
 		~NiFile();	// 00
 
@@ -30,7 +27,6 @@ namespace RE
 		// add
 		virtual void		  seek(std::int32_t a_offset, std::int32_t a_from);	 // 06
 		virtual std::uint32_t size() const;										 // 07
-
 
 		// members
 		std::uint32_t							  bufferAllocSize;	// 20

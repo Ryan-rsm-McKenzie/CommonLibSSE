@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/M/MagicCaster.h"
 
-
 namespace RE
 {
 	class ExtraMagicCaster :
@@ -14,7 +13,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMagicCaster;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
-
 
 		virtual ~ExtraMagicCaster();  // 00
 

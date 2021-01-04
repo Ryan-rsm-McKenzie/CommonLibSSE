@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	using FormID = std::uint32_t;

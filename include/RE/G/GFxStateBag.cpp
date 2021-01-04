@@ -1,6 +1,5 @@
 #include "RE/G/GFxStateBag.h"
 
-
 namespace RE
 {
 	GFxStateBag* GFxStateBag::GetStateBagImpl() const
@@ -8,10 +7,8 @@ namespace RE
 		return nullptr;
 	}
 
-
 	GFxStateBag::~GFxStateBag()
 	{}
-
 
 	void GFxStateBag::SetState(GFxState::StateType a_stateType, GFxState* a_state)
 	{
@@ -23,13 +20,11 @@ namespace RE
 		}
 	}
 
-
 	GFxState* GFxStateBag::GetStateAddRef(GFxState::StateType a_stateType) const
 	{
 		GFxStateBag* stateBag = GetStateBagImpl();
 		return stateBag ? stateBag->GetStateAddRef(a_stateType) : nullptr;
 	}
-
 
 	void GFxStateBag::GetStatesAddRef(GFxState** a_stateList, const GFxState::StateType* a_stateTypes, std::uint32_t a_count) const
 	{
@@ -38,7 +33,6 @@ namespace RE
 			stateBag->GetStatesAddRef(a_stateList, a_stateTypes, a_count);
 		}
 	}
-
 
 	GPtr<GFxState> GFxStateBag::GetState(GFxState::StateType a_stateType) const
 	{

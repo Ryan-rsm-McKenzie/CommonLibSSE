@@ -8,7 +8,6 @@
 #include "RE/D/DoNothingUnhandledPolicy.h"
 #include "RE/I/IHandlerFunctor.h"
 
-
 namespace RE
 {
 	template <class Type, class Handler, class Parameter, template <class> class Parent>
@@ -37,12 +36,10 @@ namespace RE
 			}
 		}
 
-
 		// members
 		BSTHashMap<Type, BSTSmartPointer<functor_type>>				  handlerMap;	   // ??
 		BSTSmartPointer<BSResponse<Type, Handler, Parameter, Parent>> backupResponse;  // ??
 	};
-
 
 	template <class T, class Key>
 	class ResponseDefinitionMissPolicy
@@ -52,7 +49,6 @@ namespace RE
 	};
 	//static_assert(sizeof(ResponseDefinitionMissPolicy) == 0x8);
 
-
 	template <class T, class Key>
 	class PreloadResponsesInitializationPolicy
 	{
@@ -61,11 +57,9 @@ namespace RE
 	};
 	//static_assert(sizeof(PreloadResponsesInitializationPolicy) == 0x8);
 
-
 	class Actor;
 	using AnimResponse = BSResponse<BSFixedString, Actor, BSFixedString, DoNothingUnhandledPolicy>;
 	static_assert(sizeof(AnimResponse) == 0x48);
-
 
 	class ResponseDictionary :
 		public BSTObjectDictionary<

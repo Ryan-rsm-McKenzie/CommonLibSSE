@@ -3,20 +3,16 @@
 #include "RE/G/GFxState.h"
 #include "RE/G/GFxWWHelper.h"
 
-
 namespace RE
 {
 	class GFxWStringBuffer;
-
 
 	class GFxTranslator : public GFxState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GFxTranslator;
 
-
 		using WordWrappingType = GFxWWHelper::WordWrappingType;
-
 
 		// TranslateCaps is an enumeration type defining the translation capabilities of the Translator object. In general, capability flags are used to determine two things:
 		//	* The type of strings can be passed to the Translate virtual function as a key.
@@ -27,7 +23,6 @@ namespace RE
 			kReceiveHTML = 1 << 0,			 // Specifies that Translate key can include Flash-HTML tags. If not specified, translate will only receive stripped text content (default)
 			kStripTrailingNewLines = 1 << 1	 // Forces all trailing new-line symbols to be stripped before the text is passed to Translate. This is important if the original text was in HTML format, since it can have a trailing paragraph tag that is turned into a new line
 		};
-
 
 		class TranslateInfo
 		{
@@ -40,7 +35,6 @@ namespace RE
 				kResultSourceHTML = 1 << 2
 			};
 
-
 			TranslateInfo();
 
 			const char*	   GetInstanceName() const;													   // An input method which returns the instance name of the textfield being translated.
@@ -48,7 +42,6 @@ namespace RE
 			bool		   IsKeyHTML() const;														   // Determines if the key string (returned by GetKey) is HTML or not.
 			void		   SetResult(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);	   // An output method which sets the translated string as a plain text.
 			void		   SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen = UPINT_MAX);  // An output method which sets translated string as a HTML text.
-
 
 			// members
 			const wchar_t*						 key;			// 00
@@ -61,7 +54,6 @@ namespace RE
 		};
 		static_assert(sizeof(TranslateInfo) == 0x20);
 
-
 		// LineFormatDesc provides information of the line text to be formatted like the length of the text, text position etc. This structure is mainly used by OnWordWrapping to control word wrapping of the text.
 		// Note that all members of LineFormatDesc marked as "[in]" are used as input values only and shouldn't be modified. Members marked as "[out]" or "[in, out]" might be modified.
 		struct LineFormatDesc
@@ -73,7 +65,6 @@ namespace RE
 				kCenter = 2,
 				kJustify = 3
 			};
-
 
 			// members
 			const wchar_t*							  paraText;					// 00 - [in] Text of the current paragraph, wide-characters are used
@@ -97,7 +88,6 @@ namespace RE
 		};
 		static_assert(sizeof(LineFormatDesc) == 0x50);
 
-
 		GFxTranslator();
 		explicit GFxTranslator(WordWrappingType a_wwMode);
 		virtual ~GFxTranslator() = default;	 // 00
@@ -110,7 +100,6 @@ namespace RE
 		bool CanReceiveHTML() const;
 		bool NeedStripNewLines() const;
 		bool HandlesCustomWordWrapping() const;
-
 
 		// members
 		stl::enumeration<WordWrappingType, std::uint32_t> wwMode;  // 18

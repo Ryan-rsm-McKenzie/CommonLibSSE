@@ -6,12 +6,10 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/U/UIMessage.h"
 
-
 namespace RE
 {
 	class IUIMessageData;
 	class UIMessage;
-
 
 	class UIMessageQueue : public BSTSingletonSDM<UIMessageQueue>
 	{
@@ -21,13 +19,11 @@ namespace RE
 			kPoolSize = 64
 		};
 
-
 		static UIMessageQueue* GetSingleton();
 
 		void			AddMessage(const BSFixedString& a_menuName, UI_MESSAGE_TYPE a_type, IUIMessageData* a_data);
 		IUIMessageData* CreateUIMessageData(const BSFixedString& a_name);  // uses unk348, but doesn't seem to work like the skse thinks it does
 		void			ProcessCommands();
-
 
 		// members
 		std::uint8_t								 pad001;				  // 001

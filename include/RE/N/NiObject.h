@@ -3,7 +3,6 @@
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSDynamicTriShape;
@@ -32,16 +31,13 @@ namespace RE
 	class NiTriShape;
 	class NiTriStrips;
 
-
 	NiSmartPointer(NiObject);
-
 
 	class NiObject : public NiRefObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiObject;
-
 
 		virtual ~NiObject() = default;	// 00
 

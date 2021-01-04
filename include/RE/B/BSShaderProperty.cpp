@@ -1,6 +1,5 @@
 #include "RE/B/BSShaderProperty.h"
 
-
 namespace RE
 {
 	void BSShaderProperty::SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data)

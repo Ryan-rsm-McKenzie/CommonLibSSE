@@ -8,11 +8,9 @@
 #include "RE/P/PrecomputedNavmeshInfoPathMap.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct NavMeshInfo;
-
 
 	class NavMeshInfoMap :
 		public TESForm,						  // 00
@@ -23,14 +21,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NavMeshInfoMap;
 		inline static constexpr auto FORMTYPE = FormType::Navigation;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~NavMeshInfoMap();	// 00
 
@@ -46,7 +42,6 @@ namespace RE
 		virtual void		   GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) override;										  // 03
 		virtual void		   BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) override;  // 04
 		virtual void		   ForEach(IVisitor* a_visitor) override;																  // 05
-
 
 		// members
 		bool												 updateAll;			// 78

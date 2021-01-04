@@ -5,19 +5,16 @@
 #include "RE/T/TypeTraits.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Object;
 
-
 		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID);
 		void			  BindID(BSTSmartPointer<Object>& a_object, const void* a_src, VMTypeID a_typeID);
 		void			  PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID);
 		void*			  UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
-
 
 		template <
 			class T,
@@ -29,7 +26,6 @@ namespace RE
 			return vm_type_v<T>;
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -39,7 +35,6 @@ namespace RE
 		{
 			return GetRawTypeFromVMType(static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE));
 		}
-
 
 		template <
 			class T,
@@ -51,7 +46,6 @@ namespace RE
 			return GetRawTypeFromVMType(decay_pointer_t<T>::VMTYPEID);
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -61,7 +55,6 @@ namespace RE
 		{
 			return GetRawTypeFromVMType(decay_pointer_t<T>::VMTYPEID);
 		}
-
 
 		template <
 			class T,
@@ -84,7 +77,6 @@ namespace RE
 			}
 		}
 
-
 		template <
 			class T,
 			class U = std::decay_t<T>,
@@ -97,7 +89,6 @@ namespace RE
 			a_dst->SetString(std::forward<T>(a_src));
 		}
 
-
 		template <class T,
 			class U = std::decay_t<T>,
 			std::enable_if_t<
@@ -109,7 +100,6 @@ namespace RE
 			a_dst->SetSInt(static_cast<std::int32_t>(std::forward<T>(a_src)));
 		}
 
-
 		template <class T,
 			class U = std::decay_t<T>,
 			std::enable_if_t<
@@ -120,7 +110,6 @@ namespace RE
 			assert(a_dst);
 			a_dst->SetUInt(static_cast<std::uint32_t>(std::forward<T>(a_src)));
 		}
-
 
 		template <
 			class T,
@@ -134,7 +123,6 @@ namespace RE
 			a_dst->SetFloat(static_cast<float>(std::forward<T>(a_src)));
 		}
 
-
 		template <
 			class T,
 			class U = std::decay_t<T>,
@@ -147,7 +135,6 @@ namespace RE
 			a_dst->SetBool(static_cast<bool>(std::forward<T>(a_src)));
 		}
 
-
 		template <
 			class T,
 			class U = std::decay_t<T>,
@@ -158,7 +145,6 @@ namespace RE
 		{
 			PackHandle(a_dst, std::forward<T>(a_src), static_cast<VMTypeID>(decay_pointer_t<U>::FORMTYPE));
 		}
-
 
 		template <
 			class T,
@@ -171,7 +157,6 @@ namespace RE
 			PackHandle(a_dst, std::forward<T>(a_src), decay_pointer_t<U>::VMTYPEID);
 		}
 
-
 		template <
 			class T,
 			class U = std::decay_t<T>,
@@ -183,7 +168,6 @@ namespace RE
 			PackHandle(a_dst, std::forward<T>(a_src), decay_pointer_t<U>::VMTYPEID);
 		}
 
-
 		template <
 			class T,
 			class U = std::decay_t<T>,
@@ -191,7 +175,6 @@ namespace RE
 				is_array_v<U>,
 				int> = 0>
 		void PackValue(Variable* a_dst, T&& a_src);
-
 
 		template <
 			class T,
@@ -202,7 +185,6 @@ namespace RE
 		{
 			return static_cast<T>(nullptr);
 		}
-
 
 		template <
 			class T,
@@ -215,7 +197,6 @@ namespace RE
 			return T{ a_src->GetString() };
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -226,7 +207,6 @@ namespace RE
 			assert(a_src);
 			return static_cast<T>(a_src->GetSInt());
 		}
-
 
 		template <
 			class T,
@@ -239,7 +219,6 @@ namespace RE
 			return static_cast<T>(a_src->GetUInt());
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -250,7 +229,6 @@ namespace RE
 			assert(a_src);
 			return static_cast<T>(a_src->GetFloat());
 		}
-
 
 		template <
 			class T,
@@ -263,7 +241,6 @@ namespace RE
 			return static_cast<T>(a_src->GetBool());
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -273,7 +250,6 @@ namespace RE
 		{
 			return static_cast<T>(UnpackHandle(a_src, static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE)));
 		}
-
 
 		template <
 			class T,
@@ -285,7 +261,6 @@ namespace RE
 			return static_cast<T>(UnpackHandle(a_src, decay_pointer_t<T>::VMTYPEID));
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
@@ -296,14 +271,12 @@ namespace RE
 			return static_cast<T>(UnpackHandle(a_src, decay_pointer_t<T>::VMTYPEID));
 		}
 
-
 		template <
 			class T,
 			std::enable_if_t<
 				is_array_v<T>,
 				int> = 0>
 		[[nodiscard]] T UnpackValue(const Variable* a_src);
-
 
 		template <
 			class T,
@@ -315,13 +288,11 @@ namespace RE
 			return T{ a_src };
 		}
 
-
 		template <class T>
 		inline void Variable::Pack(T&& a_src)
 		{
 			PackValue<T>(this, std::forward<T>(a_src));
 		}
-
 
 		template <class T>
 		[[nodiscard]] inline T Variable::Unpack() const

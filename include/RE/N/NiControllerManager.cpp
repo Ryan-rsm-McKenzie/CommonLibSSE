@@ -2,7 +2,6 @@
 
 #include "RE/N/NiControllerSequence.h"
 
-
 namespace RE
 {
 	NiControllerSequence* NiControllerManager::GetSequenceByName(std::string_view a_name)

@@ -2,14 +2,12 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	struct SneakHandler : public PlayerInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SneakHandler;
-
 
 		virtual ~SneakHandler();  // 00
 

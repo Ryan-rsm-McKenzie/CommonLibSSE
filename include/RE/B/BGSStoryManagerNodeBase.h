@@ -3,14 +3,12 @@
 #include "RE/B/BGSStoryManagerTreeForm.h"
 #include "RE/T/TESCondition.h"
 
-
 namespace RE
 {
 	class BGSStoryManagerNodeBase : public BGSStoryManagerTreeForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerNodeBase;
-
 
 		struct Flags  // DNAM
 		{
@@ -22,7 +20,6 @@ namespace RE
 				kWarnIfNoChildQuestStarted = 1 << 1
 			};
 
-
 			enum class QuestFlag
 			{
 				kNone = 0,
@@ -31,13 +28,11 @@ namespace RE
 				kNumQuestsToRun = 1 << 2
 			};
 
-
 			// members
 			stl::enumeration<NodeFlag, std::uint16_t>  nodeFlags;  // 0
 			stl::enumeration<QuestFlag, std::uint16_t> questFags;  // 2
 		};
 		static_assert(sizeof(Flags) == 0x4);
-
 
 		virtual ~BGSStoryManagerNodeBase();	 // 00
 
@@ -47,7 +42,6 @@ namespace RE
 		virtual bool		  Load(TESFile* a_mod) override;  // 06
 		virtual void		  InitItemImpl() override;		  // 13
 		virtual TESCondition* QConditions() override;		  // 3D - { return &conditions; }
-
 
 		// members
 		BGSStoryManagerBranchNode* parent;			 // 28 - PNAM

@@ -2,7 +2,6 @@
 
 #include "RE/B/BSPointerHandle.h"
 
-
 namespace RE
 {
 	struct REF_ACTIVATE_DATA

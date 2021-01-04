@@ -3,7 +3,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -12,13 +11,11 @@ namespace RE
 		class ObjectTypeInfo;
 		class Stack;
 
-
 		class StackFrame
 		{
 		public:
 			std::uint32_t GetPageForFrame() const;
 			Variable&	  GetStackFrameVariable(std::uint32_t a_index, std::uint32_t a_pageHint) const;
-
 
 			// members
 			Stack*							parent;				 // 00

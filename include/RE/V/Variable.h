@@ -4,14 +4,12 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Array;
 		class Object;
-
 
 		class Variable
 		{
@@ -20,7 +18,6 @@ namespace RE
 			{
 				Value(void* a_val = nullptr);
 				~Value();
-
 
 				// members
 				std::int32_t			i;
@@ -33,7 +30,6 @@ namespace RE
 				BSFixedString			str;
 			};
 			static_assert(sizeof(Value) == 0x8);
-
 
 			Variable();
 			Variable(const TypeInfo& a_type);
@@ -90,7 +86,6 @@ namespace RE
 			void ChangeType(TypeInfo::RawType a_type);
 			void Cleanup();
 			void Assign(const Variable& a_rhs);
-
 
 			// members
 			TypeInfo varType;  // 00

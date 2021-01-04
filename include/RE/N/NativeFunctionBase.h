@@ -5,7 +5,6 @@
 #include "RE/T/TypeInfo.h"
 #include "RE/V/VDescTable.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -15,10 +14,8 @@ namespace RE
 			class VirtualMachine;
 		}
 
-
 		class StackFrame;
 		class Variable;
-
 
 		namespace NF_util
 		{
@@ -26,7 +23,6 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__NF_util__NativeFunctionBase;
-
 
 				NativeFunctionBase() = delete;
 				explicit NativeFunctionBase(std::string_view a_fnName, std::string_view a_className, bool a_isStatic, std::uint16_t a_numParams);

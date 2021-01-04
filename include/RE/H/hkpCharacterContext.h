@@ -6,11 +6,9 @@
 #include "RE/H/hkpCharacterControl.h"
 #include "RE/H/hkpCharacterState.h"
 
-
 namespace RE
 {
 	class hkpCharacterStateManager;
-
 
 	struct hkpCharacterInput
 	{
@@ -33,19 +31,16 @@ namespace RE
 	};
 	static_assert(sizeof(hkpCharacterInput) == 0xD0);
 
-
 	struct hkpCharacterOutput
 	{
 		hkVector4 velocity;	 // 00
 	};
 	static_assert(sizeof(hkpCharacterOutput) == 0x10);
 
-
 	class hkpCharacterContext : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterContext;
-
 
 		enum class CharacterType
 		{
@@ -53,9 +48,7 @@ namespace RE
 			kRigidBody = 1
 		};
 
-
 		virtual ~hkpCharacterContext();	 // 00
-
 
 		stl::enumeration<CharacterType, std::uint32_t> characterType;		   // 10
 		std::uint32_t								   pad14;				   // 14

@@ -2,7 +2,6 @@
 
 #include "RE/H/hkBaseTypes.h"
 
-
 namespace RE
 {
 	class hkMemoryAllocator
@@ -10,9 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkMemoryAllocator;
 
-
 		using MemoryWalkCallback = void(void* a_start, std::size_t a_size, bool a_allocated, std::int32_t a_pool, void* a_param);
-
 
 		enum class MemoryState
 		{
@@ -20,12 +17,10 @@ namespace RE
 			kOutOfMemory
 		};
 
-
 		struct MemoryStatistics
 		{
 		public:
 			static constexpr std::int64_t INFINITE_SIZE = -1;
-
 
 			// members
 			std::int64_t allocated;		  // 00
@@ -36,7 +31,6 @@ namespace RE
 			std::int64_t largestBlock;	  // 28
 		};
 		static_assert(sizeof(MemoryStatistics) == 0x30);
-
 
 		struct ExtendedInterface
 		{
@@ -52,7 +46,6 @@ namespace RE
 			virtual hkResult	WalkMemory(MemoryWalkCallback* a_callback, void* a_param) = 0;	// 06
 		};
 		static_assert(sizeof(ExtendedInterface) == 0x8);
-
 
 		virtual ~hkMemoryAllocator();  // 00
 

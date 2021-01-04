@@ -4,17 +4,14 @@
 #include "RE/B/BSString.h"
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	class TESDescription : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESDescription;
-
 
 		virtual ~TESDescription();	// 00
 
@@ -24,7 +21,6 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
 
 		void GetDescription(BSString& a_out, TESForm* a_parent, std::uint32_t a_fieldType = 'CSED');
-
 
 		// members
 		std::uint32_t		 fileOffset;	   // 08

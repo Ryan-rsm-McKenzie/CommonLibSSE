@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	class TESRegionData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionData;
-
 
 		enum class Type
 		{
@@ -23,7 +20,6 @@ namespace RE
 			kImposter = 8
 		};
 
-
 		struct DataHeader  // RDAT
 		{
 		public:
@@ -33,7 +29,6 @@ namespace RE
 				kOverride = 1 << 0
 			};
 
-
 			// members
 			stl::enumeration<Flag, std::uint8_t> flags;		// 0
 			std::uint8_t						 unk09;		// 1
@@ -42,7 +37,6 @@ namespace RE
 			std::uint32_t						 unk0C;		// 4
 		};
 		static_assert(sizeof(DataHeader) == 0x8);
-
 
 		virtual ~TESRegionData();  // 00
 
@@ -54,7 +48,6 @@ namespace RE
 		virtual void Unk_05(void) = 0;								   // 05
 		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) = 0;  // 06
 		virtual bool IsLoaded() const = 0;							   // 07
-
 
 		// members
 		DataHeader dataHeader;	// 08 - RDAT

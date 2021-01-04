@@ -5,7 +5,6 @@
 
 #include <ShlObj.h>
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -60,7 +59,6 @@ namespace SKSE
 		};
 	}
 
-
 	void add_papyrus_sink(std::regex a_filter)
 	{
 		auto handler = Impl::LogEventHandler::GetSingleton();
@@ -77,7 +75,6 @@ namespace SKSE
 			}
 		});
 	}
-
 
 	void remove_papyrus_sink()
 	{

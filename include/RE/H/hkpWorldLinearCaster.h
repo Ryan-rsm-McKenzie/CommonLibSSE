@@ -4,7 +4,6 @@
 #include "RE/H/hkpLinearCastCollisionInput.h"
 #include "RE/H/hkpShapeType.h"
 
-
 namespace RE
 {
 	class hkpCdPointCollector;
@@ -12,18 +11,15 @@ namespace RE
 	class hkpCollidableCollidableFilter;
 	struct hkpLinearCastInput;
 
-
 	class hkpWorldLinearCaster : public hkpBroadPhaseCastCollector
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpWorldLinearCaster;
 
-
 		virtual ~hkpWorldLinearCaster() = default;	// 00
 
 		// override (hkpBroadPhaseCastCollector)
 		virtual float AddBroadPhaseHandle(const hkpBroadPhaseHandle* a_broadphaseHandle, std::int32_t a_castIndex) override;  // 01
-
 
 		// members
 		const hkpLinearCastInput*			 input;				   // 10

@@ -2,11 +2,9 @@
 
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class NiAVObject;
-
 
 	struct BSSoundHandle
 	{
@@ -16,7 +14,6 @@ namespace RE
 			kInvalidID = static_cast<std::uint32_t>(-1)
 		};
 
-
 		enum class AssumedState
 		{
 			kInitialized = 0,
@@ -24,7 +21,6 @@ namespace RE
 			kStopped = 2,
 			kPaused = 3
 		};
-
 
 		enum class LoopType
 		{
@@ -34,7 +30,6 @@ namespace RE
 			kEnvSlow = 3
 		};
 
-
 		BSSoundHandle();
 		~BSSoundHandle() = default;
 
@@ -43,7 +38,6 @@ namespace RE
 		void SetObjectToFollow(NiAVObject* a_node);
 		bool Stop();
 		bool Play();
-
 
 		// members
 		std::uint32_t								  soundID;		  // 00

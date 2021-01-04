@@ -3,18 +3,15 @@
 #include "RE/B/BSIMusicTrack.h"
 #include "RE/T/TESCondition.h"
 
-
 namespace RE
 {
 	class TESFile;
 	class TESForm;
 
-
 	class BGSMusicTrack : public BSIMusicTrack
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicTrack;
-
 
 		virtual ~BGSMusicTrack();  // 00
 
@@ -24,7 +21,6 @@ namespace RE
 		// add
 		virtual void InitItem(TESForm* a_form);	 // 0B
 		virtual void Load(TESFile* a_mod) = 0;	 // 0C
-
 
 		// members
 		TESCondition  conditions;  // 10

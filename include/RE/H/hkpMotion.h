@@ -5,7 +5,6 @@
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkMatrix3;
@@ -13,18 +12,15 @@ namespace RE
 	class hkTransform;
 	class hkpMaxSizeMotion;
 
-
 	class hkpMotion : public hkReferencedObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpMotion;
 
-
 		enum
 		{
 			kNumInactiveFramesToDeactivate = 5
 		};
-
 
 		enum class MotionType
 		{
@@ -39,7 +35,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		virtual ~hkpMotion();  // 00
 
@@ -67,7 +62,6 @@ namespace RE
 		virtual void ApplyForce(const float a_deltaTime, const hkVector4& a_force, const hkVector4& a_point) = 0;										  // 17
 		virtual void ApplyTorque(const float a_deltaTime, const hkVector4& a_torque) = 0;																  // 18
 		virtual void GetMotionStateAndVelocitiesAndDeactivationType(hkpMotion* a_motionOut);															  // 19
-
 
 		// members
 		stl::enumeration<MotionType, std::uint8_t> type;							  // 010

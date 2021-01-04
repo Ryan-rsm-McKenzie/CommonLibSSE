@@ -3,7 +3,6 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
@@ -61,7 +60,6 @@ namespace RE
 	struct TESUniqueIDChangeEvent;
 	struct TESWaitStartEvent;
 	struct TESWaitStopEvent;
-
 
 	class ScriptEventSourceHolder :
 		public BSTEventSource<BGSEventProcessedEvent>,			 // 0000

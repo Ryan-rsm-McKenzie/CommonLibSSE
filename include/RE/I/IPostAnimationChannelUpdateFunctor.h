@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class IPostAnimationChannelUpdateFunctor
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IPostAnimationChannelUpdateFunctor;
-
 
 		virtual ~IPostAnimationChannelUpdateFunctor();	// 00
 

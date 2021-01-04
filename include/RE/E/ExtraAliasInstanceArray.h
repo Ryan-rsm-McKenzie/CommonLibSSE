@@ -6,11 +6,9 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSBaseAlias;
-
 
 	struct BGSRefAliasInstanceData
 	{
@@ -20,20 +18,17 @@ namespace RE
 	};
 	static_assert(sizeof(BGSRefAliasInstanceData) == 0x18);
 
-
 	class ExtraAliasInstanceArray : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraAliasInstanceArray;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
 
-
 		ExtraAliasInstanceArray();
 		virtual ~ExtraAliasInstanceArray();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kAliasInstanceArray; }
-
 
 		// members
 		BSTArray<BGSRefAliasInstanceData*> aliases;	 // 10

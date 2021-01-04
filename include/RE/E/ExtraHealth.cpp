@@ -1,12 +1,10 @@
 #include "RE/E/ExtraHealth.h"
 
-
 namespace RE
 {
 	ExtraHealth::ExtraHealth() :
 		ExtraHealth(1.0)
 	{}
-
 
 	ExtraHealth::ExtraHealth(float a_health) :
 		BSExtraData(),
@@ -17,12 +15,10 @@ namespace RE
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
-
 	ExtraDataType ExtraHealth::GetType() const
 	{
 		return ExtraDataType::kHealth;
 	}
-
 
 	bool ExtraHealth::IsNotEqual(const BSExtraData* a_rhs) const
 	{

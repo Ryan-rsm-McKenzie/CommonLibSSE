@@ -5,14 +5,12 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSTextureSet;
 	class NiAVObject;
 	class NiNode;
 	class TESObjectCELL;
-
 
 	struct DECAL_CREATION_DATA
 	{
@@ -58,7 +56,6 @@ namespace RE
 		std::uint32_t		  padC4;		  // C4
 	};
 	static_assert(sizeof(DECAL_CREATION_DATA) == 0xC8);
-
 
 	struct BGSDecalGroup
 	{

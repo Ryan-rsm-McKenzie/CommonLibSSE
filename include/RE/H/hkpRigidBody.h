@@ -2,14 +2,12 @@
 
 #include "RE/H/hkpEntity.h"
 
-
 namespace RE
 {
 	class hkpRigidBody : public hkpEntity
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpRigidBody;
-
 
 		virtual ~hkpRigidBody();  // 00
 

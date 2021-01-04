@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraOutfitItem : public BSExtraData
@@ -12,12 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraOutfitItem;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOutfitItem;
 
-
 		virtual ~ExtraOutfitItem();	 // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kOutfitItem; }
-
 
 		// members
 		FormID		  id;	  // 10 - BGSOutfit

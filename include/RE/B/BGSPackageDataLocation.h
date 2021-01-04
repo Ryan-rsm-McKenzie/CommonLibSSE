@@ -3,19 +3,16 @@
 #include "RE/B/BGSPackageDataPointerTemplate.h"
 #include "RE/I/IPackageDataAIWorldLocationHandle.h"
 
-
 namespace RE
 {
 	class PackageLocation;
 
 	//const BSFixedString kPackageDataLocationTypeName("Location");
 
-
 	class BGSPackageDataLocation : public BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation /*, kPackageDataLocationTypeName*/>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPackageDataLocation;
-
 
 		virtual ~BGSPackageDataLocation();	// 00
 

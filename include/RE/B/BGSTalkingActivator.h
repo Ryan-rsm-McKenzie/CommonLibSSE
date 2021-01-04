@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESObjectACTI.h"
 
-
 namespace RE
 {
 	class BGSTalkingActivator : public TESObjectACTI
@@ -12,7 +11,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSTalkingActivator;
 		inline static constexpr auto FORMTYPE = FormType::TalkingActivator;
 
-
 		struct ChangeFlags
 		{
 			enum ChangeFlag : std::uint32_t
@@ -20,7 +18,6 @@ namespace RE
 				kSpeaker = 1 << 23
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -33,7 +30,6 @@ namespace RE
 				kRadioStation = 1 << 17
 			};
 		};
-
 
 		virtual ~BGSTalkingActivator();	 // 00
 
@@ -51,7 +47,6 @@ namespace RE
 
 		// add
 		virtual bool GetReflectedByAutoWater();	 // 53 - { return false; }
-
 
 		// members
 		TESObjectREFR* tempRef;	   // C8

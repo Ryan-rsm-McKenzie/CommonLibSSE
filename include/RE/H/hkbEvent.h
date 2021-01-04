@@ -3,7 +3,6 @@
 #include "RE/H/hkRefVariant.h"
 #include "RE/H/hkbEventBase.h"
 
-
 namespace RE
 {
 	class hkbEvent : public hkbEventBase

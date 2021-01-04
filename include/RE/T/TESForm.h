@@ -7,7 +7,6 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSLoadFormBuffer;
@@ -16,7 +15,6 @@ namespace RE
 	class TESFile;
 	struct FORM;
 	struct FORM_GROUP;
-
 
 	namespace TESForm_Impl
 	{
@@ -35,13 +33,11 @@ namespace RE
 		constexpr inline bool is_valid_as_expr_v = is_valid_as_expr<T>::value;
 	}
 
-
 	class TESFileArray : public BSStaticArray<TESFile*>
 	{
 	public:
 	};
 	static_assert(sizeof(TESFileArray) == 0x10);
-
 
 	class TESFileContainer
 	{
@@ -51,13 +47,11 @@ namespace RE
 	};
 	static_assert(sizeof(TESFileContainer) == 0x8);
 
-
 	class TESForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESForm;
 		inline static constexpr auto FORMTYPE = FormType::None;
-
 
 		struct ChangeFlags
 		{
@@ -67,7 +61,6 @@ namespace RE
 				kFlags = 1 << 0
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -125,7 +118,6 @@ namespace RE
 			};
 		};
 
-
 		enum class InGameFormFlag
 		{
 			kNone = 0,
@@ -136,7 +128,6 @@ namespace RE
 			kRefOriginalPersistent = 1 << 6,
 			kRefPermanentlyDeleted = 1 << 7
 		};
-
 
 		virtual ~TESForm();	 // 00
 
@@ -282,7 +273,6 @@ namespace RE
 		constexpr bool			IsPlayerRef() const noexcept { return GetFormID() == 0x00000014; }
 		constexpr bool			IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
 		constexpr bool			IsWeapon() const noexcept { return Is(FormType::Weapon); }
-
 
 		// members
 		TESFileContainer								sourceFiles;	  // 08

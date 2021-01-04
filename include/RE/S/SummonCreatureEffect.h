@@ -2,14 +2,12 @@
 
 #include "RE/A/ActiveEffect.h"
 
-
 namespace RE
 {
 	class SummonCreatureEffect : public ActiveEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SummonCreatureEffect;
-
 
 		// override (ActiveEffect)
 		virtual void Unk_04(void) override;	 // 04
@@ -24,7 +22,6 @@ namespace RE
 
 		virtual void Unk_14(void) override;	 // 14
 		virtual void Unk_15(void) override;	 // 15
-
 
 		// members
 		std::uint64_t unk90;  // 90

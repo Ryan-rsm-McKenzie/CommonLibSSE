@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraInfoGeneralTopic : public BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraInfoGeneralTopic;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
-
 
 		struct Data
 		{
@@ -29,12 +27,10 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x58);
 
-
 		virtual ~ExtraInfoGeneralTopic();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kInfoGeneralTopic; }
-
 
 		// members
 		Data* unk10;  // 10

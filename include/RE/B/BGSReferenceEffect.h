@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSReferenceEffect : public TESForm
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSReferenceEffect;
 		inline static constexpr auto FORMTYPE = FormType::ReferenceEffect;
-
 
 		enum class Flag
 		{
@@ -21,7 +19,6 @@ namespace RE
 			kInheritRotation = 1 << 2
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -30,7 +27,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Data	 // DATA
 		{
@@ -43,7 +39,6 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x18);
 
-
 		virtual ~BGSReferenceEffect();	// 00
 
 		// override (TESForm)
@@ -51,7 +46,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		Data data;	// 20 - DATA

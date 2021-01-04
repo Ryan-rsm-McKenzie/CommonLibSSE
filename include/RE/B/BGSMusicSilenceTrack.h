@@ -2,14 +2,12 @@
 
 #include "RE/B/BGSMusicTrack.h"
 
-
 namespace RE
 {
 	class BGSMusicSilenceTrack : public BGSMusicTrack
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicSilenceTrack;
-
 
 		virtual ~BGSMusicSilenceTrack();  // 00
 
@@ -21,7 +19,6 @@ namespace RE
 		virtual float	  GetDurationImpl() const override;				 // 05 - { return duration; }
 		virtual TrackType GetType() const override;						 // 06 - "BGSMusicSilenceTrack"
 		virtual void	  Load(TESFile* a_mod) override;				 // 0C
-
 
 		// members
 		float		  duration;	  // 20 - FLTV

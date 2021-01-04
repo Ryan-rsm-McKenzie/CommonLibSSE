@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSScript
@@ -9,7 +8,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IStackCallbackSaveInterface;
-
 
 			virtual ~IStackCallbackSaveInterface();	 // 00
 

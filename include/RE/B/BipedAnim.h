@@ -5,7 +5,6 @@
 #include "RE/B/BipedObjects.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BGSTextureSet;
@@ -14,7 +13,6 @@ namespace RE
 	class TESForm;
 	class TESModel;
 	class TESObjectARMA;
-
 
 	struct BIPOBJECT
 	{
@@ -38,14 +36,12 @@ namespace RE
 	};
 	static_assert(sizeof(BIPOBJECT) == 0x78);
 
-
 	class BipedAnim : public BSIntrusiveRefCounted
 	{
 	public:
 		~BipedAnim();
 
 		void RemoveAllParts();
-
 
 		std::uint32_t	pad0004;								 // 0004
 		NiNode*			root;									 // 0008

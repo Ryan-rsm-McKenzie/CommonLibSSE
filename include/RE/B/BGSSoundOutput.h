@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSSoundOutput :
@@ -15,13 +14,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSSoundOutput;
 		inline static constexpr auto FORMTYPE = FormType::SoundOutputModel;
 
-
 		enum class Type	 // MNAM
 		{
 			kUsesHRTF = 0,
 			kDefinedSpeakerOutput = 1
 		};
-
 
 		struct RecordFlags
 		{
@@ -31,7 +28,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Data	 // NAM1
 		{
@@ -43,7 +39,6 @@ namespace RE
 				kAllowsRumble = 1 << 1
 			};
 
-
 			// members
 			stl::enumeration<Flag, std::uint8_t> flags;			 // 0
 			std::uint8_t						 unk1;			 // 1
@@ -51,7 +46,6 @@ namespace RE
 			std::uint8_t						 reverbSendPct;	 // 3
 		};
 		static_assert(sizeof(Data) == 0x4);
-
 
 		struct DynamicAttenuationCharacteristics : public BSIAttenuationCharacteristics
 		{
@@ -68,7 +62,6 @@ namespace RE
 			};
 			static_assert(sizeof(DataType) == 0x10);
 
-
 			virtual ~DynamicAttenuationCharacteristics();  // 00
 
 			// override (BSIAttenuationCharacteristics)
@@ -76,12 +69,10 @@ namespace RE
 			virtual float		 GetMinDistance() const override;					 // 02 - { return data.minDistance; }
 			virtual std::uint8_t GetCurveValue(std::uint32_t a_idx) const override;	 // 03 - { return a_idx >= 5 ? 0 : data.curve[a_idx]; }
 
-
 			// members
 			DataType data;	// 00
 		};
 		static_assert(sizeof(DynamicAttenuationCharacteristics) == 0x18);
-
 
 		struct SpeakerArrays  // ONAM
 		{
@@ -101,12 +92,10 @@ namespace RE
 			};
 			static_assert(sizeof(Channel) == 0x8);
 
-
 			// members
 			Channel channels[3];
 		};
 		static_assert(sizeof(SpeakerArrays) == 0x18);
-
 
 		virtual ~BGSSoundOutput();	// 00
 
@@ -125,7 +114,6 @@ namespace RE
 		virtual const BSIAttenuationCharacteristics* DoGetAttenuation() const override;																   // 07 - { return attenuationValues; }
 		virtual float								 DoGetReverbSendLevel() const override;															   // 08 - { return data.reverbSendPct * 0.0099999998; }
 		virtual bool								 DoGetSupportsMonitor(std::uint32_t a_arg1) const override;										   // 09
-
 
 		// members
 		Data								  data;			   // 28 - NAM1

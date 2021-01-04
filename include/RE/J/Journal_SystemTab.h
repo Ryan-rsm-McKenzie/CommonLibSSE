@@ -3,14 +3,12 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/J/JournalTab.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 	struct BGSSaveLoadManagerEvent;
 	struct BSGamerProfileEvent;
 	struct BSRemoteGamepadEvent;
-
 
 	class Journal_SystemTab :
 		public JournalTab,							   // 00
@@ -21,7 +19,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Journal_SystemTab;
-
 
 		virtual ~Journal_SystemTab();  // 00
 

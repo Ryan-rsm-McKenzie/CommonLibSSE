@@ -2,14 +2,12 @@
 
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSBehaviorGraphModel : TESModel
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBehaviorGraphModel;
-
 
 		virtual ~BGSBehaviorGraphModel();  // 00
 

@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class ExtraEditorRefMoveData : public BSExtraData
@@ -13,12 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraEditorRefMoveData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
 
-
 		virtual ~ExtraEditorRefMoveData();	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kEditorRefMoveData; }
-
 
 		// members
 		NiPoint3	  realAngle;	 // 10

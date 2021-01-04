@@ -10,13 +10,11 @@
 #include "RE/R/RaceSexMenuEvent.h"
 #include "RE/R/Request.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 	class BSSystemEvent;
 	struct BGSSaveLoadManagerEvent;
-
 
 	class BGSSaveLoadFileEntry
 	{
@@ -43,7 +41,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSSaveLoadFileEntry) == 0x78);
 
-
 	class BGSSaveLoadManager :
 		public BSTEventSink<BSSaveDataEvent>,					  // 000
 		public BSTEventSink<RaceSexMenuEvent::NameChangedEvent>,  // 008
@@ -53,18 +50,15 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager;
 
-
 		class Thread : public BSThread
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
-
 			virtual ~Thread();	// 00
 
 			virtual void Unk_01(void) override;	 // 01
 			virtual void Unk_02(void) override;	 // 02
-
 
 			// members
 			bool																	isRunnning;					  // 50
@@ -75,7 +69,6 @@ namespace RE
 			BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8> asyncSaveLoadOperationQueue;  // 60
 		};
 		static_assert(sizeof(Thread) == 0xC0);
-
 
 		virtual ~BGSSaveLoadManager();	// 00
 
@@ -88,12 +81,10 @@ namespace RE
 		// override (BSTEventSink<BSSystemEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;	 // 01
 
-
 		static BGSSaveLoadManager* GetSingleton();
 
 		void Save(const char* a_fileName);
 		void Load(const char* a_fileName);
-
 
 		// members
 		std::uint64_t	unk070;	 // 070

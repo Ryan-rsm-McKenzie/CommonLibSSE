@@ -3,14 +3,12 @@
 #include "RE/H/hkStringPtr.h"
 #include "RE/H/hkbBindable.h"
 
-
 namespace RE
 {
 	class hkbNode : public hkbBindable
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbNode;
-
 
 		virtual ~hkbNode();	 // 00
 
@@ -35,14 +33,12 @@ namespace RE
 		virtual void Unk_15(void);	// 15 - { return 0; }
 		virtual void Unk_16(void);	// 16 - { return 0; }
 
-
 		enum class GetChildrenFlagBits
 		{
 			kActiveOnly = 1 << 0,
 			kGeneratorsOnly = 1 << 1,
 			kIgnoreReferencedBehaviour = 1 << 2
 		};
-
 
 		enum class CloneState
 		{
@@ -51,7 +47,6 @@ namespace RE
 			kClone = 2,
 			kShareable = 3
 		};
-
 
 		// members
 		std::uint32_t							   userData;	// 30

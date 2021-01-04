@@ -4,7 +4,6 @@
 #include "RE/M/MagicItem.h"
 #include "RE/M/MagicSystem.h"
 
-
 namespace RE
 {
 	class EnchantmentItem : public MagicItem
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_EnchantmentItem;
 		inline static constexpr auto FORMTYPE = FormType::Enchantment;
-
 
 		enum class EnchantmentFlag
 		{
@@ -22,7 +20,6 @@ namespace RE
 			kExtendDuration = 1 << 3
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -31,7 +28,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		class Data	// ENIT
 		{
@@ -49,7 +45,6 @@ namespace RE
 			BGSListForm*									 wornRestrictions;	// 28
 		};
 		static_assert(sizeof(Data) == 0x30);
-
 
 		virtual ~EnchantmentItem();	 // 00
 
@@ -71,7 +66,6 @@ namespace RE
 		virtual std::uint32_t			 GetDataSize() const override;								// 6E - { return 0x30; }
 		virtual void					 InitFromChunk(TESFile* a_mod) override;					// 6F
 		virtual void					 InitChunk() override;										// 70
-
 
 		// members
 		Data data;	// 90 - ENIT

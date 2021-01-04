@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiRTTI
@@ -19,13 +18,11 @@ namespace RE
 			return false;
 		}
 
-
 		// members
 		const char*	  name;		 // 00
 		const NiRTTI* baseRTTI;	 // 08
 	};
 	static_assert(sizeof(NiRTTI) == 0x10);
-
 
 	namespace Ni_Impl
 	{
@@ -34,7 +31,6 @@ namespace RE
 			std::remove_pointer_t<
 				std::remove_reference_t<
 					std::remove_cv_t<T>>>;
-
 
 		template <class To, class From>
 		struct types_are_compat :
@@ -53,14 +49,12 @@ namespace RE
 				std::remove_cv_t<From>>
 		{};
 
-
 		template <class Base, class Derived>
 		struct is_base_of_no_cvpr :
 			std::is_base_of<
 				remove_cvpr_t<Base>,
 				remove_cvpr_t<Derived>>
 		{};
-
 
 		template <class T, class Enable = void>
 		struct _has_rtti :
@@ -77,7 +71,6 @@ namespace RE
 			_has_rtti<remove_cvpr_t<T>>
 		{};
 
-
 		template <class To, class From>
 		struct cast_is_valid :
 			std::conjunction<
@@ -87,12 +80,10 @@ namespace RE
 				has_rtti<From>>
 		{};
 
-
 		template <class To, class From>
 		inline constexpr bool cast_is_valid_v = cast_is_valid<To, From>::value;
 	}
 }
-
 
 // downcast
 template <
@@ -122,7 +113,6 @@ To netimmerse_cast(const From* a_from)
 
 	return nullptr;
 }
-
 
 // upcast
 template <

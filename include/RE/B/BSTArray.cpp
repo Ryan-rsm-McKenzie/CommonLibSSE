@@ -2,7 +2,6 @@
 
 #include "RE/S/ScrapHeap.h"
 
-
 namespace RE
 {
 	BSScrapArrayAllocator::~BSScrapArrayAllocator()
@@ -12,7 +11,6 @@ namespace RE
 		}
 		memzero(this);
 	}
-
 
 	void* BSScrapArrayAllocator::allocate(std::size_t a_size)
 	{
@@ -27,7 +25,6 @@ namespace RE
 		std::memset(mem, 0, a_size);
 		return mem;
 	}
-
 
 	void BSScrapArrayAllocator::deallocate(void* a_ptr)
 	{

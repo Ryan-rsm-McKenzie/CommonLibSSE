@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	struct ADDON_DATA
@@ -16,14 +15,12 @@ namespace RE
 			kAlwaysLoaded = 3
 		};
 
-
 		// members
 		std::uint16_t						 masterParticleCap;	 // 0
 		stl::enumeration<Flag, std::uint8_t> flags;				 // 2
 		std::uint8_t						 pad3;				 // 3
 	};
 	static_assert(sizeof(ADDON_DATA) == 0x4);
-
 
 	class BGSAddonNode :
 		public TESBoundObject,		// 00
@@ -32,7 +29,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAddonNode;
 		inline static constexpr auto FORMTYPE = FormType::AddonNode;
-
 
 		struct RecordFlags
 		{
@@ -43,14 +39,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSAddonNode();  // 00
 
 		// override (TESBoundObject)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		std::uint32_t			index;	// 68 - DATA

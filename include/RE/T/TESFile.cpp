@@ -1,6 +1,5 @@
 #include "RE/T/TESFile.h"
 
-
 namespace RE
 {
 	TESFile* TESFile::Duplicate(std::uint32_t a_cacheSize)
@@ -10,14 +9,12 @@ namespace RE
 		return func(this, a_cacheSize);
 	}
 
-
 	std::uint32_t TESFile::GetCurrentSubRecordType()
 	{
 		using func_t = decltype(&TESFile::GetCurrentSubRecordType);
 		REL::Relocation<func_t> func{ Offset::TESFile::GetCurrentSubRecordType };
 		return func(this);
 	}
-
 
 	FormType TESFile::GetFormType()
 	{
@@ -26,7 +23,6 @@ namespace RE
 		return func(this);
 	}
 
-
 	void TESFile::ReadData(void* a_buf, std::uint32_t a_size)
 	{
 		using func_t = decltype(&TESFile::ReadData);
@@ -34,14 +30,12 @@ namespace RE
 		return func(this, a_buf, a_size);
 	}
 
-
 	bool TESFile::Seek(std::uint32_t a_offset)
 	{
 		using func_t = decltype(&TESFile::Seek);
 		REL::Relocation<func_t> func{ Offset::TESFile::Seek };
 		return func(this, a_offset);
 	}
-
 
 	bool TESFile::SeekNextSubrecord()
 	{

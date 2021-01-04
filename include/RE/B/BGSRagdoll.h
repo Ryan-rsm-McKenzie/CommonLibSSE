@@ -5,11 +5,9 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESActorBase;
-
 
 	class BGSRagdoll :
 		public TESForm,	 // 000
@@ -19,14 +17,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSRagdoll;
 		inline static constexpr auto FORMTYPE = FormType::Ragdoll;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
 			{
 			};
 		};
-
 
 		virtual ~BGSRagdoll();	// 00
 
@@ -35,7 +31,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		std::uint64_t	 unk048;  // 048

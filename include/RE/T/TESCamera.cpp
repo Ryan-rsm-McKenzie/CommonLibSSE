@@ -1,6 +1,5 @@
 #include "RE/T/TESCamera.h"
 
-
 namespace RE
 {
 	void TESCamera::SetState(TESCameraState* a_state)

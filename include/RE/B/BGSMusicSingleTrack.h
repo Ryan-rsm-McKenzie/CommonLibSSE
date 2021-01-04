@@ -5,14 +5,12 @@
 #include "RE/B/BSTArray.h"
 #include "RE/I/ID.h"
 
-
 namespace RE
 {
 	class BGSMusicSingleTrack : public BGSMusicTrack
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicSingleTrack;
-
 
 		struct LoopData	 // LNAM
 		{
@@ -21,7 +19,6 @@ namespace RE
 			std::uint32_t loopCount;  // 8
 		};
 		static_assert(sizeof(LoopData) == 0xC);
-
 
 		virtual ~BGSMusicSingleTrack();	 // 00
 
@@ -35,7 +32,6 @@ namespace RE
 		virtual void	  DoSetDuckingAttenuation(std::uint16_t a_val) override;  // 09
 		virtual void	  DoClearDucking() override;							  // 0A
 		virtual void	  Load(TESFile* a_mod) override;						  // 0C
-
 
 		// members
 		BSResource::ID	trackID;					// 20 - ANAM

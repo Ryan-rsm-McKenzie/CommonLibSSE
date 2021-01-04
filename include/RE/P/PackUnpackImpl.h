@@ -9,7 +9,6 @@
 
 // DO NOT INCLUDE EXCEPT IN MEGA HEADER!!!
 
-
 namespace RE
 {
 	namespace BSScript
@@ -60,7 +59,6 @@ namespace RE
 
 			a_dst->SetArray(std::move(array));
 		}
-
 
 		// T requires:
 		//	* default constructible

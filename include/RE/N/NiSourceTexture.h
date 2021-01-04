@@ -3,7 +3,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTexture.h"
 
-
 namespace RE
 {
 	namespace BSGraphics
@@ -11,22 +10,18 @@ namespace RE
 		class Texture;
 	}
 
-
 	namespace BSResource
 	{
 		class Stream;
 	}
 
-
 	NiSmartPointer(NiSourceTexture);
-
 
 	class NiSourceTexture : public NiTexture
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiSourceTexture;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiSourceTexture;
-
 
 		virtual ~NiSourceTexture();	 // 00
 
@@ -38,7 +33,6 @@ namespace RE
 		virtual void		  Unk_28(void) override;	 // 28
 		virtual void		  Unk_29(void) override;	 // 29 - { return; }
 		virtual void		  Unk_2A(void) override;	 // 2A - { return; }
-
 
 		// members
 		BSResource::Stream*	 unk40;			   // 40

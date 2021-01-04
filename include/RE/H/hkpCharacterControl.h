@@ -2,7 +2,6 @@
 
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	struct hkpSurfaceInfo
@@ -13,7 +12,6 @@ namespace RE
 			kSliding = 1,
 			kSupported = 2
 		};
-
 
 		stl::enumeration<SupportedState, std::uint32_t> supportedState;			// 00
 		std::uint32_t									pad04;					// 04

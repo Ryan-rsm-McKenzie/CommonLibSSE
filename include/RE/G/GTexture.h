@@ -6,25 +6,21 @@
 #include "RE/G/GPoint.h"
 #include "RE/G/GRect.h"
 
-
 namespace RE
 {
 	class GImageBase;
 	class GRenderer;
-
 
 	class GTexture : public GNewOverrideBase<GStatRenderer::kMem>
 	{
 	public:
 		using Handle = void*;
 
-
 		enum class MapFlags
 		{
 			kNone = 0,
 			kKeepOld = 1
 		};
-
 
 		enum class ImageTexUsage
 		{
@@ -34,7 +30,6 @@ namespace RE
 			kRenderTarget = 1 << 6
 		};
 
-
 		struct UpdateRect
 		{
 		public:
@@ -43,7 +38,6 @@ namespace RE
 			GRect<std::int32_t>	 src;	// 08
 		};
 		static_assert(sizeof(UpdateRect) == 0x18);
-
 
 		struct MapRect
 		{
@@ -57,7 +51,6 @@ namespace RE
 		};
 		static_assert(sizeof(MapRect) == 0x18);
 
-
 		class ChangeHandler
 		{
 		public:
@@ -68,7 +61,6 @@ namespace RE
 				kRendererReleased
 			};
 
-
 			virtual ~ChangeHandler() = default;	 // 00
 
 			// add
@@ -76,7 +68,6 @@ namespace RE
 			virtual bool Recreate(GRenderer* a_renderer);						   // 02
 		};
 		static_assert(sizeof(ChangeHandler) == 0x8);
-
 
 		virtual ~GTexture() = default;	// 00
 
@@ -92,7 +83,6 @@ namespace RE
 		virtual void		 SetUserData(Handle a_data) = 0;																													// 09
 		virtual void		 AddChangeHandler(ChangeHandler* a_handler) = 0;																									// 0A
 		virtual void		 RemoveChangeHandler(ChangeHandler* a_handler) = 0;																									// 0B
-
 
 		// members
 		GAtomicInt<std::int32_t> refCount;	// 08

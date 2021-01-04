@@ -3,17 +3,14 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/M/MagicSystem.h"
 
-
 namespace RE
 {
 	class EnchantmentItem;
-
 
 	class TESEnchantableForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESEnchantableForm;
-
 
 		virtual ~TESEnchantableForm();	// 00
 
@@ -24,7 +21,6 @@ namespace RE
 
 		// add
 		virtual MagicSystem::CastingType GetCastingType() const;  // 04 - { return castingType; }
-
 
 		// members
 		EnchantmentItem*										  formEnchanting;		// 08 - EITM

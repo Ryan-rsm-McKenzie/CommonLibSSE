@@ -8,7 +8,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/H/hkbCharacter.h"
 
-
 namespace RE
 {
 	class bhkWorld;
@@ -18,15 +17,12 @@ namespace RE
 	class hkbBehaviorGraph;
 	struct BSAnimationGraphEvent;
 
-
 	namespace BSResource
 	{
 		struct ID;
 	}
 
-
 	BSSmartPointer(BShkbAnimationGraph);
-
 
 	class BShkbAnimationGraph :
 		public BSIRagdollDriver,					   // 000
@@ -36,7 +32,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BShkbAnimationGraph;
-
 
 		virtual ~BShkbAnimationGraph();	 // 00
 
@@ -72,7 +67,6 @@ namespace RE
 		{
 			GetEventSource<T>()->RemoveEventSink(a_eventSink);
 		}
-
 
 		// members
 		hkbCharacter				   characterInstance;			 // 0C0

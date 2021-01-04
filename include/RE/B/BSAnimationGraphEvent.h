@@ -2,11 +2,9 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class TESObjectREFR;
-
 
 	struct BSAnimationGraphEvent
 	{

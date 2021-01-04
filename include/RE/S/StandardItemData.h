@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class InventoryEntryData;
-
 
 	class StandardItemData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_StandardItemData;
-
 
 		virtual ~StandardItemData();  // 00
 
@@ -20,7 +17,6 @@ namespace RE
 		virtual std::uint32_t GetFilterFlag();	// 04
 		virtual std::uint32_t GetFavorite();	// 05
 		virtual bool		  GetEnabled();		// 06 - { return true; }
-
 
 		// members
 		InventoryEntryData* objDesc;  // 08

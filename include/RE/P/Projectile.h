@@ -9,19 +9,16 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	class bhkCollisionObject;
 	class bhkSimpleShapePhantom;
 	class QueuedFile;
 
-
 	class Projectile : public TESObjectREFR
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
-
 
 		struct ImpactData
 		{
@@ -39,7 +36,6 @@ namespace RE
 			std::uint64_t				  unk48;	 // 48
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
-
 
 		virtual ~Projectile();	// 00
 
@@ -98,7 +94,6 @@ namespace RE
 		virtual void Unk_BF(void);					 // BF - { return; }
 		virtual void Handle3DLoaded();				 // C0 - { return; }
 		virtual void Unk_C1(void);					 // C1 - { return 0; }
-
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;			   // 098

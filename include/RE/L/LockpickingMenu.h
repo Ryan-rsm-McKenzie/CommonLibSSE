@@ -5,12 +5,10 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class MenuOpenCloseEvent;
 	class TESObjectREFR;
-
 
 	// menuDepth = 3
 	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate
@@ -23,7 +21,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_LockpickingMenu;
 		constexpr static std::string_view MENU_NAME = "Lockpicking Menu";
-
 
 		virtual ~LockpickingMenu();	 // 00
 
@@ -40,7 +37,6 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		[[nodiscard]] TESObjectREFR* GetTargetReference();
-
 
 		// members
 		void*		  unk048;  // 048

@@ -2,14 +2,12 @@
 
 #include "RE/I/IMovementInterface.h"
 
-
 namespace RE
 {
 	class IMovementPlannerDirectControl : public IMovementInterface
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMovementPlannerDirectControl;
-
 
 		virtual ~IMovementPlannerDirectControl();  // 00
 

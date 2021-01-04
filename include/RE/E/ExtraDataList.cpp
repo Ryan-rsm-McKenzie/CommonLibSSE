@@ -17,7 +17,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	ExtraDataList::ExtraDataList() :
@@ -25,7 +24,6 @@ namespace RE
 		_presence(nullptr),
 		_lock()
 	{}
-
 
 	ExtraDataList::~ExtraDataList()
 	{
@@ -40,42 +38,35 @@ namespace RE
 		_presence = nullptr;
 	}
 
-
 	ExtraDataList::iterator ExtraDataList::begin()
 	{
 		return iterator(_data);
 	}
-
 
 	ExtraDataList::const_iterator ExtraDataList::cbegin() const
 	{
 		return const_iterator(_data);
 	}
 
-
 	ExtraDataList::const_iterator ExtraDataList::begin() const
 	{
 		return cbegin();
 	}
-
 
 	ExtraDataList::iterator ExtraDataList::end()
 	{
 		return iterator(nullptr);
 	}
 
-
 	ExtraDataList::const_iterator ExtraDataList::cend() const
 	{
 		return const_iterator(nullptr);
 	}
 
-
 	ExtraDataList::const_iterator ExtraDataList::end() const
 	{
 		return cend();
 	}
-
 
 	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
@@ -83,18 +74,15 @@ namespace RE
 		return _presence ? _presence->HasType(static_cast<std::uint32_t>(a_type)) : false;
 	}
 
-
 	BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type)
 	{
 		return GetByTypeImpl(a_type);
 	}
 
-
 	const BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type) const
 	{
 		return GetByTypeImpl(a_type);
 	}
-
 
 	bool ExtraDataList::Remove(ExtraDataType a_type, BSExtraData* a_toRemove)
 	{
@@ -125,7 +113,6 @@ namespace RE
 
 		return removed;
 	}
-
 
 	bool ExtraDataList::RemoveByType(ExtraDataType a_type)
 	{
@@ -159,7 +146,6 @@ namespace RE
 		return removed;
 	}
 
-
 	BSExtraData* ExtraDataList::Add(BSExtraData* a_toAdd)
 	{
 		using func_t = decltype(&ExtraDataList::Add);
@@ -167,20 +153,17 @@ namespace RE
 		return func(this, a_toAdd);
 	}
 
-
 	ObjectRefHandle ExtraDataList::GetAshPileRef()
 	{
 		auto xAshRef = GetByType<ExtraAshPileRef>();
 		return xAshRef ? xAshRef->ashPileRef : ObjectRefHandle();
 	}
 
-
 	std::int32_t ExtraDataList::GetCount() const
 	{
 		auto xCount = GetByType<ExtraCount>();
 		return xCount ? xCount->count : 1;
 	}
-
 
 	const char* ExtraDataList::GetDisplayName(TESBoundObject* a_baseObject)
 	{
@@ -214,13 +197,11 @@ namespace RE
 		return result;
 	}
 
-
 	BGSEncounterZone* ExtraDataList::GetEncounterZone()
 	{
 		auto xZone = GetByType<ExtraEncounterZone>();
 		return xZone ? xZone->zone : nullptr;
 	}
-
 
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
@@ -233,7 +214,6 @@ namespace RE
 
 		return xText ? xText : GetByType<ExtraTextDisplayData>();
 	}
-
 
 	TESObjectREFR* ExtraDataList::GetLinkedRef(BGSKeyword* a_keyword)
 	{
@@ -262,20 +242,17 @@ namespace RE
 		return linkedRef;
 	}
 
-
 	TESForm* ExtraDataList::GetOwner()
 	{
 		auto xOwner = GetByType<ExtraOwnership>();
 		return xOwner ? xOwner->owner : nullptr;
 	}
 
-
 	SOUL_LEVEL ExtraDataList::GetSoulLevel() const
 	{
 		auto xSoul = GetByType<ExtraSoul>();
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
-
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
@@ -284,14 +261,12 @@ namespace RE
 		return func(this, a_flags, a_enable);
 	}
 
-
 	void ExtraDataList::SetInventoryChanges(InventoryChanges* a_changes)
 	{
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
 		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
 		return func(this, a_changes);
 	}
-
 
 	void ExtraDataList::SetOwner(TESForm* a_owner)
 	{
@@ -312,7 +287,6 @@ namespace RE
 		}
 	}
 
-
 	bool ExtraDataList::PresenceBitfield::HasType(std::uint32_t a_type) const
 	{
 		const std::uint32_t index = (a_type >> 3);
@@ -322,7 +296,6 @@ namespace RE
 		const std::uint8_t bitMask = 1 << (a_type % 8);
 		return (bits[index] & bitMask) != 0;
 	}
-
 
 	void ExtraDataList::PresenceBitfield::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
@@ -336,18 +309,15 @@ namespace RE
 		}
 	}
 
-
 	void ExtraDataList::MarkType(std::uint32_t a_type, bool a_cleared)
 	{
 		_presence->MarkType(a_type, a_cleared);
 	}
 
-
 	void ExtraDataList::MarkType(ExtraDataType a_type, bool a_cleared)
 	{
 		MarkType(static_cast<std::uint32_t>(a_type), a_cleared);
 	}
-
 
 	BSExtraData* ExtraDataList::GetByTypeImpl(ExtraDataType a_type) const
 	{

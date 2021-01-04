@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/P/Projectile.h"
 
-
 namespace RE
 {
 	class BarrierProjectile : public Projectile
@@ -13,7 +12,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BarrierProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBarrier;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -21,14 +19,12 @@ namespace RE
 			};
 		};
 
-
 		struct CollisionData
 		{
 			ObjectRefHandle ref;	// 0
 			std::uint32_t	count;	// 4
 		};
 		static_assert(sizeof(CollisionData) == 0x8);
-
 
 		virtual ~BarrierProjectile();  // 00
 
@@ -44,7 +40,6 @@ namespace RE
 		virtual void		UpdateImpl(float a_delta) override;					// AB
 		virtual void		Unk_AC(void) override;								// AC
 		virtual void		Unk_B8(void) override;								// B8 - { return 0; }
-
 
 		// members
 		float					width;			// 1D8

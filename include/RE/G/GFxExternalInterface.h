@@ -2,18 +2,15 @@
 
 #include "RE/G/GFxState.h"
 
-
 namespace RE
 {
 	class GFxMovieView;
 	class GFxValue;
 
-
 	class GFxExternalInterface : public GFxState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GFxExternalInterface;
-
 
 		GFxExternalInterface() :
 			GFxState(StateType::kExternalInterface)

@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/H/hkRefPtr.h"
 
-
 namespace RE
 {
 	namespace BSCurrent
@@ -20,9 +19,7 @@ namespace RE
 		static_assert(sizeof(ActionArray) == 0x18);
 	}
 
-
 	class hkReferencedObject;
-
 
 	class ExtraWaterData : public BSExtraData
 	{
@@ -30,13 +27,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWaterData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWaterData;
 
-
 		virtual ~ExtraWaterData();	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kWaterData; }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
 
 		// members
 		std::uint64_t				 unk10;			// 10

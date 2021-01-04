@@ -8,7 +8,6 @@
 #include "RE/I/IMovementSelectIdle.h"
 #include "RE/M/MovementControllerAI.h"
 
-
 namespace RE
 {
 	class MovementControllerNPC :
@@ -22,7 +21,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementControllerNPC;
-
 
 		virtual ~MovementControllerNPC();  // 00
 
@@ -38,7 +36,6 @@ namespace RE
 		virtual void Unk_12(void);	// 12
 		virtual void Unk_13(void);	// 13
 		virtual void Unk_14(void);	// 14
-
 
 		// members
 		std::uint64_t unk150;  // 150

@@ -3,7 +3,6 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/L/LogEvent.h"
 
-
 // clang format chokes hard on classes with attributes
 #define SKSE_MAYBE_UNUSED [[maybe_unused]]
 #define SKSE_MAKE_SOURCE_LOGGER(a_func, a_type)                           \
@@ -33,7 +32,6 @@
 	template <class T, class... Args>                                     \
 	a_func(T&&, Args&&...) -> a_func<Args...>;
 
-
 namespace SKSE
 {
 	namespace log
@@ -52,10 +50,8 @@ namespace SKSE
 	void remove_papyrus_sink();
 }
 
-
 #undef SKSE_MAKE_SOURCE_LOGGER
 #undef SKSE_MAYBE_UNUSED
-
 
 #define _DMESSAGE(a_fmt, ...)
 #define _VMESSAGE(a_fmt, ...)

@@ -2,7 +2,6 @@
 
 #include "RE/P/PlayerInputHandler.h"
 
-
 namespace RE
 {
 	class HeldStateHandler : public PlayerInputHandler
@@ -10,13 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_HeldStateHandler;
 
-
 		virtual ~HeldStateHandler();  // 00
 
 		// add
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event);	 // 05
 		virtual void SetHeldStateActive(bool a_flag);					 // 06 - { heldStateActive = a_flag; }
-
 
 		// members
 		bool		  heldStateActive;		// 10

@@ -48,7 +48,6 @@
 #	include <DbgHelp.h>
 #endif
 
-
 namespace RE
 {
 	namespace RTTI

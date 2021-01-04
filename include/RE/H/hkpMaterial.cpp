@@ -1,6 +1,5 @@
 #include "RE/H/hkpMaterial.h"
 
-
 namespace RE
 {
 	auto hkpMaterial::GetResponseType() const
@@ -8,7 +7,6 @@ namespace RE
 	{
 		return *responseType;
 	}
-
 
 	void hkpMaterial::SetResponseType(ResponseType a_type)
 	{

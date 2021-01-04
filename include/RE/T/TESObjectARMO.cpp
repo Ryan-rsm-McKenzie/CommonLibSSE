@@ -1,6 +1,5 @@
 #include "RE/T/TESObjectARMO.h"
 
-
 namespace RE
 {
 	float TESObjectARMO::GetArmorRating()

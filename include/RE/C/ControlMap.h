@@ -9,11 +9,9 @@
 #include "RE/P/PCGamepadType.h"
 #include "RE/U/UserEvents.h"
 
-
 namespace RE
 {
 	class UserEventEnabled;
-
 
 	class ControlMap :
 		public BSTSingletonSDM<ControlMap>,		 // 00
@@ -23,12 +21,10 @@ namespace RE
 		using InputContextID = UserEvents::INPUT_CONTEXT_ID;
 		using UEFlag = UserEvents::USER_EVENT_FLAG;
 
-
 		enum : std::uint32_t
 		{
 			kInvalid = static_cast<std::uint8_t>(-1)
 		};
-
 
 		struct UserEventMapping
 		{
@@ -45,7 +41,6 @@ namespace RE
 		};
 		static_assert(sizeof(UserEventMapping) == 0x18);
 
-
 		struct InputContext
 		{
 		public:
@@ -53,7 +48,6 @@ namespace RE
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
 		static_assert(sizeof(InputContext) == 0x60);
-
 
 		struct LinkedMapping
 		{
@@ -67,7 +61,6 @@ namespace RE
 			BSFixedString  linkFromName;		  // 18
 		};
 		static_assert(sizeof(LinkedMapping) == 0x20);
-
 
 		static ControlMap* GetSingleton();
 
@@ -87,7 +80,6 @@ namespace RE
 		constexpr bool	 IsVATSControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kVATS); }
 		constexpr bool	 IsWheelZoomControlsEnabled() const noexcept { return enabledControls.all(UEFlag::kWheelZoom); }
 		void			 ToggleControls(UEFlag a_flags, bool a_enable);
-
 
 		// members
 		InputContext*									 controlMap[InputContextID::kTotal];  // 060

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSVolumetricLightingRenderData
@@ -14,7 +13,6 @@ namespace RE
 		};
 		static_assert(sizeof(CustomColor) == 0x4);
 
-
 		struct Density
 		{
 		public:
@@ -26,7 +24,6 @@ namespace RE
 		};
 		static_assert(sizeof(Density) == 0x10);
 
-
 		struct PhaseFunction
 		{
 		public:
@@ -36,7 +33,6 @@ namespace RE
 		};
 		static_assert(sizeof(PhaseFunction) == 0x8);
 
-
 		struct SamplingRepartition
 		{
 		public:
@@ -44,7 +40,6 @@ namespace RE
 			float rangeFactor;	// NNAM
 		};
 		static_assert(sizeof(SamplingRepartition) == 0x4);
-
 
 		// members
 		float				intensity;			  // 00 - CNAM

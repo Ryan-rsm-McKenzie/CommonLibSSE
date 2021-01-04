@@ -3,22 +3,18 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 
-
 namespace RE
 {
 	class MagicItem;
-
 
 	class MagicCaster
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MagicCaster;
 
-
 		enum class State
 		{
 		};
-
 
 		virtual ~MagicCaster();	 // 00
 
@@ -51,7 +47,6 @@ namespace RE
 		virtual void Unk_1A(void);	// 1A
 		virtual void Unk_1B(void);	// 1B
 		virtual void Unk_1C(void);	// 1C
-
 
 		// members
 		BSTArray<BSSoundHandle>				   sounds;			   // 08

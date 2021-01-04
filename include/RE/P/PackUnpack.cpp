@@ -8,7 +8,6 @@
 #include "RE/V/VirtualMachine.h"
 #include "SKSE/Logger.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -24,7 +23,6 @@ namespace RE
 				return TypeInfo::RawType::kNone;
 			}
 		}
-
 
 		void BindID(BSTSmartPointer<Object>& a_objectPtr, const void* a_src, VMTypeID a_typeID)
 		{
@@ -46,7 +44,6 @@ namespace RE
 				}
 			}
 		}
-
 
 		void PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID)
 		{
@@ -82,7 +79,6 @@ namespace RE
 				a_dst->SetObject(objectPtr, classPtr->GetRawType());
 			}
 		}
-
 
 		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID)
 		{

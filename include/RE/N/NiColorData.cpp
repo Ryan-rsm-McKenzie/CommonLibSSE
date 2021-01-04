@@ -1,6 +1,5 @@
 #include "RE/N/NiColorData.h"
 
-
 namespace RE
 {
 	NiColorData::NiColorData() :
@@ -13,12 +12,10 @@ namespace RE
 		pad26(0)
 	{}
 
-
 	std::uint32_t NiColorData::GetNumKeys() const
 	{
 		return numKeys;
 	}
-
 
 	NiColorKey* NiColorData::GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const
 	{

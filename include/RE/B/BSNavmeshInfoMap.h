@@ -3,23 +3,19 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	struct BSNavmeshInfo;
-
 
 	class BSNavmeshInfoMap : public BSTSingletonExplicit<BSNavmeshInfoMap>
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMap;
 
-
 		struct IVisitor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMap__IVisitor;
-
 
 			virtual ~IVisitor();  // 00
 
@@ -27,7 +23,6 @@ namespace RE
 			virtual BSContainer::ForEachResult Visit(const BSNavmeshInfo* a_info) = 0;
 		};
 		static_assert(sizeof(IVisitor) == 0x8);
-
 
 		virtual ~BSNavmeshInfoMap();  // 00
 

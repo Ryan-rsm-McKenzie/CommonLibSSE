@@ -3,7 +3,6 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	// menuDepth = 13
@@ -16,7 +15,6 @@ namespace RE
 	public:
 		inline static constexpr auto	  RTTI = RTTI_CursorMenu;
 		constexpr static std::string_view MENU_NAME = "Cursor Menu";
-
 
 		virtual ~CursorMenu();	// 00
 

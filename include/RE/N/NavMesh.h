@@ -5,7 +5,6 @@
 #include "RE/T/TESChildCell.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class NavMesh :
@@ -16,7 +15,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NavMesh;
 		inline static constexpr auto FORMTYPE = FormType::NavMesh;
-
 
 		struct RecordFlags
 		{
@@ -29,7 +27,6 @@ namespace RE
 				kNavMeshGenCell = (std::uint32_t)1 << 31
 			};
 		};
-
 
 		virtual ~NavMesh();	 // 00
 

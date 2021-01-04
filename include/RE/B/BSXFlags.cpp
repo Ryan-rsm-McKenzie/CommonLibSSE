@@ -1,6 +1,5 @@
 #include "RE/B/BSXFlags.h"
 
-
 namespace RE
 {
 	auto BSXFlags::GetFlags() const
@@ -8,7 +7,6 @@ namespace RE
 	{
 		return static_cast<Flag>(value);
 	}
-
 
 	void BSXFlags::SetFlags(Flag a_flags)
 	{

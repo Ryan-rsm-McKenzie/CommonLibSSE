@@ -2,7 +2,6 @@
 
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	void PlayerCharacter::PlayerSkills::AdvanceLevel(bool a_addThreshold)
@@ -12,13 +11,11 @@ namespace RE
 		return func(this, a_addThreshold);
 	}
 
-
 	PlayerCharacter* PlayerCharacter::GetSingleton()
 	{
 		REL::Relocation<NiPointer<PlayerCharacter>*> singleton{ Offset::PlayerCharacter::Singleton };
 		return singleton->get();
 	}
-
 
 	void PlayerCharacter::ActivatePickRef()
 	{
@@ -27,7 +24,6 @@ namespace RE
 		return func(this);
 	}
 
-
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
@@ -35,24 +31,20 @@ namespace RE
 		return func(this, a_containerRef, a_entry, a_number, a_fromContainer);
 	}
 
-
 	bool PlayerCharacter::CenterOnCell(const char* a_cellName)
 	{
 		return CenterOnCell_Impl(a_cellName, nullptr);
 	}
-
 
 	bool PlayerCharacter::CenterOnCell(RE::TESObjectCELL* a_cell)
 	{
 		return CenterOnCell_Impl(nullptr, a_cell);
 	}
 
-
 	NiPointer<Actor> PlayerCharacter::GetActorDoingPlayerCommand() const
 	{
 		return actorDoingPlayerCommand.get();
 	}
-
 
 	float PlayerCharacter::GetArmorValue(InventoryEntryData* a_form)
 	{
@@ -61,7 +53,6 @@ namespace RE
 		return func(this, a_form);
 	}
 
-
 	float PlayerCharacter::GetDamage(InventoryEntryData* a_form)
 	{
 		using func_t = decltype(&PlayerCharacter::GetDamage);
@@ -69,12 +60,10 @@ namespace RE
 		return func(this, a_form);
 	}
 
-
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
 		return grabbedObject.get();
 	}
-
 
 	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
 	{
@@ -82,7 +71,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetNumTints };
 		return func(this, a_tintType);
 	}
-
 
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
@@ -99,12 +87,10 @@ namespace RE
 		return nullptr;
 	}
 
-
 	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
 	{
 		return overlayTintMasks ? *overlayTintMasks : tintMasks;
 	}
-
 
 	TintMask* PlayerCharacter::GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index)
 	{
@@ -113,18 +99,15 @@ namespace RE
 		return func(this, a_tintType, a_index);
 	}
 
-
 	bool PlayerCharacter::HasActorDoingCommand() const
 	{
 		return static_cast<bool>(actorDoingPlayerCommand);
 	}
 
-
 	bool PlayerCharacter::IsGrabbing() const
 	{
 		return static_cast<bool>(grabbedObject);
 	}
-
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)
 	{
@@ -132,7 +115,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::PlayPickupEvent };
 		return func(this, a_item, a_containerOwner, a_containerRef, a_eventType);
 	}
-
 
 	void PlayerCharacter::StartGrabObject()
 	{

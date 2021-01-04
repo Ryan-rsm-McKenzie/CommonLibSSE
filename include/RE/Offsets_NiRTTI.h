@@ -2,7 +2,6 @@
 
 #include "REL/Relocation.h"
 
-
 namespace RE
 {
 	inline constexpr REL::ID NiRTTI_BGSAddonNodeSoundHandleExtra(static_cast<std::uint64_t>(514633));

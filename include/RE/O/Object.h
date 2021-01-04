@@ -5,13 +5,11 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/V/Variable.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class ObjectTypeInfo;
-
 
 		class Object
 		{
@@ -34,7 +32,6 @@ namespace RE
 			const Variable* GetProperty(const BSFixedString& a_name) const;
 
 			TES_HEAP_REDEFINE_NEW();
-
 
 			// members
 			std::uint32_t					constructed : 1;			// 00 - 0

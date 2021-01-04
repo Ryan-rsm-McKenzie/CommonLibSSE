@@ -1,6 +1,5 @@
 #include "RE/T/TESCondition.h"
 
-
 namespace RE
 {
 	FUNCTION_DATA::FUNCTION_DATA() :
@@ -10,11 +9,9 @@ namespace RE
 		params{ nullptr }
 	{}
 
-
 	CONDITION_ITEM_DATA::GlobalOrFloat::GlobalOrFloat() :
 		g(nullptr)
 	{}
-
 
 	CONDITION_ITEM_DATA::Flags::Flags() :
 		isOR(false),
@@ -24,7 +21,6 @@ namespace RE
 		swapTarget(false),
 		opCode(OpCode::kEqualTo)
 	{}
-
 
 	CONDITION_ITEM_DATA::CONDITION_ITEM_DATA() :
 		comparisonValue(),
@@ -37,18 +33,15 @@ namespace RE
 		pad34(0)
 	{}
 
-
 	TESConditionItem::TESConditionItem() :
 		next(nullptr),
 		data()
 	{}
 
-
 	bool TESConditionItem::operator()(ConditionCheckParams& a_solution) const
 	{
 		return IsTrue(a_solution);
 	}
-
 
 	bool TESConditionItem::IsTrue(ConditionCheckParams& a_solution) const
 	{
@@ -57,11 +50,9 @@ namespace RE
 		return func(this, a_solution);
 	}
 
-
 	TESCondition::TESCondition() :
 		head(nullptr)
 	{}
-
 
 	TESCondition::~TESCondition()
 	{
@@ -74,18 +65,15 @@ namespace RE
 		head = nullptr;
 	}
 
-
 	TESCondition::operator bool() const
 	{
 		return head != nullptr;
 	}
 
-
 	bool TESCondition::operator()(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
 	{
 		return IsTrue(a_actionRef, a_targetRef);
 	}
-
 
 	bool TESCondition::IsTrue(TESObjectREFR* a_actionRef, TESObjectREFR* a_targetRef) const
 	{

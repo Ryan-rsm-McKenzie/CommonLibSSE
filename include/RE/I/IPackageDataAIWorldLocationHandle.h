@@ -3,7 +3,6 @@
 #include "RE/I/IAIWorldLocationHandle.h"
 #include "RE/I/IPackageData.h"
 
-
 namespace RE
 {
 	class IPackageDataAIWorldLocationHandle :
@@ -12,7 +11,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
-
 
 		virtual ~IPackageDataAIWorldLocationHandle();  // 00
 	};

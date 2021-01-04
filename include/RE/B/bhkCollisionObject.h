@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkNiCollisionObject.h"
 
-
 namespace RE
 {
 	class bhkCollisionObject : public bhkNiCollisionObject
@@ -10,7 +9,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCollisionObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCollisionObject;
-
 
 		virtual ~bhkCollisionObject();	// 00
 

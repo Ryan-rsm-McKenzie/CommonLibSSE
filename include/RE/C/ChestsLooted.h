@@ -2,7 +2,6 @@
 
 #include "RE/B/BSTEvent.h"
 
-
 namespace RE
 {
 	struct ChestsLooted
@@ -13,7 +12,6 @@ namespace RE
 		public:
 		};
 		static_assert(std::is_empty_v<Event>);
-
 
 		static BSTEventSource<Event>* GetEventSource();
 		static void					  SendEvent();

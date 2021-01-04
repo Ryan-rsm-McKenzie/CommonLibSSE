@@ -3,14 +3,12 @@
 #include "RE/B/BGSProcedureTreeConditionalItem.h"
 #include "RE/B/BSTArray.h"
 
-
 namespace RE
 {
 	class BGSProcedureTreeBranch : public BGSProcedureTreeConditionalItem
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeBranch;
-
 
 		virtual ~BGSProcedureTreeBranch();	// 00
 

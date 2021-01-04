@@ -6,7 +6,6 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTimeController.h"
 
-
 namespace RE
 {
 	class BSAnimNote;
@@ -18,7 +17,6 @@ namespace RE
 	class NiStringPalette;
 	class NiTextKeyExtraData;
 
-
 	NiSmartPointer(NiControllerSequence);
 
 	class NiControllerSequence : public NiObject
@@ -26,7 +24,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiControllerSequence;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiControllerSequence;
-
 
 		enum class AnimState
 		{
@@ -38,7 +35,6 @@ namespace RE
 			kTransDest,
 			kMorphSource
 		};
-
 
 		struct InterpArrayItem
 		{
@@ -54,7 +50,6 @@ namespace RE
 		};
 		static_assert(sizeof(InterpArrayItem) == 0x20);
 
-
 		struct IDTag
 		{
 		public:
@@ -66,7 +61,6 @@ namespace RE
 			BSFixedString interpolatorID;  // 20
 		};
 		static_assert(sizeof(IDTag) == 0x28);
-
 
 		virtual ~NiControllerSequence();  // 00
 
@@ -86,7 +80,6 @@ namespace RE
 
 		[[nodiscard]] constexpr bool Animating() const noexcept { return state == AnimState::kAnimating; }
 		[[nodiscard]] constexpr bool Inactive() const noexcept { return state == AnimState::kInactive; }
-
 
 		// members
 		BSFixedString												 name;					   // 10

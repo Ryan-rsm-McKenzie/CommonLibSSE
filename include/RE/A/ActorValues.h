@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class ActorValue
@@ -173,7 +172,6 @@ namespace RE
 
 		kTotal
 	};
-
 
 	struct ACTOR_VALUE_MODIFIERS
 	{

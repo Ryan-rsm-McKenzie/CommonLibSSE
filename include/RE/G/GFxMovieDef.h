@@ -7,12 +7,10 @@
 #include "RE/G/GRect.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	class GFxExporterInfo;
 	class GFxMovieView;
-
 
 	// Represents loaded shared data for an SWF movie file. These objects are normally created by Loader::CreateMovie and are shared by all movie instances.
 	class GFxMovieDef :
@@ -26,7 +24,6 @@ namespace RE
 			kUseNetwork = 1 << 0,  // - Indicates that "Access Network only" was selected for an SWF file in publish settings for local playback security
 			kHasMetadata = 1 << 4  // - Indicates that the file has embedded metadata, available through the GetMetadata method
 		};
-
 
 		// VisitResourceMask defines a set of resource mask flag bits passed as a visitMask argument to VisitResources. If a given flag bit is included in the visitMask, the corresponding resource types are included in the enumeration, otherwise they are ignored.
 		enum VisitResourceMask : std::uint32_t
@@ -46,11 +43,9 @@ namespace RE
 			kAllImages = (kBitmaps | kGradientImages | kNestedMovies)  // Combines kBitmaps, kGradientImages and kNestedMovies.
 		};
 
-
 		struct MemoryParams
 		{
 			MemoryParams(UPInt a_memoryArena = 0);
-
 
 			// members
 			GMemoryHeap::HeapDesc desc;						 // 00
@@ -61,7 +56,6 @@ namespace RE
 		};
 		static_assert(sizeof(MemoryParams) == 0x50);
 
-
 		class MemoryContext : public GRefCountBase<MemoryContext, GStatGroups::kGStat_Default_Mem>
 		{
 		public:
@@ -69,7 +63,6 @@ namespace RE
 			virtual ~MemoryContext();  // 00
 		};
 		static_assert(sizeof(MemoryContext) == 0x10);
-
 
 		struct ImportVisitor
 		{
@@ -80,7 +73,6 @@ namespace RE
 		};
 		static_assert(sizeof(ImportVisitor) == 0x8);
 
-
 		struct ResourceVisitor : public GFxFileConstants
 		{
 			virtual ~ResourceVisitor();	 // 00
@@ -89,7 +81,6 @@ namespace RE
 			virtual void Visit(GFxMovieDef* a_movieDef, GFxResource* a_resource, GFxResourceID a_id, const char* a_exportName) = 0;	 // 01
 		};
 		static_assert(sizeof(ResourceVisitor) == 0x8);
-
 
 		// add
 		virtual std::uint32_t		   GetVersion() const = 0;																						   // 04

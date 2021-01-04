@@ -1,6 +1,5 @@
 #include "RE/P/PlayerCamera.h"
 
-
 namespace RE
 {
 	PlayerCamera* PlayerCamera::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<PlayerCamera**> singleton{ Offset::PlayerCamera::Singleton };
 		return *singleton;
 	}
-
 
 	void PlayerCamera::UpdateThirdPerson(bool a_weaponDrawn)
 	{

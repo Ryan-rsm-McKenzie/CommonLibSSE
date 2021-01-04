@@ -2,7 +2,6 @@
 
 #include "RE/C/ConcreteFormFactory.h"
 
-
 namespace RE
 {
 	template <class T, FormType FORM_TYPE, OBJECT_TYPE OBJ_TYPE, OBJECT_CATEGORY_TYPE OBJ_CATEGORY_TYPE>

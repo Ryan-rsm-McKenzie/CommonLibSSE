@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class ExtraHavok;
@@ -169,7 +168,6 @@ namespace RE
 	class ExtraGIDBuffer;
 	class ExtraMissingRefIDs;
 	class ExtraResourcesPreload;
-
 
 	enum class ExtraDataType
 	{

@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class BSGameSound
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGameSound;
-
 
 		// add
 		virtual void Unk_00(void);	// 00 - { return; }
@@ -37,7 +35,6 @@ namespace RE
 		virtual void Unk_16(void) = 0;	// 16
 		virtual void Unk_17(void) = 0;	// 17
 		virtual void Unk_18(void) = 0;	// 18
-
 
 		// members
 		std::uint64_t unk08;  // 08

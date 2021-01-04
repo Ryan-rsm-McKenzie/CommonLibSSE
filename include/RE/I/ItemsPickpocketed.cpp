@@ -1,6 +1,5 @@
 #include "RE/I/ItemsPickpocketed.h"
 
-
 namespace RE
 {
 	BSTEventSource<ItemsPickpocketed::Event>* ItemsPickpocketed::GetEventSource()
@@ -9,7 +8,6 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::ItemsPickpocketed::GetEventSource };
 		return func();
 	}
-
 
 	void ItemsPickpocketed::SendEvent(std::int32_t a_numItems)
 	{

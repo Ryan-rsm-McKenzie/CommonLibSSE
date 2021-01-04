@@ -1,18 +1,15 @@
 #pragma once
 
-
 namespace RE
 {
 	class BGSLoadFormBuffer;
 	class BGSSaveFormBuffer;
 	class TESForm;
 
-
 	class TESPackageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESPackageData;
-
 
 		virtual ~TESPackageData();	// 00
 

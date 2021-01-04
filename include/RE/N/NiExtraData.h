@@ -3,7 +3,6 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/N/NiObject.h"
 
-
 namespace RE
 {
 	class NiExtraData : public NiObject
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiExtraData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiExtraData;
-
 
 		virtual ~NiExtraData();	 // 00
 
@@ -31,7 +29,6 @@ namespace RE
 
 		const BSFixedString& GetName() const;
 		void				 SetName(const BSFixedString& a_name);
-
 
 		// members
 		BSFixedString name;	 // 10

@@ -1,6 +1,5 @@
 #include "RE/I/InterfaceStrings.h"
 
-
 namespace RE
 {
 	InterfaceStrings* InterfaceStrings::GetSingleton()

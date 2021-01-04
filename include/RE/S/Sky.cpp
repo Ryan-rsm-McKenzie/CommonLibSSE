@@ -1,6 +1,5 @@
 #include "RE/S/Sky.h"
 
-
 namespace RE
 {
 	Sky* Sky::GetSingleton()

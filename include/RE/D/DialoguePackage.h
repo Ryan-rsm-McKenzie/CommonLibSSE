@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESPackage.h"
 
-
 namespace RE
 {
 	class DialoguePackage : public TESPackage
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_DialoguePackage;
 		inline static constexpr auto FORMTYPE = FormType::Package;
-
 
 		virtual ~DialoguePackage();	 // 00
 
@@ -22,7 +20,6 @@ namespace RE
 		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10 - { TESForm::InitLoadGame(a_buf); }
 		virtual void Copy(TESForm* a_srcForm) override;				   // 2F - { TESForm::Copy(a_srcForm); }
 		virtual bool IsPackageOwner(Actor* a_actor) override;		   // 3F
-
 
 		// members
 		std::uint32_t	unk0E0;	 // 0E0

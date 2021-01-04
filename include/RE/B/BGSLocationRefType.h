@@ -3,7 +3,6 @@
 #include "RE/B/BGSKeyword.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class BGSLocationRefType : public BGSKeyword
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLocationRefType;
 		inline static constexpr auto FORMTYPE = FormType::LocationRefType;
-
 
 		struct RecordFlags
 		{
@@ -21,7 +19,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~BGSLocationRefType();	// 00
 

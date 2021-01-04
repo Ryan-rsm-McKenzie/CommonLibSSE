@@ -1,6 +1,5 @@
 #include "RE/B/BSTCreateFactoryManager.h"
 
-
 namespace RE
 {
 	MessageDataFactoryManager* MessageDataFactoryManager::GetSingleton()

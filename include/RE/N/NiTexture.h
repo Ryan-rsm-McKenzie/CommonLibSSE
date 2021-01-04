@@ -4,18 +4,15 @@
 #include "RE/N/NiObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	NiSmartPointer(NiTexture);
-
 
 	class NiTexture : public NiObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiTexture;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiTexture;
-
 
 		class FormatPrefs
 		{
@@ -39,7 +36,6 @@ namespace RE
 				kFloatColor128
 			};
 
-
 			enum class AlphaFormat
 			{
 				kNone,
@@ -48,7 +44,6 @@ namespace RE
 				kDefault
 			};
 
-
 			enum class MipFlag
 			{
 				kNo = 0,
@@ -56,9 +51,7 @@ namespace RE
 				kDefault
 			};
 
-
 			FormatPrefs();
-
 
 			// members
 			stl::enumeration<PixelLayout, std::uint32_t> pixelLayout;  // 00
@@ -67,7 +60,6 @@ namespace RE
 			std::uint32_t								 pad0C;		   // 0C
 		};
 		static_assert(sizeof(FormatPrefs) == 0x10);
-
 
 		virtual ~NiTexture();
 
@@ -81,7 +73,6 @@ namespace RE
 		virtual void Unk_28(void);	// 28
 		virtual void Unk_29(void);	// 29 - { return 0; }
 		virtual void Unk_2A(void);	// 2A - { return 0; }
-
 
 		// members
 		FormatPrefs	  formatPrefs;	// 10

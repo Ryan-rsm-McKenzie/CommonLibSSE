@@ -2,7 +2,6 @@
 
 #include "RE/U/UserEventEnabled.h"
 
-
 namespace RE
 {
 	ControlMap* ControlMap::GetSingleton()
@@ -10,7 +9,6 @@ namespace RE
 		REL::Relocation<ControlMap**> singleton{ Offset::ControlMap::Singleton };
 		return *singleton;
 	}
-
 
 	std::int8_t ControlMap::AllowTextInput(bool a_allow)
 	{
@@ -26,7 +24,6 @@ namespace RE
 
 		return textEntryCount;
 	}
-
 
 	std::uint32_t ControlMap::GetMappedKey(std::string_view a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
@@ -45,7 +42,6 @@ namespace RE
 
 		return kInvalid;
 	}
-
 
 	std::string_view ControlMap::GetUserEventName(std::uint32_t a_buttonID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
@@ -71,7 +67,6 @@ namespace RE
 
 		return ""sv;
 	}
-
 
 	void ControlMap::ToggleControls(UEFlag a_flags, bool a_enable)
 	{

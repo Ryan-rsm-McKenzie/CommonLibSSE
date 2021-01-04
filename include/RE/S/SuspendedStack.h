@@ -2,18 +2,15 @@
 
 #include "RE/S/Stack.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Stack;
 
-
 		namespace Internal
 		{
 			class IFuncCallQuery;
-
 
 			struct SuspendedStack
 			{

@@ -13,11 +13,9 @@
 #include "RE/T/TESModel.h"
 #include "RE/T/TESTexture.h"
 
-
 namespace RE
 {
 	class BGSTerrainManager;
-
 
 	struct WORLD_MAP_DATA  // MNAM
 	{
@@ -30,7 +28,6 @@ namespace RE
 		};
 		static_assert(sizeof(CameraData) == 0xC);
 
-
 		// members
 		std::uint32_t usableWidth;	 // 00
 		std::uint32_t usableHeight;	 // 04
@@ -41,7 +38,6 @@ namespace RE
 		CameraData	  cameraData;	 // 10
 	};
 	static_assert(sizeof(WORLD_MAP_DATA) == 0x1C);
-
 
 	struct WORLD_MAP_OFFSET_DATA  // ONAM
 	{
@@ -54,7 +50,6 @@ namespace RE
 	};
 	static_assert(sizeof(WORLD_MAP_OFFSET_DATA) == 0x10);
 
-
 	struct CellID
 	{
 	public:
@@ -62,18 +57,15 @@ namespace RE
 			CellID(0, 0)
 		{}
 
-
 		constexpr CellID(std::int16_t a_y, std::int16_t a_x) noexcept :
 			y(a_y),
 			x(a_x)
 		{}
 
-
 		[[nodiscard]] friend constexpr bool operator==(const CellID& a_lhs, const CellID& a_rhs) noexcept
 		{
 			return a_lhs[0] == a_rhs[0] && a_lhs[1] == a_rhs[1];
 		}
-
 
 		[[nodiscard]] constexpr std::int16_t& operator[](std::size_t a_idx) noexcept
 		{
@@ -81,20 +73,17 @@ namespace RE
 			return std::addressof(y)[a_idx];
 		}
 
-
 		[[nodiscard]] constexpr const std::int16_t& operator[](std::size_t a_idx) const noexcept
 		{
 			assert(a_idx < 2);
 			return std::addressof(y)[a_idx];
 		}
 
-
 		// members
 		std::int16_t y;
 		std::int16_t x;
 	};
 	static_assert(sizeof(CellID) == 0x4);
-
 
 	template <>
 	struct BSCRC32_<CellID>
@@ -105,7 +94,6 @@ namespace RE
 			return BSCRC32_<std::uint32_t>()(reinterpret_cast<const std::uint32_t&>(a_key));
 		}
 	};
-
 
 	class BGSLargeRefData  // RNAM
 	{
@@ -121,7 +109,6 @@ namespace RE
 	};
 	static_assert(sizeof(BGSLargeRefData) == 0x90);
 
-
 	class TESWorldSpace :
 		public TESForm,		 // 000
 		public TESFullName,	 // 020
@@ -130,7 +117,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWorldSpace;
 		inline static constexpr auto FORMTYPE = FormType::WorldSpace;
-
 
 		enum class Flag
 		{
@@ -144,7 +130,6 @@ namespace RE
 			kNoGrass = 1 << 7,
 		};
 
-
 		enum class ParentUseFlag
 		{
 			kNone = 0,
@@ -157,7 +142,6 @@ namespace RE
 			kUseSkyCell = 1 << 6,
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -168,7 +152,6 @@ namespace RE
 			};
 		};
 
-
 		struct ShortPoint
 		{
 		public:
@@ -177,7 +160,6 @@ namespace RE
 			std::int16_t y;
 		};
 		static_assert(sizeof(ShortPoint) == 0x4);
-
 
 		virtual ~TESWorldSpace();  // 00
 
@@ -195,7 +177,6 @@ namespace RE
 		virtual bool		IsFormTypeChild(FormType a_type) override;							// 36
 
 		bool HasMaxHeightData() const;
-
 
 		// members
 		BSTHashMap<CellID, TESObjectCELL*>							  cellMap;					// 058

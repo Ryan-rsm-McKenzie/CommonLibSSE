@@ -1,6 +1,5 @@
 #include "RE/C/ConsoleLog.h"
 
-
 namespace RE
 {
 	ConsoleLog* ConsoleLog::GetSingleton()
@@ -8,7 +7,6 @@ namespace RE
 		REL::Relocation<ConsoleLog**> singleton{ Offset::ConsoleLog::Singleton };
 		return *singleton;
 	}
-
 
 	bool ConsoleLog::IsConsoleMode()
 	{
@@ -23,7 +21,6 @@ namespace RE
 		return tlsData[*tlsIndex]->consoleMode;
 	}
 
-
 	void ConsoleLog::Print(const char* a_fmt, ...)
 	{
 		std::va_list args;
@@ -31,7 +28,6 @@ namespace RE
 		VPrint(a_fmt, args);
 		va_end(args);
 	}
-
 
 	void ConsoleLog::VPrint(const char* a_fmt, std::va_list a_args)
 	{

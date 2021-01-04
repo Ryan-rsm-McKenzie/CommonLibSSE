@@ -3,11 +3,9 @@
 #include "RE/B/BSString.h"
 #include "RE/B/BSTEvent.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
-
 
 	class BSSaveDataSystemUtility :
 		public BSTEventSource<BSSaveDataEvent>	// 008
@@ -15,15 +13,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility;
 
-
 		class Entry
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility__Entry;
 
-
 			virtual void Unk_00(void);	// 00
-
 
 			// members
 			std::uint64_t unk008;  // 008
@@ -75,7 +70,6 @@ namespace RE
 			std::uint64_t unk190;  // 190
 		};
 
-
 		virtual ~BSSaveDataSystemUtility();	 // 00
 
 		// add
@@ -96,7 +90,6 @@ namespace RE
 		virtual void	Unk_0F(void);																					 // 0F - { return 1; }
 		virtual void	Unk_10(void);																					 // 10 - { return 0; }
 		virtual void	Unk_11(void);																					 // 11 - { return; }
-
 
 		// members
 		std::uint32_t unk060;		// 060

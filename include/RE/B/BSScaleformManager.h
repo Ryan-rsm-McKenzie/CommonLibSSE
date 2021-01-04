@@ -5,7 +5,6 @@
 #include "RE/G/GFxMovieView.h"
 #include "RE/G/GPtr.h"
 
-
 namespace RE
 {
 	class BSScaleformImageLoader;
@@ -15,7 +14,6 @@ namespace RE
 	class GFxRenderConfig;
 	class IMenu;
 
-
 	struct BSScaleformRenderer
 	{
 	public:
@@ -24,12 +22,10 @@ namespace RE
 	};
 	static_assert(sizeof(BSScaleformRenderer) == 0x8);
 
-
 	class BSScaleformManager : public BSTSingletonSDM<BSScaleformManager>
 	{
 	public:
 		using ScaleModeType = GFxMovieView::ScaleModeType;
-
 
 		static BSScaleformManager* GetSingleton();
 
@@ -40,7 +36,6 @@ namespace RE
 		bool LoadMovieEx(IMenu* a_menu, std::string_view a_fileName, ScaleModeType a_mode, float a_backGroundAlpha, std::function<void(GFxMovieDef*)> a_callback);
 
 		bool LoadMovie_Impl(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
-
 
 		// members
 		std::uint8_t				 pad01;			  // 01

@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct CombatStyleGeneralData  // CSGD
@@ -21,7 +20,6 @@ namespace RE
 	};
 	static_assert(sizeof(CombatStyleGeneralData) == 0x28);
 
-
 	struct CombatStyleMeleeData	 // CSME
 	{
 		float attackIncapacitatedMult;		 // 00
@@ -35,7 +33,6 @@ namespace RE
 	};
 	static_assert(sizeof(CombatStyleMeleeData) == 0x20);
 
-
 	struct CombatStyleCloseRangeData  // CSCR
 	{
 		float circleMult;		  // 00
@@ -45,13 +42,11 @@ namespace RE
 	};
 	static_assert(sizeof(CombatStyleCloseRangeData) == 0x10);
 
-
 	struct CombatStyleLongRangeData	 // CSLR
 	{
 		float strafeMult;  // 0
 	};
 	static_assert(sizeof(CombatStyleLongRangeData) == 0x4);
-
 
 	struct CombatStyleFlightData  // CSFL
 	{
@@ -66,13 +61,11 @@ namespace RE
 	};
 	static_assert(sizeof(CombatStyleFlightData) == 0x20);
 
-
 	class TESCombatStyle : public TESForm
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCombatStyle;
 		inline static constexpr auto FORMTYPE = FormType::CombatStyle;
-
 
 		enum class FLAG	 // DATA
 		{
@@ -81,7 +74,6 @@ namespace RE
 			kFlankingStyle = 1 << 1,
 			kAllowDualWielding = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -93,14 +85,12 @@ namespace RE
 			};
 		};
 
-
 		virtual ~TESCombatStyle();	// 00
 
 		// override (TESForm)
 		virtual void InitializeData() override;		 // 04
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		CombatStyleGeneralData				  generalData;	   // 20 - CSGD

@@ -3,7 +3,6 @@
 #include "RE/H/hkBaseTypes.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	struct hkpSolverInfo
@@ -24,7 +23,6 @@ namespace RE
 		};
 		using DeactivationClass = DeactivationClasses::DeactivationClass;
 
-
 		struct DeactivationInfo
 		{
 			float  linearVelocityThresholdInv;		// 00
@@ -35,7 +33,6 @@ namespace RE
 			hkHalf maxRotSqrd[2];					// 18
 		};
 		static_assert(sizeof(DeactivationInfo) == 0x1C);
-
 
 		// members
 		alignas(0x10) float one;									   // 000

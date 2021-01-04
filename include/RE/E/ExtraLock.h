@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	enum class LOCK_LEVEL
@@ -18,7 +17,6 @@ namespace RE
 		kRequiresKey = 5
 	};
 
-
 	struct REFR_LOCK
 	{
 		enum class Flag
@@ -28,11 +26,9 @@ namespace RE
 			kLeveled = 1 << 2
 		};
 
-
 		LOCK_LEVEL	   GetLockLevel(const TESObjectREFR* a_containerRef) const;
 		constexpr bool IsLocked() const noexcept { return flags.all(Flag::kLocked); }
 		void		   SetLocked(bool a_locked);
-
 
 		// members
 		std::int8_t							 baseLevel;	 // 00
@@ -49,20 +45,17 @@ namespace RE
 	};
 	static_assert(sizeof(REFR_LOCK) == 0x20);
 
-
 	class ExtraLock : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLock;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLock;
 
-
 		virtual ~ExtraLock();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kLock; }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
 
 		// members
 		REFR_LOCK* lock;  // 10

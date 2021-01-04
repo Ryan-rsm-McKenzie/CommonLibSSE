@@ -3,7 +3,6 @@
 #include "RE/B/BSString.h"
 #include "RE/B/BSTSingleton.h"
 
-
 namespace RE
 {
 	class ConsoleLog : public BSTSingletonSDM<ConsoleLog>
@@ -14,7 +13,6 @@ namespace RE
 
 		void Print(const char* a_fmt, ...);
 		void VPrint(const char* a_fmt, std::va_list a_args);
-
 
 		// members
 		char		  lastMessage[0x400];  // 001

@@ -2,14 +2,12 @@
 
 #include "RE/B/bhkCharacterState.h"
 
-
 namespace RE
 {
 	class bhkCharacterStateSwimming : public bhkCharacterState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterStateSwimming;
-
 
 		virtual ~bhkCharacterStateSwimming();  // 00
 

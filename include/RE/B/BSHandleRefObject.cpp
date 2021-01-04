@@ -1,6 +1,5 @@
 #include "RE/B/BSHandleRefObject.h"
 
-
 namespace RE
 {
 	BSHandleRefObject::~BSHandleRefObject()
@@ -10,7 +9,6 @@ namespace RE
 		--totalObjects;
 	}
 
-
 	void BSHandleRefObject::DecRefCount()
 	{
 		stl::atomic_ref myRefCount{ _refCount };
@@ -19,19 +17,16 @@ namespace RE
 		}
 	}
 
-
 	void BSHandleRefObject::IncRefCount()
 	{
 		stl::atomic_ref myRefCount{ _refCount };
 		++myRefCount;
 	}
 
-
 	bool BSHandleRefObject::IsHandleValid() const
 	{
 		return _refCount & kHandleValid;
 	}
-
 
 	std::uint32_t BSHandleRefObject::QRefCount() const
 	{

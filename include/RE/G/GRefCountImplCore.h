@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class GRefCountImplCore
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GRefCountImplCore;
-
 
 		virtual ~GRefCountImplCore() = default;	 // 00
 

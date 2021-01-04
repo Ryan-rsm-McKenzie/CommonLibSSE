@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkpBroadPhaseHandle;
-
 
 	class hkpBroadPhaseCastCollector
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpBroadPhaseCastCollector;
-
 
 		virtual ~hkpBroadPhaseCastCollector() = default;  // 00
 

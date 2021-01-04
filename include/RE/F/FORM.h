@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct FORM
@@ -16,7 +15,6 @@ namespace RE
 		std::uint16_t vcVersion;	   // 16
 	};
 	static_assert(sizeof(FORM) == 0x18);
-
 
 	struct FORM_GROUP
 	{

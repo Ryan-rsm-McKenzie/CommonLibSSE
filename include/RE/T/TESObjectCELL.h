@@ -17,13 +17,11 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace RE
 {
 	class bhkWorld;
 	class NavMesh;
 	class NiNode;
-
 
 	class BGSTerrainVisibilityData
 	{
@@ -32,7 +30,6 @@ namespace RE
 		BSBitField<>* visData;	// 0
 	};
 	static_assert(sizeof(BGSTerrainVisibilityData) == 0x8);
-
 
 	struct EXTERIOR_DATA  // XCLC
 	{
@@ -45,7 +42,6 @@ namespace RE
 			kQuad3 = 1 << 2,
 			kQuad4 = 1 << 3
 		};
-
 
 		// members
 		std::int32_t								 cellX;			 // 00
@@ -61,7 +57,6 @@ namespace RE
 	};
 	static_assert(sizeof(EXTERIOR_DATA) == 0x28);
 
-
 	class NavMeshArray
 	{
 	public:
@@ -69,7 +64,6 @@ namespace RE
 		BSTArray<BSTSmartPointer<NavMesh>> navMeshes;  // 00
 	};
 	static_assert(sizeof(NavMeshArray) == 0x18);
-
 
 	struct LOADED_CELL_DATA
 	{
@@ -102,7 +96,6 @@ namespace RE
 	};
 	static_assert(sizeof(LOADED_CELL_DATA) == 0x180);
 
-
 	class TESObjectCELL :
 		public TESForm,		// 000
 		public TESFullName	// 020
@@ -110,7 +103,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectCELL;
 		inline static constexpr auto FORMTYPE = FormType::Cell;
-
 
 		enum class Flag	 // DATA
 		{
@@ -126,12 +118,10 @@ namespace RE
 			kUseSkyLighting = 1 << 8
 		};
 
-
 		enum class CellState
 		{
 			kAttached = 7
 		};
-
 
 		struct ChangeFlags
 		{
@@ -147,7 +137,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -161,14 +150,12 @@ namespace RE
 			};
 		};
 
-
 		union CellData
 		{
 			EXTERIOR_DATA* exterior;  // XCLC
 			INTERIOR_DATA* interior;  // XCLL
 		};
 		static_assert(sizeof(CellData) == 0x8);
-
 
 		virtual ~TESObjectCELL();  // 00
 
@@ -218,7 +205,6 @@ namespace RE
 		void		   SetOwner(TESForm* a_owner);
 		void		   SetPublic(bool a_public);
 		bool		   UsesSkyLighting() const;
-
 
 		// members
 		mutable BSSpinLock						  grassCreateLock;	 // 030

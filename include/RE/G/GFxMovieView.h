@@ -7,7 +7,6 @@
 #include "RE/G/GRect.h"
 #include "RE/G/GViewport.h"
 
-
 namespace RE
 {
 	class GColor;
@@ -18,7 +17,6 @@ namespace RE
 	class GPoint3F;
 	class GViewport;
 	struct GStatBag;
-
 
 	class GFxMovieView :
 		public GFxMovie,	// 00
@@ -36,7 +34,6 @@ namespace RE
 			kNoBorder	// Scales the SWF content to fill whole viewport area, without distortion but possibly with some cropping while maintaining original aspect ratio
 		};
 
-
 		// Alignment type used for the SWF file stage, corresponds to Stage.align property in ActionScript.
 		enum class AlignType
 		{
@@ -51,7 +48,6 @@ namespace RE
 			kBottomRight
 		};
 
-
 		enum class HEResult
 		{
 			kNotHandled = 0,
@@ -60,7 +56,6 @@ namespace RE
 			kCompleted = (kHandled | kNoDefaultAction)
 		};
 
-
 		enum class HitTestType
 		{
 			kBounds = 0,
@@ -68,7 +63,6 @@ namespace RE
 			kButtonEvents = 2,
 			kShapesNoInvisible = 3
 		};
-
 
 		virtual ~GFxMovieView();
 

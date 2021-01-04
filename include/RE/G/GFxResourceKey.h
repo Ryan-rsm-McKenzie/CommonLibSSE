@@ -1,13 +1,11 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxResourceKey
 	{
 	public:
 		using KeyHandle = void*;
-
 
 		enum class KeyType
 		{
@@ -17,7 +15,6 @@ namespace RE
 			kGradient,
 			kSubImage
 		};
-
 
 		class KeyInterface
 		{
@@ -33,7 +30,6 @@ namespace RE
 			virtual const char* GetFileURL(KeyHandle a_data) const;								 // 06
 		};
 
-
 		class HashOp
 		{
 		public:
@@ -42,7 +38,6 @@ namespace RE
 				return a_key._keyInterface ? a_key._keyInterface->GetHashCode(a_key._keyData) : 0;
 			}
 		};
-
 
 		GFxResourceKey();
 		GFxResourceKey(KeyInterface* a_keyIntfc, KeyHandle a_keyHandle);

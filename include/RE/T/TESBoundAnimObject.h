@@ -2,14 +2,12 @@
 
 #include "RE/T/TESBoundObject.h"
 
-
 namespace RE
 {
 	class TESBoundAnimObject : public TESBoundObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESBoundAnimObject;
-
 
 		virtual ~TESBoundAnimObject();	// 00
 

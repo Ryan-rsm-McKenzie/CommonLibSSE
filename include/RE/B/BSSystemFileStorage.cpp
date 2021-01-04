@@ -1,6 +1,5 @@
 #include "RE/B/BSSystemFileStorage.h"
 
-
 namespace RE
 {
 	bool BSSystemFileStorage::IsGoodForRead() const

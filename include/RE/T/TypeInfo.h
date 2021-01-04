@@ -1,12 +1,10 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class ObjectTypeInfo;
-
 
 		class TypeInfo
 		{
@@ -32,7 +30,6 @@ namespace RE
 				// the type id for classes IS their class ptr
 				// an object is an array if its first bit is set
 			};
-
 
 			TypeInfo();
 			explicit TypeInfo(RawType a_type);

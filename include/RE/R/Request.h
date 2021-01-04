@@ -2,7 +2,6 @@
 
 #include "RE/B/BSIntrusiveRefCounted.h"
 
-
 namespace RE
 {
 	namespace bgs
@@ -14,9 +13,7 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_bgs__saveload__Request;
 
-
 				virtual ~Request();	 // 00
-
 
 				// members
 				std::uint32_t unk0C;  // 0C

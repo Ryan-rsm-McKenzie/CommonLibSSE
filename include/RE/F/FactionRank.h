@@ -1,10 +1,8 @@
 #pragma once
 
-
 namespace RE
 {
 	class TESFaction;
-
 
 	struct FACTION_RANK	 // SNAM
 	{

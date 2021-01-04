@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxWWHelper
@@ -13,7 +12,6 @@ namespace RE
 			kNonTerminatingChar = 1 << 1,
 			kAll = kNonStartingChar | kNonTerminatingChar
 		};
-
 
 		// An enumeration that describes bits in word-wrapping mode bit mask parameter of the Translator constructor.
 		enum class WordWrappingType
@@ -32,7 +30,6 @@ namespace RE
 			kAll = kAsian | kProhibition | kNoHangulWrap
 		};
 
-
 		struct CharBreakInfo
 		{
 			wchar_t										   ch;	   // 0
@@ -40,7 +37,6 @@ namespace RE
 			std::uint8_t								   pad3;   // 3
 		};
 		static_assert(sizeof(CharBreakInfo) == 0x4);
-
 
 		static bool	 FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
 		static bool	 IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch);
@@ -54,7 +50,6 @@ namespace RE
 		static UPInt FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos);
 		static bool	 IsVowel(wchar_t a_ch);
 		static UPInt FindWordWrapPos(WordWrappingType a_wwMode, UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen);
-
 
 		static inline CharBreakInfo charBreakInfoArray[] = {
 			{ 0x2010, BreakInfoFlags::kNonStartingChar, 0 },

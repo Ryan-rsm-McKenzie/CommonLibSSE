@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	struct ActivateParentID
@@ -13,19 +12,16 @@ namespace RE
 	};
 	static_assert(sizeof(ActivateParentID) == 0x8);
 
-
 	class ExtraMissingRefIDs : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMissingRefIDs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMissingRefIDs;
 
-
 		virtual ~ExtraMissingRefIDs();	// 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;	 // 01 - { return kMissingRefIDs; }
-
 
 		// members
 		ActivateParentID* unk10;  // 10

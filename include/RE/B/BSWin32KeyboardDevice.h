@@ -2,14 +2,12 @@
 
 #include "RE/B/BSKeyboardDevice.h"
 
-
 namespace RE
 {
 	class BSWin32KeyboardDevice : public BSKeyboardDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32KeyboardDevice;
-
 
 		virtual ~BSWin32KeyboardDevice();  // 00
 
@@ -22,7 +20,6 @@ namespace RE
 		virtual void Unk_0A(void) override;			  // 0A - { return; }
 
 		bool IsPressed(std::uint32_t a_keyCode) const;
-
 
 		// members
 		std::uint64_t unk070;			 // 070

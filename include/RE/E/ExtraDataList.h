@@ -9,12 +9,10 @@
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"
 
-
 namespace RE
 {
 	class InventoryChanges;
 	class TESBoundObject;
-
 
 	class ExtraDataList
 	{
@@ -97,10 +95,8 @@ namespace RE
 			pointer _cur;
 		};
 
-
 		using iterator = iterator_base<BSExtraData>;
 		using const_iterator = iterator_base<const BSExtraData>;
-
 
 		ExtraDataList();
 		~ExtraDataList();
@@ -167,16 +163,13 @@ namespace RE
 			bool HasType(std::uint32_t a_type) const;
 			void MarkType(std::uint32_t a_type, bool a_cleared);
 
-
 			// members
 			std::uint8_t bits[0x18];  // 00
 		};
 		static_assert(sizeof(PresenceBitfield) == 0x18);
 
-
 		void MarkType(std::uint32_t a_type, bool a_cleared);
 		void MarkType(ExtraDataType a_type, bool a_cleared);
-
 
 		// members
 		BSExtraData*			_data;		// 00

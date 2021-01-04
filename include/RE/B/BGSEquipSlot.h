@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSEquipSlot : public TESForm
@@ -13,7 +12,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSEquipSlot;
 		inline static constexpr auto FORMTYPE = FormType::EquipSlot;
 
-
 		enum class Flag	 // DATA
 		{
 			kNone = 0,
@@ -21,7 +19,6 @@ namespace RE
 			kParentsOptional = 1 << 1,
 			kItemSlot = 1 << 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -32,7 +29,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSEquipSlot();  // 00
 
 		// override (TESForm)
@@ -40,7 +36,6 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
-
 
 		// members
 		BSTArray<BGSEquipSlot*>				  parentSlots;	// 20 - PNAM

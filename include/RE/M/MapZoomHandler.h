@@ -2,14 +2,12 @@
 
 #include "RE/M/MapInputHandler.h"
 
-
 namespace RE
 {
 	class MapZoomHandler : public MapInputHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MapZoomHandler;
-
 
 		virtual ~MapZoomHandler();	// 00
 

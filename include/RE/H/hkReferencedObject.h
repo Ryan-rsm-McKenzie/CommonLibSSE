@@ -2,18 +2,15 @@
 
 #include "RE/H/hkBaseObject.h"
 
-
 namespace RE
 {
 	class hkClass;
 	class hkStatisticsCollector;
 
-
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkReferencedObject;
-
 
 		enum class LockMode
 		{
@@ -22,12 +19,10 @@ namespace RE
 			kManual
 		};
 
-
 		enum
 		{
 			kMemSize = 0x7FFF
 		};
-
 
 		hkReferencedObject();
 		virtual ~hkReferencedObject() = default;  // 00
@@ -40,7 +35,6 @@ namespace RE
 		std::int32_t GetAllocatedSize() const;
 		std::int32_t GetReferenceCount() const;
 		void		 RemoveReference() const;
-
 
 		// members
 		std::uint16_t				  memSizeAndFlags;	// 08

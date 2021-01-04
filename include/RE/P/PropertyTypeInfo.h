@@ -4,13 +4,11 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class IFunction;
-
 
 		struct PropertyTypeInfo
 		{
@@ -18,7 +16,6 @@ namespace RE
 			enum class Permissions
 			{
 			};
-
 
 			// members
 			BSFixedString								 parentObjName;	 // 00

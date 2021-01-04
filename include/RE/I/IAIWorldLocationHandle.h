@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class IAIWorldLocation;
@@ -8,12 +7,10 @@ namespace RE
 	class TESObjectREFR;
 	struct AIWorldLocationContext;
 
-
 	class IAIWorldLocationHandle
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IAIWorldLocationHandle;
-
 
 		virtual ~IAIWorldLocationHandle();	// 00
 

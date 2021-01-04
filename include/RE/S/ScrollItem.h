@@ -7,7 +7,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class ScrollItem :
@@ -22,7 +21,6 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ScrollItem;
 		inline static constexpr auto FORMTYPE = FormType::Scroll;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -31,7 +29,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		virtual ~ScrollItem();	// 00
 

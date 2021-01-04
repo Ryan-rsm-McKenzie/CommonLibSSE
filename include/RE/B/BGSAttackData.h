@@ -5,7 +5,6 @@
 #include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	struct AttackData  // ATKD
@@ -23,7 +22,6 @@ namespace RE
 			kOverrideData = 1 << 31
 		};
 
-
 		// members
 		float										damageMult;		// 00
 		float										attackChance;	// 04
@@ -40,20 +38,16 @@ namespace RE
 	};
 	static_assert(sizeof(AttackData) == 0x38);
 
-
 	NiSmartPointer(BGSAttackData);
-
 
 	class BGSAttackData : public NiRefObject
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAttackData;
 
-
 		virtual ~BGSAttackData();  // 00
 
 		bool IsLeftAttack() const;
-
 
 		// members
 		BSFixedString event;  // 10 - ATKE

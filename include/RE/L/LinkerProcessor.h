@@ -6,7 +6,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/I/IObjectProcessor.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -15,12 +14,10 @@ namespace RE
 		class IVirtualMachine;
 		class ObjectTypeInfo;
 
-
 		class LinkerProcessor : public IObjectProcessor
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__LinkerProcessor;
-
 
 			virtual ~LinkerProcessor();	 // 00
 
@@ -28,7 +25,6 @@ namespace RE
 			virtual IObjectProcessor* Clone() override;									   // 01
 			virtual void			  SetLoader(ILoader* a_loader) override;			   // 02 - { loader = a_loader; }
 			virtual bool			  Process(const BSFixedString& a_className) override;  // 03
-
 
 			// members
 			IVirtualMachine*											vm;					 // 08

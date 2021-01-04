@@ -5,17 +5,14 @@
 #include "RE/N/NiNode.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class TESCameraState;
-
 
 	class TESCamera
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCamera;
-
 
 		virtual ~TESCamera();  // 00
 
@@ -23,7 +20,6 @@ namespace RE
 		virtual void Update();								   // 02
 
 		void SetState(TESCameraState* a_state);
-
 
 		// members
 		BSTPoint2<float>				rotationInput;	   // 08

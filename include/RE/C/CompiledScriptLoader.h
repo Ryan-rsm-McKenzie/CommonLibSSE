@@ -3,7 +3,6 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/I/ILoader.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -11,12 +10,10 @@ namespace RE
 		class ErrorLogger;
 		class IStore;
 
-
 		class CompiledScriptLoader : public ILoader
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__CompiledScriptLoader;
-
 
 			virtual ~CompiledScriptLoader();  // 00
 
@@ -24,7 +21,6 @@ namespace RE
 			virtual ILoader* Clone() override;																	// 01
 			virtual void	 SetScriptStore(const BSTSmartPointer<IStore>& a_store) override;					// 02
 			virtual bool	 GetClass(const char* a_name, BSScript::UnlinkedTypes::Object& a_object) override;	// 03
-
 
 			// members
 			ErrorLogger*			errorHandler;  // 08

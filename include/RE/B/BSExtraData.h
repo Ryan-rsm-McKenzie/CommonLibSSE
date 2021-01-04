@@ -3,7 +3,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	class BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSExtraData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNone;
-
 
 		BSExtraData();
 		virtual ~BSExtraData() = default;  // 00
@@ -29,12 +27,10 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-
 		// members
 		BSExtraData* next;	// 08
 	};
 	static_assert(sizeof(BSExtraData) == 0x10);
-
 
 	template <class T>
 	T* BSExtraData::Create(std::uintptr_t a_vtbl)

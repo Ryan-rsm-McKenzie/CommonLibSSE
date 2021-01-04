@@ -3,7 +3,6 @@
 #include "RE/H/hkRotation.h"
 #include "RE/H/hkVector4.h"
 
-
 namespace RE
 {
 	class hkTransform

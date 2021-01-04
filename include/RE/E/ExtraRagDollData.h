@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	struct RagDollBone
@@ -15,7 +14,6 @@ namespace RE
 		NiPoint3	  boneRot;	// 10
 	};
 	static_assert(sizeof(RagDollBone) == 0x1C);
-
 
 	struct RagDollData
 	{
@@ -29,20 +27,17 @@ namespace RE
 	};
 	static_assert(sizeof(RagDollData) == 0x20);
 
-
 	class ExtraRagDollData : public BSExtraData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRagDollData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRagDollData;
 
-
 		virtual ~ExtraRagDollData();  // 00
 
 		// override (BSExtraData)
 		virtual ExtraDataType GetType() const override;								// 01 - { return kRagDollData; }
 		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
 
 		// members
 		RagDollData* ragDollData;  // 10

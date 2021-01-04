@@ -4,12 +4,10 @@
 #include "RE/F/FormTypes.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class QueuedFile;
 	class TESModelTextureSwap;
-
 
 	struct DestructibleObjectStage
 	{
@@ -23,7 +21,6 @@ namespace RE
 			kIgnoreExternalDamage = 1 << 3,
 			kBecomesDynamic = 1 << 4
 		};
-
 
 		// members
 		std::int8_t														modelDamageStage;	  // 00 - DSTD~
@@ -39,7 +36,6 @@ namespace RE
 	};
 	static_assert(sizeof(DestructibleObjectStage) == 0x28);
 
-
 	struct DestructibleObjectData
 	{
 	public:
@@ -48,7 +44,6 @@ namespace RE
 			kNone = 0,
 			kVatsTargetable = 1 << 0
 		};
-
 
 		// members
 		std::uint32_t						 health;					  // 00 - DEST~
@@ -62,12 +57,10 @@ namespace RE
 	};
 	static_assert(sizeof(DestructibleObjectData) == 0x20);
 
-
 	class BGSDestructibleObjectForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDestructibleObjectForm;
-
 
 		virtual ~BGSDestructibleObjectForm();  // 00
 
@@ -75,7 +68,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;				// 01
 		virtual void ClearDataComponent() override;						// 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
-
 
 		// members
 		DestructibleObjectData* data;  // 08

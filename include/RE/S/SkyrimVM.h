@@ -20,7 +20,6 @@
 #include "RE/S/SkyrimScriptObjectBindPolicy.h"
 #include "RE/S/SkyrimScriptStore.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -30,7 +29,6 @@ namespace RE
 		class IVMSaveLoadInterface;
 		struct StatsEvent;
 	}
-
 
 	struct PositionPlayerEvent;
 	struct TESActivateEvent;
@@ -81,7 +79,6 @@ namespace RE
 	struct TESTriggerEvent;
 	struct TESTriggerLeaveEvent;
 	struct TESUniqueIDChangeEvent;
-
 
 	class SkyrimVM :
 		public BSTSingletonSDM<SkyrimVM>,					   // 01A0
@@ -142,13 +139,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
 
-
 		virtual ~SkyrimVM();  // 00
 
 		static SkyrimVM* GetSingleton();
 
 		bool QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor);
-
 
 		// members
 		BSTSmartPointer<BSScript::IVirtualMachine>							  impl;						  // 0200

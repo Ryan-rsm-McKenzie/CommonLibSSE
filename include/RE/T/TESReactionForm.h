@@ -5,7 +5,6 @@
 #include "RE/F/FightReactions.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	struct GROUP_REACTION  // XNAM
@@ -16,12 +15,10 @@ namespace RE
 	};
 	static_assert(sizeof(GROUP_REACTION) == 0x10);
 
-
 	class TESReactionForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESReactionForm;
-
 
 		virtual ~TESReactionForm();	 // 00
 
@@ -29,7 +26,6 @@ namespace RE
 		virtual void InitializeDataComponent() override;				// 01
 		virtual void ClearDataComponent() override;						// 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
-
 
 		// members
 		BSSimpleList<GROUP_REACTION*>			 reactions;		 // 08 - XNAM

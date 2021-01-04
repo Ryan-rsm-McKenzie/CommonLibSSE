@@ -3,7 +3,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSRelationship : public TESForm
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRelationship;
 		inline static constexpr auto FORMTYPE = FormType::Relationship;
-
 
 		enum class RELATIONSHIP_LEVEL
 		{
@@ -26,13 +24,11 @@ namespace RE
 			kArchnemesis = 8
 		};
 
-
 		enum class Flag
 		{
 			kNone = 0,
 			kSecret = 1 << 7
 		};
-
 
 		struct ChangeFlags
 		{
@@ -41,7 +37,6 @@ namespace RE
 				kRelationshipData = 1 << 1
 			};
 		};
-
 
 		struct RecordFlags
 		{
@@ -53,7 +48,6 @@ namespace RE
 			};
 		};
 
-
 		virtual ~BGSRelationship();	 // 00
 
 		// override (TESForm)
@@ -63,7 +57,6 @@ namespace RE
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;	   // 0F
 		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10
 		virtual void InitItemImpl() override;						   // 13
-
 
 		// members
 		TESNPC*											   npc1;	   // 20 - DATA~

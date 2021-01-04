@@ -16,7 +16,6 @@
 #include "RE/L/LinkerProcessor.h"
 #include "RE/S/SuspendedStack.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -34,11 +33,9 @@ namespace RE
 		struct IObjectHandlePolicy;
 		struct StatsEvent;
 
-
 		namespace Internal
 		{
 			class CodeTasklet;
-
 
 			class VirtualMachine :
 				public IVirtualMachine,			   // 0000
@@ -50,7 +47,6 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__VirtualMachine;
 
-
 				struct QueuedUnbindRefs
 				{
 				public:
@@ -60,7 +56,6 @@ namespace RE
 					std::uint32_t			pad0C;	   // 0C
 				};
 				static_assert(sizeof(QueuedUnbindRefs) == 0x10);
-
 
 				virtual ~VirtualMachine();	// 00
 
@@ -132,7 +127,6 @@ namespace RE
 				virtual bool	 InitObjectProperties(BSTSmartPointer<Object>& a_objPtr, void* a_property, bool a_arg3) override;										   // 0A
 
 				static VirtualMachine* GetSingleton();
-
 
 				// members
 				ErrorLogger*											   errorLogger;					// 0080

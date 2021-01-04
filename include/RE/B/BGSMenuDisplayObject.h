@@ -2,17 +2,14 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
 	class TESBoundObject;
-
 
 	class BGSMenuDisplayObject : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMenuDisplayObject;
-
 
 		virtual ~BGSMenuDisplayObject();  // 00
 
@@ -23,7 +20,6 @@ namespace RE
 
 		// add
 		virtual TESBoundObject* GetMenuDisplayObject() const;  // 04 - { return menuDispObject; }
-
 
 		// members
 		TESBoundObject* menuDispObject;	 // 08 - MDOB

@@ -5,7 +5,6 @@
 #include "RE/L/Location.h"
 #include "RE/S/Stream.h"
 
-
 namespace RE
 {
 	namespace BSResource
@@ -16,7 +15,6 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource____DevNull;
-
 
 			struct NullStream : public Stream
 			{
@@ -33,7 +31,6 @@ namespace RE
 			};
 			static_assert(sizeof(NullStream) == 0x10);
 
-
 			virtual ~DevNull();	 // 00
 
 			// override (Location)
@@ -41,7 +38,6 @@ namespace RE
 			virtual void	  DoUnmount() override;																									   // 02 - { return; }
 			virtual ErrorCode DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_readOnly) override;  // 03
 			virtual ErrorCode DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) override;										   // 05 - { return ErrorCode::kNotExist; }
-
 
 			// members
 			std::uint8_t			pad11;		 // 11

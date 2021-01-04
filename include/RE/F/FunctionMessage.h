@@ -2,18 +2,15 @@
 
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Stack;
 
-
 		namespace Internal
 		{
 			class IFuncCallQuery;
-
 
 			struct FunctionMessage
 			{
@@ -24,7 +21,6 @@ namespace RE
 					kCall = 1,
 					kReturn = 2
 				};
-
 
 				// members
 				Type							type;		// 00

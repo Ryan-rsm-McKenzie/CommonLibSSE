@@ -2,7 +2,6 @@
 
 #include "RE/I/IBSTCreator.h"
 
-
 namespace RE
 {
 	// 08

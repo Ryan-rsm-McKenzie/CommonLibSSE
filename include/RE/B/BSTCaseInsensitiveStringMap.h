@@ -2,7 +2,6 @@
 
 #include "RE/N/NiTStringMap.h"
 
-
 namespace RE
 {
 	// 28
@@ -14,7 +13,6 @@ namespace RE
 
 	public:
 		using key_type = base::key_type;
-
 
 		virtual ~BSTCaseInsensitiveStringMap();	 // 00
 

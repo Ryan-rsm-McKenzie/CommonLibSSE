@@ -5,17 +5,14 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/ThirdPersonState.h"
 
-
 namespace RE
 {
 	class NiAVObject;
-
 
 	class BleedoutCameraState : public ThirdPersonState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BleedoutCameraState;
-
 
 		virtual ~BleedoutCameraState();	 // 00
 
@@ -23,7 +20,6 @@ namespace RE
 		virtual void Begin() override;												 // 01
 		virtual void End() override;												 // 02
 		virtual void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;	 // 03
-
 
 		// members
 		NiMatrix3			  rotationMtx;		  // 0E8

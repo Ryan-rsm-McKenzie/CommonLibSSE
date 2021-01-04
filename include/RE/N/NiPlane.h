@@ -2,7 +2,6 @@
 
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class NiPlane

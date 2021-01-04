@@ -1,12 +1,10 @@
 #include "RE/E/ExtraCanTalkToPlayer.h"
 
-
 namespace RE
 {
 	ExtraCanTalkToPlayer::ExtraCanTalkToPlayer() :
 		ExtraCanTalkToPlayer(false)
 	{}
-
 
 	ExtraCanTalkToPlayer::ExtraCanTalkToPlayer(bool a_canTalk) :
 		BSExtraData(),
@@ -18,7 +16,6 @@ namespace RE
 		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraCanTalkToPlayer::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
-
 
 	ExtraDataType ExtraCanTalkToPlayer::GetType() const
 	{

@@ -1,6 +1,5 @@
 #include "RE/E/Effect.h"
 
-
 namespace RE
 {
 	Effect::EffectItem::EffectItem() :
@@ -8,7 +7,6 @@ namespace RE
 		area(0),
 		duration(0)
 	{}
-
 
 	Effect::Effect() :
 		effectItem(),

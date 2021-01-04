@@ -7,11 +7,9 @@
 #include "RE/G/GStats.h"
 #include "RE/G/GString.h"
 
-
 namespace RE
 {
 	class GFxMovieRoot;
-
 
 	namespace GFxValueImpl
 	{
@@ -88,7 +86,6 @@ namespace RE
 		inline constexpr bool is_integer_v = is_integer<T>::value;
 	}
 
-
 	class GFxValue
 	{
 	private:
@@ -118,7 +115,6 @@ namespace RE
 			kConvertStringW = kConvertBit | kStringW
 		};
 
-
 		// DisplayInfo is a structure to modify display properties of a display object (MovieClips, TextField, Button). This structure is used in conjunction with GetDisplayInfo/SetDisplayInfo.
 		class DisplayInfo
 		{
@@ -142,7 +138,6 @@ namespace RE
 				kPerspMatrix3D = 1 << 12,
 				kViewMatrix3D = 1 << 13
 			};
-
 
 			DisplayInfo();						  // Initializes the DisplayInfo structure.
 			DisplayInfo(double a_x, double a_y);  // Initializes the DisplayInfo structure.
@@ -189,7 +184,6 @@ namespace RE
 			void SetFlags(Flag a_flags);
 			void ClearFlags(Flag a_flags);
 
-
 			// members
 			double								  _x;			   // 00
 			double								  _y;			   // 08
@@ -214,7 +208,6 @@ namespace RE
 		};
 		static_assert(sizeof(DisplayInfo) == 0xE8);
 
-
 		class ObjectInterface : public GNewOverrideBase<GFxStatMovieViews::kGFxStatMV_Other_Mem>
 		{
 		public:
@@ -227,7 +220,6 @@ namespace RE
 				virtual void Visit(const char* a_name, const GFxValue& a_val) = 0;	// 01
 			};
 
-
 			class ArrVisitor
 			{
 			public:
@@ -236,7 +228,6 @@ namespace RE
 				// add
 				virtual void Visit(std::uint32_t a_idx, const GFxValue& a_val) = 0;	 // 01
 			};
-
 
 			ObjectInterface(GFxMovieRoot* a_movieRoot);
 
@@ -272,10 +263,8 @@ namespace RE
 		};
 		static_assert(sizeof(ObjectInterface) == 0x8);
 
-
 		using ObjectVisitor = ObjectInterface::ObjVisitor;
 		using ArrayVisitor = ObjectInterface::ArrVisitor;
-
 
 		GFxValue();
 		GFxValue(ValueType a_rhs);
@@ -406,7 +395,6 @@ namespace RE
 		void ReleaseManagedValue();
 		void ChangeType(ValueType a_type);
 
-
 		union ValueUnion
 		{
 			constexpr ValueUnion() :
@@ -422,7 +410,6 @@ namespace RE
 			void*			obj;
 		};
 		static_assert(sizeof(ValueUnion) == 0x8);
-
 
 		// members
 		ObjectInterface*						   _objectInterface;  // 00

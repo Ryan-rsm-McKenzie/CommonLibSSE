@@ -1,16 +1,13 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkpEntity;
-
 
 	class hkpEntityListener
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpEntityListener;
-
 
 		virtual ~hkpEntityListener();  // 00
 

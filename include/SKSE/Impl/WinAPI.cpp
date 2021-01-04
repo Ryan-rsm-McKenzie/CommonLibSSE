@@ -176,25 +176,22 @@ namespace SKSE::WinAPI
 				static_cast<::DWORD>(a_size)));
 	}
 
-	void*(GetModuleHandle)(
-		const char* a_moduleName) noexcept
+	void*(GetModuleHandle)(const char* a_moduleName) noexcept
 	{
 		return static_cast<void*>(
 			::GetModuleHandleA(
 				static_cast<::LPCSTR>(a_moduleName)));
 	}
 
-	void*(GetModuleHandle)(
-		const wchar_t* a_moduleName) noexcept
+	void*(GetModuleHandle)(const wchar_t* a_moduleName) noexcept
 	{
 		return static_cast<void*>(
 			::GetModuleHandleW(
 				static_cast<::LPCWSTR>(a_moduleName)));
 	}
 
-	void*(GetProcAddress)(
-		void*		a_module,
-		const char* a_procName) noexcept
+	void*(GetProcAddress)(void* a_module,
+		const char*				a_procName) noexcept
 	{
 		return reinterpret_cast<void*>(
 			::GetProcAddress(
@@ -253,8 +250,7 @@ namespace SKSE::WinAPI
 			static_cast<::UINT>(a_exitCode));
 	}
 
-	void*(TlsGetValue)(
-		std::uint32_t a_tlsIndex) noexcept
+	void*(TlsGetValue)(std::uint32_t a_tlsIndex) noexcept
 	{
 		return static_cast<void*>(
 			::TlsGetValue(

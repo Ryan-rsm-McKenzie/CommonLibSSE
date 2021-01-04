@@ -3,14 +3,12 @@
 #include "RE/B/BSString.h"
 #include "RE/I/IUIMessageData.h"
 
-
 namespace RE
 {
 	class HUDData : public IUIMessageData
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_HUDData;
-
 
 		enum class Type
 		{
@@ -27,7 +25,6 @@ namespace RE
 			kWordOfPower2 = 22
 		};
 
-
 		enum class Discovery
 		{
 			kCity = 1,
@@ -39,9 +36,7 @@ namespace RE
 			kDungeon15 = 15
 		};
 
-
 		virtual ~HUDData();	 // 00
-
 
 		// members
 		stl::enumeration<Type, std::uint32_t>	   type;	   // 10

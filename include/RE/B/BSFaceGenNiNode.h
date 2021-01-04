@@ -5,19 +5,16 @@
 #include "RE/N/NiNode.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSFaceGenAnimationData;
 	class NiNode;
-
 
 	class BSFaceGenNiNode : public NiNode
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFaceGenNiNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
-
 
 		virtual ~BSFaceGenNiNode();	 // 00
 
@@ -28,7 +25,6 @@ namespace RE
 
 		// add
 		virtual void FixSkinInstances(NiNode* a_skeleton, bool a_arg2);	 // 3E
-
 
 		// members
 		NiMatrix3						  baseRotation;	  // 128
