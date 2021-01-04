@@ -83,6 +83,14 @@ namespace RE
 		return operator*=(static_cast<float>(1.0) / a_scalar);
 	}
 
+	NiPoint3 NiPoint3::Cross(const NiPoint3& a_pt) const
+	{
+		return NiPoint3(
+			y * a_pt.z - z * a_pt.y,
+			z * a_pt.x - x * a_pt.z,
+			x * a_pt.y - y * a_pt.x);
+	}
+
 	float NiPoint3::GetDistance(const NiPoint3& a_pt) const noexcept
 	{
 		return std::sqrtf(GetSquaredDistance(a_pt));
@@ -96,14 +104,21 @@ namespace RE
 		return dx * dx + dy * dy + dz * dz;
 	}
 
+	float NiPoint3::Length() const
+	{
+		return std::sqrtf(x * x + y * y + z * z);
+	}
+
 	float NiPoint3::SqrLength() const
 	{
 		return x * x + y * y + z * z;
 	}
 
-	float NiPoint3::Length() const
+	NiPoint3 NiPoint3::UnitCross(const NiPoint3& a_pt) const
 	{
-		return std::sqrtf(x * x + y * y + z * z);
+		auto cross = Cross(a_pt);
+		cross.Unitize();
+		return cross;
 	}
 
 	float NiPoint3::Unitize()
@@ -118,20 +133,5 @@ namespace RE
 			length = 0.0;
 		}
 		return length;
-	}
-
-	NiPoint3 NiPoint3::Cross(const NiPoint3& a_pt) const
-	{
-		return NiPoint3(
-			y * a_pt.z - z * a_pt.y,
-			z * a_pt.x - x * a_pt.z,
-			x * a_pt.y - y * a_pt.x);
-	}
-
-	NiPoint3 NiPoint3::UnitCross(const NiPoint3& a_pt) const
-	{
-		auto cross = Cross(a_pt);
-		cross.Unitize();
-		return cross;
 	}
 }
