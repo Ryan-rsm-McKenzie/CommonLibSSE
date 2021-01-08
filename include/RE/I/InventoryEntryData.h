@@ -48,6 +48,7 @@ namespace RE
 		}
 
 		[[nodiscard]] float GetWeight() const;
+		[[nodiscard]] bool	GetWorn() const;
 		[[nodiscard]] bool	IsEnchanted() const;
 		[[nodiscard]] bool	IsLeveled() const;
 

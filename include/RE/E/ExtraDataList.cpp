@@ -12,6 +12,8 @@
 #include "RE/E/ExtraReferenceHandle.h"
 #include "RE/E/ExtraSoul.h"
 #include "RE/E/ExtraTextDisplayData.h"
+#include "RE/E/ExtraWorn.h"
+#include "RE/E/ExtraWornLeft.h"
 #include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESForm.h"
@@ -252,6 +254,15 @@ namespace RE
 	{
 		auto xSoul = GetByType<ExtraSoul>();
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
+	}
+
+	bool ExtraDataList::GetWorn() const
+	{
+		if (HasType<ExtraWorn>() || HasType<ExtraWornLeft>()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)

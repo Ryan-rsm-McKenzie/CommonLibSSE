@@ -167,6 +167,19 @@ namespace RE
 		return object ? object->GetWeight() : -1.0F;
 	}
 
+	bool InventoryEntryData::GetWorn() const
+	{
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				if (xList && xList->GetWorn()) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	bool InventoryEntryData::IsEnchanted() const
 	{
 		if (object) {
