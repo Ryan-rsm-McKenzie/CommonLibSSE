@@ -74,9 +74,9 @@ namespace RE
 		TESTopicInfo*				 lastTopicInfo;			// 78 - used if the dialogue menu was closed but the NPC is still talking
 		BSTArray<BGSDialogueBranch*> blockingBranches;		// 80
 		BSTArray<BGSDialogueBranch*> topLevelBranches;		// 98
-		bool						 unkB0;					// B0
+		bool						 isGreetingPlayer;		// B0
 		bool						 unkB1;					// B1
-		bool						 unkB2;					// B2
+		bool						 isSayingGoodbye;		// B2
 		bool						 unkB3;					// B3
 		bool						 unkB4;					// B4
 		bool						 unkB5;					// B5
