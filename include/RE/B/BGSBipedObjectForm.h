@@ -24,8 +24,23 @@ namespace RE
 			kLongHair = 1 << 11,
 			kCirclet = 1 << 12,
 			kEars = 1 << 13,
+			kUnnamed44 = 1 << 14,
+			kUnnamed45 = 1 << 15,
+			kUnnamed46 = 1 << 16,
+			kUnnamed47 = 1 << 17,
+			kUnnamed48 = 1 << 18,
+			kUnnamed49 = 1 << 19,
 			kDecapitateHead = 1 << 20,
 			kDecapitate = 1 << 21,
+			kUnnamed52 = 1 << 22,
+			kUnnamed53 = 1 << 23,
+			kUnnamed54 = 1 << 24,
+			kUnnamed55 = 1 << 25,
+			kUnnamed56 = 1 << 26,
+			kUnnamed57 = 1 << 27,
+			kUnnamed58 = 1 << 28,
+			kUnnamed59 = 1 << 29,
+			kUnnamed60 = 1 << 30,
 			kFX01 = 1 << 31
 		};
 
