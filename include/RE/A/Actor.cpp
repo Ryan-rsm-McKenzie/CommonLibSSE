@@ -348,10 +348,10 @@ namespace RE
 		return nullptr;
 	}
 
-	TESObjectARMO* Actor::GetWornArmor(FormID id)
+	TESObjectARMO* Actor::GetWornArmor(FormID a_formID)
 	{
-		auto inv = GetInventory([id](TESBoundObject& a_object) -> bool {
-			return a_object.IsArmor() && a_object.GetFormID() == id;
+		auto inv = GetInventory([a_formID](TESBoundObject& a_object) -> bool {
+			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
 		});
 
 		for (auto& [item, invData] : inv) {
