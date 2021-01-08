@@ -258,11 +258,7 @@ namespace RE
 
 	bool ExtraDataList::GetWorn() const
 	{
-		if (HasType<ExtraWorn>() || HasType<ExtraWornLeft>()) {
-			return true;
-		}
-
-		return false;
+		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
 	}
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
