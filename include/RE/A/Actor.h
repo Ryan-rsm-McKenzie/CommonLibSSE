@@ -5,6 +5,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueOwner.h"
 #include "RE/A/ActorValues.h"
+#include "RE/B/BGSBipedObjectForm.h"
 #include "RE/B/BGSEntryPointPerkEntry.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSPointerHandleSmartPointer.h"
@@ -30,6 +31,7 @@ namespace RE
 	class bhkCharacterController;
 	class bhkCharacterMoveFinishEvent;
 	class BipedAnim;
+	class BSGeometry;
 	class BSTransformDeltaEvent;
 	class CombatController;
 	class CombatGroup;
@@ -493,10 +495,15 @@ namespace RE
 		TESForm*					 GetEquippedObject(bool a_leftHand) const;
 		std::int32_t				 GetGoldAmount();
 		ActorHandle					 GetHandle();
+		NiAVObject*					 GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float						 GetHeight();
 		std::uint16_t				 GetLevel() const;
 		ObjectRefHandle				 GetOccupiedFurniture() const;
 		TESRace*					 GetRace() const;
+		TESObjectARMO*				 GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		SOUL_LEVEL					 GetSoulLevel() const;
+		TESObjectARMO*				 GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		TESObjectARMO*				 GetWornArmor(FormID a_ID);
 		bool						 HasPerk(BGSPerk* a_perk) const;
 		void						 InterruptCast(bool a_restoreMagicka) const;
 		bool						 IsAIEnabled() const;
@@ -526,6 +533,7 @@ namespace RE
 		void						 UpdateHairColor();
 		void						 UpdateSkinColor();
 		void						 UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
+		NiAVObject*					 VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma);
 		bool						 VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool						 WouldBeStealing(const TESObjectREFR* a_target) const;
 

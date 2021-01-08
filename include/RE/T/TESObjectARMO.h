@@ -62,7 +62,8 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
 
-		float GetArmorRating();
+		TESObjectARMA* GetArmorAddonByMask(TESRace* a_race, BGSBipedObjectForm::BipedObjectSlot a_slot);
+		float		   GetArmorRating();
 
 		// members
 		std::uint32_t			 armorRating;	 // 200 - DNAM - CK value * 100 as a std::uint32_t

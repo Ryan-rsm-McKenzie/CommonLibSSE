@@ -5,6 +5,7 @@
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/B/BSFaceGenAnimationData.h"
+#include "RE/B/BSFaceGenNiNode.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
 #include "RE/F/FormTraits.h"
@@ -238,6 +239,24 @@ namespace RE
 		return ActorHandle(this);
 	}
 
+	NiAVObject* Actor::GetHeadPartObject(BGSHeadPart::HeadPartType a_type)
+	{
+		auto faceNode = GetFaceNodeSkinned();
+		auto actorBase = GetActorBase();
+
+		if (faceNode && actorBase) {
+			const auto facePart = actorBase->GetCurrentHeadPartByType(a_type);
+			if (facePart) {
+				auto headNode = faceNode->GetObjectByName(facePart->formEditorID);
+				if (headNode) {
+					return headNode;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
 	float Actor::GetHeight()
 	{
 		const auto min = GetBoundMin();
@@ -278,6 +297,71 @@ namespace RE
 	{
 		auto base = GetActorBase();
 		return base ? base->race : nullptr;
+	}
+
+	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		if (a_slot == BGSBipedObjectForm::BipedObjectSlot::kNone) {
+			return nullptr;
+		}
+
+		TESObjectARMO* equipped = nullptr;
+		equipped = GetWornArmor(a_slot);
+		if (!equipped) {
+			auto actorBase = GetActorBase();
+			if (actorBase) {
+				equipped = actorBase->skin;
+			}
+			if (!equipped) {
+				auto baseRace = GetRace();
+				if (baseRace) {
+					equipped = baseRace->skin;
+				}
+			}
+		}
+		return equipped;
+	}
+
+	SOUL_LEVEL Actor::GetSoulLevel() const
+	{
+		using func_t = decltype(&Actor::GetSoulLevel);
+		REL::Relocation<func_t> func{ REL::ID(37862) };
+		return func(this);
+	}
+
+	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
+			return a_object.IsArmor();
+		});
+
+		for (auto& [item, invData] : inv) {
+			auto& [count, entry] = invData;
+			if (count > 0 && entry->GetWorn()) {
+				auto armor = item->As<TESObjectARMO>();
+				if (armor && armor->HasPartOf(a_slot)) {
+					return armor;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
+	TESObjectARMO* Actor::GetWornArmor(FormID id)
+	{
+		auto inv = GetInventory([id](TESBoundObject& a_object) -> bool {
+			return a_object.IsArmor() && a_object.GetFormID() == id;
+		});
+
+		for (auto& [item, invData] : inv) {
+			auto& [count, entry] = invData;
+			if (count > 0 && entry->GetWorn()) {
+				return item->As<TESObjectARMO>();;
+			}
+		}
+
+		return nullptr;
 	}
 
 	bool Actor::HasPerk(BGSPerk* a_perk) const
@@ -494,6 +578,33 @@ namespace RE
 		using func_t = decltype(&Actor::UpdateWeaponAbility);
 		REL::Relocation<func_t> func{ Offset::Actor::UpdateWeaponAbility };
 		return func(this, a_weapon, a_extraData, a_leftHand);
+	}
+
+	NiAVObject* Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma)
+	{
+		char addonString[WinAPI::MAX_PATH];
+		std::memset(addonString, 0, WinAPI::MAX_PATH);
+		a_arma->GetNodeName(addonString, this, a_armor, -1);
+
+		NiNode* skeletonRoot[2] = {};
+		skeletonRoot[0] = Get3D(0)->AsNode();
+		skeletonRoot[1] = Get3D(1)->AsNode();
+
+		if (skeletonRoot[1] == skeletonRoot[0]) {
+			skeletonRoot[1] = nullptr;
+		}
+
+		for (auto& root : skeletonRoot) {
+			if (root) {
+				BSFixedString addonName(addonString);
+				auto armorObject = root->GetObjectByName(addonName);
+				if (armorObject) {
+					return armorObject;
+				}
+			}
+		}
+
+		return nullptr;
 	}
 
 	bool Actor::VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor)
