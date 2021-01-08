@@ -305,8 +305,7 @@ namespace RE
 			return nullptr;
 		}
 
-		TESObjectARMO* equipped = nullptr;
-		equipped = GetWornArmor(a_slot);
+		auto equipped = GetWornArmor(a_slot);
 		if (!equipped) {
 			auto actorBase = GetActorBase();
 			if (actorBase) {
@@ -319,6 +318,7 @@ namespace RE
 				}
 			}
 		}
+
 		return equipped;
 	}
 

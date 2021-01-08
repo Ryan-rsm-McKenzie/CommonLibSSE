@@ -31,7 +31,6 @@ namespace RE
 	class bhkCharacterController;
 	class bhkCharacterMoveFinishEvent;
 	class BipedAnim;
-	class BSGeometry;
 	class BSTransformDeltaEvent;
 	class CombatController;
 	class CombatGroup;
