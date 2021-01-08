@@ -49,7 +49,10 @@ namespace RE
 		std::uint32_t			GetCurrentSubRecordType();
 		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
 		constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
+		constexpr FormID		GetFormID(std::uint32_t a_formLower) const noexcept;
 		FormType				GetFormType();
+		constexpr std::uint32_t	GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
+		constexpr bool			IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
 		constexpr bool			IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
 		void					ReadData(void* a_buf, std::uint32_t a_size);
 		bool					Seek(std::uint32_t a_offset);
