@@ -580,31 +580,27 @@ namespace RE
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 
-	NiAVObject* Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma)
+	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject* a_obj)> a_visitor)
 	{
 		char addonString[WinAPI::MAX_PATH];
 		std::memset(addonString, 0, WinAPI::MAX_PATH);
 		a_arma->GetNodeName(addonString, this, a_armor, -1);
 
-		NiNode* skeletonRoot[2] = {};
-		skeletonRoot[0] = Get3D(0)->AsNode();
-		skeletonRoot[1] = Get3D(1)->AsNode();
+		NiAVObject* skeletonRoot[2] = { Get3D(0), Get3D(1) };
 
 		if (skeletonRoot[1] == skeletonRoot[0]) {
 			skeletonRoot[1] = nullptr;
 		}
 
-		for (auto& root : skeletonRoot) {
+		for (int32_t idx = 0; auto& root : skeletonRoot) {
 			if (root) {
-				BSFixedString addonName(addonString);
-				auto armorObject = root->GetObjectByName(addonName);
-				if (armorObject) {
-					return armorObject;
+				auto obj = root->GetObjectByName(addonString);
+				if (obj) {
+					a_visitor(idx == 1, obj);
 				}
 			}
+			idx++;
 		}
-
-		return nullptr;
 	}
 
 	bool Actor::VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor)

@@ -532,7 +532,7 @@ namespace RE
 		void						 UpdateHairColor();
 		void						 UpdateSkinColor();
 		void						 UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
-		NiAVObject*					 VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma);
+		void						 VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject* a_obj)> a_visitor);
 		bool						 VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool						 WouldBeStealing(const TESObjectREFR* a_target) const;
 
