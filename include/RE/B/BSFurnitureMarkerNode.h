@@ -31,7 +31,6 @@ namespace RE
 		stl::enumeration<EntryProperties, std::uint16_t> entryProperties;  // 12
 	};
 
-
 	class BSFurnitureMarkerNode : public NiExtraData
 	{
 	public:

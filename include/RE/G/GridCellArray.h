@@ -3,7 +3,6 @@
 #include "RE/G/GridArray.h"
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class TESObjectCELL;
@@ -12,7 +11,6 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GridCellArray;
-
 
 		virtual ~GridCellArray();  // 00
 

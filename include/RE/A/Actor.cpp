@@ -357,7 +357,7 @@ namespace RE
 		for (auto& [item, invData] : inv) {
 			auto& [count, entry] = invData;
 			if (count > 0 && entry->GetWorn()) {
-				return item->As<TESObjectARMO>();;
+				return item->As<TESObjectARMO>();
 			}
 		}
 

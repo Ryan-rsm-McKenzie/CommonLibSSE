@@ -1,5 +1,5 @@
-#include "RE/T/TESObjectARMA.h"
 #include "RE/T/TESObjectARMO.h"
+#include "RE/T/TESObjectARMA.h"
 
 namespace RE
 {
