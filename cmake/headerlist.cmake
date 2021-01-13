@@ -560,6 +560,7 @@ set(headers ${headers}
 	include/RE/E/ExtraWeaponIdleSound.h
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
+	include/RE/F/FaceGen.h
 	include/RE/F/FactionRank.h
 	include/RE/F/FaderMenu.h
 	include/RE/F/FavoritesHandler.h
