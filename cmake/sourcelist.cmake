@@ -86,7 +86,6 @@ set(sources ${sources}
 	include/RE/E/ExtraSoul.cpp
 	include/RE/E/ExtraTextDisplayData.cpp
 	include/RE/E/ExtraUniqueID.cpp
-	include/RE/F/FaceGen.cpp
 	include/RE/F/FxDelegate.cpp
 	include/RE/F/FxDelegateArgs.cpp
 	include/RE/G/GameSettingCollection.cpp

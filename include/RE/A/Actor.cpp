@@ -241,20 +241,10 @@ namespace RE
 
 	NiAVObject* Actor::GetHeadPartObject(BGSHeadPart::HeadPartType a_type)
 	{
-		auto faceNode = GetFaceNodeSkinned();
-		auto actorBase = GetActorBase();
-
-		if (faceNode && actorBase) {
-			const auto facePart = actorBase->GetCurrentHeadPartByType(a_type);
-			if (facePart) {
-				auto headNode = faceNode->GetObjectByName(facePart->formEditorID);
-				if (headNode) {
-					return headNode;
-				}
-			}
-		}
-
-		return nullptr;
+		const auto actorBase = GetActorBase();
+		const auto faceNode = GetFaceNodeSkinned();
+		const auto facePart = actorBase ? actorBase->GetCurrentHeadPartByType(a_type) : nullptr;
+		return faceNode && facePart ? faceNode->GetObjectByName(facePart->formEditorID) : nullptr;
 	}
 
 	float Actor::GetHeight()
@@ -301,25 +291,15 @@ namespace RE
 
 	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
 	{
-		if (a_slot == BGSBipedObjectForm::BipedObjectSlot::kNone) {
+		if (const auto worn = GetWornArmor(a_slot); worn) {
+			return worn;
+		} else if (const auto base = GetActorBase(); base && base->skin) {
+			return base->skin;
+		} else if (race && race->skin) {
+			return race->skin;
+		} else {
 			return nullptr;
 		}
-
-		auto equipped = GetWornArmor(a_slot);
-		if (!equipped) {
-			auto actorBase = GetActorBase();
-			if (actorBase) {
-				equipped = actorBase->skin;
-			}
-			if (!equipped) {
-				auto baseRace = GetRace();
-				if (baseRace) {
-					equipped = baseRace->skin;
-				}
-			}
-		}
-
-		return equipped;
 	}
 
 	SOUL_LEVEL Actor::GetSoulLevel() const
@@ -331,14 +311,14 @@ namespace RE
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
 	{
-		auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
+		const auto inv = GetInventory([](TESBoundObject& a_object) {
 			return a_object.IsArmor();
 		});
 
-		for (auto& [item, invData] : inv) {
-			auto& [count, entry] = invData;
-			if (count > 0 && entry->GetWorn()) {
-				auto armor = item->As<TESObjectARMO>();
+		for (const auto& [item, invData] : inv) {
+			const auto& [count, entry] = invData;
+			if (count > 0 && entry->IsWorn()) {
+				const auto armor = item->As<TESObjectARMO>();
 				if (armor && armor->HasPartOf(a_slot)) {
 					return armor;
 				}
@@ -350,13 +330,13 @@ namespace RE
 
 	TESObjectARMO* Actor::GetWornArmor(FormID a_formID)
 	{
-		auto inv = GetInventory([a_formID](TESBoundObject& a_object) -> bool {
+		const auto inv = GetInventory([=](TESBoundObject& a_object) {
 			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
 		});
 
-		for (auto& [item, invData] : inv) {
-			auto& [count, entry] = invData;
-			if (count > 0 && entry->GetWorn()) {
+		for (const auto& [item, invData] : inv) {
+			const auto& [count, entry] = invData;
+			if (count > 0 && entry->IsWorn()) {
 				return item->As<TESObjectARMO>();
 			}
 		}
@@ -580,26 +560,24 @@ namespace RE
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 
-	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject* a_obj)> a_visitor)
+	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject& a_obj)> a_visitor)
 	{
-		char addonString[WinAPI::MAX_PATH];
-		std::memset(addonString, 0, WinAPI::MAX_PATH);
+		char addonString[WinAPI::MAX_PATH]{ '\0' };
 		a_arma->GetNodeName(addonString, this, a_armor, -1);
 
-		NiAVObject* skeletonRoot[2] = { Get3D(0), Get3D(1) };
+		std::array<NiAVObject*, 2> skeletonRoot = { Get3D(0), Get3D(1) };
 
 		if (skeletonRoot[1] == skeletonRoot[0]) {
 			skeletonRoot[1] = nullptr;
 		}
 
-		for (int32_t idx = 0; auto& root : skeletonRoot) {
-			if (root) {
-				auto obj = root->GetObjectByName(addonString);
+		for (std::uint32_t i = 0; i <= 1; i++) {
+			if (skeletonRoot[i]) {
+				auto obj = skeletonRoot[i]->GetObjectByName(addonString);
 				if (obj) {
-					a_visitor(idx == 1, obj);
+					a_visitor(i == 1, *obj);
 				}
 			}
-			idx++;
 		}
 	}
 

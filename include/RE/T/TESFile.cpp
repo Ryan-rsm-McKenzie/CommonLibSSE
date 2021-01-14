@@ -16,11 +16,6 @@ namespace RE
 		return func(this);
 	}
 
-	constexpr FormID TESFile::GetFormID(std::uint32_t a_formLower) const noexcept
-	{
-		return !IsLight() ? std::uint32_t(compileIndex) << 24 | (a_formLower & 0xFFFFFF) : 0xFE000000 | (std::uint32_t(smallFileCompileIndex) << 12) | (a_formLower & 0xFFF);
-	}
-
 	FormType TESFile::GetFormType()
 	{
 		using func_t = decltype(&TESFile::GetFormType);

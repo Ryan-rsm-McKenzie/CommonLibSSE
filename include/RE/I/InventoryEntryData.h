@@ -48,9 +48,9 @@ namespace RE
 		}
 
 		[[nodiscard]] float GetWeight() const;
-		[[nodiscard]] bool	GetWorn() const;
 		[[nodiscard]] bool	IsEnchanted() const;
 		[[nodiscard]] bool	IsLeveled() const;
+		[[nodiscard]] bool	IsWorn() const;
 
 		[[nodiscard]] bool IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true)
 		{

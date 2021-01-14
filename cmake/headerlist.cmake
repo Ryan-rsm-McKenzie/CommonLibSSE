@@ -228,6 +228,9 @@ set(headers ${headers}
 	include/RE/B/BSFaceGenAnimationData.h
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
+	include/RE/B/BSFaceGenManager.h
+	include/RE/B/BSFaceGenModel.h
+	include/RE/B/BSFaceGenMorphData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
 	include/RE/B/BSFile.h
@@ -560,7 +563,6 @@ set(headers ${headers}
 	include/RE/E/ExtraWeaponIdleSound.h
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
-	include/RE/F/FaceGen.h
 	include/RE/F/FactionRank.h
 	include/RE/F/FaderMenu.h
 	include/RE/F/FavoritesHandler.h

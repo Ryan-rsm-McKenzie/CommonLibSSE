@@ -256,7 +256,7 @@ namespace RE
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
-	bool ExtraDataList::GetWorn() const
+	bool ExtraDataList::IsWorn() const
 	{
 		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
 	}
