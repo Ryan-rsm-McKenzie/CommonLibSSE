@@ -1,7 +1,10 @@
 #pragma once
 
+#include "RE/B/BSAtomic.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSTHashMap.h"
 #include "RE/B/BSTSingleton.h"
+#include "RE/N/NiSmartPointer.h"
 
 namespace RE
 {
@@ -10,36 +13,29 @@ namespace RE
 	class BSFaceGenNiNode;
 	class TESNPC;
 
+	struct BSFaceGenModelMap
+	{
+	public:
+		class Entry : public NiRefObject
+		{
+		public:
+			// members
+			NiPointer<BSFaceGenModel> model;  // 10
+			std::uint64_t			  time;	  // 18
+		};
+		static_assert(sizeof(Entry) == 0x20);
+
+		// members
+		BSTHashMap<BSFixedString, NiPointer<Entry>> map;			 // 00
+		BSReadWriteLock								lock;			 // 30
+		bool										hasFaceGenData;	 // 38
+	};
+	static_assert(sizeof(BSFaceGenModelMap) == 0x40);
+
 	class BSFaceGenManager : public BSTSingletonSDM<BSFaceGenManager>
 	{
 	public:
-		struct Action
-		{
-			BSFixedString name;
-			std::uint32_t unk04;
-			float		  delta;
-		};
-
-		struct BSFaceGenModelMap
-		{
-		public:
-			struct Entry : public NiRefObject
-			{
-			public:
-				// members
-				NiPointer<BSFaceGenModel> model;  // 10
-				std::uint64_t			  time;	  // 18
-			};
-			static_assert(sizeof(Entry) == 0x20);
-
-			// members
-			BSTHashMap<BSFixedString, NiPointer<Entry>> map;			 // 00
-			BSReadWriteLock								lock;			 // 30
-			bool										hasFaceGenData;	 // 38
-		};
-		static_assert(sizeof(BSFaceGenModelMap) == 0x40);
-
-		static BSFaceGenManager* GetSingleton()
+		[[nodiscard]] static BSFaceGenManager* GetSingleton()
 		{
 			REL::Relocation<BSFaceGenManager**> singleton{ REL::ID(514182) };
 			return *singleton;

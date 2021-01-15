@@ -1,12 +1,15 @@
 #pragma once
 
-#include "RE/B/BSFaceGenMorphData.h"
-
 namespace RE
 {
-	class BSFaceGenModel : public RE::NiRefObject
+	class BSFaceGenMorphData;
+	class NiAVObject;
+
+	class BSFaceGenModel : public NiRefObject
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_BSFaceGenModel;
+
 		struct Data
 		{
 			std::uint32_t		unk00;	// 00
@@ -17,6 +20,7 @@ namespace RE
 			BSFaceGenMorphData* unk20;	// 20
 		};
 
+		// members
 		Data*		  unk10;  // 10
 		std::uint32_t unk18;  // 18
 		std::uint32_t pad1C;  // 1C

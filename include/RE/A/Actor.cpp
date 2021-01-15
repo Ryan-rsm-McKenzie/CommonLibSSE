@@ -295,8 +295,8 @@ namespace RE
 			return worn;
 		} else if (const auto base = GetActorBase(); base && base->skin) {
 			return base->skin;
-		} else if (race && race->skin) {
-			return race->skin;
+		} else if (const auto actorRace = GetRace(); actorRace && actorRace->skin) {
+			return actorRace->skin;
 		} else {
 			return nullptr;
 		}
@@ -562,20 +562,24 @@ namespace RE
 
 	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject& a_obj)> a_visitor)
 	{
+		enum
+		{
+			k3rd,
+			k1st,
+			kTotal
+		};
+
 		char addonString[WinAPI::MAX_PATH]{ '\0' };
 		a_arma->GetNodeName(addonString, this, a_armor, -1);
-
-		std::array<NiAVObject*, 2> skeletonRoot = { Get3D(0), Get3D(1) };
-
-		if (skeletonRoot[1] == skeletonRoot[0]) {
-			skeletonRoot[1] = nullptr;
+		std::array<NiAVObject*, kTotal> skeletonRoot = { Get3D(k3rd), Get3D(k1st) };
+		if (skeletonRoot[k1st] == skeletonRoot[k3rd]) {
+			skeletonRoot[k1st] = nullptr;
 		}
-
-		for (std::uint32_t i = 0; i <= 1; i++) {
+		for (std::size_t i = 0; i <= skeletonRoot.size(); ++i) {
 			if (skeletonRoot[i]) {
-				auto obj = skeletonRoot[i]->GetObjectByName(addonString);
+				const auto obj = skeletonRoot[i]->GetObjectByName(addonString);
 				if (obj) {
-					a_visitor(i == 1, *obj);
+					a_visitor(i == k1st, *obj);
 				}
 			}
 		}
