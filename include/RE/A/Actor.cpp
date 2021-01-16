@@ -575,7 +575,7 @@ namespace RE
 		if (skeletonRoot[k1st] == skeletonRoot[k3rd]) {
 			skeletonRoot[k1st] = nullptr;
 		}
-		for (std::size_t i = 0; i <= skeletonRoot.size(); ++i) {
+		for (std::size_t i = 0; i < skeletonRoot.size(); ++i) {
 			if (skeletonRoot[i]) {
 				const auto obj = skeletonRoot[i]->GetObjectByName(addonString);
 				if (obj) {
