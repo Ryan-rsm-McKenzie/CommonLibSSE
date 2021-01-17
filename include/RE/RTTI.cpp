@@ -65,7 +65,7 @@ namespace RE
 #else
 			auto name = col->typeDescriptor->name;
 #endif
-			spdlog::info("0x{:08X}: {}", a_obj, name);
+			spdlog::debug("0x{:08X}: {}", a_obj, name);
 		}
 
 
