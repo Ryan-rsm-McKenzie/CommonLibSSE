@@ -58,7 +58,6 @@ namespace RE
 			auto vtbl = *static_cast<std::uintptr_t**>(a_obj) - 1;
 			auto col = *reinterpret_cast<CompleteObjectLocator**>(vtbl);
 			assert(col);
-
 #ifdef _DEBUG
 			char buf[0x1000];
 			UnDecorateSymbolName(col->typeDescriptor->name + 1, buf, sizeof(buf), UNDNAME_NO_ARGUMENTS);
@@ -66,8 +65,29 @@ namespace RE
 #else
 			auto name = col->typeDescriptor->name;
 #endif
-
-			SKSE::log::debug("0x{:08X}: {}", a_obj, name);
+			spdlog::info("0x{:08X}: {}", a_obj, name);
 		}
+
+
+		void DumpClassHier(void* a_obj) {
+			uintptr_t* vtbl = *static_cast<std::uintptr_t**>(a_obj) - 1;
+			auto col = *reinterpret_cast<RTTI::CompleteObjectLocator**>(vtbl);
+			SKSE::log::debug("0x{:08X}", a_obj);
+			RTTI::BaseClassArray baseClassArray = (col->classDescriptor->baseClassArray);
+			for (uint32_t i = 0; i < col->classDescriptor->numBaseClasses; i++) {
+				RTTI::BaseClassDescriptor* baseClassDesc = baseClassArray[i];
+				RTTI::RVA<RTTI::TypeDescriptor> testTypeDesc = baseClassDesc->typeDescriptor;
+#ifdef _DEBUG
+				static char buf[0x100];
+				UnDecorateSymbolName(testTypeDesc->name + 1, buf, sizeof(buf), UNDNAME_NO_ARGUMENTS);
+				auto name = buf;
+#else
+				auto name = testTypeDesc->name;
+#endif
+				SKSE::log::debug("base class member offset {0:x}, type: {1:s}", baseClassDesc->pmd.mDisp, name);
+			}
+
+		}
+
 	}
 }

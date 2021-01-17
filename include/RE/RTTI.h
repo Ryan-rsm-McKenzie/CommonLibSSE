@@ -24,7 +24,7 @@ namespace RE
 
 			~RVA() = default;
 
-			[[nodiscard]] pointer	get() const { return is_good() ? REL::Relocation<T*>{ _rva }.type() : nullptr; }
+			[[nodiscard]] pointer	get() const { return is_good() ? REL::Relocation<T*>{ _rva + REL::Module::get().base() }.type() : nullptr; }
 			[[nodiscard]] reference operator*() const { return *get(); }
 			[[nodiscard]] pointer	operator->() const { return get(); }
 			[[nodiscard]] pointer	operator[](std::ptrdiff_t a_idx) const { return get() + a_idx; }
@@ -52,65 +52,11 @@ namespace RE
 		{
 		public:
 			// members
-			std::int32_t mDisp;	 // 0
+			std::int32_t mDisp;	 // 0 - Displacement of the class members
 			std::int32_t pDisp;	 // 4
 			std::int32_t vDisp;	 // 8
 		};
 		static_assert(sizeof(PMD) == 0xC);
-
-		struct BaseClassArray
-		{
-		public:
-			enum class Attribute
-			{
-				kNone = 0
-			};
-
-			// members
-			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
-			std::uint32_t							   numContainedBases;  // 04
-			PMD										   pmd;				   // 08
-			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
-		};
-		static_assert(sizeof(BaseClassArray) == 0x18);
-
-		struct ClassHierarchyDescriptor
-		{
-		public:
-			enum class Attribute
-			{
-				kNoInheritance = 0,
-				kMultipleInheritance = 1 << 0,
-				kVirtualInheritance = 1 << 1,
-				kAmbiguousInheritance = 1 << 2
-			};
-
-			// members
-			std::uint32_t							   signature;		// 00
-			stl::enumeration<Attribute, std::uint32_t> attributes;		// 04
-			std::uint32_t							   numBaseClasses;	// 08
-			RVA<BaseClassArray>						   baseClassArray;	// 0C
-		};
-		static_assert(sizeof(ClassHierarchyDescriptor) == 0x10);
-
-		struct CompleteObjectLocator
-		{
-		public:
-			enum class Signature
-			{
-				kX86 = 0,
-				kX64 = 1
-			};
-
-			// members
-			stl::enumeration<Signature, std::uint32_t> signature;		 // 00
-			std::uint32_t							   offset;			 // 04
-			std::uint32_t							   ctorDispOffset;	 // 08
-			RVA<TypeDescriptor>						   typeDescriptor;	 // 0C
-			RVA<ClassHierarchyDescriptor>			   classDescriptor;	 // 10
-		};
-		static_assert(sizeof(CompleteObjectLocator) == 0x14);
-
 		struct BaseClassDescriptor
 		{
 		public:
@@ -133,8 +79,56 @@ namespace RE
 			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
 		};
 		static_assert(sizeof(BaseClassDescriptor) == 0x18);
+		
+		class BaseClassArray {
+		public:
+			[[nodiscard]] BaseClassDescriptor*	operator[](std::uint32_t a_idx) const { 
+				auto bArray = _rva[a_idx];
+				return bArray->get();
+			}
+
+			RVA<RVA<BaseClassDescriptor>> _rva;	 // 00
+		};
+
+		struct ClassHierarchyDescriptor
+		{
+		public:
+			enum class Attribute
+			{
+				kNoInheritance = 0,
+				kMultipleInheritance = 1 << 0,
+				kVirtualInheritance = 1 << 1,
+				kAmbiguousInheritance = 1 << 2
+			};
+
+			// members
+			std::uint32_t							   signature;		// 00
+			stl::enumeration<Attribute, std::uint32_t> attributes;		// 04
+			std::uint32_t							   numBaseClasses;	// 08
+			BaseClassArray							   baseClassArray;	// 0C
+		};
+		static_assert(sizeof(ClassHierarchyDescriptor) == 0x10);
+
+		struct CompleteObjectLocator
+		{
+		public:
+			enum class Signature
+			{
+				kX86 = 0,
+				kX64 = 1
+			};
+
+			// members
+			stl::enumeration<Signature, std::uint32_t> signature;		 // 00
+			std::uint32_t							   offset;			 // 04
+			std::uint32_t							   ctorDispOffset;	 // 08
+			RVA<TypeDescriptor>						   typeDescriptor;	 // 0C
+			RVA<ClassHierarchyDescriptor>			   classDescriptor;	 // 10
+		};
+		static_assert(sizeof(CompleteObjectLocator) == 0x14);
 
 		void DumpTypeName(void* a_obj);
+		void DumpClassHier(void* a_obj);
 	}
 
 	namespace SK_Impl
