@@ -65,17 +65,17 @@ namespace RE
 #else
 			auto name = col->typeDescriptor->name;
 #endif
-			SKSE::log::debug("0x{:08X}: {}", a_obj, name);
+			SKSE::log::info("0x{:08X}: {}", a_obj, name);
 		}
 
-
-		void DumpClassHier(void* a_obj) {
+		void DumpClassHier(void* a_obj)
+		{
 			uintptr_t* vtbl = *static_cast<std::uintptr_t**>(a_obj) - 1;
-			auto col = *reinterpret_cast<RTTI::CompleteObjectLocator**>(vtbl);
+			auto	   col = *reinterpret_cast<RTTI::CompleteObjectLocator**>(vtbl);
 			SKSE::log::debug("0x{:08X}", a_obj);
 			RTTI::BaseClassArray baseClassArray = (col->classDescriptor->baseClassArray);
 			for (uint32_t i = 0; i < col->classDescriptor->numBaseClasses; i++) {
-				RTTI::BaseClassDescriptor* baseClassDesc = baseClassArray[i];
+				RTTI::BaseClassDescriptor*		baseClassDesc = baseClassArray[i];
 				RTTI::RVA<RTTI::TypeDescriptor> testTypeDesc = baseClassDesc->typeDescriptor;
 #ifdef _DEBUG
 				static char buf[0x100];
@@ -86,7 +86,6 @@ namespace RE
 #endif
 				SKSE::log::debug("base class member offset {0:x}, type: {1:s}", baseClassDesc->pmd.mDisp, name);
 			}
-
 		}
 
 	}

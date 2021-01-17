@@ -52,11 +52,12 @@ namespace RE
 		{
 		public:
 			// members
-			std::int32_t mDisp;	 // 0 - Displacement of the class members
+			std::int32_t mDisp;	 // 0
 			std::int32_t pDisp;	 // 4
 			std::int32_t vDisp;	 // 8
 		};
 		static_assert(sizeof(PMD) == 0xC);
+
 		struct BaseClassDescriptor
 		{
 		public:
@@ -79,10 +80,12 @@ namespace RE
 			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
 		};
 		static_assert(sizeof(BaseClassDescriptor) == 0x18);
-		
-		class BaseClassArray {
+
+		class BaseClassArray
+		{
 		public:
-			[[nodiscard]] BaseClassDescriptor*	operator[](std::uint32_t a_idx) const { 
+			[[nodiscard]] BaseClassDescriptor* operator[](std::uint32_t a_idx) const
+			{
 				auto bArray = _rva[a_idx];
 				return bArray->get();
 			}

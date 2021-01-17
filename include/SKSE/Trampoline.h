@@ -168,25 +168,15 @@ namespace SKSE
 			} else {
 				static_assert(false && N, "invalid call size");
 			}
-
 			return write_branch<N>(a_src, a_dst, data);
 		}
 
-		template <std::size_t N, class F>
-		std::uintptr_t write_call(std::uintptr_t a_src, F a_dst)
-		{
-			return write_call<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
-		}
-		
-		// ReturnBranch5 automatically handles the process of returning to the original function for the 5B alignment
-		// Writes a jmp to the new trampoline, copies the instruction from the source address to the end of your trampoline, returns with another jmp
-		void write_ReturnBranch5(std::uintptr_t a_src, std::uintptr_t a_dst)
+		void write_SafeBranch5(std::uintptr_t a_src, std::uintptr_t a_dst)
 		{
 #pragma pack(push, 1)
 			struct SrcAssembly
 			{
-				// jmp/call [rip + imm32]
-				std::uint8_t opcode;  // 0 - 0xE9/0xE8
+				std::uint8_t opcode;  // 0 - 0xE9
 				std::int32_t disp;	  // 1
 			};
 			static_assert(offsetof(SrcAssembly, opcode) == 0x0);
@@ -195,10 +185,9 @@ namespace SKSE
 
 			struct TrampolineAssembly
 			{
-				// jmp [rip]
-				std::uint32_t  srcOp1;	  // 0 - 0xFF
-				std::uint8_t  srcOp2;  // 1 - 0x25
-				std::uint8_t jmp;
+				std::uint32_t srcOp1;
+				std::uint8_t  srcOp2;
+				std::uint8_t  jmp;
 				std::uint32_t disp;
 			};
 			static_assert(offsetof(TrampolineAssembly, srcOp1) == 0x0);
@@ -211,8 +200,7 @@ namespace SKSE
 			TrampolineAssembly* mem = nullptr;
 			if (const auto it = _5branches.find(a_dst); it != _5branches.end()) {
 				mem = reinterpret_cast<TrampolineAssembly*>(it->second);
-			}
-			else {
+			} else {
 				mem = allocate<TrampolineAssembly>();
 				_5branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
@@ -224,7 +212,7 @@ namespace SKSE
 
 			const auto disp_ret = a_src + sizeof(SrcAssembly) - (reinterpret_cast<std::uint64_t>(mem) + offsetof(TrampolineAssembly, disp) + 4);
 			mem->srcOp1 = *reinterpret_cast<std::uint32_t*>(a_src);
-			mem->srcOp2 = *reinterpret_cast<std::uint8_t*>(a_src+4);
+			mem->srcOp2 = *reinterpret_cast<std::uint8_t*>(a_src + 4);
 			mem->jmp = static_cast<std::uint8_t>(0xE9);
 			mem->disp = static_cast<std::uint32_t>(disp_ret);
 
@@ -233,16 +221,13 @@ namespace SKSE
 			assembly.disp = static_cast<std::int32_t>(disp);
 			REL::safe_write(a_src, assembly);
 		}
-		
-		// ReturnBranch6 automatically handles the process of returning to the original function
-		// Writes a jmp to the new trampoline, copies the instruction from the source address to the end of your trampoline, returns with another jmp
-		void write_ReturnBranch6(std::uintptr_t a_src, std::uintptr_t a_dst)
+
+		void write_SafeBranch6(std::uintptr_t a_src, std::uintptr_t a_dst)
 		{
 #pragma pack(push, 1)
 			struct SrcAssembly
 			{
-				// jmp/call [rip + imm32]
-				std::uint8_t opcode;  // 0 - 0xE9/0xE8
+				std::uint8_t opcode;  // 0 - 0xE9
 				std::int32_t disp;	  // 1
 			};
 			static_assert(offsetof(SrcAssembly, opcode) == 0x0);
@@ -251,10 +236,9 @@ namespace SKSE
 
 			struct TrampolineAssembly
 			{
-				// jmp [rip]
-				std::uint32_t  srcOp1;	  // 0 - 0xFF
-				std::uint16_t  srcOp2;  // 1 - 0x25
-				std::uint8_t jmp;
+				std::uint32_t srcOp1;
+				std::uint16_t srcOp2;
+				std::uint8_t  jmp;
 				std::uint32_t disp;
 			};
 			static_assert(offsetof(TrampolineAssembly, srcOp1) == 0x0);
@@ -267,8 +251,7 @@ namespace SKSE
 			TrampolineAssembly* mem = nullptr;
 			if (const auto it = _6branches.find(a_dst); it != _6branches.end()) {
 				mem = reinterpret_cast<TrampolineAssembly*>(it->second);
-			}
-			else {
+			} else {
 				mem = allocate<TrampolineAssembly>();
 				_6branches.emplace(a_dst, reinterpret_cast<std::byte*>(mem));
 			}
@@ -289,7 +272,13 @@ namespace SKSE
 			assembly.disp = static_cast<std::int32_t>(disp);
 			REL::safe_write(a_src, assembly);
 		}
-		
+
+		template <std::size_t N, class F>
+		std::uintptr_t write_call(std::uintptr_t a_src, F a_dst)
+		{
+			return write_call<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
+		}
+
 	private:
 		[[nodiscard]] void* do_create(std::size_t a_size, std::uintptr_t a_address);
 
