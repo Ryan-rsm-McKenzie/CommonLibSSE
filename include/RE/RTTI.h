@@ -131,7 +131,6 @@ namespace RE
 		static_assert(sizeof(CompleteObjectLocator) == 0x14);
 
 		void DumpTypeName(void* a_obj);
-		void DumpClassHier(void* a_obj);
 	}
 
 	namespace SK_Impl
