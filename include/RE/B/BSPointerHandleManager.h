@@ -25,10 +25,10 @@ namespace RE
 			NiPointer<BSHandleRefObject> pointer;		   // 08
 		};
 
-		static stl::span<Entry, 0x100000> GetHandleEntries()
+		[[nodiscard]] static auto GetHandleEntries()
 		{
 			REL::Relocation<Entry(*)[0x100000]> entries{ REL::ID(514478) };
-			return { *entries };
+			return std::span<Entry, 0x100000>{ *entries };
 		}
 	};
 }

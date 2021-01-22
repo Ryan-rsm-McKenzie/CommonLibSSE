@@ -398,7 +398,7 @@ namespace RE
 			const auto newSize = a_rhs.size();
 			const auto newData = allocate(newCapacity);
 			for (size_type i = 0; i < newSize; ++i) {
-				stl::construct_at(newData + i, a_rhs[i]);
+				std::construct_at(newData + i, a_rhs[i]);
 			}
 
 			set_allocator_traits(newData, newCapacity);
@@ -417,7 +417,7 @@ namespace RE
 			const auto newSize = a_count;
 			const auto newData = allocate(newCapacity);
 			for (size_type i = 0; i < newSize; ++i) {
-				stl::construct_at(newData + i);
+				std::construct_at(newData + i);
 			}
 
 			set_allocator_traits(newData, newCapacity);
@@ -439,7 +439,7 @@ namespace RE
 
 				const auto newData = data();
 				for (size_type i = 0; i < newSize; ++i) {
-					stl::construct_at(newData + i, a_rhs[i]);
+					std::construct_at(newData + i, a_rhs[i]);
 				}
 			}
 			return *this;
@@ -550,14 +550,14 @@ namespace RE
 
 			set_size(size() + 1);
 			auto& elem = back();
-			stl::construct_at(std::addressof(elem), std::forward<Args>(a_args)...);
+			std::construct_at(std::addressof(elem), std::forward<Args>(a_args)...);
 			return elem;
 		}
 
 		inline void pop_back()
 		{
 			assert(!empty());
-			stl::destroy_at(std::addressof(back()));
+			std::destroy_at(std::addressof(back()));
 			set_size(size() - 1);
 		}
 
@@ -618,11 +618,11 @@ namespace RE
 			const auto oldSize = size();
 			if (a_newSize > oldSize) {
 				for (size_type i = oldSize; i < a_newSize; ++i) {
-					stl::construct_at(data() + i, std::forward<Args>(a_args)...);
+					std::construct_at(data() + i, std::forward<Args>(a_args)...);
 				}
 			} else {
 				for (size_type i = a_newSize; i < oldSize; ++i) {
-					stl::destroy_at(data() + i);
+					std::destroy_at(data() + i);
 				}
 			}
 
