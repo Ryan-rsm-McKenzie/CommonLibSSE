@@ -6,11 +6,11 @@
 
 namespace RE
 {
+	class GHeapMemVisitor;
+	class GHeapSegVisitor;
+	class GSysAllocPaged;
 	struct GAllocDebugInfo;
-	struct GHeapMemVisitor;
-	struct GHeapSegVisitor;
 	struct GStatBag;
-	struct GSysAllocPaged;
 
 	class GMemoryHeap : public GListNode<GMemoryHeap>
 	{

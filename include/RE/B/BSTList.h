@@ -235,7 +235,7 @@ namespace RE
 		{
 			erase_after_impl(get_head(), nullptr);
 			if (static_cast<bool>(_listHead.item)) {
-				stl::destroy_at(std::addressof(_listHead.item));
+				std::destroy_at(std::addressof(_listHead.item));
 			}
 		}
 
@@ -302,11 +302,11 @@ namespace RE
 		{
 			assert(!empty());
 
-			destroy_at(std::addressof(_listHead.item));
+			std::destroy_at(std::addressof(_listHead.item));
 			auto node = _listHead.next;
 			if (node) {
 				_listHead.next = node->next;
-				construct_at(std::addressof(_listHead.item), std::move(node->item));
+				std::construct_at(std::addressof(_listHead.item), std::move(node->item));
 				delete node;
 			}
 		}
@@ -379,8 +379,8 @@ namespace RE
 				_listHead.next = node;
 			}
 
-			stl::destroy_at(std::addressof(_listHead.item));
-			stl::construct_at(std::addressof(_listHead.item), std::forward<Args>(a_args)...);
+			std::destroy_at(std::addressof(_listHead.item));
+			std::construct_at(std::addressof(_listHead.item), std::forward<Args>(a_args)...);
 		}
 
 		inline void resize_impl(size_type a_count, const_reference a_value)

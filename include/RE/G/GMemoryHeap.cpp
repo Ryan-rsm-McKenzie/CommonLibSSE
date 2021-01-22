@@ -102,8 +102,8 @@ namespace RE
 
 	void GMemoryHeap::AssignToCurrentThread()
 	{
-		assert(_ownerThreadID == 0 || _ownerThreadID == GetCurrentThreadId());
-		_ownerThreadID = GetCurrentThreadId();
+		assert(_ownerThreadID == 0 || _ownerThreadID == WinAPI::GetCurrentThreadID());
+		_ownerThreadID = WinAPI::GetCurrentThreadID();
 	}
 
 	bool GMemoryHeap::DumpMemoryLeaks()

@@ -7,6 +7,8 @@ if (NOT DEFINED SKSE_USE_VCPKG AND CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURC
 endif()
 
 if (DEFINED SKSE_USE_VCPKG AND SKSE_USE_VCPKG)
+	set(Boost_USE_STATIC_RUNTIME OFF CACHE BOOL "")
+	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL" CACHE STRING "")
 	set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 	set(VCPKG_TARGET_TRIPLET "x64-windows-static-md" CACHE STRING "")
 endif()
@@ -29,12 +31,6 @@ endif()
 
 # ---- Dependencies ----
 
-find_package(Boost
-	REQUIRED
-	COMPONENTS
-		atomic
-)
-find_package(span-lite REQUIRED CONFIG)
 find_package(spdlog REQUIRED CONFIG)
 
 # ---- Add source files ----
@@ -84,14 +80,14 @@ if (MSVC)
 		${PROJECT_NAME}
 		PRIVATE
 			/MP	# Build with Multiple Processes
-			
+
 			/experimental:external
 			/external:anglebrackets
 			/external:W0
-			
+
 			# warnings -> errors
 			/we4715	# 'function' : not all control paths return a value
-			
+
 			# disable warnings
 			/wd4061 # enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 			/wd4200 # nonstandard extension used : zero-sized array in struct/union
@@ -118,16 +114,14 @@ endif()
 
 target_include_directories(
 	${PROJECT_NAME}
-	PUBLIC 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
 target_link_libraries(
 	${PROJECT_NAME}
 	PUBLIC
-		Boost::atomic
-		nonstd::span-lite
 		spdlog::spdlog
 		Version.lib
 )

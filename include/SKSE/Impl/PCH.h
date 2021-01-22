@@ -33,6 +33,7 @@
 #include <optional>
 #include <regex>
 #include <set>
+#include <span>
 #include <sstream>
 #include <stack>
 #include <stdexcept>
@@ -48,13 +49,12 @@
 #include <vector>
 
 static_assert(
-	std::is_integral_v<std::time_t> &&
-		sizeof(std::time_t) == sizeof(std::size_t),
+	std::is_integral_v<std::time_t> && sizeof(std::time_t) == sizeof(std::size_t),
 	"wrap std::time_t instead");
 
-#include <boost/atomic.hpp>
-#include <nonstd/span.hpp>
+#pragma warning(push)
 #include <spdlog/spdlog.h>
+#pragma warning(pop)
 
 #include "SKSE/Impl/WinAPI.h"
 
@@ -64,92 +64,11 @@ namespace SKSE
 
 	namespace stl
 	{
-		using nonstd::span;
-
 		template <class CharT>
 		using basic_zstring = std::basic_string_view<CharT>;
 
 		using zstring = basic_zstring<char>;
 		using zwstring = basic_zstring<wchar_t>;
-
-		namespace detail
-		{
-			template <class, class, class...>
-			struct _can_construct_at :
-				std::false_type
-			{};
-
-			template <class T, class... Args>
-			struct _can_construct_at<
-				std::void_t<
-					decltype(::new (std::declval<void*>()) T(std::declval<Args>()...))>,
-				T,
-				Args...> :
-				std::true_type
-			{};
-
-			template <class T, class... Args>
-			struct can_construct_at :
-				_can_construct_at<void, T, Args...>
-			{};
-
-			template <class T, class... Args>
-			inline constexpr bool can_construct_at_v = can_construct_at<T, Args...>::value;
-		}
-
-		template <class T>
-		struct is_bounded_array :
-			std::false_type
-		{};
-
-		template <class T, std::size_t N>
-		struct is_bounded_array<T[N]> :
-			std::true_type
-		{};
-
-		template <class T>
-		inline constexpr bool is_bounded_array_v = is_bounded_array<T>::value;
-
-		template <class T>
-		struct is_unbounded_array :
-			std::false_type
-		{};
-
-		template <class T>
-		struct is_unbounded_array<T[]> :
-			std::true_type
-		{};
-
-		template <class T>
-		inline constexpr bool is_unbounded_array_v = is_unbounded_array<T>::value;
-
-		template <
-			class T,
-			class... Args,
-			std::enable_if_t<
-				std::conjunction_v<
-					detail::can_construct_at<T, Args...>,
-					std::is_constructible<T, Args...>>,	 // more strict
-				int> = 0>
-		T* construct_at(T* a_ptr, Args&&... a_args)
-		{
-			return ::new (
-				const_cast<void*>(
-					static_cast<const volatile void*>(a_ptr)))
-				T(std::forward<Args>(a_args)...);
-		}
-
-		template <class T>
-		void destroy_at(T* a_ptr)
-		{
-			if constexpr (std::is_array_v<T>) {
-				for (auto& elem : *a_ptr) {
-					destroy_at(std::addressof(elem));
-				}
-			} else {
-				a_ptr->~T();
-			}
-		}
 
 		struct source_location
 		{
@@ -269,7 +188,9 @@ namespace SKSE
 			static_assert(std::is_integral_v<underlying_type>, "underlying_type must be an integral");
 
 			constexpr enumeration() noexcept = default;
+
 			constexpr enumeration(const enumeration&) noexcept = default;
+
 			constexpr enumeration(enumeration&&) noexcept = default;
 
 			template <class U2>
@@ -277,15 +198,9 @@ namespace SKSE
 				_impl(static_cast<underlying_type>(a_rhs.get()))
 			{}
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			constexpr enumeration(Args... a_values) noexcept :
+			template <class... Args>
+			constexpr enumeration(Args... a_values) noexcept  //
+				requires(std::same_as<Args, enum_type>&&...) :
 				_impl((static_cast<underlying_type>(a_values) | ...))
 			{}
 
@@ -312,74 +227,44 @@ namespace SKSE
 			[[nodiscard]] constexpr enum_type		get() const noexcept { return static_cast<enum_type>(_impl); }
 			[[nodiscard]] constexpr underlying_type underlying() const noexcept { return _impl; }
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			constexpr enumeration& set(Args... a_args) noexcept
+			template <class... Args>
+			constexpr enumeration& set(Args... a_args) noexcept	 //
+				requires(std::same_as<Args, enum_type>&&...)
 			{
 				_impl |= (static_cast<underlying_type>(a_args) | ...);
 				return *this;
 			}
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			constexpr enumeration& reset(Args... a_args) noexcept
+			template <class... Args>
+			constexpr enumeration& reset(Args... a_args) noexcept  //
+				requires(std::same_as<Args, enum_type>&&...)
 			{
 				_impl &= ~(static_cast<underlying_type>(a_args) | ...);
 				return *this;
 			}
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			[[nodiscard]] constexpr bool any(Args... a_args) const noexcept
+			template <class... Args>
+			[[nodiscard]] constexpr bool any(Args... a_args) const noexcept	 //
+				requires(std::same_as<Args, enum_type>&&...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) != static_cast<underlying_type>(0);
 			}
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			[[nodiscard]] constexpr bool all(Args... a_args) const noexcept
+			template <class... Args>
+			[[nodiscard]] constexpr bool all(Args... a_args) const noexcept	 //
+				requires(std::same_as<Args, enum_type>&&...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == (static_cast<underlying_type>(a_args) | ...);
 			}
 
-			template <
-				class... Args,
-				std::enable_if_t<
-					std::conjunction_v<
-						std::is_same<
-							Args,
-							enum_type>...>,
-					int> = 0>
-			[[nodiscard]] constexpr bool none(Args... a_args) const noexcept
+			template <class... Args>
+			[[nodiscard]] constexpr bool none(Args... a_args) const noexcept  //
+				requires(std::same_as<Args, enum_type>&&...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == static_cast<underlying_type>(0);
 			}
 
-		private:
+		private :
 			underlying_type _impl{ 0 };
 		};
 
@@ -551,10 +436,10 @@ namespace SKSE
 
 		template <class T>
 		class atomic_ref :
-			public boost::atomic_ref<std::remove_cv_t<T>>
+			public std::atomic_ref<std::remove_cv_t<T>>
 		{
 		private:
-			using super = boost::atomic_ref<std::remove_cv_t<T>>;
+			using super = std::atomic_ref<std::remove_cv_t<T>>;
 
 		public:
 			using value_type = typename super::value_type;
@@ -891,6 +776,21 @@ namespace SKSE
 			return static_cast<underlying_type_t>(a_val);
 		}
 
+		template <class T, class U>
+		[[nodiscard]] auto adjust_pointer(U* a_ptr, std::ptrdiff_t a_adjust) noexcept
+		{
+			auto addr = a_ptr ? reinterpret_cast<std::uintptr_t>(a_ptr) + a_adjust : 0;
+			if constexpr (std::is_const_v<U> && std::is_volatile_v<U>) {
+				return reinterpret_cast<std::add_cv_t<T>*>(addr);
+			} else if constexpr (std::is_const_v<U>) {
+				return reinterpret_cast<std::add_const_t<T>*>(addr);
+			} else if constexpr (std::is_volatile_v<U>) {
+				return reinterpret_cast<std::add_volatile_t<T>*>(addr);
+			} else {
+				return reinterpret_cast<T*>(addr);
+			}
+		}
+
 		template <class To, class From>
 		[[nodiscard]] To unrestricted_cast(From a_from)
 		{
@@ -930,34 +830,12 @@ namespace SKSE
 			}
 		}
 
-		template <class T, class U>
-		[[nodiscard]] auto adjust_pointer(U* a_ptr, std::ptrdiff_t a_adjust) noexcept
-		{
-			auto addr = a_ptr ? reinterpret_cast<std::uintptr_t>(a_ptr) + a_adjust : 0;
-			if constexpr (std::is_const_v<U> && std::is_volatile_v<U>) {
-				return reinterpret_cast<std::add_cv_t<T>*>(addr);
-			} else if constexpr (std::is_const_v<U>) {
-				return reinterpret_cast<std::add_const_t<T>*>(addr);
-			} else if constexpr (std::is_volatile_v<U>) {
-				return reinterpret_cast<std::add_volatile_t<T>*>(addr);
-			} else {
-				return reinterpret_cast<T*>(addr);
-			}
-		}
-
-		inline void memzero(void* a_dst, std::size_t a_size)
-		{
-			// msvc stl bug
-			const auto	   beg = static_cast</*volatile*/ char*>(a_dst);
-			const auto	   end = static_cast</*volatile*/ char*>(a_dst) + a_size;
-			constexpr char val = 0;
-			std::fill(beg, end, val);
-		}
-
 		template <class T>
-		void memzero(T* a_dst)
+		void memzero(volatile T* a_ptr, std::size_t a_size = sizeof(T))
 		{
-			memzero(a_dst, sizeof(T));
+			const auto	   begin = reinterpret_cast<volatile char*>(a_ptr);
+			constexpr char val{ 0 };
+			std::fill_n(begin, a_size, val);
 		}
 
 		template <

@@ -6,8 +6,6 @@
   "license": "MIT",
   "supports": "windows & x64",
   "dependencies": [
-    "boost-atomic",
-    "span-lite",
     "spdlog"
   ]
 }

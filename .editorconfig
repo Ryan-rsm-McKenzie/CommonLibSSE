@@ -1,5 +1,11 @@
-root = true
-
 [*]
+charset = utf-8
+insert_final_newline = true
+
+[*.{cmake,h,hpp,hxx,c,cpp,cxx}]
 indent_style = tab
 indent_size = 4
+
+[*.json]
+indent_style = space
+indent_size = 2

@@ -4,7 +4,7 @@ namespace RE
 {
 	namespace detail
 	{
-		[[nodiscard]] constexpr std::uint32_t GenerateCRC32(stl::span<const std::uint8_t> a_data) noexcept
+		[[nodiscard]] constexpr std::uint32_t GenerateCRC32(std::span<const std::uint8_t> a_data) noexcept
 		{
 			constexpr std::array<std::uint32_t, 256> table{
 				0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,

@@ -248,7 +248,7 @@ namespace REL
 	}
 
 	template <class T>
-	void safe_write(std::uintptr_t a_dst, stl::span<T> a_data)
+	void safe_write(std::uintptr_t a_dst, std::span<T> a_data)
 	{
 		safe_write(a_dst, a_data.data(), a_data.size_bytes());
 	}
@@ -769,7 +769,7 @@ namespace REL
 		static inline const mapping_t* _natvis{ nullptr };
 
 		detail::memory_map	 _mmap;
-		stl::span<mapping_t> _id2offset;
+		std::span<mapping_t> _id2offset;
 #ifndef NDEBUG
 		std::vector<mapping_t> _offset2id;
 #endif
