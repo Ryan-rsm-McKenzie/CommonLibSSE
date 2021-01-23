@@ -155,7 +155,6 @@ set(sources ${sources}
 	include/RE/M/MagicItem.cpp
 	include/RE/M/MagicTarget.cpp
 	include/RE/M/Main.cpp
-	include/RE/M/MemoryManager.cpp
 	include/RE/M/MemoryPage.cpp
 	include/RE/M/MenuControls.cpp
 	include/RE/M/MenuEventHandler.cpp
