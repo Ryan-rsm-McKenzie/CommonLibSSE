@@ -1,5 +1,4 @@
 set(sources ${sources}
-	include/RE/RTTI.cpp
 	include/RE/Skyrim.cpp
 	include/RE/A/ActiveEffect.cpp
 	include/RE/A/Actor.cpp
@@ -116,7 +115,6 @@ set(sources ${sources}
 	include/RE/G/GViewport.cpp
 	include/RE/H/HeapBlock.cpp
 	include/RE/H/hkBaseTypes.cpp
-	include/RE/H/hkContainerAllocators.cpp
 	include/RE/H/hkpBroadPhase.cpp
 	include/RE/H/hkpCdBody.cpp
 	include/RE/H/hkpCharacterProxyListener.cpp
@@ -203,7 +201,6 @@ set(sources ${sources}
 	include/RE/S/SkyrimVM.cpp
 	include/RE/S/Stack.cpp
 	include/RE/S/StackFrame.cpp
-	include/RE/S/State.cpp
 	include/RE/S/Stream.cpp
 	include/RE/S/StreamBase.cpp
 	include/RE/T/TaskQueueInterface.cpp

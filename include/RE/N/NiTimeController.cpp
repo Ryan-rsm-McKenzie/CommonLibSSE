@@ -5,7 +5,7 @@ namespace RE
 	const NiRTTI* NiTimeController::GetRTTI() const
 	{
 		REL::Relocation<const NiRTTI*> rtti{ NiTimeController::Ni_RTTI };
-		return rtti.type();
+		return rtti.get();
 	}
 
 	void NiTimeController::LoadBinary(NiStream& a_stream)

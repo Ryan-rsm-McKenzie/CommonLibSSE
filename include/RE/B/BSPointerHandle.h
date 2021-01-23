@@ -191,6 +191,16 @@ namespace RE
 	using ProjectileHandle = BSPointerHandle<Projectile>;
 	using ObjectRefHandle = BSPointerHandle<TESObjectREFR>;
 
+	template <class T>
+	struct BSCRC32<BSPointerHandle<T>>
+	{
+	public:
+		[[nodiscard]] std::uint32_t operator()(const BSPointerHandle<T>& a_handle) const noexcept
+		{
+			return BSCRC32<typename BSPointerHandle<T>::native_handle_type>()(a_handle.native_handle());
+		}
+	};
+
 	template <class T, class Manager>
 	class BSPointerHandleManagerInterface
 	{

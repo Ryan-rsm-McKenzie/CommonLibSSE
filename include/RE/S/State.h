@@ -10,7 +10,11 @@ namespace RE
 		class State
 		{
 		public:
-			static State* GetSingleton();
+			[[nodiscard]] static State* GetSingleton()
+			{
+				REL::Relocation<State*> singleton{ REL::ID(524998) };
+				return singleton.get();
+			}
 
 			// members
 			std::uint64_t		 unk00;						// 000

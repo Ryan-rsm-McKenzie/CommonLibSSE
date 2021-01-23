@@ -354,11 +354,6 @@ namespace RE
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
 
-		namespace hkContainerHeapAllocator
-		{
-			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(510713));
-		}
-
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));

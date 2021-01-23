@@ -102,7 +102,7 @@ To netimmerse_cast(const From* a_from)
 
 	REL::Relocation<const RE::NiRTTI*> to{ RE::Ni_Impl::remove_cvpr_t<To>::Ni_RTTI };
 
-	const RE::NiRTTI* toRTTI = to.type();
+	const RE::NiRTTI* toRTTI = to.get();
 	const RE::NiRTTI* fromRTTI = a_from->GetRTTI();
 	while (fromRTTI) {
 		if (fromRTTI == toRTTI) {

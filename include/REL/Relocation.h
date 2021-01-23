@@ -180,8 +180,8 @@ namespace REL
 			class F,
 			class First,
 			class... Rest>
-		inline decltype(auto) invoke_member_function_non_pod(F&& a_func, First&& a_first, Rest&&... a_rest) noexcept(
-			std::is_nothrow_invocable_v<F, First, Rest...>)
+		decltype(auto) invoke_member_function_non_pod(F&& a_func, First&& a_first, Rest&&... a_rest)  //
+			noexcept(std::is_nothrow_invocable_v<F, First, Rest...>)
 		{
 			using result_t = std::invoke_result_t<F, First, Rest...>;
 			std::aligned_storage_t<sizeof(result_t), alignof(result_t)> result;
@@ -197,14 +197,10 @@ namespace REL
 	inline constexpr std::uint8_t RET = 0xC3;
 	inline constexpr std::uint8_t INT3 = 0xCC;
 
-	template <
-		class F,
-		class... Args,
-		std::enable_if_t<
-			std::is_invocable_v<F, Args...>,
-			int> = 0>
-	inline std::invoke_result_t<F, Args...> invoke(F&& a_func, Args&&... a_args) noexcept(
-		std::is_nothrow_invocable<F, Args...>)
+	template <class F, class... Args>
+	std::invoke_result_t<F, Args...> invoke(F&& a_func, Args&&... a_args)  //
+		noexcept(std::is_nothrow_invocable_v<F, Args...>)				   //
+		requires(std::invocable<F, Args...>)
 	{
 		if constexpr (std::is_member_function_pointer_v<std::decay_t<F>>) {
 			if constexpr (detail::is_x64_pod_v<std::invoke_result_t<F, Args...>>) {	 // member functions == free functions in x64
@@ -284,32 +280,32 @@ namespace REL
 
 		constexpr Version() noexcept = default;
 
-		constexpr Version(std::array<value_type, 4> a_version) noexcept :
+		explicit constexpr Version(std::array<value_type, 4> a_version) noexcept :
 			_impl(a_version)
 		{}
 
-		constexpr Version(value_type a_v1, value_type a_v2, value_type a_v3, value_type a_v4) noexcept :
+		constexpr Version(value_type a_v1, value_type a_v2 = 0, value_type a_v3 = 0, value_type a_v4 = 0) noexcept :
 			_impl{ a_v1, a_v2, a_v3, a_v4 }
 		{}
 
 		[[nodiscard]] constexpr reference		operator[](std::size_t a_idx) noexcept { return _impl[a_idx]; }
 		[[nodiscard]] constexpr const_reference operator[](std::size_t a_idx) const noexcept { return _impl[a_idx]; }
 
-		[[nodiscard]] int constexpr compare(const Version& a_rhs) const noexcept
+		[[nodiscard]] std::strong_ordering constexpr compare(const Version& a_rhs) const noexcept
 		{
 			for (std::size_t i = 0; i < _impl.size(); ++i) {
 				if ((*this)[i] != a_rhs[i]) {
-					return (*this)[i] < a_rhs[i] ? -1 : 1;
+					return (*this)[i] < a_rhs[i] ? std::strong_ordering::less : std::strong_ordering::greater;
 				}
 			}
-			return 0;
+			return std::strong_ordering::equal;
 		}
 
 		[[nodiscard]] std::string string() const
 		{
 			std::string result;
-			for (std::size_t i = 0; i < _impl.size(); ++i) {
-				result += std::to_string(_impl[i]);
+			for (auto&& ver : _impl) {
+				result += std::to_string(ver);
 				result += '-';
 			}
 			result.pop_back();
@@ -319,8 +315,8 @@ namespace REL
 		[[nodiscard]] std::wstring wstring() const
 		{
 			std::wstring result;
-			for (std::size_t i = 0; i < _impl.size(); ++i) {
-				result += std::to_wstring(_impl[i]);
+			for (auto&& ver : _impl) {
+				result += std::to_wstring(ver);
 				result += L'-';
 			}
 			result.pop_back();
@@ -331,12 +327,8 @@ namespace REL
 		std::array<value_type, 4> _impl{ 0, 0, 0, 0 };
 	};
 
-	[[nodiscard]] constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == 0; }
-	[[nodiscard]] constexpr bool operator!=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) != 0; }
-	[[nodiscard]] constexpr bool operator<(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) < 0; }
-	[[nodiscard]] constexpr bool operator<=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) <= 0; }
-	[[nodiscard]] constexpr bool operator>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) > 0; }
-	[[nodiscard]] constexpr bool operator>=(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) >= 0; }
+	[[nodiscard]] constexpr bool				 operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == 0; }
+	[[nodiscard]] constexpr std::strong_ordering operator<=>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs); }
 
 	[[nodiscard]] inline std::optional<Version> get_file_version(stl::zwstring a_filename)
 	{
@@ -775,7 +767,30 @@ namespace REL
 #endif
 	};
 
-	// converts an id within the database to its equivalent offset
+	class Offset
+	{
+	public:
+		constexpr Offset() noexcept = default;
+
+		explicit constexpr Offset(std::size_t a_offset) noexcept :
+			_offset(a_offset)
+		{}
+
+		constexpr Offset& operator=(std::size_t a_offset) noexcept
+		{
+			_offset = a_offset;
+			return *this;
+		}
+
+		[[nodiscard]] std::uintptr_t		address() const { return base() + offset(); }
+		[[nodiscard]] constexpr std::size_t offset() const noexcept { return _offset; }
+
+	private:
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
+
+		std::size_t _offset{ 0 };
+	};
+
 	class ID
 	{
 	public:
@@ -791,8 +806,9 @@ namespace REL
 			return *this;
 		}
 
-		[[nodiscard]] std::uintptr_t address() const { return base() + offset(); }
-		[[nodiscard]] std::size_t	 offset() const { return IDDatabase::get().id2offset(_id); }
+		[[nodiscard]] std::uintptr_t		  address() const { return base() + offset(); }
+		[[nodiscard]] constexpr std::uint64_t id() const noexcept { return _id; }
+		[[nodiscard]] std::size_t			  offset() const { return IDDatabase::get().id2offset(_id); }
 
 	private:
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
@@ -800,7 +816,6 @@ namespace REL
 		std::uint64_t _id{ 0 };
 	};
 
-	// relocates the given address in the exe and reinterprets it as the given type
 	template <class T>
 	class Relocation
 	{
@@ -820,7 +835,15 @@ namespace REL
 			_impl{ a_address }
 		{}
 
-		Relocation(ID a_id, std::size_t a_offset = 0) :
+		explicit Relocation(Offset a_offset) :
+			_impl{ a_offset.address() }
+		{}
+
+		explicit Relocation(ID a_id) :
+			_impl{ a_id.address() }
+		{}
+
+		explicit Relocation(ID a_id, std::ptrdiff_t a_offset) :
 			_impl{ a_id.address() + a_offset }
 		{}
 
@@ -830,91 +853,74 @@ namespace REL
 			return *this;
 		}
 
+		Relocation& operator=(Offset a_offset)
+		{
+			_impl = a_offset.address();
+			return *this;
+		}
+
 		Relocation& operator=(ID a_id)
 		{
 			_impl = a_id.address();
 			return *this;
 		}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_pointer_v<U>,
-				int> = 0>
-		[[nodiscard]] decltype(auto) operator*() const noexcept
+		template <class U = value_type>
+		[[nodiscard]] decltype(auto) operator*() const noexcept	 //
+			requires(std::is_pointer_v<U>)
 		{
 			return *get();
 		}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::conjunction_v<
-					std::is_pointer<U>,
-					std::disjunction<
-						std::is_class<std::remove_pointer_t<U>>,
-						std::is_enum<std::remove_pointer_t<U>>>>,
-				int> = 0>
-		[[nodiscard]] auto operator->() const noexcept
+		template <class U = value_type>
+		[[nodiscard]] auto operator->() const noexcept	//
+			requires(std::is_pointer_v<U>)
 		{
 			return get();
 		}
 
-		template <
-			class... Args,
-			std::enable_if_t<
-				std::is_invocable_v<const value_type&, Args&&...>,
-				int> = 0>
-		std::invoke_result_t<const value_type&, Args&&...> operator()(Args&&... a_args) const noexcept(
-			std::is_nothrow_invocable_v<const value_type&, Args&&...>)
+		template <class... Args>
+		std::invoke_result_t<const value_type&, Args...> operator()(Args&&... a_args) const	 //
+			noexcept(std::is_nothrow_invocable_v<const value_type&, Args...>)				 //
+			requires(std::invocable<const value_type&, Args...>)
 		{
-			assert(address() != 0);
 			return REL::invoke(get(), std::forward<Args>(a_args)...);
 		}
 
-		template <
-			class U = value_type,
-			std::enable_if_t<
-				std::is_same_v<
-					U,
-					std::uintptr_t>,
-				int> = 0>
-		std::uintptr_t write_vfunc(std::size_t a_idx, std::uintptr_t a_newFunc)
+		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _impl; }
+		[[nodiscard]] std::size_t			   offset() const { return _impl - base(); }
+
+		[[nodiscard]] value_type get() const  //
+			noexcept(std::is_nothrow_copy_constructible_v<value_type>)
 		{
-			constexpr auto PSIZE = sizeof(void*);
-			auto		   addr = address() + (PSIZE * a_idx);
-			auto		   result = *reinterpret_cast<std::uintptr_t*>(addr);
+			assert(_impl != 0);
+			return unrestricted_cast<value_type>(_impl);
+		}
+
+		template <class U = value_type>
+		std::uintptr_t write_vfunc(std::size_t a_idx, std::uintptr_t a_newFunc)	 //
+			requires(std::same_as<U, std::uintptr_t>)
+		{
+			const auto addr = address() + (sizeof(void*) * a_idx);
+			const auto result = *reinterpret_cast<std::uintptr_t*>(addr);
 			safe_write(addr, a_newFunc);
 			return result;
 		}
 
-		template <
-			class F,
-			class U = value_type,
-			std::enable_if_t<
-				std::is_same_v<
-					U,
-					std::uintptr_t>,
-				int> = 0>
-		std::uintptr_t write_vfunc(std::size_t a_idx, F a_newFunc)
+		template <class F>
+		std::uintptr_t write_vfunc(std::size_t a_idx, F a_newFunc)	//
+			requires(std::same_as<value_type, std::uintptr_t>)
 		{
 			return write_vfunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
-		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _impl; }
-		[[nodiscard]] std::size_t			   offset() const { offset() - base(); }
-
-		[[nodiscard]] value_type get() const noexcept(std::is_nothrow_copy_constructible_v<value_type>) { return unrestricted_cast<value_type>(_impl); }
-		[[nodiscard]] value_type type() const noexcept(std::is_nothrow_copy_constructible_v<value_type>) { return get(); }
-
-	private:
+	private :
+		// clang-format off
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
+		// clang-format on
 
 		std::uintptr_t _impl{ 0 };
 	};
-
-	template <class T>
-	using Offset [[deprecated("use Relocation")]] = Relocation<T>;
 }
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE

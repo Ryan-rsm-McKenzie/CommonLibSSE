@@ -31,6 +31,7 @@ endif()
 
 # ---- Dependencies ----
 
+find_package(Boost REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 
 # ---- Add source files ----
@@ -122,6 +123,7 @@ target_include_directories(
 target_link_libraries(
 	${PROJECT_NAME}
 	PUBLIC
+		Boost::headers
 		spdlog::spdlog
 		Version.lib
 )
