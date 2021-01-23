@@ -287,6 +287,7 @@
 #include "RE/B/BSTempEffectWeaponBlood.h"
 #include "RE/B/BSTextureSet.h"
 #include "RE/B/BSThread.h"
+#include "RE/B/BSThreadEvent.h"
 #include "RE/B/BSTimer.h"
 #include "RE/B/BSTriShape.h"
 #include "RE/B/BSUIMessageData.h"

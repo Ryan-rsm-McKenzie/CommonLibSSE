@@ -317,6 +317,7 @@ set(headers ${headers}
 	include/RE/B/BSTFreeList.h
 	include/RE/B/BSTHashMap.h
 	include/RE/B/BSThread.h
+	include/RE/B/BSThreadEvent.h
 	include/RE/B/BSTimer.h
 	include/RE/B/BSTList.h
 	include/RE/B/BSTLocklessQueue.h
