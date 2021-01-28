@@ -8,7 +8,7 @@ namespace RE
 	const NiRTTI* NiObject::GetRTTI() const
 	{
 		REL::Relocation<const NiRTTI*> rtti{ NiObject::Ni_RTTI };
-		return rtti.type();
+		return rtti.get();
 	}
 
 	bool NiObject::RegisterStreamables(NiStream& a_stream)

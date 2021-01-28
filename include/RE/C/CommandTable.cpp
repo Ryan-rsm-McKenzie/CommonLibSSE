@@ -57,7 +57,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstScriptCommand()
 	{
 		REL::Relocation<SCRIPT_FUNCTION*> ptr{ Offset::SCRIPT_FUNCTION::FirstScriptCommand };
-		return ptr.type();
+		return ptr.get();
 	}
 
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateScriptCommand(const char* a_longName)
@@ -74,7 +74,7 @@ namespace RE
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::GetFirstConsoleCommand()
 	{
 		REL::Relocation<SCRIPT_FUNCTION*> ptr{ Offset::SCRIPT_FUNCTION::FirstConsoleCommand };
-		return ptr.type();
+		return ptr.get();
 	}
 
 	SCRIPT_FUNCTION* SCRIPT_FUNCTION::LocateConsoleCommand(const char* a_longName)
