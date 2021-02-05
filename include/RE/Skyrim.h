@@ -233,6 +233,7 @@
 #include "RE/B/BSMultiBoundNode.h"
 #include "RE/B/BSMultiIndexTriShape.h"
 #include "RE/B/BSMusicEvent.h"
+#include "RE/B/BSMusicManager.h"
 #include "RE/B/BSNavmesh.h"
 #include "RE/B/BSNavmeshInfoMap.h"
 #include "RE/B/BSNiAllocator.h"
