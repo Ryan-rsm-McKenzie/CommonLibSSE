@@ -73,7 +73,32 @@ namespace RE
 			GetEventSource<T>()->RemoveEventSink(a_eventSink);
 		}
 
+		
+		
+		bool SetGraphVariableBool(const BSFixedString& a_variableName, const bool a_in)
+		{
+			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableBool);
+			REL::Relocation<func_t> func{ REL::ID(62708) };
+			return func(this, a_variableName, a_in);
+		}
 
+
+		bool SetGraphVariableFloat(const BSFixedString& a_variableName, const float a_in)
+		{
+			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableFloat);
+			REL::Relocation<func_t> func{ REL::ID(62709) };
+			return func(this, a_variableName, a_in);
+		}
+
+
+		bool SetGraphVariableInt(const BSFixedString& a_variableName, const int a_in)
+		{
+			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableInt);
+			REL::Relocation<func_t> func{ REL::ID(62710) };
+			return func(this, a_variableName, a_in);
+		}	
+
+			
 		// members
 		hkbCharacter				   characterInstance;			 // 0C0
 		BSTArray<void*>				   unk160;						 // 160
