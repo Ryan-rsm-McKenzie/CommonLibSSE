@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/H/hkpRayHitCollector.h"
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkSseMathTypes.h"
 #include "RE/H/hkpShapeBuffer.h"
@@ -13,7 +14,6 @@ namespace RE
 	class hkpCdBody;
 	class hkpCdVertex;
 	class hkpConvexShape;
-	class hkpRayHitCollector;
 	class hkpShapeContainer;
 	class hkpShapeRayBundleCastInput;
 	class hkpShapeRayBundleCastOutput;
