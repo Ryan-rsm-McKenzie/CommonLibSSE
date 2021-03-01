@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/bhkNiCollisionObject.h"
+#include "RE/B/bhkRigidBody.h"
 
 namespace RE
 {
@@ -26,6 +27,8 @@ namespace RE
 		virtual void		  Unk_2D(void) override;							  // 2D
 		virtual void		  Unk_2E(void) override;							  // 2E
 		virtual void		  Unk_2F(void) override;							  // 2F
+
+		bhkRigidBody* GetRigidBody() const;
 	};
 	static_assert(sizeof(bhkCollisionObject) == 0x28);
 }

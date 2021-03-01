@@ -22,6 +22,13 @@ namespace RE
 		return flags.all(Flag::kHidden);
 	}
 
+	bhkCollisionObject* NiAVObject::GetCollisionObject() const
+	{
+		using func_t = decltype(&NiAVObject::GetCollisionObject);
+		REL::Relocation<func_t> func{ Offset::NiAVObject::GetCollisionObject };
+		return func(this);
+	}
+
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);
