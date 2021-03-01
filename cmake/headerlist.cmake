@@ -701,6 +701,7 @@ set(headers ${headers}
 	include/RE/H/hkpCharacterProxyListener.h
 	include/RE/H/hkpCharacterState.h
 	include/RE/H/hkpCharacterStateManager.h
+	include/RE/H/hkpClosestRayHitCollector.h
 	include/RE/H/hkpCollidable.h
 	include/RE/H/hkpCollisionInput.h
 	include/RE/H/hkpConstraintInfo.h
@@ -722,6 +723,7 @@ set(headers ${headers}
 	include/RE/H/hkpPhantomListener.h
 	include/RE/H/hkpPhantomType.h
 	include/RE/H/hkpProperty.h
+	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRigidBody.h
 	include/RE/H/hkpRootCdPoint.h
 	include/RE/H/hkpShape.h
