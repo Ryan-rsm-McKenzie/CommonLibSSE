@@ -14,7 +14,7 @@ namespace RE
 
 		// add
 		virtual void Unk_32(void);										  // 32
-		virtual void CastRay(hkpWorldRayCastInput& a_worldRayCastInput);  // 33
+		virtual bool CastRay(hkpWorldRayCastInput& a_worldRayCastInput);  // 33
 		virtual void Unk_34(void);										  // 34
 		virtual void Unk_35(void);										  // 35
 		virtual void Unk_36(void);										  // 36
