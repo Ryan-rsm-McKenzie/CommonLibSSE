@@ -80,6 +80,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514316));
 		}
 
+		namespace bhkCollisionObject
+		{
+			inline constexpr REL::ID GetRigidBody(static_cast<std::uint64_t>(12784));
+		}
+
 		namespace BipedAnim
 		{
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15491));
@@ -354,6 +359,11 @@ namespace RE
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
 
+		namespace hkpClosestRayHitCollector
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(231896));
+		}
+
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
@@ -472,6 +482,7 @@ namespace RE
 
 		namespace NiAVObject
 		{
+			inline constexpr REL::ID GetCollisionObject(static_cast<std::uint64_t>(25482));
 			inline constexpr REL::ID SetMotionType(static_cast<std::uint64_t>(76033));
 			inline constexpr REL::ID Update(static_cast<std::uint64_t>(68900));
 		}
