@@ -361,7 +361,7 @@ namespace RE
 
 		namespace hkpClosestRayHitCollector
 		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(231896));
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242710));
 		}
 
 		namespace hkReferencedObject

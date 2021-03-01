@@ -10,6 +10,7 @@ namespace RE
 		hkpRayHitCollector(std::uintptr_t a_vtbl) noexcept :
 			vtbl(a_vtbl){};
 		
+		// members
 		std::uintptr_t vtbl{ 0 };					 // 0
 		float		   earlyOutHitFraction{ 1.0F };	 // 8
 		std::uint32_t  padC;						 // C
