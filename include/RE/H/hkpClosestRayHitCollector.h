@@ -8,9 +8,12 @@ namespace RE
 	class hkpClosestRayHitCollector : public hkpRayHitCollector
 	{
 	public:
+		hkpClosestRayHitCollector() noexcept :
+			hkpRayHitCollector(Offset::hkpClosestRayHitCollector::Vtbl.address()){};
+		
 		hkpWorldRayCastOutput* rayHit;		   // 10
 		std::uint64_t		   pad18;		   // 18
-		float				   pad20{ 1.0f };  // 20
+		float				   pad20{ 1.0F };  // 20
 		std::int32_t		   pad24{ 0 };	   // 24
 		std::int32_t		   pad28{ -1 };	   // 28
 		std::uint32_t		   pad2C;		   // 2C

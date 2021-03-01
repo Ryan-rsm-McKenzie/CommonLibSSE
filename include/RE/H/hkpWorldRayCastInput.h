@@ -15,7 +15,7 @@ namespace RE
 		std::uint32_t		filterInfo{ 0 };					   // 24
 		std::uint64_t		pad30;								   // 30
 		std::uint64_t		pad38;								   // 38
-		float				pad40{ 1.0f };						   // 40
+		float				pad40{ 1.0F };						   // 40
 		std::int32_t		pad44{ -1 };						   // 44
 		std::int32_t		pad48{ -1 };						   // 48
 		std::uint32_t		pad4C;								   // 4C
