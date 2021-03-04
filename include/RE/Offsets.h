@@ -85,6 +85,11 @@ namespace RE
 			inline constexpr REL::ID GetRigidBody(static_cast<std::uint64_t>(12784));
 		}
 
+		namespace bhkShape
+		{
+			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(76799));
+		}
+
 		namespace BipedAnim
 		{
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15491));
@@ -364,6 +369,11 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242710));
 		}
 
+		namespace hkpCollidable
+		{
+			inline constexpr REL::ID Get3D(static_cast<std::uint64_t>(76160));
+		}
+
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
@@ -591,6 +601,7 @@ namespace RE
 
 		namespace TES
 		{
+			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(13205));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516923));
 		}
 

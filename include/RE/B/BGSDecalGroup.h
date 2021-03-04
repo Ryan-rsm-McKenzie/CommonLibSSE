@@ -3,6 +3,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiPoint3.h"
+#include "RE/N/NiMatrix3.h"
 #include "RE/N/NiSmartPointer.h"
 
 namespace RE
@@ -16,44 +17,43 @@ namespace RE
 	{
 	public:
 		// members
-		NiPoint3			  origin;		  // 00
-		NiPoint3			  direction;	  // 0C
-		NiPoint3			  surfaceNormal;  // 18
-		ObjectRefHandle		  objRef;		  // 24
-		NiPointer<NiAVObject> avObj;		  // 28
-		NiNode*				  clone;		  // 30
-		BGSTextureSet*		  texSet;		  // 38
-		BGSTextureSet*		  texSet2;		  // 40
-		std::uint64_t		  unk48;		  // 48
-		std::uint64_t		  unk50;		  // 50
-		float				  unk58;		  // 58
-		std::uint32_t		  unk5C;		  // 5C
-		std::uint64_t		  unk60;		  // 60
-		float				  unk68;		  // 68
-		std::uint32_t		  unk6C;		  // 6C
-		std::uint64_t		  unk70;		  // 70
-		float				  unk78;		  // 78
-		std::uint32_t		  unk7C;		  // 7C
-		TESObjectCELL*		  parentCell;	  // 80
-		std::uint64_t		  unk88;		  // 88
-		std::uint64_t		  unk90;		  // 90
-		float				  unk98;		  // 98
-		float				  unk9C;		  // 9C
-		float				  unkA0;		  // A0
-		float				  unkA4;		  // A4
-		std::uint32_t		  unkA8;		  // A8
-		float				  unkAC;		  // AC
-		std::uint32_t		  unkB0;		  // B0
-		std::uint16_t		  unkB4;		  // B4
-		std::uint8_t		  unkB6;		  // B6
-		std::uint8_t		  unkB7;		  // B7
-		std::uint16_t		  unkB8;		  // B8
-		std::uint8_t		  unkBA;		  // BA
-		std::uint8_t		  unkBB;		  // BB
-		std::uint16_t		  unkBC;		  // BC
-		std::uint8_t		  unkBE;		  // BE
-		std::uint32_t		  unkC0;		  // C0
-		std::uint32_t		  padC4;		  // C4
+		NiPoint3			  origin;			// 00
+		NiPoint3			  direction;		// 0C
+		NiPoint3			  surfaceNormal;	// 18
+		ObjectRefHandle		  objectRefHandle;	// 24
+		NiPointer<NiAVObject> avObject;			// 28
+		NiNode*				  clone;			// 30
+		BGSTextureSet*		  textureSet;		// 38
+		BGSTextureSet*		  textureSet2;		// 40
+		std::int32_t		  unk48;			// 48
+		float				  width;			// 4C
+		float				  height;			// 50
+		float				  depth;			// 54
+		NiMatrix3			  rotation;			// 58
+		TESObjectCELL*		  parentCell;		// 80
+		std::uint32_t		  unk88;			// 88
+		float				  parallaxScale;	// 88
+		std::uint64_t		  unk90;			// 90
+		float				  shininess;		// 98
+		float				  angleThreshold;	// 9C
+		float				  unkA0;			// A0
+		float				  red;				// A4
+		float				  green;			// A8
+		float				  blue;				// AC
+		std::uint32_t		  unkB0;			// B0
+		std::int16_t		  noSubtextures;	// B4
+		std::uint8_t		  unkB6;			// B6
+		std::uint8_t		  parallax;			// B7
+		std::uint8_t		  alphaTesting;		// B8
+		std::uint8_t		  alphaBlending;	// B9
+		std::uint8_t		  parallaxPasses;	// BA
+		std::uint8_t		  unkBB;			// BB
+		std::uint8_t		  unkBC;			// BC
+		std::uint8_t		  unkBD;			// BD
+		std::uint8_t		  unkBE;			// BE
+		std::uint8_t		  unkBF;			// BF
+		std::uint32_t		  unkC0;			// C0
+		std::uint32_t		  padC4;			// C4
 	};
 	static_assert(sizeof(DECAL_CREATION_DATA) == 0xC8);
 
