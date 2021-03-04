@@ -19,7 +19,7 @@ namespace RE
 		hkpRayHitCollector*	  rayHitCollectorA8{ nullptr };			 // A8
 		hkpRayHitCollector*	  rayHitCollectorB0{ nullptr };			 // B0
 		hkpRayHitCollector*	  rayHitCollectorB8{ nullptr };			 // B8
-		bool				  padC0{ false };						 // C0
+		bool				  unkC0{ false };						 // C0
 		std::uint8_t		  padC1;								 // C1
 		std::uint16_t		  padC2;								 // C2
 		std::uint32_t		  padC4;								 // C4

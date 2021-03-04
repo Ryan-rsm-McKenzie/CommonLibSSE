@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/bhkSerializable.h"
+#include "RE/H/hkpShape.h"
 
 namespace RE
 {
@@ -26,6 +27,8 @@ namespace RE
 		virtual void Unk_33(void);	// 33
 		virtual void Unk_34(void);	// 34 - { return 0; }
 		virtual void Unk_35(void);	// 35
+
+		std::uint32_t GetMaterialID(hkpShapeKey a_key) const;
 
 		// members
 		std::uint64_t unk20;  // 20
