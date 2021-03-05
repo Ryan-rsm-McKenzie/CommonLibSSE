@@ -85,6 +85,11 @@ namespace RE
 			inline constexpr REL::ID GetRigidBody(static_cast<std::uint64_t>(12784));
 		}
 
+		namespace bhkRefObject
+		{
+			inline constexpr REL::ID GetProperty(static_cast<std::uint64_t>(75978));
+		}
+
 		namespace bhkShape
 		{
 			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(76799));
