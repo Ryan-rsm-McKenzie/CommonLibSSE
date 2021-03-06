@@ -19,9 +19,11 @@ set(sources ${sources}
 	include/RE/B/BGSEntryPointPerkEntry.cpp
 	include/RE/B/BGSFootstepManager.cpp
 	include/RE/B/BGSHeadPart.cpp
+	include/RE/B/BGSImpactDataSet.cpp
 	include/RE/B/BGSKeywordForm.cpp
 	include/RE/B/BGSListForm.cpp
 	include/RE/B/BGSLocation.cpp
+	include/RE/B/BGSMaterialType.cpp
 	include/RE/B/BGSOpenCloseForm.cpp
 	include/RE/B/BGSPerkEntry.cpp
 	include/RE/B/BGSSaveLoadManager.cpp

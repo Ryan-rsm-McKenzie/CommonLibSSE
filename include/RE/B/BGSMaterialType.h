@@ -36,6 +36,8 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
 
+		static BGSMaterialType* GetMaterialType(std::uint32_t a_materialID);
+
 		// members
 		BGSMaterialType*					  parentType;		   // 20 - PNAM
 		BSFixedString						  materialName;		   // 28 - MNAM

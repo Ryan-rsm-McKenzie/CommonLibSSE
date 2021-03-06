@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSImpactData.h"
 #include "RE/B/BGSPreloadable.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/F/FormTypes.h"
@@ -30,6 +31,8 @@ namespace RE
 		virtual void ClearData() override;			 // 05
 		virtual bool Load(TESFile* a_mod) override;	 // 06
 		virtual void InitItemImpl() override;		 // 13
+
+		BGSImpactData* GetImpactData(BGSMaterialType* a_materialType) const;
 
 		// members
 		BSTHashMap<const BGSMaterialType*, BGSImpactData*> impactMap;  // 28 - PNAM
