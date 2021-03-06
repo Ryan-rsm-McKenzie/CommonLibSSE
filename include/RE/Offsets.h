@@ -61,9 +61,19 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
 		}
 
+		namespace BGSImpactDataSet
+		{
+			inline constexpr REL::ID GetImpactData(static_cast<std::uint64_t>(20408));
+		}
+
 		namespace BGSListForm
 		{
 			inline constexpr REL::ID AddForm(static_cast<std::uint64_t>(20470));
+		}
+
+		namespace BGSMaterialType
+		{
+			inline constexpr REL::ID GetMaterialType(static_cast<std::uint64_t>(20529));
 		}
 
 		namespace BGSSaveLoadManager
