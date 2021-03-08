@@ -17,43 +17,42 @@ namespace RE
 	{
 	public:
 		// members
-		NiPoint3			  origin;			// 00
-		NiPoint3			  direction;		// 0C
-		NiPoint3			  surfaceNormal;	// 18
-		ObjectRefHandle		  objectRefHandle;	// 24
-		NiPointer<NiAVObject> avObject;			// 28
-		NiNode*				  clone;			// 30
-		BGSTextureSet*		  textureSet;		// 38
-		BGSTextureSet*		  textureSet2;		// 40
-		std::int32_t		  unk48;			// 48
-		float				  width;			// 4C
-		float				  height;			// 50
-		float				  depth;			// 54
-		NiMatrix3			  rotation;			// 58
-		TESObjectCELL*		  parentCell;		// 80
-		std::uint32_t		  unk88;			// 88
-		float				  parallaxScale;	// 88
-		std::uint64_t		  unk90;			// 90
-		float				  shininess;		// 98
-		float				  angleThreshold;	// 9C
-		float				  unkA0;			// A0
-		float				  red;				// A4
-		float				  green;			// A8
-		float				  blue;				// AC
-		std::uint32_t		  unkB0;			// B0
-		std::int16_t		  noSubtextures;	// B4
-		std::uint8_t		  unkB6;			// B6
-		std::uint8_t		  parallax;			// B7
-		std::uint8_t		  alphaTesting;		// B8
-		std::uint8_t		  alphaBlending;	// B9
-		std::uint8_t		  parallaxPasses;	// BA
-		std::uint8_t		  unkBB;			// BB
-		std::uint8_t		  unkBC;			// BC
-		std::uint8_t		  unkBD;			// BD
-		std::uint8_t		  unkBE;			// BE
-		std::uint8_t		  unkBF;			// BF
-		std::uint32_t		  unkC0;			// C0
-		std::uint32_t		  padC4;			// C4
+		NiPoint3			  origin{ 0.0F, 0.0F, 0.0F };										 // 00
+		NiPoint3			  direction{ 0.0F, 0.0F, 0.0F };									 // 0C
+		NiPoint3			  surfaceNormal{ 0.0F, 0.0F, 0.0F };								 // 18
+		ObjectRefHandle		  objectRefHandle{};												 // 24
+		NiPointer<NiAVObject> avObject{ nullptr };												 // 28
+		NiNode*				  clone{ nullptr };													 // 30
+		BGSTextureSet*		  textureSet{ nullptr };											 // 38
+		BGSTextureSet*		  textureSet2{ nullptr };											 // 40
+		std::int32_t		  unk48{ -1 };														 // 48
+		float				  width{ 0.0F };													 // 4C
+		float				  height{ 0.0F };													 // 50
+		float				  depth{ 0.0F };													 // 54
+		NiMatrix3			  rotation{ 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F };	 // 58
+		TESObjectCELL*		  parentCell{ nullptr };											 // 80
+		float				  parallaxScale{ 0.0F };											 // 88
+		std::uint64_t		  unk90{ 0U };														 // 90
+		float				  shininess{ 4.0F };												 // 98
+		float				  angleThreshold{ 15.0F };											 // 9C
+		float				  placementRadius{ 16.0F };											 // A0
+		float				  red{ 1.0F };														 // A4
+		float				  green{ 1.0F };													 // A8
+		float				  blue{ 1.0F };														 // AC
+		std::uint32_t		  unkB0{ 0U };														 // B0
+		std::int8_t			  noSubtextures{ 0U };												 // B4
+		std::uint8_t		  unkB5{ 0U };														 // B5
+		std::uint8_t		  unkB6{ 1U };														 // B6
+		std::uint8_t		  parallax{ 0U };													 // B7
+		std::uint8_t		  alphaTesting{ 1U };												 // B8
+		std::uint8_t		  alphaBlending{ 0U };												 // B9
+		std::uint8_t		  parallaxPasses{ 0U };												 // BA
+		std::uint8_t		  unkBB{ 0U };														 // BB
+		std::uint8_t		  unkBC{ 0U };														 // BC
+		std::uint8_t		  unkBD{ 0U };														 // BD
+		std::uint8_t		  unkBE{ 0U };														 // BE
+		std::uint8_t		  unkBF{ 0U };														 // BF
+		std::uint32_t		  unkC0{ 0U };														 // C0
 	};
 	static_assert(sizeof(DECAL_CREATION_DATA) == 0xC8);
 
