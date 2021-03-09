@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/H/hkpRayHitCollector.h"
+#include "RE/H/hkpWorldRayCastOutput.h"
 #include "RE/H/hkVector4.h"
 
 namespace RE

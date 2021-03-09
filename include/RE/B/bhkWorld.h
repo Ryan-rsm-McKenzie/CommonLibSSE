@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/bhkSerializable.h"
+#include "RE/H/hkpWorldRayCastInput.h"
 
 namespace RE
 {
@@ -18,6 +19,9 @@ namespace RE
 		virtual void Unk_34(void);										  // 34
 		virtual void Unk_35(void);										  // 35
 		virtual void Unk_36(void);										  // 36
+
+		static float GetWorldScale();
+		static float GetWorldScaleInverse();
 
 		// members
 		std::uint8_t unk0020[0xC600 - 0x0020];	// 0020

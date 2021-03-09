@@ -33,6 +33,7 @@ set(sources ${sources}
 	include/RE/B/bhkCollisionObject.cpp
 	include/RE/B/bhkRefObject.cpp
 	include/RE/B/bhkShape.cpp
+	include/RE/B/bhkWorld.cpp
 	include/RE/B/BipedAnim.cpp
 	include/RE/B/BookMenu.cpp
 	include/RE/B/BSAtomic.cpp

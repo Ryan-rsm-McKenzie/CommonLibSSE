@@ -105,6 +105,12 @@ namespace RE
 			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(76799));
 		}
 
+		namespace bhkWorld
+		{
+			inline constexpr REL::ID WorldScale(static_cast<std::uint64_t>(231896));
+			inline constexpr REL::ID WorldScaleInverse(static_cast<std::uint64_t>(230692));
+		}
+
 		namespace BipedAnim
 		{
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15491));

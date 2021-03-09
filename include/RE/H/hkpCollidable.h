@@ -39,6 +39,7 @@ namespace RE
 		static_assert(sizeof(BoundingVolumeData) == 0x38);
 
 		NiAVObject* Get3D() const;
+
 		void* GetOwner() const;
 		template <class T>
 		T* GetOwner() const
