@@ -616,7 +616,8 @@ namespace RE
 
 		namespace TES
 		{
-			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(13205));
+			inline constexpr REL::ID GetCell(static_cast<std::uint64_t>(13177));
+			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(13203));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516923));
 		}
 

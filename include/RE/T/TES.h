@@ -6,6 +6,7 @@
 #include "RE/I/ICellAttachDetachEventSource.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/T/TESObjectCELL.h"
 
 namespace RE
 {
@@ -59,6 +60,7 @@ namespace RE
 
 		static TES* GetSingleton();
 
+		TESObjectCELL* GetCell(NiPoint3* a_position) const;
 		std::uint32_t GetMaterialID(NiPoint3* a_position) const;
 
 		// members
