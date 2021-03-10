@@ -1,8 +1,8 @@
 #pragma once
 
+#include "RE/H/hkVector4.h"
 #include "RE/H/hkpRayHitCollector.h"
 #include "RE/H/hkpWorldRayCastOutput.h"
-#include "RE/H/hkVector4.h"
 
 namespace RE
 {
@@ -15,7 +15,7 @@ namespace RE
 		bool				  enableShapeCollectionFilter{ false };	 // 20
 		std::uint32_t		  filterInfo{ 0 };						 // 24
 		hkpWorldRayCastOutput rayHit;								 // 30
-		hkVector4			  ray;									 // 90
+		hkVector4			  delta;								 // 90
 		hkpRayHitCollector*	  rayHitCollectorA0{ nullptr };			 // A0
 		hkpRayHitCollector*	  rayHitCollectorA8{ nullptr };			 // A8
 		hkpRayHitCollector*	  rayHitCollectorB0{ nullptr };			 // B0

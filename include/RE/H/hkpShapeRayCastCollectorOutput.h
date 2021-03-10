@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/H/hkpShape.h"
 #include "RE/H/hkVector4.h"
+#include "RE/H/hkpShape.h"
 
 namespace RE
 {
