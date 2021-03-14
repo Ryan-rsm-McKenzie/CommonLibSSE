@@ -7,7 +7,7 @@ namespace RE
 	class NiMatrix3
 	{
 	public:
-		void EulerAnglesToAxesZXY(NiPoint3 a_angle);
+		void EulerAnglesToAxesZXY(const NiPoint3& a_angle);
 		void EulerAnglesToAxesZXY(float a_xAngle, float a_yAngle, float a_zAngle);
 		bool ToEulerAnglesXYZ(NiPoint3& a_angle) const;
 		bool ToEulerAnglesXYZ(float& a_xAngle, float& a_yAngle, float& a_zAngle) const;
