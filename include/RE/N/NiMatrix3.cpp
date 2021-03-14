@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	void NiMatrix3::EulerAnglesToAxesZXY(NiPoint3 a_angle)
+	void NiMatrix3::EulerAnglesToAxesZXY(const NiPoint3& a_angle)
 	{
 		EulerAnglesToAxesZXY(a_angle.x, a_angle.y, a_angle.z);
 	}

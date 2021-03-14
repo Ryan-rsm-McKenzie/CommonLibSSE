@@ -4,6 +4,8 @@
 
 namespace RE
 {
+	class bhkWorld;
+
 	class ahkpWorld : public hkpWorld
 	{
 	public:
@@ -12,7 +14,7 @@ namespace RE
 		virtual ~ahkpWorld();  // 00
 
 		// members
-		std::uint64_t unk430;  // 430
+		bhkWorld*	  unk430;  // 430
 		std::uint64_t unk438;  // 438
 	};
 	static_assert(sizeof(ahkpWorld) == 0x440);

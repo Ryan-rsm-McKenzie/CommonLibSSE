@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RE/H/hkpCollidable.h"
 #include "RE/H/hkpShapeRayCastOutput.h"
 
 namespace RE

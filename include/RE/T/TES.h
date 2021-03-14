@@ -4,9 +4,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/I/ICellAttachDetachEventSource.h"
-#include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
-#include "RE/T/TESObjectCELL.h"
 
 namespace RE
 {
@@ -20,6 +18,7 @@ namespace RE
 	class GridCellArray;
 	class ImageSpaceModifierInstance;
 	class NiNode;
+	class NiPoint3;
 	class Sky;
 	class TESActorBase;
 	class TESObjectCELL;

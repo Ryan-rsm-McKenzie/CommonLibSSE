@@ -15,11 +15,13 @@ set(sources ${sources}
 	include/RE/B/BGSBaseAlias.cpp
 	include/RE/B/BGSBipedObjectForm.cpp
 	include/RE/B/BGSColorForm.cpp
+	include/RE/B/BGSDecalManager.cpp
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	include/RE/B/BGSEntryPointPerkEntry.cpp
 	include/RE/B/BGSFootstepManager.cpp
 	include/RE/B/BGSHeadPart.cpp
 	include/RE/B/BGSImpactDataSet.cpp
+	include/RE/B/BGSImpactManager.cpp
 	include/RE/B/BGSKeywordForm.cpp
 	include/RE/B/BGSListForm.cpp
 	include/RE/B/BGSLocation.cpp

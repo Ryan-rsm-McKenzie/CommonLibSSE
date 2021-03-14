@@ -20,8 +20,11 @@
 namespace RE
 {
 	class bhkWorld;
+	class BSTempEffectParticle;
 	class NavMesh;
+	class NiAVObject;
 	class NiNode;
+	class NiPoint3;
 
 	class BGSTerrainVisibilityData
 	{
@@ -186,25 +189,26 @@ namespace RE
 			return func(this);
 		}
 
-		void		   ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
-		void		   ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
-		EXTERIOR_DATA* GetCoordinates();
-		TESFaction*	   GetFactionOwner();
-		INTERIOR_DATA* GetLighting();
-		float		   GetNorthRotation();
-		TESForm*	   GetOwner();
-		bool		   IsAttached() const;
-		bool		   IsExteriorCell() const;
-		bool		   IsInteriorCell() const;
-		void		   SetActorOwner(TESNPC* a_owner);
-		void		   SetFactionOwner(TESFaction* a_owner);
-		void		   SetFogColor(Color a_near, Color a_far);
-		void		   SetFogPlanes(float a_near, float a_far);
-		void		   SetFogPower(float a_power);
-		void		   SetHandChanged(bool a_changed);
-		void		   SetOwner(TESForm* a_owner);
-		void		   SetPublic(bool a_public);
-		bool		   UsesSkyLighting() const;
+		void				  ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
+		void				  ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
+		EXTERIOR_DATA*		  GetCoordinates();
+		TESFaction*			  GetFactionOwner();
+		INTERIOR_DATA*		  GetLighting();
+		float				  GetNorthRotation();
+		TESForm*			  GetOwner();
+		bool				  IsAttached() const;
+		bool				  IsExteriorCell() const;
+		bool				  IsInteriorCell() const;
+		BSTempEffectParticle* PlaceTempEffect(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale = 1.0F, std::uint32_t a_flags = 7U, NiAVObject* a_target = nullptr);
+		void				  SetActorOwner(TESNPC* a_owner);
+		void				  SetFactionOwner(TESFaction* a_owner);
+		void				  SetFogColor(Color a_near, Color a_far);
+		void				  SetFogPlanes(float a_near, float a_far);
+		void				  SetFogPower(float a_power);
+		void				  SetHandChanged(bool a_changed);
+		void				  SetOwner(TESForm* a_owner);
+		void				  SetPublic(bool a_public);
+		bool				  UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock						  grassCreateLock;	 // 030

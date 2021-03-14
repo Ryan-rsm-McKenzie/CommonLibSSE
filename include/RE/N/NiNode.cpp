@@ -12,6 +12,13 @@ namespace RE
 		return node;
 	}
 
+	void NiNode::ApplyDecal(DECAL_APPLICATION_DATA* a_decalApplicationData)
+	{
+		using func_t = decltype(&NiNode::ApplyDecal);
+		REL::Relocation<func_t> func{ Offset::NiNode::ApplyDecal };
+		return func(this, a_decalApplicationData);
+	}
+
 	void NiNode::DetachChild(NiAVObject* a_child)
 	{
 		return DetachChild2(a_child);

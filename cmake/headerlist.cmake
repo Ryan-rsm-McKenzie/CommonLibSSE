@@ -74,6 +74,7 @@ set(headers ${headers}
 	include/RE/B/BGSConstructibleObject.h
 	include/RE/B/BGSDebris.h
 	include/RE/B/BGSDecalGroup.h
+	include/RE/B/BGSDecalManager.h
 	include/RE/B/BGSDefaultObjectManager.h
 	include/RE/B/BGSDestructibleObjectForm.h
 	include/RE/B/BGSDialogueBranch.h
@@ -100,6 +101,7 @@ set(headers ${headers}
 	include/RE/B/BGSIdleMarker.h
 	include/RE/B/BGSImpactData.h
 	include/RE/B/BGSImpactDataSet.h
+	include/RE/B/BGSImpactManager.h
 	include/RE/B/BGSInstancedQuestObjective.h
 	include/RE/B/BGSKeyword.h
 	include/RE/B/BGSKeywordForm.h

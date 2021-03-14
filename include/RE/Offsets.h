@@ -56,6 +56,15 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
+		namespace BGSDecalManager
+		{
+			inline constexpr REL::ID ApplyDecal(static_cast<std::uint64_t>(15029));
+			inline constexpr REL::ID IsApplyingDecal(static_cast<std::uint64_t>(525040));
+			inline constexpr REL::ID SetApplyingDecal(static_cast<std::uint64_t>(76070));
+			inline constexpr REL::ID ShouldApplyDecal(static_cast<std::uint64_t>(15044));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514414));
+		}
+
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
@@ -64,6 +73,13 @@ namespace RE
 		namespace BGSImpactDataSet
 		{
 			inline constexpr REL::ID GetImpactData(static_cast<std::uint64_t>(20408));
+		}
+
+		namespace BGSImpactManager
+		{
+			inline constexpr REL::ID PlayImpactEffect(static_cast<std::uint64_t>(35320));
+			inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(35317));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(515123));
 		}
 
 		namespace BGSListForm
@@ -530,6 +546,7 @@ namespace RE
 
 		namespace NiNode
 		{
+			inline constexpr REL::ID ApplyDecal(static_cast<std::uint64_t>(15060));
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(68936));
 		}
 
@@ -672,6 +689,11 @@ namespace RE
 		namespace TESObjectACTI
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234000));
+		}
+
+		namespace TESObjectCELL
+		{
+			inline constexpr REL::ID PlaceTempEffect(static_cast<std::uint64_t>(29218));
 		}
 
 		namespace TESObjectCONT

@@ -18,7 +18,6 @@ namespace RE
 		}
 	}
 
-
 	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const
 	{
 		ForEachReference([&](TESObjectREFR& ref) {
@@ -28,7 +27,6 @@ namespace RE
 						 true;
 		});
 	}
-
 
 	TESNPC* TESObjectCELL::GetActorOwner()
 	{
@@ -95,6 +93,13 @@ namespace RE
 	bool TESObjectCELL::IsInteriorCell() const
 	{
 		return cellFlags.all(Flag::kIsInteriorCell);
+	}
+
+	BSTempEffectParticle* TESObjectCELL::PlaceTempEffect(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale, std::uint32_t a_flags, NiAVObject* a_target)
+	{
+		using func_t = decltype(&TESObjectCELL::PlaceTempEffect);
+		REL::Relocation<func_t> func{ Offset::TESObjectCELL::PlaceTempEffect };
+		return func(this, a_unused, a_model, a_normal, a_position, a_scale, a_flags, a_target);
 	}
 
 	void TESObjectCELL::SetActorOwner(TESNPC* a_owner)
