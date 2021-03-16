@@ -1,10 +1,11 @@
 #pragma once
 
 #include "RE/B/bhkSerializable.h"
-#include "RE/H/hkpWorldRayCastInput.h"
 
 namespace RE
 {
+	struct hkpWorldRayCastInput;
+
 	class bhkWorld : public bhkSerializable
 	{
 	public:

@@ -1,10 +1,11 @@
 #pragma once
 
 #include "RE/B/bhkNiCollisionObject.h"
-#include "RE/B/bhkRigidBody.h"
 
 namespace RE
 {
+	class bhkRigidBody;
+
 	class bhkCollisionObject : public bhkNiCollisionObject
 	{
 	public:
