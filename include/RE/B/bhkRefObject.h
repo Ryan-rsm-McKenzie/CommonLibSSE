@@ -22,8 +22,6 @@ namespace RE
 		virtual void Unk_25(void);	// 25
 		virtual void Unk_26(void);	// 26
 
-		std::uint64_t GetProperty(std::uint32_t a_key) const;
-
 		// members
 		hkRefPtr<hkReferencedObject> referencedObject;	// 10
 	};

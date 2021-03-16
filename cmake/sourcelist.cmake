@@ -33,7 +33,6 @@ set(sources ${sources}
 	include/RE/B/BGSStoryTeller.cpp
 	include/RE/B/bhkCharProxyController.cpp
 	include/RE/B/bhkCollisionObject.cpp
-	include/RE/B/bhkRefObject.cpp
 	include/RE/B/bhkShape.cpp
 	include/RE/B/bhkWorld.cpp
 	include/RE/B/BipedAnim.cpp

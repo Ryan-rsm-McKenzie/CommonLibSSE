@@ -95,10 +95,10 @@ namespace RE
 		return cellFlags.all(Flag::kIsInteriorCell);
 	}
 
-	BSTempEffectParticle* TESObjectCELL::PlaceTempEffect(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale, std::uint32_t a_flags, NiAVObject* a_target)
+	BSTempEffectParticle* TESObjectCELL::PlaceTempEffectParticle(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale, std::uint32_t a_flags, NiAVObject* a_target)
 	{
-		using func_t = decltype(&TESObjectCELL::PlaceTempEffect);
-		REL::Relocation<func_t> func{ Offset::TESObjectCELL::PlaceTempEffect };
+		using func_t = decltype(&TESObjectCELL::PlaceTempEffectParticle);
+		REL::Relocation<func_t> func{ Offset::TESObjectCELL::PlaceTempEffectParticle };
 		return func(this, a_unused, a_model, a_normal, a_position, a_scale, a_flags, a_target);
 	}
 

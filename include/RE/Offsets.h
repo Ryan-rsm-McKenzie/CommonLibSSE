@@ -693,7 +693,7 @@ namespace RE
 
 		namespace TESObjectCELL
 		{
-			inline constexpr REL::ID PlaceTempEffect(static_cast<std::uint64_t>(29218));
+			inline constexpr REL::ID PlaceTempEffectParticle(static_cast<std::uint64_t>(29218));
 		}
 
 		namespace TESObjectCONT
