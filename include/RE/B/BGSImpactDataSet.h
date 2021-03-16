@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RE/B/BGSImpactData.h"
 #include "RE/B/BGSPreloadable.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/F/FormTypes.h"
@@ -8,6 +7,9 @@
 
 namespace RE
 {
+	class BGSImpactData;
+	class BGSMaterialType;
+
 	class BGSImpactDataSet :
 		public TESForm,		   // 00
 		public BGSPreloadable  // 20

@@ -15,8 +15,8 @@ namespace RE
 	{
 	public:
 		// members
-		BGSImpactData* impactData;				   // 00
-		NiPoint3*	   position;				   // 08
+		BGSImpactData* impactData{ nullptr };	   // 00
+		NiPoint3*	   position{ nullptr };		   // 08
 		NiAVObject*	   objectToFollow{ nullptr };  // 10
 		BSSoundHandle* sound1{ nullptr };		   // 18
 		BSSoundHandle* sound2{ nullptr };		   // 20

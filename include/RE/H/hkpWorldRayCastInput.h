@@ -1,11 +1,12 @@
 #pragma once
 
 #include "RE/H/hkVector4.h"
-#include "RE/H/hkpRayHitCollector.h"
 #include "RE/H/hkpWorldRayCastOutput.h"
 
 namespace RE
 {
+	class hkpRayHitCollector;
+
 	struct hkpWorldRayCastInput
 	{
 	public:

@@ -3,10 +3,11 @@
 #include "RE/H/hkpCdBody.h"
 #include "RE/H/hkpShape.h"
 #include "RE/H/hkpTypedBroadPhaseHandle.h"
-#include "RE/N/NiAVObject.h"
 
 namespace RE
 {
+	class NiAVObject;
+
 	struct hkAabbUint32;
 
 	class hkpCollidable : public hkpCdBody
@@ -22,7 +23,7 @@ namespace RE
 			kBelongsToMask = 0xFFFF0000,
 			kCollidesWithMask = 0x0000FFFF
 		};
-		
+
 		enum class ForceCollideOntoPpuReasons
 		{
 			kUserRequest = 1 << 0,

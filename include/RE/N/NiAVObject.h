@@ -1,6 +1,5 @@
 #pragma once
 
-#include "RE/B/bhkCollisionObject.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
@@ -9,6 +8,7 @@
 
 namespace RE
 {
+	class bhkCollisionObject;
 	class NiAlphaProperty;
 	class NiAVObject;
 	class NiCollisionObject;
