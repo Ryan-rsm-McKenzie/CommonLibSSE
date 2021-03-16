@@ -56,6 +56,7 @@ namespace RE
 
 		const hkpCollidable* GetCollidable() const;
 		hkpCollidable*		 GetCollidableRW();
+		std::uint64_t		 GetPropertyValue(std::uint32_t a_key) const;
 
 		// members
 		hkpWorld*			 world;				// 10

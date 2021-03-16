@@ -199,7 +199,7 @@ namespace RE
 		bool				  IsAttached() const;
 		bool				  IsExteriorCell() const;
 		bool				  IsInteriorCell() const;
-		BSTempEffectParticle* PlaceTempEffect(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale = 1.0F, std::uint32_t a_flags = 7U, NiAVObject* a_target = nullptr);
+		BSTempEffectParticle* PlaceTempEffectParticle(std::uint64_t a_unused, const char* a_model, NiPoint3* a_normal, NiPoint3* a_position, float a_scale = 1.0F, std::uint32_t a_flags = 7U, NiAVObject* a_target = nullptr);
 		void				  SetActorOwner(TESNPC* a_owner);
 		void				  SetFactionOwner(TESFaction* a_owner);
 		void				  SetFogColor(Color a_near, Color a_far);
