@@ -16,7 +16,7 @@ namespace RE
 		bool				  enableShapeCollectionFilter{ false };	 // 20
 		std::uint32_t		  filterInfo{ 0 };						 // 24
 		hkpWorldRayCastOutput rayHit;								 // 30
-		hkVector4			  delta;								 // 90
+		hkVector4			  ray;									 // 90
 		hkpRayHitCollector*	  rayHitCollectorA0{ nullptr };			 // A0
 		hkpRayHitCollector*	  rayHitCollectorA8{ nullptr };			 // A8
 		hkpRayHitCollector*	  rayHitCollectorB0{ nullptr };			 // B0
