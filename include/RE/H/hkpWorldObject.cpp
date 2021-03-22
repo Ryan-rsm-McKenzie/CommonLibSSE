@@ -14,6 +14,10 @@ namespace RE
 
 	std::uint64_t hkpWorldObject::GetPropertyValue(std::uint32_t a_key) const
 	{
+		if (!a_key) {
+			a_key = 1;
+		}
+		
 		auto size = this->properties.size();
 		if (size > 0) {
 			for (auto property : this->properties) {
