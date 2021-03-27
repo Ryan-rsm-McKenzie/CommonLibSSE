@@ -1,12 +1,29 @@
 #include "RE/H/hkpCollidable.h"
 
+#include "RE/B/bhkCollisionObject.h"
+#include "RE/B/bhkWorldObject.h"
+#include "RE/H/hkpWorldObject.h"
+
 namespace RE
 {
 	NiAVObject* hkpCollidable::Get3D() const
 	{
-		using func_t = decltype(&hkpCollidable::Get3D);
-		REL::Relocation<func_t> func{ Offset::hkpCollidable::Get3D };
-		return func(this);
+		auto owner = GetOwner<hkpWorldObject>();
+		if (!owner) {
+			return nullptr;
+		}
+
+		auto propertyValue = owner->GetPropertyValue<bhkCollisionObject>(2);
+		if (propertyValue) {
+			return propertyValue->sceneObject;
+		}
+
+		auto userData = reinterpret_cast<bhkWorldObject*>(owner->userData);
+		if (userData) {
+			return userData->GetPropertyValue<NiAVObject>(1);
+		}
+
+		return nullptr;
 	}
 	
 	void* hkpCollidable::GetOwner() const
