@@ -4,8 +4,6 @@
 
 namespace RE
 {
-	class bhkWorld;
-
 	class ahkpWorld : public hkpWorld
 	{
 	public:
