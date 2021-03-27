@@ -12,21 +12,17 @@ namespace RE
 		return &collidable;
 	}
 
-	std::uint64_t hkpWorldObject::GetPropertyValue(std::uint32_t a_key) const
+	void* hkpWorldObject::GetPropertyValue(std::uint32_t a_key) const
 	{
-		if (!a_key) {
-			a_key = 1;
-		}
-		
-		auto size = this->properties.size();
+		auto size = properties.size();
 		if (size > 0) {
-			for (auto property : this->properties) {
+			for (auto property : properties) {
 				if (property.key == a_key) {
-					return property.value.data;
+					return reinterpret_cast<void*>(property.value.data);
 				}
 			}
 		}
 
-		return 0;
+		return nullptr;
 	}
 }

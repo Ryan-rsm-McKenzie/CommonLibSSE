@@ -401,11 +401,6 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242710));
 		}
 
-		namespace hkpCollidable
-		{
-			inline constexpr REL::ID Get3D(static_cast<std::uint64_t>(76160));
-		}
-
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
