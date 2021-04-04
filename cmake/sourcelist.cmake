@@ -34,7 +34,6 @@ set(sources ${sources}
 	include/RE/B/BSAudioManager.cpp
 	include/RE/B/BSEffectShaderData.cpp
 	include/RE/B/BSExtraData.cpp
-	include/RE/B/BSFaceGenAnimationData.cpp
 	include/RE/B/BSFixedString.cpp
 	include/RE/B/BSHandleRefObject.cpp
 	include/RE/B/BSInputDevice.cpp
