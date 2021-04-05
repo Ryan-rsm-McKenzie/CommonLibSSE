@@ -18,7 +18,7 @@ namespace RE
 		// override (NiExtraData)
 		virtual const NiRTTI* GetRTTI() const override;	 // 02
 
-		void ClearExpressionOverride() noexcept { exprOverride = false; };
+		void ClearExpressionOverride() noexcept { exprOverride = false; }
 
 		void Reset(float a_timer, bool a_resetExpression, bool a_resetModifierAndPhoneme, bool a_resetCustom, bool a_closeEyes)
 		{
