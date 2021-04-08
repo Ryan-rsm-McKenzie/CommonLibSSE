@@ -11,14 +11,14 @@ namespace RE
 	TESObjectCELL* TES::GetCell(NiPoint3* a_position) const
 	{
 		using func_t = decltype(&TES::GetCell);
-		REL::Relocation<func_t> func{ Offset::TES::GetCell };
+		REL::Relocation<func_t> func{ REL::ID(13177) };
 		return func(this, a_position);
 	}
 
 	std::uint32_t TES::GetMaterialID(NiPoint3* a_position) const
 	{
 		using func_t = decltype(&TES::GetMaterialID);
-		REL::Relocation<func_t> func{ Offset::TES::GetMaterialID };
+		REL::Relocation<func_t> func{ REL::ID(13203) };
 		return func(this, a_position);
 	}
 }

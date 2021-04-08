@@ -20,8 +20,8 @@ namespace RE
 
 		enum CollisionFilterInfo : std::uint32_t
 		{
-			kBelongsToMask = 0xFFFF0000,
-			kCollidesWithMask = 0x0000FFFF
+			kBelongsTo = 0xFFFF0000,
+			kCollidesWith = 0x0000FFFF
 		};
 
 		enum class ForceCollideOntoPpuReasons

@@ -15,7 +15,7 @@ namespace RE
 	void NiNode::ApplyDecal(DECAL_APPLICATION_DATA* a_decalApplicationData)
 	{
 		using func_t = decltype(&NiNode::ApplyDecal);
-		REL::Relocation<func_t> func{ Offset::NiNode::ApplyDecal };
+		REL::Relocation<func_t> func{ REL::ID(15060) };
 		return func(this, a_decalApplicationData);
 	}
 

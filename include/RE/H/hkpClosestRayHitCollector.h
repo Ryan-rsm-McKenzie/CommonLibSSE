@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		hkpClosestRayHitCollector() noexcept :
-			hkpRayHitCollector(reinterpret_cast<void*>(Offset::hkpClosestRayHitCollector::Vtbl.address())){};
+			hkpRayHitCollector(reinterpret_cast<void*>(REL::ID(242710).address())){};
 
 		// members
 		hkpWorldRayCastOutput rayHit;  // 10

@@ -25,7 +25,7 @@ namespace RE
 	bhkCollisionObject* NiAVObject::GetCollisionObject() const
 	{
 		using func_t = decltype(&NiAVObject::GetCollisionObject);
-		REL::Relocation<func_t> func{ Offset::NiAVObject::GetCollisionObject };
+		REL::Relocation<func_t> func{ REL::ID(25482) };
 		return func(this);
 	}
 

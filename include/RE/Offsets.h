@@ -56,40 +56,14 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
-		namespace BGSDecalManager
-		{
-			inline constexpr REL::ID ApplyDecal(static_cast<std::uint64_t>(15029));
-			inline constexpr REL::ID IsApplyingDecal(static_cast<std::uint64_t>(525040));
-			inline constexpr REL::ID SetApplyingDecal(static_cast<std::uint64_t>(76070));
-			inline constexpr REL::ID ShouldApplyDecal(static_cast<std::uint64_t>(15044));
-			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514414));
-		}
-
 		namespace BGSFootstepManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517045));
 		}
 
-		namespace BGSImpactDataSet
-		{
-			inline constexpr REL::ID GetImpactData(static_cast<std::uint64_t>(20408));
-		}
-
-		namespace BGSImpactManager
-		{
-			inline constexpr REL::ID PlayImpactEffect(static_cast<std::uint64_t>(35320));
-			inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(35317));
-			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(515123));
-		}
-
 		namespace BGSListForm
 		{
 			inline constexpr REL::ID AddForm(static_cast<std::uint64_t>(20470));
-		}
-
-		namespace BGSMaterialType
-		{
-			inline constexpr REL::ID GetMaterialType(static_cast<std::uint64_t>(20529));
 		}
 
 		namespace BGSSaveLoadManager
@@ -104,22 +78,6 @@ namespace RE
 			inline constexpr REL::ID BeginShutDownQuest(static_cast<std::uint64_t>(31718));
 			inline constexpr REL::ID BeginStartUpQuest(static_cast<std::uint64_t>(31717));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514316));
-		}
-
-		namespace bhkCollisionObject
-		{
-			inline constexpr REL::ID GetRigidBody(static_cast<std::uint64_t>(12784));
-		}
-
-		namespace bhkShape
-		{
-			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(76799));
-		}
-
-		namespace bhkWorld
-		{
-			inline constexpr REL::ID WorldScale(static_cast<std::uint64_t>(231896));
-			inline constexpr REL::ID WorldScaleInverse(static_cast<std::uint64_t>(230692));
 		}
 
 		namespace BipedAnim
@@ -396,11 +354,6 @@ namespace RE
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
 
-		namespace hkpClosestRayHitCollector
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242710));
-		}
-
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
@@ -519,7 +472,6 @@ namespace RE
 
 		namespace NiAVObject
 		{
-			inline constexpr REL::ID GetCollisionObject(static_cast<std::uint64_t>(25482));
 			inline constexpr REL::ID SetMotionType(static_cast<std::uint64_t>(76033));
 			inline constexpr REL::ID Update(static_cast<std::uint64_t>(68900));
 		}
@@ -536,7 +488,6 @@ namespace RE
 
 		namespace NiNode
 		{
-			inline constexpr REL::ID ApplyDecal(static_cast<std::uint64_t>(15060));
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(68936));
 		}
 
@@ -629,8 +580,6 @@ namespace RE
 
 		namespace TES
 		{
-			inline constexpr REL::ID GetCell(static_cast<std::uint64_t>(13177));
-			inline constexpr REL::ID GetMaterialID(static_cast<std::uint64_t>(13203));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516923));
 		}
 
@@ -679,11 +628,6 @@ namespace RE
 		namespace TESObjectACTI
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234000));
-		}
-
-		namespace TESObjectCELL
-		{
-			inline constexpr REL::ID PlaceTempEffectParticle(static_cast<std::uint64_t>(29218));
 		}
 
 		namespace TESObjectCONT
