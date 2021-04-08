@@ -108,13 +108,19 @@ namespace RE
 		virtual void		PostAttachUpdate();																					// 33
 		virtual void		OnVisible(NiCullingProcess& a_process);																// 34 - { return; }
 
-		bool				GetAppCulled() const;
-		bhkCollisionObject* GetCollisionObject() const;
-		bool				SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
-		void				TintScenegraph(const NiColorA& a_color);
-		void				Update(NiUpdateData& a_data);
-		void				UpdateBodyTint(const NiColor& a_color);
-		void				UpdateHairColor(const NiColor& a_color);
+		bool GetAppCulled() const;
+		bool SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		void TintScenegraph(const NiColorA& a_color);
+		void Update(NiUpdateData& a_data);
+		void UpdateBodyTint(const NiColor& a_color);
+		void UpdateHairColor(const NiColor& a_color);
+
+		bhkCollisionObject* GetCollisionObject() const
+		{
+			using func_t = decltype(&NiAVObject::GetCollisionObject);
+			REL::Relocation<func_t> func{ REL::ID(25482) };
+			return func(this);
+		}
 
 		// members
 		NiNode*								  parent;					// 030

@@ -70,13 +70,19 @@ namespace RE
 
 		static NiNode* Create(std::uint16_t a_arrBufLen = 0);
 
-		void ApplyDecal(DECAL_APPLICATION_DATA* a_decalApplicationData);
 		void DetachChild(NiAVObject* a_child);
 		void DetachChild(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
 		void DetachChildAt(std::uint32_t a_idx);
 		void DetachChildAt(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);
 		void SetAt(std::uint32_t a_idx, NiAVObject* a_child);
 		void SetAt(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
+
+		void ApplyDecal(DECAL_APPLICATION_DATA* a_decalApplicationData)
+		{
+			using func_t = decltype(&NiNode::ApplyDecal);
+			REL::Relocation<func_t> func{ REL::ID(15060) };
+			return func(this, a_decalApplicationData);
+		}
 
 		// members
 		NiTObjectArray<NiPointer<NiAVObject>> children;	 // 110

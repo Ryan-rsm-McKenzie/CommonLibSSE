@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		NiPoint3 operator*(const NiPoint3& a_rhs) const;
-		
+
 		void EulerAnglesToAxesZXY(const NiPoint3& a_angle);
 		void EulerAnglesToAxesZXY(float a_xAngle, float a_yAngle, float a_zAngle);
 		bool ToEulerAnglesXYZ(NiPoint3& a_angle) const;

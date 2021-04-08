@@ -30,9 +30,24 @@ namespace RE
 	class BGSImpactManager
 	{
 	public:
-		static BGSImpactManager* GetSingleton();
+		static BGSImpactManager* GetSingleton()
+		{
+			REL::Relocation<BGSImpactManager**> singleton{ REL::ID(515123) };
+			return *singleton;
+		}
 
-		bool PlayImpactEffect(TESObjectREFR* a_objectReference, BGSImpactDataSet* a_impactEffect, const char* a_nodeName = "", NiPoint3 a_pickDirection = NiPoint3(0.0F, 0.0F, -1.0F), float a_pickLength = 512.0F, bool a_applyNodeRotation = false, bool a_useNodeLocalRotation = false);
-		bool PlaySound(IMPACT_SOUND_DATA& a_impactSoundData);
+		bool PlayImpactEffect(TESObjectREFR* a_objectReference, BGSImpactDataSet* a_impactEffect, const char* a_nodeName, NiPoint3 a_pickDirection, float a_pickLength, bool a_applyNodeRotation, bool a_useNodeLocalRotation)
+		{
+			using func_t = decltype(&BGSImpactManager::PlayImpactEffect);
+			REL::Relocation<func_t> func{ REL::ID(35320) };
+			return func(this, a_objectReference, a_impactEffect, a_nodeName, a_pickDirection, a_pickLength, a_applyNodeRotation, a_useNodeLocalRotation);
+		}
+
+		bool PlaySound(IMPACT_SOUND_DATA& a_impactSoundData)
+		{
+			using func_t = decltype(&BGSImpactManager::PlaySound);
+			REL::Relocation<func_t> func{ REL::ID(35317) };
+			return func(this, a_impactSoundData);
+		}
 	};
 }

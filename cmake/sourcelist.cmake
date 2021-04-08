@@ -15,26 +15,19 @@ set(sources ${sources}
 	include/RE/B/BGSBaseAlias.cpp
 	include/RE/B/BGSBipedObjectForm.cpp
 	include/RE/B/BGSColorForm.cpp
-	include/RE/B/BGSDecalManager.cpp
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	include/RE/B/BGSEntryPointPerkEntry.cpp
 	include/RE/B/BGSFootstepManager.cpp
 	include/RE/B/BGSHeadPart.cpp
-	include/RE/B/BGSImpactDataSet.cpp
-	include/RE/B/BGSImpactManager.cpp
 	include/RE/B/BGSKeywordForm.cpp
 	include/RE/B/BGSListForm.cpp
 	include/RE/B/BGSLocation.cpp
-	include/RE/B/BGSMaterialType.cpp
 	include/RE/B/BGSOpenCloseForm.cpp
 	include/RE/B/BGSPerkEntry.cpp
 	include/RE/B/BGSSaveLoadManager.cpp
 	include/RE/B/BGSSoundCategory.cpp
 	include/RE/B/BGSStoryTeller.cpp
 	include/RE/B/bhkCharProxyController.cpp
-	include/RE/B/bhkCollisionObject.cpp
-	include/RE/B/bhkShape.cpp
-	include/RE/B/bhkWorld.cpp
 	include/RE/B/bhkWorldObject.cpp
 	include/RE/B/BipedAnim.cpp
 	include/RE/B/BookMenu.cpp

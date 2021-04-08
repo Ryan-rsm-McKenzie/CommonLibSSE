@@ -10,13 +10,38 @@ namespace RE
 	class BGSDecalManager
 	{
 	public:
-		static BGSDecalManager* GetSingleton();
+		static BGSDecalManager* GetSingleton()
+		{
+			REL::Relocation<BGSDecalManager**> singleton{ REL::ID(514414) };
+			return *singleton;
+		}
 
-		static bool IsApplyingDecal();
-		static void SetApplyingDecal(bool a_isApplyingDecal);
-		static bool ShouldApplyDecal(TESObjectREFR* a_objectReference);
+		static bool IsApplyingDecal()
+		{
+			REL::Relocation<bool*> isApplyingDecal{ REL::ID(525040) };
+			return *isApplyingDecal;
+		}
 
-		void ApplyDecal(DECAL_CREATION_DATA& a_decalCreationData, bool a_forceDecal, BGSDecalGroup* a_decalGroup);
+		static void SetApplyingDecal(bool a_isApplyingDecal)
+		{
+			using func_t = decltype(&BGSDecalManager::SetApplyingDecal);
+			REL::Relocation<func_t> func{ REL::ID(76070) };
+			return func(a_isApplyingDecal);
+		}
+
+		static bool ShouldApplyDecal(RE::TESObjectREFR* a_objectReference)
+		{
+			using func_t = decltype(&BGSDecalManager::ShouldApplyDecal);
+			REL::Relocation<func_t> func{ REL::ID(15044) };
+			return func(a_objectReference);
+		}
+
+		void ApplyDecal(RE::DECAL_CREATION_DATA& a_decalCreationData, bool a_forceDecal, RE::BGSDecalGroup* a_decalGroup)
+		{
+			using func_t = decltype(&BGSDecalManager::ApplyDecal);
+			REL::Relocation<func_t> func{ REL::ID(15029) };
+			return func(this, a_decalCreationData, a_forceDecal, a_decalGroup);
+		}
 
 		// members
 		std::uint32_t unk00;					   // 00
