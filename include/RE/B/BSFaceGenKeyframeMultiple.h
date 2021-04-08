@@ -29,6 +29,14 @@ namespace RE
 		virtual void Unk_0E(void);	// 0E
 		virtual void Unk_0F(void);	// 0F
 
+		void SetValue(std::uint32_t a_idx, float a_value) noexcept
+		{
+			assert(a_idx < count);
+			assert(values != nullptr);
+			values[a_idx] = a_value;
+			isUpdated = true;
+		}
+
 		// members
 		float*		  values;	  // 10
 		std::uint32_t count;	  // 18
