@@ -33,7 +33,7 @@ namespace RE
 	public:
 		inline static T* Allocate(std::size_t a_numElements)
 		{
-			return NiMalloc(sizeof(T) * a_numElements);
+			return static_cast<T*>(NiMalloc(sizeof(T) * a_numElements));
 		};
 
 		inline static void Deallocate(T* a_array)
