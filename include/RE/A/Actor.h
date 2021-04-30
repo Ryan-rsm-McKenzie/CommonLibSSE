@@ -529,7 +529,6 @@ namespace RE
 		bool						 IsMoving() const;
 		bool						 IsOnMount() const;
 		bool						 IsPlayerTeammate() const;
-		bool						 IsPowerAttacking() const;
 		bool						 IsRunning() const;
 		bool						 IsSneaking() const;
 		bool                         IsStaggering() const;
