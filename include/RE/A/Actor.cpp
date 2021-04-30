@@ -420,21 +420,7 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kPlayerTeammate);
 	}
 	
-
-	bool Actor::IsPowerAttacking() const
-	{
-		if (!this->currentProcess || !this->currentProcess->high)
-			return false;
-
-		auto attackData = this->currentProcess->high->attackData;
-
-		if (attackData)
-			return attackData->data.flags.any(RE::AttackData::AttackFlag::kPowerAttack);
-		else
-			return false;
-	}
-
-
+	
 	bool Actor::IsRunning() const
 	{
 		using func_t = decltype(&Actor::IsRunning);
