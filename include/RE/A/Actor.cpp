@@ -399,6 +399,14 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::Actor::GetHostileToActor };
 		return func(this, a_actor);
 	}
+	
+	
+	bool Actor::IsMoving() const
+	{
+		using func_t = decltype(&Actor::IsMoving);
+		REL::Relocation<func_t> func{ REL::ID(36928) };
+		return func(this);
+	}
 
 
 	bool Actor::IsOnMount() const
