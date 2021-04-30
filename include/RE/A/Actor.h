@@ -525,6 +525,7 @@ namespace RE
 		bool						 IsGuard() const;
 		bool						 IsHostileToActor(Actor* a_actor);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
+		bool						 IsMoving() const;
 		bool						 IsOnMount() const;
 		bool						 IsPlayerTeammate() const;
 		bool						 IsPowerAttacking() const;
