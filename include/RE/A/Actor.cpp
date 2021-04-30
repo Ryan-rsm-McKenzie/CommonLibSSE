@@ -292,8 +292,16 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::Actor::GetLevel };
 		return func(this);
 	}
+	
 
+	float Actor::GetMovementDirection() const
+	{
+		using func_t = decltype(&Actor::GetMovementDirection);
+		REL::Relocation<func_t> func{ REL::ID(36935) };
+		return func(this);
+	}
 
+	
 	ObjectRefHandle Actor::GetOccupiedFurniture() const
 	{
 		if (currentProcess) {
