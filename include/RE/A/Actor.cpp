@@ -5,6 +5,7 @@
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/B/BSFaceGenAnimationData.h"
+#include "RE/B/BSFaceGenNiNode.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
 #include "RE/F/FormTraits.h"
@@ -238,6 +239,14 @@ namespace RE
 		return ActorHandle(this);
 	}
 
+	NiAVObject* Actor::GetHeadPartObject(BGSHeadPart::HeadPartType a_type)
+	{
+		const auto actorBase = GetActorBase();
+		const auto faceNode = GetFaceNodeSkinned();
+		const auto facePart = actorBase ? actorBase->GetCurrentHeadPartByType(a_type) : nullptr;
+		return faceNode && facePart ? faceNode->GetObjectByName(facePart->formEditorID) : nullptr;
+	}
+
 	float Actor::GetHeight()
 	{
 		const auto min = GetBoundMin();
@@ -278,6 +287,54 @@ namespace RE
 	{
 		auto base = GetActorBase();
 		return base ? base->race : nullptr;
+	}
+
+	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		if (const auto worn = GetWornArmor(a_slot); worn) {
+			return worn;
+		} else if (const auto base = GetActorBase(); base && base->skin) {
+			return base->skin;
+		} else if (const auto aRace = GetRace(); aRace && aRace->skin) {
+			return aRace->skin;
+		}
+
+		return nullptr;
+	}
+
+	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		const auto inv = GetInventory([](TESBoundObject& a_object) {
+			return a_object.IsArmor();
+		});
+
+		for (const auto& [item, invData] : inv) {
+			const auto& [count, entry] = invData;
+			if (count > 0 && entry->IsWorn()) {
+				const auto armor = item->As<TESObjectARMO>();
+				if (armor && armor->HasPartOf(a_slot)) {
+					return armor;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
+	TESObjectARMO* Actor::GetWornArmor(FormID a_formID)
+	{
+		const auto inv = GetInventory([=](TESBoundObject& a_object) {
+			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
+		});
+
+		for (const auto& [item, invData] : inv) {
+			const auto& [count, entry] = invData;
+			if (count > 0 && entry->IsWorn()) {
+				return item->As<TESObjectARMO>();
+			}
+		}
+
+		return nullptr;
 	}
 
 	bool Actor::HasPerk(BGSPerk* a_perk) const

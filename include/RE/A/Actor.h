@@ -5,6 +5,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueOwner.h"
 #include "RE/A/ActorValues.h"
+#include "RE/B/BGSBipedObjectForm.h"
 #include "RE/B/BGSEntryPointPerkEntry.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSPointerHandleSmartPointer.h"
@@ -493,10 +494,14 @@ namespace RE
 		TESForm*					 GetEquippedObject(bool a_leftHand) const;
 		std::int32_t				 GetGoldAmount();
 		ActorHandle					 GetHandle();
+		[[nodiscard]] NiAVObject*	 GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float						 GetHeight();
 		std::uint16_t				 GetLevel() const;
 		ObjectRefHandle				 GetOccupiedFurniture() const;
 		TESRace*					 GetRace() const;
+		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool						 HasPerk(BGSPerk* a_perk) const;
 		void						 InterruptCast(bool a_restoreMagicka) const;
 		bool						 IsAIEnabled() const;
