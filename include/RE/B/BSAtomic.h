@@ -61,7 +61,7 @@ namespace RE
 	private:
 		// members
 		volatile std::uint32_t _owningThread;  // 0
-		volatile std::uint32_t _lockCount;	   // 4
+		volatile std::uint32_t _lockCount;     // 4
 	};
 	static_assert(sizeof(BSSpinLock) == 0x8);
 
@@ -84,7 +84,7 @@ namespace RE
 	private:
 		// members
 		volatile std::uint32_t _writerThread;  // 0
-		volatile std::uint32_t _lock;		   // 4
+		volatile std::uint32_t _lock;          // 4
 	};
 	static_assert(sizeof(BSReadWriteLock) == 0x8);
 
@@ -101,7 +101,7 @@ namespace RE
 		BSSpinLockGuard& operator=(BSSpinLockGuard&&) = delete;
 
 	private:
-		BSSpinLock& _lock;	// 0
+		BSSpinLock& _lock;  // 0
 	};
 	static_assert(sizeof(BSSpinLockGuard) == 0x8);
 
@@ -118,7 +118,7 @@ namespace RE
 		BSReadLockGuard& operator=(BSReadLockGuard&&) = delete;
 
 	private:
-		BSReadWriteLock& _lock;	 // 0
+		BSReadWriteLock& _lock;  // 0
 	};
 	static_assert(sizeof(BSReadLockGuard) == 0x8);
 
@@ -135,7 +135,7 @@ namespace RE
 		BSWriteLockGuard& operator=(BSWriteLockGuard&&) = delete;
 
 	private:
-		BSReadWriteLock& _lock;	 // 0
+		BSReadWriteLock& _lock;  // 0
 	};
 	static_assert(sizeof(BSWriteLockGuard) == 0x8);
 }

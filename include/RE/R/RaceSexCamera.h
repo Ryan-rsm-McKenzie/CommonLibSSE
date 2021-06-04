@@ -12,8 +12,8 @@ namespace RE
 		virtual ~RaceSexCamera();  // 00
 
 		// override (TESCamera)
-		virtual void SetCameraRoot(NiPointer<NiNode> a_root) override;	// 01
-		virtual void Update() override;									// 02
+		virtual void SetCameraRoot(NiPointer<NiNode> a_root) override;  // 01
+		virtual void Update() override;                                 // 02
 
 		// members
 		std::uint64_t unk38;  // 38

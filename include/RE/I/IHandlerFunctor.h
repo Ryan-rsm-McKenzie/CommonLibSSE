@@ -44,7 +44,7 @@ namespace RE
 	class NoInitializationPolicy
 	{
 	public:
-		virtual ~NoInitializationPolicy();	// 00
+		virtual ~NoInitializationPolicy();  // 00
 	};
 	//static_assert(sizeof(NoInitializationPolicy) == 0x8);
 

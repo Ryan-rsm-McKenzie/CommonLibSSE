@@ -16,7 +16,7 @@ namespace RE
 		virtual ~ExtraStartingWorldOrCell();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kStartingWorldOrCell; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kStartingWorldOrCell; }
 
 		// members
 		TESForm* startingWorldOrCell;  // 10

@@ -11,7 +11,7 @@ namespace RE
 
 		struct NodeRef
 		{
-			const C* first;	  // 00
+			const C* first;   // 00
 			const U* second;  // 08
 
 			NodeRef(const C& a_first, const U& a_second) :

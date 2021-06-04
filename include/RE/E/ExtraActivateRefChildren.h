@@ -17,12 +17,12 @@ namespace RE
 		virtual ~ExtraActivateRefChildren();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kActivateRefChildren; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kActivateRefChildren; }
 
 		// members
-		BSSimpleList<REF_ACTIVATE_DATA*> children;				 // 10
-		float							 activateChildrenTimer;	 // 20
-		std::uint32_t					 pad24;					 // 24
+		BSSimpleList<REF_ACTIVATE_DATA*> children;  // 10
+		float activateChildrenTimer;                // 20
+		std::uint32_t pad24;                        // 24
 	};
 	static_assert(sizeof(ExtraActivateRefChildren) == 0x28);
 }

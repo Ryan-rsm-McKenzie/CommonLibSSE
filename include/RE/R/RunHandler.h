@@ -9,11 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_RunHandler;
 
-		virtual ~RunHandler();	// 00
+		virtual ~RunHandler();  // 00
 
 		// override (PlayerInputHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;									// 01
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;	// 04
+		virtual bool CanProcess(InputEvent* a_event) override;                                  // 01
+		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
 	};
 	static_assert(sizeof(RunHandler) == 0x18);
 }

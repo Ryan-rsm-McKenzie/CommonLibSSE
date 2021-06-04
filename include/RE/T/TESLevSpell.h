@@ -7,8 +7,8 @@
 namespace RE
 {
 	class TESLevSpell :
-		public TESBoundObject,	// 00
-		public TESLeveledList	// 30
+		public TESBoundObject,  // 00
+		public TESLeveledList   // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLevSpell;
@@ -31,17 +31,17 @@ namespace RE
 			};
 		};
 
-		virtual ~TESLevSpell();	 // 00
+		virtual ~TESLevSpell();  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;				   // 06
+		virtual bool Load(TESFile* a_mod) override;                // 06
 		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;	   // 12
-		virtual void InitItemImpl() override;					   // 13
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		virtual void InitItemImpl() override;                      // 13
 
 		// override (TESLeveledList)
-		virtual bool GetCanContainFormsOfType(FormType a_type) const override;	// 07
+		virtual bool GetCanContainFormsOfType(FormType a_type) const override;  // 07
 	};
 	static_assert(sizeof(TESLevSpell) == 0x58);
 }

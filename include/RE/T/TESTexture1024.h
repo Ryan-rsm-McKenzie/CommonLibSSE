@@ -9,10 +9,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture1024;
 
-		virtual ~TESTexture1024();	// 00
+		virtual ~TESTexture1024();  // 00
 
 		// override (TESTexture)
-		virtual std::uint32_t GetMaxAllowedSize() override;	 // 04 - { return 1024; }
+		virtual std::uint32_t GetMaxAllowedSize() override;  // 04 - { return 1024; }
 	};
 	static_assert(sizeof(TESTexture1024) == 0x10);
 }

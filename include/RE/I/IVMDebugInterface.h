@@ -12,7 +12,7 @@ namespace RE
 			virtual ~IVMDebugInterface();  // 00
 
 			// add
-			virtual void Unk_01(void) = 0;	// 01
+			virtual void Unk_01(void) = 0;  // 01
 		};
 		static_assert(sizeof(IVMDebugInterface) == 0x8);
 	}

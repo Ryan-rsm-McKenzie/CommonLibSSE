@@ -14,7 +14,7 @@ namespace RE
 	{
 		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID)
 		{
-			auto							vm = Internal::VirtualMachine::GetSingleton();
+			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
 			if (vm && vm->GetScriptObjectType(a_typeID, classPtr) && classPtr) {
 				return classPtr->GetRawType();
@@ -26,8 +26,8 @@ namespace RE
 
 		void BindID(BSTSmartPointer<Object>& a_objectPtr, const void* a_src, VMTypeID a_typeID)
 		{
-			auto							vm = Internal::VirtualMachine::GetSingleton();
-			auto							id = static_cast<VMTypeID>(0);
+			auto vm = Internal::VirtualMachine::GetSingleton();
+			auto id = static_cast<VMTypeID>(0);
 			BSTSmartPointer<ObjectTypeInfo> typeInfo(a_objectPtr->GetTypeInfo());
 			if (vm && typeInfo && vm->GetTypeIDForScriptObject(typeInfo->GetName(), id)) {
 				auto handlePolicy = vm->GetObjectHandlePolicy();
@@ -54,7 +54,7 @@ namespace RE
 				return;
 			}
 
-			auto							vm = Internal::VirtualMachine::GetSingleton();
+			auto vm = Internal::VirtualMachine::GetSingleton();
 			BSTSmartPointer<ObjectTypeInfo> classPtr;
 			if (!vm || !vm->GetScriptObjectType(a_typeID, classPtr) || !classPtr) {
 				return;
@@ -65,7 +65,7 @@ namespace RE
 				return;
 			}
 
-			auto					handle = policy->GetHandleForObject(a_typeID, a_src);
+			auto handle = policy->GetHandleForObject(a_typeID, a_src);
 			BSTSmartPointer<Object> objectPtr;
 			if (!vm->FindBoundObject(handle, classPtr->GetName(), objectPtr)) {
 				// when cannot be resolved, then create new objectPtr

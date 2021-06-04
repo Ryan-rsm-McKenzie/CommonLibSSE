@@ -75,7 +75,7 @@ namespace RE
 			std::memcpy(_buffer, a_rhs._buffer, sizeof(value_type) * N);
 		}
 
-		value_type _buffer[N]{ 0 };	 // 00
+		value_type _buffer[N]{ 0 };  // 00
 	};
 
 	template <class CharT, std::uint32_t N, template <class, std::uint32_t> class Allocator>
@@ -182,13 +182,13 @@ namespace RE
 			return data()[a_pos];
 		}
 
-		[[nodiscard]] constexpr reference		front() noexcept { return operator[](0); }
+		[[nodiscard]] constexpr reference front() noexcept { return operator[](0); }
 		[[nodiscard]] constexpr const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] constexpr reference		back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] constexpr reference back() noexcept { return operator[](size() - 1); }
 		[[nodiscard]] constexpr const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] constexpr pointer		  data() noexcept { return _data ? _data : EMPTY; }
+		[[nodiscard]] constexpr pointer data() noexcept { return _data ? _data : EMPTY; }
 		[[nodiscard]] constexpr const_pointer data() const noexcept { return _data ? _data : EMPTY; }
 
 		[[nodiscard]] constexpr const_pointer c_str() const noexcept { return data(); }
@@ -265,10 +265,10 @@ namespace RE
 		static constexpr value_type EMPTY[]{ 0 };
 
 		// members
-		pointer		  _data{ nullptr };	 // ?? (00)
-		size_type	  _size{ 0 };		 // ?? (08)
-		size_type	  _capacity{ 0 };	 // ?? (0A)
-		std::uint32_t _pad0C{ 0 };		 // ?? (0C)
+		pointer _data{ nullptr };   // ?? (00)
+		size_type _size{ 0 };       // ?? (08)
+		size_type _capacity{ 0 };   // ?? (0A)
+		std::uint32_t _pad0C{ 0 };  // ?? (0C)
 	};
 
 	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;

@@ -33,8 +33,8 @@ namespace RE
 			// members
 			float cosAccept0;  // 00
 			float sinAccept0;  // 04
-			float cosSnap0;	   // 08
-			float cosSnap1;	   // 0C
+			float cosSnap0;    // 08
+			float cosSnap1;    // 0C
 			float cosAccept1;  // 10
 			float sinAccept1;  // 14
 		};

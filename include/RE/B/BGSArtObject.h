@@ -7,8 +7,8 @@
 namespace RE
 {
 	class BGSArtObject :
-		public TESBoundObject,		// 00
-		public TESModelTextureSwap	// 30
+		public TESBoundObject,      // 00
+		public TESModelTextureSwap  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSArtObject;
@@ -30,7 +30,7 @@ namespace RE
 			};
 		};
 
-		struct Data	 // DNAM
+		struct Data  // DNAM
 		{
 		public:
 			// members
@@ -41,11 +41,11 @@ namespace RE
 		virtual ~BGSArtObject();  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
-		Data		  data;	  // 68 - DNAM
+		Data data;            // 68 - DNAM
 		std::uint32_t pad6C;  // 6C
 	};
 	static_assert(sizeof(BGSArtObject) == 0x70);

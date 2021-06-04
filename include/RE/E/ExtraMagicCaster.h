@@ -7,8 +7,8 @@
 namespace RE
 {
 	class ExtraMagicCaster :
-		public BSExtraData,	 // 00
-		public MagicCaster	 // 10
+		public BSExtraData,  // 00
+		public MagicCaster   // 10
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraMagicCaster;
@@ -17,7 +17,7 @@ namespace RE
 		virtual ~ExtraMagicCaster();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kMagicCaster; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kMagicCaster; }
 	};
 	static_assert(sizeof(ExtraMagicCaster) == 0x58);
 }

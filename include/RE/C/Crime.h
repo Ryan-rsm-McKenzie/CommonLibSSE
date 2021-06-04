@@ -35,20 +35,20 @@ namespace RE
 	{
 	public:
 		// members
-		std::uint64_t			unk00;				// 00
-		std::uint64_t			unk08;				// 08
-		std::uint64_t			unk10;				// 10
-		std::uint64_t			unk18;				// 18
-		std::uint64_t			unk20;				// 20
-		BSTArray<ActorHandle>	actorsKnowOfCrime;	// 28
-		std::uint64_t			unk40;				// 40
-		std::uint64_t			unk48;				// 48
-		std::uint64_t			unk50;				// 50
-		std::uint64_t			unk58;				// 58
-		TESFaction*				crimeFaction;		// 60
-		std::uint32_t			unk68;				// 68
-		mutable BSReadWriteLock lock;				// 68
-		std::uint32_t			unk74;				// 74
+		std::uint64_t unk00;                      // 00
+		std::uint64_t unk08;                      // 08
+		std::uint64_t unk10;                      // 10
+		std::uint64_t unk18;                      // 18
+		std::uint64_t unk20;                      // 20
+		BSTArray<ActorHandle> actorsKnowOfCrime;  // 28
+		std::uint64_t unk40;                      // 40
+		std::uint64_t unk48;                      // 48
+		std::uint64_t unk50;                      // 50
+		std::uint64_t unk58;                      // 58
+		TESFaction* crimeFaction;                 // 60
+		std::uint32_t unk68;                      // 68
+		mutable BSReadWriteLock lock;             // 68
+		std::uint32_t unk74;                      // 74
 	};
 	static_assert(sizeof(Crime) == 0x78);
 }

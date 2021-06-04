@@ -13,13 +13,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAttachRefChildren;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAttachRefChildren;
 
-		virtual ~ExtraAttachRefChildren();	// 00
+		virtual ~ExtraAttachRefChildren();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kAttachRefChildren; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kAttachRefChildren; }
 
 		// members
-		BSSimpleList<ObjectRefHandle> children;	 // 10
+		BSSimpleList<ObjectRefHandle> children;  // 10
 	};
 	static_assert(sizeof(ExtraAttachRefChildren) == 0x20);
 }

@@ -9,14 +9,14 @@ namespace RE
 	// flags = kPausesGame
 	// context = kMenuMode
 	class CreditsMenu :
-		public IMenu,			   // 00
+		public IMenu,              // 00
 		public GFxFunctionHandler  // 30
 	{
 	public:
-		inline static constexpr auto	  RTTI = RTTI_CreditsMenu;
+		inline static constexpr auto RTTI = RTTI_CreditsMenu;
 		constexpr static std::string_view MENU_NAME = "Credits Menu";
 
-		virtual ~CreditsMenu();	 // 00
+		virtual ~CreditsMenu();  // 00
 
 		// override (IMenu)
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04

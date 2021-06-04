@@ -23,7 +23,7 @@ namespace RE
 
 			// members
 			wchar_t* buffer;  // 00
-			UPInt	 size;	  // 08
+			UPInt size;       // 08
 		};
 		static_assert(sizeof(ReserveHeader) == 0x10);
 
@@ -55,17 +55,17 @@ namespace RE
 		GFxWStringBuffer& operator=(const std::wstring_view& a_rhs);
 
 		// element access
-		reference		operator[](size_type a_pos);
+		reference operator[](size_type a_pos);
 		const_reference operator[](size_type a_pos) const;
 
-		wchar_t&	   front();
+		wchar_t& front();
 		const wchar_t& front() const;
 
-		wchar_t&	   back();
+		wchar_t& back();
 		const wchar_t& back() const;
 
 		const wchar_t* data() const noexcept;
-		wchar_t*	   data() noexcept;
+		wchar_t* data() noexcept;
 
 		const wchar_t* c_str() const noexcept;
 
@@ -85,11 +85,11 @@ namespace RE
 
 	protected:
 		wchar_t* alloc(size_type a_count);
-		void	 release();
+		void release();
 
 		// members
-		wchar_t*	  _text;	  // 00
-		UPInt		  _length;	  // 08
+		wchar_t* _text;           // 00
+		UPInt _length;            // 08
 		ReserveHeader _reserved;  // 10
 	};
 	static_assert(sizeof(GFxWStringBuffer) == 0x20);

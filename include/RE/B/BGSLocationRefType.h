@@ -20,7 +20,7 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSLocationRefType();	// 00
+		virtual ~BGSLocationRefType();  // 00
 
 		// override (BGSKeyword)
 		virtual void InitItemImpl() override;  // 13

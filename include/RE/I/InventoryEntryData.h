@@ -32,13 +32,13 @@ namespace RE
 		InventoryEntryData& operator=(const InventoryEntryData& a_rhs);
 		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
-		void										  AddExtraList(ExtraDataList* a_extra);
-		[[nodiscard]] const char*					  GetDisplayName();
-		[[nodiscard]] std::optional<double>			  GetEnchantmentCharge() const;
-		[[nodiscard]] constexpr TESBoundObject*		  GetObject() noexcept { return object; }
+		void AddExtraList(ExtraDataList* a_extra);
+		[[nodiscard]] const char* GetDisplayName();
+		[[nodiscard]] std::optional<double> GetEnchantmentCharge() const;
+		[[nodiscard]] constexpr TESBoundObject* GetObject() noexcept { return object; }
 		[[nodiscard]] constexpr const TESBoundObject* GetObject() const noexcept { return object; }
-		[[nodiscard]] TESForm*						  GetOwner();
-		[[nodiscard]] SOUL_LEVEL					  GetSoulLevel() const;
+		[[nodiscard]] TESForm* GetOwner();
+		[[nodiscard]] SOUL_LEVEL GetSoulLevel() const;
 
 		[[nodiscard]] std::int32_t GetValue() const
 		{
@@ -48,9 +48,9 @@ namespace RE
 		}
 
 		[[nodiscard]] float GetWeight() const;
-		[[nodiscard]] bool	IsEnchanted() const;
-		[[nodiscard]] bool	IsLeveled() const;
-		[[nodiscard]] bool	IsWorn() const;
+		[[nodiscard]] bool IsEnchanted() const;
+		[[nodiscard]] bool IsLeveled() const;
+		[[nodiscard]] bool IsWorn() const;
 
 		[[nodiscard]] bool IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true)
 		{
@@ -72,10 +72,10 @@ namespace RE
 		TES_HEAP_REDEFINE_NEW();
 
 		// members
-		TESBoundObject*				  object{ nullptr };	  // 00
+		TESBoundObject* object{ nullptr };                    // 00
 		BSSimpleList<ExtraDataList*>* extraLists{ nullptr };  // 08
-		std::int32_t				  countDelta{ 0 };		  // 10
-		std::uint32_t				  pad14{ 0 };			  // 14
+		std::int32_t countDelta{ 0 };                         // 10
+		std::uint32_t pad14{ 0 };                             // 14
 
 	private:
 		[[nodiscard]] bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)

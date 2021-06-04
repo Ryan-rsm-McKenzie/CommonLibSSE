@@ -6,7 +6,7 @@
 namespace RE
 {
 	class GFxLog :
-		public GFxState,		   // 00
+		public GFxState,           // 00
 		public GFxLogBase<GFxLog>  // 18
 	{
 	public:

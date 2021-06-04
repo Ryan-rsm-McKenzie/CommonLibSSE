@@ -17,7 +17,7 @@ namespace RE
 		virtual ~ExtraPlayerCrimeList();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kPlayerCrimeList; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kPlayerCrimeList; }
 
 		// members
 		BSSimpleList<Crime*>* crimes;  // 10

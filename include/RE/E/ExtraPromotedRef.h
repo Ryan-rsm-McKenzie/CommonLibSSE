@@ -16,7 +16,7 @@ namespace RE
 		virtual ~ExtraPromotedRef();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kPromotedRef };
+		virtual ExtraDataType GetType() const override;  // 01 - { return kPromotedRef };
 
 		// members
 		BSTArray<TESForm*> promotedRefOwners;  // 10

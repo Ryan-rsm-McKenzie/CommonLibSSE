@@ -17,16 +17,16 @@ namespace RE
 
 		struct LinkedRef
 		{
-			BGSKeyword*	   keyword;	 // 00
-			TESObjectREFR* refr;	 // 08
+			BGSKeyword* keyword;  // 00
+			TESObjectREFR* refr;  // 08
 		};
 		static_assert(sizeof(LinkedRef) == 0x10);
 
-		virtual ~ExtraLinkedRef();	// 00
+		virtual ~ExtraLinkedRef();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kLinkedRef; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kLinkedRef; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		BSTSmallArray<LinkedRef> linkedRefs;  // 10

@@ -18,11 +18,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCollisionData;
 
-		virtual ~ExtraCollisionData();	// 00
+		virtual ~ExtraCollisionData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kCollisionData; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kCollisionData; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		CollisionData* collisionData;  // 10

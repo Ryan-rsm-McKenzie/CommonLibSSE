@@ -116,8 +116,8 @@ namespace SKSE
 
 		void RegistrationMapBase::Clear()
 		{
-			auto   vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto   policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& reg : _regs) {
@@ -141,7 +141,7 @@ namespace SKSE
 		bool RegistrationMapBase::Save(SerializationInterface* a_intfc)
 		{
 			assert(a_intfc);
-			Locker			  locker(_lock);
+			Locker locker(_lock);
 			const std::size_t numRegs = _regs.size();
 			if (!a_intfc->WriteRecordData(numRegs)) {
 				log::error("Failed to save number of regs ({})!", numRegs);
@@ -174,8 +174,8 @@ namespace SKSE
 			Locker locker(_lock);
 			_regs.clear();
 			RE::VMHandle handle;
-			std::size_t	 size;
-			EventName	 evnName;
+			std::size_t size;
+			EventName evnName;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(handle);
 				a_intfc->ReadRecordData(size);
@@ -205,7 +205,7 @@ namespace SKSE
 			}
 
 			const auto invalidHandle = policy->EmptyHandle();
-			auto	   handle = policy->GetHandleForObject(a_typeID, a_object);
+			auto handle = policy->GetHandleForObject(a_typeID, a_object);
 			if (handle == invalidHandle) {
 				log::error("Failed to create handle!");
 				return false;
@@ -241,7 +241,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto   it = _regs.find(handle);
+			auto it = _regs.find(handle);
 			if (it == _regs.end()) {
 				log::warn("Could not find registration");
 				return false;

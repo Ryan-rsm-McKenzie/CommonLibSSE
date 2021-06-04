@@ -95,13 +95,13 @@ namespace RE
 	bool GRenderer::Cxform::operator==(const Cxform& a_rhs) const
 	{
 		return matrix[kR][kMult] == a_rhs.matrix[kR][kMult] &&
-			   matrix[kG][kMult] == a_rhs.matrix[kG][kMult] &&
-			   matrix[kB][kMult] == a_rhs.matrix[kB][kMult] &&
-			   matrix[kA][kMult] == a_rhs.matrix[kA][kMult] &&
-			   matrix[kR][kAdd] == a_rhs.matrix[kR][kAdd] &&
-			   matrix[kG][kAdd] == a_rhs.matrix[kG][kAdd] &&
-			   matrix[kB][kAdd] == a_rhs.matrix[kB][kAdd] &&
-			   matrix[kA][kAdd] == a_rhs.matrix[kA][kAdd];
+		       matrix[kG][kMult] == a_rhs.matrix[kG][kMult] &&
+		       matrix[kB][kMult] == a_rhs.matrix[kB][kMult] &&
+		       matrix[kA][kMult] == a_rhs.matrix[kA][kMult] &&
+		       matrix[kR][kAdd] == a_rhs.matrix[kR][kAdd] &&
+		       matrix[kG][kAdd] == a_rhs.matrix[kG][kAdd] &&
+		       matrix[kB][kAdd] == a_rhs.matrix[kB][kAdd] &&
+		       matrix[kA][kAdd] == a_rhs.matrix[kA][kAdd];
 	}
 
 	bool GRenderer::CacheProvider::CanDiscardData()

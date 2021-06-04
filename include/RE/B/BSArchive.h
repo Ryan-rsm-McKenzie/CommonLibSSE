@@ -10,8 +10,8 @@ namespace RE
 	{
 	public:
 		// members
-		std::uint32_t	  pad24;		// 24
-		BSDirectoryEntry* directories;	// 28
+		std::uint32_t pad24;            // 24
+		BSDirectoryEntry* directories;  // 28
 	};
 	static_assert(sizeof(BSArchive) == 0x30);
 }

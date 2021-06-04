@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		// members
-		NiPointer<TESObjectREFR> objectInitialized;	 // 0
+		NiPointer<TESObjectREFR> objectInitialized;  // 0
 	};
 	static_assert(sizeof(TESInitScriptEvent) == 0x8);
 }

@@ -15,10 +15,10 @@ namespace RE
 		virtual ~ExtraEditorID();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kEditorID; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kEditorID; }
 
 		// members
-		BSFixedString editorID;	 // 10
+		BSFixedString editorID;  // 10
 	};
 	static_assert(sizeof(ExtraEditorID) == 0x18);
 }

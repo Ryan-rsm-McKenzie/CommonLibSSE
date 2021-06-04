@@ -15,8 +15,8 @@ namespace SKSE
 		// members
 		RE::BSFixedString eventName;
 		RE::BSFixedString strArg;
-		float			  numArg;
-		RE::TESForm*	  sender;
+		float numArg;
+		RE::TESForm* sender;
 	};
 
 	struct CameraEvent
@@ -61,8 +61,8 @@ namespace SKSE
 
 		// members
 		stl::enumeration<Type, std::uint32_t> type;
-		RE::Actor*							  actor;
-		RE::TESForm*						  sourceForm;
+		RE::Actor* actor;
+		RE::TESForm* sourceForm;
 		stl::enumeration<Slot, std::uint32_t> slot;
 	};
 

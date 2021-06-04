@@ -20,8 +20,8 @@ namespace RE
 		{
 		public:
 			// members
-			GPtr<FxDelegateHandler>		   handler{ nullptr };	 // 00
-			FxDelegateHandler::CallbackFn* callback{ nullptr };	 // 08
+			GPtr<FxDelegateHandler> handler{ nullptr };          // 00
+			FxDelegateHandler::CallbackFn* callback{ nullptr };  // 08
 		};
 		static_assert(sizeof(CallbackDefn) == 0x10);
 
@@ -38,7 +38,7 @@ namespace RE
 		virtual ~FxDelegate() = default;  // 00
 
 		// override (GFxExternalInterface)
-		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, std::uint32_t a_argCount) override;	// 01
+		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, std::uint32_t a_argCount) override;  // 01
 
 		static void Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);  // Call a method registered with the AS2 GameDelegate instance
 		static void Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args);
@@ -47,7 +47,7 @@ namespace RE
 		void UnregisterHandler(FxDelegateHandler* a_callback);
 
 		// members
-		CallbackHash callbacks;	 // 18
+		CallbackHash callbacks;  // 18
 	};
 	static_assert(sizeof(FxDelegate) == 0x20);
 }

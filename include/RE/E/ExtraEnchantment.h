@@ -14,18 +14,18 @@ namespace RE
 
 		ExtraEnchantment();
 		ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip = false);
-		virtual ~ExtraEnchantment() = default;	// 00
+		virtual ~ExtraEnchantment() = default;  // 00
 
 		// override(BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kEnchantment; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return enchantment != a_rhs->enchantment || charge != a_rhs->charge || removeOnUnequip != a_rhs->removeOnUnequip; }
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kEnchantment; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return enchantment != a_rhs->enchantment || charge != a_rhs->charge || removeOnUnequip != a_rhs->removeOnUnequip; }
 
 		// members
-		EnchantmentItem* enchantment;	   // 10
-		std::uint16_t	 charge;		   // 18
-		bool			 removeOnUnequip;  // 1A
-		std::uint8_t	 pad1B;			   // 1B
-		std::uint32_t	 pad1C;			   // 1C
+		EnchantmentItem* enchantment;  // 10
+		std::uint16_t charge;          // 18
+		bool removeOnUnequip;          // 1A
+		std::uint8_t pad1B;            // 1B
+		std::uint32_t pad1C;           // 1C
 	};
 	static_assert(sizeof(ExtraEnchantment) == 0x20);
 }

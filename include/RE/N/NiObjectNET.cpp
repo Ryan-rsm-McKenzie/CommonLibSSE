@@ -41,14 +41,14 @@ namespace RE
 				char suffix[6];
 				NiSprintf(suffix, 6, "ED%03d", extraDataSize);
 
-				auto		  substr = std::strstr(rtti, "ExtraData");
+				auto substr = std::strstr(rtti, "ExtraData");
 				std::uint32_t strLength = 0;
 				if (substr > rtti) {
 					strLength = static_cast<std::uint32_t>(substr - rtti);
 				}
 
 				std::uint32_t len = strLength + static_cast<std::uint32_t>(std::strlen(suffix)) + 1;
-				auto		  generatedKey = NiAlloc<char>(len);
+				auto generatedKey = NiAlloc<char>(len);
 
 				NiStrncpy(generatedKey, len, rtti, strLength);
 				NiStrcat(generatedKey, len, suffix);

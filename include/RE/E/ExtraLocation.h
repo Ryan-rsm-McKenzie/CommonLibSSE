@@ -16,11 +16,11 @@ namespace RE
 		virtual ~ExtraLocation();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kLocation; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return location != a_rhs->location; }
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kLocation; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return location != a_rhs->location; }
 
 		// members
-		BGSLocation* location;	// 10
+		BGSLocation* location;  // 10
 	};
 	static_assert(sizeof(ExtraLocation) == 0x18);
 }

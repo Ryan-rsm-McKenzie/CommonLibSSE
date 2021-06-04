@@ -14,9 +14,9 @@ namespace RE
 		{
 		public:
 			// members
-			stl::enumeration<BSAnimNote::AnimNoteType, std::uint32_t> noteType;	 // 00
-			std::uint32_t											  pad04;	 // 04
-			IBSAnimNoteReceiver*									  receiver;	 // 08
+			stl::enumeration<BSAnimNote::AnimNoteType, std::uint32_t> noteType;  // 00
+			std::uint32_t pad04;                                                 // 04
+			IBSAnimNoteReceiver* receiver;                                       // 08
 		};
 		static_assert(sizeof(BSAnimReceiverType) == 0x10);
 

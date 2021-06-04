@@ -25,9 +25,9 @@ namespace RE
 
 	protected:
 		// members
-		T left;	   // 00
+		T left;    // 00
 		T right;   // ??
-		T top;	   // ??
+		T top;     // ??
 		T bottom;  // ??
 	};
 	static_assert(sizeof(NiRect<float>) == 0x10);

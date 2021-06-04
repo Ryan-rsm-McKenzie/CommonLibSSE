@@ -13,7 +13,7 @@ namespace RE
 		virtual ~hkpCharacterStateManager();  // 00
 
 		// members
-		hkpCharacterState* registeredState[hkpCharacterStateType::kTotal];	// 00
+		hkpCharacterState* registeredState[hkpCharacterStateType::kTotal];  // 00
 	};
 	static_assert(sizeof(hkpCharacterStateManager) == 0x68);
 }

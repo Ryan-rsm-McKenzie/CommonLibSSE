@@ -29,21 +29,21 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSMaterialType();	 // 00
+		virtual ~BGSMaterialType();  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;			 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void ClearData() override;           // 04
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
-		BGSMaterialType*					  parentType;		   // 20 - PNAM
-		BSFixedString						  materialName;		   // 28 - MNAM
-		std::uint32_t						  materialID;		   // 30
-		NiColor								  materialColor;	   // 34 - CNAM
-		float								  buoyancy;			   // 40 - BNAM
-		stl::enumeration<FLAG, std::uint32_t> flags;			   // 44 - FNAM
-		BGSImpactDataSet*					  havokImpactDataSet;  // 48 - HNAM
+		BGSMaterialType* parentType;                  // 20 - PNAM
+		BSFixedString materialName;                   // 28 - MNAM
+		std::uint32_t materialID;                     // 30
+		NiColor materialColor;                        // 34 - CNAM
+		float buoyancy;                               // 40 - BNAM
+		stl::enumeration<FLAG, std::uint32_t> flags;  // 44 - FNAM
+		BGSImpactDataSet* havokImpactDataSet;         // 48 - HNAM
 	};
 	static_assert(sizeof(BGSMaterialType) == 0x50);
 }

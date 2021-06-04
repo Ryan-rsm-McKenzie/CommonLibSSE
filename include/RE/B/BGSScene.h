@@ -9,7 +9,7 @@ namespace RE
 {
 	class BGSSceneAction;
 
-	enum class SCENE_ACTOR_FLAG	 // LNAM
+	enum class SCENE_ACTOR_FLAG  // LNAM
 	{
 		kNone = 0,
 		kNoPlayerActivation = 1 << 0,
@@ -22,9 +22,9 @@ namespace RE
 	{
 	public:
 		// members
-		TESCondition			  startConditions;		 // 00
-		TESCondition			  completionConditions;	 // 08
-		BGSStoryManagerQuestNode* questNode;			 // 10
+		TESCondition startConditions;         // 00
+		TESCondition completionConditions;    // 08
+		BGSStoryManagerQuestNode* questNode;  // 10
 	};
 	static_assert(sizeof(BGSScenePhase) == 0x18);
 
@@ -76,30 +76,30 @@ namespace RE
 		virtual ~BGSScene();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;						   // 05
-		virtual bool Load(TESFile* a_mod) override;					   // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;	   // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;	   // 0F
+		virtual void InitializeData() override;                        // 05
+		virtual bool Load(TESFile* a_mod) override;                    // 06
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;      // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;      // 0F
 		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;		   // 12
-		virtual void InitItemImpl() override;						   // 13
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;        // 12
+		virtual void InitItemImpl() override;                          // 13
 
 		// members
-		BSTArray<BGSScenePhase*>									phases;					// 20
-		BSTArray<FormID>											actors;					// 00 - ALID
-		BSTArray<stl::enumeration<SCENE_ACTOR_FLAG, std::uint32_t>> actorFlags;				// 18 - LNAM
-		BSTArray<stl::enumeration<BehaviourFlag, std::uint32_t>>	actorProgressionFlags;	// 30 - DNAM
-		BSTArray<BGSSceneAction*>									actions;				// 80
-		TESQuest*													parentQuest;			// 98 - PNAM
-		stl::enumeration<Flag, std::uint32_t>						flags;					// A0 - FNAM
-		std::uint32_t												padA4;					// A4
-		TESCondition												conditions;				// A8 - CTDA
-		std::uint32_t												unkB0;					// B0
-		std::uint32_t												unkB4;					// B4
-		std::uint32_t												unkB8;					// B8
-		std::uint32_t												unkBC;					// BC
-		std::uint32_t												unkC0;					// C0
-		std::uint32_t												padC4;					// C4
+		BSTArray<BGSScenePhase*> phases;                                                 // 20
+		BSTArray<FormID> actors;                                                         // 00 - ALID
+		BSTArray<stl::enumeration<SCENE_ACTOR_FLAG, std::uint32_t>> actorFlags;          // 18 - LNAM
+		BSTArray<stl::enumeration<BehaviourFlag, std::uint32_t>> actorProgressionFlags;  // 30 - DNAM
+		BSTArray<BGSSceneAction*> actions;                                               // 80
+		TESQuest* parentQuest;                                                           // 98 - PNAM
+		stl::enumeration<Flag, std::uint32_t> flags;                                     // A0 - FNAM
+		std::uint32_t padA4;                                                             // A4
+		TESCondition conditions;                                                         // A8 - CTDA
+		std::uint32_t unkB0;                                                             // B0
+		std::uint32_t unkB4;                                                             // B4
+		std::uint32_t unkB8;                                                             // B8
+		std::uint32_t unkBC;                                                             // BC
+		std::uint32_t unkC0;                                                             // C0
+		std::uint32_t padC4;                                                             // C4
 	};
 	static_assert(sizeof(BGSScene) == 0xC8);
 }

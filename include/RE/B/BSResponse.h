@@ -37,7 +37,7 @@ namespace RE
 		}
 
 		// members
-		BSTHashMap<Type, BSTSmartPointer<functor_type>>				  handlerMap;	   // ??
+		BSTHashMap<Type, BSTSmartPointer<functor_type>> handlerMap;                    // ??
 		BSTSmartPointer<BSResponse<Type, Handler, Parameter, Parent>> backupResponse;  // ??
 	};
 

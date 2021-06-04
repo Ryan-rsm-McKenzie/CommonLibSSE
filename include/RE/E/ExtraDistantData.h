@@ -15,11 +15,11 @@ namespace RE
 		virtual ~ExtraDistantData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kDistantData; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kDistantData; }
 
 		// members
-		NiPoint3	  landNormal;  // 10
-		std::uint32_t pad1C;	   // 1C
+		NiPoint3 landNormal;  // 10
+		std::uint32_t pad1C;  // 1C
 	};
 	static_assert(sizeof(ExtraDistantData) == 0x20);
 }

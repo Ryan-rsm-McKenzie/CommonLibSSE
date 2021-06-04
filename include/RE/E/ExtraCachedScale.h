@@ -14,11 +14,11 @@ namespace RE
 		virtual ~ExtraCachedScale();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kCachedScale; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kCachedScale; }
 
 		// members
-		float scale3D;	 // 10
-		float refScale;	 // 10
+		float scale3D;   // 10
+		float refScale;  // 10
 	};
 	static_assert(sizeof(ExtraCachedScale) == 0x18);
 }

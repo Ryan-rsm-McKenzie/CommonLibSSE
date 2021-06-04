@@ -62,60 +62,60 @@ namespace RE
 	struct TESWaitStopEvent;
 
 	class ScriptEventSourceHolder :
-		public BSTEventSource<BGSEventProcessedEvent>,			 // 0000
-		public BSTEventSource<TESActivateEvent>,				 // 0058
-		public BSTEventSource<TESActiveEffectApplyRemoveEvent>,	 // 00B0
-		public BSTEventSource<TESActorLocationChangeEvent>,		 // 0108
-		public BSTEventSource<TESBookReadEvent>,				 // 0160
-		public BSTEventSource<TESCellAttachDetachEvent>,		 // 01B8
-		public BSTEventSource<TESCellFullyLoadedEvent>,			 // 0210
-		public BSTEventSource<TESCellReadyToApplyDecalsEvent>,	 // 0268
-		public BSTEventSource<TESCombatEvent>,					 // 02C0
-		public BSTEventSource<TESContainerChangedEvent>,		 // 0318
-		public BSTEventSource<TESDeathEvent>,					 // 0370
-		public BSTEventSource<TESDestructionStageChangedEvent>,	 // 03C8
-		public BSTEventSource<TESEnterBleedoutEvent>,			 // 0420
-		public BSTEventSource<TESEquipEvent>,					 // 0478
-		public BSTEventSource<TESFormDeleteEvent>,				 // 04D0
-		public BSTEventSource<TESFurnitureEvent>,				 // 0528
-		public BSTEventSource<TESGrabReleaseEvent>,				 // 0580
-		public BSTEventSource<TESHitEvent>,						 // 05D8
-		public BSTEventSource<TESInitScriptEvent>,				 // 0630
-		public BSTEventSource<TESLoadGameEvent>,				 // 0688
-		public BSTEventSource<TESLockChangedEvent>,				 // 06E0
-		public BSTEventSource<TESMagicEffectApplyEvent>,		 // 0738
-		public BSTEventSource<TESMagicWardHitEvent>,			 // 0790
-		public BSTEventSource<TESMoveAttachDetachEvent>,		 // 07E8
-		public BSTEventSource<TESObjectLoadedEvent>,			 // 0840
-		public BSTEventSource<TESObjectREFRTranslationEvent>,	 // 0898
-		public BSTEventSource<TESOpenCloseEvent>,				 // 08F0
-		public BSTEventSource<TESPackageEvent>,					 // 0948
-		public BSTEventSource<TESPerkEntryRunEvent>,			 // 09A0
-		public BSTEventSource<TESQuestInitEvent>,				 // 09F8
-		public BSTEventSource<TESQuestStageEvent>,				 // 0A50
-		public BSTEventSource<TESQuestStageItemDoneEvent>,		 // 0AA8
-		public BSTEventSource<TESQuestStartStopEvent>,			 // 0B00
-		public BSTEventSource<TESResetEvent>,					 // 0B58
-		public BSTEventSource<TESResolveNPCTemplatesEvent>,		 // 0BB0
-		public BSTEventSource<TESSceneEvent>,					 // 0C08
-		public BSTEventSource<TESSceneActionEvent>,				 // 0C60
-		public BSTEventSource<TESScenePhaseEvent>,				 // 0CB8
-		public BSTEventSource<TESSellEvent>,					 // 0D10
-		public BSTEventSource<TESSleepStartEvent>,				 // 0D68
-		public BSTEventSource<TESSleepStopEvent>,				 // 0DC0
-		public BSTEventSource<TESSpellCastEvent>,				 // 0E18
-		public BSTEventSource<TESPlayerBowShotEvent>,			 // 0E70
-		public BSTEventSource<TESTopicInfoEvent>,				 // 0EC8
-		public BSTEventSource<TESTrackedStatsEvent>,			 // 0F20
-		public BSTEventSource<TESTrapHitEvent>,					 // 0F78
-		public BSTEventSource<TESTriggerEvent>,					 // 0FD0
-		public BSTEventSource<TESTriggerEnterEvent>,			 // 1028
-		public BSTEventSource<TESTriggerLeaveEvent>,			 // 1080
-		public BSTEventSource<TESUniqueIDChangeEvent>,			 // 10D8
-		public BSTEventSource<TESWaitStartEvent>,				 // 1130 - ?
-		public BSTEventSource<TESWaitStopEvent>,				 // 1188 - ?
-		public BSTEventSource<TESSwitchRaceCompleteEvent>,		 // 11E0
-		public BSTEventSource<TESFastTravelEndEvent>			 // 1238
+		public BSTEventSource<BGSEventProcessedEvent>,           // 0000
+		public BSTEventSource<TESActivateEvent>,                 // 0058
+		public BSTEventSource<TESActiveEffectApplyRemoveEvent>,  // 00B0
+		public BSTEventSource<TESActorLocationChangeEvent>,      // 0108
+		public BSTEventSource<TESBookReadEvent>,                 // 0160
+		public BSTEventSource<TESCellAttachDetachEvent>,         // 01B8
+		public BSTEventSource<TESCellFullyLoadedEvent>,          // 0210
+		public BSTEventSource<TESCellReadyToApplyDecalsEvent>,   // 0268
+		public BSTEventSource<TESCombatEvent>,                   // 02C0
+		public BSTEventSource<TESContainerChangedEvent>,         // 0318
+		public BSTEventSource<TESDeathEvent>,                    // 0370
+		public BSTEventSource<TESDestructionStageChangedEvent>,  // 03C8
+		public BSTEventSource<TESEnterBleedoutEvent>,            // 0420
+		public BSTEventSource<TESEquipEvent>,                    // 0478
+		public BSTEventSource<TESFormDeleteEvent>,               // 04D0
+		public BSTEventSource<TESFurnitureEvent>,                // 0528
+		public BSTEventSource<TESGrabReleaseEvent>,              // 0580
+		public BSTEventSource<TESHitEvent>,                      // 05D8
+		public BSTEventSource<TESInitScriptEvent>,               // 0630
+		public BSTEventSource<TESLoadGameEvent>,                 // 0688
+		public BSTEventSource<TESLockChangedEvent>,              // 06E0
+		public BSTEventSource<TESMagicEffectApplyEvent>,         // 0738
+		public BSTEventSource<TESMagicWardHitEvent>,             // 0790
+		public BSTEventSource<TESMoveAttachDetachEvent>,         // 07E8
+		public BSTEventSource<TESObjectLoadedEvent>,             // 0840
+		public BSTEventSource<TESObjectREFRTranslationEvent>,    // 0898
+		public BSTEventSource<TESOpenCloseEvent>,                // 08F0
+		public BSTEventSource<TESPackageEvent>,                  // 0948
+		public BSTEventSource<TESPerkEntryRunEvent>,             // 09A0
+		public BSTEventSource<TESQuestInitEvent>,                // 09F8
+		public BSTEventSource<TESQuestStageEvent>,               // 0A50
+		public BSTEventSource<TESQuestStageItemDoneEvent>,       // 0AA8
+		public BSTEventSource<TESQuestStartStopEvent>,           // 0B00
+		public BSTEventSource<TESResetEvent>,                    // 0B58
+		public BSTEventSource<TESResolveNPCTemplatesEvent>,      // 0BB0
+		public BSTEventSource<TESSceneEvent>,                    // 0C08
+		public BSTEventSource<TESSceneActionEvent>,              // 0C60
+		public BSTEventSource<TESScenePhaseEvent>,               // 0CB8
+		public BSTEventSource<TESSellEvent>,                     // 0D10
+		public BSTEventSource<TESSleepStartEvent>,               // 0D68
+		public BSTEventSource<TESSleepStopEvent>,                // 0DC0
+		public BSTEventSource<TESSpellCastEvent>,                // 0E18
+		public BSTEventSource<TESPlayerBowShotEvent>,            // 0E70
+		public BSTEventSource<TESTopicInfoEvent>,                // 0EC8
+		public BSTEventSource<TESTrackedStatsEvent>,             // 0F20
+		public BSTEventSource<TESTrapHitEvent>,                  // 0F78
+		public BSTEventSource<TESTriggerEvent>,                  // 0FD0
+		public BSTEventSource<TESTriggerEnterEvent>,             // 1028
+		public BSTEventSource<TESTriggerLeaveEvent>,             // 1080
+		public BSTEventSource<TESUniqueIDChangeEvent>,           // 10D8
+		public BSTEventSource<TESWaitStartEvent>,                // 1130 - ?
+		public BSTEventSource<TESWaitStopEvent>,                 // 1188 - ?
+		public BSTEventSource<TESSwitchRaceCompleteEvent>,       // 11E0
+		public BSTEventSource<TESFastTravelEndEvent>             // 1238
 	{
 	public:
 		static ScriptEventSourceHolder* GetSingleton();

@@ -26,31 +26,31 @@ namespace RE
 
 			~Array();
 
-			[[nodiscard]] reference		  operator[](size_type a_pos);
+			[[nodiscard]] reference operator[](size_type a_pos);
 			[[nodiscard]] const_reference operator[](size_type a_pos) const;
 
-			[[nodiscard]] reference		  front();
+			[[nodiscard]] reference front();
 			[[nodiscard]] const_reference front() const;
 
-			[[nodiscard]] reference		  back();
+			[[nodiscard]] reference back();
 			[[nodiscard]] const_reference back() const;
 
-			[[nodiscard]] pointer		data() noexcept;
+			[[nodiscard]] pointer data() noexcept;
 			[[nodiscard]] const_pointer data() const noexcept;
 
-			[[nodiscard]] iterator		 begin() noexcept;
+			[[nodiscard]] iterator begin() noexcept;
 			[[nodiscard]] const_iterator begin() const noexcept;
 			[[nodiscard]] const_iterator cbegin() const noexcept;
 
-			[[nodiscard]] iterator		 end() noexcept;
+			[[nodiscard]] iterator end() noexcept;
 			[[nodiscard]] const_iterator end() const noexcept;
 			[[nodiscard]] const_iterator cend() const noexcept;
 
-			[[nodiscard]] reverse_iterator		 rbegin() noexcept;
+			[[nodiscard]] reverse_iterator rbegin() noexcept;
 			[[nodiscard]] const_reverse_iterator rbegin() const noexcept;
 			[[nodiscard]] const_reverse_iterator crbegin() const noexcept;
 
-			[[nodiscard]] reverse_iterator		 rend() noexcept;
+			[[nodiscard]] reverse_iterator rend() noexcept;
 			[[nodiscard]] const_reverse_iterator rend() const noexcept;
 			[[nodiscard]] const_reverse_iterator crend() const noexcept;
 
@@ -60,7 +60,7 @@ namespace RE
 
 			[[nodiscard]] size_type max_size() const noexcept;
 
-			[[nodiscard]] TypeInfo&		  type_info();
+			[[nodiscard]] TypeInfo& type_info();
 			[[nodiscard]] const TypeInfo& type_info() const;
 
 			[[nodiscard]] TypeInfo::RawType type() const;
@@ -69,12 +69,12 @@ namespace RE
 			static inline constexpr size_type MAX_SIZE = 128;
 
 			// members
-			std::uint32_t	   _pad04;		  // 04
-			TypeInfo		   _elementType;  // 08
-			std::uint32_t	   _size;		  // 10
-			std::uint32_t	   _pad14;		  // 14
-			mutable BSSpinLock _lock;		  // 18
-			Variable		   _data[0];	  // 20
+			std::uint32_t _pad04;      // 04
+			TypeInfo _elementType;     // 08
+			std::uint32_t _size;       // 10
+			std::uint32_t _pad14;      // 14
+			mutable BSSpinLock _lock;  // 18
+			Variable _data[0];         // 20
 		};
 		static_assert(sizeof(Array) == 0x20);
 	}

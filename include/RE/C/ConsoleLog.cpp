@@ -12,12 +12,12 @@ namespace RE
 	{
 		struct TLSData
 		{
-			std::uint8_t unk000[0x600];	 // 000
-			bool		 consoleMode;	 // 600
+			std::uint8_t unk000[0x600];  // 000
+			bool consoleMode;            // 600
 		};
 
 		REL::Relocation<std::uint32_t*> tlsIndex{ Offset::TlsIndex };
-		auto							tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
+		auto tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
 		return tlsData[*tlsIndex]->consoleMode;
 	}
 

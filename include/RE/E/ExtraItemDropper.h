@@ -15,11 +15,11 @@ namespace RE
 		virtual ~ExtraItemDropper();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kItemDropper; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kItemDropper; }
 
 		// members
 		ObjectRefHandle dropper;  // 10
-		std::uint32_t	pad14;	  // 14
+		std::uint32_t pad14;      // 14
 	};
 	static_assert(sizeof(ExtraItemDropper) == 0x18);
 }

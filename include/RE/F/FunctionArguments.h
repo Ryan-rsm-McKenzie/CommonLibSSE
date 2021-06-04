@@ -58,7 +58,7 @@ namespace RE
 				_args(std::move(a_rhs._args))
 			{}
 
-			virtual ~FunctionArguments() = default;	 // 00
+			virtual ~FunctionArguments() = default;  // 00
 
 			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override  // 01
 			{

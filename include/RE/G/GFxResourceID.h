@@ -46,15 +46,15 @@ namespace RE
 		GFxResourceID(const GFxResourceID& a_rhs);
 
 		GFxResourceID& operator=(const GFxResourceID& a_rhs);
-		bool		   operator==(const GFxResourceID& a_rhs) const;
-		bool		   operator!=(const GFxResourceID& a_rhs) const;
-		bool		   operator==(std::uint32_t a_idVal) const;
-		bool		   operator!=(std::uint32_t a_idVal) const;
+		bool operator==(const GFxResourceID& a_rhs) const;
+		bool operator!=(const GFxResourceID& a_rhs) const;
+		bool operator==(std::uint32_t a_idVal) const;
+		bool operator!=(std::uint32_t a_idVal) const;
 
-		std::uint32_t	GetIDValue() const;
-		std::uint32_t	GetIDIndex() const;
+		std::uint32_t GetIDValue() const;
+		std::uint32_t GetIDIndex() const;
 		IDTypes::IDType GetIDType() const;
-		GFxResourceID	GenerateNextID();
+		GFxResourceID GenerateNextID();
 
 	protected:
 		// members

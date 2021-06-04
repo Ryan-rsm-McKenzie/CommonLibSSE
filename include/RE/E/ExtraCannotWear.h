@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ExtraCannotWear() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kCannotWear; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kCannotWear; }
 	};
 	static_assert(sizeof(ExtraCannotWear) == 0x10);
 }

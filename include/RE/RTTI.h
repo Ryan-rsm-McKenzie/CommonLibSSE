@@ -15,8 +15,8 @@ namespace RE
 
 		private:
 			// members
-			void* _data;	 // 08
-			char  _name[1];	 // 10
+			void* _data;    // 08
+			char _name[1];  // 10
 		};
 		static_assert(sizeof(type_info) == 0x18);
 	}
@@ -37,10 +37,10 @@ namespace RE
 				_rva(a_rva)
 			{}
 
-			[[nodiscard]] pointer			 get() const { return is_good() ? REL::Relocation<T*>{ REL::Offset(_rva) }.get() : nullptr; }
-			[[nodiscard]] std::uint32_t		 offset() const noexcept { return _rva; }
-			[[nodiscard]] reference			 operator*() const { return *get(); }
-			[[nodiscard]] pointer			 operator->() const { return get(); }
+			[[nodiscard]] pointer get() const { return is_good() ? REL::Relocation<T*>{ REL::Offset(_rva) }.get() : nullptr; }
+			[[nodiscard]] std::uint32_t offset() const noexcept { return _rva; }
+			[[nodiscard]] reference operator*() const { return *get(); }
+			[[nodiscard]] pointer operator->() const { return get(); }
 			[[nodiscard]] explicit constexpr operator bool() const noexcept { return is_good(); }
 
 		protected:
@@ -57,9 +57,9 @@ namespace RE
 		{
 		public:
 			// members
-			std::int32_t mDisp;	 // 0
-			std::int32_t pDisp;	 // 4
-			std::int32_t vDisp;	 // 8
+			std::int32_t mDisp;  // 0
+			std::int32_t pDisp;  // 4
+			std::int32_t vDisp;  // 8
 		};
 		static_assert(sizeof(PMD) == 0xC);
 
@@ -79,10 +79,10 @@ namespace RE
 			};
 
 			// members
-			RVA<TypeDescriptor>						   typeDescriptor;	   // 00
-			std::uint32_t							   numContainedBases;  // 04
-			PMD										   pmd;				   // 08
-			stl::enumeration<Attribute, std::uint32_t> attributes;		   // 14
+			RVA<TypeDescriptor> typeDescriptor;                     // 00
+			std::uint32_t numContainedBases;                        // 04
+			PMD pmd;                                                // 08
+			stl::enumeration<Attribute, std::uint32_t> attributes;  // 14
 		};
 		static_assert(sizeof(BaseClassDescriptor) == 0x18);
 
@@ -98,10 +98,10 @@ namespace RE
 			};
 
 			// members
-			std::uint32_t							   signature;		// 00
-			stl::enumeration<Attribute, std::uint32_t> attributes;		// 04
-			std::uint32_t							   numBaseClasses;	// 08
-			RVA<BaseClassDescriptor>				   baseClassArray;	// 0C
+			std::uint32_t signature;                                // 00
+			stl::enumeration<Attribute, std::uint32_t> attributes;  // 04
+			std::uint32_t numBaseClasses;                           // 08
+			RVA<BaseClassDescriptor> baseClassArray;                // 0C
 		};
 		static_assert(sizeof(ClassHierarchyDescriptor) == 0x10);
 
@@ -115,11 +115,11 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<Signature, std::uint32_t> signature;		 // 00
-			std::uint32_t							   offset;			 // 04
-			std::uint32_t							   ctorDispOffset;	 // 08
-			RVA<TypeDescriptor>						   typeDescriptor;	 // 0C
-			RVA<ClassHierarchyDescriptor>			   classDescriptor;	 // 10
+			stl::enumeration<Signature, std::uint32_t> signature;  // 00
+			std::uint32_t offset;                                  // 04
+			std::uint32_t ctorDispOffset;                          // 08
+			RVA<TypeDescriptor> typeDescriptor;                    // 0C
+			RVA<ClassHierarchyDescriptor> classDescriptor;         // 10
 		};
 		static_assert(sizeof(CompleteObjectLocator) == 0x14);
 	}

@@ -22,12 +22,12 @@ namespace RE
 			virtual ~KeyInterface();  // 00
 
 			// add
-			virtual void		AddRef(KeyHandle a_data) = 0;									 // 01
-			virtual void		Release(KeyHandle a_data) = 0;									 // 02
-			virtual KeyType		GetKeyType(KeyHandle a_data) const = 0;							 // 03
-			virtual UPInt		GetHashCode(KeyHandle a_data) const = 0;						 // 04
-			virtual bool		KeyEquals(KeyHandle a_data, const GFxResourceKey& a_other) = 0;	 // 05
-			virtual const char* GetFileURL(KeyHandle a_data) const;								 // 06
+			virtual void AddRef(KeyHandle a_data) = 0;                                    // 01
+			virtual void Release(KeyHandle a_data) = 0;                                   // 02
+			virtual KeyType GetKeyType(KeyHandle a_data) const = 0;                       // 03
+			virtual UPInt GetHashCode(KeyHandle a_data) const = 0;                        // 04
+			virtual bool KeyEquals(KeyHandle a_data, const GFxResourceKey& a_other) = 0;  // 05
+			virtual const char* GetFileURL(KeyHandle a_data) const;                       // 06
 		};
 
 		class HashOp
@@ -45,16 +45,16 @@ namespace RE
 		~GFxResourceKey();
 
 		GFxResourceKey& operator=(const GFxResourceKey& a_rhs);
-		bool			operator==(const GFxResourceKey& a_other) const;
-		KeyType			GetKeyType() const;
-		const char*		GetFileURL() const;
-		KeyInterface*	GetKeyInterface() const;
-		KeyHandle		GetKeyData() const;
+		bool operator==(const GFxResourceKey& a_other) const;
+		KeyType GetKeyType() const;
+		const char* GetFileURL() const;
+		KeyInterface* GetKeyInterface() const;
+		KeyHandle GetKeyData() const;
 
 	protected:
 		// members
 		KeyInterface* _keyInterface;  // 00
-		KeyHandle	  _keyData;		  // 08
+		KeyHandle _keyData;           // 08
 	};
 	static_assert(sizeof(GFxResourceKey) == 0x10);
 }

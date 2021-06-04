@@ -20,14 +20,14 @@ namespace RE
 		union CellKey
 		{
 			BSTTuple<std::int16_t, std::int16_t> xy;
-			std::uint32_t						 raw;
+			std::uint32_t raw;
 		};
 		static_assert(sizeof(CellKey) == 0x4);
 
 		// members
-		FormID	refID;			// 0
-		FormID	parentSpaceID;	// 4
-		CellKey cellKey;		// 8
+		FormID refID;          // 0
+		FormID parentSpaceID;  // 4
+		CellKey cellKey;       // 8
 	};
 	static_assert(sizeof(UnloadedRefData) == 0xC);
 
@@ -35,9 +35,9 @@ namespace RE
 	{
 	public:
 		// members
-		BGSLocationRefType* type;	  // 00
-		UnloadedRefData		refData;  // 08
-		std::uint32_t		pad14;	  // 14
+		BGSLocationRefType* type;  // 00
+		UnloadedRefData refData;   // 08
+		std::uint32_t pad14;       // 14
 	};
 	static_assert(sizeof(SpecialRefData) == 0x18);
 
@@ -45,10 +45,10 @@ namespace RE
 	{
 	public:
 		// members
-		Actor*		  actor;	  // 00
-		FormID		  refID;	  // 08
-		std::uint32_t pad0C;	  // 0C
-		BGSLocation*  editorLoc;  // 10
+		Actor* actor;            // 00
+		FormID refID;            // 08
+		std::uint32_t pad0C;     // 0C
+		BGSLocation* editorLoc;  // 10
 	};
 	static_assert(sizeof(UniqueNPCData) == 0x18);
 
@@ -56,14 +56,14 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<UnloadedRefData> addedData;	// 00 - ACPR
-		BSTSet<FormID>			  removedData;	// 18 - RCPR
+		BSTArray<UnloadedRefData> addedData;  // 00 - ACPR
+		BSTSet<FormID> removedData;           // 18 - RCPR
 	};
 	static_assert(sizeof(OverrideData) == 0x48);
 
 	class BGSLocation :
-		public TESForm,		   // 00
-		public TESFullName,	   // 20
+		public TESForm,        // 00
+		public TESFullName,    // 20
 		public BGSKeywordForm  // 30
 	{
 	public:
@@ -93,22 +93,22 @@ namespace RE
 		{
 		public:
 			// members
-			BGSKeyword*	  keyword;	// 00
-			float		  data;		// 08
-			std::uint32_t pad0C;	// 0C
+			BGSKeyword* keyword;  // 00
+			float data;           // 08
+			std::uint32_t pad0C;  // 0C
 		};
 		static_assert(sizeof(KEYWORD_DATA) == 0x10);
 
-		virtual ~BGSLocation();	 // 00
+		virtual ~BGSLocation();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;					   // 04
-		virtual bool Load(TESFile* a_mod) override;				   // 06
-		virtual bool FindInFileFast(TESFile* a_mod) override;	   // 0C
+		virtual void InitializeData() override;                    // 04
+		virtual bool Load(TESFile* a_mod) override;                // 06
+		virtual bool FindInFileFast(TESFile* a_mod) override;      // 0C
 		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
 		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;	   // 12
-		virtual void InitItemImpl() override;					   // 13
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		virtual void InitItemImpl() override;                      // 13
 
 		bool IsCleared() const;
 		bool IsChild(const BGSLocation* a_possibleChild) const;
@@ -116,25 +116,25 @@ namespace RE
 		bool IsLoaded() const;
 
 		// members
-		BGSLocation*								   parentLoc;				// 48 - PNAM
-		TESFaction*									   unreportedCrimeFaction;	// 50 - FNAM
-		BGSMusicType*								   musicType;				// 58 - NAM1
-		ObjectRefHandle								   worldLocMarker;			// 60 - MNAM
-		float										   worldLocRadius;			// 64 - RNAM
-		ObjectRefHandle								   horseLocMarker;			// 68 - NAM0
-		std::uint32_t								   pad6C;					// 6C
-		BSTArray<SpecialRefData>					   specialRefs;				// 70 - LCSR
-		BSTArray<UniqueNPCData>						   uniqueNPCs;				// 88 - LCUN
-		OverrideData*								   overrideData;			// A0
-		NiPointer<QueuedPromoteLocationReferencesTask> promoteRefsTask;			// A8
-		BSTArray<ObjectRefHandle>					   promotedRefs;			// B0
-		volatile std::int32_t						   loadedCount;				// C8
-		std::uint32_t								   fileOffset;				// CC
-		BSTArray<KEYWORD_DATA>						   keywordData;				// D0
-		std::uint32_t								   lastChecked;				// E8
-		bool										   cleared;					// EC
-		bool										   everCleared;				// ED
-		std::uint16_t								   padEE;					// EE
+		BGSLocation* parentLoc;                                          // 48 - PNAM
+		TESFaction* unreportedCrimeFaction;                              // 50 - FNAM
+		BGSMusicType* musicType;                                         // 58 - NAM1
+		ObjectRefHandle worldLocMarker;                                  // 60 - MNAM
+		float worldLocRadius;                                            // 64 - RNAM
+		ObjectRefHandle horseLocMarker;                                  // 68 - NAM0
+		std::uint32_t pad6C;                                             // 6C
+		BSTArray<SpecialRefData> specialRefs;                            // 70 - LCSR
+		BSTArray<UniqueNPCData> uniqueNPCs;                              // 88 - LCUN
+		OverrideData* overrideData;                                      // A0
+		NiPointer<QueuedPromoteLocationReferencesTask> promoteRefsTask;  // A8
+		BSTArray<ObjectRefHandle> promotedRefs;                          // B0
+		volatile std::int32_t loadedCount;                               // C8
+		std::uint32_t fileOffset;                                        // CC
+		BSTArray<KEYWORD_DATA> keywordData;                              // D0
+		std::uint32_t lastChecked;                                       // E8
+		bool cleared;                                                    // EC
+		bool everCleared;                                                // ED
+		std::uint16_t padEE;                                             // EE
 	};
 	static_assert(sizeof(BGSLocation) == 0xF0);
 }

@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraEmittanceSource();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kEmittanceSource; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return source != a_rhs->source; }
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kEmittanceSource; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return source != a_rhs->source; }
 
 		// members
 		TESForm* source;  // 10

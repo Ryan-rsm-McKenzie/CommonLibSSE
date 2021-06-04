@@ -15,11 +15,11 @@ namespace RE
 		virtual ~ExtraOpenCloseActivateRef();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kOpenCloseActivateRef; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kOpenCloseActivateRef; }
 
 		// members
 		ObjectRefHandle activateRef;  // 10
-		std::uint32_t	pad14;		  // 14
+		std::uint32_t pad14;          // 14
 	};
 	static_assert(sizeof(ExtraOpenCloseActivateRef) == 0x18);
 }

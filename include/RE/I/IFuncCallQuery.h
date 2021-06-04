@@ -23,7 +23,7 @@ namespace RE
 				{
 				};
 
-				virtual ~IFuncCallQuery();	// 00
+				virtual ~IFuncCallQuery();  // 00
 
 				// add
 				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) = 0;  // 01

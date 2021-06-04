@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ExtraResourcesPreload();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kResourcesPreload; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kResourcesPreload; }
 
 		// members
 		void* unk10;  // 10

@@ -14,12 +14,12 @@ namespace RE
 
 	struct BGSPackageDataList
 	{
-		IPackageData** data;	  // 00
-		std::int8_t*   uids;	  // 08
-		std::uint16_t  dataSize;  // 10
-		std::int8_t	   nextUID;	  // 12 - XNAM
-		std::uint8_t   pad13;	  // 13
-		std::uint32_t  pad14;	  // 14
+		IPackageData** data;     // 00
+		std::int8_t* uids;       // 08
+		std::uint16_t dataSize;  // 10
+		std::int8_t nextUID;     // 12 - XNAM
+		std::uint8_t pad13;      // 13
+		std::uint32_t pad14;     // 14
 	};
 	static_assert(sizeof(BGSPackageDataList) == 0x18);
 
@@ -36,18 +36,18 @@ namespace RE
 			};
 
 			// members
-			BSFixedString name;		 // 00 - BNAM
-			std::int8_t	  uid;		 // 08 - UNAM
-			bool		  isPublic;	 // 09 - PNAM
-			std::uint8_t  pad0A;	 // 0A
-			std::uint8_t  pad0B;	 // 0B
-			std::uint32_t pad0C;	 // 0C
+			BSFixedString name;   // 00 - BNAM
+			std::int8_t uid;      // 08 - UNAM
+			bool isPublic;        // 09 - PNAM
+			std::uint8_t pad0A;   // 0A
+			std::uint8_t pad0B;   // 0B
+			std::uint32_t pad0C;  // 0C
 		};
 		static_assert(sizeof(NameMapData) == 0x10);
 
 		// members
-		std::uint32_t		  pad04;	// 04
-		BSTArray<NameMapData> nameMap;	// 08
+		std::uint32_t pad04;            // 04
+		BSTArray<NameMapData> nameMap;  // 08
 	};
 	static_assert(sizeof(BGSPackageDataNameMap) == 0x20);
 
@@ -59,20 +59,20 @@ namespace RE
 		virtual ~TESCustomPackageData();  // 00
 
 		// override (TESPackageData)
-		virtual void Copy(TESPackageData* a_package, TESForm* a_form) override;	 // 01
-		virtual void InitItem(TESForm* a_form) override;						 // 03
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;				 // 04 - { return; }
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;				 // 05 - { return; }
+		virtual void Copy(TESPackageData* a_package, TESForm* a_form) override;  // 01
+		virtual void InitItem(TESForm* a_form) override;                         // 03
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                // 04 - { return; }
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                // 05 - { return; }
 
 		// members
-		BGSPackageDataList					   data;					 // 08
-		IProcedureTreeItem*					   procedureTree;			 // 20
-		BSTSmartPointer<BGSPackageDataNameMap> nameMap;					 // 28
-		TESPackage*							   templateParent;			 // 30
-		std::uint16_t						   version;					 // 38
-		bool								   alwaysRecheckConditions;	 // 3A
-		std::uint8_t						   pad3B;					 // 3B
-		std::uint32_t						   pad3C;					 // 3C
+		BGSPackageDataList data;                         // 08
+		IProcedureTreeItem* procedureTree;               // 20
+		BSTSmartPointer<BGSPackageDataNameMap> nameMap;  // 28
+		TESPackage* templateParent;                      // 30
+		std::uint16_t version;                           // 38
+		bool alwaysRecheckConditions;                    // 3A
+		std::uint8_t pad3B;                              // 3B
+		std::uint32_t pad3C;                             // 3C
 	};
 	static_assert(sizeof(TESCustomPackageData) == 0x40);
 }

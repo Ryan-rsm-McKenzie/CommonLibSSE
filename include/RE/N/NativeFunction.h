@@ -113,7 +113,7 @@ namespace RE
 
 		protected:
 			// members
-			std::function<function_type> _stub;	 // 50
+			std::function<function_type> _stub;  // 50
 		};
 	}
 

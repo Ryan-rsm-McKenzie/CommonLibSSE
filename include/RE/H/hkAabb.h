@@ -8,8 +8,8 @@ namespace RE
 	{
 	public:
 		// members
-		hkVector4 min;	// 00
-		hkVector4 max;	// 10
+		hkVector4 min;  // 00
+		hkVector4 max;  // 10
 	};
 	static_assert(sizeof(hkAabb) == 0x20);
 }

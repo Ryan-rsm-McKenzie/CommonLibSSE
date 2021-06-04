@@ -32,18 +32,18 @@ namespace RE
 		virtual ~BGSDialogueBranch();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual void ClearData() override;			 // 05
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void InitializeData() override;      // 04
+		virtual void ClearData() override;           // 05
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
-		stl::enumeration<Flag, std::uint32_t> flags;		  // 20 - DNAM
-		std::uint32_t						  pad24;		  // 24
-		TESQuest*							  quest;		  // 28 - QNAM
-		TESTopic*							  startingTopic;  // 30 - SNAM
-		DIALOGUE_TYPE						  type;			  // 38 - TNAM
-		std::uint32_t						  pad3C;		  // 3C
+		stl::enumeration<Flag, std::uint32_t> flags;  // 20 - DNAM
+		std::uint32_t pad24;                          // 24
+		TESQuest* quest;                              // 28 - QNAM
+		TESTopic* startingTopic;                      // 30 - SNAM
+		DIALOGUE_TYPE type;                           // 38 - TNAM
+		std::uint32_t pad3C;                          // 3C
 	};
 	static_assert(sizeof(BGSDialogueBranch) == 0x40);
 }

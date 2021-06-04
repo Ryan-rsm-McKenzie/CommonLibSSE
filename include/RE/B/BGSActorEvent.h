@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		// members
-		ActorHandle actor;	// 0
+		ActorHandle actor;  // 0
 	};
 	static_assert(sizeof(BGSActorEvent) == 0x4);
 }

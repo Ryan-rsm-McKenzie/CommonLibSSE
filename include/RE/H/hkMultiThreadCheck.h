@@ -25,10 +25,10 @@ namespace RE
 			kUnMarked = 0xFFFFFFF1
 		};
 
-		std::uint32_t threadId;		 // 0
-		std::int32_t  stackTraceId;	 // 4
-		std::uint16_t markCount;	 // 8
-		std::uint16_t markBitStack;	 // A
+		std::uint32_t threadId;      // 0
+		std::int32_t stackTraceId;   // 4
+		std::uint16_t markCount;     // 8
+		std::uint16_t markBitStack;  // A
 	};
 	static_assert(sizeof(hkMultiThreadCheck) == 0xC);
 }

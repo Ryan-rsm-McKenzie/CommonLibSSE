@@ -127,9 +127,9 @@ namespace RE
 		}
 
 		// members
-		float red;	  // 0
+		float red;    // 0
 		float green;  // 4
-		float blue;	  // 8
+		float blue;   // 8
 	};
 	static_assert(sizeof(NiColor) == 0xC);
 
@@ -262,9 +262,9 @@ namespace RE
 		}
 
 		// members
-		float red;	  // 00
+		float red;    // 00
 		float green;  // 04
-		float blue;	  // 08
+		float blue;   // 08
 		float alpha;  // 0C
 	};
 	static_assert(sizeof(NiColorA) == 0x10);

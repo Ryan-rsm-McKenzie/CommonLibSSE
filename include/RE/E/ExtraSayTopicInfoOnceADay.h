@@ -10,9 +10,9 @@ namespace RE
 
 	struct SayOnceTopicInfos
 	{
-		TESTopicInfo* info;		  // 00
-		std::int32_t  dateStamp;  // 08
-		float		  hourStamp;  // 0C
+		TESTopicInfo* info;      // 00
+		std::int32_t dateStamp;  // 08
+		float hourStamp;         // 0C
 	};
 	static_assert(sizeof(SayOnceTopicInfos) == 0x10);
 
@@ -25,7 +25,7 @@ namespace RE
 		virtual ~ExtraSayTopicInfoOnceADay();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kSayTopicInfoOnceADay; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kSayTopicInfoOnceADay; }
 
 		// members
 		BSSimpleList<SayOnceTopicInfos*>* saidOnceTopicInfos;  // 10

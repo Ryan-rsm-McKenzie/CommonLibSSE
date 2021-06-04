@@ -22,7 +22,7 @@ namespace RE
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint2 :
 		public BSTPoint2Base<T>,  // 00
-		public Ops				  // ??
+		public Ops                // ??
 	{
 	public:
 	};
@@ -42,7 +42,7 @@ namespace RE
 	template <class T, class Ops = BSTPointDefaultOps<T>>
 	class BSTPoint3 :
 		public BSTPoint3Base<T>,  // 00
-		public Ops				  // ??
+		public Ops                // ??
 	{
 	public:
 	};

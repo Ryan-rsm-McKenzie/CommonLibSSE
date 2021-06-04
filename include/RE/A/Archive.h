@@ -7,14 +7,14 @@
 namespace RE
 {
 	class Archive :
-		public BSArchive,	// 190
-		public BSFile,		// 000
-		public NiRefObject	// 180
+		public BSArchive,   // 190
+		public BSFile,      // 000
+		public NiRefObject  // 180
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Archive;
 
-		virtual ~Archive();	 // 00
+		virtual ~Archive();  // 00
 
 		// members
 		std::uint64_t unk1C0;  // 1C0

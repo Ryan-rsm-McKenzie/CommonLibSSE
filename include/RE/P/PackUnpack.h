@@ -12,9 +12,9 @@ namespace RE
 		class Object;
 
 		TypeInfo::RawType GetRawTypeFromVMType(VMTypeID a_typeID);
-		void			  BindID(BSTSmartPointer<Object>& a_object, const void* a_src, VMTypeID a_typeID);
-		void			  PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID);
-		void*			  UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
+		void BindID(BSTSmartPointer<Object>& a_object, const void* a_src, VMTypeID a_typeID);
+		void PackHandle(Variable* a_dst, const void* a_src, VMTypeID a_typeID);
+		void* UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 		template <
 			class T,

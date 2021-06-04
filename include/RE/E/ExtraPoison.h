@@ -18,13 +18,13 @@ namespace RE
 		virtual ~ExtraPoison() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kPoison; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return poison != a_rhs->poison || count != a_rhs->count; }
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kPoison; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return poison != a_rhs->poison || count != a_rhs->count; }
 
 		// members
-		AlchemyItem*  poison;  // 10
-		std::uint32_t count;   // 18
-		std::uint32_t pad1C;   // 1C
+		AlchemyItem* poison;  // 10
+		std::uint32_t count;  // 18
+		std::uint32_t pad1C;  // 1C
 	};
 	static_assert(sizeof(ExtraPoison) == 0x20);
 }

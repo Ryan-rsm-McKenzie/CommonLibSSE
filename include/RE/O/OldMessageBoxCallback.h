@@ -17,7 +17,7 @@ namespace RE
 		virtual void Run(Message a_msg) override;  // 01
 
 		// members
-		Callback* callback;	 // 10
+		Callback* callback;  // 10
 	};
 	static_assert(sizeof(OldMessageBoxCallback) == 0x18);
 }

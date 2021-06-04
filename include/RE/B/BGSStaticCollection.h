@@ -7,8 +7,8 @@
 namespace RE
 {
 	class BGSStaticCollection :
-		public TESBoundObject,		// 00
-		public TESModelTextureSwap	// 30
+		public TESBoundObject,      // 00
+		public TESModelTextureSwap  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStaticCollection;
@@ -21,12 +21,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSStaticCollection();	 // 00
+		virtual ~BGSStaticCollection();  // 00
 
 		// override (TESBoundObject)
-		virtual void ClearData() override;			 // 05
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void ClearData() override;           // 05
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 	};
 	static_assert(sizeof(BGSStaticCollection) == 0x68);
 }

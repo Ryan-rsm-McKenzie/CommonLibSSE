@@ -14,23 +14,23 @@ namespace RE
 	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
 	// context = kItemMenu
 	class CreationClubMenu :
-		public IMenu,							 // 00
-		public MenuEventHandler,				 // 30
-		public GFxFunctionHandler,				 // 40
-		public BSTEventSink<MenuOpenCloseEvent>	 // 50
+		public IMenu,                            // 00
+		public MenuEventHandler,                 // 30
+		public GFxFunctionHandler,               // 40
+		public BSTEventSink<MenuOpenCloseEvent>  // 50
 	{
 	public:
-		inline static constexpr auto	  RTTI = RTTI_CreationClubMenu;
+		inline static constexpr auto RTTI = RTTI_CreationClubMenu;
 		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
 
 		virtual ~CreationClubMenu();  // 00
 
 		// override (IMenu)
-		virtual void AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;	// 05
+		virtual void AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;				// 01
-		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
+		virtual bool CanProcess(InputEvent* a_event) override;              // 01
+		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
 
 		// override (GFxFunctionHandler)
 		virtual void Call(Params& a_params) override;  // 01
@@ -40,7 +40,7 @@ namespace RE
 
 		// members
 		ImageData background;  // 58
-		ImageData details;	   // 70
+		ImageData details;     // 70
 	};
 	static_assert(sizeof(CreationClubMenu) == 0x88);
 }

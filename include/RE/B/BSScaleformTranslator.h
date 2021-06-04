@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		// members
-		BSTHashMap<BSFixedStringW, BSFixedStringW> translationMap;	// 00
+		BSTHashMap<BSFixedStringW, BSFixedStringW> translationMap;  // 00
 	};
 	static_assert(sizeof(BSTranslator) == 0x30);
 

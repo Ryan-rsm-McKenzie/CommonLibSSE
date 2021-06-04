@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
 
-		virtual ~GRefCountImpl() = default;	 // 00
+		virtual ~GRefCountImpl() = default;  // 00
 
 		void AddRef();
 		void Release();

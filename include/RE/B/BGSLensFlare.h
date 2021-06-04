@@ -7,7 +7,7 @@
 namespace RE
 {
 	class BGSLensFlare :
-		public TESForm,				  // 00
+		public TESForm,               // 00
 		public BSLensFlareRenderData  // 20
 	{
 	public:
@@ -24,9 +24,9 @@ namespace RE
 		virtual ~BGSLensFlare();  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;			 // 05
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void ClearData() override;           // 05
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 	};
 	static_assert(sizeof(BGSLensFlare) == 0x40);
 }

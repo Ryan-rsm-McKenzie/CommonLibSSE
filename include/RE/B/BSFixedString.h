@@ -197,15 +197,15 @@ namespace RE
 			[[nodiscard]] inline BSStringPool::Entry* get_proxy() noexcept
 			{
 				return _data ?
-							 reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
-							 nullptr;
+				           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
+                           nullptr;
 			}
 
 			[[nodiscard]] inline const BSStringPool::Entry* get_proxy() const noexcept
 			{
 				return _data ?
-							 reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
-							 nullptr;
+				           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
+                           nullptr;
 			}
 
 			inline void try_acquire()
@@ -221,7 +221,7 @@ namespace RE
 			static constexpr const value_type EMPTY[]{ 0 };
 
 			// members
-			const_pointer _data{ nullptr };	 // 0
+			const_pointer _data{ nullptr };  // 0
 		};
 
 		extern template class BSFixedString<char>;

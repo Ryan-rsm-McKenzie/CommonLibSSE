@@ -10,6 +10,6 @@ namespace RE
 	struct AutoRegisterCreator : public AutoRegisterFactory<BSTDerivedCreator<Derived, typename Manager::mapped_type>, Manager>
 	{
 	public:
-		virtual ~AutoRegisterCreator();	 // 00
+		virtual ~AutoRegisterCreator();  // 00
 	};
 }

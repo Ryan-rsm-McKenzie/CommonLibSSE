@@ -16,9 +16,9 @@ namespace RE
 		};
 
 		// members
-		NiPointer<TESObjectREFR>							actor;			  // 00
-		NiPointer<TESObjectREFR>							targetFurniture;  // 08
-		stl::enumeration<FurnitureEventType, std::uint32_t> type;			  // 10
+		NiPointer<TESObjectREFR> actor;                            // 00
+		NiPointer<TESObjectREFR> targetFurniture;                  // 08
+		stl::enumeration<FurnitureEventType, std::uint32_t> type;  // 10
 	};
 	static_assert(sizeof(TESFurnitureEvent) == 0x18);
 }

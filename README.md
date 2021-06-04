@@ -2,11 +2,9 @@
 
 ## Build Dependencies
 * [Boost](https://www.boost.org/)
-	* Atomic
-* [span lite](https://github.com/martinmoene/span-lite)
+	* Stl_interfaces
 * [spdlog](https://github.com/gabime/spdlog)
-* [Visual Studio Community 2019 Preview+](https://visualstudio.microsoft.com/vs/preview/)
-	* C++ Clang tools for Windows
+* [Visual Studio Community 2019 16.10.0 Preview 3.0](https://visualstudio.microsoft.com/vs/preview/)
 	* Desktop development with C++
 
 ## End User Dependencies
@@ -15,7 +13,9 @@
 
 ## Development
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
-* [clang-format 11.0.0+](https://github.com/llvm/llvm-project/releases)
+* [clang-format 12.0.0](https://github.com/llvm/llvm-project/releases)
+* [CMake](https://cmake.org/)
+* [vcpkg](https://github.com/microsoft/vcpkg)
 
 ## Notes
-* CommonLib builds completely independently of SKSE, and can replace it as a dependency.
+* CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need the runtime component.

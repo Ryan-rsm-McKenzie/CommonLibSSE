@@ -12,8 +12,8 @@ namespace RE
 		virtual ~ToggleRunHandler();  // 00
 
 		// override (PlayerInputHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;									// 01
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;	// 04
+		virtual bool CanProcess(InputEvent* a_event) override;                                  // 01
+		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
 	};
 	static_assert(sizeof(ToggleRunHandler) == 0x10);
 }

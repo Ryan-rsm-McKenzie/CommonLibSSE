@@ -15,27 +15,27 @@ namespace SKSE
 	void Init(const LoadInterface* a_intfc) noexcept;
 	void RegisterForAPIInitEvent(std::function<void()> a_fn);
 
-	PluginHandle  GetPluginHandle() noexcept;
+	PluginHandle GetPluginHandle() noexcept;
 	std::uint32_t GetReleaseIndex() noexcept;
 
-	const ScaleformInterface*	  GetScaleformInterface() noexcept;
-	const PapyrusInterface*		  GetPapyrusInterface() noexcept;
+	const ScaleformInterface* GetScaleformInterface() noexcept;
+	const PapyrusInterface* GetPapyrusInterface() noexcept;
 	const SerializationInterface* GetSerializationInterface() noexcept;
-	const TaskInterface*		  GetTaskInterface() noexcept;
-	const TrampolineInterface*	  GetTrampolineInterface() noexcept;
+	const TaskInterface* GetTaskInterface() noexcept;
+	const TrampolineInterface* GetTrampolineInterface() noexcept;
 
-	const MessagingInterface*			   GetMessagingInterface() noexcept;
-	RE::BSTEventSource<ModCallbackEvent>*  GetModCallbackEventSource() noexcept;
-	RE::BSTEventSource<CameraEvent>*	   GetCameraEventSource() noexcept;
+	const MessagingInterface* GetMessagingInterface() noexcept;
+	RE::BSTEventSource<ModCallbackEvent>* GetModCallbackEventSource() noexcept;
+	RE::BSTEventSource<CameraEvent>* GetCameraEventSource() noexcept;
 	RE::BSTEventSource<CrosshairRefEvent>* GetCrosshairRefEventSource() noexcept;
-	RE::BSTEventSource<ActionEvent>*	   GetActionEventSource() noexcept;
+	RE::BSTEventSource<ActionEvent>* GetActionEventSource() noexcept;
 	RE::BSTEventSource<NiNodeUpdateEvent>* GetNiNodeUpdateEventSource() noexcept;
 
-	const ObjectInterface*			   GetObjectInterface() noexcept;
-	const SKSEDelayFunctorManager*	   GetDelayFunctorManager() noexcept;
-	const SKSEObjectRegistry*		   GetObjectRegistry() noexcept;
+	const ObjectInterface* GetObjectInterface() noexcept;
+	const SKSEDelayFunctorManager* GetDelayFunctorManager() noexcept;
+	const SKSEObjectRegistry* GetObjectRegistry() noexcept;
 	const SKSEPersistentObjectStorage* GetPersistentObjectStorage() noexcept;
 
 	Trampoline& GetTrampoline();
-	void		AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve = true);
+	void AllocTrampoline(std::size_t a_size, bool a_trySKSEReserve = true);
 }

@@ -17,16 +17,16 @@ namespace RE
 
 		struct LinkedRefChild
 		{
-			BGSKeyword*		keyword;  // 00
-			ObjectRefHandle refr;	  // 08
-			std::uint32_t	pad0C;	  // 0C
+			BGSKeyword* keyword;   // 00
+			ObjectRefHandle refr;  // 08
+			std::uint32_t pad0C;   // 0C
 		};
 		static_assert(sizeof(LinkedRefChild) == 0x10);
 
-		virtual ~ExtraLinkedRefChildren();	// 00
+		virtual ~ExtraLinkedRefChildren();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kLinkedRefChildren; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kLinkedRefChildren; }
 
 		// members
 		BSTSmallArray<LinkedRefChild> linkedChildren;  // 10

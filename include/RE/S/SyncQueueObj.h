@@ -12,7 +12,7 @@ namespace RE
 		virtual ~SyncQueueObj();  // 00
 
 		// add
-		virtual void Unk_01(void) = 0;	// 01
+		virtual void Unk_01(void) = 0;  // 01
 
 		// members
 		std::uint32_t unk0C;  // 0C

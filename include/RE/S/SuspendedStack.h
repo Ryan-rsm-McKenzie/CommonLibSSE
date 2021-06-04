@@ -16,8 +16,8 @@ namespace RE
 			{
 			public:
 				// members
-				BSTSmartPointer<Stack>			stack;			// 00
-				BSTSmartPointer<IFuncCallQuery> funcCallQuery;	// 08
+				BSTSmartPointer<Stack> stack;                   // 00
+				BSTSmartPointer<IFuncCallQuery> funcCallQuery;  // 08
 			};
 			static_assert(sizeof(SuspendedStack) == 0x10);
 		}

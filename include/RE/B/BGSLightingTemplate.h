@@ -22,15 +22,15 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSLightingTemplate();	 // 00
+		virtual ~BGSLightingTemplate();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void InitializeData() override;      // 04
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
-		INTERIOR_DATA						data;							   // 20 - DATA
+		INTERIOR_DATA data;                                                    // 20 - DATA
 		BGSDirectionalAmbientLightingColors directionalAmbientLightingColors;  // 80 - DALC
 	};
 	static_assert(sizeof(BGSLightingTemplate) == 0xA0);

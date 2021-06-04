@@ -10,7 +10,7 @@ namespace RE
 		virtual ~IAnimationSetCallbackFunctor();  // 00
 
 		// add
-		virtual void Unk_01(void);	// 01
+		virtual void Unk_01(void);  // 01
 	};
 	static_assert(sizeof(IAnimationSetCallbackFunctor) == 0x8);
 }

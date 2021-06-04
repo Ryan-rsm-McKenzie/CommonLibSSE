@@ -41,25 +41,25 @@ namespace RE
 		virtual ~Moon();  // 00
 
 		// override (SkyObject)
-		virtual void Unk_02(void) override;						 // 02
-		virtual void Update(Sky* a_sky, float a_arg2) override;	 // 03
+		virtual void Unk_02(void) override;                      // 02
+		virtual void Update(Sky* a_sky, float a_arg2) override;  // 03
 
 		// members
-		NiPointer<NiNode>							  moonNode;						 // 10
-		NiPointer<NiNode>							  shadowNode;					 // 18
-		NiPointer<BSTriShape>						  moonMesh;						 // 20
-		NiPointer<BSTriShape>						  shadowMesh;					 // 28
-		BSString									  stateTextures[Phase::kTotal];	 // 30
-		float										  angleFadeStart;				 // B0
-		float										  angleFadeEnd;					 // B4
-		float										  angleShadowEarlyFade;			 // B8
-		float										  speed;						 // BC
-		float										  zOffset;						 // C0
-		std::uint32_t								  size;							 // C4
-		stl::enumeration<UpdateStatus, std::uint32_t> updateMoonTexture;			 // C8
-		float										  unkCC;						 // CC
-		float										  unkD0;						 // D0
-		std::uint32_t								  padD4;						 // D4
+		NiPointer<NiNode> moonNode;                                       // 10
+		NiPointer<NiNode> shadowNode;                                     // 18
+		NiPointer<BSTriShape> moonMesh;                                   // 20
+		NiPointer<BSTriShape> shadowMesh;                                 // 28
+		BSString stateTextures[Phase::kTotal];                            // 30
+		float angleFadeStart;                                             // B0
+		float angleFadeEnd;                                               // B4
+		float angleShadowEarlyFade;                                       // B8
+		float speed;                                                      // BC
+		float zOffset;                                                    // C0
+		std::uint32_t size;                                               // C4
+		stl::enumeration<UpdateStatus, std::uint32_t> updateMoonTexture;  // C8
+		float unkCC;                                                      // CC
+		float unkD0;                                                      // D0
+		std::uint32_t padD4;                                              // D4
 	};
 	static_assert(sizeof(Moon) == 0xD8);
 }

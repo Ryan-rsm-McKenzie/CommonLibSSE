@@ -16,10 +16,10 @@ namespace RE
 		virtual ~ExtraSeenData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kSeenData; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kSeenData; }
 
 		// members
-		SeenData* seenData;	 // 10
+		SeenData* seenData;  // 10
 	};
 	static_assert(sizeof(ExtraSeenData) == 0x18);
 }

@@ -17,10 +17,10 @@ namespace RE
 			// further into individual logs.
 
 			kChannel_General = 0x10,  // Used for end-user messages about I/O, errors, etc.
-			kChannel_Script = 0x20,	  // Used for script-related messages (bad function parameters, etc.)
-			kChannel_Parse = 0x30,	  // Used for parse log generated during loading
-			kChannel_Action = 0x40,	  // Used for action-script instruction execution log
-			kChannel_Debug = 0x50,	  // Reserved flag for mapping GDebug messages into single log object.
+			kChannel_Script = 0x20,   // Used for script-related messages (bad function parameters, etc.)
+			kChannel_Parse = 0x30,    // Used for parse log generated during loading
+			kChannel_Action = 0x40,   // Used for action-script instruction execution log
+			kChannel_Debug = 0x50,    // Reserved flag for mapping GDebug messages into single log object.
 			kChannel_Mask = 0xF0,
 			// Standard channel sub-types
 			kMessageType_Error = 0,

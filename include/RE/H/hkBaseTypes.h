@@ -19,10 +19,10 @@ namespace RE
 		explicit hkHalf(const float& a_val);
 
 		hkHalf& operator=(const float& a_val);
-				operator float() const;
+		operator float() const;
 
 	protected:
-		void  SetFloat(const float& a_val);
+		void SetFloat(const float& a_val);
 		float GetFloat() const;
 
 		// members
@@ -36,7 +36,7 @@ namespace RE
 	{
 	public:
 		// members
-		std::uint8_t value;	 // 0
+		std::uint8_t value;  // 0
 	};
 	static_assert(sizeof(hkUFloat8) == 0x1);
 }

@@ -41,7 +41,7 @@ namespace RE
 			// 16 slots for HeapSummary
 
 			// How many entries we support by default
-			kGStat_MaxId = 64 << 6,	 // 64 * 64 = 4096
+			kGStat_MaxId = 64 << 6,  // 64 * 64 = 4096
 			kGStat_EntryCount = 512
 		};
 	};

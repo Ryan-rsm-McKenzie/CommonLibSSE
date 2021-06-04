@@ -10,10 +10,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_RefAttachTechniqueInput;
 
-		virtual ~RefAttachTechniqueInput();	 // 00
+		virtual ~RefAttachTechniqueInput();  // 00
 
 		// override (BSAttachTechniques::AttachTechniqueInput)
-		virtual void Unk_01(void) override;	 // 01
+		virtual void Unk_01(void) override;  // 01
 
 		// members
 		std::uint64_t unk20;  // 20

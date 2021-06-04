@@ -16,14 +16,14 @@ namespace RE
 		virtual ~TESRegionDataWeather();  // 00
 
 		// override (TESRegionData)
-		virtual Type GetType() const override;								// 03 - { return Type::kWeather; }
-		virtual void ConstructSelf() override;								// 04
-		virtual void Unk_05(void) override;									// 05
-		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) override;	// 06
-		virtual bool IsLoaded() const override;								// 07 - { return weatherTypes.next || weatherTypes.cur; }
+		virtual Type GetType() const override;                              // 03 - { return Type::kWeather; }
+		virtual void ConstructSelf() override;                              // 04
+		virtual void Unk_05(void) override;                                 // 05
+		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
+		virtual bool IsLoaded() const override;                             // 07 - { return weatherTypes.next || weatherTypes.cur; }
 
 		// add
-		virtual void Unk_08(void);	// 08
+		virtual void Unk_08(void);  // 08
 
 		// members
 		BSSimpleList<WeatherType*> weatherTypes;  // 10

@@ -27,7 +27,7 @@ namespace RE
 	{
 		union
 		{
-			float		 f;
+			float f;
 			std::int32_t i;
 		};
 
@@ -40,7 +40,7 @@ namespace RE
 		union
 		{
 			std::int32_t i;
-			float		 f;
+			float f;
 		};
 
 		i = (_value << 16);

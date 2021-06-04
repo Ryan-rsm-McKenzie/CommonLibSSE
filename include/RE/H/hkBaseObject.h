@@ -7,7 +7,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkBaseObject;
 
-		virtual ~hkBaseObject() = default;	// 00
+		virtual ~hkBaseObject() = default;  // 00
 	};
 	static_assert(sizeof(hkBaseObject) == 0x8);
 }

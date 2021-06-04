@@ -33,8 +33,8 @@ namespace RE
 			};
 
 			// members
-			float speeds[SPEED_DIRECTIONS::kTotal][kTotal];	 // 00
-			float rotateWhileMovingRun;						 // 28
+			float speeds[SPEED_DIRECTIONS::kTotal][kTotal];  // 00
+			float rotateWhileMovingRun;                      // 28
 		};
 		static_assert(sizeof(MaxSpeeds) == 0x2C);
 
@@ -42,11 +42,11 @@ namespace RE
 		{
 		public:
 			// members
-			BSFixedString typeName;		  // 00 - MNAM
-			MaxSpeeds	  defaultData;	  // 08 - SPED
-			float		  directional;	  // 34 - INAM~
-			float		  movementSpeed;  // 38
-			float		  rotationSpeed;  // 3C - ~INAM
+			BSFixedString typeName;  // 00 - MNAM
+			MaxSpeeds defaultData;   // 08 - SPED
+			float directional;       // 34 - INAM~
+			float movementSpeed;     // 38
+			float rotationSpeed;     // 3C - ~INAM
 		};
 		static_assert(sizeof(TypeData) == 0x40);
 	}

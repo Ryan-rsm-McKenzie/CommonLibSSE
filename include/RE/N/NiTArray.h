@@ -29,7 +29,7 @@ namespace RE
 			}
 		}
 
-		virtual ~NiTArray()	 // 00
+		virtual ~NiTArray()  // 00
 		{
 			allocator_type::Deallocate(_data);
 		}
@@ -113,11 +113,11 @@ namespace RE
 
 	private:
 		// members
-		T*			  _data;		// 08
-		std::uint16_t _capacity;	// 10
-		std::uint16_t _freeIdx;		// 12
-		std::uint16_t _size;		// 14
-		std::uint16_t _growthSize;	// 16
+		T* _data;                   // 08
+		std::uint16_t _capacity;    // 10
+		std::uint16_t _freeIdx;     // 12
+		std::uint16_t _size;        // 14
+		std::uint16_t _growthSize;  // 16
 	};
 	static_assert(sizeof(NiTArray<void*, NiTMallocInterface<void*>>) == 0x18);
 
@@ -249,11 +249,11 @@ namespace RE
 
 	private:
 		// members
-		T*			  _data;		// 08
-		std::uint32_t _capacity;	// 10
-		std::uint32_t _freeIdx;		// 14
-		std::uint32_t _size;		// 18
-		std::uint32_t _growthSize;	// 1C
+		T* _data;                   // 08
+		std::uint32_t _capacity;    // 10
+		std::uint32_t _freeIdx;     // 14
+		std::uint32_t _size;        // 18
+		std::uint32_t _growthSize;  // 1C
 	};
 	static_assert(sizeof(NiTLargeArray<void*, NiTMallocInterface<void*>>) == 0x20);
 

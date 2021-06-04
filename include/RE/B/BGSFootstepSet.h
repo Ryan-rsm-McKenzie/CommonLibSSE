@@ -36,12 +36,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSFootstepSet();	// 00
+		virtual ~BGSFootstepSet();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void InitializeData() override;      // 04
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
 		BSTArray<BGSFootstep*> entries[ACTOR_MOVEMENT_TYPES::kTotal];  // 20

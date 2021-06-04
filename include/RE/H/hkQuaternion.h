@@ -7,7 +7,7 @@ namespace RE
 	class hkQuaternion
 	{
 	public:
-		hkVector4 vec;	// 00
+		hkVector4 vec;  // 00
 	};
 	static_assert(sizeof(hkQuaternion) == 0x10);
 }

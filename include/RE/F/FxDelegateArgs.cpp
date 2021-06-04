@@ -16,7 +16,7 @@ namespace RE
 
 	void FxDelegateArgs::Respond(FxResponseArgsBase& a_params) const
 	{
-		GFxValue*			values = nullptr;
+		GFxValue* values = nullptr;
 		const std::uint32_t numValues = a_params.GetValues(std::addressof(values));
 		if (values) {
 			values[0] = _responseID;

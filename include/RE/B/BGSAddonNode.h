@@ -16,15 +16,15 @@ namespace RE
 		};
 
 		// members
-		std::uint16_t						 masterParticleCap;	 // 0
-		stl::enumeration<Flag, std::uint8_t> flags;				 // 2
-		std::uint8_t						 pad3;				 // 3
+		std::uint16_t masterParticleCap;             // 0
+		stl::enumeration<Flag, std::uint8_t> flags;  // 2
+		std::uint8_t pad3;                           // 3
 	};
 	static_assert(sizeof(ADDON_DATA) == 0x4);
 
 	class BGSAddonNode :
-		public TESBoundObject,		// 00
-		public TESModelTextureSwap	// 30
+		public TESBoundObject,      // 00
+		public TESModelTextureSwap  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAddonNode;
@@ -42,16 +42,16 @@ namespace RE
 		virtual ~BGSAddonNode();  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		virtual void InitializeData() override;      // 04
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
 
 		// members
-		std::uint32_t			index;	// 68 - DATA
-		std::uint32_t			pad6C;	// 6C
-		BGSSoundDescriptorForm* sound;	// 70 - SNAM
-		ADDON_DATA				data;	// 78 - DNAM
-		std::uint32_t			pad7C;	// 7C
+		std::uint32_t index;            // 68 - DATA
+		std::uint32_t pad6C;            // 6C
+		BGSSoundDescriptorForm* sound;  // 70 - SNAM
+		ADDON_DATA data;                // 78 - DNAM
+		std::uint32_t pad7C;            // 7C
 	};
 	static_assert(sizeof(BGSAddonNode) == 0x80);
 }

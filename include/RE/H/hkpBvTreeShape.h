@@ -20,20 +20,20 @@ namespace RE
 			kUser
 		};
 
-		virtual ~hkpBvTreeShape();	// 00
+		virtual ~hkpBvTreeShape();  // 00
 
 		// override (hkpShape)
-		virtual const hkpShapeContainer* GetContainer() const override = 0;	 // 04
+		virtual const hkpShapeContainer* GetContainer() const override = 0;  // 04
 
 		// add
-		virtual void		  QueryAabb(const hkAabb& a_aabb, hkArray<hkpShapeKey>& a_hits) const = 0;						  // 0B
+		virtual void QueryAabb(const hkAabb& a_aabb, hkArray<hkpShapeKey>& a_hits) const = 0;                                 // 0B
 		virtual std::uint32_t QueryAabbImpl(const hkAabb& a_aabb, hkpShapeKey* a_hits, std::int32_t a_maxNumKeys) const = 0;  // 0C
 
 		// members
-		stl::enumeration<BvTreeType, std::uint8_t> bvTreeType;	// 20
-		std::uint8_t							   pad21;		// 21
-		std::uint16_t							   pad22;		// 22
-		std::uint32_t							   pad24;		// 24
+		stl::enumeration<BvTreeType, std::uint8_t> bvTreeType;  // 20
+		std::uint8_t pad21;                                     // 21
+		std::uint16_t pad22;                                    // 22
+		std::uint32_t pad24;                                    // 24
 	};
 	static_assert(sizeof(hkpBvTreeShape) == 0x28);
 }

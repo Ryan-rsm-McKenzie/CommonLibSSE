@@ -15,11 +15,11 @@ namespace RE
 		virtual ~ExtraLastFinishedSequence();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kLastFinishedSequence; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return lastSequenceName != a_rhs->lastSequenceName; }
+		virtual ExtraDataType GetType() const override;                    // 01 - { return kLastFinishedSequence; }
+		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return lastSequenceName != a_rhs->lastSequenceName; }
 
 		// members
-		BSFixedString lastSequenceName;	 // 10
+		BSFixedString lastSequenceName;  // 10
 	};
 	static_assert(sizeof(ExtraLastFinishedSequence) == 0x18);
 }

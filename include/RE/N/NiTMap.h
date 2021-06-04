@@ -28,7 +28,7 @@ namespace RE
 		using Base::_allocator;
 
 		// override (NiTMapBase)
-		virtual value_type* malloc_value() override	 // 05
+		virtual value_type* malloc_value() override  // 05
 		{
 			return static_cast<value_type*>(_allocator.Allocate());
 		}

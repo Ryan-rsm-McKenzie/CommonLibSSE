@@ -8,8 +8,8 @@ namespace RE
 	{
 	public:
 		// members
-		BSFixedString stat;	  // 00
-		std::int32_t  value;  // 08
+		BSFixedString stat;   // 00
+		std::int32_t value;   // 08
 		std::uint32_t pad0C;  // 0C
 	};
 	static_assert(sizeof(TESTrackedStatsEvent) == 0x10);

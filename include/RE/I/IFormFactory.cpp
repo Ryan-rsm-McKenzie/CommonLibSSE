@@ -10,7 +10,7 @@ namespace RE
 		};
 
 		REL::Relocation<Factories*> formFactories{ REL::ID(514355) };
-		REL::Relocation<bool*>		formFactoriesInitialized{ REL::ID(514349) };
+		REL::Relocation<bool*> formFactoriesInitialized{ REL::ID(514349) };
 		return std::make_pair(formFactories->data, *formFactoriesInitialized);
 	}
 

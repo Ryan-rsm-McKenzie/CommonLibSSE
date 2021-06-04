@@ -199,11 +199,11 @@ namespace REL
 
 	template <class F, class... Args>
 	std::invoke_result_t<F, Args...> invoke(F&& a_func, Args&&... a_args)  //
-		noexcept(std::is_nothrow_invocable_v<F, Args...>)				   //
+		noexcept(std::is_nothrow_invocable_v<F, Args...>)                  //
 		requires(std::invocable<F, Args...>)
 	{
 		if constexpr (std::is_member_function_pointer_v<std::decay_t<F>>) {
-			if constexpr (detail::is_x64_pod_v<std::invoke_result_t<F, Args...>>) {	 // member functions == free functions in x64
+			if constexpr (detail::is_x64_pod_v<std::invoke_result_t<F, Args...>>) {  // member functions == free functions in x64
 				using func_t = detail::member_function_pod_type_t<std::decay_t<F>>;
 				auto func = unrestricted_cast<func_t*>(std::forward<F>(a_func));
 				return func(std::forward<Args>(a_args)...);
@@ -218,7 +218,7 @@ namespace REL
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
 		std::uint32_t old{ 0 };
-		auto		  success =
+		auto success =
 			WinAPI::VirtualProtect(
 				reinterpret_cast<void*>(a_dst),
 				a_count,
@@ -252,7 +252,7 @@ namespace REL
 	inline void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count)
 	{
 		std::uint32_t old{ 0 };
-		auto		  success =
+		auto success =
 			WinAPI::VirtualProtect(
 				reinterpret_cast<void*>(a_dst),
 				a_count,
@@ -288,7 +288,7 @@ namespace REL
 			_impl{ a_v1, a_v2, a_v3, a_v4 }
 		{}
 
-		[[nodiscard]] constexpr reference		operator[](std::size_t a_idx) noexcept { return _impl[a_idx]; }
+		[[nodiscard]] constexpr reference operator[](std::size_t a_idx) noexcept { return _impl[a_idx]; }
 		[[nodiscard]] constexpr const_reference operator[](std::size_t a_idx) const noexcept { return _impl[a_idx]; }
 
 		[[nodiscard]] std::strong_ordering constexpr compare(const Version& a_rhs) const noexcept
@@ -327,12 +327,12 @@ namespace REL
 		std::array<value_type, 4> _impl{ 0, 0, 0, 0 };
 	};
 
-	[[nodiscard]] constexpr bool				 operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == 0; }
+	[[nodiscard]] constexpr bool operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == 0; }
 	[[nodiscard]] constexpr std::strong_ordering operator<=>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs); }
 
 	[[nodiscard]] inline std::optional<Version> get_file_version(stl::zwstring a_filename)
 	{
-		std::uint32_t	  dummy;
+		std::uint32_t dummy;
 		std::vector<char> buf(WinAPI::GetFileVersionInfoSize(a_filename.data(), std::addressof(dummy)));
 		if (buf.empty()) {
 			return std::nullopt;
@@ -342,13 +342,13 @@ namespace REL
 			return std::nullopt;
 		}
 
-		void*		  verBuf{ nullptr };
+		void* verBuf{ nullptr };
 		std::uint32_t verLen{ 0 };
 		if (!WinAPI::VerQueryValue(buf.data(), L"\\StringFileInfo\\040904B0\\ProductVersion", std::addressof(verBuf), std::addressof(verLen))) {
 			return std::nullopt;
 		}
 
-		Version				version;
+		Version version;
 		std::wistringstream ss(
 			std::wstring(static_cast<const wchar_t*>(verBuf), verLen));
 		std::wstring token;
@@ -384,8 +384,8 @@ namespace REL
 		{}
 
 		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _address; }
-		[[nodiscard]] constexpr std::size_t	   offset() const noexcept { return address() - _proxyBase; }
-		[[nodiscard]] constexpr std::size_t	   size() const noexcept { return _size; }
+		[[nodiscard]] constexpr std::size_t offset() const noexcept { return address() - _proxyBase; }
+		[[nodiscard]] constexpr std::size_t size() const noexcept { return _size; }
 
 		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(address()); }
 
@@ -398,7 +398,7 @@ namespace REL
 	private:
 		std::uintptr_t _proxyBase{ 0 };
 		std::uintptr_t _address{ 0 };
-		std::size_t	   _size{ 0 };
+		std::size_t _size{ 0 };
 	};
 
 	class Module
@@ -411,7 +411,7 @@ namespace REL
 		}
 
 		[[nodiscard]] constexpr std::uintptr_t base() const noexcept { return _base; }
-		[[nodiscard]] constexpr Version		   version() const noexcept { return _version; }
+		[[nodiscard]] constexpr Version version() const noexcept { return _version; }
 
 		[[nodiscard]] constexpr Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
 
@@ -472,10 +472,10 @@ namespace REL
 
 		static inline std::uintptr_t _natvis{ 0 };
 
-		std::wstring						_filename{ L"SkyrimSE.exe"sv };
+		std::wstring _filename{ L"SkyrimSE.exe"sv };
 		std::array<Segment, Segment::total> _segments;
-		Version								_version;
-		std::uintptr_t						_base{ 0 };
+		Version _version;
+		std::uintptr_t _base{ 0 };
 	};
 
 	class IDDatabase
@@ -493,7 +493,7 @@ namespace REL
 				stl::report_and_fail("data is empty"sv);
 			}
 
-			mapping_t  elem{ a_id, 0 };
+			mapping_t elem{ a_id, 0 };
 			const auto it = std::lower_bound(
 				_id2offset.begin(),
 				_id2offset.end(),
@@ -515,7 +515,7 @@ namespace REL
 				stl::report_and_fail("data is empty"sv);
 			}
 
-			mapping_t  elem{ 0, a_offset };
+			mapping_t elem{ 0, a_offset };
 			const auto it = std::lower_bound(
 				_offset2id.begin(),
 				_offset2id.end(),
@@ -600,12 +600,12 @@ namespace REL
 				}
 			}
 
-			[[nodiscard]] constexpr std::size_t	  address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
+			[[nodiscard]] constexpr std::size_t address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
 			[[nodiscard]] constexpr std::uint64_t pointer_size() const noexcept { return static_cast<std::uint64_t>(_pointerSize); }
-			[[nodiscard]] constexpr Version		  version() const noexcept { return _version; }
+			[[nodiscard]] constexpr Version version() const noexcept { return _version; }
 
 		private:
-			Version		 _version;
+			Version _version;
 			std::int32_t _pointerSize{ 0 };
 			std::int32_t _addressCount{ 0 };
 		};
@@ -629,7 +629,7 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-			auto	   filename = L"Data/SKSE/Plugins/version-"s;
+			auto filename = L"Data/SKSE/Plugins/version-"s;
 			filename += version.wstring();
 			filename += L".bin"sv;
 			load_file(filename, version);
@@ -638,7 +638,7 @@ namespace REL
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
 			istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
-			header_t  header;
+			header_t header;
 			header.read(input);
 			if (header.version() != a_version) {
 				stl::report_and_fail("version mismatch"sv);
@@ -677,7 +677,7 @@ namespace REL
 
 		void unpack_file(istream_t& a_input, header_t a_header)
 		{
-			std::uint8_t  type = 0;
+			std::uint8_t type = 0;
 			std::uint64_t id = 0;
 			std::uint64_t offset = 0;
 			std::uint64_t prevID = 0;
@@ -760,7 +760,7 @@ namespace REL
 
 		static inline const mapping_t* _natvis{ nullptr };
 
-		detail::memory_map	 _mmap;
+		detail::memory_map _mmap;
 		std::span<mapping_t> _id2offset;
 #ifndef NDEBUG
 		std::vector<mapping_t> _offset2id;
@@ -782,7 +782,7 @@ namespace REL
 			return *this;
 		}
 
-		[[nodiscard]] std::uintptr_t		address() const { return base() + offset(); }
+		[[nodiscard]] std::uintptr_t address() const { return base() + offset(); }
 		[[nodiscard]] constexpr std::size_t offset() const noexcept { return _offset; }
 
 	private:
@@ -806,9 +806,9 @@ namespace REL
 			return *this;
 		}
 
-		[[nodiscard]] std::uintptr_t		  address() const { return base() + offset(); }
+		[[nodiscard]] std::uintptr_t address() const { return base() + offset(); }
 		[[nodiscard]] constexpr std::uint64_t id() const noexcept { return _id; }
-		[[nodiscard]] std::size_t			  offset() const { return IDDatabase::get().id2offset(_id); }
+		[[nodiscard]] std::size_t offset() const { return IDDatabase::get().id2offset(_id); }
 
 	private:
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
@@ -866,29 +866,29 @@ namespace REL
 		}
 
 		template <class U = value_type>
-		[[nodiscard]] decltype(auto) operator*() const noexcept	 //
+		[[nodiscard]] decltype(auto) operator*() const noexcept  //
 			requires(std::is_pointer_v<U>)
 		{
 			return *get();
 		}
 
 		template <class U = value_type>
-		[[nodiscard]] auto operator->() const noexcept	//
+		[[nodiscard]] auto operator->() const noexcept  //
 			requires(std::is_pointer_v<U>)
 		{
 			return get();
 		}
 
 		template <class... Args>
-		std::invoke_result_t<const value_type&, Args...> operator()(Args&&... a_args) const	 //
-			noexcept(std::is_nothrow_invocable_v<const value_type&, Args...>)				 //
+		std::invoke_result_t<const value_type&, Args...> operator()(Args&&... a_args) const  //
+			noexcept(std::is_nothrow_invocable_v<const value_type&, Args...>)                //
 			requires(std::invocable<const value_type&, Args...>)
 		{
 			return REL::invoke(get(), std::forward<Args>(a_args)...);
 		}
 
 		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _impl; }
-		[[nodiscard]] std::size_t			   offset() const { return _impl - base(); }
+		[[nodiscard]] std::size_t offset() const { return _impl - base(); }
 
 		[[nodiscard]] value_type get() const  //
 			noexcept(std::is_nothrow_copy_constructible_v<value_type>)
@@ -898,7 +898,7 @@ namespace REL
 		}
 
 		template <class U = value_type>
-		std::uintptr_t write_vfunc(std::size_t a_idx, std::uintptr_t a_newFunc)	 //
+		std::uintptr_t write_vfunc(std::size_t a_idx, std::uintptr_t a_newFunc)  //
 			requires(std::same_as<U, std::uintptr_t>)
 		{
 			const auto addr = address() + (sizeof(void*) * a_idx);
@@ -908,7 +908,7 @@ namespace REL
 		}
 
 		template <class F>
-		std::uintptr_t write_vfunc(std::size_t a_idx, F a_newFunc)	//
+		std::uintptr_t write_vfunc(std::size_t a_idx, F a_newFunc)  //
 			requires(std::same_as<value_type, std::uintptr_t>)
 		{
 			return write_vfunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));

@@ -17,10 +17,10 @@ namespace RE
 		virtual ~ExtraAnimGraphManager();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimGraphManager; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kAnimGraphManager; }
 
 		// members
-		BSTSmartPointer<BSAnimationGraphManager> animGraphMgr;	// 10
+		BSTSmartPointer<BSAnimationGraphManager> animGraphMgr;  // 10
 	};
 	static_assert(sizeof(ExtraAnimGraphManager) == 0x18);
 }

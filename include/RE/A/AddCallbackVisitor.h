@@ -17,8 +17,8 @@ namespace RE
 		virtual void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn* a_method) override;  // 01
 
 		// members
-		FxDelegateHandler*		  handler;	// 08
-		FxDelegate::CallbackHash* hash;		// 10
+		FxDelegateHandler* handler;      // 08
+		FxDelegate::CallbackHash* hash;  // 10
 	};
 	static_assert(sizeof(AddCallbackVisitor) == 0x18);
 }

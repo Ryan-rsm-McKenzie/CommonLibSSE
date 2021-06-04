@@ -49,16 +49,16 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSAssociationType();	// 00
+		virtual ~BGSAssociationType();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual void InitializeData() override;      // 04
+		virtual bool Load(TESFile* a_mod) override;  // 06
 
 		// members
-		BSFixedString						   associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
-		stl::enumeration<FLAGS, std::uint32_t> flags;											   // 40 - DATA
-		std::uint32_t						   pad44;											   // 44
+		BSFixedString associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
+		stl::enumeration<FLAGS, std::uint32_t> flags;                     // 40 - DATA
+		std::uint32_t pad44;                                              // 44
 	};
 	static_assert(sizeof(BGSAssociationType) == 0x48);
 }

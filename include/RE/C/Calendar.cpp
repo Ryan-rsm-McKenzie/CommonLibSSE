@@ -24,7 +24,7 @@ namespace RE
 
 	std::string Calendar::GetDayName() const
 	{
-		auto	 gmst = RE::GameSettingCollection::GetSingleton();
+		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = nullptr;
 
 		if (gmst) {
@@ -93,7 +93,7 @@ namespace RE
 
 	std::string Calendar::GetMonthName() const
 	{
-		auto	 gmst = RE::GameSettingCollection::GetSingleton();
+		auto gmst = RE::GameSettingCollection::GetSingleton();
 		Setting* setting = nullptr;
 
 		switch (GetMonth()) {

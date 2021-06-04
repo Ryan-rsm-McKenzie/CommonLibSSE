@@ -16,10 +16,10 @@ namespace RE
 		virtual ~ExtraPackageData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kPackageData; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kPackageData; }
 
 		// members
-		ActorPackageData* actorPackageData;	 // 10
+		ActorPackageData* actorPackageData;  // 10
 	};
 	static_assert(sizeof(ExtraPackageData) == 0x18);
 }

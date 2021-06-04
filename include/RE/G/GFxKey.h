@@ -91,7 +91,7 @@ namespace RE
 			kControl,
 			kAlt,
 			kPause,
-			kCapsLock = 20,	 // Toggle
+			kCapsLock = 20,  // Toggle
 			kEscape = 27,
 			kSpace = 32,
 			kPageUp,
@@ -105,14 +105,14 @@ namespace RE
 			kInsert = 45,
 			kDelete,
 			kHelp,
-			kNumLock = 144,		// Toggle
-			kScrollLock = 145,	// Toggle
+			kNumLock = 144,     // Toggle
+			kScrollLock = 145,  // Toggle
 
 			kSemicolon = 186,
 			kEqual = 187,
 			kComma = 188,  // Platform specific?
 			kMinus = 189,
-			kPeriod = 190,	// Platform specific?
+			kPeriod = 190,  // Platform specific?
 			kSlash = 191,
 			kBar = 192,
 			kBracketLeft = 219,
@@ -120,10 +120,10 @@ namespace RE
 			kBracketRight = 221,
 			kQuote = 222,
 
-			kOEM_AX = 0xE1,	   //  'AX' key on Japanese AX kbd
+			kOEM_AX = 0xE1,    //  'AX' key on Japanese AX kbd
 			kOEM_102 = 0xE2,   //  "<>" or "\|" on RT 102-key kbd.
 			kICO_HELP = 0xE3,  //  Help key on ICO
-			kICO_00 = 0xE4,	   //  00 key on ICO
+			kICO_00 = 0xE4,    //  00 key on ICO
 
 			kTotal
 		};

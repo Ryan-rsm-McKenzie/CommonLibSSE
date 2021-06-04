@@ -10,11 +10,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI___ArmorRatingVisitor;
 
-		virtual ~ArmorRatingVisitor();	// 00
+		virtual ~ArmorRatingVisitor();  // 00
 
 		// override (ArmorRatingVisitorBase)
-		bool HaveNotVisitedArmor(TESObjectARMO* a_armor) override;	// 04
-		void VisitArmor(TESObjectARMO* a_armor) override;			// 05
+		bool HaveNotVisitedArmor(TESObjectARMO* a_armor) override;  // 04
+		void VisitArmor(TESObjectARMO* a_armor) override;           // 05
 
 		// members
 		BSScrapArray<TESObjectARMO*> armors;  // 20

@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ExtraWorn();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kWorn; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kWorn; }
 	};
 	static_assert(sizeof(ExtraWorn) == 0x10);
 }

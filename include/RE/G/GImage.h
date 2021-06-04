@@ -10,7 +10,7 @@ namespace RE
 		public GImageBase
 	{
 	public:
-		virtual ~GImage();	// 00
+		virtual ~GImage();  // 00
 	};
 	static_assert(sizeof(GImage) == 0x48);
 }

@@ -9,15 +9,15 @@ namespace RE
 	class ConcreteFormFactory : public IFormFactory
 	{
 	public:
-		virtual ~ConcreteFormFactory();	 // 00
+		virtual ~ConcreteFormFactory();  // 00
 
 	protected:
 		// override (IFormFactory)
-		virtual TESForm* CreateImpl() override;	 // 01
+		virtual TESForm* CreateImpl() override;  // 01
 
 	public:
 		virtual const char* GetFormName() const override;  // 02 - { return _name; }
-		virtual FormType	GetFormType() const override;  // 03 - { return FORM_TYPE; }
+		virtual FormType GetFormType() const override;     // 03 - { return FORM_TYPE; }
 
 		inline T* Create()
 		{
@@ -26,7 +26,7 @@ namespace RE
 
 	protected:
 		// members
-		const char* _name;	// 08
+		const char* _name;  // 08
 	};
 	static_assert(sizeof(ConcreteFormFactory<TESForm, FormType::None>) == 0x10);
 

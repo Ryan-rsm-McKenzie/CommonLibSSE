@@ -24,15 +24,15 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<void*>* unk00[8];	// 00
+		BSTArray<void*>* unk00[8];  // 00
 	};
 	static_assert(sizeof(CreatureSounds) == 0x40);
 
 	class TESNPC :
-		public TESActorBase,					 // 000
-		public TESRaceForm,						 // 150
-		public BGSOverridePackCollection,		 // 160
-		public BSTEventSink<MenuOpenCloseEvent>	 // 188
+		public TESActorBase,                     // 000
+		public TESRaceForm,                      // 150
+		public BGSOverridePackCollection,        // 160
+		public BSTEventSink<MenuOpenCloseEvent>  // 188
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESNPC;
@@ -99,13 +99,13 @@ namespace RE
 			};
 
 			// members
-			std::uint8_t  values[kTotal];		 // 00
-			std::uint8_t  offsets[kTotal];		 // 12
-			std::uint16_t health;				 // 24
-			std::uint16_t magicka;				 // 26
-			std::uint16_t stamina;				 // 28
-			std::uint16_t pad2A;				 // 2A
-			float		  farawayModelDistance;	 // 2C
+			std::uint8_t values[kTotal];   // 00
+			std::uint8_t offsets[kTotal];  // 12
+			std::uint16_t health;          // 24
+			std::uint16_t magicka;         // 26
+			std::uint16_t stamina;         // 28
+			std::uint16_t pad2A;           // 2A
+			float farawayModelDistance;    // 2C
 		};
 		static_assert(sizeof(Skills) == 0x30);
 
@@ -118,14 +118,14 @@ namespace RE
 			TES_HEAP_REDEFINE_NEW();
 
 			// members
-			BGSColorForm*  hairColor;	 // 00 - HCLF
-			BGSTextureSet* faceDetails;	 // 08 - FTST
+			BGSColorForm* hairColor;     // 00 - HCLF
+			BGSTextureSet* faceDetails;  // 08 - FTST
 		};
 		static_assert(sizeof(HeadRelatedData) == 0x10);
 
 		union Sounds
 		{
-			TESNPC*			soundCreature;
+			TESNPC* soundCreature;
 			CreatureSounds* creatureSounds;
 		};
 		static_assert(sizeof(Sounds) == 0x8);
@@ -181,8 +181,8 @@ namespace RE
 			};
 
 			// members
-			float		 morphs[Morphs::kTotal];  // 00 - NAM9
-			std::int32_t parts[Parts::kTotal];	  // 4C - NAMA
+			float morphs[Morphs::kTotal];       // 00 - NAM9
+			std::int32_t parts[Parts::kTotal];  // 4C - NAMA
 		};
 		static_assert(sizeof(FaceData) == 0x5C);
 
@@ -192,97 +192,97 @@ namespace RE
 			float GetInterpolationValue() const;
 
 			// members
-			Color		  tintColor;		   // 00 - TINC
-			std::uint16_t tintIndex;		   // 04 - TINI
-			std::uint16_t preset;			   // 06 - TIAS
+			Color tintColor;                   // 00 - TINC
+			std::uint16_t tintIndex;           // 04 - TINI
+			std::uint16_t preset;              // 06 - TIAS
 			std::uint16_t interpolationValue;  // 08 - TINV - CK value * 100 as an int
-			std::uint16_t pad0A;			   // 0A
-			std::uint32_t pad0C;			   // 0C
+			std::uint16_t pad0A;               // 0A
+			std::uint32_t pad0C;               // 0C
 		};
 		static_assert(sizeof(Layer) == 0x10);
 
-		virtual ~TESNPC();	// 00
+		virtual ~TESNPC();  // 00
 
 		// override (TESActorBase)
-		virtual void			InitializeData() override;																																  // 04
-		virtual void			ClearData() override;																																	  // 05
-		virtual bool			Load(TESFile* a_mod) override;																															  // 06
-		virtual bool			FindInFileFast(TESFile* a_mod) override;																												  // 0C
-		virtual void			SaveGame(BGSSaveFormBuffer* a_buf) override;																											  // 0E
-		virtual void			LoadGame(BGSLoadFormBuffer* a_buf) override;																											  // 0F
-		virtual void			Revert(BGSLoadFormBuffer* a_buf) override;																												  // 12
-		virtual void			InitItemImpl() override;																																  // 13
-		virtual const char*		GetTextForParsedSubTag(const BSFixedString& a_tag) const override;																						  // 2E
-		virtual void			Copy(TESForm* a_srcForm) override;																														  // 2F
-		virtual bool			Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual void			UnClone3D(TESObjectREFR* a_ref) override;																												  // 41
-		virtual void			SetObjectVoiceType(BGSVoiceType* a_voiceType) override;																									  // 48 - { TESActorBaseData::voice = a_voiceType; }
-		virtual BGSVoiceType*	GetObjectVoiceType() const override;																													  // 49
-		virtual NiAVObject*		Clone3D(TESObjectREFR* a_ref) override;																													  // 4A
-		virtual bool			GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					  // 4C
-		virtual bool			CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;													  // 4D
-		virtual TESCombatStyle* GetCombatStyle() override;																																  // 54 - { return combatStyle; }
-		virtual void			SetCombatStyle(TESCombatStyle* a_combatStyle) override;																									  // 55 - { combatStyle = a_combatStyle; }
+		virtual void InitializeData() override;                                                                                                                                // 04
+		virtual void ClearData() override;                                                                                                                                     // 05
+		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		virtual bool FindInFileFast(TESFile* a_mod) override;                                                                                                                  // 0C
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		virtual void Revert(BGSLoadFormBuffer* a_buf) override;                                                                                                                // 12
+		virtual void InitItemImpl() override;                                                                                                                                  // 13
+		virtual const char* GetTextForParsedSubTag(const BSFixedString& a_tag) const override;                                                                                 // 2E
+		virtual void Copy(TESForm* a_srcForm) override;                                                                                                                        // 2F
+		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual void UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
+		virtual void SetObjectVoiceType(BGSVoiceType* a_voiceType) override;                                                                                                   // 48 - { TESActorBaseData::voice = a_voiceType; }
+		virtual BGSVoiceType* GetObjectVoiceType() const override;                                                                                                             // 49
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                            // 4A
+		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
+		virtual TESCombatStyle* GetCombatStyle() override;                                                                                                                     // 54 - { return combatStyle; }
+		virtual void SetCombatStyle(TESCombatStyle* a_combatStyle) override;                                                                                                   // 55 - { combatStyle = a_combatStyle; }
 
 		// override (TESActorBaseData)
 		virtual void CopyFromTemplateForms(TESActorBase** a_templateForms) override;  // 04
 
 		// override (ActorValueOwner)
-		virtual float GetActorValue(ActorValue a_akValue) override;					// 01
-		virtual void  SetActorValue(ActorValue a_akValue, float a_value) override;	// 07
+		virtual float GetActorValue(ActorValue a_akValue) override;                // 01
+		virtual void SetActorValue(ActorValue a_akValue, float a_value) override;  // 07
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
-		void		  ChangeHeadPart(BGSHeadPart* a_target);
+		void ChangeHeadPart(BGSHeadPart* a_target);
 		BGSHeadPart** GetBaseOverlays() const;
-		BGSHeadPart*  GetCurrentHeadPartByType(HeadPartType a_type);
-		BGSHeadPart*  GetHeadPartByType(HeadPartType a_type);
-		BGSHeadPart*  GetHeadPartOverlayByType(HeadPartType a_type);
-		float		  GetHeight() const;
+		BGSHeadPart* GetCurrentHeadPartByType(HeadPartType a_type);
+		BGSHeadPart* GetHeadPartByType(HeadPartType a_type);
+		BGSHeadPart* GetHeadPartOverlayByType(HeadPartType a_type);
+		float GetHeight() const;
 		std::uint32_t GetNumBaseOverlays() const;
-		TESRace*	  GetRace();
-		TESNPC*		  GetRootFaceNPC();
+		TESRace* GetRace();
+		TESNPC* GetRootFaceNPC();
 		const TESNPC* GetRootFaceNPC() const;
-		SEX			  GetSex() const;
-		bool		  HasOverlays();
-		void		  SetFaceTexture(BGSTextureSet* a_textureSet);
-		void		  SetHairColor(BGSColorForm* a_hairColor);
-		void		  SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
-		void		  UpdateNeck(BSFaceGenNiNode* a_faceNode);
+		SEX GetSex() const;
+		bool HasOverlays();
+		void SetFaceTexture(BGSTextureSet* a_textureSet);
+		void SetHairColor(BGSColorForm* a_hairColor);
+		void SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
+		void UpdateNeck(BSFaceGenNiNode* a_faceNode);
 
 		// members
-		Skills										playerSkills;	  // 190 - DNAM
-		TESClass*									npcClass;		  // 1C0 - CNAM
-		HeadRelatedData*							headRelatedData;  // 1C8
-		BGSListForm*								giftFilter;		  // 1D0 - GNAM
-		TESCombatStyle*								combatStyle;	  // 1D8 - ZNAM
-		std::uint32_t								fileOffset;		  // 1E0
-		std::uint32_t								pad1E4;			  // 1E4
-		TESRace*									originalRace;	  // 1E8
-		TESNPC*										faceNPC;		  // 1F0
-		float										height;			  // 1F8 - NAM6
-		float										weight;			  // 1FC - NAM7
-		Sounds										sounds;			  // 200 - CSCR
-		BSFixedString								shortName;		  // 208 - SHRT
-		TESObjectARMO*								farSkin;		  // 210 - ANAM
-		BGSOutfit*									defaultOutfit;	  // 218 - DOFT
-		BGSOutfit*									sleepOutfit;	  // 220 - SOFT
-		BGSListForm*								defaultPackList;  // 228 - DPLT
-		TESFaction*									crimeFaction;	  // 230 - CRIF
-		BGSHeadPart**								headParts;		  // 238 - PNAM
-		std::int8_t									numHeadParts;	  // 240
-		std::uint8_t								unk241;			  // 241
-		std::uint8_t								unk242;			  // 242
-		std::uint8_t								unk243;			  // 243
-		std::uint8_t								unk244;			  // 244
-		stl::enumeration<SOUND_LEVEL, std::uint8_t> soundLevel;		  // 245 - NAM8
-		Color										bodyTintColor;	  // 246 - QNAM
-		std::uint16_t								pad24A;			  // 24A
-		std::uint32_t								pad24C;			  // 24C
-		BSTArray<BGSRelationship*>*					relationships;	  // 250
-		FaceData*									faceData;		  // 258
-		BSTArray<Layer*>*							tintLayers;		  // 260
+		Skills playerSkills;                                     // 190 - DNAM
+		TESClass* npcClass;                                      // 1C0 - CNAM
+		HeadRelatedData* headRelatedData;                        // 1C8
+		BGSListForm* giftFilter;                                 // 1D0 - GNAM
+		TESCombatStyle* combatStyle;                             // 1D8 - ZNAM
+		std::uint32_t fileOffset;                                // 1E0
+		std::uint32_t pad1E4;                                    // 1E4
+		TESRace* originalRace;                                   // 1E8
+		TESNPC* faceNPC;                                         // 1F0
+		float height;                                            // 1F8 - NAM6
+		float weight;                                            // 1FC - NAM7
+		Sounds sounds;                                           // 200 - CSCR
+		BSFixedString shortName;                                 // 208 - SHRT
+		TESObjectARMO* farSkin;                                  // 210 - ANAM
+		BGSOutfit* defaultOutfit;                                // 218 - DOFT
+		BGSOutfit* sleepOutfit;                                  // 220 - SOFT
+		BGSListForm* defaultPackList;                            // 228 - DPLT
+		TESFaction* crimeFaction;                                // 230 - CRIF
+		BGSHeadPart** headParts;                                 // 238 - PNAM
+		std::int8_t numHeadParts;                                // 240
+		std::uint8_t unk241;                                     // 241
+		std::uint8_t unk242;                                     // 242
+		std::uint8_t unk243;                                     // 243
+		std::uint8_t unk244;                                     // 244
+		stl::enumeration<SOUND_LEVEL, std::uint8_t> soundLevel;  // 245 - NAM8
+		Color bodyTintColor;                                     // 246 - QNAM
+		std::uint16_t pad24A;                                    // 24A
+		std::uint32_t pad24C;                                    // 24C
+		BSTArray<BGSRelationship*>* relationships;               // 250
+		FaceData* faceData;                                      // 258
+		BSTArray<Layer*>* tintLayers;                            // 260
 	};
 	static_assert(sizeof(TESNPC) == 0x268);
 }

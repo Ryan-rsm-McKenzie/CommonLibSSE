@@ -14,10 +14,10 @@ namespace RE
 		key.ch = a_ch;
 
 		constexpr auto SIZE = std::extent<decltype(charBreakInfoArray)>::value;
-		auto		   endIt = charBreakInfoArray + SIZE;
-		auto		   it = std::lower_bound(charBreakInfoArray, endIt, key, [](const CharBreakInfo& a_lhs, const CharBreakInfo& a_rhs) -> bool {
-			  return a_lhs.ch < a_rhs.ch;
-		  });
+		auto endIt = charBreakInfoArray + SIZE;
+		auto it = std::lower_bound(charBreakInfoArray, endIt, key, [](const CharBreakInfo& a_lhs, const CharBreakInfo& a_rhs) -> bool {
+			return a_lhs.ch < a_rhs.ch;
+		});
 
 		if (it == endIt || a_ch < it->ch) {
 			return false;
@@ -132,10 +132,10 @@ namespace RE
 			return UPINT_MAX;
 		}
 
-		auto	   pos = a_lineLen - 1;
+		auto pos = a_lineLen - 1;
 		const auto maxLen = a_paraLen - a_lineStartPos;
-		auto	   breakNow = a_lineLen == 1;
-		auto	   lineText = std::addressof(a_paraText[a_lineStartPos]);
+		auto breakNow = a_lineLen == 1;
+		auto lineText = std::addressof(a_paraText[a_lineStartPos]);
 		if (!breakNow) {
 			do {
 				if (IsWhiteSpaceChar(lineText[pos])) {

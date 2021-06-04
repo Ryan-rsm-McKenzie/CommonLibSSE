@@ -6,8 +6,8 @@
 namespace RE
 {
 	class IPackageDataAIWorldLocationHandle :
-		public IAIWorldLocationHandle,	// 00
-		public IPackageData				// 08
+		public IAIWorldLocationHandle,  // 00
+		public IPackageData             // 08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;

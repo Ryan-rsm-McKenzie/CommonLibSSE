@@ -16,7 +16,7 @@ namespace RE
 			GFxState(StateType::kExternalInterface)
 		{}
 
-		virtual ~GFxExternalInterface() = default;	// 00
+		virtual ~GFxExternalInterface() = default;  // 00
 
 		// add
 		virtual void Callback(GFxMovieView* a_movieView, const char* a_methodName, const GFxValue* a_args, std::uint32_t a_numArgs) = 0;  // 01

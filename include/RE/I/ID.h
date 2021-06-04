@@ -10,7 +10,7 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t dir;	// 0
+			std::uint32_t dir;  // 0
 		};
 		static_assert(sizeof(ID) == 0xC);
 	}

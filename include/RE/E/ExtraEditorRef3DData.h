@@ -18,11 +18,11 @@ namespace RE
 		virtual ~ExtraEditorRef3DData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kEditorRef3DData; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kEditorRef3DData; }
 
 		// members
-		NiPointer<NiAVObject> data3D;	  // 10
-		NiPointer<BSLines>	  dataBound;  // 18
+		NiPointer<NiAVObject> data3D;  // 10
+		NiPointer<BSLines> dataBound;  // 18
 	};
 	static_assert(sizeof(ExtraEditorRef3DData) == 0x20);
 }

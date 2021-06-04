@@ -18,16 +18,16 @@ namespace RE
 			kMaster = 4
 		};
 
-		virtual ~TESQualityForm();	// 00
+		virtual ~TESQualityForm();  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;				// 01 - { quality = 0; }
-		virtual void ClearDataComponent() override;						// 02 - { return; }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		virtual void InitializeDataComponent() override;                // 01 - { quality = 0; }
+		virtual void ClearDataComponent() override;                     // 02 - { return; }
+		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// members
 		stl::enumeration<Quality, std::uint32_t> quality;  // 08 - QUAL
-		std::uint32_t							 pad0C;	   // 0C
+		std::uint32_t pad0C;                               // 0C
 	};
 	static_assert(sizeof(TESQualityForm) == 0x10);
 }

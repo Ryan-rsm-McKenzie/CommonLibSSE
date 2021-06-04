@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraScriptedAnimDependence;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kScriptedAnimDependence;
 
-		virtual ~ExtraScriptedAnimDependence();	 // 00
+		virtual ~ExtraScriptedAnimDependence();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kScriptedAnimDependence; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kScriptedAnimDependence; }
 
 		// members
 		BSTArray<BSTTuple<ObjectRefHandle, std::uint32_t>> dependentManagers;  // 10

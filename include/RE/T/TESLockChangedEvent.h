@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		// members
-		NiPointer<TESObjectREFR> lockedObject;	// 0
+		NiPointer<TESObjectREFR> lockedObject;  // 0
 	};
 	static_assert(sizeof(TESLockChangedEvent) == 0x8);
 }

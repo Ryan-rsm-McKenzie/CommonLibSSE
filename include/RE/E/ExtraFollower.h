@@ -15,18 +15,18 @@ namespace RE
 
 		struct FollowerInfo
 		{
-			ActorHandle actor;					 // 0
-			float		intendedFollowDistance;	 // 4
+			ActorHandle actor;             // 0
+			float intendedFollowDistance;  // 4
 		};
 		static_assert(sizeof(FollowerInfo) == 0x8);
 
 		virtual ~ExtraFollower();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kFollower; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kFollower; }
 
 		// members
-		BSTArray<FollowerInfo> actorFollowers;	// 10
+		BSTArray<FollowerInfo> actorFollowers;  // 10
 	};
 	static_assert(sizeof(ExtraFollower) == 0x28);
 }

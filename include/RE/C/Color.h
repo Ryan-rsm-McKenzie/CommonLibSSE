@@ -95,10 +95,10 @@ namespace RE
 		}
 
 		// members
-		std::uint8_t red;	 // 0
-		std::uint8_t green;	 // 1
-		std::uint8_t blue;	 // 2
-		std::uint8_t alpha;	 // 3
+		std::uint8_t red;    // 0
+		std::uint8_t green;  // 1
+		std::uint8_t blue;   // 2
+		std::uint8_t alpha;  // 3
 	};
 	static_assert(sizeof(Color) == 0x4);
 }

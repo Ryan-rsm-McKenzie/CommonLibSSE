@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ExtraAnimNoteReceiver();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimNoteReceiver; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kAnimNoteReceiver; }
 
 		// members
 		void* unk10;  // 10

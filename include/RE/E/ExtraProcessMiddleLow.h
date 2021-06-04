@@ -14,11 +14,11 @@ namespace RE
 		virtual ~ExtraProcessMiddleLow();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kProcessMiddleLow; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kProcessMiddleLow; }
 
 		// members
-		std::uint32_t refCount;	 // 10
-		std::uint32_t pad14;	 // 14
+		std::uint32_t refCount;  // 10
+		std::uint32_t pad14;     // 14
 	};
 	static_assert(sizeof(ExtraProcessMiddleLow) == 0x18);
 }

@@ -196,7 +196,7 @@ namespace RE
 		}
 
 		// members
-		element_type* _ptr;	 // 0
+		element_type* _ptr;  // 0
 	};
 	static_assert(sizeof(hkRefPtr<void*>) == 0x8);
 

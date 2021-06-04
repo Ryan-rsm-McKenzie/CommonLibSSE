@@ -14,7 +14,7 @@ namespace RE
 		virtual ~ExtraIgnoredBySandbox();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kIgnoredBySandbox; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kIgnoredBySandbox; }
 	};
 	static_assert(sizeof(ExtraIgnoredBySandbox) == 0x10);
 }

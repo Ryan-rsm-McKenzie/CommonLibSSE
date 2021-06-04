@@ -188,7 +188,7 @@ namespace RE
 		}
 
 		// members
-		element_type* _ptr{ nullptr };	// 0
+		element_type* _ptr{ nullptr };  // 0
 	};
 	//static_assert(sizeof(NiPointer<void*>) == 0x8);
 

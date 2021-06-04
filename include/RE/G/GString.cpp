@@ -56,7 +56,7 @@ namespace RE
 		_dataDesc()
 	{
 		std::string_view view("");
-						 operator=(view);
+		operator=(view);
 	}
 
 	GString::GString(const GString& a_rhs) :
@@ -118,7 +118,7 @@ namespace RE
 	GString& GString::operator=(const char* a_rhs)
 	{
 		std::string_view view(a_rhs);
-		return			 operator=(view);
+		return operator=(view);
 	}
 
 	GString& GString::operator=(const std::string_view& a_rhs)
@@ -233,8 +233,8 @@ namespace RE
 	UPInt GString::BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed)
 	{
 		assert(a_dataIn);
-		auto		 dataIn = static_cast<const std::uint8_t*>(a_dataIn);
-		UPInt		 hash;
+		auto dataIn = static_cast<const std::uint8_t*>(a_dataIn);
+		UPInt hash;
 		std::uint8_t byte = 0;
 		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
 			byte = *(dataIn + a_size-- - 1);

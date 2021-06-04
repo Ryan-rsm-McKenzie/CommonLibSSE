@@ -30,9 +30,9 @@ namespace RE
 	{
 		auto rhs = static_cast<const ExtraLightData*>(a_rhs);
 		return data.fov != rhs->data.fov ||
-			   data.fade != rhs->data.fade ||
-			   data.endDistanceCap != rhs->data.endDistanceCap ||
-			   data.shadowDepthBias != rhs->data.shadowDepthBias ||
-			   data.unk10 != rhs->data.unk10;
+		       data.fade != rhs->data.fade ||
+		       data.endDistanceCap != rhs->data.endDistanceCap ||
+		       data.shadowDepthBias != rhs->data.shadowDepthBias ||
+		       data.unk10 != rhs->data.unk10;
 	}
 }

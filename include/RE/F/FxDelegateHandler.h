@@ -20,14 +20,14 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
 
-			virtual ~CallbackProcessor() = default;	 // 00
+			virtual ~CallbackProcessor() = default;  // 00
 
 			// add
 			virtual void Process(const GString& a_methodName, CallbackFn* a_method) = 0;  // 01
 		};
 		static_assert(sizeof(CallbackProcessor) == 0x8);
 
-		virtual ~FxDelegateHandler() = default;	 // 00
+		virtual ~FxDelegateHandler() = default;  // 00
 
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;  // 01

@@ -20,20 +20,20 @@
 namespace RE
 {
 	class TESObjectARMO :
-		public TESBoundObject,			   // 000
-		public TESFullName,				   // 030
-		public TESRaceForm,				   // 040
-		public TESEnchantableForm,		   // 050
-		public TESValueForm,			   // 068
-		public TESWeightForm,			   // 078
+		public TESBoundObject,             // 000
+		public TESFullName,                // 030
+		public TESRaceForm,                // 040
+		public TESEnchantableForm,         // 050
+		public TESValueForm,               // 068
+		public TESWeightForm,              // 078
 		public BGSDestructibleObjectForm,  // 088
-		public BGSPickupPutdownSounds,	   // 098
-		public TESBipedModelForm,		   // 0B0
-		public BGSEquipType,			   // 1A0
-		public BGSBipedObjectForm,		   // 1B0
-		public BGSBlockBashData,		   // 1C0
-		public BGSKeywordForm,			   // 1D8
-		public TESDescription			   // 1F0
+		public BGSPickupPutdownSounds,     // 098
+		public TESBipedModelForm,          // 0B0
+		public BGSEquipType,               // 1A0
+		public BGSBipedObjectForm,         // 1B0
+		public BGSBlockBashData,           // 1C0
+		public BGSKeywordForm,             // 1D8
+		public TESDescription              // 1F0
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectARMO;
@@ -51,24 +51,24 @@ namespace RE
 		};
 
 		// override (TESBoundObject)
-		virtual void	 InitializeData() override;					   // 04
-		virtual bool	 Load(TESFile* a_mod) override;				   // 06
-		virtual void	 SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void	 LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void	 InitItemImpl() override;					   // 13
-		virtual TESFile* GetDescriptionOwnerFile() const override;	   // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
-		virtual void	 Copy(TESForm* a_srcForm) override;			   // 2F
+		virtual void InitializeData() override;                     // 04
+		virtual bool Load(TESFile* a_mod) override;                 // 06
+		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;   // 0E
+		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;   // 0F
+		virtual void InitItemImpl() override;                       // 13
+		virtual TESFile* GetDescriptionOwnerFile() const override;  // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		virtual void Copy(TESForm* a_srcForm) override;             // 2F
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
+		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		float GetArmorRating();
 
 		// members
-		std::uint32_t			 armorRating;	 // 200 - DNAM - CK value * 100 as a std::uint32_t
-		std::uint32_t			 pad204;		 // 204
-		BSTArray<TESObjectARMA*> armorAddons;	 // 208
-		TESObjectARMO*			 templateArmor;	 // 220 - TNAM
+		std::uint32_t armorRating;             // 200 - DNAM - CK value * 100 as a std::uint32_t
+		std::uint32_t pad204;                  // 204
+		BSTArray<TESObjectARMA*> armorAddons;  // 208
+		TESObjectARMO* templateArmor;          // 220 - TNAM
 	};
 	static_assert(sizeof(TESObjectARMO) == 0x228);
 }

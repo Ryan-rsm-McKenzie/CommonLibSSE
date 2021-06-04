@@ -10,7 +10,7 @@ namespace RE
 	public:
 		// members
 		std::uint32_t pad04;  // 04
-		BSFixedString tag;	  // 08
+		BSFixedString tag;    // 08
 	};
 	static_assert(sizeof(BGSFootstepEvent) == 0x10);
 }

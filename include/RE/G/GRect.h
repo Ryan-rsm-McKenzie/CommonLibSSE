@@ -7,8 +7,8 @@ namespace RE
 	{
 	public:
 		// members
-		T left;	   // 00
-		T top;	   // ??
+		T left;    // 00
+		T top;     // ??
 		T right;   // ??
 		T bottom;  // ??
 	};

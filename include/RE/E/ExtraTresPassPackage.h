@@ -16,11 +16,11 @@ namespace RE
 		virtual ~ExtraTresPassPackage();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kTresPassPackage; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kTresPassPackage; }
 
 		// members
-		TrespassPackage* pack;	 // 10
-		std::uint64_t	 unk18;	 // 18
+		TrespassPackage* pack;  // 10
+		std::uint64_t unk18;    // 18
 	};
 	static_assert(sizeof(ExtraTresPassPackage) == 0x20);
 }

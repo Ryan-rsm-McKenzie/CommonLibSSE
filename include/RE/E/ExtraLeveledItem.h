@@ -14,11 +14,11 @@ namespace RE
 		virtual ~ExtraLeveledItem();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kLeveledItem; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kLeveledItem; }
 
 		// members
-		FormID		  levItem;	// 10
-		std::uint32_t pad14;	// 14
+		FormID levItem;       // 10
+		std::uint32_t pad14;  // 14
 	};
 	static_assert(sizeof(ExtraLeveledItem) == 0x18);
 }

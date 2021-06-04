@@ -126,7 +126,7 @@ namespace RE
 	{
 		Update3DModel_Impl(a_actor);
 		const SKSE::NiNodeUpdateEvent event{ a_actor };
-		auto						  source = SKSE::GetNiNodeUpdateEventSource();
+		auto source = SKSE::GetNiNodeUpdateEventSource();
 		if (source) {
 			source->SendEvent(std::addressof(event));
 		}

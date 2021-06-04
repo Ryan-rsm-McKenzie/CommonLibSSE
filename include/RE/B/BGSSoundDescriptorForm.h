@@ -9,7 +9,7 @@ namespace RE
 	class BGSSoundDescriptor;
 
 	class BGSSoundDescriptorForm :
-		public TESForm,			   // 00
+		public TESForm,            // 00
 		public BSISoundDescriptor  // 20
 	{
 	public:
@@ -25,16 +25,16 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSSoundDescriptorForm();	// 00
+		virtual ~BGSSoundDescriptorForm();  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;						   // 05
-		virtual bool Load(TESFile* a_mod) override;				   // 06
-		virtual void InitItemImpl() override;					   // 13
+		virtual void ClearData() override;                         // 05
+		virtual bool Load(TESFile* a_mod) override;                // 06
+		virtual void InitItemImpl() override;                      // 13
 		virtual bool SetFormEditorID(const char* a_str) override;  // 33
 
 		// add
-		virtual std::uint32_t GetDescriptorType();	// 3B - { return soundDescriptor->GetType(); }
+		virtual std::uint32_t GetDescriptorType();  // 3B - { return soundDescriptor->GetType(); }
 
 		// members
 		BGSSoundDescriptor* soundDescriptor;  // 28

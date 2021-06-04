@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MouseMoveEvent;
 
-		virtual ~MouseMoveEvent();	// 00
+		virtual ~MouseMoveEvent();  // 00
 
 		// members
 		std::int32_t mouseInputX;  // 28

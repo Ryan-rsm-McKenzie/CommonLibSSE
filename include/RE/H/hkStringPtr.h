@@ -14,8 +14,8 @@ namespace RE
 
 		// capacity
 		[[nodiscard]] bool empty() const noexcept;
-		size_type		   size() const;
-		size_type		   length() const;
+		size_type size() const;
+		size_type length() const;
 
 	protected:
 		enum
@@ -23,7 +23,7 @@ namespace RE
 			kManaged = 1 << 0
 		};
 
-		const char* _data;	// 0
+		const char* _data;  // 0
 	};
 	static_assert(sizeof(hkStringPtr) == 0x8);
 }

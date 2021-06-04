@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModelRDT;
 
-		virtual ~TESModelRDT();	 // 00
+		virtual ~TESModelRDT();  // 00
 	};
 	static_assert(sizeof(TESModelRDT) == 0x28);
 }

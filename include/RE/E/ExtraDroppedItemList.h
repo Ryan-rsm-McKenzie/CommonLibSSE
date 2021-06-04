@@ -16,10 +16,10 @@ namespace RE
 		virtual ~ExtraDroppedItemList();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 { return kDroppedItemList; }
+		virtual ExtraDataType GetType() const override;  // 01 { return kDroppedItemList; }
 
 		// members
-		BSSimpleList<ObjectRefHandle> droppedItemList;	// 10
+		BSSimpleList<ObjectRefHandle> droppedItemList;  // 10
 	};
 	static_assert(sizeof(ExtraDroppedItemList) == 0x20);
 }

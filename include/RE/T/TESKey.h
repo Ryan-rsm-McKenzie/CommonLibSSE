@@ -21,10 +21,10 @@ namespace RE
 			};
 		};
 
-		virtual ~TESKey();	// 00
+		virtual ~TESKey();  // 00
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
+		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
 	};
 	static_assert(sizeof(TESKey) == 0x100);
 }

@@ -12,7 +12,7 @@ namespace RE
 		using second_type = T2;
 
 		// 1)
-		BSTTuple()	//
+		BSTTuple()  //
 			noexcept(std::is_nothrow_default_constructible_v<first_type>&&
 					std::is_nothrow_default_constructible_v<second_type>)  //
 			requires(std::is_default_constructible_v<first_type>&&
@@ -23,10 +23,10 @@ namespace RE
 
 		// 2)
 		explicit(!std::is_convertible_v<const first_type&, first_type> ||
-				 !std::is_convertible_v<const second_type&, second_type>)	  //
+				 !std::is_convertible_v<const second_type&, second_type>)     //
 			BSTTuple(const first_type& a_first, const second_type& a_second)  //
 			noexcept(std::is_nothrow_copy_constructible_v<first_type>&&
-					std::is_nothrow_copy_constructible_v<second_type>)	//
+					std::is_nothrow_copy_constructible_v<second_type>)  //
 			requires(std::is_copy_constructible_v<first_type>&&
 					std::is_copy_constructible_v<second_type>) :
 			first(a_first),
@@ -36,10 +36,10 @@ namespace RE
 		// 3)
 		template <class U1, class U2>
 		explicit(!std::is_convertible_v<U1&&, first_type> ||
-				 !std::is_convertible_v<U2&&, second_type>)	 //
-			BSTTuple(U1&& a_first, U2&& a_second)			 //
+				 !std::is_convertible_v<U2&&, second_type>)  //
+			BSTTuple(U1&& a_first, U2&& a_second)            //
 			noexcept(std::is_nothrow_constructible_v<first_type, U1&&>&&
-					std::is_nothrow_constructible_v<second_type, U2&&>)	 //
+					std::is_nothrow_constructible_v<second_type, U2&&>)  //
 			requires(std::is_constructible_v<first_type, U1&&>&&
 					std::is_constructible_v<second_type, U2&&>) :
 			first(std::forward<U1>(a_first)),
@@ -50,7 +50,7 @@ namespace RE
 		template <class U1, class U2>
 		explicit(!std::is_convertible_v<const U1&, first_type> ||
 				 !std::is_convertible_v<const U2&, second_type>)  //
-			BSTTuple(const BSTTuple<U1, U2>& a_rhs)				  //
+			BSTTuple(const BSTTuple<U1, U2>& a_rhs)               //
 			noexcept(std::is_nothrow_constructible_v<first_type, const U1&>&&
 					std::is_nothrow_constructible_v<second_type, const U2&>)  //
 			requires(std::is_constructible_v<first_type, const U1&>&&
@@ -62,10 +62,10 @@ namespace RE
 		// 5)
 		template <class U1, class U2>
 		explicit(!std::is_convertible_v<U1&&, first_type> ||
-				 !std::is_convertible_v<U2&&, second_type>)	 //
-			BSTTuple(BSTTuple<U1, U2>&& a_rhs)				 //
+				 !std::is_convertible_v<U2&&, second_type>)  //
+			BSTTuple(BSTTuple<U1, U2>&& a_rhs)               //
 			noexcept(std::is_nothrow_constructible_v<first_type, U1&&>&&
-					std::is_nothrow_constructible_v<second_type, U2&&>)	 //
+					std::is_nothrow_constructible_v<second_type, U2&&>)  //
 			requires(std::is_constructible_v<first_type, U1&&>&&
 					std::is_constructible_v<second_type, U2&&>) :
 			first(std::forward<U1>(a_rhs.first)),
@@ -102,9 +102,9 @@ namespace RE
 		~BSTTuple() = default;
 
 		// 1)
-		BSTTuple& operator=(const BSTTuple& a_rhs)	//
+		BSTTuple& operator=(const BSTTuple& a_rhs)  //
 			noexcept(std::is_nothrow_copy_assignable_v<first_type>&&
-					std::is_nothrow_copy_assignable_v<second_type>)	 //
+					std::is_nothrow_copy_assignable_v<second_type>)  //
 			requires(std::is_copy_assignable_v<first_type>&&
 					std::is_copy_assignable_v<second_type>)
 		{
@@ -117,9 +117,9 @@ namespace RE
 
 		// 2)
 		template <class U1, class U2>
-		BSTTuple& operator=(const BSTTuple<U1, U2>& a_rhs)	//
+		BSTTuple& operator=(const BSTTuple<U1, U2>& a_rhs)  //
 			noexcept(std::is_nothrow_assignable_v<first_type&, const U1&>&&
-					std::is_nothrow_assignable_v<second_type&, const U2&>)	//
+					std::is_nothrow_assignable_v<second_type&, const U2&>)  //
 			requires(std::is_assignable_v<first_type&, const U1&>&&
 					std::is_assignable_v<second_type&, const U2&>)
 		{
@@ -131,7 +131,7 @@ namespace RE
 		// 3)
 		BSTTuple& operator=(BSTTuple&& a_rhs)  //
 			noexcept(std::is_nothrow_move_assignable_v<first_type>&&
-					std::is_nothrow_move_assignable_v<second_type>)	 //
+					std::is_nothrow_move_assignable_v<second_type>)  //
 			requires(std::is_move_assignable_v<first_type>&&
 					std::is_move_assignable_v<second_type>)
 		{
@@ -146,7 +146,7 @@ namespace RE
 		template <class U1, class U2>
 		BSTTuple& operator=(BSTTuple<U1, U2>&& a_rhs)  //
 			noexcept(std::is_nothrow_assignable_v<first_type&, U1>&&
-					std::is_nothrow_assignable_v<second_type&, U2>)	 //
+					std::is_nothrow_assignable_v<second_type&, U2>)  //
 			requires(std::is_assignable_v<first_type&, U1>&&
 					std::is_assignable_v<second_type&, U2>)
 		{
@@ -157,7 +157,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		void swap(BSTTuple& a_rhs)	//
+		void swap(BSTTuple& a_rhs)  //
 			noexcept(std::is_nothrow_swappable_v<first_type>&&
 					std::is_nothrow_swappable_v<second_type>)
 		{
@@ -169,8 +169,8 @@ namespace RE
 		}
 
 		// members
-		first_type	first;	 // 00
-		second_type second;	 // ??
+		first_type first;    // 00
+		second_type second;  // ??
 	};
 
 	template <class T1, class T2>
@@ -203,14 +203,14 @@ namespace RE
 	[[nodiscard]] bool operator<(const BSTTuple<T1, T2>& a_lhs, const BSTTuple<T1, T2>& a_rhs)
 	{
 		return a_lhs.first < a_rhs.first   ? true :
-			   a_rhs.first < a_lhs.first   ? false :
-			   a_lhs.second < a_rhs.second ? true :
-											   false;
+		       a_rhs.first < a_lhs.first   ? false :
+		       a_lhs.second < a_rhs.second ? true :
+                                             false;
 	}
 
 	template <class T1, class T2>
-	void swap(BSTTuple<T1, T2>& a_lhs, BSTTuple<T1, T2>& a_rhs)	 //
-		noexcept(noexcept(a_lhs.swap(a_rhs)))					 //
+	void swap(BSTTuple<T1, T2>& a_lhs, BSTTuple<T1, T2>& a_rhs)  //
+		noexcept(noexcept(a_lhs.swap(a_rhs)))                    //
 		requires(std::is_swappable_v<T1>&&
 				std::is_swappable_v<T2>)
 	{

@@ -116,7 +116,7 @@ namespace RE
 			}
 
 			std::string_view str(a_str);
-			std::string		 message;
+			std::string message;
 			message.reserve(name.length() + 2 + str.length());
 			message += name;
 			message += ": ";

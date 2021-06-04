@@ -20,9 +20,9 @@ namespace RE
 			};
 
 			// members
-			std::uint32_t				 handleEntryBits;  // 00
-			std::uint32_t				 pad04;			   // 04
-			NiPointer<BSHandleRefObject> pointer;		   // 08
+			std::uint32_t handleEntryBits;         // 00
+			std::uint32_t pad04;                   // 04
+			NiPointer<BSHandleRefObject> pointer;  // 08
 		};
 
 		[[nodiscard]] static auto GetHandleEntries()

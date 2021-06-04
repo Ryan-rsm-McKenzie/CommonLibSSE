@@ -6,7 +6,7 @@ namespace RE
 {
 	std::vector<TESForm*> TESLeveledList::GetContainedForms() const
 	{
-		std::vector<TESForm*>			  results;
+		std::vector<TESForm*> results;
 		std::stack<const TESLeveledList*> queued;
 		queued.push(this);
 		do {

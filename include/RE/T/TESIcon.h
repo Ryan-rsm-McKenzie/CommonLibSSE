@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture;
 
-		virtual ~TESIcon();	 // 00
+		virtual ~TESIcon();  // 00
 
 		// override (TESTexture)
 		virtual const char* GetDefaultPath() const override;  // 06 - { return "Textures"; }

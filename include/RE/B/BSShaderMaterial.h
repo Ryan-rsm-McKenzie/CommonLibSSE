@@ -44,19 +44,19 @@ namespace RE
 		virtual ~BSShaderMaterial();  // 00
 
 		// add
-		virtual BSShaderMaterial* Create();								   // 01
-		virtual void			  CopyMembers(BSShaderMaterial* a_other);  // 02
-		virtual bool			  DoIsCopy(BSShaderMaterial* a_other);	   // 03
-		virtual std::uint32_t	  ComputeCRC32(void);					   // 04
-		virtual BSShaderMaterial* GetDefault();							   // 05
-		virtual Feature			  GetFeature() const;					   // 06 - { return Feature::kDefault; }
-		virtual Type			  GetType() const;						   // 07 - { return Type::kBase; }
+		virtual BSShaderMaterial* Create();                   // 01
+		virtual void CopyMembers(BSShaderMaterial* a_other);  // 02
+		virtual bool DoIsCopy(BSShaderMaterial* a_other);     // 03
+		virtual std::uint32_t ComputeCRC32(void);             // 04
+		virtual BSShaderMaterial* GetDefault();               // 05
+		virtual Feature GetFeature() const;                   // 06 - { return Feature::kDefault; }
+		virtual Type GetType() const;                         // 07 - { return Type::kBase; }
 
 		// members
-		NiPoint2	  texCoordOffset[2];  // 0C
-		NiPoint2	  texCoordScale[2];	  // 1C
-		std::uint32_t hashKey;			  // 2C
-		std::uint64_t unk30;			  // 30
+		NiPoint2 texCoordOffset[2];  // 0C
+		NiPoint2 texCoordScale[2];   // 1C
+		std::uint32_t hashKey;       // 2C
+		std::uint64_t unk30;         // 30
 	};
 	static_assert(sizeof(BSShaderMaterial) == 0x38);
 }

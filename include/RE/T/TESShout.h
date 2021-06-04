@@ -10,11 +10,11 @@
 namespace RE
 {
 	class TESShout :
-		public TESForm,				  // 00
-		public TESFullName,			  // 20
+		public TESForm,               // 00
+		public TESFullName,           // 20
 		public BGSMenuDisplayObject,  // 30
-		public BGSEquipType,		  // 40
-		public TESDescription		  // 50
+		public BGSEquipType,          // 40
+		public TESDescription         // 50
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESShout;
@@ -32,10 +32,10 @@ namespace RE
 
 		struct Variation  // SNAM
 		{
-			TESWordOfPower* word;		   // 00
-			SpellItem*		spell;		   // 08
-			float			recoveryTime;  // 10
-			std::uint32_t	pad14;		   // 14
+			TESWordOfPower* word;  // 00
+			SpellItem* spell;      // 08
+			float recoveryTime;    // 10
+			std::uint32_t pad14;   // 14
 		};
 		static_assert(sizeof(Variation) == 0x18);
 
@@ -56,16 +56,16 @@ namespace RE
 		virtual ~TESShout();  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
-		virtual bool GetKnown() const override;		 // 17
+		virtual bool Load(TESFile* a_mod) override;  // 06
+		virtual void InitItemImpl() override;        // 13
+		virtual bool GetKnown() const override;      // 17
 
 		// override (BGSEquipType)
-		virtual BGSEquipSlot* GetEquipSlot() const override;				// 04
-		virtual void		  SetEquipSlot(BGSEquipSlot* a_slot) override;	// 05 - { return; }
+		virtual BGSEquipSlot* GetEquipSlot() const override;       // 04
+		virtual void SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
 
 		// members
-		Variation variations[VariationIDs::kTotal];	 // 60 - SNAM
+		Variation variations[VariationIDs::kTotal];  // 60 - SNAM
 	};
 	static_assert(sizeof(TESShout) == 0xA8);
 }

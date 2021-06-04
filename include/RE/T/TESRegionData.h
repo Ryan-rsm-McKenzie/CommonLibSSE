@@ -30,27 +30,27 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<Flag, std::uint8_t> flags;		// 0
-			std::uint8_t						 unk09;		// 1
-			std::uint8_t						 priority;	// 2
-			std::uint8_t						 unk0B;		// 3
-			std::uint32_t						 unk0C;		// 4
+			stl::enumeration<Flag, std::uint8_t> flags;  // 0
+			std::uint8_t unk09;                          // 1
+			std::uint8_t priority;                       // 2
+			std::uint8_t unk0B;                          // 3
+			std::uint32_t unk0C;                         // 4
 		};
 		static_assert(sizeof(DataHeader) == 0x8);
 
 		virtual ~TESRegionData();  // 00
 
 		// add
-		virtual bool LoadDataHeader(void* a_arg1);					   // 01
-		virtual void LoadData(TESForm* a_form);						   // 02 - { return; }
-		virtual Type GetType() const = 0;							   // 03
-		virtual void ConstructSelf() = 0;							   // 04
-		virtual void Unk_05(void) = 0;								   // 05
+		virtual bool LoadDataHeader(void* a_arg1);                     // 01
+		virtual void LoadData(TESForm* a_form);                        // 02 - { return; }
+		virtual Type GetType() const = 0;                              // 03
+		virtual void ConstructSelf() = 0;                              // 04
+		virtual void Unk_05(void) = 0;                                 // 05
 		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) = 0;  // 06
-		virtual bool IsLoaded() const = 0;							   // 07
+		virtual bool IsLoaded() const = 0;                             // 07
 
 		// members
-		DataHeader dataHeader;	// 08 - RDAT
+		DataHeader dataHeader;  // 08 - RDAT
 	};
 	static_assert(sizeof(TESRegionData) == 0x10);
 }

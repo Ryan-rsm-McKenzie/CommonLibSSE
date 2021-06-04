@@ -12,7 +12,7 @@ namespace RE
 		virtual ~ActorTargetCheck();  // 00
 
 		// override (GetActorsFilter)
-		virtual bool IsValid(Actor* a_actor) override;	// 01
+		virtual bool IsValid(Actor* a_actor) override;  // 01
 
 		// members
 		std::uint64_t unk08;  // 08

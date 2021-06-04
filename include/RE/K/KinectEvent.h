@@ -10,7 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_KinectEvent;
 
-		virtual ~KinectEvent();	 // 00
+		virtual ~KinectEvent();  // 00
 
 		// members
 		BSFixedString heard;  // 28

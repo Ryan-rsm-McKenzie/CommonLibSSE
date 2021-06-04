@@ -18,10 +18,10 @@ namespace RE
 		virtual ~ExtraContainerChanges();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kContainerChanges; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kContainerChanges; }
 
 		// members
-		InventoryChanges* changes;	// 10
+		InventoryChanges* changes;  // 10
 	};
 	static_assert(sizeof(ExtraContainerChanges) == 0x18);
 }

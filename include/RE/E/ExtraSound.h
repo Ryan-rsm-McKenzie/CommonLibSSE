@@ -12,14 +12,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSound;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSound;
 
-		virtual ~ExtraSound();	// 00
+		virtual ~ExtraSound();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kSound; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kSound; }
 
 		// members
-		BSSoundHandle phandle;	// 10
-		std::uint32_t pad1C;	// 1C
+		BSSoundHandle phandle;  // 10
+		std::uint32_t pad1C;    // 1C
 	};
 	static_assert(sizeof(ExtraSound) == 0x20);
 }

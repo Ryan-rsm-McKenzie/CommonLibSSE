@@ -19,10 +19,10 @@ namespace RE
 		{
 		public:
 			// members
-			ScrapHeap		 heap;			// 00
-			ThreadScrapHeap* next;			// 90
-			std::uint32_t	 owningThread;	// 98
-			std::uint32_t	 pad;			// 9C
+			ScrapHeap heap;              // 00
+			ThreadScrapHeap* next;       // 90
+			std::uint32_t owningThread;  // 98
+			std::uint32_t pad;           // 9C
 		};
 		static_assert(sizeof(ThreadScrapHeap) == 0xA0);
 
@@ -69,29 +69,29 @@ namespace RE
 		}
 
 		// members
-		bool					initialized{ false };					 // 000
-		std::uint16_t			numHeaps{ 0 };							 // 002
-		std::uint16_t			numPhysicalHeaps{ 0 };					 // 004
-		IMemoryHeap**			heaps{ nullptr };						 // 008
-		bool*					allowOtherContextAllocs{ nullptr };		 // 010
-		IMemoryHeap*			heapsByContext[127]{ nullptr };			 // 018
-		ThreadScrapHeap*		threadScrapHeap{ nullptr };				 // 410
-		IMemoryHeap**			physicalHeaps{ nullptr };				 // 418
-		IMemoryHeap*			bigAllocHeap{ nullptr };				 // 420
-		IMemoryHeap*			emergencyHeap{ nullptr };				 // 428
-		BSSmallBlockAllocator*	smallBlockAllocator{ nullptr };			 // 430
-		CompactingStore::Store* compactingStore{ nullptr };				 // 438
-		IMemoryHeap*			externalHavokAllocator{ nullptr };		 // 440
-		bool					specialHeaps{ false };					 // 448
-		bool					allowPoolUse{ true };					 // 449
-		std::uint32_t			sysAllocBytes{ 0 };						 // 44C
-		std::uint32_t			mallocBytes{ 0 };						 // 450
-		std::uint32_t			alignmentForPools{ 4 };					 // 450
-		std::uint32_t			mainThreadMemoryProblemPassSignal{ 0 };	 // 458
-		std::size_t				failedAllocationSize{ 0 };				 // 460
-		std::uint32_t			numMemoryProblemPassesRun{ 0 };			 // 468
-		std::size_t				timeOfLastMemoryProblemPass{ 0 };		 // 470
-		IMemoryHeap*			defaultHeap{ nullptr };					 // 478
+		bool initialized{ false };                              // 000
+		std::uint16_t numHeaps{ 0 };                            // 002
+		std::uint16_t numPhysicalHeaps{ 0 };                    // 004
+		IMemoryHeap** heaps{ nullptr };                         // 008
+		bool* allowOtherContextAllocs{ nullptr };               // 010
+		IMemoryHeap* heapsByContext[127]{ nullptr };            // 018
+		ThreadScrapHeap* threadScrapHeap{ nullptr };            // 410
+		IMemoryHeap** physicalHeaps{ nullptr };                 // 418
+		IMemoryHeap* bigAllocHeap{ nullptr };                   // 420
+		IMemoryHeap* emergencyHeap{ nullptr };                  // 428
+		BSSmallBlockAllocator* smallBlockAllocator{ nullptr };  // 430
+		CompactingStore::Store* compactingStore{ nullptr };     // 438
+		IMemoryHeap* externalHavokAllocator{ nullptr };         // 440
+		bool specialHeaps{ false };                             // 448
+		bool allowPoolUse{ true };                              // 449
+		std::uint32_t sysAllocBytes{ 0 };                       // 44C
+		std::uint32_t mallocBytes{ 0 };                         // 450
+		std::uint32_t alignmentForPools{ 4 };                   // 450
+		std::uint32_t mainThreadMemoryProblemPassSignal{ 0 };   // 458
+		std::size_t failedAllocationSize{ 0 };                  // 460
+		std::uint32_t numMemoryProblemPassesRun{ 0 };           // 468
+		std::size_t timeOfLastMemoryProblemPass{ 0 };           // 470
+		IMemoryHeap* defaultHeap{ nullptr };                    // 478
 	};
 	static_assert(sizeof(MemoryManager) == 0x480);
 
@@ -99,8 +99,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-					 heap->Allocate(a_size, 0, false) :
-					 nullptr;
+		           heap->Allocate(a_size, 0, false) :
+                   nullptr;
 	}
 
 	template <class T>
@@ -119,8 +119,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-					 heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true) :
-					 nullptr;
+		           heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true) :
+                   nullptr;
 	}
 
 	template <class T>
@@ -156,8 +156,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-					 heap->Reallocate(a_ptr, a_newSize, 0, false) :
-					 nullptr;
+		           heap->Reallocate(a_ptr, a_newSize, 0, false) :
+                   nullptr;
 	}
 
 	template <class T>
@@ -170,8 +170,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-					 heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true) :
-					 nullptr;
+		           heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true) :
+                   nullptr;
 	}
 
 	template <class T>
@@ -273,20 +273,20 @@ namespace RE
 			return _data[a_pos];
 		}
 
-		[[nodiscard]] reference		  front() noexcept { return operator[](0); }
+		[[nodiscard]] reference front() noexcept { return operator[](0); }
 		[[nodiscard]] const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] reference		  back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] reference back() noexcept { return operator[](size() - 1); }
 		[[nodiscard]] const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] pointer		data() noexcept { return _data; }
+		[[nodiscard]] pointer data() noexcept { return _data; }
 		[[nodiscard]] const_pointer data() const noexcept { return _data; }
 
-		[[nodiscard]] iterator		 begin() noexcept { return _data; }
+		[[nodiscard]] iterator begin() noexcept { return _data; }
 		[[nodiscard]] const_iterator begin() const noexcept { return _data; }
 		[[nodiscard]] const_iterator cbegin() const noexcept { return begin(); }
 
-		[[nodiscard]] iterator		 end() noexcept { return _data ? _data + size() : nullptr; }
+		[[nodiscard]] iterator end() noexcept { return _data ? _data + size() : nullptr; }
 		[[nodiscard]] const_iterator end() const noexcept { return _data ? _data + size() : nullptr; }
 		[[nodiscard]] const_iterator cend() const noexcept { return end(); }
 

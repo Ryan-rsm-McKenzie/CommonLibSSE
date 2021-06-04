@@ -15,25 +15,25 @@ namespace RE
 		{
 		public:
 			// members
-			void*		  buffer;			// 00
-			std::uint32_t totalSize;		// 08
-			std::uint32_t bufferAllocSize;	// 0C
-			std::uint32_t bufferReadSize;	// 10
-			std::uint32_t bufferPos;		// 14
-			std::uint32_t streamPos;		// 18
-			std::uint32_t pad1C;			// 1C
+			void* buffer;                   // 00
+			std::uint32_t totalSize;        // 08
+			std::uint32_t bufferAllocSize;  // 0C
+			std::uint32_t bufferReadSize;   // 10
+			std::uint32_t bufferPos;        // 14
+			std::uint32_t streamPos;        // 18
+			std::uint32_t pad1C;            // 1C
 		};
 		static_assert(sizeof(BufferInfo) == 0x20);
 
 		NiBinaryStream();
-		virtual ~NiBinaryStream();	// 00
+		virtual ~NiBinaryStream();  // 00
 
 		// add
-		virtual bool		  good() const = 0;					   // 01
-		virtual void		  seek(std::int32_t a_numBytes) = 0;   // 02
-		virtual std::uint32_t tell() const;						   // 03 - { return _absoluteCurrentPos; }
-		virtual void		  get_info(BufferInfo& a_buf);		   // 04
-		virtual void		  set_endian_swap(bool a_doSwap) = 0;  // 05
+		virtual bool good() const = 0;                    // 01
+		virtual void seek(std::int32_t a_numBytes) = 0;   // 02
+		virtual std::uint32_t tell() const;               // 03 - { return _absoluteCurrentPos; }
+		virtual void get_info(BufferInfo& a_buf);         // 04
+		virtual void set_endian_swap(bool a_doSwap) = 0;  // 05
 
 		template <class CharT>
 		bool get(CharT& a_ch);
@@ -52,10 +52,10 @@ namespace RE
 		std::uint32_t binary_write(const void* a_buffer, std::uint32_t a_totalBytes, std::uint32_t* a_componentSizes, std::uint32_t a_numComponents = 1);
 
 		// members
-		std::uint32_t _absoluteCurrentPos;	// 08
-		std::uint32_t _pad0C;				// 0C
-		ReadFn*		  _readFn;				// 10
-		WriteFn*	  _writeFn;				// 18
+		std::uint32_t _absoluteCurrentPos;  // 08
+		std::uint32_t _pad0C;               // 0C
+		ReadFn* _readFn;                    // 10
+		WriteFn* _writeFn;                  // 18
 	};
 	static_assert(sizeof(NiBinaryStream) == 0x20);
 
@@ -104,7 +104,7 @@ namespace std
 	{
 		a_str.erase();
 		CharT c;
-		auto  notEOF = a_input.get(c);
+		auto notEOF = a_input.get(c);
 		if (notEOF) {
 			do {
 				if (!std::char_traits<CharT>::eq(c, a_delim)) {

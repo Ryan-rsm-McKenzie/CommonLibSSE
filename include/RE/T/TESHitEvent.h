@@ -23,14 +23,14 @@ namespace RE
 		~TESHitEvent() = default;
 
 		// members
-		NiPointer<TESObjectREFR>			 target;	  // 00
-		NiPointer<TESObjectREFR>			 cause;		  // 08
-		FormID								 source;	  // 10
-		FormID								 projectile;  // 14
-		stl::enumeration<Flag, std::uint8_t> flags;		  // 18
-		std::uint8_t						 pad19;		  // 19
-		std::uint16_t						 pad1A;		  // 1A
-		std::uint32_t						 pad1C;		  // 1C
+		NiPointer<TESObjectREFR> target;             // 00
+		NiPointer<TESObjectREFR> cause;              // 08
+		FormID source;                               // 10
+		FormID projectile;                           // 14
+		stl::enumeration<Flag, std::uint8_t> flags;  // 18
+		std::uint8_t pad19;                          // 19
+		std::uint16_t pad1A;                         // 1A
+		std::uint32_t pad1C;                         // 1C
 	};
 	static_assert(sizeof(TESHitEvent) == 0x20);
 }

@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraShouldWear;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kShouldWear;
 
-		virtual ~ExtraShouldWear();	 // 00
+		virtual ~ExtraShouldWear();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kShouldWear; }
+		virtual ExtraDataType GetType() const override;  // 01 - { return kShouldWear; }
 
 		// members
 		std::uint64_t unk10;  // 10

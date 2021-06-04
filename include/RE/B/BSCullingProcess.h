@@ -37,42 +37,42 @@ namespace RE
 		static_assert(sizeof(Data) == 0x10);
 
 		// override (NiCullingProcess)
-		virtual const NiRTTI* GetRTTI() const override;	 // 00
+		virtual const NiRTTI* GetRTTI() const override;  // 00
 
 		virtual ~BSCullingProcess();  // 15
 
-		virtual void Process1(NiAVObject* a_object, std::uint32_t a_arg2) override;									  // 16
+		virtual void Process1(NiAVObject* a_object, std::uint32_t a_arg2) override;                                   // 16
 		virtual void Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet) override;  // 17
-		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2) override;							  // 18
+		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2) override;                             // 18
 
 		// add
-		virtual void AppendNonAccum(NiAVObject& a_object);				 // 19
-		virtual bool TestBaseVisibility1(BSMultiBound& a_bound);		 // 1A
-		virtual bool TestBaseVisibility2(BSOcclusionPlane& a_bound);	 // 1B
-		virtual bool TestBaseVisibility3(const NiBound& a_bound) const;	 // 1C
+		virtual void AppendNonAccum(NiAVObject& a_object);               // 19
+		virtual bool TestBaseVisibility1(BSMultiBound& a_bound);         // 1A
+		virtual bool TestBaseVisibility2(BSOcclusionPlane& a_bound);     // 1B
+		virtual bool TestBaseVisibility3(const NiBound& a_bound) const;  // 1C
 
-		BSTArray<NiPointer<NiAVObject>>					  unk00128;			  // 00128
-		BSTLocklessQueue::ObjMultiProdCons<Data, 4096, 0> cullQueue;		  // 00140
-		std::uint64_t									  unk30160;			  // 30160
-		std::uint64_t									  unk30168;			  // 30168
-		std::uint64_t									  unk30170;			  // 30170
-		std::uint64_t									  unk30178;			  // 30178
-		std::uint64_t									  unk30180;			  // 30180
-		std::uint64_t									  unk30188;			  // 30188
-		void*											  unk30190;			  // 30190
-		std::int32_t									  cullMode;			  // 30198
-		BSCompoundFrustum*								  compoundFrustum;	  // 301A0
-		std::uint64_t									  unk301A8;			  // 301A8
-		std::uint64_t									  unk301B0;			  // 301B0
-		std::uint64_t									  unk301B8;			  // 301B8
-		std::uint64_t									  unk301C0;			  // 301C0
-		std::uint64_t									  unk301C8;			  // 301C8
-		std::uint32_t									  unk301D0;			  // 301D0
-		bool											  recurseToGeometry;  // 301D4
-		std::uint8_t									  unk301D5;			  // 301D5
-		std::uint16_t									  unk301D6;			  // 301D6
-		BSTArray<void*>									  unk301D8;			  // 301D8
-		std::uint64_t									  unk301F0;			  // 301F0
+		BSTArray<NiPointer<NiAVObject>> unk00128;                     // 00128
+		BSTLocklessQueue::ObjMultiProdCons<Data, 4096, 0> cullQueue;  // 00140
+		std::uint64_t unk30160;                                       // 30160
+		std::uint64_t unk30168;                                       // 30168
+		std::uint64_t unk30170;                                       // 30170
+		std::uint64_t unk30178;                                       // 30178
+		std::uint64_t unk30180;                                       // 30180
+		std::uint64_t unk30188;                                       // 30188
+		void* unk30190;                                               // 30190
+		std::int32_t cullMode;                                        // 30198
+		BSCompoundFrustum* compoundFrustum;                           // 301A0
+		std::uint64_t unk301A8;                                       // 301A8
+		std::uint64_t unk301B0;                                       // 301B0
+		std::uint64_t unk301B8;                                       // 301B8
+		std::uint64_t unk301C0;                                       // 301C0
+		std::uint64_t unk301C8;                                       // 301C8
+		std::uint32_t unk301D0;                                       // 301D0
+		bool recurseToGeometry;                                       // 301D4
+		std::uint8_t unk301D5;                                        // 301D5
+		std::uint16_t unk301D6;                                       // 301D6
+		BSTArray<void*> unk301D8;                                     // 301D8
+		std::uint64_t unk301F0;                                       // 301F0
 	};
 	static_assert(sizeof(BSCullingProcess) == 0x301F8);
 }

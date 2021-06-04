@@ -9,11 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterPointCollector;
 
-		virtual ~bhkCharacterPointCollector();	// 00
+		virtual ~bhkCharacterPointCollector();  // 00
 
 		// override (hkpAllCdPointCollector)
 		virtual void AddCdPoint(const hkpCdPoint& a_point) override;  // 01
-		virtual void Reset() override;								  // 02
+		virtual void Reset() override;                                // 02
 
 		// members
 		std::uint64_t unk220;  // 220

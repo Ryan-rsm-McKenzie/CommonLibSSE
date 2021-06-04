@@ -56,31 +56,31 @@ namespace RE
 			// members
 			stl::enumeration<PixelLayout, std::uint32_t> pixelLayout;  // 00
 			stl::enumeration<AlphaFormat, std::uint32_t> alphaFormat;  // 04
-			stl::enumeration<MipFlag, std::uint32_t>	 mipMapped;	   // 08
-			std::uint32_t								 pad0C;		   // 0C
+			stl::enumeration<MipFlag, std::uint32_t> mipMapped;        // 08
+			std::uint32_t pad0C;                                       // 0C
 		};
 		static_assert(sizeof(FormatPrefs) == 0x10);
 
 		virtual ~NiTexture();
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;	 // 02
+		virtual const NiRTTI* GetRTTI() const override;  // 02
 
 		// add
-		virtual void Unk_25(void);	// 25 - { return 0; }
-		virtual void Unk_26(void);	// 26 - { return 0; }
-		virtual void Unk_27(void);	// 27 - { return "n/a"; }
-		virtual void Unk_28(void);	// 28
-		virtual void Unk_29(void);	// 29 - { return 0; }
-		virtual void Unk_2A(void);	// 2A - { return 0; }
+		virtual void Unk_25(void);  // 25 - { return 0; }
+		virtual void Unk_26(void);  // 26 - { return 0; }
+		virtual void Unk_27(void);  // 27 - { return "n/a"; }
+		virtual void Unk_28(void);  // 28
+		virtual void Unk_29(void);  // 29 - { return 0; }
+		virtual void Unk_2A(void);  // 2A - { return 0; }
 
 		// members
-		FormatPrefs	  formatPrefs;	// 10
-		BSFixedString name;			// 20
-		std::uint32_t unk28;		// 28
-		std::uint32_t unk2C;		// 2C
-		NiTexture*	  prev;			// 30
-		NiTexture*	  next;			// 38
+		FormatPrefs formatPrefs;  // 10
+		BSFixedString name;       // 20
+		std::uint32_t unk28;      // 28
+		std::uint32_t unk2C;      // 2C
+		NiTexture* prev;          // 30
+		NiTexture* next;          // 38
 	};
 	static_assert(sizeof(NiTexture) == 0x40);
 }

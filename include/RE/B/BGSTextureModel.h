@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSTextureModel;
 
-		virtual ~BGSTextureModel();	 // 00
+		virtual ~BGSTextureModel();  // 00
 
 		// override (TESModel)
 		virtual void SetModel(const char* a_model) override;  // 05

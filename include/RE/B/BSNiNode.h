@@ -13,8 +13,8 @@ namespace RE
 		virtual ~BSNiNode();  // 00
 
 		// override (NiNode)
-		virtual const NiRTTI* GetRTTI() const override;							  // 02
-		virtual NiObject*	  CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		virtual const NiRTTI* GetRTTI() const override;                       // 02
+		virtual NiObject* CreateClone(NiCloningProcess& a_cloning) override;  // 17
 	};
 	static_assert(sizeof(BSNiNode) == 0x128);
 }

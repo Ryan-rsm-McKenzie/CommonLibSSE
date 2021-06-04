@@ -18,7 +18,7 @@ namespace RE
 			kRendererReleased
 		};
 
-		virtual ~GRendererEventHandler() = default;	 // 00
+		virtual ~GRendererEventHandler() = default;  // 00
 
 		// add
 		virtual void OnEvent(GRenderer* a_renderer, EventType a_changeType);  // 01

@@ -195,6 +195,6 @@ namespace RE
 		}
 
 		// members
-		Container hash;	 // 00
+		Container hash;  // 00
 	};
 }

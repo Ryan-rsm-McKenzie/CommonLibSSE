@@ -37,8 +37,8 @@ namespace RE
 			delete extraLists;
 			extraLists =
 				a_rhs.extraLists ?
-					  new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
-					  nullptr;
+					new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
+                    nullptr;
 
 			countDelta = a_rhs.countDelta;
 		}
@@ -73,8 +73,8 @@ namespace RE
 	std::optional<double> InventoryEntryData::GetEnchantmentCharge() const
 	{
 		std::optional<double> result;
-		auto				  obj = GetObject();
-		auto				  ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
+		auto obj = GetObject();
+		auto ench = obj ? obj->As<TESEnchantableForm>() : nullptr;
 		if (ench && ench->formEnchanting && ench->amountofEnchantment != 0) {
 			result.emplace(100.0);
 		}

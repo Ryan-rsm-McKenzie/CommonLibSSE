@@ -8,9 +8,9 @@
 namespace RE
 {
 	class BGSApparatus :
-		public TESObjectMISC,	// 000
-		public TESQualityForm,	// 100
-		public TESDescription	// 110
+		public TESObjectMISC,   // 000
+		public TESQualityForm,  // 100
+		public TESDescription   // 110
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSApparatus;
@@ -28,7 +28,7 @@ namespace RE
 		virtual ~BGSApparatus();  // 00
 
 		// override (TESObjectMISC)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
+		virtual bool Load(TESFile* a_mod) override;  // 06
 	};
 	static_assert(sizeof(BGSApparatus) == 0x120);
 }

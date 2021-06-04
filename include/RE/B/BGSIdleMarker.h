@@ -8,8 +8,8 @@
 namespace RE
 {
 	class BGSIdleMarker :
-		public TESBoundObject,	  // 00
-		public TESModel,		  // 30
+		public TESBoundObject,    // 00
+		public TESModel,          // 30
 		public BGSIdleCollection  // 58
 	{
 	public:
@@ -29,11 +29,11 @@ namespace RE
 		virtual ~BGSIdleMarker();  // 00
 
 		// override (TESBoundObject)
-		virtual bool		Load(TESFile* a_mod) override;			   // 06
-		virtual void		InitItemImpl() override;				   // 13
-		virtual bool		GetIgnoredBySandbox() const override;	   // 22 - { return (BGSIdleCollection::flags >> 4) & 1; }
-		virtual void		UnClone3D(TESObjectREFR* a_ref) override;  // 41
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;	   // 4A
+		virtual bool Load(TESFile* a_mod) override;                  // 06
+		virtual void InitItemImpl() override;                        // 13
+		virtual bool GetIgnoredBySandbox() const override;           // 22 - { return (BGSIdleCollection::flags >> 4) & 1; }
+		virtual void UnClone3D(TESObjectREFR* a_ref) override;       // 41
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;  // 4A
 	};
 	static_assert(sizeof(BGSIdleMarker) == 0x78);
 }

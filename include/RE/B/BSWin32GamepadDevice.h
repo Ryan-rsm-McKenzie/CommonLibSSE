@@ -38,33 +38,33 @@ namespace RE
 		virtual ~BSWin32GamepadDevice();  // 00
 
 		// override (BSPCGamepadDeviceDelegate)
-		virtual void Initialize() override;			  // 01
+		virtual void Initialize() override;           // 01
 		virtual void Process(float a_arg1) override;  // 02
-		virtual void Unk_03(void) override;			  // 03 - { return; }
-		virtual void Reset() override;				  // 08 - { std::memset(&unk0D8, 0, 0x50); }
-		virtual void Unk_09(void) override;			  // 09 - { return; }
+		virtual void Unk_03(void) override;           // 03 - { return; }
+		virtual void Reset() override;                // 08 - { std::memset(&unk0D8, 0, 0x50); }
+		virtual void Unk_09(void) override;           // 09 - { return; }
 
 		// members
-		std::uint32_t unk0D8;	  // 0D8
-		std::uint8_t  unk0DC;	  // 0DC
-		std::uint8_t  curState;	  // 0DD
-		std::uint16_t unk0DE;	  // 0DE
-		std::uint64_t unk0E0;	  // 0E0
-		std::uint64_t unk0E8;	  // 0E8
-		float		  curLX;	  // 0F0
-		float		  curLY;	  // 0F4
-		float		  curRX;	  // 0F8
-		float		  curRY;	  // 0FC
-		std::uint32_t unk100;	  // 100
-		std::uint8_t  unk104;	  // 104
-		std::uint8_t  prevState;  // 105
-		std::uint16_t unk106;	  // 106
-		std::uint64_t unk108;	  // 108
-		std::uint64_t unk110;	  // 110
-		float		  prevLX;	  // 118
-		float		  prevLY;	  // 11C
-		float		  prevRX;	  // 120
-		float		  prevRY;	  // 124
+		std::uint32_t unk0D8;    // 0D8
+		std::uint8_t unk0DC;     // 0DC
+		std::uint8_t curState;   // 0DD
+		std::uint16_t unk0DE;    // 0DE
+		std::uint64_t unk0E0;    // 0E0
+		std::uint64_t unk0E8;    // 0E8
+		float curLX;             // 0F0
+		float curLY;             // 0F4
+		float curRX;             // 0F8
+		float curRY;             // 0FC
+		std::uint32_t unk100;    // 100
+		std::uint8_t unk104;     // 104
+		std::uint8_t prevState;  // 105
+		std::uint16_t unk106;    // 106
+		std::uint64_t unk108;    // 108
+		std::uint64_t unk110;    // 110
+		float prevLX;            // 118
+		float prevLY;            // 11C
+		float prevRX;            // 120
+		float prevRY;            // 124
 	};
 	static_assert(sizeof(BSWin32GamepadDevice) == 0x128);
 }
