@@ -59,35 +59,35 @@ namespace RE
 		BSTArray<T*>& GetFormArray();
 
 		// members
-		std::uint8_t                      pad001;                                    // 001
-		std::uint16_t                     pad002;                                    // 002
-		std::uint32_t                     pad004;                                    // 004
-		TESObjectList*                    objectList;                                // 008
+		std::uint8_t                      pad001;                                         // 001
+		std::uint16_t                     pad002;                                         // 002
+		std::uint32_t                     pad004;                                         // 004
+		TESObjectList*                    objectList;                                     // 008
 		BSTArray<TESForm*>                formArrays[stl::to_underlying(FormType::Max)];  // 010
-		TESRegionList*                    regionList;                                // D00
-		NiTPrimitiveArray<TESObjectCELL*> interiorCells;                             // D08
-		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                // D20
-		NiTList<TESForm*>                 badForms;                                  // D38
-		FormID                            nextID;                                    // D50
-		std::uint32_t                     padD54;                                    // D54
-		TESFile*                          activeFile;                                // D58
-		BSSimpleList<TESFile*>            files;                                     // D60
-		TESFileCollection                 compiledFileCollection;                    // D70
-		bool                              masterSave;                                // DA0
-		bool                              blockSave;                                 // DA1
-		bool                              saveLoadGame;                              // DA2
-		bool                              autoSaving;                                // DA3
-		bool                              exportingPlugin;                           // DA4
-		bool                              clearingData;                              // DA5
-		bool                              hasDesiredFiles;                           // DA6
-		bool                              checkingModels;                            // DA7
-		bool                              loadingFiles;                              // DA8
-		bool                              dontRemoveIDs;                             // DA9
-		std::uint8_t                      unkDAA;                                    // DAA
-		std::uint8_t                      padDAB;                                    // DAB
-		std::uint32_t                     padDAC;                                    // DAC
-		TESRegionDataManager*             regionDataManager;                         // DB0
-		std::uint64_t                     unkDB8;                                    // DB8
+		TESRegionList*                    regionList;                                     // D00
+		NiTPrimitiveArray<TESObjectCELL*> interiorCells;                                  // D08
+		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                     // D20
+		NiTList<TESForm*>                 badForms;                                       // D38
+		FormID                            nextID;                                         // D50
+		std::uint32_t                     padD54;                                         // D54
+		TESFile*                          activeFile;                                     // D58
+		BSSimpleList<TESFile*>            files;                                          // D60
+		TESFileCollection                 compiledFileCollection;                         // D70
+		bool                              masterSave;                                     // DA0
+		bool                              blockSave;                                      // DA1
+		bool                              saveLoadGame;                                   // DA2
+		bool                              autoSaving;                                     // DA3
+		bool                              exportingPlugin;                                // DA4
+		bool                              clearingData;                                   // DA5
+		bool                              hasDesiredFiles;                                // DA6
+		bool                              checkingModels;                                 // DA7
+		bool                              loadingFiles;                                   // DA8
+		bool                              dontRemoveIDs;                                  // DA9
+		std::uint8_t                      unkDAA;                                         // DAA
+		std::uint8_t                      padDAB;                                         // DAB
+		std::uint32_t                     padDAC;                                         // DAC
+		TESRegionDataManager*             regionDataManager;                              // DB0
+		std::uint64_t                     unkDB8;                                         // DB8
 	};
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
 

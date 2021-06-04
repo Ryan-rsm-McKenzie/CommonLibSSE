@@ -74,7 +74,7 @@ namespace RE
 			TES_HEAP_REDEFINE_NEW();
 
 			// members
-			value_type      item;  // 00
+			value_type           item;  // 00
 			stl::observer<Node*> next;  // ??
 		};
 
