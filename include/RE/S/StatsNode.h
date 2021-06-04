@@ -27,13 +27,13 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01 - runs PlaySound on BSAnimationGraphEvent::optionalStr
 
 		// members
-		std::uint32_t unk24;                                     // 24
+		std::uint32_t                                    unk24;  // 24
 		BSTArray<BSTSmartPointer<BSIntrusiveRefCounted>> unk28;  // 28
-		std::uint64_t unk40;                                     // 40
-		std::uint64_t unk48;                                     // 48
-		BSTSmartPointer<BSIntrusiveRefCounted> unk50;            // 50
-		BSTSmartPointer<BSIntrusiveRefCounted> unk58;            // 58
-		std::uint64_t unk60;                                     // 60
+		std::uint64_t                                    unk40;  // 40
+		std::uint64_t                                    unk48;  // 48
+		BSTSmartPointer<BSIntrusiveRefCounted>           unk50;  // 50
+		BSTSmartPointer<BSIntrusiveRefCounted>           unk58;  // 58
+		std::uint64_t                                    unk60;  // 60
 	};
 	static_assert(sizeof(StatsNode) == 0x68);
 }

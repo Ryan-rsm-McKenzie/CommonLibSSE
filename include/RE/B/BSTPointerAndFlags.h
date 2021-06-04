@@ -76,7 +76,7 @@ namespace RE
 		{
 			~Storage() noexcept {}
 
-			value_type ptr;
+			value_type     ptr;
 			std::uintptr_t address{ 0 };
 		};
 

@@ -26,7 +26,7 @@ namespace RE
 		BSFixedString setPctName;       // 28
 		BSFixedString setBlinkingName;  // 30
 		BSFixedString fadeOutName;      // 38
-		float fillPct;                  // 40
+		float         fillPct;          // 40
 		std::uint32_t pad44;            // 44
 	};
 	static_assert(sizeof(HUDMeter) == 0x48);

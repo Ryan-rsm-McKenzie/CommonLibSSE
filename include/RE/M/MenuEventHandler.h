@@ -25,9 +25,9 @@ namespace RE
 		virtual bool ProcessButton(ButtonEvent* a_event);          // 05 - { return false; }
 
 		// members
-		bool registered;      // 0C
-		std::uint8_t unk0D;   // 0D
-		std::uint16_t pad0E;  // 0E
+		bool          registered;  // 0C
+		std::uint8_t  unk0D;       // 0D
+		std::uint16_t pad0E;       // 0E
 	};
 	static_assert(sizeof(MenuEventHandler) == 0x10);
 }

@@ -63,7 +63,7 @@ namespace RE
 		}
 
 		[[nodiscard]] explicit operator bool() const noexcept { return has_value(); }
-		[[nodiscard]] bool has_value() const noexcept { return _handle != 0; }
+		[[nodiscard]] bool     has_value() const noexcept { return _handle != 0; }
 
 		[[nodiscard]] value_type value() const noexcept { return _handle; }
 

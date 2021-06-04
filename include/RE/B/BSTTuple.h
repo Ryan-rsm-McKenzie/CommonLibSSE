@@ -169,7 +169,7 @@ namespace RE
 		}
 
 		// members
-		first_type first;    // 00
+		first_type  first;   // 00
 		second_type second;  // ??
 	};
 

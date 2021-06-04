@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraReflectedRefs();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kReflectedRefs; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kReflectedRefs; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		BSTArray<ObjectRefHandle> refs;  // 10

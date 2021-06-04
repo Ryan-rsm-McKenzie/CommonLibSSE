@@ -16,14 +16,14 @@ namespace RE
 	{
 	public:
 		// members
-		hkVector4 position;       // 00
-		hkVector4 normal;         // 10
-		float objectImpulse;      // 20
-		float timestep;           // 24
-		float projectedVelocity;  // 28
-		float objectMassInv;      // 2C
-		hkpRigidBody* body;       // 30
-		std::uint64_t pad38;      // 38
+		hkVector4     position;           // 00
+		hkVector4     normal;             // 10
+		float         objectImpulse;      // 20
+		float         timestep;           // 24
+		float         projectedVelocity;  // 28
+		float         objectMassInv;      // 2C
+		hkpRigidBody* body;               // 30
+		std::uint64_t pad38;              // 38
 	};
 	static_assert(sizeof(hkpCharacterObjectInteractionEvent) == 0x40);
 

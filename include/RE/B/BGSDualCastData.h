@@ -17,13 +17,13 @@ namespace RE
 		};
 
 		// members
-		BGSProjectile* pProjectile;                    // 00
-		BGSExplosion* pExplosion;                      // 08
-		TESEffectShader* pEffectShader;                // 10
-		BGSArtObject* pHitEffectArt;                   // 18
-		BGSImpactDataSet* pImpactDataSet;              // 20
-		stl::enumeration<Flags, std::uint32_t> flags;  // 28
-		std::uint32_t pad30;                           // 30
+		BGSProjectile*                         pProjectile;     // 00
+		BGSExplosion*                          pExplosion;      // 08
+		TESEffectShader*                       pEffectShader;   // 10
+		BGSArtObject*                          pHitEffectArt;   // 18
+		BGSImpactDataSet*                      pImpactDataSet;  // 20
+		stl::enumeration<Flags, std::uint32_t> flags;           // 28
+		std::uint32_t                          pad30;           // 30
 	};
 	static_assert(sizeof(BGSDualCastDataDEF) == 0x30);
 

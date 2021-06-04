@@ -22,16 +22,16 @@ namespace RE
 			kDropToGround = 1 << 4
 		};
 
-		std::uint32_t limit;                                    // 00
-		float radius;                                           // 04
-		float lifetime;                                         // 08
-		float imageSpaceRadius;                                 // 0C
-		float targetInterval;                                   // 10
-		stl::enumeration<BGSHazardFlags, std::uint32_t> flags;  // 14
-		SpellItem* spell;                                       // 18
-		TESObjectLIGH* light;                                   // 20
-		BGSImpactDataSet* impactDataSet;                        // 28
-		BGSSoundDescriptorForm* sound;                          // 30
+		std::uint32_t                                   limit;             // 00
+		float                                           radius;            // 04
+		float                                           lifetime;          // 08
+		float                                           imageSpaceRadius;  // 0C
+		float                                           targetInterval;    // 10
+		stl::enumeration<BGSHazardFlags, std::uint32_t> flags;             // 14
+		SpellItem*                                      spell;             // 18
+		TESObjectLIGH*                                  light;             // 20
+		BGSImpactDataSet*                               impactDataSet;     // 28
+		BGSSoundDescriptorForm*                         sound;             // 30
 	};
 	static_assert(sizeof(BGSHazardData) == 0x38);
 

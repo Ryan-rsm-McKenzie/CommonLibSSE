@@ -19,11 +19,11 @@ namespace RE
 		virtual void VisitArmor(TESObjectARMO* a_armor);           // 05 - { return; }
 
 		// members
-		Actor* actor;            // 08
-		float armorSum;          // 10
-		float armorPerks;        // 14
-		float lightArmorRating;  // 18
-		float heavyArmorRating;  // 1C
+		Actor* actor;             // 08
+		float  armorSum;          // 10
+		float  armorPerks;        // 14
+		float  lightArmorRating;  // 18
+		float  heavyArmorRating;  // 1C
 	};
 	static_assert(sizeof(ArmorRatingVisitorBase) == 0x20);
 }

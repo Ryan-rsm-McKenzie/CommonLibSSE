@@ -45,7 +45,7 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		Data data;            // 68 - DNAM
+		Data          data;   // 68 - DNAM
 		std::uint32_t pad6C;  // 6C
 	};
 	static_assert(sizeof(BGSArtObject) == 0x70);

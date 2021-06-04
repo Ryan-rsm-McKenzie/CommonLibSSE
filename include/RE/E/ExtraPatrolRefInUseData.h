@@ -14,8 +14,8 @@ namespace RE
 		virtual ~ExtraPatrolRefInUseData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { reutrn kPatrolRefInUseData; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return user != a_rhs->user; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { reutrn kPatrolRefInUseData; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return user != a_rhs->user; }
 
 		// members
 		std::uint32_t user;   // 10

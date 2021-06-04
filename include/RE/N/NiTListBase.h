@@ -6,9 +6,9 @@ namespace RE
 	class NiTListItem
 	{
 	public:
-		NiTListItem* next;  // 00
-		NiTListItem* prev;  // 08
-		T element;          // 10
+		NiTListItem* next;     // 00
+		NiTListItem* prev;     // 08
+		T            element;  // 10
 	};
 	static_assert(sizeof(NiTListItem<void*>) == 0x18);
 
@@ -23,8 +23,8 @@ namespace RE
 		};
 
 		// members
-		NiTListItem<T>* head;          // 00
-		NiTListItem<T>* tail;          // 08
+		NiTListItem<T>*    head;       // 00
+		NiTListItem<T>*    tail;       // 08
 		AntiBloatAllocator allocator;  // 10
 	};
 }

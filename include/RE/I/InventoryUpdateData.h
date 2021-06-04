@@ -12,9 +12,9 @@ namespace RE
 		virtual ~InventoryUpdateData() = default;  // 00
 
 		// members
-		RefHandle unk10;      // 10
+		RefHandle     unk10;  // 10
 		std::uint32_t pad14;  // 14
-		TESForm* unk18;       // 18
+		TESForm*      unk18;  // 18
 	};
 	static_assert(sizeof(InventoryUpdateData) == 0x20);
 }

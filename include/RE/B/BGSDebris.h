@@ -23,13 +23,13 @@ namespace RE
 		};
 
 		// members
-		std::int8_t percentage;                                    // 00 - DATA~
-		stl::enumeration<BGSDebrisDataFlags, std::uint8_t> flags;  // 01 - ~DATA
-		std::uint16_t pad02;                                       // 02
-		std::uint32_t pad04;                                       // 04
-		const char* fileName;                                      // 08
-		BSTArray<BSResource::ID> textureIDs;                       // 10 - MODT
-		BSTArray<std::uint32_t> addons;                            // 28
+		std::int8_t                                        percentage;  // 00 - DATA~
+		stl::enumeration<BGSDebrisDataFlags, std::uint8_t> flags;       // 01 - ~DATA
+		std::uint16_t                                      pad02;       // 02
+		std::uint32_t                                      pad04;       // 04
+		const char*                                        fileName;    // 08
+		BSTArray<BSResource::ID>                           textureIDs;  // 10 - MODT
+		BSTArray<std::uint32_t>                            addons;      // 28
 	};
 	static_assert(sizeof(BGSDebrisData) == 0x40);
 

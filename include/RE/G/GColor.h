@@ -16,7 +16,7 @@ namespace RE
 
 		union ColorData
 		{
-			RGB32 channels;
+			RGB32         channels;
 			std::uint32_t raw;
 		};
 		static_assert(sizeof(ColorData) == 0x4);

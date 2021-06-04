@@ -42,8 +42,8 @@ namespace RE
 		virtual bool PopInternal(T* a_obj);   // 06 - { return false; }
 
 	public:
-		volatile mutable std::uint32_t lock;  // 08
-		volatile std::uint32_t pad0C;         // 0C
+		volatile mutable std::uint32_t lock;   // 08
+		volatile std::uint32_t         pad0C;  // 0C
 	};
 	static_assert(sizeof(BSTCommonMessageQueue<void*>) == 0x10);
 
@@ -52,7 +52,7 @@ namespace RE
 	{
 	public:
 		// members
-		ScrapHeap* unk10;     // 10
+		ScrapHeap*    unk10;  // 10
 		std::uint64_t unk18;  // 18
 		std::uint64_t unk20;  // 20
 	};
@@ -70,9 +70,9 @@ namespace RE
 		virtual bool PopInternal(T* a_obj) override;   // 06
 
 	public:
-		BSTFreeList<T>* freeList;   // 10
-		BSTFreeListElem<T>* head;   // 18
-		BSTFreeListElem<T>** tail;  // 20
+		BSTFreeList<T>*      freeList;  // 10
+		BSTFreeListElem<T>*  head;      // 18
+		BSTFreeListElem<T>** tail;      // 20
 	};
 	static_assert(sizeof(BSTCommonLLMessageQueue<void*>) == 0x28);
 
@@ -88,9 +88,9 @@ namespace RE
 		virtual bool PopInternal(T* a_obj) override;   // 06
 
 	public:
-		char queueBuffer[sizeof(T) * SIZE];  // 10
-		std::uint32_t numEntries;            // ??
-		std::uint32_t pushIdx;               // ??
-		std::uint32_t popIdx;                // ??
+		char          queueBuffer[sizeof(T) * SIZE];  // 10
+		std::uint32_t numEntries;                     // ??
+		std::uint32_t pushIdx;                        // ??
+		std::uint32_t popIdx;                         // ??
 	};
 }

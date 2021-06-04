@@ -42,14 +42,14 @@ namespace RE
 				kNoDecalData = 1 << 0
 			};
 
-			float effectDuration;                                         // 00
-			stl::enumeration<ORIENTATION, std::uint32_t> orient;          // 04
-			float angleThreshold;                                         // 08
-			float placementRadius;                                        // 0C
-			SOUND_LEVEL soundLevel;                                       // 10
-			stl::enumeration<Flag, std::uint8_t> flags;                   // 14
-			stl::enumeration<ImpactResult, std::uint8_t> resultOverride;  // 15
-			std::uint16_t unk16;                                          // 16
+			float                                        effectDuration;   // 00
+			stl::enumeration<ORIENTATION, std::uint32_t> orient;           // 04
+			float                                        angleThreshold;   // 08
+			float                                        placementRadius;  // 0C
+			SOUND_LEVEL                                  soundLevel;       // 10
+			stl::enumeration<Flag, std::uint8_t>         flags;            // 14
+			stl::enumeration<ImpactResult, std::uint8_t> resultOverride;   // 15
+			std::uint16_t                                unk16;            // 16
 		};
 		static_assert(sizeof(IMPACT_DATA_DATA) == 0x18);
 
@@ -61,14 +61,14 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		IMPACT_DATA_DATA data;            // 48 - DATA
-		BGSTextureSet* decalTextureSet;   // 60 - DNAM
-		BGSTextureSet* decalTextureSet2;  // 68 - ENAM
-		BGSSoundDescriptorForm* sound1;   // 70 - SNAM
-		BGSSoundDescriptorForm* sound2;   // 78 - NAM1
-		BGSHazard* hazard;                // 80 - NAM2
-		DecalData dData;                  // 88 - DODT
-		std::uint32_t padAC;              // AC
+		IMPACT_DATA_DATA        data;              // 48 - DATA
+		BGSTextureSet*          decalTextureSet;   // 60 - DNAM
+		BGSTextureSet*          decalTextureSet2;  // 68 - ENAM
+		BGSSoundDescriptorForm* sound1;            // 70 - SNAM
+		BGSSoundDescriptorForm* sound2;            // 78 - NAM1
+		BGSHazard*              hazard;            // 80 - NAM2
+		DecalData               dData;             // 88 - DODT
+		std::uint32_t           padAC;             // AC
 	};
 	static_assert(sizeof(BGSImpactData) == 0xB0);
 }

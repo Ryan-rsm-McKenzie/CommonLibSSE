@@ -29,12 +29,12 @@ namespace RE
 		virtual ~hkpShapeCollection();  // 00
 
 		// override (hkpShape)
-		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                          // 02
-		virtual float GetMaximumProjection(const hkVector4& a_direction) const override;                                                                        // 03
-		virtual const hkpShapeContainer* GetContainer() const override;                                                                                         // 04
-		virtual void GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;                                           // 07
-		virtual bool CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;                                          // 08
-		virtual void CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
+		virtual void                     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                          // 02
+		virtual float                    GetMaximumProjection(const hkVector4& a_direction) const override;                                                                         // 03
+		virtual const hkpShapeContainer* GetContainer() const override;                                                                                                             // 04
+		virtual void                     GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;                                           // 07
+		virtual bool                     CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;                                          // 08
+		virtual void                     CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
 
 		// override (hkpShapeContainer)
 		virtual bool IsWeldingEnabled() const override;  // 06 - { return !disableWelding; }
@@ -44,10 +44,10 @@ namespace RE
 		virtual void SetWeldingInfo(hkpShapeKey a_key, std::int16_t a_weldingInfo);  // 0C - { return; }
 
 		// members
-		bool disableWelding;                                            // 28
+		bool                                           disableWelding;  // 28
 		stl::enumeration<CollectionType, std::uint8_t> collectionType;  // 29
-		std::uint16_t pad2A;                                            // 2A
-		std::uint32_t pad2C;                                            // 2C
+		std::uint16_t                                  pad2A;           // 2A
+		std::uint32_t                                  pad2C;           // 2C
 	};
 	static_assert(sizeof(hkpShapeCollection) == 0x30);
 }

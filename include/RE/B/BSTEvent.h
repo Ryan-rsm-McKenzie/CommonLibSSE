@@ -130,14 +130,14 @@ namespace RE
 		}
 
 		// members
-		BSTArray<Sink*> sinks;               // 00
-		BSTArray<Sink*> pendingRegisters;    // 18
-		BSTArray<Sink*> pendingUnregisters;  // 30
-		mutable BSSpinLock lock;             // 48
-		bool notifying;                      // 50
-		std::uint8_t pad51;                  // 51
-		std::uint16_t pad52;                 // 52
-		std::uint32_t pad54;                 // 54
+		BSTArray<Sink*>    sinks;               // 00
+		BSTArray<Sink*>    pendingRegisters;    // 18
+		BSTArray<Sink*>    pendingUnregisters;  // 30
+		mutable BSSpinLock lock;                // 48
+		bool               notifying;           // 50
+		std::uint8_t       pad51;               // 51
+		std::uint16_t      pad52;               // 52
+		std::uint32_t      pad54;               // 54
 	};
 	static_assert(sizeof(BSTEventSource<void*>) == 0x58);
 

@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraCellAcousticSpace();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kCellAcousticSpace; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return space != a_rhs->space; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kCellAcousticSpace; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return space != a_rhs->space; }
 
 		// members
 		BGSAcousticSpace* space;  // 10

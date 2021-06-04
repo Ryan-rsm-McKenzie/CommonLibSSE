@@ -15,11 +15,11 @@ namespace RE
 		};
 
 		// members
-		float materialThresholdAngle;                 // 00 - (30 - 120)
-		std::uint32_t pad04;                          // 04
-		BGSMaterialObject* materialObj;               // 08
-		stl::enumeration<Flag, std::uint32_t> flags;  // 10
-		std::uint32_t pad14;                          // 14
+		float                                 materialThresholdAngle;  // 00 - (30 - 120)
+		std::uint32_t                         pad04;                   // 04
+		BGSMaterialObject*                    materialObj;             // 08
+		stl::enumeration<Flag, std::uint32_t> flags;                   // 10
+		std::uint32_t                         pad14;                   // 14
 	};
 	static_assert(sizeof(TESObjectSTATData) == 0x18);
 

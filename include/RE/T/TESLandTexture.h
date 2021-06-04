@@ -37,14 +37,14 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		BGSTextureSet* textureSet;                 // 20 - TNAM
-		TEXTURE_HAVOK_DATA havokData;              // 28 - HNAM
-		BGSMaterialType* materialType;             // 30 - MNAM
-		std::int8_t specularExponent;              // 38 - SNAM
-		std::uint8_t pad39;                        // 39
-		std::uint16_t pad3A;                       // 3A
-		std::int32_t shaderTextureIndex;           // 3C - INAM
-		BSSimpleList<TESGrass*> textureGrassList;  // 40 - GNAM
+		BGSTextureSet*          textureSet;          // 20 - TNAM
+		TEXTURE_HAVOK_DATA      havokData;           // 28 - HNAM
+		BGSMaterialType*        materialType;        // 30 - MNAM
+		std::int8_t             specularExponent;    // 38 - SNAM
+		std::uint8_t            pad39;               // 39
+		std::uint16_t           pad3A;               // 3A
+		std::int32_t            shaderTextureIndex;  // 3C - INAM
+		BSSimpleList<TESGrass*> textureGrassList;    // 40 - GNAM
 	};
 	static_assert(sizeof(TESLandTexture) == 0x50);
 }

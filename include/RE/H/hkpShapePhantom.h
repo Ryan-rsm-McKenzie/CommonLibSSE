@@ -20,9 +20,9 @@ namespace RE
 
 		// override (hkpPhantom)
 		virtual hkWorldOperation::Result SetShape(const hkpShape* a_shape) override;  // 03
-		virtual hkMotionState* GetMotionState() override;                             // 05 - { return &motionState; }
-		virtual void CalcAabb(hkAabb& a_aabb) override;                               // 07
-		virtual void DeallocateInternalArrays() override;                             // 0E - { hkpPhantom::DeallocateInternalArrays(); }
+		virtual hkMotionState*           GetMotionState() override;                   // 05 - { return &motionState; }
+		virtual void                     CalcAabb(hkAabb& a_aabb) override;           // 07
+		virtual void                     DeallocateInternalArrays() override;         // 0E - { hkpPhantom::DeallocateInternalArrays(); }
 
 		// add
 		virtual void SetPositionAndLinearCast(const hkVector4& a_position, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) = 0;      // 0F

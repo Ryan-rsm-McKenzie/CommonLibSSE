@@ -884,10 +884,10 @@ namespace RE
 		~FUNCTION_DATA() = default;
 
 		// members
-		stl::enumeration<FunctionID, std::uint16_t> function;  // 00
-		std::uint16_t pad02;                                   // 02
-		std::uint32_t pad04;                                   // 04
-		void* params[2];                                       // 08
+		stl::enumeration<FunctionID, std::uint16_t> function;   // 00
+		std::uint16_t                               pad02;      // 02
+		std::uint32_t                               pad04;      // 04
+		void*                                       params[2];  // 08
 	};
 	static_assert(sizeof(FUNCTION_DATA) == 0x18);
 
@@ -910,7 +910,7 @@ namespace RE
 			~GlobalOrFloat() = default;
 
 			TESGlobal* g;
-			float f;
+			float      f;
 		};
 		static_assert(sizeof(GlobalOrFloat) == 0x8);
 
@@ -921,12 +921,12 @@ namespace RE
 			~Flags() = default;
 
 			// members
-			bool isOR: 1;         // 0 - false == AND, true == OR
-			bool usesAliases: 1;  // 1
-			bool global: 1;       // 2
-			bool usePackData: 1;  // 3
-			bool swapTarget: 1;   // 4
-			OpCode opCode: 3;     // 5
+			bool   isOR: 1;         // 0 - false == AND, true == OR
+			bool   usesAliases: 1;  // 1
+			bool   global: 1;       // 2
+			bool   usePackData: 1;  // 3
+			bool   swapTarget: 1;   // 4
+			OpCode opCode: 3;       // 5
 		};
 		static_assert(sizeof(Flags) == 0x1);
 
@@ -934,14 +934,14 @@ namespace RE
 		~CONDITION_ITEM_DATA() = default;
 
 		// members
-		GlobalOrFloat comparisonValue;                               // 08
-		ObjectRefHandle runOnRef;                                    // 10 - kReference
-		std::uint32_t dataID;                                        // 14
-		FUNCTION_DATA functionData;                                  // 18
-		Flags flags;                                                 // 30
-		stl::enumeration<CONDITIONITEMOBJECT, std::uint8_t> object;  // 31
-		std::uint16_t pad32;                                         // 32
-		std::uint32_t pad34;                                         // 34
+		GlobalOrFloat                                       comparisonValue;  // 08
+		ObjectRefHandle                                     runOnRef;         // 10 - kReference
+		std::uint32_t                                       dataID;           // 14
+		FUNCTION_DATA                                       functionData;     // 18
+		Flags                                               flags;            // 30
+		stl::enumeration<CONDITIONITEMOBJECT, std::uint8_t> object;           // 31
+		std::uint16_t                                       pad32;            // 32
+		std::uint32_t                                       pad34;            // 34
 	};
 	static_assert(sizeof(CONDITION_ITEM_DATA) == 0x30);
 
@@ -960,10 +960,10 @@ namespace RE
 		// members
 		TESObjectREFR* actionRef;  // 00
 		TESObjectREFR* targetRef;  // 08
-		void* unk10;               // 10
-		void* unk18;               // 18
-		void* unk20;               // 20
-		void* unk28;               // 28
+		void*          unk10;      // 10
+		void*          unk18;      // 18
+		void*          unk20;      // 20
+		void*          unk28;      // 28
 	};
 	static_assert(sizeof(ConditionCheckParams) == 0x30);
 
@@ -978,7 +978,7 @@ namespace RE
 		bool IsTrue(ConditionCheckParams& a_solution) const;
 
 		// members
-		TESConditionItem* next;    // 00
+		TESConditionItem*   next;  // 00
 		CONDITION_ITEM_DATA data;  // 08
 	};
 	static_assert(sizeof(TESConditionItem) == 0x38);

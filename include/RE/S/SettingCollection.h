@@ -22,7 +22,7 @@ namespace RE
 		virtual void Unk_09(void);                     // 09 - { return handle != 0; }
 
 		// members
-		const char* subKey;    // 008
+		const char*   subKey;  // 008
 		std::uint64_t unk010;  // 010
 		std::uint64_t unk018;  // 018
 		std::uint64_t unk020;  // 020
@@ -55,7 +55,7 @@ namespace RE
 		std::uint64_t unk0F8;  // 0F8
 		std::uint64_t unk100;  // 100
 		std::uint64_t unk108;  // 108
-		void* handle;          // 110
+		void*         handle;  // 110
 	};
 	static_assert(sizeof(SettingCollection<void*>) == 0x118);
 }

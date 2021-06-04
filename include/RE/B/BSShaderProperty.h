@@ -88,16 +88,16 @@ namespace RE
 		virtual ~BSShaderProperty();  // 00
 
 		// override (NiShadeProperty)
-		virtual const NiRTTI* GetRTTI() const override;                       // 02
-		virtual NiObject* CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return 0; }
-		virtual void LoadBinary(NiStream& a_stream) override;                 // 18
-		virtual void LinkObject(NiStream& a_stream) override;                 // 19 - { NiShadeProperty::LinkObject(a_stream); }
-		virtual bool RegisterStreamables(NiStream& a_stream) override;        // 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
-		virtual void SaveBinary(NiStream& a_stream) override;                 // 1B
-		virtual bool IsEqual(NiObject* a_object) override;                    // 1C - { return false; }
-		virtual void PostLinkObject(NiStream& a_stream) override;             // 1E - { NiObjectNET::PostLinkObject(a_stream); }
-		virtual void Unk_27(void) override;                                   // 27 - { return 1; }
-		virtual void Unk_29(void) override;                                   // 29
+		virtual const NiRTTI* GetRTTI() const override;                           // 02
+		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return 0; }
+		virtual void          LoadBinary(NiStream& a_stream) override;            // 18
+		virtual void          LinkObject(NiStream& a_stream) override;            // 19 - { NiShadeProperty::LinkObject(a_stream); }
+		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
+		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B
+		virtual bool          IsEqual(NiObject* a_object) override;               // 1C - { return false; }
+		virtual void          PostLinkObject(NiStream& a_stream) override;        // 1E - { NiObjectNET::PostLinkObject(a_stream); }
+		virtual void          Unk_27(void) override;                              // 27 - { return 1; }
+		virtual void          Unk_29(void) override;                              // 29
 
 		// add
 		virtual void Unk_2A(void) = 0;           // 2A
@@ -125,18 +125,18 @@ namespace RE
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 
 		// members
-		float alpha;                                                 // 30
-		std::int32_t lastRenderPassState;                            // 34
-		stl::enumeration<EShaderPropertyFlag, std::uint64_t> flags;  // 38
-		void* unk40;                                                 // 40
-		std::uint64_t unk48;                                         // 48
-		void* unk50;                                                 // 50
-		std::uint64_t unk58;                                         // 58
-		std::uint64_t unk60;                                         // 60
-		BSTSmartPointer<BSEffectShaderData> effectData;              // 68
-		std::uint64_t unk70;                                         // 70
-		BSShaderMaterial* material;                                  // 78
-		std::uint64_t unk80;                                         // 80
+		float                                                alpha;                // 30
+		std::int32_t                                         lastRenderPassState;  // 34
+		stl::enumeration<EShaderPropertyFlag, std::uint64_t> flags;                // 38
+		void*                                                unk40;                // 40
+		std::uint64_t                                        unk48;                // 48
+		void*                                                unk50;                // 50
+		std::uint64_t                                        unk58;                // 58
+		std::uint64_t                                        unk60;                // 60
+		BSTSmartPointer<BSEffectShaderData>                  effectData;           // 68
+		std::uint64_t                                        unk70;                // 70
+		BSShaderMaterial*                                    material;             // 78
+		std::uint64_t                                        unk80;                // 80
 	};
 	static_assert(sizeof(BSShaderProperty) == 0x88);
 }

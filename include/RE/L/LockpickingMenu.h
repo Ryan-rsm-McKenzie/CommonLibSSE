@@ -19,7 +19,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>  // 40
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_LockpickingMenu;
+		inline static constexpr auto      RTTI = RTTI_LockpickingMenu;
 		constexpr static std::string_view MENU_NAME = "Lockpicking Menu";
 
 		virtual ~LockpickingMenu();  // 00
@@ -39,12 +39,12 @@ namespace RE
 		[[nodiscard]] TESObjectREFR* GetTargetReference();
 
 		// members
-		void* unk048;          // 048
-		void* unk050;          // 050
-		float unk058;          // 058
+		void*         unk048;  // 048
+		void*         unk050;  // 050
+		float         unk058;  // 058
 		std::uint32_t unk05C;  // 05C
 		std::uint64_t unk060;  // 060
-		float unk068;          // 068
+		float         unk068;  // 068
 		std::uint32_t unk06C;  // 06C
 		std::uint64_t unk070;  // 070
 		std::uint32_t unk078;  // 078
@@ -59,10 +59,10 @@ namespace RE
 		std::uint64_t unk0B0;  // 0B0
 		std::uint64_t unk0B8;  // 0B8
 		std::uint64_t unk0C0;  // 0C0
-		float unk0C8;          // 0C8
+		float         unk0C8;  // 0C8
 		std::uint32_t unk0CC;  // 0CC
 		std::uint64_t unk0D0;  // 0D0
-		float unk0D8;          // 0D8
+		float         unk0D8;  // 0D8
 		std::uint32_t unk0DC;  // 0DC
 		std::uint32_t unk0E0;  // 0E0
 		std::uint32_t unk0E4;  // 0E4
@@ -73,12 +73,12 @@ namespace RE
 		std::uint32_t unk100;  // 100
 		std::uint32_t unk104;  // 104
 		std::uint16_t unk108;  // 108
-		std::uint8_t unk10A;   // 10A
-		std::uint8_t unk10B;   // 10B
-		std::uint8_t unk10C;   // 10C
-		std::uint8_t unk10D;   // 10D
-		std::uint8_t unk10E;   // 10E
-		std::uint8_t pad10F;   // 10F
+		std::uint8_t  unk10A;  // 10A
+		std::uint8_t  unk10B;  // 10B
+		std::uint8_t  unk10C;  // 10C
+		std::uint8_t  unk10D;  // 10D
+		std::uint8_t  unk10E;  // 10E
+		std::uint8_t  pad10F;  // 10F
 	};
 	static_assert(sizeof(LockpickingMenu) == 0x110);
 }

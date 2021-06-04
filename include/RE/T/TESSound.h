@@ -23,12 +23,12 @@ namespace RE
 		virtual ~TESSound();  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void InitializeData() override;                      // 04
-		virtual bool Load(TESFile* a_mod) override;                  // 06
-		virtual void InitItemImpl() override;                        // 13
-		virtual bool SetFormEditorID(const char* a_str) override;    // 33
-		virtual void UnClone3D(TESObjectREFR* a_ref) override;       // 41
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;  // 4A - { return 0; }
+		virtual void        InitializeData() override;                    // 04
+		virtual bool        Load(TESFile* a_mod) override;                // 06
+		virtual void        InitItemImpl() override;                      // 13
+		virtual bool        SetFormEditorID(const char* a_str) override;  // 33
+		virtual void        UnClone3D(TESObjectREFR* a_ref) override;     // 41
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;       // 4A - { return 0; }
 
 		// members
 		BGSSoundDescriptorForm* descriptor;  // 30 - SDSC

@@ -26,22 +26,22 @@ namespace RE
 			kLeveled = 1 << 2
 		};
 
-		LOCK_LEVEL GetLockLevel(const TESObjectREFR* a_containerRef) const;
+		LOCK_LEVEL     GetLockLevel(const TESObjectREFR* a_containerRef) const;
 		constexpr bool IsLocked() const noexcept { return flags.all(Flag::kLocked); }
-		void SetLocked(bool a_locked);
+		void           SetLocked(bool a_locked);
 
 		// members
-		std::int8_t baseLevel;                       // 00
-		std::uint8_t pad01;                          // 01
-		std::uint16_t pad02;                         // 02
-		std::uint32_t pad04;                         // 04
-		TESKey* key;                                 // 08
-		stl::enumeration<Flag, std::uint8_t> flags;  // 10
-		std::uint8_t pad11;                          // 11
-		std::uint16_t pad12;                         // 12
-		std::uint32_t numTries;                      // 14
-		std::uint32_t unk18;                         // 18
-		std::uint32_t pad1C;                         // 1C
+		std::int8_t                          baseLevel;  // 00
+		std::uint8_t                         pad01;      // 01
+		std::uint16_t                        pad02;      // 02
+		std::uint32_t                        pad04;      // 04
+		TESKey*                              key;        // 08
+		stl::enumeration<Flag, std::uint8_t> flags;      // 10
+		std::uint8_t                         pad11;      // 11
+		std::uint16_t                        pad12;      // 12
+		std::uint32_t                        numTries;   // 14
+		std::uint32_t                        unk18;      // 18
+		std::uint32_t                        pad1C;      // 1C
 	};
 	static_assert(sizeof(REFR_LOCK) == 0x20);
 
@@ -54,8 +54,8 @@ namespace RE
 		virtual ~ExtraLock();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kLock; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kLock; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		REFR_LOCK* lock;  // 10

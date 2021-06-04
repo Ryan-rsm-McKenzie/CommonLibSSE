@@ -29,9 +29,9 @@ namespace RE
 
 		// members
 		BSTArray<BSIMusicType*> musicQueue;  // 10
-		BSIMusicType* current;               // 28
-		std::uint32_t unk30;                 // 30
-		std::uint32_t pad34;                 // 34
+		BSIMusicType*           current;     // 28
+		std::uint32_t           unk30;       // 30
+		std::uint32_t           pad34;       // 34
 	};
 	static_assert(sizeof(BSMusicManager) == 0x38);
 }

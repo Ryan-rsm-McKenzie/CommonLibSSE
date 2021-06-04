@@ -40,10 +40,10 @@ namespace RE
 		virtual void Unk_C3(void);  // C3 - { return 0; }
 
 		// members
-		ImpactResult impactResult;   // 1D8
-		bool waitingToInitialize3D;  // 1DC
-		std::uint8_t unk1DD;         // 1DD
-		std::uint16_t unk1DE;        // 1DE
+		ImpactResult  impactResult;           // 1D8
+		bool          waitingToInitialize3D;  // 1DC
+		std::uint8_t  unk1DD;                 // 1DD
+		std::uint16_t unk1DE;                 // 1DE
 	};
 	static_assert(sizeof(MissileProjectile) == 0x1E0);
 }

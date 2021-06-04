@@ -94,8 +94,8 @@ namespace SKSE
 	{
 		std::optional<std::filesystem::path> log_directory()
 		{
-			wchar_t* buffer{ nullptr };
-			const auto result = ::SHGetKnownFolderPath(::FOLDERID_Documents, ::KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
+			wchar_t*                                               buffer{ nullptr };
+			const auto                                             result = ::SHGetKnownFolderPath(::FOLDERID_Documents, ::KNOWN_FOLDER_FLAG::KF_FLAG_DEFAULT, nullptr, std::addressof(buffer));
 			std::unique_ptr<wchar_t[], decltype(&::CoTaskMemFree)> knownPath(buffer, ::CoTaskMemFree);
 			if (!knownPath || result != S_OK) {
 				error("failed to get known folder path"sv);

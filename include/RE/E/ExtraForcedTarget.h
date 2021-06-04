@@ -20,14 +20,14 @@ namespace RE
 		virtual ~ExtraForcedTarget() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kForcedTarget; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return target != a_rhs->target; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kForcedTarget; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return target != a_rhs->target; }
 
 		NiPointer<TESObjectREFR> GetTarget();
 
 		// members
 		ObjectRefHandle target;  // 10
-		std::uint32_t pad14;     // 14
+		std::uint32_t   pad14;   // 14
 	};
 	static_assert(sizeof(ExtraForcedTarget) == 0x18);
 }

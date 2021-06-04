@@ -23,8 +23,8 @@ namespace RE
 		virtual void Load(TESFile* a_mod) = 0;   // 0C
 
 		// members
-		TESCondition conditions;  // 10
-		std::uint64_t unk18;      // 18
+		TESCondition  conditions;  // 10
+		std::uint64_t unk18;       // 18
 	};
 	static_assert(sizeof(BGSMusicTrack) == 0x20);
 }

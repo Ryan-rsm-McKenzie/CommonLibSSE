@@ -17,7 +17,7 @@ namespace RE
 		std::uint32_t tag;                   // 00
 		std::uint32_t version;               // 04
 		std::uint32_t headerSize;            // 08
-		ArchiveFlag flags;                   // 0C
+		ArchiveFlag   flags;                 // 0C
 		std::uint32_t directories;           // 10
 		std::uint32_t files;                 // 14
 		std::uint32_t directoryNamesLength;  // 18

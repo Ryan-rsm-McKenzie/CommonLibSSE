@@ -17,8 +17,8 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kNorthRotation; }
 
 		// members
-		float northRot;       // 10
-		std::uint32_t pad14;  // 14
+		float         northRot;  // 10
+		std::uint32_t pad14;     // 14
 	};
 	static_assert(sizeof(ExtraNorthRotation) == 0x18);
 }

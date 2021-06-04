@@ -12,8 +12,8 @@ namespace RE
 
 	struct BGSRefAliasInstanceData
 	{
-		TESQuest* quest;                                 // 00
-		const BGSBaseAlias* alias;                       // 08
+		TESQuest*                    quest;              // 00
+		const BGSBaseAlias*          alias;              // 08
 		const BSTArray<TESPackage*>* instancedPackages;  // 10
 	};
 	static_assert(sizeof(BGSRefAliasInstanceData) == 0x18);
@@ -32,7 +32,7 @@ namespace RE
 
 		// members
 		BSTArray<BGSRefAliasInstanceData*> aliases;  // 10
-		mutable BSReadWriteLock lock;                // 28
+		mutable BSReadWriteLock            lock;     // 28
 	};
 	static_assert(sizeof(ExtraAliasInstanceArray) == 0x30);
 }

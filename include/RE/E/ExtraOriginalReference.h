@@ -15,12 +15,12 @@ namespace RE
 		virtual ~ExtraOriginalReference();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kOriginalReference; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return reference != a_rhs->reference; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kOriginalReference; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return reference != a_rhs->reference; }
 
 		// members
 		ObjectRefHandle reference;  // 10
-		std::uint32_t pad14;        // 14
+		std::uint32_t   pad14;      // 14
 	};
 	static_assert(sizeof(ExtraOriginalReference) == 0x18);
 }

@@ -14,11 +14,11 @@ namespace RE
 		virtual ~ExtraTimeLeft();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kTimeLeft; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return time != a_rhs->time; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kTimeLeft; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return time != a_rhs->time; }
 
 		// members
-		float time;           // 10
+		float         time;   // 10
 		std::uint32_t pad14;  // 14
 	};
 	static_assert(sizeof(ExtraTimeLeft) == 0x18);

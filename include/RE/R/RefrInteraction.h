@@ -29,12 +29,12 @@ namespace RE
 		virtual void Unk_0F(void) = 0;  // 0F
 
 		// members
-		ActorHandle actor;           // 10
+		ActorHandle     actor;       // 10
 		ObjectRefHandle targetRefr;  // 14
-		bool synced;                 // 18
-		std::uint8_t pad19;          // 19
-		std::uint16_t pad1A;         // 1A
-		std::uint32_t pad1C;         // 1C
+		bool            synced;      // 18
+		std::uint8_t    pad19;       // 19
+		std::uint16_t   pad1A;       // 1A
+		std::uint32_t   pad1C;       // 1C
 	};
 	static_assert(sizeof(RefrInteraction) == 0x20);
 }

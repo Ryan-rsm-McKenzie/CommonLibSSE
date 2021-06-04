@@ -12,10 +12,10 @@ namespace RE
 
 		union Data
 		{
-			bool b;
+			bool          b;
 			std::uint32_t i;
-			float f;
-			void* p;
+			float         f;
+			void*         p;
 		};
 		static_assert(sizeof(Data) == 0x8);
 

@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraCellSkyRegion();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kCellSkyRegion; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return skyRegion != a_rhs->skyRegion; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kCellSkyRegion; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return skyRegion != a_rhs->skyRegion; }
 
 		// members
 		TESRegion* skyRegion;  // 10

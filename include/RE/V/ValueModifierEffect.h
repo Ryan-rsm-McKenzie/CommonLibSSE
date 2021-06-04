@@ -35,8 +35,8 @@ namespace RE
 		virtual void Unk_20(void);  // 20
 
 		// members
-		ActorValue actorValue;  // 90
-		std::uint32_t pad94;    // 94
+		ActorValue    actorValue;  // 90
+		std::uint32_t pad94;       // 94
 	};
 	static_assert(sizeof(ValueModifierEffect) == 0x98);
 }

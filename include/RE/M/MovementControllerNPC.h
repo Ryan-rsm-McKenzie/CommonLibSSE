@@ -53,8 +53,8 @@ namespace RE
 		std::uint64_t unk1B0;  // 1B0
 		std::uint64_t unk1B8;  // 1B8
 		std::uint32_t unk1C0;  // 1C0
-		std::uint8_t unk1C4;   // 1C4
-		std::uint8_t unk1C5;   // 1C5
+		std::uint8_t  unk1C4;  // 1C4
+		std::uint8_t  unk1C5;  // 1C5
 		std::uint16_t unk1C6;  // 1C6
 		std::uint64_t unk1C8;  // 1C8
 	};

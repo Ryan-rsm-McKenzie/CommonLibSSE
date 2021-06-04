@@ -24,7 +24,7 @@ namespace RE
 		{}
 
 		constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
-		constexpr void SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
+		constexpr void               SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() noexcept { actionFlags.set(ActionControlFlags::kVerbose); }
 		constexpr void UnsetVerboseLogging() noexcept { actionFlags.reset(ActionControlFlags::kVerbose); }
@@ -46,7 +46,7 @@ namespace RE
 
 		// members
 		stl::enumeration<ActionControlFlags, std::uint32_t> actionFlags;  // 18
-		std::uint32_t pad1C;                                              // 1C
+		std::uint32_t                                       pad1C;        // 1C
 	};
 	static_assert(sizeof(GFxActionControl) == 0x20);
 }

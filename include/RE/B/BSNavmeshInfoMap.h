@@ -27,11 +27,11 @@ namespace RE
 		virtual ~BSNavmeshInfoMap();  // 00
 
 		// add
-		virtual BSNavmeshInfo* GetNavMeshInfoFixID(std::uint32_t a_id) = 0;                                            // 01
-		virtual BSNavmeshInfo* GetNavmeshInfo(std::uint32_t a_id) = 0;                                                 // 02
-		virtual void GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) = 0;                                       // 03
-		virtual void BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) = 0;  // 04
-		virtual void ForEach(IVisitor* a_visitor) = 0;                                                                 // 05
+		virtual BSNavmeshInfo* GetNavMeshInfoFixID(std::uint32_t a_id) = 0;                                                      // 01
+		virtual BSNavmeshInfo* GetNavmeshInfo(std::uint32_t a_id) = 0;                                                           // 02
+		virtual void           GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) = 0;                                       // 03
+		virtual void           BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) = 0;  // 04
+		virtual void           ForEach(IVisitor* a_visitor) = 0;                                                                 // 05
 	};
 	static_assert(sizeof(BSNavmeshInfoMap) == 0x8);
 }

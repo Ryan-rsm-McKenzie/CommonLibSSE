@@ -37,7 +37,7 @@ namespace RE
 		std::uint32_t StreamBase::DecRef()
 		{
 			stl::atomic_ref myFlags{ flags };
-			std::uint32_t expected;
+			std::uint32_t   expected;
 			do {
 				expected = myFlags;
 			} while (!myFlags.compare_exchange_weak(expected, expected - kRefCountBeg));
@@ -47,7 +47,7 @@ namespace RE
 		std::uint32_t StreamBase::IncRef()
 		{
 			stl::atomic_ref myFlags{ flags };
-			std::uint32_t expected;
+			std::uint32_t   expected;
 			do {
 				expected = myFlags;
 			} while (!myFlags.compare_exchange_weak(expected, expected + kRefCountBeg));

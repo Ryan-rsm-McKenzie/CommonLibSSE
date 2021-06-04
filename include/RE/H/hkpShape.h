@@ -59,18 +59,18 @@ namespace RE
 		{
 		public:
 			// members
-			GetSupportingVertexFunc* getSupportingVertexFunc;            // 00
+			GetSupportingVertexFunc*        getSupportingVertexFunc;     // 00
 			ConvertVertexIdsToVerticesFunc* convertVertexIdsToVertices;  // 08
-			WeldContactPointFunc* weldContactPointFunc;                  // 10
-			GetCentreFunc* getCentreFunc;                                // 18
-			GetNumCollisionSpheresFunc* getNumCollisionSpheresFunc;      // 20
-			GetCollisionSpheresFunc* getCollisionSpheresFunc;            // 28
-			GetAabbFunc* getAabbFunc;                                    // 30
-			CastRayFunc* castRay;                                        // 38
-			CastRayWithCollectorFunc* castRayWithCollector;              // 40
-			CastRayBundleFunc* castRayBundle;                            // 48
-			GetChildShapeFunc* getChildShapeFunc;                        // 50
-			GetCollisionFilterInfoFunc* getCollisionFilterInfoFunc;      // 58
+			WeldContactPointFunc*           weldContactPointFunc;        // 10
+			GetCentreFunc*                  getCentreFunc;               // 18
+			GetNumCollisionSpheresFunc*     getNumCollisionSpheresFunc;  // 20
+			GetCollisionSpheresFunc*        getCollisionSpheresFunc;     // 28
+			GetAabbFunc*                    getAabbFunc;                 // 30
+			CastRayFunc*                    castRay;                     // 38
+			CastRayWithCollectorFunc*       castRayWithCollector;        // 40
+			CastRayBundleFunc*              castRayBundle;               // 48
+			GetChildShapeFunc*              getChildShapeFunc;           // 50
+			GetCollisionFilterInfoFunc*     getCollisionFilterInfoFunc;  // 58
 		};
 		static_assert(sizeof(ShapeFuncs) == 0x60);
 
@@ -80,20 +80,20 @@ namespace RE
 			// members
 			alignas(0x40) GetSupportingVertexFunc* getSupportingVertexFunc;  // 00
 			ConvertVertexIdsToVerticesFunc* convertVertexIdsToVertices;      // 08
-			WeldContactPointFunc* weldContactPointFunc;                      // 10
-			GetCentreFunc* getCentreFunc;                                    // 18
-			GetNumCollisionSpheresFunc* getNumCollisionSpheresFunc;          // 20
-			GetCollisionSpheresFunc* getCollisionSpheresFunc;                // 28
-			GetAabbFunc* getAabbFunc;                                        // 30
-			CastRayFunc* castRay;                                            // 38
-			CastRayWithCollectorFunc* castRayWithCollector;                  // 40
-			CastRayBundleFunc* castRayBundle;                                // 48
-			GetChildShapeFunc* getChildShapeFunc;                            // 50
-			GetCollisionFilterInfoFunc* getCollisionFilterInfoFunc;          // 58
-			std::uint64_t pad60;                                             // 60
-			std::uint64_t pad68;                                             // 68
-			std::uint64_t pad70;                                             // 70
-			std::uint64_t pad78;                                             // 78
+			WeldContactPointFunc*           weldContactPointFunc;            // 10
+			GetCentreFunc*                  getCentreFunc;                   // 18
+			GetNumCollisionSpheresFunc*     getNumCollisionSpheresFunc;      // 20
+			GetCollisionSpheresFunc*        getCollisionSpheresFunc;         // 28
+			GetAabbFunc*                    getAabbFunc;                     // 30
+			CastRayFunc*                    castRay;                         // 38
+			CastRayWithCollectorFunc*       castRayWithCollector;            // 40
+			CastRayBundleFunc*              castRayBundle;                   // 48
+			GetChildShapeFunc*              getChildShapeFunc;               // 50
+			GetCollisionFilterInfoFunc*     getCollisionFilterInfoFunc;      // 58
+			std::uint64_t                   pad60;                           // 60
+			std::uint64_t                   pad68;                           // 68
+			std::uint64_t                   pad70;                           // 70
+			std::uint64_t                   pad78;                           // 78
 		};
 		static_assert(sizeof(ShapeFuncs2) == 0x80);
 
@@ -102,18 +102,18 @@ namespace RE
 		virtual ~hkpShape();  // 00
 
 		// add
-		virtual float GetMaximumProjection(const hkVector4& a_direction) const;                                                                                                    // 03
-		virtual const hkpShapeContainer* GetContainer() const;                                                                                                                     // 04 - { return 0; }
-		virtual bool IsConvex() const;                                                                                                                                             // 05 - { return false; }
-		virtual std::int32_t CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const;                                                           // 06 - { return -1; }
-		virtual void GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const = 0;                                                                   // 07
-		virtual bool CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const = 0;                                                                  // 08
-		virtual void CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const = 0;                          // 09
-		virtual hkVector4Comparison CastRayBundleImpl(const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask) const;  // 0A
+		virtual float                    GetMaximumProjection(const hkVector4& a_direction) const;                                                                                      // 03
+		virtual const hkpShapeContainer* GetContainer() const;                                                                                                                          // 04 - { return 0; }
+		virtual bool                     IsConvex() const;                                                                                                                              // 05 - { return false; }
+		virtual std::int32_t             CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const;                                                    // 06 - { return -1; }
+		virtual void                     GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const = 0;                                                    // 07
+		virtual bool                     CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const = 0;                                                   // 08
+		virtual void                     CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const = 0;           // 09
+		virtual hkVector4Comparison      CastRayBundleImpl(const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask) const;  // 0A
 
 		// members
 		std::uint64_t userData;  // 10
-		hkpShapeType type;       // 18
+		hkpShapeType  type;      // 18
 		std::uint32_t pad1C;     // 1C
 	};
 	static_assert(sizeof(hkpShape) == 0x20);

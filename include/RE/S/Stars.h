@@ -20,8 +20,8 @@ namespace RE
 
 		// members
 		NiPointer<NiNode> stars;  // 10
-		float alpha;              // 18
-		std::uint32_t pad1C;      // 1C
+		float             alpha;  // 18
+		std::uint32_t     pad1C;  // 1C
 	};
 	static_assert(sizeof(Stars) == 0x20);
 }

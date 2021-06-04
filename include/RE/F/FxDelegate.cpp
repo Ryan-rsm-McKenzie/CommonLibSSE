@@ -26,7 +26,7 @@ namespace RE
 	void FxDelegate::Invoke(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
 	{
 		assert(a_movieView);
-		GFxValue* values = nullptr;
+		GFxValue*           values = nullptr;
 		const std::uint32_t numValues = a_args.GetValues(&values);
 		if (values) {
 			values[0] = a_methodName;
@@ -37,7 +37,7 @@ namespace RE
 	void FxDelegate::Invoke2(GFxMovieView* a_movieView, const char* a_methodName, FxResponseArgsBase& a_args)
 	{
 		assert(a_movieView);
-		GFxValue* values = nullptr;
+		GFxValue*           values = nullptr;
 		const std::uint32_t numValues = a_args.GetValues(&values);
 		if (values) {
 			a_movieView->Invoke(a_methodName, nullptr, values + 1, numValues - 1);

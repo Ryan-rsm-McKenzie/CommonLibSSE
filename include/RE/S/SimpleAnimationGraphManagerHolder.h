@@ -21,8 +21,8 @@ namespace RE
 		virtual void Unk_13(void);  // 13 - { return; }
 
 		// members
-		BSTSmartPointer<BSAnimationGraphManager> animationGraphManager;  // 08
-		NiPointer<SimpleAnimationGraphManagerLoadingTask> loadingTask;   // 10
+		BSTSmartPointer<BSAnimationGraphManager>          animationGraphManager;  // 08
+		NiPointer<SimpleAnimationGraphManagerLoadingTask> loadingTask;            // 10
 	};
 	static_assert(sizeof(SimpleAnimationGraphManagerHolder) == 0x18);
 }

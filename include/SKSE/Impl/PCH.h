@@ -86,20 +86,20 @@ namespace SKSE
 			[[nodiscard]] static constexpr source_location current(
 				std::uint_least32_t a_line = __builtin_LINE(),
 				std::uint_least32_t a_column = __builtin_COLUMN(),
-				const char* a_fileName = __builtin_FILE(),
-				const char* a_functionName = __builtin_FUNCTION()) noexcept { return { a_line, a_column, a_fileName, a_functionName }; }
+				const char*         a_fileName = __builtin_FILE(),
+				const char*         a_functionName = __builtin_FUNCTION()) noexcept { return { a_line, a_column, a_fileName, a_functionName }; }
 
 			[[nodiscard]] constexpr std::uint_least32_t line() const noexcept { return _line; }
 			[[nodiscard]] constexpr std::uint_least32_t column() const noexcept { return _column; }
-			[[nodiscard]] constexpr const char* file_name() const noexcept { return _fileName; }
-			[[nodiscard]] constexpr const char* function_name() const noexcept { return _functionName; }
+			[[nodiscard]] constexpr const char*         file_name() const noexcept { return _fileName; }
+			[[nodiscard]] constexpr const char*         function_name() const noexcept { return _functionName; }
 
 		protected:
 			constexpr source_location(
 				std::uint_least32_t a_line,
 				std::uint_least32_t a_column,
-				const char* a_fileName,
-				const char* a_functionName) noexcept :
+				const char*         a_fileName,
+				const char*         a_functionName) noexcept :
 				_line(a_line),
 				_column(a_column),
 				_fileName(a_fileName),
@@ -109,8 +109,8 @@ namespace SKSE
 		private:
 			std::uint_least32_t _line{ 0 };
 			std::uint_least32_t _column{ 0 };
-			const char* _fileName{ "" };
-			const char* _functionName{ "" };
+			const char*         _fileName{ "" };
+			const char*         _functionName{ "" };
 		};
 
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg, source_location a_loc = source_location::current())
@@ -122,12 +122,12 @@ namespace SKSE
 				};
 
 				const std::filesystem::path p = a_loc.file_name();
-				const auto filename = p.generic_string();
-				std::string_view fileview = filename;
+				const auto                  filename = p.generic_string();
+				std::string_view            fileview = filename;
 
 				constexpr auto npos = std::string::npos;
-				std::size_t pos = npos;
-				std::size_t off = 0;
+				std::size_t    pos = npos;
+				std::size_t    off = 0;
 				for (const auto& dir : directories) {
 					pos = fileview.find(dir);
 					if (pos != npos) {
@@ -144,7 +144,7 @@ namespace SKSE
 			}();
 
 			const auto caption = []() -> std::string {
-				const auto maxPath = WinAPI::GetMaxPath();
+				const auto        maxPath = WinAPI::GetMaxPath();
 				std::vector<char> buf;
 				buf.reserve(maxPath);
 				buf.resize(maxPath / 2);
@@ -288,8 +288,8 @@ namespace SKSE
 
 			[[nodiscard]] explicit constexpr operator bool() const noexcept { return _impl != static_cast<underlying_type>(0); }
 
-			[[nodiscard]] constexpr enum_type operator*() const noexcept { return get(); }
-			[[nodiscard]] constexpr enum_type get() const noexcept { return static_cast<enum_type>(_impl); }
+			[[nodiscard]] constexpr enum_type       operator*() const noexcept { return get(); }
+			[[nodiscard]] constexpr enum_type       get() const noexcept { return static_cast<enum_type>(_impl); }
 			[[nodiscard]] constexpr underlying_type underlying() const noexcept { return _impl; }
 
 			template <class... Args>
@@ -887,7 +887,7 @@ namespace SKSE
 				union
 				{
 					std::remove_cv_t<std::remove_reference_t<From>> from;
-					std::remove_cv_t<std::remove_reference_t<To>> to;
+					std::remove_cv_t<std::remove_reference_t<To>>   to;
 				};
 
 				from = std::forward<From>(a_from);
@@ -898,7 +898,7 @@ namespace SKSE
 		template <class T>
 		void memzero(volatile T* a_ptr, std::size_t a_size = sizeof(T))
 		{
-			const auto begin = reinterpret_cast<volatile char*>(a_ptr);
+			const auto     begin = reinterpret_cast<volatile char*>(a_ptr);
 			constexpr char val{ 0 };
 			std::fill_n(begin, a_size, val);
 		}
@@ -917,7 +917,7 @@ namespace SKSE
 			constexpr auto ARGC = sizeof...(Args);
 
 			std::bitset<ARGC> bits;
-			std::size_t i = 0;
+			std::size_t       i = 0;
 			((bits[i++] = a_args), ...);
 
 			if constexpr (ARGC <= std::numeric_limits<unsigned long>::digits) {

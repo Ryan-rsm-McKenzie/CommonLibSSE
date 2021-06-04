@@ -20,8 +20,8 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kModelSwap; }
 
 		// members
-		TESModel* modelSwap;     // 10
-		TESForm* modelSwapForm;  // 18
+		TESModel* modelSwap;      // 10
+		TESForm*  modelSwapForm;  // 18
 	};
 	static_assert(sizeof(ExtraModelSwap) == 0x20);
 }

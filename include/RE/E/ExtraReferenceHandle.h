@@ -20,14 +20,14 @@ namespace RE
 		virtual ~ExtraReferenceHandle() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kReferenceHandle; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return containerRef != a_rhs->containerRef; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kReferenceHandle; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return containerRef != a_rhs->containerRef; }
 
 		NiPointer<TESObjectREFR> GetOriginalReference();
 
 		// members
 		ObjectRefHandle containerRef;  // 10
-		std::uint32_t pad14;           // 14
+		std::uint32_t   pad14;         // 14
 	};
 	static_assert(sizeof(ExtraReferenceHandle) == 0x18);
 }

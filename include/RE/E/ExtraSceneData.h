@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraSceneData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kSceneData; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return unk10 != a_rhs->unk10; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kSceneData; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return unk10 != a_rhs->unk10; }
 
 		// members
 		BGSScene* scene;  // 10

@@ -42,11 +42,11 @@ namespace RE
 		{
 		public:
 			// members
-			BSFixedString typeName;  // 00 - MNAM
-			MaxSpeeds defaultData;   // 08 - SPED
-			float directional;       // 34 - INAM~
-			float movementSpeed;     // 38
-			float rotationSpeed;     // 3C - ~INAM
+			BSFixedString typeName;       // 00 - MNAM
+			MaxSpeeds     defaultData;    // 08 - SPED
+			float         directional;    // 34 - INAM~
+			float         movementSpeed;  // 38
+			float         rotationSpeed;  // 3C - ~INAM
 		};
 		static_assert(sizeof(TypeData) == 0x40);
 	}

@@ -32,23 +32,23 @@ namespace RE
 
 		struct CharBreakInfo
 		{
-			wchar_t ch;                                            // 0
+			wchar_t                                        ch;     // 0
 			stl::enumeration<BreakInfoFlags, std::uint8_t> flags;  // 2
-			std::uint8_t pad3;                                     // 3
+			std::uint8_t                                   pad3;   // 3
 		};
 		static_assert(sizeof(CharBreakInfo) == 0x4);
 
-		static bool FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
-		static bool IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool IsNonStartingChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool IsNonTerminatingChar(WordWrappingType a_wwMode, wchar_t a_ch);
-		static bool IsWhiteSpaceChar(wchar_t a_ch);
-		static bool IsLineFeedChar(wchar_t a_ch);
-		static bool IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index);
-		static bool IsLineBreakOpportunityAt(WordWrappingType a_wwMode, wchar_t a_prevChar, wchar_t a_curChar);
+		static bool  FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags);
+		static bool  IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool  IsNonStartingChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool  IsNonTerminatingChar(WordWrappingType a_wwMode, wchar_t a_ch);
+		static bool  IsWhiteSpaceChar(wchar_t a_ch);
+		static bool  IsLineFeedChar(wchar_t a_ch);
+		static bool  IsLineBreakOpportunityAt(WordWrappingType a_wwMode, const wchar_t* a_wstr, UPInt a_index);
+		static bool  IsLineBreakOpportunityAt(WordWrappingType a_wwMode, wchar_t a_prevChar, wchar_t a_curChar);
 		static UPInt FindNextNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos, UPInt a_maxPos);
 		static UPInt FindPrevNonWhiteSpace(const wchar_t* a_wstr, UPInt a_pos);
-		static bool IsVowel(wchar_t a_ch);
+		static bool  IsVowel(wchar_t a_ch);
 		static UPInt FindWordWrapPos(WordWrappingType a_wwMode, UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen);
 
 		static inline CharBreakInfo charBreakInfoArray[] = {

@@ -23,12 +23,12 @@ namespace RE
 		virtual ~ExtraLevCreaModifier();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kLevCreaModifier; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return modifier != a_rhs->modifier; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kLevCreaModifier; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return modifier != a_rhs->modifier; }
 
 		// members
 		stl::enumeration<LEV_CREA_MODIFIER, std::uint32_t> modifier;  // 10
-		std::uint32_t pad14;                                          // 14
+		std::uint32_t                                      pad14;     // 14
 	};
 	static_assert(sizeof(ExtraLevCreaModifier) == 0x18);
 }

@@ -9,7 +9,7 @@ namespace RE
 {
 	union SETTING_VALUE
 	{
-		float f;
+		float         f;
 		std::uint32_t i;
 	};
 	static_assert(sizeof(SETTING_VALUE) == 0x4);
@@ -61,8 +61,8 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;  // 06
 		virtual void InitItemImpl() override;        // 13
 
-		BSTArray<SETTING_VALUE> data;  // 20 - DATA - size == DataID::kTotal
-		TESTexture particleTexture;    // 38 - ICON
+		BSTArray<SETTING_VALUE> data;             // 20 - DATA - size == DataID::kTotal
+		TESTexture              particleTexture;  // 38 - ICON
 	};
 	static_assert(sizeof(BGSShaderParticleGeometryData) == 0x48);
 }

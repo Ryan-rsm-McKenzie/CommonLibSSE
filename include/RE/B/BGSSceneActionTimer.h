@@ -24,9 +24,9 @@ namespace RE
 		virtual void Unk_13(void) override;                                        // 13
 
 		// members
-		float timerSeconds;   // 20 - SNAM
-		std::uint32_t unk24;  // 24
-		std::uint64_t unk28;  // 28
+		float         timerSeconds;  // 20 - SNAM
+		std::uint32_t unk24;         // 24
+		std::uint64_t unk28;         // 28
 	};
 	static_assert(sizeof(BGSSceneActionTimer) == 0x30);
 }

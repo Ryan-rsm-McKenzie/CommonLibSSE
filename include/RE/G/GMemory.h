@@ -7,22 +7,22 @@ namespace RE
 	class GMemory
 	{
 	public:
-		static void SetGlobalHeap(GMemoryHeap* a_heap);
+		static void         SetGlobalHeap(GMemoryHeap* a_heap);
 		static GMemoryHeap* GetGlobalHeap();
-		static void CreateArena(UPInt a_arena, GSysAllocPaged* a_sysAlloc);
-		static void DestroyArena(UPInt a_arena);
-		static bool ArenaIsEmpty(UPInt a_arena);
-		static void* Alloc(UPInt a_count);
-		static void* Alloc(UPInt a_count, UPInt a_al);
-		static void* AllocAutoHeap(const void* a_ptr, UPInt a_count);
-		static void* AllocAutoHeap(const void* a_ptr, UPInt a_count, UPInt a_al);
-		static void* AllocInHeap(GMemoryHeap* a_heap, UPInt a_count);
-		static void* AllocInHeap(GMemoryHeap* a_heap, UPInt a_count, UPInt a_al);
-		static void* Realloc(void* a_ptr, UPInt a_newCount);
-		static void Free(void* a_ptr);
-		static void FreeInHeap(GMemoryHeap* a_heap, void* a_ptr);
+		static void         CreateArena(UPInt a_arena, GSysAllocPaged* a_sysAlloc);
+		static void         DestroyArena(UPInt a_arena);
+		static bool         ArenaIsEmpty(UPInt a_arena);
+		static void*        Alloc(UPInt a_count);
+		static void*        Alloc(UPInt a_count, UPInt a_al);
+		static void*        AllocAutoHeap(const void* a_ptr, UPInt a_count);
+		static void*        AllocAutoHeap(const void* a_ptr, UPInt a_count, UPInt a_al);
+		static void*        AllocInHeap(GMemoryHeap* a_heap, UPInt a_count);
+		static void*        AllocInHeap(GMemoryHeap* a_heap, UPInt a_count, UPInt a_al);
+		static void*        Realloc(void* a_ptr, UPInt a_newCount);
+		static void         Free(void* a_ptr);
+		static void         FreeInHeap(GMemoryHeap* a_heap, void* a_ptr);
 		static GMemoryHeap* GetHeapByAddress(const void* a_ptr);
-		static bool DetectMemoryLeaks();
+		static bool         DetectMemoryLeaks();
 
 	protected:
 		static GMemoryHeap*& GetGlobalHeapRef();
@@ -49,11 +49,11 @@ namespace RE
 	void* operator new[]([[maybe_unused]] std::size_t a_count, void* a_plcmnt) { return a_plcmnt; }             \
 	void* operator new(std::size_t a_count, RE::GMemoryHeap* a_heap) { return GHEAP_ALLOC(a_heap, a_count); }   \
 	void* operator new[](std::size_t a_count, RE::GMemoryHeap* a_heap) { return GHEAP_ALLOC(a_heap, a_count); } \
-	void operator delete(void* a_ptr) { GFREE(a_ptr); }                                                         \
-	void operator delete[](void* a_ptr) { GFREE(a_ptr); }                                                       \
-	void operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) {}                      \
-	void operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) {}                    \
-	void operator delete(void* a_ptr, RE::GMemoryHeap* a_heap) { GHEAP_FREE(a_heap, a_ptr); }
+	void  operator delete(void* a_ptr) { GFREE(a_ptr); }                                                        \
+	void  operator delete[](void* a_ptr) { GFREE(a_ptr); }                                                      \
+	void  operator delete([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) {}                     \
+	void  operator delete[]([[maybe_unused]] void* a_ptr, [[maybe_unused]] void* a_plcmnt) {}                   \
+	void  operator delete(void* a_ptr, RE::GMemoryHeap* a_heap) { GHEAP_FREE(a_heap, a_ptr); }
 
 #define GFC_MEMORY_CHECK_DELETE_NONE(a_className, a_ptr)
 #define GFC_MEMORY_REDEFINE_NEW(a_className, a_statType) GFC_MEMORY_REDEFINE_NEW_IMPL(a_className, GFC_MEMORY_CHECK_DELETE_NONE, a_statType)

@@ -21,7 +21,7 @@ namespace RE
 
 		// members
 		BSTArray<TESForm*> ownerCells;  // 10
-		std::uint64_t unk28;            // 28
+		std::uint64_t      unk28;       // 28
 	};
 	static_assert(sizeof(ExtraLargeRefOwnerCells) == 0x30);
 }

@@ -11,12 +11,12 @@ namespace RE
 	{
 		union Nav
 		{
-			FormID navMeshID;
+			FormID   navMeshID;
 			NavMesh* navMesh;
 		};
 		static_assert(sizeof(Nav) == 0x8);
 
-		Nav nav;                 // 00
+		Nav           nav;       // 00
 		std::uint16_t triIndex;  // 08
 		std::uint16_t pad0A;     // 0A
 		std::uint32_t pad0C;     // 0C

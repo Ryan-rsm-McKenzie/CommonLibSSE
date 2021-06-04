@@ -42,13 +42,13 @@ namespace RE
 		static_assert(sizeof(SamplingRepartition) == 0x4);
 
 		// members
-		float intensity;                          // 00 - CNAM
-		CustomColor customColor;                  // 04
-		float red;                                // 08 - ENAM
-		float green;                              // 0C - FNAM
-		float blue;                               // 10 - GNAM
-		Density density;                          // 14
-		PhaseFunction phaseFunction;              // 24
+		float               intensity;            // 00 - CNAM
+		CustomColor         customColor;          // 04
+		float               red;                  // 08 - ENAM
+		float               green;                // 0C - FNAM
+		float               blue;                 // 10 - GNAM
+		Density             density;              // 14
+		PhaseFunction       phaseFunction;        // 24
 		SamplingRepartition samplingRepartition;  // 2C
 	};
 	static_assert(sizeof(BSVolumetricLightingRenderData) == 0x30);

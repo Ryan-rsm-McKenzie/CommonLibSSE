@@ -17,8 +17,8 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kRefractionProperty; }
 
 		// members
-		float refractionPower;  // 10
-		std::uint32_t unk14;    // 14
+		float         refractionPower;  // 10
+		std::uint32_t unk14;            // 14
 	};
 	static_assert(sizeof(ExtraRefractionProperty) == 0x18);
 }

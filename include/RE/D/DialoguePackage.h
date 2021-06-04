@@ -22,12 +22,12 @@ namespace RE
 		virtual bool IsPackageOwner(Actor* a_actor) override;          // 3F
 
 		// members
-		std::uint32_t unk0E0;    // 0E0
+		std::uint32_t   unk0E0;  // 0E0
 		ObjectRefHandle unk0E4;  // 0E4
-		ActorHandle unk0E8;      // 0E8
-		ActorHandle unk0EC;      // 0EC
-		std::uint64_t unk0F0;    // 0F0
-		std::uint64_t unk0F8;    // 0F8
+		ActorHandle     unk0E8;  // 0E8
+		ActorHandle     unk0EC;  // 0EC
+		std::uint64_t   unk0F0;  // 0F0
+		std::uint64_t   unk0F8;  // 0F8
 	};
 	static_assert(sizeof(DialoguePackage) == 0x100);
 }

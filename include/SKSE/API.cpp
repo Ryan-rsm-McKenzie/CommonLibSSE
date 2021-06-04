@@ -15,30 +15,30 @@ namespace SKSE
 				return singleton;
 			}
 
-			PluginHandle pluginHandle{ static_cast<PluginHandle>(-1) };
+			PluginHandle  pluginHandle{ static_cast<PluginHandle>(-1) };
 			std::uint32_t releaseIndex{ 0 };
 
-			ScaleformInterface* scaleformInterface{ nullptr };
-			PapyrusInterface* papyrusInterface{ nullptr };
+			ScaleformInterface*     scaleformInterface{ nullptr };
+			PapyrusInterface*       papyrusInterface{ nullptr };
 			SerializationInterface* serializationInterface{ nullptr };
-			TaskInterface* taskInterface{ nullptr };
-			TrampolineInterface* trampolineInterface{ nullptr };
+			TaskInterface*          taskInterface{ nullptr };
+			TrampolineInterface*    trampolineInterface{ nullptr };
 
-			MessagingInterface* messagingInterface{ nullptr };
-			RE::BSTEventSource<ModCallbackEvent>* modCallbackEventSource{ nullptr };
-			RE::BSTEventSource<CameraEvent>* cameraEventSource{ nullptr };
+			MessagingInterface*                    messagingInterface{ nullptr };
+			RE::BSTEventSource<ModCallbackEvent>*  modCallbackEventSource{ nullptr };
+			RE::BSTEventSource<CameraEvent>*       cameraEventSource{ nullptr };
 			RE::BSTEventSource<CrosshairRefEvent>* crosshairRefEventSource{ nullptr };
-			RE::BSTEventSource<ActionEvent>* actionEventSource{ nullptr };
+			RE::BSTEventSource<ActionEvent>*       actionEventSource{ nullptr };
 			RE::BSTEventSource<NiNodeUpdateEvent>* niNodeUpdateEventSource{ nullptr };
 
-			ObjectInterface* objectInterface{ nullptr };
-			SKSEDelayFunctorManager* delayFunctorManager{ nullptr };
-			SKSEObjectRegistry* objectRegistry{ nullptr };
+			ObjectInterface*             objectInterface{ nullptr };
+			SKSEDelayFunctorManager*     delayFunctorManager{ nullptr };
+			SKSEObjectRegistry*          objectRegistry{ nullptr };
 			SKSEPersistentObjectStorage* persistentObjectStorage{ nullptr };
 
-			std::mutex apiLock;
+			std::mutex                         apiLock;
 			std::vector<std::function<void()>> apiInitRegs;
-			bool apiInit{ false };
+			bool                               apiInit{ false };
 
 			template <class T>
 			RE::BSTEventSource<T>* GetEventDispatcher(MessagingInterface::Dispatcher a_id) const
@@ -78,7 +78,7 @@ namespace SKSE
 		(void)REL::Module::get();
 		(void)REL::IDDatabase::get();
 
-		auto& storage = detail::APIStorage::get();
+		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;
 
 		const std::scoped_lock l(storage.apiLock);
@@ -122,7 +122,7 @@ namespace SKSE
 	void RegisterForAPIInitEvent(std::function<void()> a_fn)
 	{
 		{
-			auto& storage = detail::APIStorage::get();
+			auto&                  storage = detail::APIStorage::get();
 			const std::scoped_lock l(storage.apiLock);
 			if (!storage.apiInit) {
 				storage.apiInitRegs.push_back(a_fn);

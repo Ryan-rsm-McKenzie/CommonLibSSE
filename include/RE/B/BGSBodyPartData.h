@@ -28,36 +28,36 @@ namespace RE
 		};
 
 		// members
-		float damageMult;                                                 // 00
-		stl::enumeration<Flag, std::uint8_t> flags;                       // 04
-		stl::enumeration<BGSBodyPartDefs::LIMB_ENUM, std::uint8_t> type;  // 05
-		std::int8_t healthPercent;                                        // 06
-		stl::enumeration<ActorValue, std::uint8_t> actorValue;            // 07
-		std::int8_t toHitChance;                                          // 08
-		std::int8_t explosionChance;                                      // 09
-		std::int8_t explosionGenericDebrisCount;                          // 0A
-		std::uint8_t pad0B;                                               // 0B
-		std::uint32_t pad0C;                                              // 0C
-		BGSDebris* explosionGenericDebris;                                // 10
-		BGSExplosion* explosion;                                          // 18
-		float trackingMaxAngle;                                           // 20
-		float explosionGenericDebrisScale;                                // 24
-		std::int8_t dismemberGenericDebrisCount;                          // 28
-		std::int8_t unk29;                                                // 29
-		std::uint16_t unk2A;                                              // 2A
-		std::uint32_t unk2C;                                              // 2C
-		BGSDebris* dismemberGenericDebris;                                // 30
-		BGSExplosion* dismemberExplosion;                                 // 38
-		float dismemberGenericDebrisScale;                                // 40
-		NiPoint3 goreTranslate;                                           // 44
-		NiPoint3 goreRotate;                                              // 50
-		std::uint32_t pad5C;                                              // 5C
-		BGSImpactDataSet* dismemberImpactDataSet;                         // 60
-		BGSImpactDataSet* explosionImpactDataSet;                         // 68
-		std::int8_t dismemberDecalCount;                                  // 70
-		std::int8_t explosionDecalCount;                                  // 71
-		std::uint16_t pad72;                                              // 72
-		float explosionSpecialDebrisScale;                                // 74
+		float                                                      damageMult;                   // 00
+		stl::enumeration<Flag, std::uint8_t>                       flags;                        // 04
+		stl::enumeration<BGSBodyPartDefs::LIMB_ENUM, std::uint8_t> type;                         // 05
+		std::int8_t                                                healthPercent;                // 06
+		stl::enumeration<ActorValue, std::uint8_t>                 actorValue;                   // 07
+		std::int8_t                                                toHitChance;                  // 08
+		std::int8_t                                                explosionChance;              // 09
+		std::int8_t                                                explosionGenericDebrisCount;  // 0A
+		std::uint8_t                                               pad0B;                        // 0B
+		std::uint32_t                                              pad0C;                        // 0C
+		BGSDebris*                                                 explosionGenericDebris;       // 10
+		BGSExplosion*                                              explosion;                    // 18
+		float                                                      trackingMaxAngle;             // 20
+		float                                                      explosionGenericDebrisScale;  // 24
+		std::int8_t                                                dismemberGenericDebrisCount;  // 28
+		std::int8_t                                                unk29;                        // 29
+		std::uint16_t                                              unk2A;                        // 2A
+		std::uint32_t                                              unk2C;                        // 2C
+		BGSDebris*                                                 dismemberGenericDebris;       // 30
+		BGSExplosion*                                              dismemberExplosion;           // 38
+		float                                                      dismemberGenericDebrisScale;  // 40
+		NiPoint3                                                   goreTranslate;                // 44
+		NiPoint3                                                   goreRotate;                   // 50
+		std::uint32_t                                              pad5C;                        // 5C
+		BGSImpactDataSet*                                          dismemberImpactDataSet;       // 60
+		BGSImpactDataSet*                                          explosionImpactDataSet;       // 68
+		std::int8_t                                                dismemberDecalCount;          // 70
+		std::int8_t                                                explosionDecalCount;          // 71
+		std::uint16_t                                              pad72;                        // 72
+		float                                                      explosionSpecialDebrisScale;  // 74
 	};
 	static_assert(sizeof(PART_DATA) == 0x78);
 
@@ -70,9 +70,9 @@ namespace RE
 		BSFixedString hitReactionVariablePrefix;  // 10 - BPNI
 		BSFixedString partName;                   // 18 - BPTN
 		BSFixedString goreObjectName;             // 20 - NAM4
-		TESModel explosionSpecialDebris;          // 28 - NAM1
-		TESModelPSA poseMatching;                 // 50 - PNAM
-		PART_DATA data;                           // 78 - BPND
+		TESModel      explosionSpecialDebris;     // 28 - NAM1
+		TESModelPSA   poseMatching;               // 50 - PNAM
+		PART_DATA     data;                       // 78 - BPND
 	};
 	static_assert(sizeof(BGSBodyPart) == 0xF0);
 
@@ -104,7 +104,7 @@ namespace RE
 
 		// members
 		BGSBodyPart* parts[BGSBodyPartDefs::LIMB_ENUM::kTotal];  // 50
-		BGSRagdoll* ragdoll;                                     // 80
+		BGSRagdoll*  ragdoll;                                    // 80
 	};
 	static_assert(sizeof(BGSBodyPartData) == 0x88);
 }

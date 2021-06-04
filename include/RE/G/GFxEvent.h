@@ -73,11 +73,11 @@ namespace RE
 		{}
 
 		// members
-		float x;                   // 04
-		float y;                   // 08
-		float scrollDelta;         // 0C
-		std::uint32_t button;      // 10
-		std::uint32_t mouseIndex;  // 14
+		float         x;            // 04
+		float         y;            // 08
+		float         scrollDelta;  // 0C
+		std::uint32_t button;       // 10
+		std::uint32_t mouseIndex;   // 14
 	};
 	static_assert(sizeof(GFxMouseEvent) == 0x18);
 }

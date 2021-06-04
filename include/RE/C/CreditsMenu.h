@@ -13,7 +13,7 @@ namespace RE
 		public GFxFunctionHandler  // 30
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CreditsMenu;
+		inline static constexpr auto      RTTI = RTTI_CreditsMenu;
 		constexpr static std::string_view MENU_NAME = "Credits Menu";
 
 		virtual ~CreditsMenu();  // 00

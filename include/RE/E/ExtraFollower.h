@@ -15,8 +15,8 @@ namespace RE
 
 		struct FollowerInfo
 		{
-			ActorHandle actor;             // 0
-			float intendedFollowDistance;  // 4
+			ActorHandle actor;                   // 0
+			float       intendedFollowDistance;  // 4
 		};
 		static_assert(sizeof(FollowerInfo) == 0x8);
 

@@ -13,7 +13,7 @@ namespace RE
 		public MenuEventHandler  // 30
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CursorMenu;
+		inline static constexpr auto      RTTI = RTTI_CursorMenu;
 		constexpr static std::string_view MENU_NAME = "Cursor Menu";
 
 		virtual ~CursorMenu();  // 00

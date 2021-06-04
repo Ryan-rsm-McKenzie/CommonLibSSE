@@ -23,7 +23,7 @@ namespace RE
 		void GetDescription(BSString& a_out, TESForm* a_parent, std::uint32_t a_fieldType = 'CSED');
 
 		// members
-		std::uint32_t fileOffset;              // 08
+		std::uint32_t        fileOffset;       // 08
 		BGSLocalizedStringDL descriptionText;  // 0C
 	};
 	static_assert(sizeof(TESDescription) == 0x10);

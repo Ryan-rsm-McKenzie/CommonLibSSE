@@ -31,7 +31,7 @@ namespace RE
 		assert(a_context < InputContextID::kTotal);
 
 		if (controlMap[a_context]) {
-			const auto& mappings = controlMap[a_context]->deviceMappings[a_device];
+			const auto&   mappings = controlMap[a_context]->deviceMappings[a_device];
 			BSFixedString eventID(a_eventID);
 			for (auto& mapping : mappings) {
 				if (mapping.eventID == eventID) {
@@ -49,7 +49,7 @@ namespace RE
 		assert(a_context < InputContextID::kTotal);
 
 		if (controlMap[a_context]) {
-			const auto& mappings = controlMap[a_context]->deviceMappings[a_device];
+			const auto&      mappings = controlMap[a_context]->deviceMappings[a_device];
 			UserEventMapping tmp{};
 			tmp.inputKey = static_cast<std::uint16_t>(a_buttonID);
 			auto range = std::equal_range(

@@ -26,9 +26,9 @@ namespace RE
 				kSnowy = 1 << 3
 			};
 
-			BGSSoundDescriptorForm* sound;                // 00
-			stl::enumeration<Flag, std::uint32_t> flags;  // 08
-			float chance;                                 // 0C
+			BGSSoundDescriptorForm*               sound;   // 00
+			stl::enumeration<Flag, std::uint32_t> flags;   // 08
+			float                                 chance;  // 0C
 		};
 		static_assert(sizeof(Sound) == 0x10);
 
@@ -46,7 +46,7 @@ namespace RE
 		virtual void Load(TESFile* a_mod);  // 08
 
 		// members
-		BGSMusicType* music;      // 10 - RDMO
+		BGSMusicType*    music;   // 10 - RDMO
 		BSTArray<Sound*> sounds;  // 18 - RDSA
 	};
 	static_assert(sizeof(TESRegionDataSound) == 0x30);

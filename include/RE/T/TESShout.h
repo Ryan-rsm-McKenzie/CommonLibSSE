@@ -32,10 +32,10 @@ namespace RE
 
 		struct Variation  // SNAM
 		{
-			TESWordOfPower* word;  // 00
-			SpellItem* spell;      // 08
-			float recoveryTime;    // 10
-			std::uint32_t pad14;   // 14
+			TESWordOfPower* word;          // 00
+			SpellItem*      spell;         // 08
+			float           recoveryTime;  // 10
+			std::uint32_t   pad14;         // 14
 		};
 		static_assert(sizeof(Variation) == 0x18);
 
@@ -61,8 +61,8 @@ namespace RE
 		virtual bool GetKnown() const override;      // 17
 
 		// override (BGSEquipType)
-		virtual BGSEquipSlot* GetEquipSlot() const override;       // 04
-		virtual void SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
+		virtual BGSEquipSlot* GetEquipSlot() const override;                // 04
+		virtual void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
 
 		// members
 		Variation variations[VariationIDs::kTotal];  // 60 - SNAM

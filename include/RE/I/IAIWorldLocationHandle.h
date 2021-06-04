@@ -15,9 +15,9 @@ namespace RE
 		virtual ~IAIWorldLocationHandle();  // 00
 
 		// add
-		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) = 0;    // 01
-		virtual PackageLocation* GetAsPackageLocation();                                            // 02 - { return 0; }
-		virtual bool IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) = 0;  // 03
+		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) = 0;                       // 01
+		virtual PackageLocation*        GetAsPackageLocation();                                                        // 02 - { return 0; }
+		virtual bool                    IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) = 0;  // 03
 	};
 	static_assert(sizeof(IAIWorldLocationHandle) == 0x8);
 }

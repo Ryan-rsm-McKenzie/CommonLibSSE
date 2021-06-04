@@ -16,9 +16,9 @@ namespace RE
 			virtual ~IObjectProcessor();  // 00
 
 			// add
-			virtual IObjectProcessor* Clone() = 0;                       // 01
-			virtual void SetLoader(ILoader* a_loader) = 0;               // 02
-			virtual bool Process(const BSFixedString& a_className) = 0;  // 03
+			virtual IObjectProcessor* Clone() = 0;                                    // 01
+			virtual void              SetLoader(ILoader* a_loader) = 0;               // 02
+			virtual bool              Process(const BSFixedString& a_className) = 0;  // 03
 		};
 		static_assert(sizeof(IObjectProcessor) == 0x8);
 	}

@@ -89,15 +89,15 @@ namespace RE
 		{
 		public:
 			// members
-			float sightFOV;                                                        // 00
-			float unk04;                                                           // 04
-			float firingRumbleLeftMotorStrength;                                   // 08
-			float firingRumbleRightMotorStrength;                                  // 0C
-			float firingRumbleDuration;                                            // 10
-			stl::enumeration<WEAPON_RUMBLE_PATTERN, std::uint32_t> rumblePattern;  // 14
-			std::int8_t numProjectiles;                                            // 18
-			std::uint8_t pad19;                                                    // 19
-			std::uint16_t pad1A;                                                   // 1A
+			float                                                  sightFOV;                        // 00
+			float                                                  unk04;                           // 04
+			float                                                  firingRumbleLeftMotorStrength;   // 08
+			float                                                  firingRumbleRightMotorStrength;  // 0C
+			float                                                  firingRumbleDuration;            // 10
+			stl::enumeration<WEAPON_RUMBLE_PATTERN, std::uint32_t> rumblePattern;                   // 14
+			std::int8_t                                            numProjectiles;                  // 18
+			std::uint8_t                                           pad19;                           // 19
+			std::uint16_t                                          pad1A;                           // 1A
 		};
 		static_assert(sizeof(RangedData) == 0x1C);
 
@@ -157,24 +157,24 @@ namespace RE
 			};
 
 			// members
-			RangedData* rangedData;                                           // 00
-			float speed;                                                      // 08
-			float reach;                                                      // 0C
-			float minRange;                                                   // 10
-			float maxRange;                                                   // 14
-			float animationAttackMult;                                        // 18
-			float unk1C;                                                      // 1C
-			float staggerValue;                                               // 20
-			stl::enumeration<WEAPONHITBEHAVIOR, std::uint32_t> hitBehavior;   // 24
-			stl::enumeration<ActorValue, std::uint32_t> skill;                // 28
-			stl::enumeration<ActorValue, std::uint32_t> resistance;           // 2C
-			stl::enumeration<Flag2, std::uint16_t> flags2;                    // 30
-			std::uint8_t baseVATSToHitChance;                                 // 32
-			stl::enumeration<AttackAnimation, std::uint8_t> attackAnimation;  // 33
-			stl::enumeration<ActorValue, std::uint8_t> embeddedWeaponAV;      // 34 - unused
-			stl::enumeration<WEAPON_TYPE, std::uint8_t> animationType;        // 35
-			stl::enumeration<Flag, std::uint8_t> flags;                       // 36
-			std::uint8_t unk37;                                               // 37
+			RangedData*                                        rangedData;           // 00
+			float                                              speed;                // 08
+			float                                              reach;                // 0C
+			float                                              minRange;             // 10
+			float                                              maxRange;             // 14
+			float                                              animationAttackMult;  // 18
+			float                                              unk1C;                // 1C
+			float                                              staggerValue;         // 20
+			stl::enumeration<WEAPONHITBEHAVIOR, std::uint32_t> hitBehavior;          // 24
+			stl::enumeration<ActorValue, std::uint32_t>        skill;                // 28
+			stl::enumeration<ActorValue, std::uint32_t>        resistance;           // 2C
+			stl::enumeration<Flag2, std::uint16_t>             flags2;               // 30
+			std::uint8_t                                       baseVATSToHitChance;  // 32
+			stl::enumeration<AttackAnimation, std::uint8_t>    attackAnimation;      // 33
+			stl::enumeration<ActorValue, std::uint8_t>         embeddedWeaponAV;     // 34 - unused
+			stl::enumeration<WEAPON_TYPE, std::uint8_t>        animationType;        // 35
+			stl::enumeration<Flag, std::uint8_t>               flags;                // 36
+			std::uint8_t                                       unk37;                // 37
 		};
 		static_assert(sizeof(Data) == 0x38);
 
@@ -188,13 +188,13 @@ namespace RE
 			};
 
 			// members
-			float prcntMult;                             // 00
-			std::uint32_t pad04;                         // 04
-			SpellItem* effect;                           // 08
-			std::uint16_t damage;                        // 10
-			stl::enumeration<Flag, std::uint8_t> flags;  // 12
-			std::uint8_t pad13;                          // 13
-			std::uint32_t pad14;                         // 14
+			float                                prcntMult;  // 00
+			std::uint32_t                        pad04;      // 04
+			SpellItem*                           effect;     // 08
+			std::uint16_t                        damage;     // 10
+			stl::enumeration<Flag, std::uint8_t> flags;      // 12
+			std::uint8_t                         pad13;      // 13
+			std::uint32_t                        pad14;      // 14
 		};
 		static_assert(sizeof(CriticalData) == 0x18);
 
@@ -202,7 +202,7 @@ namespace RE
 		{
 		public:
 			// members
-			TESModel unk00;          // 00
+			TESModel         unk00;  // 00
 			TESEffectShader* unk28;  // 28
 		};
 		static_assert(sizeof(Unk1B8) == 0x30);
@@ -210,58 +210,58 @@ namespace RE
 		virtual ~TESObjectWEAP();  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                     // 04
-		virtual void ClearData() override;                          // 05
-		virtual bool Load(TESFile* a_mod) override;                 // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;   // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;   // 0F
-		virtual void InitItemImpl() override;                       // 13
-		virtual TESFile* GetDescriptionOwnerFile() const override;  // 14
-		virtual bool GetPlayable() const override;                  // 19 - { return ~((data.flags >> 7) & 1); }
-		virtual const char* GetObjectTypeName() const override;     // 39 - { return g_animationStrings[data.animationType]; }
+		virtual void        InitializeData() override;                    // 04
+		virtual void        ClearData() override;                         // 05
+		virtual bool        Load(TESFile* a_mod) override;                // 06
+		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		virtual void        InitItemImpl() override;                      // 13
+		virtual TESFile*    GetDescriptionOwnerFile() const override;     // 14
+		virtual bool        GetPlayable() const override;                 // 19 - { return ~((data.flags >> 7) & 1); }
+		virtual const char* GetObjectTypeName() const override;           // 39 - { return g_animationStrings[data.animationType]; }
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		float GetSpeed() const;
-		float GetReach() const;
-		float GetStagger() const;
-		float GetMinRange() const;
-		float GetMaxRange() const;
+		float         GetSpeed() const;
+		float         GetReach() const;
+		float         GetStagger() const;
+		float         GetMinRange() const;
+		float         GetMaxRange() const;
 		std::uint16_t GetCritDamage() const;
-		void GetNodeName(char* a_dstBuff) const;
-		WEAPON_TYPE GetWeaponType() const;
-		bool IsBound() const;
-		bool IsMelee() const;
-		bool IsRanged() const;
-		bool IsHandToHandMelee() const;
-		bool IsOneHandedSword() const;
-		bool IsOneHandedDagger() const;
-		bool IsOneHandedAxe() const;
-		bool IsOneHandedMace() const;
-		bool IsTwoHandedSword() const;
-		bool IsTwoHandedAxe() const;
-		bool IsBow() const;
-		bool IsStaff() const;
-		bool IsCrossbow() const;
+		void          GetNodeName(char* a_dstBuff) const;
+		WEAPON_TYPE   GetWeaponType() const;
+		bool          IsBound() const;
+		bool          IsMelee() const;
+		bool          IsRanged() const;
+		bool          IsHandToHandMelee() const;
+		bool          IsOneHandedSword() const;
+		bool          IsOneHandedDagger() const;
+		bool          IsOneHandedAxe() const;
+		bool          IsOneHandedMace() const;
+		bool          IsTwoHandedSword() const;
+		bool          IsTwoHandedAxe() const;
+		bool          IsBow() const;
+		bool          IsStaff() const;
+		bool          IsCrossbow() const;
 
 		// members
-		Data weaponData;                                          // 168 - DNAM
-		CriticalData criticalData;                                // 1A0 - CRDT
-		Unk1B8* unk1B8;                                           // 1B8
-		BGSSoundDescriptorForm* attackSound;                      // 1C0 - SNAM
-		BGSSoundDescriptorForm* attackSound2D;                    // 1C8 - XNAM
-		BGSSoundDescriptorForm* attackLoopSound;                  // 1D0 - NAM7
-		BGSSoundDescriptorForm* attackFailSound;                  // 1D8 - TNAM
-		BGSSoundDescriptorForm* idleSound;                        // 1E0 - UNAM
-		BGSSoundDescriptorForm* equipSound;                       // 1E8 - NAM9
-		BGSSoundDescriptorForm* unequipSound;                     // 1F0 - NAM8
-		BGSImpactDataSet* impactDataSet;                          // 1F8
-		TESObjectSTAT* firstPersonModelObject;                    // 200 - WNAM
-		TESObjectWEAP* templateWeapon;                            // 208 - CNAM
-		BSFixedString embeddedNode;                               // 210
-		stl::enumeration<SOUND_LEVEL, std::uint32_t> soundLevel;  // 218 - VNAM
-		std::uint32_t pad21C;                                     // 21C
+		Data                                         weaponData;              // 168 - DNAM
+		CriticalData                                 criticalData;            // 1A0 - CRDT
+		Unk1B8*                                      unk1B8;                  // 1B8
+		BGSSoundDescriptorForm*                      attackSound;             // 1C0 - SNAM
+		BGSSoundDescriptorForm*                      attackSound2D;           // 1C8 - XNAM
+		BGSSoundDescriptorForm*                      attackLoopSound;         // 1D0 - NAM7
+		BGSSoundDescriptorForm*                      attackFailSound;         // 1D8 - TNAM
+		BGSSoundDescriptorForm*                      idleSound;               // 1E0 - UNAM
+		BGSSoundDescriptorForm*                      equipSound;              // 1E8 - NAM9
+		BGSSoundDescriptorForm*                      unequipSound;            // 1F0 - NAM8
+		BGSImpactDataSet*                            impactDataSet;           // 1F8
+		TESObjectSTAT*                               firstPersonModelObject;  // 200 - WNAM
+		TESObjectWEAP*                               templateWeapon;          // 208 - CNAM
+		BSFixedString                                embeddedNode;            // 210
+		stl::enumeration<SOUND_LEVEL, std::uint32_t> soundLevel;              // 218 - VNAM
+		std::uint32_t                                pad21C;                  // 21C
 	};
 	static_assert(sizeof(TESObjectWEAP) == 0x220);
 }

@@ -76,8 +76,8 @@ namespace RE
 				index(a_index)
 			{}
 
-			const SelfType* hash;  // 00
-			SPInt index;           // 08
+			const SelfType* hash;   // 00
+			SPInt           index;  // 08
 		};
 		static_assert(sizeof(const_iterator) == 0x10);
 
@@ -104,8 +104,8 @@ namespace RE
 			void Remove()
 			{
 				SelfType* theHash = const_cast<SelfType*>(const_iterator::hash);
-				Entry* ee = &theHash->E(const_iterator::index);
-				const C& key = ee->value;
+				Entry*    ee = &theHash->E(const_iterator::index);
+				const C&  key = ee->value;
 
 				UPInt hashValue = AltHashF()(key);
 				SPInt index = hashValue & hash->table->sizeMask;
@@ -269,7 +269,7 @@ namespace RE
 			}
 
 			const UPInt hashValue = AltHashF()(a_key);
-			SPInt index = hashValue & table->sizeMask;
+			SPInt       index = hashValue & table->sizeMask;
 
 			Entry* entry = std::addressof(E(index));
 
@@ -279,7 +279,7 @@ namespace RE
 
 			// Save index
 			const SPInt naturalIndex = index;
-			SPInt prevIndex = -1;
+			SPInt       prevIndex = -1;
 
 			while ((entry->GetCachedHash(table->sizeMask) != (UPInt)naturalIndex) || !(entry->value == a_key)) {
 				prevIndex = index;
@@ -495,7 +495,7 @@ namespace RE
 			assert(table);
 			assert((a_hashValue & ~table->sizeMask) == 0);
 
-			UPInt index = a_hashValue;
+			UPInt        index = a_hashValue;
 			const Entry* entry = std::addressof(E(index));
 
 			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != index)) {
@@ -529,7 +529,7 @@ namespace RE
 			++(table->entryCount);
 
 			const SPInt index = a_hashValue;
-			Entry* naturalEntry = &(E(index));
+			Entry*      naturalEntry = &(E(index));
 
 			if (naturalEntry->IsEmpty()) {
 				new (naturalEntry) Entry(a_key, -1);

@@ -39,8 +39,8 @@ namespace RE
 		{
 		public:
 			// members
-			BSFixedString text;       // 00 - ITXT
-			TESCondition conditions;  // 08
+			BSFixedString text;        // 00 - ITXT
+			TESCondition  conditions;  // 08
 		};
 		static_assert(sizeof(MESSAGEBOX_BUTTON) == 0x10);
 
@@ -53,11 +53,11 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		BGSMenuIcon* icon;                                   // 40 - INAM
-		TESQuest* ownerQuest;                                // 48 - QNAM
-		BSSimpleList<MESSAGEBOX_BUTTON*> menuButtons;        // 50
-		stl::enumeration<MessageFlag, std::uint32_t> flags;  // 60 - DNAM
-		std::uint32_t displayTime;                           // 64 - TNAM
+		BGSMenuIcon*                                 icon;         // 40 - INAM
+		TESQuest*                                    ownerQuest;   // 48 - QNAM
+		BSSimpleList<MESSAGEBOX_BUTTON*>             menuButtons;  // 50
+		stl::enumeration<MessageFlag, std::uint32_t> flags;        // 60 - DNAM
+		std::uint32_t                                displayTime;  // 64 - TNAM
 	};
 	static_assert(sizeof(BGSMessage) == 0x68);
 }

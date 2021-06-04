@@ -32,10 +32,10 @@ namespace RE
 		{
 		public:
 			// members
-			BGSArtObject* artObject;                      // 00
-			TESEffectShader* effectShader;                // 08
-			stl::enumeration<Flag, std::uint32_t> flags;  // 10
-			std::uint32_t pad14;                          // 14
+			BGSArtObject*                         artObject;     // 00
+			TESEffectShader*                      effectShader;  // 08
+			stl::enumeration<Flag, std::uint32_t> flags;         // 10
+			std::uint32_t                         pad14;         // 14
 		};
 		static_assert(sizeof(Data) == 0x18);
 

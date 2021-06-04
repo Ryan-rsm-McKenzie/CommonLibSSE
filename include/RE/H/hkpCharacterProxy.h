@@ -41,31 +41,31 @@ namespace RE
 		virtual void ExtractSurfaceConstraintInfo(const hkpRootCdPoint& a_hit, hkpSurfaceConstraintInfo& a_surfaceOut, float a_timeTravelled) const;                                                                                                                               // 04
 
 		// members
-		hkArray<hkpRootCdPoint> manifold;                      // 20
-		hkArray<hkpRigidBody*> bodies;                         // 30
-		hkArray<hkpPhantom*> phantoms;                         // 40
-		hkArray<hkpTriggerVolume*> overlappingTriggerVolumes;  // 50
-		hkVector4 velocity;                                    // 60
-		hkVector4 oldDisplacement;                             // 70
-		hkpShapePhantom* shapePhantom;                         // 80
-		float dynamicFriction;                                 // 88
-		float staticFriction;                                  // 8C
-		hkVector4 up;                                          // 90
-		float extraUpStaticFriction;                           // A0
-		float extraDownStaticFriction;                         // A4
-		float keepDistance;                                    // A8
-		float keepContactTolerance;                            // AC
-		float contactAngleSensitivity;                         // B0
-		std::int32_t userPlanes;                               // B4
-		float maxCharacterSpeedForSolver;                      // B8
-		float characterStrength;                               // BC
-		float characterMass;                                   // C0
-		std::uint32_t padC4;                                   // C4
-		hkArray<hkpCharacterProxyListener*> listeners;         // C8
-		float maxSlopeCosine;                                  // D8
-		float penetrationRecoverySpeed;                        // DC
-		std::int32_t maxCastIterations;                        // E0
-		bool refreshManifoldInCheckSupport;                    // E4
+		hkArray<hkpRootCdPoint>             manifold;                       // 20
+		hkArray<hkpRigidBody*>              bodies;                         // 30
+		hkArray<hkpPhantom*>                phantoms;                       // 40
+		hkArray<hkpTriggerVolume*>          overlappingTriggerVolumes;      // 50
+		hkVector4                           velocity;                       // 60
+		hkVector4                           oldDisplacement;                // 70
+		hkpShapePhantom*                    shapePhantom;                   // 80
+		float                               dynamicFriction;                // 88
+		float                               staticFriction;                 // 8C
+		hkVector4                           up;                             // 90
+		float                               extraUpStaticFriction;          // A0
+		float                               extraDownStaticFriction;        // A4
+		float                               keepDistance;                   // A8
+		float                               keepContactTolerance;           // AC
+		float                               contactAngleSensitivity;        // B0
+		std::int32_t                        userPlanes;                     // B4
+		float                               maxCharacterSpeedForSolver;     // B8
+		float                               characterStrength;              // BC
+		float                               characterMass;                  // C0
+		std::uint32_t                       padC4;                          // C4
+		hkArray<hkpCharacterProxyListener*> listeners;                      // C8
+		float                               maxSlopeCosine;                 // D8
+		float                               penetrationRecoverySpeed;       // DC
+		std::int32_t                        maxCastIterations;              // E0
+		bool                                refreshManifoldInCheckSupport;  // E4
 	};
 	static_assert(sizeof(hkpCharacterProxy) == 0xF0);
 }

@@ -37,13 +37,13 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		TESContainer requiredItems;    // 20
-		TESCondition conditions;       // 38
-		TESForm* createdItem;          // 40 - CNAM
-		BGSKeyword* benchKeyword;      // 48 - BNAM
-		ConstructibleObjectData data;  // 50
-		std::uint16_t pad52;           // 52
-		std::uint32_t unk54;           // 54
+		TESContainer            requiredItems;  // 20
+		TESCondition            conditions;     // 38
+		TESForm*                createdItem;    // 40 - CNAM
+		BGSKeyword*             benchKeyword;   // 48 - BNAM
+		ConstructibleObjectData data;           // 50
+		std::uint16_t           pad52;          // 52
+		std::uint32_t           unk54;          // 54
 	};
 	static_assert(sizeof(BGSConstructibleObject) == 0x58);
 }

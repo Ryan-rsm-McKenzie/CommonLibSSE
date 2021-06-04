@@ -25,8 +25,8 @@ namespace RE
 		virtual void Unk_0D(void);      // 0D - { return 0; }
 
 		// members
-		std::uint32_t type;  // 08
-		float unk0C;         // 0C
+		std::uint32_t type;   // 08
+		float         unk0C;  // 0C
 	};
 	static_assert(sizeof(BSFaceGenKeyframe) == 0x10);
 }

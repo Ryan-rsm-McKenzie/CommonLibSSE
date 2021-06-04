@@ -68,26 +68,26 @@ namespace RE
 		virtual ~BGSHeadPart();  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;                    // 04
-		virtual void ClearData() override;                         // 05
-		virtual bool Load(TESFile* a_mod) override;                // 06
-		virtual void InitItemImpl() override;                      // 13
-		virtual const char* GetFormEditorID() const override;      // 32 - { return formEditorID.c_str(); }
-		virtual bool SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
+		virtual void        InitializeData() override;                    // 04
+		virtual void        ClearData() override;                         // 05
+		virtual bool        Load(TESFile* a_mod) override;                // 06
+		virtual void        InitItemImpl() override;                      // 13
+		virtual const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		virtual bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		bool IsExtraPart();
 
 		// members
-		stl::enumeration<Flag, std::uint8_t> flags;          // 068 - DATA
-		std::uint8_t pad069;                                 // 069
-		std::uint16_t pad06A;                                // 06A
-		stl::enumeration<HeadPartType, std::uint32_t> type;  // 06C - PNAM
-		BSTArray<BGSHeadPart*> extraParts;                   // 070
-		BGSTextureSet* textureSet;                           // 088 - TNAM
-		TESModelTri morphs[MorphIndices::kTotal];            // 090
-		BGSColorForm* color;                                 // 108 - CNAM
-		BGSListForm* validRaces;                             // 110 - RNAM
-		BSFixedString formEditorID;                          // 118 - EDID
+		stl::enumeration<Flag, std::uint8_t>          flags;                         // 068 - DATA
+		std::uint8_t                                  pad069;                        // 069
+		std::uint16_t                                 pad06A;                        // 06A
+		stl::enumeration<HeadPartType, std::uint32_t> type;                          // 06C - PNAM
+		BSTArray<BGSHeadPart*>                        extraParts;                    // 070
+		BGSTextureSet*                                textureSet;                    // 088 - TNAM
+		TESModelTri                                   morphs[MorphIndices::kTotal];  // 090
+		BGSColorForm*                                 color;                         // 108 - CNAM
+		BGSListForm*                                  validRaces;                    // 110 - RNAM
+		BSFixedString                                 formEditorID;                  // 118 - EDID
 	};
 	static_assert(sizeof(BGSHeadPart) == 0x120);
 }

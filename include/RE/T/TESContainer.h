@@ -11,9 +11,9 @@ namespace RE
 	{
 	public:
 		// members
-		std::int32_t count;             // 00 - CNTO~
-		std::uint32_t pad04;            // 04
-		TESBoundObject* obj;            // 08 - ~CNTO
+		std::int32_t        count;      // 00 - CNTO~
+		std::uint32_t       pad04;      // 04
+		TESBoundObject*     obj;        // 08 - ~CNTO
 		ContainerItemExtra* itemExtra;  // 10 - COED
 	};
 	static_assert(sizeof(ContainerObject) == 0x18);
@@ -43,12 +43,12 @@ namespace RE
 		}
 
 		std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
-		std::int32_t CountObjectsInContainer(TESBoundObject* a_object) const;
+		std::int32_t                    CountObjectsInContainer(TESBoundObject* a_object) const;
 
 		// members
-		ContainerObject** containerObjects;  // 08
-		std::uint32_t numContainerObjects;   // 10
-		std::uint32_t pad14;                 // 14
+		ContainerObject** containerObjects;     // 08
+		std::uint32_t     numContainerObjects;  // 10
+		std::uint32_t     pad14;                // 14
 	};
 	static_assert(sizeof(TESContainer) == 0x18);
 }

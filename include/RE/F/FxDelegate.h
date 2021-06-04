@@ -20,7 +20,7 @@ namespace RE
 		{
 		public:
 			// members
-			GPtr<FxDelegateHandler> handler{ nullptr };          // 00
+			GPtr<FxDelegateHandler>        handler{ nullptr };   // 00
 			FxDelegateHandler::CallbackFn* callback{ nullptr };  // 08
 		};
 		static_assert(sizeof(CallbackDefn) == 0x10);

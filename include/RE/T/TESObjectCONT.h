@@ -72,9 +72,9 @@ namespace RE
 		virtual void HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;  // 02
 
 		// members
-		CONT_DATA data;                      // B9 - DATA
-		std::uint16_t padBA;                 // BA
-		std::uint32_t padBC;                 // BC
+		CONT_DATA               data;        // B9 - DATA
+		std::uint16_t           padBA;       // BA
+		std::uint32_t           padBC;       // BC
 		BGSSoundDescriptorForm* openSound;   // C0 - SNAM
 		BGSSoundDescriptorForm* closeSound;  // C8 - QNAM
 	};

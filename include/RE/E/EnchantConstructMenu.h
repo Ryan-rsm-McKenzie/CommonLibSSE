@@ -77,9 +77,9 @@ namespace RE
 			std::uint64_t unk118;  // 118
 			std::uint64_t unk120;  // 120
 			std::uint64_t unk128;  // 128
-			BSString unk130;       // 130
-			GFxValue unk140;       // 140
-			GFxValue unk158;       // 158
+			BSString      unk130;  // 130
+			GFxValue      unk140;  // 140
+			GFxValue      unk158;  // 158
 			std::uint64_t unk170;  // 170
 			std::uint64_t unk178;  // 178
 			std::uint64_t unk180;  // 180

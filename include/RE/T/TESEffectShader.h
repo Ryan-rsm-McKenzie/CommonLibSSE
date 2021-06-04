@@ -39,9 +39,9 @@ namespace RE
 		// members
 		std::uint32_t unk00;  // 000
 
-		D3DBLEND membraneShaderSourceBlendMode;   // 004
-		D3DBLENDOP membraneShaderBlendOperation;  // 008
-		D3DCMPFUNC membraneShaderZTestFunction;   // 00C
+		D3DBLEND   membraneShaderSourceBlendMode;  // 004
+		D3DBLENDOP membraneShaderBlendOperation;   // 008
+		D3DCMPFUNC membraneShaderZTestFunction;    // 00C
 
 		Color fillTextureEffectColorKey1;               // 010
 		float fillTextureEffectAlphaFadeInTime;         // 014
@@ -68,29 +68,29 @@ namespace RE
 
 		D3DBLEND membraneShaderDestBlendMode;  // 05C
 
-		D3DBLEND particleShaderSourceBlendMode;         // 060
-		D3DBLENDOP particleShaderBlendOperation;        // 064
-		D3DCMPFUNC particleShaderZTestOperation;        // 068
-		D3DBLEND particleShaderDestBlendMode;           // 06C
-		float particleShaderParticleBirthRampUpTime;    // 070
-		float particleShaderFullParticleBirthTime;      // 074
-		float particleShaderParticleBirthRampDownTime;  // 078
-		float particleShaderFullParticleBirthRatio;     // 07C
-		float particleShaderPersistantParticleCount;    // 080
-		float particleShaderParticleLifetime;           // 084
-		float particleShaderParticleLifetimeVariance;   // 088
-		float particleShaderInitialSpeedAlongNormal;    // 08C
-		float particleShaderAccelerationAlongNormal;    // 090
-		float particleShaderInitialVelocity1;           // 094
-		float particleShaderInitialVelocity2;           // 098
-		float particleShaderInitialVelocity3;           // 09C
-		float particleShaderAcceleration1;              // 0A0
-		float particleShaderAcceleration2;              // 0A4
-		float particleShaderAcceleration3;              // 0A8
-		float particleShaderScaleKey1;                  // 0AC
-		float particleShaderScaleKey2;                  // 0B0
-		float particleShaderScaleKey1Time;              // 0B4
-		float particleShaderScaleKey2Time;              // 0B8
+		D3DBLEND   particleShaderSourceBlendMode;            // 060
+		D3DBLENDOP particleShaderBlendOperation;             // 064
+		D3DCMPFUNC particleShaderZTestOperation;             // 068
+		D3DBLEND   particleShaderDestBlendMode;              // 06C
+		float      particleShaderParticleBirthRampUpTime;    // 070
+		float      particleShaderFullParticleBirthTime;      // 074
+		float      particleShaderParticleBirthRampDownTime;  // 078
+		float      particleShaderFullParticleBirthRatio;     // 07C
+		float      particleShaderPersistantParticleCount;    // 080
+		float      particleShaderParticleLifetime;           // 084
+		float      particleShaderParticleLifetimeVariance;   // 088
+		float      particleShaderInitialSpeedAlongNormal;    // 08C
+		float      particleShaderAccelerationAlongNormal;    // 090
+		float      particleShaderInitialVelocity1;           // 094
+		float      particleShaderInitialVelocity2;           // 098
+		float      particleShaderInitialVelocity3;           // 09C
+		float      particleShaderAcceleration1;              // 0A0
+		float      particleShaderAcceleration2;              // 0A4
+		float      particleShaderAcceleration3;              // 0A8
+		float      particleShaderScaleKey1;                  // 0AC
+		float      particleShaderScaleKey2;                  // 0B0
+		float      particleShaderScaleKey1Time;              // 0B4
+		float      particleShaderScaleKey2Time;              // 0B8
 
 		Color colorKey1;              // 0BC
 		Color colorKey2;              // 0C0
@@ -190,14 +190,14 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		EffectShaderData data;              // 020 - DATA
-		TESTexture fillTexture;             // 1C0 - ICON
-		TESTexture particleShaderTexture;   // 1D0 - ICO2
-		TESTexture holesTexture;            // 1E0 - NAM7
-		TESTexture membranePaletteTexture;  // 1F0 - NAM8
-		TESTexture particlePaletteTexture;  // 200 - NAM9
-		void* unk210;                       // 210 - smart ptr
-		void* unk218;                       // 218 - smart ptr
+		EffectShaderData data;                    // 020 - DATA
+		TESTexture       fillTexture;             // 1C0 - ICON
+		TESTexture       particleShaderTexture;   // 1D0 - ICO2
+		TESTexture       holesTexture;            // 1E0 - NAM7
+		TESTexture       membranePaletteTexture;  // 1F0 - NAM8
+		TESTexture       particlePaletteTexture;  // 200 - NAM9
+		void*            unk210;                  // 210 - smart ptr
+		void*            unk218;                  // 218 - smart ptr
 	};
 	static_assert(sizeof(TESEffectShader) == 0x220);
 }

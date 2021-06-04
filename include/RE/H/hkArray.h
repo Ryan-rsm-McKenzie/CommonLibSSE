@@ -104,9 +104,9 @@ namespace RE
 				return;
 			}
 
-			auto allocator = hkContainerHeapAllocator::GetSingleton();
+			auto      allocator = hkContainerHeapAllocator::GetSingleton();
 			size_type newSize = a_newCap * sizeof(T);
-			T* newMem = static_cast<T*>(allocator->BufAlloc(newSize));
+			T*        newMem = static_cast<T*>(allocator->BufAlloc(newSize));
 			if (_data) {
 				size_type oldSize = size() * sizeof(T);
 				std::memcpy(newMem, _data, oldSize);
@@ -146,9 +146,9 @@ namespace RE
 				}
 			}
 
-			auto allocator = hkContainerHeapAllocator::GetSingleton();
+			auto      allocator = hkContainerHeapAllocator::GetSingleton();
 			size_type newSize = a_count * sizeof(T);
-			T* newMem = static_cast<T*>(allocator->BufAlloc(newSize));
+			T*        newMem = static_cast<T*>(allocator->BufAlloc(newSize));
 			if (_data) {
 				size_type oldSize = size() * sizeof(T);
 				std::memcpy(newMem, _data, std::min(oldSize, newSize));
@@ -178,7 +178,7 @@ namespace RE
 
 		static constexpr float GROWTH_FACTOR = 1.5;  // NOT PART OF NATIVE TYPE
 
-		T* _data;                        // 00
+		T*           _data;              // 00
 		std::int32_t _size;              // 08
 		std::int32_t _capacityAndFlags;  // 0C
 	};

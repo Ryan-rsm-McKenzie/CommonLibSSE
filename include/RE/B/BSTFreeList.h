@@ -5,8 +5,8 @@ namespace RE
 	template <class T>
 	struct BSTFreeListElem
 	{
-		char elem[sizeof(T)];      // 00
-		BSTFreeListElem<T>* next;  // ??
+		char                elem[sizeof(T)];  // 00
+		BSTFreeListElem<T>* next;             // ??
 	};
 	// size == sizeof(T) + 0x8
 
@@ -17,9 +17,9 @@ namespace RE
 		virtual ~BSTFreeList();  // 00
 
 		// members
-		std::uint32_t lock;        // 08
-		std::uint32_t pad0C;       // 0C
-		BSTFreeListElem<T>* free;  // 10
+		std::uint32_t       lock;   // 08
+		std::uint32_t       pad0C;  // 0C
+		BSTFreeListElem<T>* free;   // 10
 	};
 	static_assert(sizeof(BSTFreeList<void*>) == 0x18);
 

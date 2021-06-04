@@ -14,10 +14,10 @@ namespace RE
 		{
 		public:
 			// members
-			TESObjectREFR* objRefr;         // 00
+			TESObjectREFR*      objRefr;    // 00
 			InventoryEntryData* entryData;  // 08
-			std::int32_t newCount;          // 10
-			std::int32_t prevCount;         // 14
+			std::int32_t        newCount;   // 10
+			std::int32_t        prevCount;  // 14
 		};
 		static_assert(sizeof(Event) == 0x18);
 

@@ -13,22 +13,22 @@ namespace RE
 		{
 		};
 
-		stl::enumeration<DATA_TYPE, std::uint32_t> type;  // 00
-		std::uint32_t uniqueID;                           // 04
-		BSString name;                                    // 08
+		stl::enumeration<DATA_TYPE, std::uint32_t> type;      // 00
+		std::uint32_t                              uniqueID;  // 04
+		BSString                                   name;      // 08
 	};
 	static_assert(sizeof(BGSStoryEventMember) == 0x18);
 
 	struct BGSRegisteredStoryEvent  // ENAM
 	{
-		char uniqueID[4];                        // 00
-		std::uint32_t pad04;                     // 04
-		BSTArray<BGSStoryEventMember>* members;  // 08
-		BSString name;                           // 10
-		bool immediate;                          // 20
-		std::uint8_t pad21;                      // 21
-		std::uint16_t pad22;                     // 22
-		std::uint32_t pad24;                     // 24
+		char                           uniqueID[4];  // 00
+		std::uint32_t                  pad04;        // 04
+		BSTArray<BGSStoryEventMember>* members;      // 08
+		BSString                       name;         // 10
+		bool                           immediate;    // 20
+		std::uint8_t                   pad21;        // 21
+		std::uint16_t                  pad22;        // 22
+		std::uint32_t                  pad24;        // 24
 	};
 	static_assert(sizeof(BGSRegisteredStoryEvent) == 0x28);
 
@@ -50,10 +50,10 @@ namespace RE
 		virtual ~BGSStoryManagerEventNode();  // 00
 
 		// override (BGSStoryManagerBranchNode)
-		virtual void InitializeData() override;                // 04
-		virtual void ClearData() override;                     // 05 - { BGSStoryManagerNodeBase::ClearData(); }
-		virtual bool Load(TESFile* a_mod) override;            // 06
-		virtual void InitItemImpl() override;                  // 13
+		virtual void        InitializeData() override;         // 04
+		virtual void        ClearData() override;              // 05 - { BGSStoryManagerNodeBase::ClearData(); }
+		virtual bool        Load(TESFile* a_mod) override;     // 06
+		virtual void        InitItemImpl() override;           // 13
 		virtual const char* GetFormEditorID() const override;  // 32 - { if (!((flags >> 3) & 1)) return "(Uninitialized event node)"; return event ? event->name.c_str() : "(No event)"; }
 
 		// members

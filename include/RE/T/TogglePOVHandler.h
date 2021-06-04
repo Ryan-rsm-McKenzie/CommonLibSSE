@@ -16,10 +16,10 @@ namespace RE
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
 
 		// members
-		bool pressRegistered;  // 18
-		std::uint8_t pad19;    // 19
-		std::uint16_t pad1A;   // 1A
-		std::uint32_t pad1C;   // 1C
+		bool          pressRegistered;  // 18
+		std::uint8_t  pad19;            // 19
+		std::uint16_t pad1A;            // 1A
+		std::uint32_t pad1C;            // 1C
 	};
 	static_assert(sizeof(TogglePOVHandler) == 0x20);
 }

@@ -47,8 +47,8 @@ namespace RE
 			static_assert(sizeof(ColorF) == 0xC);
 
 			// members
-			float amount;  // 00
-			ColorF color;  // 04
+			float  amount;  // 00
+			ColorF color;   // 04
 		};
 		static_assert(sizeof(Tint) == 0x10);
 
@@ -76,18 +76,18 @@ namespace RE
 			};
 
 			// members
-			float strength;                                                // 00
-			float distance;                                                // 04
-			float range;                                                   // 08
-			std::uint16_t unk0C;                                           // 0C
+			float                                          strength;       // 00
+			float                                          distance;       // 04
+			float                                          range;          // 08
+			std::uint16_t                                  unk0C;          // 0C
 			stl::enumeration<SkyBlurRadius, std::uint16_t> skyBlurRadius;  // 0E
 		};
 		static_assert(sizeof(DepthOfField) == 0x10);
 
 		// members
-		HDR hdr;                    // 00 - HNAM
-		Cinematic cinematic;        // 24 - CNAM
-		Tint tint;                  // 30 - TNAM
+		HDR          hdr;           // 00 - HNAM
+		Cinematic    cinematic;     // 24 - CNAM
+		Tint         tint;          // 30 - TNAM
 		DepthOfField depthOfField;  // 40 - DNAM
 	};
 	static_assert(sizeof(ImageSpaceBaseData) == 0x50);

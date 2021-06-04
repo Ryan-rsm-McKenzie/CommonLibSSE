@@ -12,7 +12,7 @@ namespace RE
 	{
 		TESForm* locationForm;  // 00
 		NiPoint3 locPt;         // 08
-		float zRot;             // 14
+		float    zRot;          // 14
 	};
 	static_assert(sizeof(WORLD_LOCATION) == 0x18);
 
@@ -25,8 +25,8 @@ namespace RE
 		virtual ~ExtraPackageStartLocation();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kPackageStartLocation; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kPackageStartLocation; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		WORLD_LOCATION worldLoc;  // 10

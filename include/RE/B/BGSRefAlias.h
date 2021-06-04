@@ -29,9 +29,9 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t forcedFromAlias;      // 00 - ALFA
-			std::uint32_t pad04;                // 04
-			BGSLocationRefType* forcedRefType;  // 08 - ALRT
+			std::uint32_t       forcedFromAlias;  // 00 - ALFA
+			std::uint32_t       pad04;            // 04
+			BGSLocationRefType* forcedRefType;    // 08 - ALRT
 		};
 		static_assert(sizeof(FromAliasFillData) == 0x10);
 
@@ -39,7 +39,7 @@ namespace RE
 		{
 		public:
 			// members
-			QuestEvent forcedFromEvent;     // ALFE
+			QuestEvent    forcedFromEvent;  // ALFE
 			std::uint32_t forcedEventData;  // ALFD
 		};
 		static_assert(sizeof(FromEventFillData) == 0x8);
@@ -66,16 +66,16 @@ namespace RE
 				};
 
 				// members
-				std::uint16_t alias;                             // 0
+				std::uint16_t                           alias;   // 0
 				stl::enumeration<Create, std::uint16_t> create;  // 2
 			};
 			static_assert(sizeof(Alias) == 0x4);
 
 			// members
-			TESBoundObject* object;                        // 00 - ALCO
-			Alias alias;                                   // 08 - ALCA
-			stl::enumeration<Level, std::uint16_t> level;  // 0C - ALCL
-			std::uint16_t pad0E;                           // 0E
+			TESBoundObject*                        object;  // 00 - ALCO
+			Alias                                  alias;   // 08 - ALCA
+			stl::enumeration<Level, std::uint16_t> level;   // 0C - ALCL
+			std::uint16_t                          pad0E;   // 0E
 		};
 		static_assert(sizeof(CreatedFillData) == 0x10);
 
@@ -83,7 +83,7 @@ namespace RE
 		{
 		public:
 			// members
-			TESQuest* externalQuest;      // 00 - ALEQ
+			TESQuest*     externalQuest;  // 00 - ALEQ
 			std::uint32_t externalAlias;  // 08 - ALEA
 			std::uint32_t pad0C;          // 0C
 		};
@@ -107,7 +107,7 @@ namespace RE
 			};
 
 			// members
-			std::uint32_t nearAlias;                                     // 0 - ALNA
+			std::uint32_t                                 nearAlias;     // 0 - ALNA
 			stl::enumeration<NEARFILLTYPE, std::uint32_t> nearFillType;  // 4 - ALNT
 		};
 		static_assert(sizeof(NearAliasFillData) == 0x8);
@@ -128,27 +128,27 @@ namespace RE
 			~GenericFillData() {}
 
 			// members
-			Padding padding;
-			ForcedFillData forced;
-			FromAliasFillData fromAlias;
-			FromEventFillData fromEvent;
-			CreatedFillData created;
+			Padding              padding;
+			ForcedFillData       forced;
+			FromAliasFillData    fromAlias;
+			FromEventFillData    fromEvent;
+			CreatedFillData      created;
 			FromExternalFillData fromExternal;
-			UniqueActorFillData uniqueActor;
-			NearAliasFillData nearAlias;
+			UniqueActorFillData  uniqueActor;
+			NearAliasFillData    nearAlias;
 		};
 		static_assert(sizeof(GenericFillData) == 0x18);
 
 		virtual ~BGSRefAlias();  // 00
 
 		// override (BGSBaseAlias)
-		virtual bool Load(TESFile* a_mod) override;           // 01
-		virtual void InitItem(TESForm* a_form) override;      // 02
-		virtual const BSFixedString& QType() const override;  // 03 - { return "Ref"; }
+		virtual bool                 Load(TESFile* a_mod) override;       // 01
+		virtual void                 InitItem(TESForm* a_form) override;  // 02
+		virtual const BSFixedString& QType() const override;              // 03 - { return "Ref"; }
 
 		// members
-		GenericFillData fillData;  // 28
-		TESCondition* conditions;  // 40
+		GenericFillData fillData;    // 28
+		TESCondition*   conditions;  // 40
 	};
 	static_assert(sizeof(BGSRefAlias) == 0x48);
 }

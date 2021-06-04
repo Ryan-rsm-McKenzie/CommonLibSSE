@@ -48,7 +48,7 @@ namespace RE
 	BGSHeadPart* TESNPC::GetHeadPartOverlayByType(HeadPartType a_type)
 	{
 		const auto numOverlays = GetNumBaseOverlays();
-		auto overlays = GetBaseOverlays();
+		auto       overlays = GetBaseOverlays();
 		if (overlays) {
 			for (std::uint32_t i = 0; i < numOverlays; ++i) {
 				if (overlays[i]->type == a_type) {

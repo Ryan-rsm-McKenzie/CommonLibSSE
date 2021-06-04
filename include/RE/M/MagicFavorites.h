@@ -18,9 +18,9 @@ namespace RE
 		static MagicFavorites* GetSingleton();
 
 		// members
-		std::uint8_t pad09;          // 09
-		std::uint16_t pad0A;         // 0A
-		std::uint32_t pad0C;         // 0C
+		std::uint8_t       pad09;    // 09
+		std::uint16_t      pad0A;    // 0A
+		std::uint32_t      pad0C;    // 0C
 		BSTArray<TESForm*> spells;   // 10
 		BSTArray<TESForm*> hotkeys;  // 28
 	};

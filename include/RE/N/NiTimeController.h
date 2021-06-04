@@ -46,46 +46,46 @@ namespace RE
 		virtual ~NiTimeController() { dtor(); }  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                   // 02
-		virtual void LoadBinary(NiStream& a_stream) override;             // 18
-		virtual void LinkObject(NiStream& a_stream) override;             // 19
-		virtual bool RegisterStreamables(NiStream& a_stream) override;    // 1A
-		virtual void SaveBinary(NiStream& a_stream) override;             // 1B
-		virtual bool IsEqual(NiObject* a_object) override;                // 1C
-		virtual void ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
+		virtual const NiRTTI* GetRTTI() const override;                            // 02
+		virtual void          LoadBinary(NiStream& a_stream) override;             // 18
+		virtual void          LinkObject(NiStream& a_stream) override;             // 19
+		virtual bool          RegisterStreamables(NiStream& a_stream) override;    // 1A
+		virtual void          SaveBinary(NiStream& a_stream) override;             // 1B
+		virtual bool          IsEqual(NiObject* a_object) override;                // 1C
+		virtual void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 
 		// add
-		virtual void Start(float a_time);                             // 25
-		virtual void Stop();                                          // 26
-		virtual void Update(float a_time) = 0;                        // 27
-		virtual void SetTarget(NiObjectNET* a_target);                // 28
-		virtual bool IsTransformController() const { return false; }  // 29
-		virtual bool IsVertexController() const { return false; }     // 2A
-		virtual float ComputeScaledTime(float a_time);                // 2B
-		virtual void OnPreDisplay() { return; }                       // 2C
-		virtual bool IsStreamable() const { return true; }            // 2D
-		virtual bool TargetIsRequiredType() const = 0;                // 2E
+		virtual void  Start(float a_time);                             // 25
+		virtual void  Stop();                                          // 26
+		virtual void  Update(float a_time) = 0;                        // 27
+		virtual void  SetTarget(NiObjectNET* a_target);                // 28
+		virtual bool  IsTransformController() const { return false; }  // 29
+		virtual bool  IsVertexController() const { return false; }     // 2A
+		virtual float ComputeScaledTime(float a_time);                 // 2B
+		virtual void  OnPreDisplay() { return; }                       // 2C
+		virtual bool  IsStreamable() const { return true; }            // 2D
+		virtual bool  TargetIsRequiredType() const = 0;                // 2E
 
 		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
 
 		// members
-		stl::enumeration<Flag, std::uint16_t> flags;  // 10
-		std::uint16_t pad12;                          // 12
-		float frequency;                              // 14
-		float phase;                                  // 18
-		float loKeyTime;                              // 1C
-		float hiKeyTime;                              // 20
-		float startTime;                              // 24
-		float lastTime;                               // 28
-		float weightedLastTime;                       // 2C
-		float scaledTime;                             // 30
-		std::uint32_t pad34;                          // 34
-		NiObjectNET* target;                          // 38
-		NiPointer<NiTimeController> next;             // 40 - singly-linked list
+		stl::enumeration<Flag, std::uint16_t> flags;             // 10
+		std::uint16_t                         pad12;             // 12
+		float                                 frequency;         // 14
+		float                                 phase;             // 18
+		float                                 loKeyTime;         // 1C
+		float                                 hiKeyTime;         // 20
+		float                                 startTime;         // 24
+		float                                 lastTime;          // 28
+		float                                 weightedLastTime;  // 2C
+		float                                 scaledTime;        // 30
+		std::uint32_t                         pad34;             // 34
+		NiObjectNET*                          target;            // 38
+		NiPointer<NiTimeController>           next;              // 40 - singly-linked list
 
 	private:
 		NiTimeController* ctor();
-		void dtor();
+		void              dtor();
 	};
 	static_assert(sizeof(NiTimeController) == 0x48);
 }

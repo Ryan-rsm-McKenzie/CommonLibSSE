@@ -12,14 +12,14 @@ namespace RE
 
 	struct RoomRefData
 	{
-		BSSimpleList<ObjectRefHandle> portalList;  // 00
-		BSSimpleList<ObjectRefHandle> roomList;    // 10
-		std::int8_t master;                        // 20
-		std::uint8_t pad21;                        // 21
-		std::uint16_t pad22;                       // 22
-		std::uint32_t pad24;                       // 24
-		BGSLightingTemplate* lightingTemplate;     // 28
-		TESImageSpace* imageSpace;                 // 30
+		BSSimpleList<ObjectRefHandle> portalList;        // 00
+		BSSimpleList<ObjectRefHandle> roomList;          // 10
+		std::int8_t                   master;            // 20
+		std::uint8_t                  pad21;             // 21
+		std::uint16_t                 pad22;             // 22
+		std::uint32_t                 pad24;             // 24
+		BGSLightingTemplate*          lightingTemplate;  // 28
+		TESImageSpace*                imageSpace;        // 30
 	};
 	static_assert(sizeof(RoomRefData) == 0x38);
 
@@ -32,8 +32,8 @@ namespace RE
 		virtual ~ExtraRoomRefData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kRoomRefData; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kRoomRefData; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		RoomRefData* data;  // 10

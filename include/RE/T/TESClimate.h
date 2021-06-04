@@ -61,17 +61,17 @@ namespace RE
 			};
 			static_assert(sizeof(Interval) == 0x2);
 
-			bool IncludesMasser() const;
-			bool IncludesSecunda() const;
+			bool         IncludesMasser() const;
+			bool         IncludesSecunda() const;
 			std::uint8_t GetPhaseLength() const;
 
 			// members
-			Interval sunrise;                                                 // 0
-			Interval sunset;                                                  // 2
-			std::uint8_t volatility;                                          // 4
+			Interval                                        sunrise;          // 0
+			Interval                                        sunset;           // 2
+			std::uint8_t                                    volatility;       // 4
 			stl::enumeration<MoonPhaseLength, std::uint8_t> moonPhaseLength;  // 5
-			std::uint8_t unk6;                                                // 6
-			std::uint8_t unk7;                                                // 7
+			std::uint8_t                                    unk6;             // 6
+			std::uint8_t                                    unk7;             // 7
 		};
 		static_assert(sizeof(Timing) == 0x8);
 
@@ -82,10 +82,10 @@ namespace RE
 		virtual bool Load(TESFile* a_mod) override;  // 06
 
 		// members
-		TESModel nightSky;                          // 20
-		BSSimpleList<WeatherType*> weatherList;     // 48 - WLST
-		TESTexture skyObjects[SkyObjects::kTotal];  // 58 - FNAM - GNAM
-		Timing timing;                              // 78 - TNAM
+		TESModel                   nightSky;                        // 20
+		BSSimpleList<WeatherType*> weatherList;                     // 48 - WLST
+		TESTexture                 skyObjects[SkyObjects::kTotal];  // 58 - FNAM - GNAM
+		Timing                     timing;                          // 78 - TNAM
 	};
 	static_assert(sizeof(TESClimate) == 0x80);
 }

@@ -21,8 +21,8 @@ namespace RE
 		virtual ~ExtraOcclusionPlaneRefData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kOcclusionPlaneRefData; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kOcclusionPlaneRefData; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		OcclusionPlaneLinkedRefData* data;  // 10

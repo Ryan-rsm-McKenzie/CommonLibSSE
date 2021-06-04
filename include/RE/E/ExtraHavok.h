@@ -21,7 +21,7 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kHavok; }
 
 		// members
-		NiPointer<bhkWorld> world;     // 10
+		NiPointer<bhkWorld>    world;  // 10
 		NiPointer<NiRefObject> unk18;  // 18
 	};
 	static_assert(sizeof(ExtraHavok) == 0x20);

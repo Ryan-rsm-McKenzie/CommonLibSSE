@@ -15,11 +15,11 @@ namespace RE
 
 	struct PerkData  // DATA
 	{
-		bool trait;            // 0
+		bool        trait;     // 0
 		std::int8_t level;     // 1
 		std::int8_t numRanks;  // 2
-		bool playable;         // 3
-		bool hidden;           // 4
+		bool        playable;  // 3
+		bool        hidden;    // 4
 	};
 	static_assert(sizeof(PerkData) == 0x5);
 
@@ -82,12 +82,12 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		PerkData data;                        // 50 - DATA
-		std::uint8_t pad55;                   // 55
-		std::uint16_t pad56;                  // 56
-		TESCondition perkConditions;          // 58
-		BSTArray<BGSPerkEntry*> perkEntries;  // 60
-		BGSPerk* nextPerk;                    // 78 - NNAM
+		PerkData                data;            // 50 - DATA
+		std::uint8_t            pad55;           // 55
+		std::uint16_t           pad56;           // 56
+		TESCondition            perkConditions;  // 58
+		BSTArray<BGSPerkEntry*> perkEntries;     // 60
+		BGSPerk*                nextPerk;        // 78 - NNAM
 	};
 	static_assert(sizeof(BGSPerk) == 0x80);
 }

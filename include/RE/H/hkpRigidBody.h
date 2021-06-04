@@ -14,7 +14,7 @@ namespace RE
 		// override (hkpEntity)
 		virtual hkWorldOperation::Result SetShape(const hkpShape* a_shape) override;               // 03
 		virtual hkWorldOperation::Result UpdateShape(hkpShapeModifier* a_shapeModifier) override;  // 04
-		virtual hkMotionState* GetMotionState() override;                                          // 05 - { return &motion.motionState; }
+		virtual hkMotionState*           GetMotionState() override;                                // 05 - { return &motion.motionState; }
 
 		// add
 		virtual hkpRigidBody* Clone() const;  // 07

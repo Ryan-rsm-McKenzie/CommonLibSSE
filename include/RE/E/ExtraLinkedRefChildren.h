@@ -17,9 +17,9 @@ namespace RE
 
 		struct LinkedRefChild
 		{
-			BGSKeyword* keyword;   // 00
-			ObjectRefHandle refr;  // 08
-			std::uint32_t pad0C;   // 0C
+			BGSKeyword*     keyword;  // 00
+			ObjectRefHandle refr;     // 08
+			std::uint32_t   pad0C;    // 0C
 		};
 		static_assert(sizeof(LinkedRefChild) == 0x10);
 

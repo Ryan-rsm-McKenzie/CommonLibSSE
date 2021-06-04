@@ -36,7 +36,7 @@ namespace RE
 		constexpr BSTArrayBase& operator=(const BSTArrayBase&) noexcept = default;
 		constexpr BSTArrayBase& operator=(BSTArrayBase&&) noexcept = default;
 
-		[[nodiscard]] constexpr bool empty() const noexcept { return _size == 0; }
+		[[nodiscard]] constexpr bool      empty() const noexcept { return _size == 0; }
 		[[nodiscard]] constexpr size_type size() const noexcept { return _size; }
 
 	protected:
@@ -110,7 +110,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		[[nodiscard]] constexpr void* data() noexcept { return _data; }
+		[[nodiscard]] constexpr void*       data() noexcept { return _data; }
 		[[nodiscard]] constexpr const void* data() const noexcept { return _data; }
 
 		[[nodiscard]] constexpr size_type capacity() const noexcept { return _capacity; }
@@ -137,8 +137,8 @@ namespace RE
 
 	private:
 		// members
-		void* _data{ nullptr };        // 00
-		std::uint32_t _capacity{ 0 };  // 08
+		void*         _data{ nullptr };  // 00
+		std::uint32_t _capacity{ 0 };    // 08
 	};
 	static_assert(sizeof(BSTArrayHeapAllocator) == 0x10);
 
@@ -187,7 +187,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		[[nodiscard]] constexpr void* data() noexcept { return local() ? _data.local : _data.heap; }
+		[[nodiscard]] constexpr void*       data() noexcept { return local() ? _data.local : _data.heap; }
 		[[nodiscard]] constexpr const void* data() const noexcept { return local() ? _data.local : _data.heap; }
 
 		[[nodiscard]] constexpr size_type capacity() const noexcept { return _capacity; }
@@ -228,7 +228,7 @@ namespace RE
 		union Data
 		{
 			void* heap;
-			char local[N]{ 0 };
+			char  local[N]{ 0 };
 		};
 
 		inline void copy(const BSTSmallArrayHeapAllocator& a_rhs)
@@ -279,7 +279,7 @@ namespace RE
 		// members
 		std::uint32_t _capacity: 31;  // 00
 		std::uint32_t _local: 1;      // 00
-		Data _data;                   // 08
+		Data          _data;          // 08
 	};
 
 	class BSScrapArrayAllocator
@@ -347,14 +347,14 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		[[nodiscard]] constexpr void* data() noexcept { return _data; }
+		[[nodiscard]] constexpr void*       data() noexcept { return _data; }
 		[[nodiscard]] constexpr const void* data() const noexcept { return _data; }
 
 		[[nodiscard]] constexpr size_type capacity() const noexcept { return _capacity; }
 
 	protected:
 		void* allocate(std::size_t a_size);
-		void deallocate(void* a_ptr);
+		void  deallocate(void* a_ptr);
 
 		constexpr void set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t) noexcept
 		{
@@ -365,8 +365,8 @@ namespace RE
 	private:
 		// members
 		ScrapHeap* _allocator{ nullptr };  // 00
-		void* _data{ nullptr };            // 08
-		size_type _capacity{ 0 };          // 10
+		void*      _data{ nullptr };       // 08
+		size_type  _capacity{ 0 };         // 10
 	};
 	static_assert(sizeof(BSScrapArrayAllocator) == 0x18);
 
@@ -477,20 +477,20 @@ namespace RE
 			return data()[a_pos];
 		}
 
-		[[nodiscard]] constexpr reference front() noexcept { return operator[](0); }
+		[[nodiscard]] constexpr reference       front() noexcept { return operator[](0); }
 		[[nodiscard]] constexpr const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] constexpr reference back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] constexpr reference       back() noexcept { return operator[](size() - 1); }
 		[[nodiscard]] constexpr const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] constexpr pointer data() noexcept { return static_cast<pointer>(allocator_type::data()); }
+		[[nodiscard]] constexpr pointer       data() noexcept { return static_cast<pointer>(allocator_type::data()); }
 		[[nodiscard]] constexpr const_pointer data() const noexcept { return static_cast<const_pointer>(allocator_type::data()); }
 
-		[[nodiscard]] constexpr iterator begin() noexcept { return empty() ? nullptr : data(); }
+		[[nodiscard]] constexpr iterator       begin() noexcept { return empty() ? nullptr : data(); }
 		[[nodiscard]] constexpr const_iterator begin() const noexcept { return empty() ? nullptr : data(); }
 		[[nodiscard]] constexpr const_iterator cbegin() const noexcept { return begin(); }
 
-		[[nodiscard]] constexpr iterator end() noexcept { return empty() ? nullptr : data() + size(); }
+		[[nodiscard]] constexpr iterator       end() noexcept { return empty() ? nullptr : data() + size(); }
 		[[nodiscard]] constexpr const_iterator end() const noexcept { return empty() ? nullptr : data() + size(); }
 		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
 
@@ -524,7 +524,7 @@ namespace RE
 
 		inline iterator erase(const_iterator a_pos)
 		{
-			auto pos = const_cast<iterator>(a_pos);
+			auto                    pos = const_cast<iterator>(a_pos);
 			std::optional<iterator> result;
 			if (pos != begin()) {
 				result = pos - 1;
@@ -576,8 +576,8 @@ namespace RE
 		}
 
 	private:
-		static constexpr size_type DF_CAP = 4;       // beth default
-		static constexpr float GROWTH_FACTOR = 2.0;  // not part of native type
+		static constexpr size_type DF_CAP = 4;           // beth default
+		static constexpr float     GROWTH_FACTOR = 2.0;  // not part of native type
 
 		[[nodiscard]] inline pointer allocate(size_type a_num)
 		{
@@ -676,20 +676,20 @@ namespace RE
 			return _data[a_pos];
 		}
 
-		[[nodiscard]] constexpr reference front() noexcept { return operator[](0); }
+		[[nodiscard]] constexpr reference       front() noexcept { return operator[](0); }
 		[[nodiscard]] constexpr const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] constexpr reference back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] constexpr reference       back() noexcept { return operator[](size() - 1); }
 		[[nodiscard]] constexpr const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] constexpr pointer data() noexcept { return _data; }
+		[[nodiscard]] constexpr pointer       data() noexcept { return _data; }
 		[[nodiscard]] constexpr const_pointer data() const noexcept { return _data; }
 
-		[[nodiscard]] constexpr iterator begin() noexcept { return empty() ? nullptr : data(); }
+		[[nodiscard]] constexpr iterator       begin() noexcept { return empty() ? nullptr : data(); }
 		[[nodiscard]] constexpr const_iterator begin() const noexcept { return empty() ? nullptr : data(); }
 		[[nodiscard]] constexpr const_iterator cbegin() const noexcept { return begin(); }
 
-		[[nodiscard]] constexpr iterator end() noexcept { return empty() ? nullptr : data() + size(); }
+		[[nodiscard]] constexpr iterator       end() noexcept { return empty() ? nullptr : data() + size(); }
 		[[nodiscard]] constexpr const_iterator end() const noexcept { return empty() ? nullptr : data() + size(); }
 		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
 
@@ -699,8 +699,8 @@ namespace RE
 
 	private:
 		// members
-		pointer _data{ nullptr };  // 00
-		std::uint32_t _size{ 0 };  // 08
+		pointer       _data{ nullptr };  // 00
+		std::uint32_t _size{ 0 };        // 08
 	};
 
 	template <class T>
@@ -738,11 +738,11 @@ namespace RE
 			return size() > 1 ? _data.heap : std::addressof(_data.local);
 		}
 
-		[[nodiscard]] inline iterator begin() noexcept { return data(); }
+		[[nodiscard]] inline iterator       begin() noexcept { return data(); }
 		[[nodiscard]] inline const_iterator begin() const noexcept { return data(); }
 		[[nodiscard]] inline const_iterator cbegin() const noexcept { return begin(); }
 
-		[[nodiscard]] inline iterator end() noexcept { return data() + size(); }
+		[[nodiscard]] inline iterator       end() noexcept { return data() + size(); }
 		[[nodiscard]] inline const_iterator end() const noexcept { return data() + size(); }
 		[[nodiscard]] inline const_iterator cend() const noexcept { return end(); }
 
@@ -755,12 +755,12 @@ namespace RE
 		{
 			~Data(){};
 
-			pointer heap{ 0 };
+			pointer    heap{ 0 };
 			value_type local;
 		};
 
 		// members
 		std::uint32_t _size{ 0 };  // 00
-		Data _data;                // 08
+		Data          _data;       // 08
 	};
 }

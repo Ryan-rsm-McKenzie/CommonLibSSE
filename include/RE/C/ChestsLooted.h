@@ -14,7 +14,7 @@ namespace RE
 		static_assert(std::is_empty_v<Event>);
 
 		static BSTEventSource<Event>* GetEventSource();
-		static void SendEvent();
+		static void                   SendEvent();
 	};
 	static_assert(std::is_empty_v<ChestsLooted>);
 }

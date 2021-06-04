@@ -27,10 +27,10 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
 
 		// members
-		void* unk18;          // 18
+		void*         unk18;  // 18
 		std::uint64_t unk20;  // 20
 		BSFixedString unk28;  // 28
-		GFxValue unk30;       // 30
+		GFxValue      unk30;  // 30
 		BSFixedString unk48;  // 48
 		std::uint64_t unk50;  // 50
 		std::uint64_t unk58;  // 58

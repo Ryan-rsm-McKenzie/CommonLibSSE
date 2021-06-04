@@ -17,8 +17,8 @@ namespace RE
 		virtual bool ProcessButton(ButtonEvent* a_event) override;  // 05
 
 		// members
-		bool unk10;           // 10
-		std::uint8_t unk11;   // 11
+		bool          unk10;  // 10
+		std::uint8_t  unk11;  // 11
 		std::uint16_t unk12;  // 12
 		std::uint32_t unk14;  // 14
 	};

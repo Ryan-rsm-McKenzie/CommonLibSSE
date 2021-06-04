@@ -27,14 +27,14 @@ namespace RE
 	class UIMessage
 	{
 	public:
-		BSFixedString menu;                                     // 00
-		stl::enumeration<UI_MESSAGE_TYPE, std::uint32_t> type;  // 08
-		std::uint32_t pad0C;                                    // 0C
-		IUIMessageData* data;                                   // 10
-		bool isPooled;                                          // 18
-		std::uint8_t pad19;                                     // 19
-		std::uint16_t pad1A;                                    // 1A
-		std::uint32_t pad1C;                                    // 1C
+		BSFixedString                                    menu;      // 00
+		stl::enumeration<UI_MESSAGE_TYPE, std::uint32_t> type;      // 08
+		std::uint32_t                                    pad0C;     // 0C
+		IUIMessageData*                                  data;      // 10
+		bool                                             isPooled;  // 18
+		std::uint8_t                                     pad19;     // 19
+		std::uint16_t                                    pad1A;     // 1A
+		std::uint32_t                                    pad1C;     // 1C
 	};
 	static_assert(sizeof(UIMessage) == 0x20);
 }

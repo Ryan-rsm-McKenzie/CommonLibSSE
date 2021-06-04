@@ -24,23 +24,23 @@ namespace RE
 		};
 
 		// members
-		Color ambient;                                                              // 00
-		Color directional;                                                          // 04
-		Color fogColorNear;                                                         // 08
-		float fogNear;                                                              // 0C
-		float fogFar;                                                               // 10
-		std::uint32_t directionalXY;                                                // 14
-		std::uint32_t directionalZ;                                                 // 18
-		float directionalFade;                                                      // 1C
-		float clipDist;                                                             // 20
-		float fogPower;                                                             // 24
-		BGSDirectionalAmbientLightingColors directionalAmbientLightingColors;       // 28
-		Color fogColorFar;                                                          // 48
-		float fogClamp;                                                             // 4C
-		float lightFadeStart;                                                       // 50
-		float lightFadeEnd;                                                         // 54
+		Color                                    ambient;                           // 00
+		Color                                    directional;                       // 04
+		Color                                    fogColorNear;                      // 08
+		float                                    fogNear;                           // 0C
+		float                                    fogFar;                            // 10
+		std::uint32_t                            directionalXY;                     // 14
+		std::uint32_t                            directionalZ;                      // 18
+		float                                    directionalFade;                   // 1C
+		float                                    clipDist;                          // 20
+		float                                    fogPower;                          // 24
+		BGSDirectionalAmbientLightingColors      directionalAmbientLightingColors;  // 28
+		Color                                    fogColorFar;                       // 48
+		float                                    fogClamp;                          // 4C
+		float                                    lightFadeStart;                    // 50
+		float                                    lightFadeEnd;                      // 54
 		stl::enumeration<Inherit, std::uint32_t> lightingTemplateInheritanceFlags;  // 58
-		std::uint32_t unk5C;                                                        // 5C - interiorOffset?
+		std::uint32_t                            unk5C;                             // 5C - interiorOffset?
 	};
 	static_assert(sizeof(INTERIOR_DATA) == 0x60);
 }

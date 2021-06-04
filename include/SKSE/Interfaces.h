@@ -17,8 +17,8 @@ namespace SKSE
 	{
 	public:
 		std::uint32_t EditorVersion() const;
-		bool IsEditor() const;
-		REL::Version RuntimeVersion() const;
+		bool          IsEditor() const;
+		REL::Version  RuntimeVersion() const;
 		std::uint32_t SKSEVersion() const;
 
 	protected:
@@ -41,10 +41,10 @@ namespace SKSE
 			kTotal
 		};
 
-		PluginHandle GetPluginHandle() const;
+		PluginHandle      GetPluginHandle() const;
 		const PluginInfo* GetPluginInfo(const char* a_name) const;
-		std::uint32_t GetReleaseIndex() const;
-		void* QueryInterface(std::uint32_t a_id) const;
+		std::uint32_t     GetReleaseIndex() const;
+		void*             QueryInterface(std::uint32_t a_id) const;
 	};
 
 	class ScaleformInterface
@@ -253,10 +253,10 @@ namespace SKSE
 	public:
 		struct Message
 		{
-			const char* sender;
+			const char*   sender;
 			std::uint32_t type;
 			std::uint32_t dataLen;
-			void* data;
+			void*         data;
 		};
 
 		using EventCallback = void(Message* a_msg);
@@ -294,10 +294,10 @@ namespace SKSE
 
 		std::uint32_t Version() const;
 
-		bool Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
+		bool  Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
 		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
-		bool RegisterListener(EventCallback* a_callback) const;
-		bool RegisterListener(const char* a_sender, EventCallback* a_callback) const;
+		bool  RegisterListener(EventCallback* a_callback) const;
+		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
 		const detail::SKSEMessagingInterface* GetProxy() const;
@@ -313,8 +313,8 @@ namespace SKSE
 
 		std::uint32_t Version() const;
 
-		SKSEDelayFunctorManager& GetDelayFunctorManager() const;
-		SKSEObjectRegistry& GetObjectRegistry() const;
+		SKSEDelayFunctorManager&     GetDelayFunctorManager() const;
+		SKSEObjectRegistry&          GetObjectRegistry() const;
 		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
@@ -346,7 +346,7 @@ namespace SKSE
 		};
 
 		std::uint32_t infoVersion;
-		const char* name;
+		const char*   name;
 		std::uint32_t version;
 	};
 }

@@ -44,20 +44,20 @@ namespace RE
 		virtual void SetAutoCalc(bool a_autoCalc) override;               // 3F
 
 		// override (TESAIForm)
-		virtual float GetActorValue(ActorValue a_akValue) override;                                                     // 01
-		virtual float GetPermanentActorValue(ActorValue a_akValue) override;                                            // 02
-		virtual float GetBaseActorValue(ActorValue a_akValue) override;                                                 // 03
-		virtual void SetBaseActorValue(ActorValue a_akValue, float a_value) override;                                   // 04
-		virtual void ModActorValue(ActorValue a_akValue, float a_value) override;                                       // 05
-		virtual void RestoreActorValue(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_akValue, float a_value) override;  // 06
-		virtual void SetActorValue(ActorValue a_akValue, float a_value) override;                                       // 07
-		virtual bool GetIsPlayerOwner() const override;                                                                 // 08
+		virtual float GetActorValue(ActorValue a_akValue) override;                                                      // 01
+		virtual float GetPermanentActorValue(ActorValue a_akValue) override;                                             // 02
+		virtual float GetBaseActorValue(ActorValue a_akValue) override;                                                  // 03
+		virtual void  SetBaseActorValue(ActorValue a_akValue, float a_value) override;                                   // 04
+		virtual void  ModActorValue(ActorValue a_akValue, float a_value) override;                                       // 05
+		virtual void  RestoreActorValue(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_akValue, float a_value) override;  // 06
+		virtual void  SetActorValue(ActorValue a_akValue, float a_value) override;                                       // 07
+		virtual bool  GetIsPlayerOwner() const override;                                                                 // 08
 
 		// add
-		virtual bool GetHasPLSpecTex() const;                        // 53 - { return false; }
-		virtual TESCombatStyle* GetCombatStyle();                    // 54 - { return 0; }
-		virtual void SetCombatStyle(TESCombatStyle* a_combatStyle);  // 55 - { return; }
-		virtual TESForm* GetAsForm();                                // 56 - { return this; }
+		virtual bool            GetHasPLSpecTex() const;                        // 53 - { return false; }
+		virtual TESCombatStyle* GetCombatStyle();                               // 54 - { return 0; }
+		virtual void            SetCombatStyle(TESCombatStyle* a_combatStyle);  // 55 - { return; }
+		virtual TESForm*        GetAsForm();                                    // 56 - { return this; }
 	};
 	static_assert(sizeof(TESActorBase) == 0x150);
 }

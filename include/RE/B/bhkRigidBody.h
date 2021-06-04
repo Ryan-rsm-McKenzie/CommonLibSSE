@@ -14,23 +14,23 @@ namespace RE
 		virtual ~bhkRigidBody();  // 00
 
 		// override (bhkEntity)
-		virtual const NiRTTI* GetRTTI() const override;                       // 02
-		virtual bhkRigidBody* AsBhkRigidBody() override;                      // 15 - { return this; }
-		virtual NiObject* CreateClone(NiCloningProcess& a_cloning) override;  // 17
-		virtual void LoadBinary(NiStream& a_stream) override;                 // 18
-		virtual void LinkObject(NiStream& a_stream) override;                 // 19
-		virtual bool RegisterStreamables(NiStream& a_stream) override;        // 1A
-		virtual void SaveBinary(NiStream& a_stream) override;                 // 1B
-		virtual bool IsEqual(NiObject* a_object) override;                    // 1C
-		virtual void Unk_29(void) override;                                   // 29
-		virtual void Unk_2A(void) override;                                   // 2A
-		virtual void Unk_2B(void) override;                                   // 2B
-		virtual void Unk_2C(void) override;                                   // 2C - { return 0x110; }
-		virtual void Unk_2D(void) override;                                   // 2D
-		virtual void Unk_2E(void) override;                                   // 2E
-		virtual void Unk_2F(void) override;                                   // 2F
-		virtual void Unk_30(void) override;                                   // 30
-		virtual void Unk_32(void) override;                                   // 32
+		virtual const NiRTTI* GetRTTI() const override;                           // 02
+		virtual bhkRigidBody* AsBhkRigidBody() override;                          // 15 - { return this; }
+		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		virtual void          LoadBinary(NiStream& a_stream) override;            // 18
+		virtual void          LinkObject(NiStream& a_stream) override;            // 19
+		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
+		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B
+		virtual bool          IsEqual(NiObject* a_object) override;               // 1C
+		virtual void          Unk_29(void) override;                              // 29
+		virtual void          Unk_2A(void) override;                              // 2A
+		virtual void          Unk_2B(void) override;                              // 2B
+		virtual void          Unk_2C(void) override;                              // 2C - { return 0x110; }
+		virtual void          Unk_2D(void) override;                              // 2D
+		virtual void          Unk_2E(void) override;                              // 2E
+		virtual void          Unk_2F(void) override;                              // 2F
+		virtual void          Unk_30(void) override;                              // 30
+		virtual void          Unk_32(void) override;                              // 32
 
 		// add
 		virtual void Unk_33(void);  // 33

@@ -38,16 +38,16 @@ namespace RE
 	{
 	public:
 		// members
-		std::int32_t time;                                       // 00
-		std::uint32_t radius;                                    // 04
-		Color color;                                             // 08
-		stl::enumeration<TES_LIGHT_FLAGS, std::uint32_t> flags;  // 0C
-		float fallofExponent;                                    // 10
-		float fov;                                               // 14
-		float nearDistance;                                      // 18
-		float flickerPeriodRecip;                                // 1C - CK value * 100
-		float flickerIntensityAmplitude;                         // 20
-		float flickerMovementAmplitude;                          // 24
+		std::int32_t                                     time;                       // 00
+		std::uint32_t                                    radius;                     // 04
+		Color                                            color;                      // 08
+		stl::enumeration<TES_LIGHT_FLAGS, std::uint32_t> flags;                      // 0C
+		float                                            fallofExponent;             // 10
+		float                                            fov;                        // 14
+		float                                            nearDistance;               // 18
+		float                                            flickerPeriodRecip;         // 1C - CK value * 100
+		float                                            flickerIntensityAmplitude;  // 20
+		float                                            flickerMovementAmplitude;   // 24
 	};
 	static_assert(sizeof(OBJ_LIGH) == 0x28);
 
@@ -81,30 +81,30 @@ namespace RE
 		virtual ~TESObjectLIGH();  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual void UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
-		virtual NiAVObject* LoadGraphics(TESObjectREFR* a_ref) override;                                                                                                       // 47
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                            // 4A
+		virtual void        InitializeData() override;                                                                                                                                // 04
+		virtual bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
+		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		virtual void        InitItemImpl() override;                                                                                                                                  // 13
+		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
+		virtual NiAVObject* LoadGraphics(TESObjectREFR* a_ref) override;                                                                                                              // 47
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
 
 		// override (BGSEquipType)
-		virtual BGSEquipSlot* GetEquipSlot() const override;       // 04
-		virtual void SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
+		virtual BGSEquipSlot* GetEquipSlot() const override;                // 04
+		virtual void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
 
 		[[nodiscard]] constexpr bool CanBeCarried() const noexcept { return data.flags.all(TES_LIGHT_FLAGS::kCanCarry); }
 
 		// members
-		OBJ_LIGH data;                  // 0E0 - DATA
-		float fade;                     // 108 - FNAM
-		std::uint32_t pad10C;           // 10C
-		BGSSoundDescriptorForm* sound;  // 110 - SNAM
-		NiColor emittanceColor;         // 118
-		std::uint32_t pad124;           // 124
-		BGSLensFlare* lensFlare;        // 128
+		OBJ_LIGH                data;            // 0E0 - DATA
+		float                   fade;            // 108 - FNAM
+		std::uint32_t           pad10C;          // 10C
+		BGSSoundDescriptorForm* sound;           // 110 - SNAM
+		NiColor                 emittanceColor;  // 118
+		std::uint32_t           pad124;          // 124
+		BGSLensFlare*           lensFlare;       // 128
 	};
 	static_assert(sizeof(TESObjectLIGH) == 0x130);
 }

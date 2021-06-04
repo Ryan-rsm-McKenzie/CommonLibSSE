@@ -16,12 +16,12 @@ namespace RE
 	public:
 		union Buffer
 		{
-			std::uint32_t local;
+			std::uint32_t  local;
 			std::uint32_t* heap;
 		};
 
 		// members
-		Buffer buffer;
+		Buffer        buffer;
 		std::uint32_t size;
 	};
 	static_assert(sizeof(BSBitField<>) == 0x18);

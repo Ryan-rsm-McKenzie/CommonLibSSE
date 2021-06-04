@@ -14,8 +14,8 @@ namespace RE
 		{
 		public:
 			// members
-			hkpAgentNnEntry* agentEntry;   // 00
-			hkpLinkedCollidable* partner;  // 08
+			hkpAgentNnEntry*     agentEntry;  // 00
+			hkpLinkedCollidable* partner;     // 08
 		};
 		static_assert(sizeof(CollisionEntry) == 0x10);
 

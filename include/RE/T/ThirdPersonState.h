@@ -44,35 +44,35 @@ namespace RE
 		virtual void HandleLookInput(const NiPoint2& a_input);    // 0F
 
 		// members
-		NiAVObject* thirdPersonCameraObj;  // 30
-		NiNode* thirdPersonFOVControl;     // 38
-		NiPoint3 translation;              // 40
-		NiQuaternion rotation;             // 4C - [-1, 1]
-		NiPoint3 posOffsetExpected;        // 5C
-		NiPoint3 posOffsetActual;          // 68
-		float targetZoomOffset;            // 74
-		float currentZoomOffset;           // 78
-		float targetYaw;                   // 7C - in radians
-		float currentYaw;                  // 80 - in radians
-		float savedZoomOffset;             // 84
-		float pitchZoomOffset;             // 88 - [0, 100]
-		float unk8C;                       // 8C
-		NiPoint3 collisionPos;             // 90 - valid if collisionPosValid != NaN
-		float collisionPosValid;           // 9C
-		std::uint64_t unkA0;               // A0
-		BSFixedString animatedBoneName;    // A8
-		NiQuaternion animationRotation;    // B0
-		std::uint64_t unkC0;               // C0
-		std::uint64_t unkC8;               // C8
-		std::uint32_t unkD0;               // D0
-		NiPoint2 freeRotation;             // D4
-		bool freeRotationEnabled;          // DC
-		bool stateNotActive;               // DD
-		std::uint16_t unkDC;               // DE
-		bool toggleAnimCam;                // E0
-		bool applyOffsets;                 // E1
-		std::uint16_t unkE2;               // E2
-		std::uint32_t unkE4;               // E4
+		NiAVObject*   thirdPersonCameraObj;   // 30
+		NiNode*       thirdPersonFOVControl;  // 38
+		NiPoint3      translation;            // 40
+		NiQuaternion  rotation;               // 4C - [-1, 1]
+		NiPoint3      posOffsetExpected;      // 5C
+		NiPoint3      posOffsetActual;        // 68
+		float         targetZoomOffset;       // 74
+		float         currentZoomOffset;      // 78
+		float         targetYaw;              // 7C - in radians
+		float         currentYaw;             // 80 - in radians
+		float         savedZoomOffset;        // 84
+		float         pitchZoomOffset;        // 88 - [0, 100]
+		float         unk8C;                  // 8C
+		NiPoint3      collisionPos;           // 90 - valid if collisionPosValid != NaN
+		float         collisionPosValid;      // 9C
+		std::uint64_t unkA0;                  // A0
+		BSFixedString animatedBoneName;       // A8
+		NiQuaternion  animationRotation;      // B0
+		std::uint64_t unkC0;                  // C0
+		std::uint64_t unkC8;                  // C8
+		std::uint32_t unkD0;                  // D0
+		NiPoint2      freeRotation;           // D4
+		bool          freeRotationEnabled;    // DC
+		bool          stateNotActive;         // DD
+		std::uint16_t unkDC;                  // DE
+		bool          toggleAnimCam;          // E0
+		bool          applyOffsets;           // E1
+		std::uint16_t unkE2;                  // E2
+		std::uint32_t unkE4;                  // E4
 	};
 	static_assert(sizeof(ThirdPersonState) == 0xE8);
 }

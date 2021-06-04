@@ -31,16 +31,16 @@ namespace RE
 
 	struct BoneData
 	{
-		NiMatrix3 localBoneRotation;                 // 00
-		NiPoint3 worldBoneDir;                       // 24
+		NiMatrix3     localBoneRotation;             // 00
+		NiPoint3      worldBoneDir;                  // 24
 		std::uint32_t parentWorldBoneRotationIndex;  // 30
 	};
 	static_assert(sizeof(BoneData) == 0x34);
 
 	struct BaseTreeData : public BSIntrusiveRefCounted
 	{
-		std::uint32_t pad04;                           // 04
-		BSTArray<BoneData> branchBoneData;             // 08
+		std::uint32_t       pad04;                     // 04
+		BSTArray<BoneData>  branchBoneData;            // 08
 		BSTArray<NiMatrix3> parentWorldBoneRotations;  // 20
 	};
 	static_assert(sizeof(BaseTreeData) == 0x38);
@@ -88,10 +88,10 @@ namespace RE
 		virtual void OnFinishScale() override;                                                                                                                                 // 52 - { return; }
 
 		// members
-		OBJ_TREE data;                                     // 88
-		BaseTreeData* baseData;                            // B8
-		stl::enumeration<etTreeType, std::uint32_t> type;  // C0
-		std::uint32_t padC4;                               // C4
+		OBJ_TREE                                    data;      // 88
+		BaseTreeData*                               baseData;  // B8
+		stl::enumeration<etTreeType, std::uint32_t> type;      // C0
+		std::uint32_t                               padC4;     // C4
 	};
 	static_assert(sizeof(TESObjectTREE) == 0xC8);
 }

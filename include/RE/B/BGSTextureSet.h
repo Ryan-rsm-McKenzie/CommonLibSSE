@@ -38,19 +38,19 @@ namespace RE
 		virtual ~BGSTextureSet();  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                                   // 04
-		virtual void ClearData() override;                                        // 05
-		virtual bool Load(TESFile* a_mod) override;                               // 06
+		virtual void        InitializeData() override;                            // 04
+		virtual void        ClearData() override;                                 // 05
+		virtual bool        Load(TESFile* a_mod) override;                        // 06
 		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
-		virtual void UnClone3D(TESObjectREFR* a_ref) override;                    // 41
+		virtual void        UnClone3D(TESObjectREFR* a_ref) override;             // 41
 
 		// members
-		TESTexture textures[Textures::kTotal];            // 040 - TX00 - TX07
-		DecalData* decalData;                             // 0C0 - DODT
-		stl::enumeration<Flag, std::uint16_t> flags;      // 0C8 - DNAM
-		std::uint16_t pad0CA;                             // 0CA
-		BSResource::ID textureFileIDs[Textures::kTotal];  // 0CC
-		std::uint32_t pad12C;                             // 12C
+		TESTexture                            textures[Textures::kTotal];        // 040 - TX00 - TX07
+		DecalData*                            decalData;                         // 0C0 - DODT
+		stl::enumeration<Flag, std::uint16_t> flags;                             // 0C8 - DNAM
+		std::uint16_t                         pad0CA;                            // 0CA
+		BSResource::ID                        textureFileIDs[Textures::kTotal];  // 0CC
+		std::uint32_t                         pad12C;                            // 12C
 	};
 	static_assert(sizeof(BGSTextureSet) == 0x130);
 }

@@ -98,21 +98,21 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t movingBack: 1;            // 0:00
-			std::uint32_t movingForward: 1;         // 0:01
-			std::uint32_t movingRight: 1;           // 0:02
-			std::uint32_t movingLeft: 1;            // 0:03
-			std::uint32_t unk04: 2;                 // 0:04
-			std::uint32_t walking: 1;               // 0:06
-			std::uint32_t running: 1;               // 0:07
-			std::uint32_t sprinting: 1;             // 0:08
-			std::uint32_t sneaking: 1;              // 0:09
-			std::uint32_t swimming: 1;              // 0:10
-			std::uint32_t unk11: 3;                 // 0:11
-			SIT_SLEEP_STATE sitSleepState: 4;       // 0:14
-			FLY_STATE flyState: 3;                  // 0:18
-			ACTOR_LIFE_STATE lifeState: 4;          // 0:21
-			KNOCK_STATE_ENUM knockState: 3;         // 0:25
+			std::uint32_t     movingBack: 1;        // 0:00
+			std::uint32_t     movingForward: 1;     // 0:01
+			std::uint32_t     movingRight: 1;       // 0:02
+			std::uint32_t     movingLeft: 1;        // 0:03
+			std::uint32_t     unk04: 2;             // 0:04
+			std::uint32_t     walking: 1;           // 0:06
+			std::uint32_t     running: 1;           // 0:07
+			std::uint32_t     sprinting: 1;         // 0:08
+			std::uint32_t     sneaking: 1;          // 0:09
+			std::uint32_t     swimming: 1;          // 0:10
+			std::uint32_t     unk11: 3;             // 0:11
+			SIT_SLEEP_STATE   sitSleepState: 4;     // 0:14
+			FLY_STATE         flyState: 3;          // 0:18
+			ACTOR_LIFE_STATE  lifeState: 4;         // 0:21
+			KNOCK_STATE_ENUM  knockState: 3;        // 0:25
 			ATTACK_STATE_ENUM meleeAttackState: 4;  // 0:28
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
@@ -126,7 +126,7 @@ namespace RE
 			std::uint32_t forceSneak: 1;       // 0:02
 			std::uint32_t headTracking: 1;     // 0:03
 			std::uint32_t reanimating: 1;      // 0:04
-			WEAPON_STATE weaponState: 3;       // 0:05
+			WEAPON_STATE  weaponState: 3;      // 0:05
 			std::uint32_t wantBlocking: 1;     // 0:08
 			std::uint32_t flightBlocked: 1;    // 0:09
 			std::uint32_t recoil: 2;           // 0:10
@@ -153,11 +153,11 @@ namespace RE
 		virtual void Unk_15(void);  // 15
 
 		[[nodiscard]] ATTACK_STATE_ENUM GetAttackState() const noexcept { return actorState1.meleeAttackState; }
-		[[nodiscard]] FLY_STATE GetFlyState() const noexcept { return actorState1.flyState; }
-		[[nodiscard]] KNOCK_STATE_ENUM GetKnockState() const noexcept { return actorState1.knockState; }
-		[[nodiscard]] ACTOR_LIFE_STATE GetLifeState() const noexcept { return actorState1.lifeState; }
-		[[nodiscard]] SIT_SLEEP_STATE GetSitSleepState() const noexcept { return actorState1.sitSleepState; }
-		[[nodiscard]] WEAPON_STATE GetWeaponState() const noexcept { return actorState2.weaponState; }
+		[[nodiscard]] FLY_STATE         GetFlyState() const noexcept { return actorState1.flyState; }
+		[[nodiscard]] KNOCK_STATE_ENUM  GetKnockState() const noexcept { return actorState1.knockState; }
+		[[nodiscard]] ACTOR_LIFE_STATE  GetLifeState() const noexcept { return actorState1.lifeState; }
+		[[nodiscard]] SIT_SLEEP_STATE   GetSitSleepState() const noexcept { return actorState1.sitSleepState; }
+		[[nodiscard]] WEAPON_STATE      GetWeaponState() const noexcept { return actorState2.weaponState; }
 
 		[[nodiscard]] bool IsBleedingOut() const noexcept
 		{

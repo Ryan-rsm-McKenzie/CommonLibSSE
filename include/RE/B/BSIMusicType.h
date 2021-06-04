@@ -45,16 +45,16 @@ namespace RE
 		virtual ~BSIMusicType();  // 07
 
 		// members
-		stl::enumeration<MST, std::uint32_t> flags;                // 08 - FNAM
-		std::uint8_t priority;                                     // 0C
-		std::uint8_t padding;                                      // 0D
-		std::uint16_t ducksOtherMusicBy;                           // 0E - ck value * 100 as a std::uint16_t
-		float fadeTime;                                            // 10 - WNAM
-		std::uint32_t currentTrackIndex;                           // 14
-		BSTArray<std::uint32_t> trackHistory;                      // 18
-		BSTArray<BSIMusicTrack*> tracks;                           // 30 - TNAM
-		stl::enumeration<MUSIC_STATUS, std::uint32_t> typeStatus;  // 48
-		std::uint32_t pad4C;                                       // 4C
+		stl::enumeration<MST, std::uint32_t>          flags;              // 08 - FNAM
+		std::uint8_t                                  priority;           // 0C
+		std::uint8_t                                  padding;            // 0D
+		std::uint16_t                                 ducksOtherMusicBy;  // 0E - ck value * 100 as a std::uint16_t
+		float                                         fadeTime;           // 10 - WNAM
+		std::uint32_t                                 currentTrackIndex;  // 14
+		BSTArray<std::uint32_t>                       trackHistory;       // 18
+		BSTArray<BSIMusicTrack*>                      tracks;             // 30 - TNAM
+		stl::enumeration<MUSIC_STATUS, std::uint32_t> typeStatus;         // 48
+		std::uint32_t                                 pad4C;              // 4C
 	};
 	static_assert(sizeof(BSIMusicType) == 0x50);
 }

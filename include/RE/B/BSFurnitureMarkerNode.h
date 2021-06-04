@@ -25,9 +25,9 @@ namespace RE
 			kUp = 1 << 4
 		};
 
-		NiPoint3 offset;                                                   // 00
-		float heading;                                                     // 0C
-		stl::enumeration<AnimationType, std::uint16_t> animationType;      // 10
+		NiPoint3                                         offset;           // 00
+		float                                            heading;          // 0C
+		stl::enumeration<AnimationType, std::uint16_t>   animationType;    // 10
 		stl::enumeration<EntryProperties, std::uint16_t> entryProperties;  // 12
 	};
 

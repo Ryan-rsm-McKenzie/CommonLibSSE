@@ -43,12 +43,12 @@ namespace RE
 		virtual void SetDelete(bool a_set) override;  // 23 - { TESForm::SetDelete(a_set); }
 
 		// members
-		std::uint32_t collisionIdx;                   // 30 - BNAM
-		Color debugColor;                             // 34 - FNAM
-		stl::enumeration<FLAG, std::uint32_t> flags;  // 38 - GNAM
-		std::uint32_t pad3C;                          // 3C
-		BSFixedString name;                           // 40 - MNAM
-		BSTArray<BGSCollisionLayer*> collidesWith;    // 48 - CNAM
+		std::uint32_t                         collisionIdx;  // 30 - BNAM
+		Color                                 debugColor;    // 34 - FNAM
+		stl::enumeration<FLAG, std::uint32_t> flags;         // 38 - GNAM
+		std::uint32_t                         pad3C;         // 3C
+		BSFixedString                         name;          // 40 - MNAM
+		BSTArray<BGSCollisionLayer*>          collidesWith;  // 48 - CNAM
 	};
 	static_assert(sizeof(BGSCollisionLayer) == 0x60);
 }

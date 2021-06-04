@@ -27,11 +27,11 @@ namespace RE
 		};
 
 		// members
-		BGSProjectile* projectile;                   // 00
-		stl::enumeration<Flag, std::uint8_t> flags;  // 08
-		std::uint8_t pa09;                           // 09
-		std::uint16_t pa0A;                          // 0A
-		float damage;                                // 0C
+		BGSProjectile*                       projectile;  // 00
+		stl::enumeration<Flag, std::uint8_t> flags;       // 08
+		std::uint8_t                         pa09;        // 09
+		std::uint16_t                        pa0A;        // 0A
+		float                                damage;      // 0C
 	};
 	static_assert(sizeof(AMMO_DATA) == 0x10);
 
@@ -65,14 +65,14 @@ namespace RE
 		virtual ~TESAmmo();  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                                           // 04
-		virtual bool Load(TESFile* a_mod) override;                                       // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                         // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                         // 0F
-		virtual void InitItemImpl() override;                                             // 13
-		virtual bool GetPlayable() const override;                                        // 19 - { return ~((data.flags >> 1) & 1); }
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;          // 40
-		virtual void HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;  // 4E
+		virtual void        InitializeData() override;                                           // 04
+		virtual bool        Load(TESFile* a_mod) override;                                       // 06
+		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;                         // 0E
+		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;                         // 0F
+		virtual void        InitItemImpl() override;                                             // 13
+		virtual bool        GetPlayable() const override;                                        // 19 - { return ~((data.flags >> 1) & 1); }
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                 // 40
+		virtual void        HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;  // 4E
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
@@ -81,7 +81,7 @@ namespace RE
 		bool IsBolt();
 
 		// members
-		AMMO_DATA data;           // 110 - DATA
+		AMMO_DATA     data;       // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
 	};
 	static_assert(sizeof(TESAmmo) == 0x128);

@@ -15,20 +15,20 @@ namespace RE
 		{
 		public:
 			std::uint32_t GetPageForFrame() const;
-			Variable& GetStackFrameVariable(std::uint32_t a_index, std::uint32_t a_pageHint) const;
+			Variable&     GetStackFrameVariable(std::uint32_t a_index, std::uint32_t a_pageHint) const;
 
 			// members
-			Stack* parent;                                     // 00
-			StackFrame* previousFrame;                         // 08
-			BSTSmartPointer<IFunction> owningFunction;         // 10
-			BSTSmartPointer<ObjectTypeInfo> owningObjectType;  // 18
-			std::uint32_t instructionPointer;                  // 20
-			std::uint32_t pad24;                               // 24
-			Variable self;                                     // 28
-			std::uint32_t size;                                // 38
-			bool instructionsValid;                            // 3C
-			std::uint8_t pad3D;                                // 3D
-			std::uint16_t pad3E;                               // 3E
+			Stack*                          parent;              // 00
+			StackFrame*                     previousFrame;       // 08
+			BSTSmartPointer<IFunction>      owningFunction;      // 10
+			BSTSmartPointer<ObjectTypeInfo> owningObjectType;    // 18
+			std::uint32_t                   instructionPointer;  // 20
+			std::uint32_t                   pad24;               // 24
+			Variable                        self;                // 28
+			std::uint32_t                   size;                // 38
+			bool                            instructionsValid;   // 3C
+			std::uint8_t                    pad3D;               // 3D
+			std::uint16_t                   pad3E;               // 3E
 
 			//Variable args[4];	40 - minimum space for 4 args is allocated
 		};

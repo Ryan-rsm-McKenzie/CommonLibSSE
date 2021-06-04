@@ -17,10 +17,10 @@ namespace RE
 		virtual void ResetImpl() = 0;                         // 02
 
 		// members
-		std::uint32_t pad0C;              // 0C
+		std::uint32_t       pad0C;        // 0C
 		const BSFixedString channelName;  // 10
-		std::uint32_t value;              // 18
-		std::uint32_t pad1C;              // 1C
+		std::uint32_t       value;        // 18
+		std::uint32_t       pad1C;        // 1C
 	};
 	static_assert(sizeof(BSAnimationGraphChannel) == 0x20);
 }

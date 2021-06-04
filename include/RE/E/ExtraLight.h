@@ -10,9 +10,9 @@ namespace RE
 
 	struct REFR_LIGHT
 	{
-		NiPointer<NiLight> light;  // 00
-		float wantDimmer;          // 08
-		std::uint32_t pad0C;       // 0C
+		NiPointer<NiLight> light;       // 00
+		float              wantDimmer;  // 08
+		std::uint32_t      pad0C;       // 0C
 	};
 	static_assert(sizeof(REFR_LIGHT) == 0x10);
 

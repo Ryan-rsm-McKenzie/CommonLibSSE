@@ -43,11 +43,11 @@ namespace RE
 		Flag GetSanitizedType() const;
 
 		// members
-		stl::enumeration<Flag, std::uint8_t> flags;  // 00
-		stl::enumeration<Type, std::uint8_t> type;   // 01
-		std::uint16_t pad02;                         // 02
-		std::uint32_t pad04;                         // 04
-		Teaches teaches;                             // 08
+		stl::enumeration<Flag, std::uint8_t> flags;    // 00
+		stl::enumeration<Type, std::uint8_t> type;     // 01
+		std::uint16_t                        pad02;    // 02
+		std::uint32_t                        pad04;    // 04
+		Teaches                              teaches;  // 08
 	};
 	static_assert(sizeof(OBJ_BOOK) == 0x10);
 
@@ -101,17 +101,17 @@ namespace RE
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		bool TeachesSkill() const;
-		bool TeachesSpell() const;
-		bool IsRead() const;
-		bool CanBeTaken() const;
-		bool IsBookTome() const;
-		bool IsNoteScroll() const;
+		bool       TeachesSkill() const;
+		bool       TeachesSpell() const;
+		bool       IsRead() const;
+		bool       CanBeTaken() const;
+		bool       IsBookTome() const;
+		bool       IsNoteScroll() const;
 		ActorValue GetSkill() const;
 		SpellItem* GetSpell();
 
 		// members
-		OBJ_BOOK data;                       // 110 - DATA
+		OBJ_BOOK       data;                 // 110 - DATA
 		TESObjectSTAT* inventoryModel;       // 120 - INAM
 		TESDescription itemCardDescription;  // 128 - CNAM
 	};

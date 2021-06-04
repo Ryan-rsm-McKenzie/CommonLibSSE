@@ -45,7 +45,7 @@ namespace SKSE
 			bool Unregister(const void* a_object, RE::VMTypeID a_typeID);
 
 			std::map<RE::VMHandle, EventName> _regs;
-			mutable Lock _lock;
+			mutable Lock                      _lock;
 		};
 
 		template <class Enable, class... Args>
@@ -81,7 +81,7 @@ namespace SKSE
 			inline void QueueEvent(Args... a_args)
 			{
 				std::tuple args(VMArg(std::forward<Args>(a_args))...);
-				auto task = GetTaskInterface();
+				auto       task = GetTaskInterface();
 				assert(task);
 				if (task) {
 					task->AddTask([args, this]() mutable {

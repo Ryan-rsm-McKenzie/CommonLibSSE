@@ -16,8 +16,8 @@ namespace RE
 		virtual ~ExtraLocationRefType();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kLocationRefType; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return locRefType != a_rhs->locRefType; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kLocationRefType; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return locRefType != a_rhs->locRefType; }
 
 		// members
 		BGSLocationRefType* locRefType;  // 10

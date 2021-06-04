@@ -28,29 +28,29 @@ namespace RE
 			kNoViewCull = 1 << 8
 		};
 
-		bool IsUsingEdgeAA() const;
-		bool IsEdgeAATextured() const;
-		bool IsOptimizingTriangles() const;
-		bool HasCxformAddAlpha() const;
-		bool HasVertexFormat(VertexFormat a_fmt) const;
-		RenderFlag GetStrokeRenderFlags() const;
+		bool          IsUsingEdgeAA() const;
+		bool          IsEdgeAATextured() const;
+		bool          IsOptimizingTriangles() const;
+		bool          HasCxformAddAlpha() const;
+		bool          HasVertexFormat(VertexFormat a_fmt) const;
+		RenderFlag    GetStrokeRenderFlags() const;
 		RenderCapBits GetRendererCapBits() const;
-		GRenderer* GetRenderer() const;
-		void SetRenderFlags(RenderFlag a_flags);
-		RenderFlag GetRenderFlags() const;
-		void SetMaxCurvePixelError(float a_pixelError);
-		float GetMaxCurvePixelError() const;
-		float GetStrokerAAWidth() const;
-		void SetStrokerAAWidth(float a_aawidth);
+		GRenderer*    GetRenderer() const;
+		void          SetRenderFlags(RenderFlag a_flags);
+		RenderFlag    GetRenderFlags() const;
+		void          SetMaxCurvePixelError(float a_pixelError);
+		float         GetMaxCurvePixelError() const;
+		float         GetStrokerAAWidth() const;
+		void          SetStrokerAAWidth(float a_aawidth);
 
 		// members
-		GPtr<GRenderer> renderer;                                        // 18
-		float maxCurvePixelError;                                        // 20
-		stl::enumeration<RenderFlag, std::uint32_t> renderFlags;         // 24
-		float strokerAAWidth;                                            // 28
-		stl::enumeration<RenderCapBits, std::uint32_t> rendererCapBits;  // 2C
-		stl::enumeration<VertexFormat, std::uint32_t> rendererVtxFmts;   // 30
-		std::uint32_t pad34;                                             // 34
+		GPtr<GRenderer>                                renderer;            // 18
+		float                                          maxCurvePixelError;  // 20
+		stl::enumeration<RenderFlag, std::uint32_t>    renderFlags;         // 24
+		float                                          strokerAAWidth;      // 28
+		stl::enumeration<RenderCapBits, std::uint32_t> rendererCapBits;     // 2C
+		stl::enumeration<VertexFormat, std::uint32_t>  rendererVtxFmts;     // 30
+		std::uint32_t                                  pad34;               // 34
 	};
 	static_assert(sizeof(GFxRenderConfig) == 0x38);
 }

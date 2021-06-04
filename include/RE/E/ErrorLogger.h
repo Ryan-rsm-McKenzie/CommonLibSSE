@@ -39,7 +39,7 @@ namespace RE
 			virtual void ResetImpl();                                                    // 02 - { return; }
 
 			// members
-			std::uint64_t unk60;                                           // 60
+			std::uint64_t                                   unk60;         // 60
 			BSTHashMap<std::uint32_t, PerThreadErrorCounts> threadErrors;  // 68
 		};
 		static_assert(sizeof(ErrorLogger) == 0x98);

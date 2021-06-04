@@ -30,7 +30,7 @@ namespace RE
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 10
-		std::uint32_t pad14;                          // 14
+		std::uint32_t                         pad14;  // 14
 	};
 	static_assert(sizeof(ExtraFlags) == 0x18);
 }

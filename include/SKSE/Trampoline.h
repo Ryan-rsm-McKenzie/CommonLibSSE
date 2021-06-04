@@ -211,10 +211,10 @@ namespace SKSE
 			struct TrampolineAssembly
 			{
 				// jmp [rip]
-				std::uint8_t jmp;    // 0 - 0xFF
-				std::uint8_t modrm;  // 1 - 0x25
-				std::int32_t disp;   // 2 - 0x00000000
-				std::uint64_t addr;  // 6 - [rip]
+				std::uint8_t  jmp;    // 0 - 0xFF
+				std::uint8_t  modrm;  // 1 - 0x25
+				std::int32_t  disp;   // 2 - 0x00000000
+				std::uint64_t addr;   // 6 - [rip]
 			};
 			static_assert(offsetof(TrampolineAssembly, jmp) == 0x0);
 			static_assert(offsetof(TrampolineAssembly, modrm) == 0x1);
@@ -350,10 +350,10 @@ namespace SKSE
 
 		std::map<std::uintptr_t, std::byte*> _5branches;
 		std::map<std::uintptr_t, std::byte*> _6branches;
-		std::string _name{ "Default Trampoline"sv };
-		deleter_type _deleter;
-		std::byte* _data{ nullptr };
-		std::size_t _capacity{ 0 };
-		std::size_t _size{ 0 };
+		std::string                          _name{ "Default Trampoline"sv };
+		deleter_type                         _deleter;
+		std::byte*                           _data{ nullptr };
+		std::size_t                          _capacity{ 0 };
+		std::size_t                          _size{ 0 };
 	};
 }

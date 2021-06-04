@@ -21,7 +21,7 @@ namespace RE
 
 		// members
 		ObjectRefHandle ashPileRef;  // 10
-		std::uint32_t pad14;         // 14
+		std::uint32_t   pad14;       // 14
 	};
 	static_assert(sizeof(ExtraAshPileRef) == 0x18);
 }

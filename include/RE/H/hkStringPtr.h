@@ -14,8 +14,8 @@ namespace RE
 
 		// capacity
 		[[nodiscard]] bool empty() const noexcept;
-		size_type size() const;
-		size_type length() const;
+		size_type          size() const;
+		size_type          length() const;
 
 	protected:
 		enum

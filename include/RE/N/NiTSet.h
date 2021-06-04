@@ -109,7 +109,7 @@ namespace RE
 		}
 
 	private:
-		T* _data;                 // 00
+		T*            _data;      // 00
 		std::uint32_t _capacity;  // 08
 		std::uint32_t _size;      // 0C
 	};

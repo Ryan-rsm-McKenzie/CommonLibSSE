@@ -7,8 +7,8 @@ namespace RE
 {
 	struct ActivateParentID
 	{
-		std::uint32_t refID;  // 0
-		float activateDelay;  // 4
+		std::uint32_t refID;          // 0
+		float         activateDelay;  // 4
 	};
 	static_assert(sizeof(ActivateParentID) == 0x8);
 
@@ -25,9 +25,9 @@ namespace RE
 
 		// members
 		ActivateParentID* unk10;  // 10
-		std::uint32_t unk18;      // 18
-		std::uint32_t unk1C;      // 1C
-		std::uint64_t unk20;      // 20
+		std::uint32_t     unk18;  // 18
+		std::uint32_t     unk1C;  // 1C
+		std::uint64_t     unk20;  // 20
 	};
 	static_assert(sizeof(ExtraMissingRefIDs) == 0x28);
 }

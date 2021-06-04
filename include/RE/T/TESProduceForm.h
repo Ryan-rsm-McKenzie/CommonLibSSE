@@ -34,10 +34,10 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* rhs) override;  // 03
 
 		// members
-		BGSSoundDescriptorForm* harvestSound;       // 08 - SNAM
-		TESBoundObject* produceItem;                // 10 - PFIG
-		std::int8_t produceChance[SEASON::kTotal];  // 18 - PFPC
-		std::uint32_t pad1C;                        // 1C
+		BGSSoundDescriptorForm* harvestSound;                   // 08 - SNAM
+		TESBoundObject*         produceItem;                    // 10 - PFIG
+		std::int8_t             produceChance[SEASON::kTotal];  // 18 - PFPC
+		std::uint32_t           pad1C;                          // 1C
 	};
 	static_assert(sizeof(TESProduceForm) == 0x20);
 }

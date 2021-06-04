@@ -56,17 +56,17 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<CAM_ACTION, std::uint32_t> cameraAction;  // 00
-			stl::enumeration<CAM_OBJECT, std::uint32_t> location;      // 04
-			stl::enumeration<CAM_OBJECT, std::uint32_t> target;        // 08
-			stl::enumeration<Flag, std::uint32_t> flags;               // 0C
-			float playerTimeMult;                                      // 10
-			float targetTimeMult;                                      // 14
-			float globalTimeMult;                                      // 18
-			float maxTime;                                             // 1C
-			float minTime;                                             // 20
-			float targetPercentBetweenActors;                          // 24
-			float nearTargetDistance;                                  // 28
+			stl::enumeration<CAM_ACTION, std::uint32_t> cameraAction;                // 00
+			stl::enumeration<CAM_OBJECT, std::uint32_t> location;                    // 04
+			stl::enumeration<CAM_OBJECT, std::uint32_t> target;                      // 08
+			stl::enumeration<Flag, std::uint32_t>       flags;                       // 0C
+			float                                       playerTimeMult;              // 10
+			float                                       targetTimeMult;              // 14
+			float                                       globalTimeMult;              // 18
+			float                                       maxTime;                     // 1C
+			float                                       minTime;                     // 20
+			float                                       targetPercentBetweenActors;  // 24
+			float                                       nearTargetDistance;          // 28
 		};
 		static_assert(sizeof(CAMERA_SHOT_DATA) == 0x2C);
 
@@ -78,16 +78,16 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		CAMERA_SHOT_DATA data;  // 58 - DATA
-		std::uint32_t pad84;    // 84
-		void* unk88;            // 88 - smart ptr
-		void* unk90;            // 90 - smart ptr
-		RefHandle unk98;        // 98
-		std::uint32_t unk9C;    // 9C
-		void* unkA0;            // A0 - smart ptr
-		void* unkA8;            // A8 - smart ptr
-		std::uint64_t unkB0;    // B0
-		void* unkB8;            // B8
+		CAMERA_SHOT_DATA data;   // 58 - DATA
+		std::uint32_t    pad84;  // 84
+		void*            unk88;  // 88 - smart ptr
+		void*            unk90;  // 90 - smart ptr
+		RefHandle        unk98;  // 98
+		std::uint32_t    unk9C;  // 9C
+		void*            unkA0;  // A0 - smart ptr
+		void*            unkA8;  // A8 - smart ptr
+		std::uint64_t    unkB0;  // B0
+		void*            unkB8;  // B8
 	};
 	static_assert(sizeof(BGSCameraShot) == 0xC0);
 }

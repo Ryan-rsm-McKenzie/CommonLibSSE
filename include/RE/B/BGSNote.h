@@ -48,10 +48,10 @@ namespace RE
 		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
 
 		// members
-		TESTopic* unk90;                // 90
-		TESActorBase* unk98;            // 98
+		TESTopic*               unk90;  // 90
+		TESActorBase*           unk98;  // 98
 		BSSimpleList<TESQuest*> unkA0;  // A0
-		std::uint64_t unkB0;            // B0
+		std::uint64_t           unkB0;  // B0
 	};
 	static_assert(sizeof(BGSNote) == 0xB8);
 }

@@ -21,13 +21,13 @@ namespace RE
 			virtual void Unk_04(void) override;  // 04
 
 			// members
-			const std::uint32_t minPageSize;         // 08
-			const std::uint32_t maxPageSize;         // 0C
-			const std::uint32_t maxAllocatedMemory;  // 10
-			const std::uint32_t maxStackDepth;       // 14
-			BSSpinLock dataLock;                     // 18
-			std::uint32_t currentMemorySize;         // 20
-			std::uint32_t maxAdditionalAllocations;  // 20
+			const std::uint32_t minPageSize;               // 08
+			const std::uint32_t maxPageSize;               // 0C
+			const std::uint32_t maxAllocatedMemory;        // 10
+			const std::uint32_t maxStackDepth;             // 14
+			BSSpinLock          dataLock;                  // 18
+			std::uint32_t       currentMemorySize;         // 20
+			std::uint32_t       maxAdditionalAllocations;  // 20
 		};
 		static_assert(sizeof(SimpleAllocMemoryPagePolicy) == 0x28);
 	}

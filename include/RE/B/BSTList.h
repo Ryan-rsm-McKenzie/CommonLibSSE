@@ -74,7 +74,7 @@ namespace RE
 			TES_HEAP_REDEFINE_NEW();
 
 			// members
-			value_type item;       // 00
+			value_type      item;  // 00
 			observer<Node*> next;  // ??
 		};
 
@@ -126,7 +126,7 @@ namespace RE
 			}
 
 			[[nodiscard]] constexpr reference operator*() const noexcept { return _cur->item; }
-			[[nodiscard]] constexpr pointer operator->() const noexcept { return std::addressof(_cur->item); }
+			[[nodiscard]] constexpr pointer   operator->() const noexcept { return std::addressof(_cur->item); }
 
 			[[nodiscard]] constexpr bool operator==(const iterator_base& a_rhs) const noexcept { return _cur == a_rhs._cur; }
 			[[nodiscard]] constexpr bool operator!=(const iterator_base& a_rhs) const noexcept { return !(*this == a_rhs); }
@@ -150,7 +150,7 @@ namespace RE
 		protected:
 			friend class BSSimpleList<T>;
 
-			[[nodiscard]] constexpr Node* get_current() noexcept { return _cur; }
+			[[nodiscard]] constexpr Node*       get_current() noexcept { return _cur; }
 			[[nodiscard]] constexpr const Node* get_current() const noexcept { return _cur; }
 
 			[[nodiscard]] constexpr bool comes_before(const iterator_base& a_rhs) const noexcept
@@ -221,11 +221,11 @@ namespace RE
 			return *begin();
 		}
 
-		[[nodiscard]] inline iterator begin() { return empty() ? end() : iterator(get_head()); }
+		[[nodiscard]] inline iterator       begin() { return empty() ? end() : iterator(get_head()); }
 		[[nodiscard]] inline const_iterator begin() const { return empty() ? end() : const_iterator(get_head()); }
 		[[nodiscard]] inline const_iterator cbegin() const { return begin(); }
 
-		[[nodiscard]] constexpr iterator end() noexcept { return iterator(nullptr); }
+		[[nodiscard]] constexpr iterator       end() noexcept { return iterator(nullptr); }
 		[[nodiscard]] constexpr const_iterator end() const noexcept { return const_iterator(nullptr); }
 		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
 
@@ -315,7 +315,7 @@ namespace RE
 		inline void resize(size_type a_count, const value_type& a_value) { resize_impl(a_count, a_value); }
 
 	protected:
-		[[nodiscard]] constexpr Node* get_head() noexcept { return std::addressof(_listHead); }
+		[[nodiscard]] constexpr Node*       get_head() noexcept { return std::addressof(_listHead); }
 		[[nodiscard]] constexpr const Node* get_head() const noexcept { return std::addressof(_listHead); }
 
 		[[nodiscard]] inline std::pair<Node*, Node*> alloc_copies(size_type a_count, const_reference a_value)
@@ -389,8 +389,8 @@ namespace RE
 				clear();
 			}
 
-			auto iter = begin();
-			auto last = end();
+			auto      iter = begin();
+			auto      last = end();
 			size_type elems = 1;
 			while (iter != last && elems != a_count) {
 				++iter;

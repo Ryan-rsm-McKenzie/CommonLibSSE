@@ -32,16 +32,16 @@ namespace RE
 		virtual ~TESGlobal();  // 00
 
 		// override (TESform)
-		virtual bool Load(TESFile* a_mod) override;                // 06
-		virtual const char* GetFormEditorID() const override;      // 32 - { return formEditorID.c_str(); }
-		virtual bool SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
+		virtual bool        Load(TESFile* a_mod) override;                // 06
+		virtual const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		virtual bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		// members
-		BSString formEditorID;                      // 20 - EDID
-		stl::enumeration<Type, std::uint8_t> type;  // 30 - ENAM
-		std::uint8_t pad31;                         // 31
-		std::uint16_t pad32;                        // 32
-		float value;                                // 34 - FLTV
+		BSString                             formEditorID;  // 20 - EDID
+		stl::enumeration<Type, std::uint8_t> type;          // 30 - ENAM
+		std::uint8_t                         pad31;         // 31
+		std::uint16_t                        pad32;         // 32
+		float                                value;         // 34 - FLTV
 	};
 	static_assert(sizeof(TESGlobal) == 0x38);
 }

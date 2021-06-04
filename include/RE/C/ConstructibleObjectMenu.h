@@ -37,15 +37,15 @@ namespace RE
 
 			// members
 			BSTArray<void*> unk100;  // 100
-			std::uint64_t unk118;    // 118
-			std::uint64_t unk120;    // 120
-			std::uint64_t unk128;    // 128
-			std::uint64_t unk130;    // 130
-			std::uint64_t unk138;    // 138
-			std::uint64_t unk140;    // 140
-			std::uint64_t unk148;    // 148
-			std::uint64_t unk150;    // 150
-			std::uint64_t unk158;    // 158
+			std::uint64_t   unk118;  // 118
+			std::uint64_t   unk120;  // 120
+			std::uint64_t   unk128;  // 128
+			std::uint64_t   unk130;  // 130
+			std::uint64_t   unk138;  // 138
+			std::uint64_t   unk140;  // 140
+			std::uint64_t   unk148;  // 148
+			std::uint64_t   unk150;  // 150
+			std::uint64_t   unk158;  // 158
 		};
 		static_assert(sizeof(ConstructibleObjectMenu) == 0x160);
 	}

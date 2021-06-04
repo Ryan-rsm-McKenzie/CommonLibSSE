@@ -18,12 +18,12 @@ namespace RE
 		public MenuEventHandler  // 30
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_FavoritesMenu;
+		inline static constexpr auto      RTTI = RTTI_FavoritesMenu;
 		constexpr static std::string_view MENU_NAME = "FavoritesMenu";
 
 		struct Entry
 		{
-			TESForm* item;                  // 00
+			TESForm*            item;       // 00
 			InventoryEntryData* entryData;  // 08
 		};
 		static_assert(sizeof(Entry) == 0x10);
@@ -31,8 +31,8 @@ namespace RE
 		virtual ~FavoritesMenu();  // 00
 
 		// override (IMenu)
-		virtual void Accept(CallbackProcessor* a_processor) override;              // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+		virtual void               Accept(CallbackProcessor* a_processor) override;  // 01
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
 		// override (MenuEventHandler)
 		virtual bool CanProcess(InputEvent* a_event) override;      // 01
@@ -40,12 +40,12 @@ namespace RE
 		virtual bool ProcessButton(ButtonEvent* a_event) override;  // 05
 
 		// members
-		GFxValue root;              // 40 - "Menu_mc"
-		BSTArray<Entry> favorites;  // 58
-		std::uint16_t unk70;        // 70
-		bool pcControlsReady;       // 72
-		bool isVampire;             // 73
-		std::uint32_t pad74;        // 74
+		GFxValue        root;             // 40 - "Menu_mc"
+		BSTArray<Entry> favorites;        // 58
+		std::uint16_t   unk70;            // 70
+		bool            pcControlsReady;  // 72
+		bool            isVampire;        // 73
+		std::uint32_t   pad74;            // 74
 	};
 	static_assert(sizeof(FavoritesMenu) == 0x78);
 }

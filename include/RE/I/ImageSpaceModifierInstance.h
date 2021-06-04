@@ -21,11 +21,11 @@ namespace RE
 		virtual void Unk_28(void) = 0;  // 28
 
 		// members
-		std::uint32_t unk10;           // 10
-		float strength;                // 14
-		NiPointer<NiAVObject> target;  // 18
-		float age;                     // 20
-		std::uint32_t flags;           // 24
+		std::uint32_t         unk10;     // 10
+		float                 strength;  // 14
+		NiPointer<NiAVObject> target;    // 18
+		float                 age;       // 20
+		std::uint32_t         flags;     // 24
 	};
 	static_assert(sizeof(ImageSpaceModifierInstance) == 0x28);
 }

@@ -14,7 +14,7 @@ namespace RE
 
 		// override (bhkWorldObject)
 		virtual const NiRTTI* GetRTTI() const override;  // 02
-		virtual void Unk_2A(void);                       // 2A
+		virtual void          Unk_2A(void);              // 2A
 
 		// members
 		std::uint64_t unk28;  // 28

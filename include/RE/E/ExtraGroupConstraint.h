@@ -20,14 +20,14 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kGroupConstraint; }
 
 		// members
-		std::int32_t constraintType;            // 10
-		ObjectRefHandle entityB;                // 14
-		BSFixedString attachNodeNameA;          // 18
-		BSFixedString attachNodeNameB;          // 20
-		NiPoint3 constraintOffsetA;             // 28
-		NiPoint3 constraintOffsetB;             // 34
-		std::uint32_t originalCollisionGroupB;  // 40
-		float dynamicMassScaleB;                // 44
+		std::int32_t    constraintType;           // 10
+		ObjectRefHandle entityB;                  // 14
+		BSFixedString   attachNodeNameA;          // 18
+		BSFixedString   attachNodeNameB;          // 20
+		NiPoint3        constraintOffsetA;        // 28
+		NiPoint3        constraintOffsetB;        // 34
+		std::uint32_t   originalCollisionGroupB;  // 40
+		float           dynamicMassScaleB;        // 44
 	};
 	static_assert(sizeof(ExtraGroupConstraint) == 0x48);
 }

@@ -16,7 +16,7 @@ namespace RE
 	protected:
 		// members
 		volatile std::uint32_t _refCount{ 1 };  // 08
-		std::uint32_t _pad0C{ 0 };              // 0C
+		std::uint32_t          _pad0C{ 0 };     // 0C
 	};
 	static_assert(sizeof(GRefCountImplCore) == 0x10);
 }

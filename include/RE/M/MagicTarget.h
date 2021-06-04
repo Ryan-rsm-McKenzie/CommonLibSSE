@@ -36,28 +36,28 @@ namespace RE
 
 		struct SpellDispelData
 		{
-			MagicItem* spell;                            // 00
-			BSPointerHandle<Actor> caster;               // 08
-			std::uint32_t pad0C;                         // 0C
+			MagicItem*                    spell;         // 00
+			BSPointerHandle<Actor>        caster;        // 08
+			std::uint32_t                 pad0C;         // 0C
 			BSTSmartPointer<ActiveEffect> activeEffect;  // 10
-			SpellDispelData* next;                       // 18
+			SpellDispelData*              next;          // 18
 		};
 		static_assert(sizeof(SpellDispelData) == 0x20);
 
 		virtual ~MagicTarget();  // 00
 
 		// add
-		virtual void Unk_01(void);                                                                             // 01
-		virtual TESObjectREFR* GetTargetStatsObject();                                                         // 02 - { return false; }
-		virtual bool MagicTargetIsActor() const;                                                               // 03 - { return false; }
-		virtual bool IsInvulnerable();                                                                         // 04 - { return false; }
-		virtual void InvalidateCommandedActorEffect(ActiveEffect* a_effect);                                   // 05 - { return; }
-		virtual bool CanAddActiveEffect() = 0;                                                                 // 06
-		virtual BSSimpleList<ActiveEffect*>* GetActiveEffectList() = 0;                                        // 07
-		virtual void Unk_08(void);                                                                             // 08 - { return; }
-		virtual void Unk_09(void);                                                                             // 09 - { return; }
-		virtual void CheckResistance(MagicItem* a_magicItem, EffectItem* a_effect, TESBoundObject* a_object);  // 0A - { return 1.0; }
-		virtual void CheckAbsorb(Actor* a_actor, MagicItem* a_magicItem, const EffectItem* a_effect);          // 0B - { return false; }
+		virtual void                         Unk_01(void);                                                                             // 01
+		virtual TESObjectREFR*               GetTargetStatsObject();                                                                   // 02 - { return false; }
+		virtual bool                         MagicTargetIsActor() const;                                                               // 03 - { return false; }
+		virtual bool                         IsInvulnerable();                                                                         // 04 - { return false; }
+		virtual void                         InvalidateCommandedActorEffect(ActiveEffect* a_effect);                                   // 05 - { return; }
+		virtual bool                         CanAddActiveEffect() = 0;                                                                 // 06
+		virtual BSSimpleList<ActiveEffect*>* GetActiveEffectList() = 0;                                                                // 07
+		virtual void                         Unk_08(void);                                                                             // 08 - { return; }
+		virtual void                         Unk_09(void);                                                                             // 09 - { return; }
+		virtual void                         CheckResistance(MagicItem* a_magicItem, EffectItem* a_effect, TESBoundObject* a_object);  // 0A - { return 1.0; }
+		virtual void                         CheckAbsorb(Actor* a_actor, MagicItem* a_magicItem, const EffectItem* a_effect);          // 0B - { return false; }
 
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 		bool HasEffectWithArchetype(Archetype a_type);
@@ -65,10 +65,10 @@ namespace RE
 
 		// members
 		SpellDispelData* postUpdateDispelList;  // 08
-		std::uint8_t flags;                     // 10
-		std::uint8_t pad11;                     // 11
-		std::uint16_t pad12;                    // 12
-		std::uint32_t pad14;                    // 14
+		std::uint8_t     flags;                 // 10
+		std::uint8_t     pad11;                 // 11
+		std::uint16_t    pad12;                 // 12
+		std::uint32_t    pad14;                 // 14
 	};
 	static_assert(sizeof(MagicTarget) == 0x18);
 }

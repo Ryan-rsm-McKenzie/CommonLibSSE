@@ -28,10 +28,10 @@ namespace RE
 		virtual void Unk_0E(void);      // 0E - { return; }
 
 		// members
-		std::int32_t userIndex;  // C8
-		bool connected;          // CC
-		bool listeningForInput;  // CD
-		std::uint16_t padCE;     // CE
+		std::int32_t  userIndex;          // C8
+		bool          connected;          // CC
+		bool          listeningForInput;  // CD
+		std::uint16_t padCE;              // CE
 	};
 	static_assert(sizeof(BSGamepadDevice) == 0xD0);
 }

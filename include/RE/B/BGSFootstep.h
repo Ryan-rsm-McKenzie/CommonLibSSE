@@ -29,7 +29,7 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		BSFixedString tag;            // 20 - ANAM
+		BSFixedString     tag;        // 20 - ANAM
 		BGSImpactDataSet* impactSet;  // 28 - DATA
 	};
 	static_assert(sizeof(BGSFootstep) == 0x30);

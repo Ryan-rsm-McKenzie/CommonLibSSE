@@ -113,7 +113,7 @@ namespace RE
 
 	private:
 		// members
-		T* _data;                   // 08
+		T*            _data;        // 08
 		std::uint16_t _capacity;    // 10
 		std::uint16_t _freeIdx;     // 12
 		std::uint16_t _size;        // 14
@@ -249,7 +249,7 @@ namespace RE
 
 	private:
 		// members
-		T* _data;                   // 08
+		T*            _data;        // 08
 		std::uint32_t _capacity;    // 10
 		std::uint32_t _freeIdx;     // 14
 		std::uint32_t _size;        // 18

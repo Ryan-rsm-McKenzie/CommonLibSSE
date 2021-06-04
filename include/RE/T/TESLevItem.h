@@ -41,8 +41,8 @@ namespace RE
 		virtual void InitItemImpl() override;                      // 13
 
 		// override (TESLeveledList)
-		virtual std::int32_t GetLevDifferenceMax() override;                    // 06 - { return iLevItemLevelDifferenceMax; }
-		virtual bool GetCanContainFormsOfType(FormType a_type) const override;  // 07
+		virtual std::int32_t GetLevDifferenceMax() override;                            // 06 - { return iLevItemLevelDifferenceMax; }
+		virtual bool         GetCanContainFormsOfType(FormType a_type) const override;  // 07
 	};
 	static_assert(sizeof(TESLevItem) == 0x58);
 }

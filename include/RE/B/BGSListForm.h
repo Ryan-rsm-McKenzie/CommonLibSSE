@@ -44,10 +44,10 @@ namespace RE
 		bool HasForm(FormID a_formID) const;
 
 		// members
-		BSTArray<TESForm*> forms;                // 20 - LNAM
-		BSTArray<FormID>* scriptAddedTempForms;  // 38
-		std::uint32_t scriptAddedFormCount;      // 40
-		std::uint32_t pad44;                     // 44
+		BSTArray<TESForm*> forms;                 // 20 - LNAM
+		BSTArray<FormID>*  scriptAddedTempForms;  // 38
+		std::uint32_t      scriptAddedFormCount;  // 40
+		std::uint32_t      pad44;                 // 44
 	};
 	static_assert(sizeof(BGSListForm) == 0x48);
 }

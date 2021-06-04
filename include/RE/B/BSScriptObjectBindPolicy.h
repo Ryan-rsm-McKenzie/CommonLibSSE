@@ -36,10 +36,10 @@ namespace RE
 			void BindObject(BSTSmartPointer<Object>& a_objectPtr, VMHandle a_handle);
 
 			// members
-			IVirtualMachine* vm;                             // 08
-			IVMObjectBindInterface* bindInterface;           // 10
-			mutable BSSpinLock attachedScriptsLock;          // 18
-			BSTHashMap<VMHandle, UnkValue> attachedScripts;  // 20
+			IVirtualMachine*               vm;                   // 08
+			IVMObjectBindInterface*        bindInterface;        // 10
+			mutable BSSpinLock             attachedScriptsLock;  // 18
+			BSTHashMap<VMHandle, UnkValue> attachedScripts;      // 20
 		};
 		static_assert(sizeof(ObjectBindPolicy) == 0x50);
 	}

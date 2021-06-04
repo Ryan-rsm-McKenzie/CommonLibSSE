@@ -24,8 +24,8 @@ namespace RE
 		virtual ~ExtraStartingPosition();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kStartingPosition; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return location != a_rhs->location || startPosition.pos != a_rhs->startPosition.pos || startPosition.rot != a_rhs->startPosition.rot; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kStartingPosition; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return location != a_rhs->location || startPosition.pos != a_rhs->startPosition.pos || startPosition.rot != a_rhs->startPosition.rot; }
 
 		// members
 		FILE_POS_ROT startPosition;  // 10

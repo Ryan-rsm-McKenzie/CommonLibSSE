@@ -39,16 +39,16 @@ namespace RE
 		virtual ~HUDData();  // 00
 
 		// members
-		stl::enumeration<Type, std::uint32_t> type;            // 10
-		std::uint32_t pad14;                                   // 14
-		BSString text;                                         // 18
-		std::uint32_t unk28;                                   // 28
-		std::uint32_t pad2C;                                   // 2C
-		void* unk30;                                           // 30
-		std::uint64_t unk38;                                   // 38
-		std::uint8_t unk40;                                    // 40
-		std::uint8_t pad41;                                    // 41
-		std::uint16_t pad42;                                   // 42
+		stl::enumeration<Type, std::uint32_t>      type;       // 10
+		std::uint32_t                              pad14;      // 14
+		BSString                                   text;       // 18
+		std::uint32_t                              unk28;      // 28
+		std::uint32_t                              pad2C;      // 2C
+		void*                                      unk30;      // 30
+		std::uint64_t                              unk38;      // 38
+		std::uint8_t                               unk40;      // 40
+		std::uint8_t                               pad41;      // 41
+		std::uint16_t                              pad42;      // 42
 		stl::enumeration<Discovery, std::uint32_t> discovery;  // 44
 	};
 	static_assert(sizeof(HUDData) == 0x48);

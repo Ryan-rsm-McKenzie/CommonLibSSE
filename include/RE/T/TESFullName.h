@@ -19,7 +19,7 @@ namespace RE
 
 		// add
 		virtual std::uint32_t GetFullNameLength() const;  // 04
-		virtual const char* GetFullName() const;          // 05
+		virtual const char*   GetFullName() const;        // 05
 
 		// members
 		BSFixedString fullName;  // 08 - FULL

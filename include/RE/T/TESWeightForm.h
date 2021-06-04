@@ -17,8 +17,8 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// members
-		float weight;         // 08
-		std::uint32_t pad0C;  // 0C
+		float         weight;  // 08
+		std::uint32_t pad0C;   // 0C
 	};
 	static_assert(sizeof(TESWeightForm) == 0x10);
 }

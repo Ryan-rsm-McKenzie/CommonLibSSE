@@ -12,12 +12,12 @@ namespace RE
 {
 	struct OBJ_ARMA  // DNAM
 	{
-		std::int8_t priorities[SEXES::kTotal];  // 0
-		std::int8_t modelRange[SEXES::kTotal];  // 2
-		std::int8_t unused[SEXES::kTotal];      // 4
-		std::int8_t detectionSoundValue;        // 6
-		std::uint8_t pad07;                     // 7
-		float weaponAdjust;                     // 8
+		std::int8_t  priorities[SEXES::kTotal];  // 0
+		std::int8_t  modelRange[SEXES::kTotal];  // 2
+		std::int8_t  unused[SEXES::kTotal];      // 4
+		std::int8_t  detectionSoundValue;        // 6
+		std::uint8_t pad07;                      // 7
+		float        weaponAdjust;               // 8
 	};
 	static_assert(sizeof(OBJ_ARMA) == 0xC);
 
@@ -51,15 +51,15 @@ namespace RE
 		void GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);
 
 		// members
-		OBJ_ARMA data;                                            // 040 - DNAM
-		std::uint32_t pad04C;                                     // 04C
+		OBJ_ARMA            data;                                 // 040 - DNAM
+		std::uint32_t       pad04C;                               // 04C
 		TESModelTextureSwap bipedModels[SEXES::kTotal];           // 050
 		TESModelTextureSwap bipedModel1stPersons[SEXES::kTotal];  // 0C0
-		BGSTextureSet* skinTextures[SEXES::kTotal];               // 130 - NAM0 - NAM1
-		BGSListForm* skinTextureSwapLists[SEXES::kTotal];         // 140 - NAM2 - NAM3
-		BSTArray<TESRace*> additionalRaces;                       // 150 - MODL
-		BGSFootstepSet* footstepSet;                              // 168 - SNDD
-		BGSArtObject* artObject;                                  // 170 - ONAM
+		BGSTextureSet*      skinTextures[SEXES::kTotal];          // 130 - NAM0 - NAM1
+		BGSListForm*        skinTextureSwapLists[SEXES::kTotal];  // 140 - NAM2 - NAM3
+		BSTArray<TESRace*>  additionalRaces;                      // 150 - MODL
+		BGSFootstepSet*     footstepSet;                          // 168 - SNDD
+		BGSArtObject*       artObject;                            // 170 - ONAM
 	};
 	static_assert(sizeof(TESObjectARMA) == 0x178);
 }

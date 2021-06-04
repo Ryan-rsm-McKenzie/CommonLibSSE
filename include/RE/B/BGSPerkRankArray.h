@@ -8,11 +8,11 @@ namespace RE
 
 	struct PerkRankData  // PRKR
 	{
-		BGSPerk* perk;            // 00
-		std::int8_t currentRank;  // 08
-		std::uint8_t pad09;       // 09
-		std::uint16_t pad0A;      // 0A
-		std::uint32_t pad0C;      // 0C
+		BGSPerk*      perk;         // 00
+		std::int8_t   currentRank;  // 08
+		std::uint8_t  pad09;        // 09
+		std::uint16_t pad0A;        // 0A
+		std::uint32_t pad0C;        // 0C
 	};
 	static_assert(sizeof(PerkRankData) == 0x10);
 

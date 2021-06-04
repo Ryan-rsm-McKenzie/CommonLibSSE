@@ -64,43 +64,43 @@ namespace RE
 		virtual ~NiGeometryData();  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                 // 02
-		virtual void LoadBinary(NiStream& a_stream) override;           // 18
-		virtual void LinkObject(NiStream& a_stream) override;           // 19
-		virtual bool RegisterStreamables(NiStream& a_stream) override;  // 1A
-		virtual void SaveBinary(NiStream& a_stream) override;           // 1B
-		virtual bool IsEqual(NiObject* a_object) override;              // 1C
+		virtual const NiRTTI* GetRTTI() const override;                          // 02
+		virtual void          LoadBinary(NiStream& a_stream) override;           // 18
+		virtual void          LinkObject(NiStream& a_stream) override;           // 19
+		virtual bool          RegisterStreamables(NiStream& a_stream) override;  // 1A
+		virtual void          SaveBinary(NiStream& a_stream) override;           // 1B
+		virtual bool          IsEqual(NiObject* a_object) override;              // 1C
 
 		// add
-		virtual void SetActiveVertexCount(std::uint16_t a_count);  // 25 - { return; }
-		virtual std::uint16_t GetActiveVertexCount() const;        // 26 - { return vertices; }
-		virtual NiTriStripsData* AsTriStripsData();                // 27 - { return 0; }
-		virtual NiTriShapeData* AsTriShapeData();                  // 28 - { return 0; }
-		virtual void Unk_29(void) = 0;                             // 29
+		virtual void             SetActiveVertexCount(std::uint16_t a_count);  // 25 - { return; }
+		virtual std::uint16_t    GetActiveVertexCount() const;                 // 26 - { return vertices; }
+		virtual NiTriStripsData* AsTriStripsData();                            // 27 - { return 0; }
+		virtual NiTriShapeData*  AsTriShapeData();                             // 28 - { return 0; }
+		virtual void             Unk_29(void) = 0;                             // 29
 
 		// members
-		std::uint16_t vertices;                                      // 10
-		std::uint16_t id;                                            // 12
-		stl::enumeration<DirtyFlag, std::uint16_t> dirtyFlags;       // 14
-		stl::enumeration<DataFlag, std::uint16_t> dataFlags;         // 16
-		NiBound bound;                                               // 18
-		NiPoint3* vertex;                                            // 28
-		NiPoint3* normal;                                            // 30
-		NiColorA* color;                                             // 38
-		NiPoint2* texture;                                           // 40
-		std::uint32_t unk48;                                         // 48
-		std::uint32_t unk4C;                                         // 4C
-		std::uint32_t unk50;                                         // 50
-		std::uint32_t unk54;                                         // 54
-		NiPointer<NiAdditionalGeometryData> additionalGeomData;      // 58
-		stl::enumeration<KeepFlag, std::uint8_t> keepFlags;          // 60
-		stl::enumeration<CompressFlag, std::uint8_t> compressFlags;  // 61
-		std::uint8_t unk62;                                          // 62
-		std::uint8_t unk63;                                          // 63
-		std::uint8_t unk64;                                          // 64
-		std::uint8_t unk65;                                          // 65
-		bool hasGeoData;                                             // 66
-		std::uint8_t unk67;                                          // 67
+		std::uint16_t                                vertices;            // 10
+		std::uint16_t                                id;                  // 12
+		stl::enumeration<DirtyFlag, std::uint16_t>   dirtyFlags;          // 14
+		stl::enumeration<DataFlag, std::uint16_t>    dataFlags;           // 16
+		NiBound                                      bound;               // 18
+		NiPoint3*                                    vertex;              // 28
+		NiPoint3*                                    normal;              // 30
+		NiColorA*                                    color;               // 38
+		NiPoint2*                                    texture;             // 40
+		std::uint32_t                                unk48;               // 48
+		std::uint32_t                                unk4C;               // 4C
+		std::uint32_t                                unk50;               // 50
+		std::uint32_t                                unk54;               // 54
+		NiPointer<NiAdditionalGeometryData>          additionalGeomData;  // 58
+		stl::enumeration<KeepFlag, std::uint8_t>     keepFlags;           // 60
+		stl::enumeration<CompressFlag, std::uint8_t> compressFlags;       // 61
+		std::uint8_t                                 unk62;               // 62
+		std::uint8_t                                 unk63;               // 63
+		std::uint8_t                                 unk64;               // 64
+		std::uint8_t                                 unk65;               // 65
+		bool                                         hasGeoData;          // 66
+		std::uint8_t                                 unk67;               // 67
 	};
 	static_assert(sizeof(NiGeometryData) == 0x68);
 }

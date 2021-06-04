@@ -47,20 +47,20 @@ namespace RE
 			friend bool operator>(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator>=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 
-			RawType GetRawType() const;
+			RawType         GetRawType() const;
 			ObjectTypeInfo* GetTypeInfo() const;
-			RawType GetUnmangledRawType() const;
-			bool IsArray() const;
-			bool IsBool() const;
-			bool IsFloat() const;
-			bool IsInt() const;
-			bool IsLiteralArray() const;
-			bool IsNoneArray() const;
-			bool IsNoneObject() const;
-			bool IsObject() const;
-			bool IsObjectArray() const;
-			bool IsString() const;
-			void SetType(RawType a_type);
+			RawType         GetUnmangledRawType() const;
+			bool            IsArray() const;
+			bool            IsBool() const;
+			bool            IsFloat() const;
+			bool            IsInt() const;
+			bool            IsLiteralArray() const;
+			bool            IsNoneArray() const;
+			bool            IsNoneObject() const;
+			bool            IsObject() const;
+			bool            IsObjectArray() const;
+			bool            IsString() const;
+			void            SetType(RawType a_type);
 
 		protected:
 			// members

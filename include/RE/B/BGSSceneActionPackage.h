@@ -29,7 +29,7 @@ namespace RE
 		virtual void Unk_13(void) override;                                        // 13
 
 		// members
-		std::uint64_t unk20;             // 20
+		std::uint64_t         unk20;     // 20
 		BSTArray<TESPackage*> packages;  // 28 - PNAM
 	};
 	static_assert(sizeof(BGSSceneActionPackage) == 0x40);

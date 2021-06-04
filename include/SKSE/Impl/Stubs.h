@@ -19,7 +19,7 @@ namespace SKSE
 		struct PluginInfo
 		{
 			std::uint32_t infoVersion;
-			const char* name;
+			const char*   name;
 			std::uint32_t version;
 		};
 

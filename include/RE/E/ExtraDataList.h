@@ -65,7 +65,7 @@ namespace RE
 			}
 
 			[[nodiscard]] constexpr reference operator*() const noexcept { return *_cur; }
-			[[nodiscard]] constexpr pointer operator->() const noexcept { return _cur; }
+			[[nodiscard]] constexpr pointer   operator->() const noexcept { return _cur; }
 
 			[[nodiscard]] constexpr friend bool operator==(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept { return a_lhs._cur == a_rhs._cur; }
 			[[nodiscard]] constexpr friend bool operator!=(const iterator_base& a_lhs, const iterator_base& a_rhs) noexcept { return !(a_lhs == a_rhs); }
@@ -103,14 +103,14 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-		iterator begin();
+		iterator       begin();
 		const_iterator cbegin() const;
 		const_iterator begin() const;
-		iterator end();
+		iterator       end();
 		const_iterator cend() const;
 		const_iterator end() const;
 
-		BSExtraData* GetByType(ExtraDataType a_type);
+		BSExtraData*       GetByType(ExtraDataType a_type);
 		const BSExtraData* GetByType(ExtraDataType a_type) const;
 
 		template <class T>
@@ -143,18 +143,18 @@ namespace RE
 
 		bool RemoveByType(ExtraDataType a_type);
 
-		BSExtraData* Add(BSExtraData* a_toAdd);
-		ObjectRefHandle GetAshPileRef();
-		std::int32_t GetCount() const;
-		const char* GetDisplayName(TESBoundObject* a_baseObject);
-		BGSEncounterZone* GetEncounterZone();
+		BSExtraData*          Add(BSExtraData* a_toAdd);
+		ObjectRefHandle       GetAshPileRef();
+		std::int32_t          GetCount() const;
+		const char*           GetDisplayName(TESBoundObject* a_baseObject);
+		BGSEncounterZone*     GetEncounterZone();
 		ExtraTextDisplayData* GetExtraTextDisplayData();
-		TESObjectREFR* GetLinkedRef(BGSKeyword* a_keyword);
-		TESForm* GetOwner();
-		SOUL_LEVEL GetSoulLevel() const;
-		void SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
-		void SetInventoryChanges(InventoryChanges* a_changes);
-		void SetOwner(TESForm* a_owner);
+		TESObjectREFR*        GetLinkedRef(BGSKeyword* a_keyword);
+		TESForm*              GetOwner();
+		SOUL_LEVEL            GetSoulLevel() const;
+		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		void                  SetInventoryChanges(InventoryChanges* a_changes);
+		void                  SetOwner(TESForm* a_owner);
 
 	protected:
 		struct PresenceBitfield
@@ -172,9 +172,9 @@ namespace RE
 		void MarkType(ExtraDataType a_type, bool a_cleared);
 
 		// members
-		BSExtraData* _data;             // 00
-		PresenceBitfield* _presence;    // 08
-		mutable BSReadWriteLock _lock;  // 10
+		BSExtraData*            _data;      // 00
+		PresenceBitfield*       _presence;  // 08
+		mutable BSReadWriteLock _lock;      // 10
 
 	private:
 		BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;

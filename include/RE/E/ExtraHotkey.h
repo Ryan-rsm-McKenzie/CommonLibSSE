@@ -29,14 +29,14 @@ namespace RE
 		virtual ~ExtraHotkey() = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kHotkey }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { hotkey != a_rhs->hotkey; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kHotkey }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { hotkey != a_rhs->hotkey; }
 
 		// members
 		stl::enumeration<Hotkey, std::uint8_t> hotkey;  // 10
-		std::uint8_t unk11;                             // 11
-		std::uint16_t unk12;                            // 12
-		std::uint32_t unk14;                            // 14
+		std::uint8_t                           unk11;   // 11
+		std::uint16_t                          unk12;   // 12
+		std::uint32_t                          unk14;   // 14
 	};
 	static_assert(sizeof(ExtraHotkey) == 0x18);
 }

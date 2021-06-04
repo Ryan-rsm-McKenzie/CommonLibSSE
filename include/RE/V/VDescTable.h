@@ -21,10 +21,10 @@ namespace RE
 				{}
 
 				// members
-				SimpleArray<BSTTuple<BSFixedString, TypeInfo>> entries;  // 00
-				std::uint16_t paramCount;                                // 08
-				std::uint16_t totalEntries;                              // 0A
-				std::uint32_t pad0C{ 0 };                                // 0C
+				SimpleArray<BSTTuple<BSFixedString, TypeInfo>> entries;       // 00
+				std::uint16_t                                  paramCount;    // 08
+				std::uint16_t                                  totalEntries;  // 0A
+				std::uint32_t                                  pad0C{ 0 };    // 0C
 			};
 			static_assert(sizeof(VDescTable) == 0x10);
 		}

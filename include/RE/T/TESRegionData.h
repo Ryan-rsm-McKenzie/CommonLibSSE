@@ -30,11 +30,11 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<Flag, std::uint8_t> flags;  // 0
-			std::uint8_t unk09;                          // 1
-			std::uint8_t priority;                       // 2
-			std::uint8_t unk0B;                          // 3
-			std::uint32_t unk0C;                         // 4
+			stl::enumeration<Flag, std::uint8_t> flags;     // 0
+			std::uint8_t                         unk09;     // 1
+			std::uint8_t                         priority;  // 2
+			std::uint8_t                         unk0B;     // 3
+			std::uint32_t                        unk0C;     // 4
 		};
 		static_assert(sizeof(DataHeader) == 0x8);
 

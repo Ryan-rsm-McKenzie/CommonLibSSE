@@ -17,8 +17,8 @@ namespace RE
 		virtual ~ExtraWaterLightRefs();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kWaterLightRefs; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return refs != a_rhs->refs; }
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kWaterLightRefs; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return refs != a_rhs->refs; }
 
 		// members
 		BSSimpleList<TESObjectREFR*> refs;  // 10

@@ -36,11 +36,11 @@ namespace RE
 		[[nodiscard]] constexpr SOUL_LEVEL GetMaximumCapacity() const noexcept { return *soulCapacity; }
 
 		// members
-		TESSoulGem* linkedSoulGem;                                // 100 - NAM0
-		stl::enumeration<SOUL_LEVEL, std::uint8_t> currentSoul;   // 108 - SOUL
-		stl::enumeration<SOUL_LEVEL, std::uint8_t> soulCapacity;  // 109 - SLCP
-		std::uint16_t unk10A;                                     // 10A
-		std::uint32_t unk10C;                                     // 10C
+		TESSoulGem*                                linkedSoulGem;  // 100 - NAM0
+		stl::enumeration<SOUL_LEVEL, std::uint8_t> currentSoul;    // 108 - SOUL
+		stl::enumeration<SOUL_LEVEL, std::uint8_t> soulCapacity;   // 109 - SLCP
+		std::uint16_t                              unk10A;         // 10A
+		std::uint32_t                              unk10C;         // 10C
 	};
 	static_assert(sizeof(TESSoulGem) == 0x110);
 }

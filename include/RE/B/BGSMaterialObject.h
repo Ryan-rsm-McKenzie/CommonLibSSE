@@ -29,7 +29,7 @@ namespace RE
 
 		struct FILE_DATA
 		{
-			char* buffer;              // 00
+			char*         buffer;      // 00
 			std::uint32_t bufferSize;  // 08
 			std::uint32_t pad0C;       // 0C
 		};

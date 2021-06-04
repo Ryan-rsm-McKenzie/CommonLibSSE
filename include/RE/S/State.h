@@ -17,22 +17,22 @@ namespace RE
 			}
 
 			// members
-			std::uint64_t unk00;                            // 000
-			std::uint64_t unk08;                            // 008
-			std::uint64_t unk10;                            // 010
-			std::uint64_t unk18;                            // 018
-			std::uint32_t unk20;                            // 020
-			std::uint32_t screenWidth;                      // 024
-			std::uint32_t screenHeight;                     // 028
-			std::uint32_t frameBufferViewport[2];           // 02C
-			std::uint32_t unk34;                            // 034
-			std::uint64_t unk38;                            // 038
-			std::uint64_t unk40;                            // 040
-			std::uint64_t unk48;                            // 048
-			bool insideFrame;                               // 050
-			bool letterbox;                                 // 051
-			std::uint16_t unk52;                            // 052
-			std::uint32_t unk54;                            // 054
+			std::uint64_t        unk00;                     // 000
+			std::uint64_t        unk08;                     // 008
+			std::uint64_t        unk10;                     // 010
+			std::uint64_t        unk18;                     // 018
+			std::uint32_t        unk20;                     // 020
+			std::uint32_t        screenWidth;               // 024
+			std::uint32_t        screenHeight;              // 028
+			std::uint32_t        frameBufferViewport[2];    // 02C
+			std::uint32_t        unk34;                     // 034
+			std::uint64_t        unk38;                     // 038
+			std::uint64_t        unk40;                     // 040
+			std::uint64_t        unk48;                     // 048
+			bool                 insideFrame;               // 050
+			bool                 letterbox;                 // 051
+			std::uint16_t        unk52;                     // 052
+			std::uint32_t        unk54;                     // 054
 			NiPointer<NiTexture> unk058;                    // 058 - black?
 			NiPointer<NiTexture> defaultTextureWhite;       // 060
 			NiPointer<NiTexture> defaultTextureGrey;        // 068

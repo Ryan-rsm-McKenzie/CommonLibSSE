@@ -17,7 +17,7 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kFromAlias; }
 
 		// members
-		TESQuest* quest;        // 10
+		TESQuest*     quest;    // 10
 		std::uint32_t aliasID;  // 18
 		std::uint32_t pad1C;    // 1C
 	};

@@ -26,7 +26,7 @@ namespace RE
 		};
 
 		std::uint32_t threadId;      // 0
-		std::int32_t stackTraceId;   // 4
+		std::int32_t  stackTraceId;  // 4
 		std::uint16_t markCount;     // 8
 		std::uint16_t markBitStack;  // A
 	};

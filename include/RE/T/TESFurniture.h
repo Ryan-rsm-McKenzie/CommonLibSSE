@@ -76,7 +76,7 @@ namespace RE
 			};
 
 			// members
-			stl::enumeration<BenchType, std::uint8_t> benchType;   // 0
+			stl::enumeration<BenchType, std::uint8_t>  benchType;  // 0
 			stl::enumeration<ActorValue, std::uint8_t> usesSkill;  // 1
 		};
 		static_assert(sizeof(WorkBenchData) == 0x2);
@@ -98,36 +98,36 @@ namespace RE
 				};
 
 				// members
-				std::uint16_t unk0;                                             // 0
+				std::uint16_t                                  unk0;            // 0
 				stl::enumeration<DisabledPoint, std::uint16_t> disabledPoints;  // 2
 			};
 			static_assert(sizeof(DisabledEntryPoint) == 0x4);
 
 			// members
-			std::uint32_t entryPoint;                // 00 - ENAM
+			std::uint32_t      entryPoint;           // 00 - ENAM
 			DisabledEntryPoint disabledEntryPoints;  // 04 - NAM0
-			BGSKeyword* keyword;                     // 08 - FNMK
+			BGSKeyword*        keyword;              // 08 - FNMK
 		};
 		static_assert(sizeof(EntryPointData) == 0x10);
 
 		virtual ~TESFurniture();  // 00
 
 		// override (TESObjectACTI)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual void ClearData() override;                                                                                                                                     // 05
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                            // 4A
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
-		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
+		virtual void        InitializeData() override;                                                                                                                                // 04
+		virtual void        ClearData() override;                                                                                                                                     // 05
+		virtual bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
+		virtual void        InitItemImpl() override;                                                                                                                                  // 13
+		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
+		virtual bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		virtual bool        CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
 
 		// members
-		BSTArray<EntryPointData> entryPointDataArray;             // C8
-		WorkBenchData workBenchData;                              // E0 - WBDT
-		std::uint16_t padE2;                                      // E2
-		stl::enumeration<ActiveMarker, std::uint32_t> furnFlags;  // E4
-		SpellItem* associatedForm;                                // E8
+		BSTArray<EntryPointData>                      entryPointDataArray;  // C8
+		WorkBenchData                                 workBenchData;        // E0 - WBDT
+		std::uint16_t                                 padE2;                // E2
+		stl::enumeration<ActiveMarker, std::uint32_t> furnFlags;            // E4
+		SpellItem*                                    associatedForm;       // E8
 	};
 	static_assert(sizeof(TESFurniture) == 0xF0);
 }

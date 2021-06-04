@@ -20,14 +20,14 @@ namespace RE
 				~Value();
 
 				// members
-				std::int32_t i;
-				std::uint32_t u;
-				float f;
-				bool b;
-				void* p;
-				BSTSmartPointer<Array> arr;
+				std::int32_t            i;
+				std::uint32_t           u;
+				float                   f;
+				bool                    b;
+				void*                   p;
+				BSTSmartPointer<Array>  arr;
 				BSTSmartPointer<Object> obj;
-				BSFixedString str;
+				BSFixedString           str;
 			};
 			static_assert(sizeof(Value) == 0x8);
 
@@ -58,13 +58,13 @@ namespace RE
 			bool IsObjectArray() const;
 			bool IsString() const;
 
-			std::int32_t GetSInt() const;
-			std::uint32_t GetUInt() const;
-			float GetFloat() const;
-			bool GetBool() const;
-			BSTSmartPointer<Array> GetArray() const;
+			std::int32_t            GetSInt() const;
+			std::uint32_t           GetUInt() const;
+			float                   GetFloat() const;
+			bool                    GetBool() const;
+			BSTSmartPointer<Array>  GetArray() const;
 			BSTSmartPointer<Object> GetObject() const;
-			std::string_view GetString() const;
+			std::string_view        GetString() const;
 
 			void SetNone();
 			void SetSInt(std::int32_t a_val);
@@ -89,7 +89,7 @@ namespace RE
 
 			// members
 			TypeInfo varType;  // 00
-			Value value;       // 08
+			Value    value;    // 08
 		};
 		static_assert(sizeof(Variable) == 0x10);
 	}

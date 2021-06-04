@@ -26,14 +26,14 @@ namespace RE
 
 		struct LoadNIFData
 		{
-			TESBoundObject* loadNIF;                    // 00 - NNAM
-			float initialScale;                         // 08 - SNAM
-			std::int16_t rotationConstraints[3];        // 0C - RNAM
-			std::int16_t rotationOffsetConstraints[2];  // 12 - ONAM
-			std::uint16_t pad16;                        // 16
-			float initialTranslationOffset[3];          // 18 - XNAM
-			std::uint32_t pad24;                        // 24
-			TESModel cameraPath;                        // 28 - MOD2
+			TESBoundObject* loadNIF;                       // 00 - NNAM
+			float           initialScale;                  // 08 - SNAM
+			std::int16_t    rotationConstraints[3];        // 0C - RNAM
+			std::int16_t    rotationOffsetConstraints[2];  // 12 - ONAM
+			std::uint16_t   pad16;                         // 16
+			float           initialTranslationOffset[3];   // 18 - XNAM
+			std::uint32_t   pad24;                         // 24
+			TESModel        cameraPath;                    // 28 - MOD2
 		};
 		static_assert(sizeof(LoadNIFData) == 0x50);
 
@@ -46,8 +46,8 @@ namespace RE
 		virtual void InitItemImpl() override;        // 13
 
 		// members
-		TESCondition conditions;    // 20
-		LoadNIFData* loadNIFData;   // 28
+		TESCondition  conditions;   // 20
+		LoadNIFData*  loadNIFData;  // 28
 		BSFixedString loadingText;  // 30
 	};
 	static_assert(sizeof(TESLoadScreen) == 0x38);

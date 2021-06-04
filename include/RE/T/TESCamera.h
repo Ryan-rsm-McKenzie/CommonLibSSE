@@ -22,15 +22,15 @@ namespace RE
 		void SetState(TESCameraState* a_state);
 
 		// members
-		BSTPoint2<float> rotationInput;                // 08
-		BSTPoint3<float> translationInput;             // 10
-		float zoomInput;                               // 1C
-		NiPointer<NiNode> cameraRoot;                  // 20
-		BSTSmartPointer<TESCameraState> currentState;  // 28
-		bool enabled;                                  // 30
-		std::uint8_t pad31;                            // 31
-		std::uint16_t pad32;                           // 32
-		std::uint32_t pad34;                           // 34
+		BSTPoint2<float>                rotationInput;     // 08
+		BSTPoint3<float>                translationInput;  // 10
+		float                           zoomInput;         // 1C
+		NiPointer<NiNode>               cameraRoot;        // 20
+		BSTSmartPointer<TESCameraState> currentState;      // 28
+		bool                            enabled;           // 30
+		std::uint8_t                    pad31;             // 31
+		std::uint16_t                   pad32;             // 32
+		std::uint32_t                   pad34;             // 34
 	};
 	static_assert(sizeof(TESCamera) == 0x38);
 }

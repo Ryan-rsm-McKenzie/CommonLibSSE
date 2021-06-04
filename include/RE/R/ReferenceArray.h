@@ -75,34 +75,34 @@ namespace RE
 
 			[[nodiscard]] operator container_type() const { return _unwrapped; }
 
-			[[nodiscard]] reference at(size_type a_pos) { return _unwrapped.at(a_pos); }
+			[[nodiscard]] reference       at(size_type a_pos) { return _unwrapped.at(a_pos); }
 			[[nodiscard]] const_reference at(size_type a_pos) const { return _unwrapped.at(a_pos); }
 
-			[[nodiscard]] reference operator[](size_type a_pos) { return _unwrapped[a_pos]; }
+			[[nodiscard]] reference       operator[](size_type a_pos) { return _unwrapped[a_pos]; }
 			[[nodiscard]] const_reference operator[](size_type a_pos) const { return _unwrapped[a_pos]; }
 
-			[[nodiscard]] reference front() { return _unwrapped.front(); }
+			[[nodiscard]] reference       front() { return _unwrapped.front(); }
 			[[nodiscard]] const_reference front() const { return _unwrapped.front(); }
 
-			[[nodiscard]] reference back() { return _unwrapped.back(); }
+			[[nodiscard]] reference       back() { return _unwrapped.back(); }
 			[[nodiscard]] const_reference back() const { return _unwrapped.back(); }
 
-			[[nodiscard]] pointer data() noexcept { return _unwrapped.data(); }
+			[[nodiscard]] pointer       data() noexcept { return _unwrapped.data(); }
 			[[nodiscard]] const_pointer data() const noexcept { return _unwrapped.data(); }
 
-			[[nodiscard]] iterator begin() noexcept { return _unwrapped.begin(); }
+			[[nodiscard]] iterator       begin() noexcept { return _unwrapped.begin(); }
 			[[nodiscard]] const_iterator begin() const noexcept { return _unwrapped.begin(); }
 			[[nodiscard]] const_iterator cbegin() const noexcept { return _unwrapped.cbegin(); }
 
-			[[nodiscard]] iterator end() noexcept { return _unwrapped.end(); }
+			[[nodiscard]] iterator       end() noexcept { return _unwrapped.end(); }
 			[[nodiscard]] const_iterator end() const noexcept { return _unwrapped.end(); }
 			[[nodiscard]] const_iterator cend() const noexcept { return _unwrapped.cend(); }
 
-			[[nodiscard]] reverse_iterator rbegin() noexcept { return _unwrapped.rbegin(); }
+			[[nodiscard]] reverse_iterator       rbegin() noexcept { return _unwrapped.rbegin(); }
 			[[nodiscard]] const_reverse_iterator rbegin() const noexcept { return _unwrapped.rbegin(); }
 			[[nodiscard]] const_reverse_iterator crbegin() const noexcept { return _unwrapped.crbegin(); }
 
-			[[nodiscard]] reverse_iterator rend() noexcept { return _unwrapped.rend(); }
+			[[nodiscard]] reverse_iterator       rend() noexcept { return _unwrapped.rend(); }
 			[[nodiscard]] const_reverse_iterator rend() const noexcept { return _unwrapped.rend(); }
 			[[nodiscard]] const_reverse_iterator crend() const noexcept { return _unwrapped.crend(); }
 
@@ -141,7 +141,7 @@ namespace RE
 				}
 			}
 
-			container_type _unwrapped;
+			container_type         _unwrapped;
 			BSTSmartPointer<Array> _wrapped;
 		};
 

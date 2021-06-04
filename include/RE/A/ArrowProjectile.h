@@ -41,7 +41,7 @@ namespace RE
 
 		// members
 		std::uint64_t unk1E0;  // 1E0
-		AlchemyItem* poison;   // 1E8
+		AlchemyItem*  poison;  // 1E8
 	};
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);
 }

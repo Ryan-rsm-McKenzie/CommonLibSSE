@@ -31,10 +31,10 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// members
-		TESModelTextureSwap worldModels[Sexes::kTotal];  // 08
-		TESIcon inventoryIcons[Sexes::kTotal];           // 78
-		BGSMessageIcon messageIcons[Sexes::kTotal];      // 98
-		TESModelRDT constraintTemplate;                  // C8
+		TESModelTextureSwap worldModels[Sexes::kTotal];     // 08
+		TESIcon             inventoryIcons[Sexes::kTotal];  // 78
+		BGSMessageIcon      messageIcons[Sexes::kTotal];    // 98
+		TESModelRDT         constraintTemplate;             // C8
 	};
 	static_assert(sizeof(TESBipedModelForm) == 0xF0);
 }

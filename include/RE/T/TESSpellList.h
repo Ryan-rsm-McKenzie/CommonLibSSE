@@ -15,9 +15,9 @@ namespace RE
 
 		struct SpellData  // SPLO
 		{
-			SpellItem** spells;          // 00
+			SpellItem**   spells;        // 00
 			TESLevSpell** levSpells;     // 08
-			TESShout** shouts;           // 10
+			TESShout**    shouts;        // 10
 			std::uint32_t numSpells;     // 18
 			std::uint32_t numlevSpells;  // 1C
 			std::uint32_t numShouts;     // 20

@@ -38,7 +38,7 @@ namespace RE
 
 		// members
 		stl::enumeration<BipedObjectSlot, std::uint32_t> bipedObjectSlots;  // 0
-		stl::enumeration<ArmorType, std::uint32_t> armorType;               // 4
+		stl::enumeration<ArmorType, std::uint32_t>       armorType;         // 4
 	};
 	static_assert(sizeof(BIPED_MODEL) == 0x8);
 
@@ -59,15 +59,15 @@ namespace RE
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		BipedObjectSlot AddSlotToMask(BipedObjectSlot a_slot);
-		ArmorType GetArmorType() const;
+		ArmorType       GetArmorType() const;
 		BipedObjectSlot GetSlotMask() const;
-		bool HasPartOf(BipedObjectSlot a_flag) const;
-		bool IsClothing() const;
-		bool IsHeavyArmor() const;
-		bool IsLightArmor() const;
-		bool IsShield() const;
+		bool            HasPartOf(BipedObjectSlot a_flag) const;
+		bool            IsClothing() const;
+		bool            IsHeavyArmor() const;
+		bool            IsLightArmor() const;
+		bool            IsShield() const;
 		BipedObjectSlot RemoveSlotFromMask(BipedObjectSlot a_slot);
-		void SetSlotMask(BipedObjectSlot a_mask);
+		void            SetSlotMask(BipedObjectSlot a_mask);
 
 		// members
 		BIPED_MODEL bipedModelData;  // 08 - BOD2

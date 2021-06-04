@@ -29,20 +29,20 @@ namespace RE
 		void BeginStartUpQuest(TESQuest* a_quest);
 
 		// members
-		std::uint8_t pad09;                                                                              // 09
-		std::uint16_t pad0A;                                                                             // 0A
-		std::uint32_t pad0C;                                                                             // 0C
-		BSTArray<TESQuest*> queuedStartQuests;                                                           // 10
-		BSTArray<TESQuest*> runningQuests;                                                               // 28
-		BSTArray<TESQuest*> queuedStopQuests;                                                            // 40
-		BSTArray<TESQuest*> infoClearQuests;                                                             // 58
-		BSTArray<TESQuest*> helloTopicQuests;                                                            // 70
-		BSTArray<TESQuest*> greetingTopicQuests;                                                         // 88
-		bool startUpQuestsInitialized;                                                                   // A0
-		std::uint8_t padA1;                                                                              // A1
-		std::uint16_t padA2;                                                                             // A2
-		std::uint32_t padA4;                                                                             // A4
-		BSTHashMap<std::uint32_t, BSTArray<BSTTuple<std::uint32_t, std::uint32_t>>*> questStageWaitMap;  // A8
+		std::uint8_t                                                                 pad09;                     // 09
+		std::uint16_t                                                                pad0A;                     // 0A
+		std::uint32_t                                                                pad0C;                     // 0C
+		BSTArray<TESQuest*>                                                          queuedStartQuests;         // 10
+		BSTArray<TESQuest*>                                                          runningQuests;             // 28
+		BSTArray<TESQuest*>                                                          queuedStopQuests;          // 40
+		BSTArray<TESQuest*>                                                          infoClearQuests;           // 58
+		BSTArray<TESQuest*>                                                          helloTopicQuests;          // 70
+		BSTArray<TESQuest*>                                                          greetingTopicQuests;       // 88
+		bool                                                                         startUpQuestsInitialized;  // A0
+		std::uint8_t                                                                 padA1;                     // A1
+		std::uint16_t                                                                padA2;                     // A2
+		std::uint32_t                                                                padA4;                     // A4
+		BSTHashMap<std::uint32_t, BSTArray<BSTTuple<std::uint32_t, std::uint32_t>>*> questStageWaitMap;         // A8
 	};
 	static_assert(sizeof(BGSStoryTeller) == 0xD8);
 }

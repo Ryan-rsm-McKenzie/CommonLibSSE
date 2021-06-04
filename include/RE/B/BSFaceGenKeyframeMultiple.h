@@ -38,11 +38,11 @@ namespace RE
 		}
 
 		// members
-		float* values;        // 10
-		std::uint32_t count;  // 18
-		bool isUpdated;       // 1C
-		std::uint8_t pad1D;   // 1D
-		std::uint16_t pad1E;  // 1E
+		float*        values;     // 10
+		std::uint32_t count;      // 18
+		bool          isUpdated;  // 1C
+		std::uint8_t  pad1D;      // 1D
+		std::uint16_t pad1E;      // 1E
 	};
 	static_assert(sizeof(BSFaceGenKeyframeMultiple) == 0x20);
 }

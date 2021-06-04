@@ -60,7 +60,7 @@ namespace RE
 		static UserEvents* GetSingleton();
 
 		// members
-		std::uint8_t pad001;              // 001
+		std::uint8_t  pad001;             // 001
 		std::uint16_t pad002;             // 002
 		std::uint32_t pad004;             // 004
 		BSFixedString forward;            // 008 - "Forward"

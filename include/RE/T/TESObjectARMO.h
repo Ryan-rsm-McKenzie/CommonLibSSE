@@ -51,13 +51,13 @@ namespace RE
 		};
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                     // 04
-		virtual bool Load(TESFile* a_mod) override;                 // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;   // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;   // 0F
-		virtual void InitItemImpl() override;                       // 13
-		virtual TESFile* GetDescriptionOwnerFile() const override;  // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
-		virtual void Copy(TESForm* a_srcForm) override;             // 2F
+		virtual void     InitializeData() override;                    // 04
+		virtual bool     Load(TESFile* a_mod) override;                // 06
+		virtual void     SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		virtual void     LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		virtual void     InitItemImpl() override;                      // 13
+		virtual TESFile* GetDescriptionOwnerFile() const override;     // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		virtual void     Copy(TESForm* a_srcForm) override;            // 2F
 
 		// override (BGSKeywordForm)
 		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
@@ -65,10 +65,10 @@ namespace RE
 		float GetArmorRating();
 
 		// members
-		std::uint32_t armorRating;             // 200 - DNAM - CK value * 100 as a std::uint32_t
-		std::uint32_t pad204;                  // 204
-		BSTArray<TESObjectARMA*> armorAddons;  // 208
-		TESObjectARMO* templateArmor;          // 220 - TNAM
+		std::uint32_t            armorRating;    // 200 - DNAM - CK value * 100 as a std::uint32_t
+		std::uint32_t            pad204;         // 204
+		BSTArray<TESObjectARMA*> armorAddons;    // 208
+		TESObjectARMO*           templateArmor;  // 220 - TNAM
 	};
 	static_assert(sizeof(TESObjectARMO) == 0x228);
 }

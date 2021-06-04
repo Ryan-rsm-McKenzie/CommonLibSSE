@@ -17,11 +17,11 @@ namespace RE
 		static BGSFootstepManager* GetSingleton();
 
 		// members
-		std::uint8_t pad59;             // 59
-		std::uint16_t pad5A;            // 5A
-		std::uint32_t pad5C;            // 5C
+		std::uint8_t            pad59;  // 59
+		std::uint16_t           pad5A;  // 5A
+		std::uint32_t           pad5C;  // 5C
 		BSTArray<BSFixedString> unk60;  // 60
-		std::uint64_t unk78;            // 78
+		std::uint64_t           unk78;  // 78
 	};
 	static_assert(sizeof(BGSFootstepManager) == 0x80);
 }

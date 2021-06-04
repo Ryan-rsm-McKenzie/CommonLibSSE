@@ -15,14 +15,14 @@ namespace RE
 		public GFxFunctionHandler  // 40
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ModManagerMenu;
+		inline static constexpr auto      RTTI = RTTI_ModManagerMenu;
 		constexpr static std::string_view MENU_NAME = "Mod Manager Menu";
 
 		virtual ~ModManagerMenu();  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;           // 04
-		virtual void AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
 		// override (MenuEventHandler)
 		virtual bool CanProcess(InputEvent* a_event) override;              // 01
@@ -32,8 +32,8 @@ namespace RE
 		virtual void Call(Params& a_params) override;  // 01
 
 		// members
-		std::uint8_t unk50;   // 50
-		std::uint8_t pad51;   // 51
+		std::uint8_t  unk50;  // 50
+		std::uint8_t  pad51;  // 51
 		std::uint16_t pad52;  // 52
 		std::uint32_t pad54;  // 54
 	};

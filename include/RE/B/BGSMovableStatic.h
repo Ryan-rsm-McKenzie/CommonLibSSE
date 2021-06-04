@@ -57,10 +57,10 @@ namespace RE
 
 		// members
 		BGSSoundDescriptorForm* soundLoop;  // A0 - SNAM
-		MOVABLE_STATIC_DATA data;           // A8
-		std::uint8_t padA9;                 // A9
-		std::uint16_t padAA;                // AA
-		std::uint32_t padAC;                // AC
+		MOVABLE_STATIC_DATA     data;       // A8
+		std::uint8_t            padA9;      // A9
+		std::uint16_t           padAA;      // AA
+		std::uint32_t           padAC;      // AC
 	};
 	static_assert(sizeof(BGSMovableStatic) == 0xB0);
 }

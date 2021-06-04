@@ -32,7 +32,7 @@ namespace RE
 		{
 			~Data() {}
 
-			TESForm* object;
+			TESForm*        object;
 			ObjectRefHandle refHandle;
 		};
 		static_assert(sizeof(Data) == 0x8);
@@ -40,16 +40,16 @@ namespace RE
 		virtual ~PackageLocation();  // 00
 
 		// override (IAIWorldLocationHandle)
-		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;    // 01
-		virtual PackageLocation* GetAsPackageLocation() override;                                        // 02 - { return this; }
-		virtual bool IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;  // 03
+		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;                       // 01
+		virtual PackageLocation*        GetAsPackageLocation() override;                                                    // 02 - { return this; }
+		virtual bool                    IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;  // 03
 
 		// members
 		stl::enumeration<Type, std::uint8_t> locType;  // 08
-		std::uint8_t pad09;                            // 09
-		std::uint16_t pad0A;                           // 0A
-		std::uint32_t rad;                             // 0C
-		Data data;                                     // 10
+		std::uint8_t                         pad09;    // 09
+		std::uint16_t                        pad0A;    // 0A
+		std::uint32_t                        rad;      // 0C
+		Data                                 data;     // 10
 	};
 	static_assert(sizeof(PackageLocation) == 0x18);
 }

@@ -49,13 +49,13 @@ namespace RE
 		};
 
 		// members
-		std::uint32_t userData;                                 // 30
-		std::uint32_t pad34;                                    // 34
-		hkStringPtr name;                                       // 38
-		std::uint16_t id;                                       // 40
+		std::uint32_t                              userData;    // 30
+		std::uint32_t                              pad34;       // 34
+		hkStringPtr                                name;        // 38
+		std::uint16_t                              id;          // 40
 		stl::enumeration<CloneState, std::uint8_t> cloneState;  // 42
-		std::uint8_t pad43;                                     // 43
-		std::uint32_t pad44;                                    // 44
+		std::uint8_t                               pad43;       // 43
+		std::uint32_t                              pad44;       // 44
 	};
 	static_assert(sizeof(hkbNode) == 0x48);
 }

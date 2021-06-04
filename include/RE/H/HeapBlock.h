@@ -64,10 +64,10 @@ namespace RE
 		static_assert(sizeof(FreeOrUsed) == 0x8);
 
 		// members
-		std::size_t memSize;    // 00
-		HeapBlock* previous;    // 08
-		FreeOrUsed freeOrUsed;  // 10
-		HeapBlock* nextFree;    // 18
+		std::size_t memSize;     // 00
+		HeapBlock*  previous;    // 08
+		FreeOrUsed  freeOrUsed;  // 10
+		HeapBlock*  nextFree;    // 18
 	};
 	static_assert(sizeof(HeapBlock) == 0x20);
 }

@@ -29,8 +29,8 @@ namespace RE
 		}
 
 		// members
-		hkpShapeKey shapeKeys[kMaxHierarchyDepth]{ HK_INVALID_SHAPE_KEY };  // 20
-		std::int32_t shapeKeyIndex{ 0 };                                    // 40
+		hkpShapeKey  shapeKeys[kMaxHierarchyDepth]{ HK_INVALID_SHAPE_KEY };  // 20
+		std::int32_t shapeKeyIndex{ 0 };                                     // 40
 	};
 	static_assert(sizeof(hkpShapeRayCastOutput) == 0x50);
 }

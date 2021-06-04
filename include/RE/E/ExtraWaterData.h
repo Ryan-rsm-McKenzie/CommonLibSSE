@@ -10,7 +10,7 @@ namespace RE
 	{
 		struct ActionArray
 		{
-			__m128* buffer;               // 00
+			__m128*       buffer;         // 00
 			std::uint32_t bufferSize;     // 08
 			std::uint32_t effectiveSize;  // 0C
 			std::uint32_t count;          // 10
@@ -30,13 +30,13 @@ namespace RE
 		virtual ~ExtraWaterData();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                    // 01 - { return kWaterData; }
-		virtual bool IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kWaterData; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
-		std::uint64_t unk10;                   // 10
-		hkRefPtr<hkReferencedObject> unk18;    // 18
-		BSCurrent::ActionArray* currentArray;  // 20
+		std::uint64_t                unk10;         // 10
+		hkRefPtr<hkReferencedObject> unk18;         // 18
+		BSCurrent::ActionArray*      currentArray;  // 20
 	};
 	static_assert(sizeof(ExtraWaterData) == 0x28);
 }

@@ -35,7 +35,7 @@ namespace RE
 			virtual void Unk_05(void) override;                        // 05
 
 			// members
-			void* unk100;          // 100
+			void*         unk100;  // 100
 			std::uint64_t unk108;  // 108
 			std::uint64_t unk110;  // 110
 			std::uint64_t unk118;  // 118
@@ -43,11 +43,11 @@ namespace RE
 			std::uint64_t unk128;  // 128
 			std::uint64_t unk130;  // 130
 			std::uint64_t unk138;  // 138
-			void* unk140;          // 140
-			void* unk148;          // 148
+			void*         unk140;  // 140
+			void*         unk148;  // 148
 			std::uint64_t unk150;  // 150
 			std::uint64_t unk158;  // 158
-			void* unk160;          // 160
+			void*         unk160;  // 160
 		};
 		static_assert(sizeof(SmithingMenu) == 0x168);
 	}

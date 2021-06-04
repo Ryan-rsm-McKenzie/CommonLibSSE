@@ -16,8 +16,8 @@ namespace RE
 		virtual void Unk_28(void) override;  // 28
 
 		// members
-		float duration;       // 28
-		std::uint32_t pad3C;  // 2C
+		float         duration;  // 28
+		std::uint32_t pad3C;     // 2C
 	};
 	static_assert(sizeof(ImageSpaceModifierInstanceTemp) == 0x30);
 }

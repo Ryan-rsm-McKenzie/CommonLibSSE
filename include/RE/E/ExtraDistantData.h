@@ -18,8 +18,8 @@ namespace RE
 		virtual ExtraDataType GetType() const override;  // 01 - { return kDistantData; }
 
 		// members
-		NiPoint3 landNormal;  // 10
-		std::uint32_t pad1C;  // 1C
+		NiPoint3      landNormal;  // 10
+		std::uint32_t pad1C;       // 1C
 	};
 	static_assert(sizeof(ExtraDistantData) == 0x20);
 }

@@ -25,18 +25,18 @@ namespace RE
 
 		struct ReverbParams  // DATA
 		{
-			std::uint16_t decayTime;      // 00 - in ms
-			std::uint16_t hfReference;    // 02 - in Hz
-			std::int8_t roomFilter;       // 04
-			std::int8_t roomHFFilter;     // 05
-			std::int8_t reflections;      // 06
-			std::int8_t reverb;           // 07
-			std::int8_t decayHFRatio;     // 08
-			std::int8_t reflectionDelay;  // 09 - in ms
-			std::int8_t reverbDelay;      // 0A - in ms
-			std::int8_t diffusionPct;     // 0B
-			std::int8_t densityPct;       // 0C
-			std::uint8_t pad0D;           // 0D
+			std::uint16_t decayTime;        // 00 - in ms
+			std::uint16_t hfReference;      // 02 - in Hz
+			std::int8_t   roomFilter;       // 04
+			std::int8_t   roomHFFilter;     // 05
+			std::int8_t   reflections;      // 06
+			std::int8_t   reverb;           // 07
+			std::int8_t   decayHFRatio;     // 08
+			std::int8_t   reflectionDelay;  // 09 - in ms
+			std::int8_t   reverbDelay;      // 0A - in ms
+			std::int8_t   diffusionPct;     // 0B
+			std::int8_t   densityPct;       // 0C
+			std::uint8_t  pad0D;            // 0D
 		};
 		static_assert(sizeof(ReverbParams) == 0xE);
 
@@ -49,18 +49,18 @@ namespace RE
 		// override (BSIReverbType)
 		virtual std::int32_t DoGetRoomLevel() const override;        // 00 - { return data.roomFilter * 100; }
 		virtual std::int32_t DoGetRoomHFLevel() const override;      // 01 - { return data.roomHFFilter * 100; }
-		virtual float DoGetDecayTime() const override;               // 02 - { return data.decayTime * 0.001; }
-		virtual float DoGetDecayHFRatio() const override;            // 03 - { return data.decayHFRatio * 0.0099999998; }
+		virtual float        DoGetDecayTime() const override;        // 02 - { return data.decayTime * 0.001; }
+		virtual float        DoGetDecayHFRatio() const override;     // 03 - { return data.decayHFRatio * 0.0099999998; }
 		virtual std::int32_t DoGetReflectionLevel() const override;  // 04 - { return data.reflections * 100; }
-		virtual float DoGetReflectionDelay() const override;         // 05 - { return data.reflectDelay * 0.0012000001; }
+		virtual float        DoGetReflectionDelay() const override;  // 05 - { return data.reflectDelay * 0.0012000001; }
 		virtual std::int32_t DoGetReverbLevel() const override;      // 06 - { return data.reverb * 100; }
-		virtual float DoGetReverbDelay() const override;             // 07 - { return data.reverbDelay * 0.001; }
-		virtual float DoGetDiffusion() const override;               // 08 - { return data.diffusionPct; }
-		virtual float DoGetDensity() const override;                 // 09 - { return data.densityPct; }
-		virtual float DoGetHFReference() const override;             // 0A - { return data.hfReference; }
+		virtual float        DoGetReverbDelay() const override;      // 07 - { return data.reverbDelay * 0.001; }
+		virtual float        DoGetDiffusion() const override;        // 08 - { return data.diffusionPct; }
+		virtual float        DoGetDensity() const override;          // 09 - { return data.densityPct; }
+		virtual float        DoGetHFReference() const override;      // 0A - { return data.hfReference; }
 
 		// members
-		ReverbParams data;    // 28 - DATA
+		ReverbParams  data;   // 28 - DATA
 		std::uint16_t pad36;  // 36
 	};
 	static_assert(sizeof(BGSReverbParameters) == 0x38);

@@ -64,22 +64,22 @@ namespace RE
 		virtual void GetMotionStateAndVelocitiesAndDeactivationType(hkpMotion* a_motionOut);                                                              // 19
 
 		// members
-		stl::enumeration<MotionType, std::uint8_t> type;  // 010
-		std::uint8_t deactivationIntegrateCounter;        // 011
-		std::uint16_t deactivationNumInactiveFrames[2];   // 012
-		std::uint16_t pad016;                             // 016
-		std::uint64_t pad018;                             // 018
-		hkMotionState motionState;                        // 020
-		hkVector4 inertiaAndMassInv;                      // 0D0
-		hkVector4 linearVelocity;                         // 0E0
-		hkVector4 angularVelocity;                        // 0F0
-		hkVector4 deactivationRefPosition[2];             // 100
-		std::uint32_t deactivationRefOrientation[2];      // 120
-		hkpMaxSizeMotion* mavedMotion;                    // 128
-		std::uint16_t savedQualityTypeIndex;              // 130
-		std::uint16_t pad132;                             // 132
-		hkHalf gravityFactor;                             // 134
-		std::uint64_t pad138;                             // 138
+		stl::enumeration<MotionType, std::uint8_t> type;                              // 010
+		std::uint8_t                               deactivationIntegrateCounter;      // 011
+		std::uint16_t                              deactivationNumInactiveFrames[2];  // 012
+		std::uint16_t                              pad016;                            // 016
+		std::uint64_t                              pad018;                            // 018
+		hkMotionState                              motionState;                       // 020
+		hkVector4                                  inertiaAndMassInv;                 // 0D0
+		hkVector4                                  linearVelocity;                    // 0E0
+		hkVector4                                  angularVelocity;                   // 0F0
+		hkVector4                                  deactivationRefPosition[2];        // 100
+		std::uint32_t                              deactivationRefOrientation[2];     // 120
+		hkpMaxSizeMotion*                          mavedMotion;                       // 128
+		std::uint16_t                              savedQualityTypeIndex;             // 130
+		std::uint16_t                              pad132;                            // 132
+		hkHalf                                     gravityFactor;                     // 134
+		std::uint64_t                              pad138;                            // 138
 	};
 	static_assert(sizeof(hkpMotion) == 0x140);
 }

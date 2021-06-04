@@ -11,9 +11,9 @@ namespace RE
 	class hkpProperty
 	{
 	public:
-		std::uint32_t key;               // 00
-		std::uint32_t alignmentPadding;  // 04
-		hkpPropertyValue value;          // 08
+		std::uint32_t    key;               // 00
+		std::uint32_t    alignmentPadding;  // 04
+		hkpPropertyValue value;             // 08
 	};
 	static_assert(sizeof(hkpProperty) == 0x10);
 }

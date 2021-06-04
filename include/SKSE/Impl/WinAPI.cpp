@@ -76,8 +76,8 @@ namespace SKSE::WinAPI
 	}
 
 	[[nodiscard]] std::uint32_t(GetEnvironmentVariable)(
-		const char* a_name,
-		char* a_buffer,
+		const char*   a_name,
+		char*         a_buffer,
 		std::uint32_t a_size) noexcept
 	{
 		return static_cast<std::uint32_t>(
@@ -89,8 +89,8 @@ namespace SKSE::WinAPI
 
 	[[nodiscard]] std::uint32_t(GetEnvironmentVariable)(
 		const wchar_t* a_name,
-		wchar_t* a_buffer,
-		std::uint32_t a_size) noexcept
+		wchar_t*       a_buffer,
+		std::uint32_t  a_size) noexcept
 	{
 		return static_cast<std::uint32_t>(
 			::GetEnvironmentVariableW(
@@ -100,10 +100,10 @@ namespace SKSE::WinAPI
 	}
 
 	bool(GetFileVersionInfo)(
-		const char* a_filename,
+		const char*   a_filename,
 		std::uint32_t a_handle,
 		std::uint32_t a_len,
-		void* a_data) noexcept
+		void*         a_data) noexcept
 	{
 		return static_cast<bool>(
 			::GetFileVersionInfoA(
@@ -115,9 +115,9 @@ namespace SKSE::WinAPI
 
 	bool(GetFileVersionInfo)(
 		const wchar_t* a_filename,
-		std::uint32_t a_handle,
-		std::uint32_t a_len,
-		void* a_data) noexcept
+		std::uint32_t  a_handle,
+		std::uint32_t  a_len,
+		void*          a_data) noexcept
 	{
 		return static_cast<bool>(
 			::GetFileVersionInfoW(
@@ -128,7 +128,7 @@ namespace SKSE::WinAPI
 	}
 
 	std::uint32_t(GetFileVersionInfoSize)(
-		const char* a_filename,
+		const char*    a_filename,
 		std::uint32_t* a_handle) noexcept
 	{
 		return static_cast<std::uint32_t>(
@@ -153,8 +153,8 @@ namespace SKSE::WinAPI
 	}
 
 	std::uint32_t(GetModuleFileName)(
-		void* a_module,
-		char* a_filename,
+		void*         a_module,
+		char*         a_filename,
 		std::uint32_t a_size) noexcept
 	{
 		return static_cast<std::uint32_t>(
@@ -165,8 +165,8 @@ namespace SKSE::WinAPI
 	}
 
 	std::uint32_t(GetModuleFileName)(
-		void* a_module,
-		wchar_t* a_filename,
+		void*         a_module,
+		wchar_t*      a_filename,
 		std::uint32_t a_size) noexcept
 	{
 		return static_cast<std::uint32_t>(
@@ -191,7 +191,7 @@ namespace SKSE::WinAPI
 	}
 
 	void*(GetProcAddress)(void* a_module,
-		const char* a_procName) noexcept
+		const char*             a_procName) noexcept
 	{
 		return reinterpret_cast<void*>(
 			::GetProcAddress(
@@ -200,9 +200,9 @@ namespace SKSE::WinAPI
 	}
 
 	std::int32_t(MessageBox)(
-		void* a_wnd,
-		const char* a_text,
-		const char* a_caption,
+		void*        a_wnd,
+		const char*  a_text,
+		const char*  a_caption,
 		unsigned int a_type) noexcept
 	{
 		return static_cast<std::int32_t>(
@@ -214,10 +214,10 @@ namespace SKSE::WinAPI
 	}
 
 	std::int32_t(MessageBox)(
-		void* a_wnd,
+		void*          a_wnd,
 		const wchar_t* a_text,
 		const wchar_t* a_caption,
-		unsigned int a_type) noexcept
+		unsigned int   a_type) noexcept
 	{
 		return static_cast<std::int32_t>(
 			::MessageBoxW(
@@ -242,7 +242,7 @@ namespace SKSE::WinAPI
 	}
 
 	void(TerminateProcess)(
-		void* a_process,
+		void*        a_process,
 		unsigned int a_exitCode) noexcept
 	{
 		::TerminateProcess(
@@ -259,7 +259,7 @@ namespace SKSE::WinAPI
 
 	bool(TlsSetValue)(
 		std::uint32_t a_tlsIndex,
-		void* a_tlsValue) noexcept
+		void*         a_tlsValue) noexcept
 	{
 		return static_cast<bool>(
 			::TlsSetValue(
@@ -268,8 +268,8 @@ namespace SKSE::WinAPI
 	}
 
 	bool(VirtualFree)(
-		void* a_address,
-		std::size_t a_size,
+		void*         a_address,
+		std::size_t   a_size,
 		std::uint32_t a_freeType) noexcept
 	{
 		return static_cast<bool>(
@@ -280,9 +280,9 @@ namespace SKSE::WinAPI
 	}
 
 	bool(VerQueryValue)(
-		const void* a_block,
-		const char* a_subBlock,
-		void** a_buffer,
+		const void*   a_block,
+		const char*   a_subBlock,
+		void**        a_buffer,
 		unsigned int* a_len) noexcept
 	{
 		return static_cast<bool>(
@@ -294,10 +294,10 @@ namespace SKSE::WinAPI
 	}
 
 	bool(VerQueryValue)(
-		const void* a_block,
+		const void*    a_block,
 		const wchar_t* a_subBlock,
-		void** a_buffer,
-		unsigned int* a_len) noexcept
+		void**         a_buffer,
+		unsigned int*  a_len) noexcept
 	{
 		return static_cast<bool>(
 			::VerQueryValueW(
@@ -308,9 +308,9 @@ namespace SKSE::WinAPI
 	}
 
 	bool(VirtualProtect)(
-		void* a_address,
-		std::size_t a_size,
-		std::uint32_t a_newProtect,
+		void*          a_address,
+		std::size_t    a_size,
+		std::uint32_t  a_newProtect,
 		std::uint32_t* a_oldProtect) noexcept
 	{
 		return static_cast<bool>(

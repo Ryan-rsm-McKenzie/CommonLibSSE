@@ -12,7 +12,7 @@ namespace RE
 	void ItemsPickpocketed::SendEvent(std::int32_t a_numItems)
 	{
 		Event e = { a_numItems, 0 };
-		auto source = GetEventSource();
+		auto  source = GetEventSource();
 		if (source) {
 			source->SendEvent(std::addressof(e));
 		}

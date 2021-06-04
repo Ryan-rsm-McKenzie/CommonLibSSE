@@ -5,7 +5,7 @@ namespace RE
 	class NiRTTI
 	{
 	public:
-		[[nodiscard]] constexpr const char* GetName() const noexcept { return name; }
+		[[nodiscard]] constexpr const char*   GetName() const noexcept { return name; }
 		[[nodiscard]] constexpr const NiRTTI* GetBaseRTTI() const noexcept { return baseRTTI; }
 
 		[[nodiscard]] constexpr bool IsKindOf(const NiRTTI* a_rtti) const noexcept
@@ -19,7 +19,7 @@ namespace RE
 		}
 
 		// members
-		const char* name;        // 00
+		const char*   name;      // 00
 		const NiRTTI* baseRTTI;  // 08
 	};
 	static_assert(sizeof(NiRTTI) == 0x10);
