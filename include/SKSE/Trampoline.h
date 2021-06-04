@@ -241,7 +241,7 @@ namespace SKSE
 			SrcAssembly assembly;
 			assembly.opcode = a_opcode;
 			assembly.disp = static_cast<std::int32_t>(disp);
-			REL::safe_write(a_src, assembly);
+			REL::safe_write(a_src, &assembly, sizeof(assembly));
 
 			mem->jmp = static_cast<std::uint8_t>(0xFF);
 			mem->modrm = static_cast<std::uint8_t>(0x25);
@@ -284,7 +284,7 @@ namespace SKSE
 			assembly.opcode = static_cast<std::uint8_t>(0xFF);
 			assembly.modrm = a_modrm;
 			assembly.disp = static_cast<std::int32_t>(disp);
-			REL::safe_write(a_src, assembly);
+			REL::safe_write(a_src, &assembly, sizeof(assembly));
 
 			*mem = a_dst;
 		}
