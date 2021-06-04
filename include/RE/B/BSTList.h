@@ -75,7 +75,7 @@ namespace RE
 
 			// members
 			value_type      item;  // 00
-			observer<Node*> next;  // ??
+			stl::observer<Node*> next;  // ??
 		};
 
 		template <class U>
@@ -164,7 +164,7 @@ namespace RE
 			}
 
 		private:
-			observer<Node*> _cur;
+			stl::observer<Node*> _cur;
 		};
 
 		using iterator = iterator_base<value_type>;

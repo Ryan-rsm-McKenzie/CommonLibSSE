@@ -107,6 +107,6 @@ namespace RE
 
 	BSTArray<TESForm*>& TESDataHandler::GetFormArray(FormType a_formType)
 	{
-		return formArrays[to_underlying(a_formType)];
+		return formArrays[stl::to_underlying(a_formType)];
 	}
 }

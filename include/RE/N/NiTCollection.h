@@ -58,7 +58,7 @@ namespace RE
 		inline static void Deallocate(T* a_array)
 		{
 			if (a_array) {
-				auto head = adjust_pointer<std::size_t>(a_array, -ssizeof_v<std::uintptr_t>);
+				auto head = stl::adjust_pointer<std::size_t>(a_array, -stl::ssizeof_v<std::uintptr_t>);
 				for (std::size_t i = 0; i < *head; ++i) {
 					a_array[i].~T();
 				}

@@ -56,16 +56,21 @@ namespace RE
 
 	GFxResource::ResourceType GFxResource::GetResourceType() const
 	{
-		return (static_cast<ResourceType>(GetResourceTypeCode()) & ResourceType::kTypeCode_Mask) >> ResourceType::kTypeCode_Shift;
+		return static_cast<GFxResource::ResourceType>(
+			stl::to_underlying(GetResourceUse()) >>
+			stl::to_underlying(ResourceType::kTypeCode_Shift));
 	}
 
 	GFxResource::ResourceUse GFxResource::GetResourceUse() const
 	{
-		return static_cast<ResourceUse>(GetResourceTypeCode()) & ResourceUse::kTypeCode_Mask;
+		return static_cast<ResourceUse>(
+			GetResourceTypeCode() &
+			stl::to_underlying(ResourceUse::kTypeCode_Mask));
 	}
 
 	std::uint32_t GFxResource::MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse)
 	{
-		return to_underlying(static_cast<ResourceUse>(a_resourceType << ResourceType::kTypeCode_Shift) | a_resourceUse);
+		return (stl::to_underlying(a_resourceType) << stl::to_underlying(ResourceType::kTypeCode_Shift)) |
+		       stl::to_underlying(a_resourceUse);
 	}
 }

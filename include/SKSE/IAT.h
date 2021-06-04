@@ -26,6 +26,6 @@ namespace SKSE
 	template <class F>
 	inline std::uintptr_t PatchIAT(F a_newFunc, std::string_view a_dll, std::string_view a_function)
 	{
-		return PatchIAT(unrestricted_cast<std::uintptr_t>(a_newFunc), a_dll, a_function);
+		return PatchIAT(stl::unrestricted_cast<std::uintptr_t>(a_newFunc), a_dll, a_function);
 	}
 }

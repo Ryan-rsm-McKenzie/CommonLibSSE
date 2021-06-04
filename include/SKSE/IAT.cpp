@@ -73,25 +73,25 @@ namespace SKSE
 			return nullptr;
 		}
 
-		auto  ntHeader = adjust_pointer<::IMAGE_NT_HEADERS>(dosHeader, dosHeader->e_lfanew);
+		auto  ntHeader = stl::adjust_pointer<::IMAGE_NT_HEADERS>(dosHeader, dosHeader->e_lfanew);
 		auto& dataDir = ntHeader->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT];
-		auto  importDesc = adjust_pointer<::IMAGE_IMPORT_DESCRIPTOR>(dosHeader, dataDir.VirtualAddress);
+		auto  importDesc = stl::adjust_pointer<::IMAGE_IMPORT_DESCRIPTOR>(dosHeader, dataDir.VirtualAddress);
 
 		for (auto import = importDesc; import->Characteristics != 0; ++import) {
-			auto name = adjust_pointer<const char>(dosHeader, import->Name);
+			auto name = stl::adjust_pointer<const char>(dosHeader, import->Name);
 			if (_stricmp(a_dll.data(), name) != 0) {
 				continue;
 			}
 
-			auto thunk = adjust_pointer<::IMAGE_THUNK_DATA>(dosHeader, import->OriginalFirstThunk);
+			auto thunk = stl::adjust_pointer<::IMAGE_THUNK_DATA>(dosHeader, import->OriginalFirstThunk);
 			for (std::size_t i = 0; thunk[i].u1.Ordinal; ++i) {
 				if (IMAGE_SNAP_BY_ORDINAL(thunk[i].u1.Ordinal)) {
 					continue;
 				}
 
-				auto importByName = adjust_pointer<IMAGE_IMPORT_BY_NAME>(dosHeader, thunk[i].u1.AddressOfData);
+				auto importByName = stl::adjust_pointer<IMAGE_IMPORT_BY_NAME>(dosHeader, thunk[i].u1.AddressOfData);
 				if (_stricmp(a_function.data(), importByName->Name) == 0) {
-					return adjust_pointer<::IMAGE_THUNK_DATA>(dosHeader, import->FirstThunk) + i;
+					return stl::adjust_pointer<::IMAGE_THUNK_DATA>(dosHeader, import->FirstThunk) + i;
 				}
 			}
 		}

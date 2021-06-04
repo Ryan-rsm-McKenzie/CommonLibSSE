@@ -187,7 +187,7 @@ namespace REL
 			std::aligned_storage_t<sizeof(result_t), alignof(result_t)> result;
 
 			using func_t = member_function_non_pod_type_t<F>;
-			auto func = unrestricted_cast<func_t*>(std::forward<F>(a_func));
+			auto func = stl::unrestricted_cast<func_t*>(std::forward<F>(a_func));
 
 			return func(std::forward<First>(a_first), std::addressof(result), std::forward<Rest>(a_rest)...);
 		}
@@ -205,7 +205,7 @@ namespace REL
 		if constexpr (std::is_member_function_pointer_v<std::decay_t<F>>) {
 			if constexpr (detail::is_x64_pod_v<std::invoke_result_t<F, Args...>>) {  // member functions == free functions in x64
 				using func_t = detail::member_function_pod_type_t<std::decay_t<F>>;
-				auto func = unrestricted_cast<func_t*>(std::forward<F>(a_func));
+				auto func = stl::unrestricted_cast<func_t*>(std::forward<F>(a_func));
 				return func(std::forward<Args>(a_args)...);
 			} else {  // shift args to insert result
 				return detail::invoke_member_function_non_pod(std::forward<F>(a_func), std::forward<Args>(a_args)...);
@@ -894,7 +894,7 @@ namespace REL
 			noexcept(std::is_nothrow_copy_constructible_v<value_type>)
 		{
 			assert(_impl != 0);
-			return unrestricted_cast<value_type>(_impl);
+			return stl::unrestricted_cast<value_type>(_impl);
 		}
 
 		template <class U = value_type>
@@ -911,7 +911,7 @@ namespace REL
 		std::uintptr_t write_vfunc(std::size_t a_idx, F a_newFunc)  //
 			requires(std::same_as<value_type, std::uintptr_t>)
 		{
-			return write_vfunc(a_idx, unrestricted_cast<std::uintptr_t>(a_newFunc));
+			return write_vfunc(a_idx, stl::unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
 	private :

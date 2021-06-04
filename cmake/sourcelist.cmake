@@ -117,7 +117,6 @@ set(sources ${sources}
 	include/RE/H/hkpBroadPhase.cpp
 	include/RE/H/hkpCdBody.cpp
 	include/RE/H/hkpCharacterProxyListener.cpp
-	include/RE/H/hkpCollidable.cpp
 	include/RE/H/hkpMaterial.cpp
 	include/RE/H/hkpWorldObject.cpp
 	include/RE/H/hkReferencedObject.cpp

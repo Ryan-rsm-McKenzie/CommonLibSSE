@@ -26,7 +26,7 @@ namespace RE
 
 	protected:
 		// members
-		volatile std::uint32_t _refCount{ 0 };  // 0
+		mutable volatile std::uint32_t _refCount{ 0 };  // 0
 	};
 	static_assert(sizeof(BSIntrusiveRefCounted) == 0x4);
 }

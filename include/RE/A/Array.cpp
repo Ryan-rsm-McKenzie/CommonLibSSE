@@ -162,17 +162,17 @@ namespace RE
 
 		[[nodiscard]] TypeInfo::RawType Array::type() const
 		{
-			const auto typeID = _elementType.GetRawType();
-			switch (typeID) {
+			const stl::enumeration typeID = _elementType.GetRawType();
+			switch (*typeID) {
 			case TypeInfo::RawType::kNone:
 			case TypeInfo::RawType::kObject:
 			case TypeInfo::RawType::kString:
 			case TypeInfo::RawType::kInt:
 			case TypeInfo::RawType::kFloat:
 			case TypeInfo::RawType::kBool:
-				return typeID + TypeInfo::RawType::kNoneArray;
+				return *(typeID + TypeInfo::RawType::kNoneArray);
 			default:
-				return typeID + TypeInfo::RawType::kObject;
+				return *(typeID + TypeInfo::RawType::kObject);
 			}
 		}
 	}

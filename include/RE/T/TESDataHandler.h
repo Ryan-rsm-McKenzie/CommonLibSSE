@@ -63,7 +63,7 @@ namespace RE
 		std::uint16_t                     pad002;                                    // 002
 		std::uint32_t                     pad004;                                    // 004
 		TESObjectList*                    objectList;                                // 008
-		BSTArray<TESForm*>                formArrays[to_underlying(FormType::Max)];  // 010
+		BSTArray<TESForm*>                formArrays[stl::to_underlying(FormType::Max)];  // 010
 		TESRegionList*                    regionList;                                // D00
 		NiTPrimitiveArray<TESObjectCELL*> interiorCells;                             // D08
 		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                // D20

@@ -50,11 +50,11 @@ namespace RE
 		std::uint64_t   unk1F0;  // 1F0
 		std::uint64_t   unk1F8;  // 1F8
 
-		owner<void*>    unk200;  // 200 - smart ptr
+		stl::owner<void*>    unk200;  // 200 - smart ptr
 		std::uint64_t   unk208;  // 208
-		owner<void*>    unk210;  // 210 - smart ptr
+		stl::owner<void*>    unk210;  // 210 - smart ptr
 		std::uint64_t   unk218;  // 218
-		owner<void*>    unk220;  // 220 - smart ptr
+		stl::owner<void*>    unk220;  // 220 - smart ptr
 		std::uint64_t   unk228;  // 228
 		BSTArray<void*> unk230;  // 230
 		std::uint64_t   unk248;  // 248

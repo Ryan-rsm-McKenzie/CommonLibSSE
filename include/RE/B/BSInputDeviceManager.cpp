@@ -22,22 +22,22 @@ namespace RE
 
 	BSPCGamepadDeviceHandler* BSInputDeviceManager::GetGamepadHandler()
 	{
-		return static_cast<BSPCGamepadDeviceHandler*>(devices[to_underlying(INPUT_DEVICE::kGamepad)]);
+		return static_cast<BSPCGamepadDeviceHandler*>(devices[stl::to_underlying(INPUT_DEVICE::kGamepad)]);
 	}
 
 	BSWin32KeyboardDevice* BSInputDeviceManager::GetKeyboard()
 	{
-		return static_cast<BSWin32KeyboardDevice*>(devices[to_underlying(INPUT_DEVICE::kKeyboard)]);
+		return static_cast<BSWin32KeyboardDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kKeyboard)]);
 	}
 
 	BSWin32MouseDevice* BSInputDeviceManager::GetMouse()
 	{
-		return static_cast<BSWin32MouseDevice*>(devices[to_underlying(INPUT_DEVICE::kMouse)]);
+		return static_cast<BSWin32MouseDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kMouse)]);
 	}
 
 	BSWin32VirtualKeyboardDevice* BSInputDeviceManager::GetVirtualKeyboard()
 	{
-		return static_cast<BSWin32VirtualKeyboardDevice*>(devices[to_underlying(INPUT_DEVICE::kVirtualKeyboard)]);
+		return static_cast<BSWin32VirtualKeyboardDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kVirtualKeyboard)]);
 	}
 
 	bool BSInputDeviceManager::IsGamepadConnected()

@@ -37,7 +37,11 @@ namespace RE
 		};
 		static_assert(sizeof(BoundingVolumeData) == 0x38);
 
-		void* GetOwner() const;
+		[[nodiscard]] void* GetOwner() const
+		{
+			return const_cast<void*>(stl::adjust_pointer<const void>(this, ownerOffset));
+		}
+
 		template <class T>
 		T* GetOwner() const
 		{

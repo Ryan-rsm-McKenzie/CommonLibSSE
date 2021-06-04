@@ -45,7 +45,8 @@ namespace RE
 			return false;
 		}
 
-		const auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		const stl::enumeration loadFlags{ LoadConstants::kLoadKeepBindData, LoadConstants::kLoadWaitFrame1 };
+		const auto             def = loader->CreateMovie(filePath->c_str(), *loadFlags);
 		if (!def) {
 			return false;
 		}
@@ -104,7 +105,8 @@ namespace RE
 			return false;
 		}
 
-		const auto def = loader->CreateMovie(filePath->c_str(), LoadConstants::kLoadKeepBindData | LoadConstants::kLoadWaitFrame1);
+		const stl::enumeration loadFlags{ LoadConstants::kLoadKeepBindData, LoadConstants::kLoadWaitFrame1 };
+		const auto             def = loader->CreateMovie(filePath->c_str(), *loadFlags);
 		if (!def) {
 			return false;
 		}

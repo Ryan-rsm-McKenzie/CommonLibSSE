@@ -132,7 +132,7 @@ namespace REL
 	void Module::load_segments()
 	{
 		auto        dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
-		auto        ntHeader = adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
+		auto        ntHeader = stl::adjust_pointer<IMAGE_NT_HEADERS64>(dosHeader, dosHeader->e_lfanew);
 		const auto* sections = IMAGE_FIRST_SECTION(ntHeader);
 		const auto  size = std::min<std::size_t>(ntHeader->FileHeader.NumberOfSections, _segments.size());
 		for (std::size_t i = 0; i < size; ++i) {

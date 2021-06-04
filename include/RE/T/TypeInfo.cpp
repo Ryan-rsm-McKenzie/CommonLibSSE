@@ -80,7 +80,7 @@ namespace RE
 		ObjectTypeInfo* TypeInfo::GetTypeInfo() const
 		{
 			assert(IsObject());
-			return reinterpret_cast<ObjectTypeInfo*>(GetRawType() & ~RawType::kObject);
+			return reinterpret_cast<ObjectTypeInfo*>(stl::to_underlying(GetRawType()) & ~stl::to_underlying(RawType::kObject));
 		}
 
 		auto TypeInfo::GetUnmangledRawType() const

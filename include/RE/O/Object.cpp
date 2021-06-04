@@ -11,7 +11,7 @@ namespace RE
 		Object::~Object()
 		{
 			Dtor();
-			memzero(this);
+			stl::memzero(this);
 		}
 
 		VMHandle Object::GetHandle() const

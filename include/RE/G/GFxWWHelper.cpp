@@ -6,7 +6,8 @@ namespace RE
 {
 	bool GFxWWHelper::FindCharWithFlags(WordWrappingType a_wwMode, wchar_t a_ch, BreakInfoFlags a_charBreakFlags)
 	{
-		if ((a_wwMode & WordWrappingType::kProhibition) == WordWrappingType::kNone) {
+		const stl::enumeration wwMode{ a_wwMode };
+		if ((wwMode & WordWrappingType::kProhibition) == WordWrappingType::kNone) {
 			return false;
 		}
 
@@ -28,7 +29,8 @@ namespace RE
 
 	bool GFxWWHelper::IsAsianChar(WordWrappingType a_wwMode, wchar_t a_ch)
 	{
-		if ((a_wwMode & WordWrappingType::kNoHangulWrap) != WordWrappingType::kNone) {
+		const stl::enumeration wwMode{ a_wwMode };
+		if ((wwMode & WordWrappingType::kNoHangulWrap) != WordWrappingType::kNone) {
 			if ((a_ch >= 0x1100 && a_ch <= 0x11FF) || (a_ch >= 0x3130 && a_ch <= 0x318F) || (a_ch >= 0xAC00 && a_ch <= 0xD7A3)) {
 				return false;
 			}
@@ -128,7 +130,9 @@ namespace RE
 	UPInt GFxWWHelper::FindWordWrapPos(WordWrappingType a_wwMode, [[maybe_unused]] UPInt a_wordWrapPos, const wchar_t* a_paraText, UPInt a_paraLen, UPInt a_lineStartPos, UPInt a_lineLen)
 	{
 		assert(a_paraText);
-		if ((a_wwMode & WordWrappingType::kAll) == WordWrappingType::kNone || a_lineLen == 0) {
+
+		const stl::enumeration wwMode{ a_wwMode };
+		if ((wwMode & WordWrappingType::kAll) == WordWrappingType::kNone || a_lineLen == 0) {
 			return UPINT_MAX;
 		}
 
@@ -147,7 +151,7 @@ namespace RE
 					pos = prev + 1;
 				}
 
-				if (IsLineBreakOpportunityAt(a_wwMode, lineText, pos)) {
+				if (IsLineBreakOpportunityAt(*wwMode, lineText, pos)) {
 					break;
 				}
 

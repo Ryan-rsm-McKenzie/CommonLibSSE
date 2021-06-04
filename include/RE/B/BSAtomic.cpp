@@ -49,14 +49,14 @@ namespace RE
 	BSSemaphoreBase::BSSemaphoreBase() :
 		semaphore()
 	{
-		memzero(&semaphore);
+		stl::memzero(&semaphore);
 		semaphore = ::CreateSemaphoreA(nullptr, 0, 40, nullptr);
 	}
 
 	BSSemaphoreBase::~BSSemaphoreBase()
 	{
 		::CloseHandle(semaphore);
-		memzero(&semaphore);
+		stl::memzero(&semaphore);
 	}
 
 	BSSpinLock::BSSpinLock() :
