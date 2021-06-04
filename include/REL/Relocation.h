@@ -237,7 +237,7 @@ namespace REL
 		assert(success != 0);
 	}
 
-	template <class T>
+	template <std::integral T>
 	void safe_write(std::uintptr_t a_dst, const T& a_data)
 	{
 		safe_write(a_dst, std::addressof(a_data), sizeof(T));
@@ -424,7 +424,24 @@ namespace REL
 		}
 
 	private:
-		Module() { load(); }
+		Module()
+		{
+			const auto getFilename = [&]() {
+				return WinAPI::GetEnvironmentVariable(
+					ENVIRONMENT.data(),
+					_filename.data(),
+					_filename.size());
+			};
+
+			_filename.resize(getFilename());
+			if (const auto result = getFilename();
+				result != _filename.size() - 1 ||
+				result == 0) {
+				_filename = L"SkyrimSE.exe"sv;
+			}
+
+			load();
+		}
 
 		Module(const Module&) = delete;
 		Module(Module&&) = delete;
@@ -470,9 +487,11 @@ namespace REL
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
 
+		static constexpr auto ENVIRONMENT = L"SKSE_RUNTIME"sv;
+
 		static inline std::uintptr_t _natvis{ 0 };
 
-		std::wstring                        _filename{ L"SkyrimSE.exe"sv };
+		std::wstring                        _filename;
 		std::array<Segment, Segment::total> _segments;
 		Version                             _version;
 		std::uintptr_t                      _base{ 0 };
@@ -822,10 +841,7 @@ namespace REL
 	public:
 		using value_type =
 			std::conditional_t<
-				std::disjunction_v<
-					std::is_member_pointer<T>,
-					std::is_function<
-						std::remove_pointer_t<T>>>,
+				std::is_member_pointer_v<T> || std::is_function_v<std::remove_pointer_t<T>>,
 				std::decay_t<T>,
 				T>;
 
