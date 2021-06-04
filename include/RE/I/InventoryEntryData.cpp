@@ -5,6 +5,8 @@
 #include "RE/E/ExtraEnchantment.h"
 #include "RE/E/ExtraLeveledItem.h"
 #include "RE/E/ExtraTextDisplayData.h"
+#include "RE/E/ExtraWorn.h"
+#include "RE/E/ExtraWornLeft.h"
 #include "RE/F/FormTraits.h"
 #include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
@@ -193,6 +195,19 @@ namespace RE
 		if (extraLists) {
 			for (const auto& xList : *extraLists) {
 				if (xList && xList->HasType<ExtraLeveledItem>()) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	bool InventoryEntryData::IsWorn() const
+	{
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				if (xList && (xList->HasType<ExtraWorn>() || xList->HasType<ExtraWornLeft>())) {
 					return true;
 				}
 			}
