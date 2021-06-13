@@ -474,6 +474,14 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
 	}
 
+	
+	void Actor::MoveToPackageLoaction(bool a_arg1) const
+	{
+		using func_t = decltype(&Actor::MoveToPackageLoaction);
+		REL::Relocation<func_t> func{ REL::ID(36472) };
+		return func(this, a_arg1);
+	}
+
 
 	void Actor::RemoveExtraArrows3D()
 	{
