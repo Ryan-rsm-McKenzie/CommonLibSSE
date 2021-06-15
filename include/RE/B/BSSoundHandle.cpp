@@ -17,6 +17,13 @@ namespace RE
 		return func(this);
 	}
 
+	bool BSSoundHandle::SetFrequency(float a_frequency)
+	{
+		using func_t = decltype(&BSSoundHandle::SetFrequency);
+		REL::Relocation<func_t> func{ REL::ID(66366) };
+		return func(this, a_frequency);
+	}
+
 	bool BSSoundHandle::SetPosition(NiPoint3 a_pos)
 	{
 		using func_t = decltype(&BSSoundHandle::SetPosition);
@@ -29,6 +36,13 @@ namespace RE
 		using func_t = decltype(&BSSoundHandle::SetObjectToFollow);
 		REL::Relocation<func_t> func{ Offset::BSSoundHandle::SetObjectToFollow };
 		return func(this, a_node);
+	}
+
+	bool BSSoundHandle::SetVolume(float a_volume)
+	{
+		using func_t = decltype(&BSSoundHandle::SetVolume);
+		REL::Relocation<func_t> func{ REL::ID(66365) };
+		return func(this, a_volume);
 	}
 
 	bool BSSoundHandle::Stop()

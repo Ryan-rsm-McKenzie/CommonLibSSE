@@ -32,6 +32,7 @@
 #include <new>
 #include <numeric>
 #include <optional>
+#include <random>
 #include <regex>
 #include <set>
 #include <source_location>
@@ -607,6 +608,7 @@ namespace REL
 #include "RE/Offsets.h"
 #include "RE/Offsets_NiRTTI.h"
 #include "RE/Offsets_RTTI.h"
+#include "RE/Offsets_VTABLE.h"
 
 #include "RE/B/BSCoreTypes.h"
 #include "RE/S/SFTypes.h"

@@ -191,20 +191,28 @@ namespace RE
 		EXTERIOR_DATA* GetCoordinates();
 		TESFaction*    GetFactionOwner();
 		INTERIOR_DATA* GetLighting();
-		float          GetNorthRotation();
-		TESForm*       GetOwner();
-		bool           IsAttached() const;
-		bool           IsExteriorCell() const;
-		bool           IsInteriorCell() const;
-		void           SetActorOwner(TESNPC* a_owner);
-		void           SetFactionOwner(TESFaction* a_owner);
-		void           SetFogColor(Color a_near, Color a_far);
-		void           SetFogPlanes(float a_near, float a_far);
-		void           SetFogPower(float a_power);
-		void           SetHandChanged(bool a_changed);
-		void           SetOwner(TESForm* a_owner);
-		void           SetPublic(bool a_public);
-		bool           UsesSkyLighting() const;
+
+		inline BGSLocation* GetLocation() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetLocation);
+			REL::Relocation<func_t> func{ REL::ID(18474) };
+			return func(this);
+		}
+
+		float    GetNorthRotation();
+		TESForm* GetOwner();
+		bool     IsAttached() const;
+		bool     IsExteriorCell() const;
+		bool     IsInteriorCell() const;
+		void     SetActorOwner(TESNPC* a_owner);
+		void     SetFactionOwner(TESFaction* a_owner);
+		void     SetFogColor(Color a_near, Color a_far);
+		void     SetFogPlanes(float a_near, float a_far);
+		void     SetFogPower(float a_power);
+		void     SetHandChanged(bool a_changed);
+		void     SetOwner(TESForm* a_owner);
+		void     SetPublic(bool a_public);
+		bool     UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock                        grassCreateLock;   // 030

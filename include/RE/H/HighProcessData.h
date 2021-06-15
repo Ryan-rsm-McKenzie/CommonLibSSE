@@ -22,6 +22,7 @@ namespace RE
 	class IAnimationSetCallbackFunctor;
 	class NiBillboardNode;
 	class NiRefObject;
+	class TESObjectREFR;
 	class StandardDetectionListener;
 	struct Crime;
 	struct QueuedDialogueType;
@@ -174,8 +175,8 @@ namespace RE
 		float                                                 unk128;                         // 128
 		float                                                 unk12C;                         // 12C
 		stl::enumeration<FADE_STATE, std::uint32_t>           fadeState;                      // 130
-		std::uint32_t                                         unk134;                         // 134
-		std::uint64_t                                         unk138;                         // 138
+		float                                                 unk134;                         // 134
+		TESObjectREFR*                                        fadeTrigger;                    // 138
 		std::uint64_t                                         unk140;                         // 140
 		std::uint64_t                                         unk148;                         // 148
 		std::uint64_t                                         unk150;                         // 150

@@ -4,6 +4,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/I/ICellAttachDetachEventSource.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
 namespace RE
@@ -57,6 +58,13 @@ namespace RE
 		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
 		static TES* GetSingleton();
+
+		TESObjectCELL* GetCell(const NiPoint3& a_position) const
+		{
+			using func_t = decltype(&TES::GetCell);
+			REL::Relocation<func_t> func{ REL::ID(13177) };
+			return func(this, a_position);
+		}
 
 		// members
 		std::uint64_t                                         unk070;                     // 070

@@ -2,6 +2,7 @@ set(headers ${headers}
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_RTTI.h
+	include/RE/Offsets_VTABLE.h
 	include/RE/RTTI.h
 	include/RE/Skyrim.h
 	include/RE/A/AbsorbEffect.h
@@ -176,6 +177,7 @@ set(headers ${headers}
 	include/RE/B/BGSTypedItem.h
 	include/RE/B/BGSVoiceType.h
 	include/RE/B/BGSVolumetricLighting.h
+	include/RE/B/BGSWaterSystemManager.h
 	include/RE/B/bhkCachingShapePhantom.h
 	include/RE/B/bhkCharacterController.h
 	include/RE/B/bhkCharacterPointCollector.h
@@ -189,8 +191,11 @@ set(headers ${headers}
 	include/RE/B/bhkCharacterStateSwimming.h
 	include/RE/B/bhkCharProxyController.h
 	include/RE/B/bhkCollisionObject.h
+	include/RE/B/bhkCompressedMeshShape.h
+	include/RE/B/bhkCompressedMeshShapeData.h
 	include/RE/B/bhkEntity.h
 	include/RE/B/bhkListShape.h
+	include/RE/B/bhkMeshMaterial.h
 	include/RE/B/bhkNiCollisionObject.h
 	include/RE/B/bhkPhantom.h
 	include/RE/B/bhkRefObject.h
@@ -704,6 +709,7 @@ set(headers ${headers}
 	include/RE/H/hkpCharacterStateManager.h
 	include/RE/H/hkpCollidable.h
 	include/RE/H/hkpCollisionInput.h
+	include/RE/H/hkpCompressedMeshShape.h
 	include/RE/H/hkpConstraintInfo.h
 	include/RE/H/hkpConstraintOwner.h
 	include/RE/H/hkpEntity.h
@@ -715,6 +721,7 @@ set(headers ${headers}
 	include/RE/H/hkpLinkedCollidable.h
 	include/RE/H/hkpListShape.h
 	include/RE/H/hkpMaterial.h
+	include/RE/H/hkpMeshMaterial.h
 	include/RE/H/hkpMoppAabbCastVirtualMachine.h
 	include/RE/H/hkpMoppBvTreeShape.h
 	include/RE/H/hkpMoppCode.h
@@ -745,6 +752,7 @@ set(headers ${headers}
 	include/RE/H/hkpWorldObject.h
 	include/RE/H/hkpWorldRayCastInput.h
 	include/RE/H/hkpWorldRayCastOutput.h
+	include/RE/H/hkQsTransform.h
 	include/RE/H/hkQuaternion.h
 	include/RE/H/hkReferencedObject.h
 	include/RE/H/hkRefPtr.h
@@ -1209,6 +1217,7 @@ set(headers ${headers}
 	include/RE/U/UserEvents.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/Variable.h
+	include/RE/V/VATS.h
 	include/RE/V/VDescTable.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
@@ -1228,5 +1237,6 @@ set(headers ${headers}
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
+	include/SKSE/Impl/Util.h
 	include/SKSE/Impl/WinAPI.h
 )

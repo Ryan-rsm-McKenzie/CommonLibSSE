@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSExtraData.h"
+#include "RE/B/BSSoundHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 
 namespace RE
@@ -27,11 +28,7 @@ namespace RE
 		std::uint16_t      pad1A;                // 1A
 		float              subtitleSpeechDelay;  // 1C
 		BGSDialogueBranch* exclusiveBranch;      // 20
-		std::int32_t       unk28;                // 28
-		std::uint8_t       unk2C;                // 2C
-		std::uint8_t       pad2D;                // 2D
-		std::uint16_t      pad2E;                // 2E
-		std::uint32_t      unk30;                // 30
+		BSSoundHandle      unk28;                // 28
 		std::uint32_t      pad34;                // 34
 		DialogueItem*      item;                 // 38
 	};

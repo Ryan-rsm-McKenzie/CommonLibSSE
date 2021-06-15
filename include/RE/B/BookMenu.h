@@ -4,12 +4,15 @@
 #include "RE/G/GPtr.h"
 #include "RE/I/IMenu.h"
 #include "RE/I/ImageData.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 namespace RE
 {
 	struct BSAnimationGraphEvent;
 
+	class NiAVObject;
+	class TESObjectBOOK;
 	class TESObjectREFR;
 
 	// menuDepth = 1
@@ -22,6 +25,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto      RTTI = RTTI_BookMenu;
+		inline static constexpr auto      VTABLE = VTABLE_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
 
 		virtual ~BookMenu();  // 00
@@ -35,22 +39,23 @@ namespace RE
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
-		[[nodiscard]] TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
+		[[nodiscard]] static TESObjectBOOK* GetTargetForm();
+		[[nodiscard]] static TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
 
 		// members
-		BSTArray<ImageData> unk50;      // 50
-		GPtr<GFxMovieView>  book;       // 68
-		void*               unk70;      // 70 - smart ptr
-		std::uint32_t       unk78;      // 78
-		std::uint32_t       pad7C;      // 7C
-		std::uint64_t       unk80;      // 80
-		void*               unk88;      // 88 - smart ptr
-		std::uint16_t       unk90;      // 90
-		std::uint16_t       unk92;      // 92
-		bool                closeMenu;  // 94
-		bool                isNote;     // 95
-		std::uint8_t        unk96;      // 96
-		std::uint8_t        pad97;      // 97
+		BSTArray<ImageData>   unk50;      // 50
+		GPtr<GFxMovieView>    book;       // 68
+		NiPointer<NiAVObject> book3D;     // 70
+		std::uint32_t         unk78;      // 78
+		std::uint32_t         pad7C;      // 7C
+		std::uint64_t         unk80;      // 80
+		void*                 unk88;      // 88 - smart ptr
+		std::uint16_t         unk90;      // 90
+		std::uint16_t         unk92;      // 92
+		bool                  closeMenu;  // 94
+		bool                  isNote;     // 95
+		std::uint8_t          unk96;      // 96
+		std::uint8_t          pad97;      // 97
 	};
 	static_assert(sizeof(BookMenu) == 0x98);
 }

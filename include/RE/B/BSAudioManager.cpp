@@ -2,6 +2,7 @@
 
 #include "RE/B/BGSSoundDescriptorForm.h"
 #include "RE/B/BSSoundHandle.h"
+#include "RE/F/FormTraits.h"
 #include "RE/T/TESForm.h"
 
 namespace RE

@@ -85,6 +85,7 @@ namespace RE
 
 		void Save(const char* a_fileName);
 		void Load(const char* a_fileName);
+		void Load(const char* a_fileName, bool a_checkForMods);
 
 		// members
 		std::uint64_t   unk070;  // 070

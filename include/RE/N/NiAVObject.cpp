@@ -22,6 +22,19 @@ namespace RE
 		return flags.all(Flag::kHidden);
 	}
 
+	TESObjectREFR* NiAVObject::GetUserData() const
+	{
+		if (userData) {
+			return userData;
+		}
+
+		if (parent) {
+			return parent->GetUserData();
+		}
+
+		return nullptr;
+	}
+
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);

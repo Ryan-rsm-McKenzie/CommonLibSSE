@@ -7,6 +7,7 @@
 #include "RE/F/FormTypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTransform.h"
 #include "RE/T/TESObjectREFR.h"
 
 namespace RE
@@ -97,23 +98,12 @@ namespace RE
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098
-		float                      unk0A8;             // 0A8
-		float                      unk0AC;             // 0AC
-		std::uint64_t              unk0B0;             // 0B0
-		float                      unk0B8;             // 0B8
-		float                      unk0BC;             // 0BC
-		std::uint64_t              unk0C0;             // 0C0
-		float                      unk0C8;             // 0C8
-		float                      unk0CC;             // 0CC
-		std::uint64_t              unk0D0;             // 0D0
-		float                      unk0D8;             // 0D8
+		NiTransform                unk0A8;             // 0A8
 		float                      unk0DC;             // 0DC
 		bhkSimpleShapePhantom*     unk0E0;             // 0E0 - smart ptr
 		mutable BSSpinLock         unk0E8;             // 0E8
-		NiPoint3                   unk0F0;             // 0F0
-		float                      unk0FC;             // 0FC
-		float                      unk100;             // 100
-		float                      unk104;             // 104
+		NiPoint3                   velocity;           // 0F0
+		NiPoint3                   linearVelocity;     // 0FC
 		void*                      unk108;             // 108 - smart ptr
 		void*                      unk110;             // 110 - smart ptr
 		NiPointer<ActorCause>      actorCause;         // 118
@@ -134,7 +124,7 @@ namespace RE
 		float                      unk188;             // 188
 		float                      unk18C;             // 18C
 		float                      range;              // 190
-		std::uint32_t              unk194;             // 194
+		float                      lifeRemaining;      // 194
 		float                      unk198;             // 198
 		float                      unk19C;             // 19C
 		std::uint64_t              unk1A0;             // 1A0

@@ -20,9 +20,9 @@ namespace RE
 		virtual void          LinkObject(NiStream& a_stream) override;            // 19
 		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B
-		virtual void          Unk_26(void) override;                              // 26 - "void AdjustRefCount(bool a_increment)"?
-		virtual hkpWorld*     GetWorld() override;                                // 27 - { auto proxy = (hkpCharacterProxy*)referencedObject.get(); if (proxy && proxy->shapePhantom) return proxy->world; else return 0; }
-		virtual void          Unk_28(void) override;                              // 28 - { return GetWorld(); }
+		virtual void          AdjustRefCount(bool a_increment) override;          // 26 - "void AdjustRefCount(bool a_increment)"?
+		virtual hkpWorld*     GetWorld1() override;                               // 27 - { auto proxy = (hkpCharacterProxy*)referencedObject.get(); if (proxy && proxy->shapePhantom) return proxy->world; else return 0; }
+		virtual ahkpWorld*    GetWorld2() override;                               // 28 - { return GetWorld(); }
 		virtual void          Unk_2B(void) override;                              // 2B
 		virtual void          Unk_2C(void) override;                              // 2C - { return 0x90; }
 		virtual void          Unk_2E(void) override;                              // 2E

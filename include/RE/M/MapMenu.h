@@ -42,6 +42,13 @@ namespace RE
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
+		void PlaceMarker()
+		{
+			using func_t = decltype(&MapMenu::PlaceMarker);
+			REL::Relocation<func_t> func{ REL::ID(52226) };
+			return func(this);
+		}
+
 		// members
 		BSTSmartPointer<MapMoveHandler> moveHandler;   // 00040
 		BSTSmartPointer<MapLookHandler> lookHandler;   // 00048

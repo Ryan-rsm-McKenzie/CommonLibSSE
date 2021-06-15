@@ -1,16 +1,19 @@
 #pragma once
 
 #include "RE/B/bhkShapeCollection.h"
+#include "RE/N/NiSmartPointer.h"
 
 namespace RE
 {
-	class bhkListShape : public bhkShapeCollection
+	class bhkCompressedMeshShapeData;
+
+	class bhkCompressedMeshShape : public bhkShapeCollection
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkListShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_bhkListShape;
+		inline static constexpr auto RTTI = RTTI_bhkCompressedMeshShape;
+		inline static constexpr auto Ni_RTTI = NiRTTI_bhkCompressedMeshShape;
 
-		virtual ~bhkListShape();  // 00
+		virtual ~bhkCompressedMeshShape();  // 00
 
 		// override (bhkShapeCollection)
 		virtual const NiRTTI* GetRTTI() const override;                           // 02
@@ -19,9 +22,9 @@ namespace RE
 		virtual void          LinkObject(NiStream& a_stream) override;            // 19
 		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B
-		virtual void          AdjustRefCount(bool a_increment) override;          // 26
+		virtual bool          IsEqual(NiObject* a_object) override;               // 1C
 		virtual void          Unk_2B(void) override;                              // 2B
-		virtual void          Unk_2C(void) override;                              // 2C - { return 40; }
+		virtual void          Unk_2C(void) override;                              // 2C - { return 48; }
 		virtual void          Unk_2D(void) override;                              // 2D
 		virtual void          Unk_2E(void) override;                              // 2E
 		virtual void          Unk_2F(void) override;                              // 2F
@@ -30,7 +33,7 @@ namespace RE
 		virtual void          Unk_36(void) override;                              // 36
 
 		// members
-		std::uint64_t unk28;  // 28
+		NiPointer<bhkCompressedMeshShapeData> data;  // 28
 	};
-	static_assert(sizeof(bhkListShape) == 0x30);
+	static_assert(sizeof(bhkCompressedMeshShape) == 0x30);
 }
