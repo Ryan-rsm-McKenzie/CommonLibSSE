@@ -181,9 +181,9 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] bool IsSneaking() const noexcept { return actorState1.sneaking; }
-		[[nodiscard]] bool IsSprinting() const noexcept { return actorState1.sprinting; }
-		[[nodiscard]] bool IsSwimming() const noexcept { return actorState1.swimming; }
+		[[nodiscard]] bool IsSneaking() const noexcept { return static_cast<bool>(actorState1.sneaking); }
+		[[nodiscard]] bool IsSprinting() const noexcept { return static_cast<bool>(actorState1.sprinting); }
+		[[nodiscard]] bool IsSwimming() const noexcept { return static_cast<bool>(actorState1.swimming); }
 		[[nodiscard]] bool IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconcious; }
 
 		[[nodiscard]] bool IsWeaponDrawn() const noexcept
