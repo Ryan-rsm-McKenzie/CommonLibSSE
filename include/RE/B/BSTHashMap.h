@@ -719,7 +719,7 @@ namespace RE
 
 	private:
 		// members
-		ScrapHeap* _allocator{ MemoryManager::GetSingleton().GetThreadScrapHeap() };  // 00 (20)
+		ScrapHeap* _allocator{ MemoryManager::GetSingleton()->GetThreadScrapHeap() };  // 00 (20)
 		std::byte* _entries{ nullptr };                                               // 08 (28)
 	};
 
