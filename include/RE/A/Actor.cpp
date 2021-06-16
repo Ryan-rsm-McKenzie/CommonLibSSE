@@ -85,7 +85,7 @@ namespace RE
 		if (xTalk) {
 			return xTalk->talk;
 		} else {
-			return race ? race->AllowsPCDialogue() : false;
+			return race != nullptr && race->AllowsPCDialogue();
 		}
 	}
 
@@ -513,9 +513,9 @@ namespace RE
 			const auto hairColor = npc->headRelatedData->hairColor;
 			if (hairColor) {
 				NiColor color;
-				color.red = hairColor->color.red / static_cast<float>(128.0);
-				color.green = hairColor->color.green / static_cast<float>(128.0);
-				color.blue = hairColor->color.blue / static_cast<float>(128.0);
+				color.red = static_cast<float>(hairColor->color.red) / static_cast<float>(128.0);
+				color.green = static_cast<float>(hairColor->color.green) / static_cast<float>(128.0);
+				color.blue = static_cast<float>(hairColor->color.blue) / static_cast<float>(128.0);
 
 				auto model = Get3D(false);
 				if (model) {
@@ -530,9 +530,9 @@ namespace RE
 		const auto* npc = GetActorBase();
 		if (npc) {
 			NiColor color;
-			color.red = npc->bodyTintColor.red / static_cast<float>(255.0);
-			color.green = npc->bodyTintColor.green / static_cast<float>(255.0);
-			color.blue = npc->bodyTintColor.blue / static_cast<float>(255.0);
+			color.red = static_cast<float>(npc->bodyTintColor.red) / static_cast<float>(255.0);
+			color.green = static_cast<float>(npc->bodyTintColor.green) / static_cast<float>(255.0);
+			color.blue = static_cast<float>(npc->bodyTintColor.blue) / static_cast<float>(255.0);
 
 			auto thirdPerson = Get3D(false);
 			if (thirdPerson) {
@@ -578,7 +578,7 @@ namespace RE
 
 	bool Actor::WouldBeStealing(const TESObjectREFR* a_target) const
 	{
-		return a_target ? !a_target->IsAnOwner(this, true, false) : false;
+		return a_target != nullptr && !a_target->IsAnOwner(this, true, false);
 	}
 
 	TESFaction* Actor::GetCrimeFactionImpl() const
