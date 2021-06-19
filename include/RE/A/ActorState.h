@@ -69,7 +69,7 @@ namespace RE
 		kWaitingForSitAnim = 2,
 
 		kIsSitting = 3,
-		kRidingMount = kIsSitting,
+		kRidingMount = static_cast<int>(kIsSitting),
 
 		kWantToStand = 4,
 
