@@ -242,7 +242,7 @@ class gfx.managers.DragManager extends EventDispatcher
 
 
 	/**
-	 * Repositions the drag target relative to the cursor position. Useful if you manually adjust the dragOffset properties and want to immediately updat the target position.
+	 * Repositions the drag target relative to the cursor position. Useful if you manually adjust the dragOffset properties and want to immediately update the target position.
 	 */
 	public function update(): Void
 	{

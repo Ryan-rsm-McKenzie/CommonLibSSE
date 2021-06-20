@@ -6,7 +6,7 @@
 	<li><i>visible</i>: Hides the component if set to false.</li>
 	<li><i>cache</i>: If set to true, loaded views will be cached internally. This saves on processing time to create the views, but requires an immutable ViewStack targetGroup (see below).</li>
 	<li><i>targetGroup</i>: A name of a valid group object, such as  ButtonGroup, that generates ‘change’ events. The current element in the group object must have a data property containing a linkage ID for the view to be loaded and displayed. RadioButtons, for example, have a data property that can be assigned a linkage ID via the Flash Studio Component Inspector.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	There are no states for the ViewStack component. Views loaded and displayed by the ViewStack may have its own states.
@@ -127,7 +127,7 @@ class gfx.controls.ViewStack extends UIComponent
 			_targetGroup.removeEventListener("change", this, "changeView");
 		}
 
-		// Look for a component by name, a ButtonGroup by name, and finally use the group as a component, such as ButtonGroup, ButtoNBar, etc.
+		// Look for a component by name, a ButtonGroup by name, and finally use the group as a component, such as ButtonGroup, ButtonBar, etc.
 		if (typeof(value) == "string") {
 			_targetGroup = _parent[value] || _parent["_buttonGroup_" + value];
 		} else {

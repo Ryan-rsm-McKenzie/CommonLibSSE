@@ -1,5 +1,5 @@
 /**
- * The ScrollingList is a list component that can scroll its elements. It can instantiate list items by itself or use existing list items on the stage. A ScrollIndicator or ScrollBar component can also be attached to this list component to provide scoll feedback and control. This component is populated via a DataProvider. The dataProvider is assigned via code, as shown in the example below:
+ * The ScrollingList is a list component that can scroll its elements. It can instantiate list items by itself or use existing list items on the stage. A ScrollIndicator or ScrollBar component can also be attached to this list component to provide scroll feedback and control. This component is populated via a DataProvider. The dataProvider is assigned via code, as shown in the example below:
 <i>scrollingList.dataProvider = ["item1", "item2", "item3", "item4", ];</i>
 
 	<b>Inspectable Properties</b>
@@ -18,8 +18,8 @@
 	<li><i>thumbOffsetTop:</i>Scrollbar thumb top offset. This property has no effect if the list does not automatically create a scrollbar instance.</li>
 	<li><i>thumbOffsetBottom:</i>Scrollbar thumb bottom offset. This property has no effect if the list does not automatically create a scrollbar instance.</li>
 	<li><i>thumbSizeFactor:</i>Page size factor for the scrollbar thumb. A value greater than 1.0 will increase the thumb size by the given factor. This positive value has no effect if a scrollbar is not attached to the list.
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li>
-	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li>
+	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	The ScrollingList component supports three states based on its focused and disabled properties. <ul>
@@ -308,7 +308,7 @@ class gfx.controls.ScrollingList extends CoreList
 
 
 	/**
-	 * The amount of visible rows.  Setting this property will immediately change the height of the component to accomodate the specified amount of rows. The {@code rowCount} property is not stored or maintained.
+	 * The amount of visible rows.  Setting this property will immediately change the height of the component to accommodate the specified amount of rows. The {@code rowCount} property is not stored or maintained.
 	 */
 	public function get rowCount(): Number
 	{
@@ -327,7 +327,7 @@ class gfx.controls.ScrollingList extends CoreList
 					return;
 				}
 
-				h = item._height; // It would be preferable to use the height property instead. however due to asyncronous loading, we can not.
+				h = item._height; // It would be preferable to use the height property instead. however due to asynchronous loading, we can not.
 				item.removeMovieClip();
 			} else {
 				h = item.height;
