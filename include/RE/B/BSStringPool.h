@@ -81,7 +81,7 @@ namespace RE
 				return reinterpret_cast<const wchar_t*>(this + 1);
 			}
 
-			[[nodiscard]] constexpr bool wide() const noexcept { return _flags & kWide; }
+			[[nodiscard]] constexpr bool wide() const noexcept { return static_cast<bool>(_flags & kWide); }
 
 			// members
 			Entry*                 _left;   // 00

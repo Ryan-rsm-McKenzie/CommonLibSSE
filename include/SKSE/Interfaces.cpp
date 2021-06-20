@@ -14,7 +14,7 @@ namespace SKSE
 
 	bool QueryInterface::IsEditor() const
 	{
-		return GetProxy()->isEditor;
+		return static_cast<bool>(GetProxy()->isEditor);
 	}
 
 	REL::Version QueryInterface::RuntimeVersion() const
