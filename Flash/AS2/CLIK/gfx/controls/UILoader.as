@@ -7,7 +7,7 @@
 	<li><i>autoSize</i>: If set to true, sizes the loaded to content to fit in the UILoader’s bounds.</li>
 	<li><i>maintainAspectRatio</i>: If true, the loaded content will be fit based on its aspect ratio inside the UILoader’s bounds. If false, then the content will be stretched to fit the UILoader bounds.</li>
 	<li><i>source</i>: The SWF/GFX or image filename to load.</li>
-    <li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+    <li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	There are no states for the UILoader component. If a SWF/GFX is loaded into the UILoader, then it may have its own states.
@@ -29,7 +29,7 @@
 
 
 /*
- An IOError will be dispatched after the timeout, even if the player catches it sooner, since we can not supress it.
+ An IOError will be dispatched after the timeout, even if the player catches it sooner, since we can not suppress it.
 */
 
 

@@ -12,8 +12,8 @@
 	<li><i>disableFocus</i>: By default buttons receive focus for user interactions. Setting this property to true will disable focus acquisition.</li>
 	    <li><i>disableConstraints</i>: The Button component contains a constraints object that determines the placement and scaling of the textField inside of the button when the component is resized. Setting this property to true will disable the constraints object. This is particularly useful if there is a need to resize or reposition the button's textField via a timeline animation AND the button component is never resized. If not disabled, the textField will be moved and scaled to its default values throughout its lifetime, thus nullifying any textField translation/scaling tweens that may have been created in the button's timeline.</li>
 	<li><i>autoSize</i>: Determines if the button will scale to fit the text that it contains and which direction to align the resized button. Setting the autoSize property to {@code autoSize="none"} will leave its current size unchanged.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li>
-	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li>
+	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	The CLIK Button component supports different states based on user interaction. These states include <ul>
@@ -70,7 +70,7 @@ class gfx.controls.Button extends UIComponent
 {
 	/* PUBLIC VARIABLES */
 
-	/** Data related to the button. This property is particularly helpful when using butons in a ButtonGroup. */
+	/** Data related to the button. This property is particularly helpful when using buttons in a ButtonGroup. */
 	[Inspectable(type="String")]
 	public var data: Object;
 	/** The mouse state of the button.  Mouse states can be "over", "down", "up", and "release". */
@@ -330,7 +330,7 @@ class gfx.controls.Button extends UIComponent
 
 
 	/**
-	 * Disable constraints for the component. Setting the disableConstraintsproperty to {@code disableConstraints=true} will remove constraints from the textfield. This is useful for components with timeline based textfield size tweens, since constraints break them due to a Flash quirk.
+	 * Disable constraints for the component. Setting the disableConstraints property to {@code disableConstraints=true} will remove constraints from the textfield. This is useful for components with timeline based textfield size tweens, since constraints break them due to a Flash quirk.
 	 */
 	[Inspectable(defaultValue="false", verbose="1")]
 	public function get disableConstraints(): Boolean
@@ -456,7 +456,7 @@ class gfx.controls.Button extends UIComponent
 	}
 
 
-	// This method is fired after the state has changed to allow the component to ensure the state is up-to-date.  For instance, updating the contraints in Button.
+	// This method is fired after the state has changed to allow the component to ensure the state is up-to-date.  For instance, updating the constraints in Button.
 	private function updateAfterStateChange(): Void
 	{
 		// Redraw should only happen AFTER the initialization.
@@ -575,7 +575,7 @@ class gfx.controls.Button extends UIComponent
 				focusIndicator.gotoAndPlay(_focused ? "show" : "hide");
 				focusIndicator.gotoAndPlay( "state" + _focused );
 			}
-			// If focus is moved on keyboard press, the button needs to reset since it will not recieve a key up event.
+			// If focus is moved on keyboard press, the button needs to reset since it will not receive a key up event.
 			if (pressedByKeyboard && !_focused) {
 				setState("kb_release");
 				pressedByKeyboard = false;

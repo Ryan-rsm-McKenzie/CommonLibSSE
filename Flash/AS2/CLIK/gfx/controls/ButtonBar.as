@@ -10,7 +10,7 @@
     <li><i>spacing</i>: The spacing between the Button instances. Affects only the current direction (see direction property).</li>
 	<li><i>autoSize</i>: Determines if child buttons will scale to fit the text that it contains and which direction to align the resized buttons. Setting the autoSize property to {@code autoSize="none"} will leave the buttons' current size unchanged.</li>
 	<li><i>buttonWidth</i>: Sets a common width to all Button instances. If autoSize is set to true this property is ignored.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	The CLIK ButtonBar does not have any visual states because its managed Button components are used to display the group state.

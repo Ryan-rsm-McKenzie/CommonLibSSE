@@ -1,5 +1,5 @@
 /**
- * Manage focus between the components.  Intercept focus from the player, and hand it off to the "focused" component through the display-list hierarchy using a bubbling approach. Focus can be interupted or handled on every level.
+ * Manage focus between the components.  Intercept focus from the player, and hand it off to the "focused" component through the display-list hierarchy using a bubbling approach. Focus can be interrupted or handled on every level.
  */
 
 

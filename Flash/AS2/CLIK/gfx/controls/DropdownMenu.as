@@ -23,8 +23,8 @@
 	<li><i>offsetY:</i>Vertical offset of the dropdown list from the dropdown button. A positive value moves the list away from the button.</li>
 	<li><i>extent:</i>An extra width offset that can be used in conjunction with offsetX. This value has no effect if the dropdownWidth property is set to a value other than -1.</li>
 	<li><i>direction:</i>The list open direction. Valid values are "up" and "down".</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li>
-	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li>
+	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 
 	<b>States</b>
@@ -179,7 +179,7 @@ class gfx.controls.DropdownMenu extends Button
 
 
 	/**
-	 * Sets the linkage ID to use as the dropdown's item renderer, which will be created by the dropdown list component.
+	 * Sets the linkage ID to use as the dropdowns item renderer, which will be created by the dropdown list component.
 	 */
 	public function get itemRenderer(): Object
 	{
@@ -197,7 +197,7 @@ class gfx.controls.DropdownMenu extends Button
 
 
 	/**
-	 * Sets the class or instance to use as the dropdown's scrollbar. If a linkage ID is specified, it will be created by the dropdown list component.  The scrollbar property will return the persistent MovieClip instance created or referenced by the DropdownMenu's list so properties can be set on it directly.
+	 * Sets the class or instance to use as the dropdowns scrollbar. If a linkage ID is specified, it will be created by the dropdown list component.  The scrollbar property will return the persistent MovieClip instance created or referenced by the DropdownMenu's list so properties can be set on it directly.
 	 */
 	public function get scrollBar(): Object
 	{
