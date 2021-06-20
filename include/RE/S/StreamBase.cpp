@@ -56,7 +56,7 @@ namespace RE
 
 		bool StreamBase::IsWritable() const
 		{
-			return flags & kWritable;
+			return static_cast<bool>(flags & kWritable);
 		}
 	}
 }

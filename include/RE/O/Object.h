@@ -19,9 +19,9 @@ namespace RE
 			VMHandle                     GetHandle() const;
 			ObjectTypeInfo*              GetTypeInfo();
 			const ObjectTypeInfo*        GetTypeInfo() const;
-			[[nodiscard]] constexpr bool IsConstructed() const noexcept { return constructed; }
-			[[nodiscard]] constexpr bool IsInitialized() const noexcept { return initialized; }
-			[[nodiscard]] constexpr bool IsValid() const noexcept { return valid; }
+			[[nodiscard]] constexpr bool IsConstructed() const noexcept { return static_cast<bool>(constructed); }
+			[[nodiscard]] constexpr bool IsInitialized() const noexcept { return static_cast<bool>(initialized); }
+			[[nodiscard]] constexpr bool IsValid() const noexcept { return static_cast<bool>(valid); }
 
 			void* Resolve(VMTypeID a_typeID) const;
 

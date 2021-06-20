@@ -25,7 +25,7 @@ namespace RE
 
 	bool BSHandleRefObject::IsHandleValid() const
 	{
-		return _refCount & kHandleValid;
+		return static_cast<bool>(_refCount & kHandleValid);
 	}
 
 	std::uint32_t BSHandleRefObject::QRefCount() const
