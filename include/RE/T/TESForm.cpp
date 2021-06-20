@@ -53,7 +53,7 @@ namespace RE
 			const auto npc = static_cast<const TESNPC*>(form);
 			return npc->weight;
 		} else {
-			return -1.0;
+			return -1.0F;
 		}
 	}
 
