@@ -302,17 +302,17 @@ namespace SKSE
 
 	SKSEDelayFunctorManager& ObjectInterface::GetDelayFunctorManager() const
 	{
-		return GetProxy()->GetDelayFunctorManager();
+		return (SKSEDelayFunctorManager&)GetProxy()->GetDelayFunctorManager();
 	}
 
 	SKSEObjectRegistry& ObjectInterface::GetObjectRegistry() const
 	{
-		return GetProxy()->GetObjectRegistry();
+		return (SKSEObjectRegistry&)GetProxy()->GetObjectRegistry();
 	}
 
 	SKSEPersistentObjectStorage& ObjectInterface::GetPersistentObjectStorage() const
 	{
-		return GetProxy()->GetPersistentObjectStorage();
+		return (SKSEPersistentObjectStorage&)GetProxy()->GetPersistentObjectStorage();
 	}
 
 	const detail::SKSEObjectInterface* ObjectInterface::GetProxy() const
