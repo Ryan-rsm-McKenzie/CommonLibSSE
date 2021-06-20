@@ -316,7 +316,7 @@ namespace RE
 		public:
 			enum
 			{
-				kVFormat = VertexFormat::kXY16iC32
+				kVFormat = static_cast<std::underlying_type_t<VertexFormat>>(VertexFormat::kXY16iC32)
 			};
 
 			// members
@@ -331,7 +331,7 @@ namespace RE
 		public:
 			enum
 			{
-				kVFormat = VertexFormat::kXY16iCF32
+				kVFormat = static_cast<std::underlying_type_t<VertexFormat>>(VertexFormat::kXY16iCF32)
 			};
 
 			// members
