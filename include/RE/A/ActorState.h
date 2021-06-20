@@ -69,7 +69,7 @@ namespace RE
 		kWaitingForSitAnim = 2,
 
 		kIsSitting = 3,
-		kRidingMount = static_cast<int>(kIsSitting),
+		kRidingMount = static_cast<std::underlying_type_t<SIT_SLEEP_STATE>>(kIsSitting),
 
 		kWantToStand = 4,
 
