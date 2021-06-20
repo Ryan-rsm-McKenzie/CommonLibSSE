@@ -7,7 +7,7 @@ namespace RE
 		kInvalid = 0,
 
 		kSphere,
-		kFirstType = kSphere,
+		kFirstType = static_cast<std::underlying_type_t<hkpShapeType>>(kSphere),
 		kCylinder,
 		kTriangle,
 		kBox,
