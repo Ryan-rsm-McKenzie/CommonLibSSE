@@ -197,7 +197,7 @@ class gfx.controls.DropdownMenu extends Button
 
 
 	/**
-	 * Sets the class or instance to use as the dropdowns scrollbar. If a linkage ID is specified, it will be created by the dropdown list component.  The scrollbar property will return the persistent MovieClip instance created or referenced by the DropdownMenu's list so properties can be set on it directly.
+	 * Sets the class or instance to use as the dropdown's scrollbar. If a linkage ID is specified, it will be created by the dropdown list component.  The scrollbar property will return the persistent MovieClip instance created or referenced by the DropdownMenu's list so properties can be set on it directly.
 	 */
 	public function get scrollBar(): Object
 	{
