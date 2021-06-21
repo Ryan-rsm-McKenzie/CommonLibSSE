@@ -179,7 +179,7 @@ class gfx.controls.DropdownMenu extends Button
 
 
 	/**
-	 * Sets the linkage ID to use as the dropdowns item renderer, which will be created by the dropdown list component.
+	 * Sets the linkage ID to use as the dropdown's item renderer, which will be created by the dropdown list component.
 	 */
 	public function get itemRenderer(): Object
 	{
