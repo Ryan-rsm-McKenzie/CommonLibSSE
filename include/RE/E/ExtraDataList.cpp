@@ -71,7 +71,7 @@ namespace RE
 	bool ExtraDataList::HasType(ExtraDataType a_type) const
 	{
 		BSReadLockGuard locker(_lock);
-		return _presence ? _presence->HasType(static_cast<std::uint32_t>(a_type)) : false;
+		return _presence != nullptr && _presence->HasType(static_cast<std::uint32_t>(a_type));
 	}
 
 	BSExtraData* ExtraDataList::GetByType(ExtraDataType a_type)
@@ -168,7 +168,7 @@ namespace RE
 	const char* ExtraDataList::GetDisplayName(TESBoundObject* a_baseObject)
 	{
 		const char* result = nullptr;
-		float       health = 1.0;
+		float       health = 1.0F;
 
 		auto xHealth = GetByType<ExtraHealth>();
 		if (xHealth) {
@@ -176,7 +176,7 @@ namespace RE
 		}
 
 		auto       xText = GetExtraTextDisplayData();
-		const bool dfHealth = health <= 1.0 ? (1.0 - health) < 0.001 : (health - 1.0) < 0.001;  // check for health == 1.0
+		const bool dfHealth = health <= 1.0F ? (1.0F - health) < 0.001F : (health - 1.0F) < 0.001F;  // check for health == 1.0
 		if (!xText && !dfHealth) {
 			xText = new ExtraTextDisplayData();
 			Add(xText);
