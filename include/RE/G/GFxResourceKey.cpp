@@ -39,7 +39,7 @@ namespace RE
 		if (_keyInterface && a_other._keyInterface) {
 			return _keyInterface->KeyEquals(_keyData, a_other);
 		}
-		return 0;
+		return false;
 	}
 
 	GFxResourceKey::KeyType GFxResourceKey::GetKeyType() const
