@@ -499,7 +499,7 @@ namespace SKSE
 					fileview = fileview.substr(pos + off);
 				}
 
-				return fmt::format(FMT_STRING("{}({}): {}"), fileview, a_loc.line(), a_msg);
+				return fmt::format("{0}({1}): {2}", fileview, a_loc.line(), a_msg);
 			}();
 
 			const auto caption = []() -> std::string {
