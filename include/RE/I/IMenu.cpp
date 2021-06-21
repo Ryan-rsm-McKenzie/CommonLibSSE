@@ -62,7 +62,7 @@ namespace RE
 		using Message = UI_MESSAGE_TYPE;
 
 		auto inputManager = BSInputDeviceManager::GetSingleton();
-		auto gamepad = inputManager ? inputManager->IsGamepadEnabled() : false;
+		auto gamepad = inputManager != nullptr && inputManager->IsGamepadEnabled();
 		if (uiMovie && uiMovie->IsAvailable("_root.SetPlatform")) {
 			std::array<GFxValue, 2> args;
 			const double            platform = gamepad ? 1.0 : 0.0;
