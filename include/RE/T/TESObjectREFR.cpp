@@ -19,6 +19,7 @@
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiControllerManager.h"
 #include "RE/N/NiControllerSequence.h"
+#include "RE/N/NiMath.h"
 #include "RE/N/NiTimeController.h"
 #include "RE/T/TESContainer.h"
 #include "RE/T/TESEnchantableForm.h"
@@ -246,6 +247,32 @@ namespace RE
 		return ObjectRefHandle(this);
 	}
 
+	float TESObjectREFR::GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs)
+	{
+		float theta = NiFastATan2(a_pos.x - GetPositionX(), a_pos.y - GetPositionY());
+		float heading = rad_to_deg(theta - GetAngleZ());
+
+		if (heading < -180.0f) {
+			heading += 360.0f;
+		}
+
+		if (heading > 180.0f) {
+			heading -= 360.0f;
+		}
+
+		return a_abs ? NiAbs(heading) : heading;
+	}
+
+	float TESObjectREFR::GetHeight() const
+	{
+		const auto min = GetBoundMin();
+		const auto max = GetBoundMax();
+		const auto diff = max.z - min.z;
+		const auto height = GetBaseHeight() * diff;
+
+		return height;
+	}
+
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
@@ -278,7 +305,7 @@ namespace RE
 				const auto it = results.find(a_object);
 				const auto entryData =
 					it != results.end() ?
-						it->second.second.get() :
+                        it->second.second.get() :
                         nullptr;
 				return entryData ? entryData->IsLeveled() : false;
 			};
@@ -403,6 +430,36 @@ namespace RE
 		using func_t = decltype(&TESObjectREFR::GetStealValue);
 		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetStealValue };
 		return func(this, a_entryData, a_numItems, a_useMult);
+	}
+
+	float TESObjectREFR::GetSubmergedWaterLevel(float a_zPos, TESObjectCELL* a_cell) const
+	{
+		auto waterHeight = a_cell && a_cell != parentCell ? a_cell->GetWaterHeight() : GetWaterHeight();
+
+		if (waterHeight == -NI_INFINITY && a_cell) {
+			waterHeight = a_cell->GetWaterHeight();
+		}
+
+		if (waterHeight <= a_zPos) {
+			return 0.0f;
+		}
+
+		auto level = (waterHeight - a_zPos) / GetHeight();
+		return level <= 1.0f ? level : 1.0f;
+	}
+
+	float TESObjectREFR::GetWaterHeight() const
+	{
+		float waterHeight, flt_max = -NI_INFINITY;
+
+		if (loadedData) {
+			waterHeight = loadedData->relevantWaterHeight;
+			if (waterHeight != flt_max) {
+				return waterHeight;
+			}
+		}
+
+		return parentCell ? parentCell->GetWaterHeight() : waterHeight;
 	}
 
 	float TESObjectREFR::GetWeight() const

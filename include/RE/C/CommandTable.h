@@ -99,7 +99,7 @@ namespace RE
 		kVMScriptVar = 0x4C,
 		kReferenceEffect = 0x4D,
 		kPackageData = 0x4E,
-		kSoundCategory = 0x50,
+		kSkillAction = 0x50,
 		kKnowableForm = 0x51,
 		kRegion = 0x52
 	};

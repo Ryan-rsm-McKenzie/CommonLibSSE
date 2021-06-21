@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSShaderMaterial.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiSmartPointer.h"
@@ -23,7 +24,9 @@ namespace RE
 	public:
 		enum class Flag
 		{
+			kNone = 0,
 			kDirty = 1 << 0,
+			kDisableCollision = 8193
 		};
 
 		float                                 time;   // 0
@@ -107,13 +110,20 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 33
 		virtual void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
-		bool                         GetAppCulled() const;
+		void                         CullNode(bool a_cull);
+		[[nodiscard]] bool           GetAppCulled() const;
+		[[nodiscard]] BSGeometry*    GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
 		[[nodiscard]] TESObjectREFR* GetUserData() const;
+		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
+		void                         SetAppCulled(bool a_cull);
 		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		void                         SetRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 		void                         TintScenegraph(const NiColorA& a_color);
 		void                         Update(NiUpdateData& a_data);
 		void                         UpdateBodyTint(const NiColor& a_color);
 		void                         UpdateHairColor(const NiColor& a_color);
+		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
+		void                         UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2);
 
 		// members
 		NiNode*                               parent;                   // 030

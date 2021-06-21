@@ -233,21 +233,23 @@ namespace RE
 		virtual TESCondition*                            QConditions() override;                                         // 3D - { return &objConditions; }
 		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E
 
-		bool          EnsureQuestStarted(bool& a_result, bool a_startNow);
-		std::uint16_t GetCurrentStageID() const;
-		bool          IsActive() const;
-		bool          IsCompleted() const;
-		bool          IsEnabled() const;
-		bool          IsRunning() const;
-		bool          IsStarting() const;
-		bool          IsStopped() const;
-		bool          IsStopping() const;
-		void          Reset();
-		void          ResetAndUpdate();
-		void          SetEnabled(bool a_set);
-		bool          Start();
-		bool          StartsEnabled() const;
-		void          Stop();
+		ObjectRefHandle&                         CreateRefHandleByAliasID(ObjectRefHandle& a_handle, std::uint32_t a_aliasID);
+		bool                                     EnsureQuestStarted(bool& a_result, bool a_startNow);
+		std::uint16_t                            GetCurrentStageID() const;
+		[[nodiscard]] constexpr QUEST_DATA::Type GetType() const noexcept { return data.questType.get(); }
+		bool                                     IsActive() const;
+		bool                                     IsCompleted() const;
+		bool                                     IsEnabled() const;
+		bool                                     IsRunning() const;
+		bool                                     IsStarting() const;
+		bool                                     IsStopped() const;
+		bool                                     IsStopping() const;
+		void                                     Reset();
+		void                                     ResetAndUpdate();
+		void                                     SetEnabled(bool a_set);
+		bool                                     Start();
+		bool                                     StartsEnabled() const;
+		void                                     Stop();
 
 		// members
 		BSTArray<BGSQuestInstanceText*>                      instanceData;                             // 038

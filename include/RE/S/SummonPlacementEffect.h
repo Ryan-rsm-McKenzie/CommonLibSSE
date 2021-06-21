@@ -23,6 +23,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SummonPlacementEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_SummonPlacementEffect;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kMagicSummon;
 
 		virtual ~SummonPlacementEffect();  // 00
 

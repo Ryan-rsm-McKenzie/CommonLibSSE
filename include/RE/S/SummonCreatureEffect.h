@@ -10,13 +10,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_SummonCreatureEffect;
 
 		// override (ActiveEffect)
-		virtual void Unk_04(void) override;  // 04
-		virtual void Unk_07(void) override;  // 07
-		virtual void Unk_08(void) override;  // 08
-		virtual void Unk_09(void) override;  // 09
-		virtual void Unk_0A(void) override;  // 0A
-		virtual void Unk_0D(void) override;  // 0D
-		virtual void Unk_12(void) override;  // 12
+		virtual void Unk_04(void) override;                        // 04
+		virtual void Unk_07(void) override;                        // 07
+		virtual void LoadGame(BGSSaveFormBuffer* a_buf) override;  // 08
+		virtual void SaveGame(BGSLoadFormBuffer* a_buf) override;  // 09
+		virtual void Unk_0A(void) override;                        // 0A
+		virtual void Unk_0D(void) override;                        // 0D
+		virtual void Unk_12(void) override;                        // 12
 
 		virtual ~SummonCreatureEffect();  // 13
 

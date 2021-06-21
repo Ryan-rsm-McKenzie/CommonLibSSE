@@ -145,6 +145,7 @@ namespace RE
 		TESForm*                GetEquippedRightHand();
 		[[nodiscard]] bool      GetIsSummonedCreature() const noexcept;
 		ObjectRefHandle         GetOccupiedFurniture() const;
+		TESPackage*             GetRunningPackage() const;
 		bool                    InHighProcess() const;
 		bool                    InMiddleHighProcess() const;
 		bool                    InMiddleLowProcess() const;

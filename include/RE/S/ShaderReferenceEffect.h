@@ -17,6 +17,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ShaderReferenceEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_ShaderReferenceEffect;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefShader;
 
 		struct Data048
 		{

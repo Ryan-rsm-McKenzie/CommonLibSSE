@@ -9,6 +9,27 @@ namespace RE
 		faceDetails(nullptr)
 	{}
 
+	bool TESNPC::AddPerk(BGSPerk* a_perk, std::int8_t a_rank)
+	{
+		if (GetPerkIndex(a_perk) == std::nullopt) {
+			auto newPerk = new PerkRankData(a_perk, a_rank);
+			if (newPerk) {
+				auto oldData = perks;
+				perks = calloc<PerkRankData>(++perkCount);
+				if (oldData) {
+					for (std::uint32_t i = 0; i < perkCount - 1; i++) {
+						perks[i] = oldData[i];
+					}
+					free(oldData);
+					oldData = nullptr;
+				}
+				perks[perkCount - 1] = *newPerk;
+				return true;
+			}
+		}
+		return false;
+	}
+
 	void TESNPC::ChangeHeadPart(BGSHeadPart* a_target)
 	{
 		using func_t = decltype(&TESNPC::ChangeHeadPart);
@@ -21,6 +42,20 @@ namespace RE
 		using func_t = decltype(&TESNPC::GetBaseOverlays);
 		REL::Relocation<func_t> func{ Offset::TESNPC::GetBaseOverlays };
 		return func(this);
+	}
+
+	std::optional<std::uint32_t> TESNPC::GetPerkIndex(BGSPerk* a_perk) const
+	{
+		std::optional<std::uint32_t> index = std::nullopt;
+		if (perks) {
+			for (std::uint32_t i = 0; i < perkCount; i++) {
+				if (perks[i].perk && perks[i].perk == a_perk) {
+					index = i;
+					break;
+				}
+			}
+		}
+		return index;
 	}
 
 	SEX TESNPC::GetSex() const
@@ -82,6 +117,14 @@ namespace RE
 		return func(this);
 	}
 
+	TESSpellList::SpellData* TESNPC::GetSpellList()
+	{
+		if (!actorEffects) {
+			actorEffects = new SpellData();
+		}
+		return actorEffects;
+	}
+
 	TESRace* TESNPC::GetRace()
 	{
 		return race;
@@ -110,11 +153,51 @@ namespace RE
 		return static_cast<float>(interpolationValue) / static_cast<float>(100.0);
 	}
 
+	bool TESNPC::HasKeyword(std::string_view a_editorID)
+	{
+		if (HasKeywordString(a_editorID)) {
+			return true;
+		} else if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
+			return true;
+		}
+		return false;
+	}
+
 	bool TESNPC::HasOverlays()
 	{
 		using func_t = decltype(&TESNPC::HasOverlays);
 		REL::Relocation<func_t> func{ Offset::TESNPC::HasOverlays };
 		return func(this);
+	}
+
+	bool TESNPC::IsInFaction(TESFaction* a_faction) const
+	{
+		for (auto& faction : factions) {
+			if (faction.faction == a_faction && faction.rank > -1) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool TESNPC::RemovePerk(BGSPerk* a_perk)
+	{
+		auto index = GetPerkIndex(a_perk);
+		if (index != std::nullopt) {
+			auto oldData = perks;
+			if (oldData) {
+				perks = calloc<PerkRankData>(--perkCount);
+				for (std::uint32_t i = 0; i < perkCount + 1; i++) {
+					if (index != i) {
+						perks[i] = oldData[i];
+					}
+				}
+				free(oldData);
+				oldData = nullptr;
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void TESNPC::SetFaceTexture(BGSTextureSet* a_textureSet)

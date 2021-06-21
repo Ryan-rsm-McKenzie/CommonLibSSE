@@ -370,6 +370,8 @@ namespace RE
 		std::optional<double>                   GetEnchantmentCharge() const;
 		TESFaction*                             GetFactionOwner();
 		ObjectRefHandle                         GetHandle();
+		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
+		float                                   GetHeight() const;
 		InventoryItemMap                        GetInventory();
 		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter);
 		std::int32_t                            GetInventoryCount();
@@ -390,6 +392,8 @@ namespace RE
 		[[nodiscard]] constexpr float           GetPositionZ() const noexcept { return data.location.z; }
 		NiControllerSequence*                   GetSequence(stl::zstring a_name) const;
 		std::uint32_t                           GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const;
+		float                                   GetSubmergedWaterLevel(float a_zPos, TESObjectCELL* a_cell) const;
+		float                                   GetWaterHeight() const;
 		float                                   GetWeight() const;
 		float                                   GetWeightInContainer();
 		TESWorldSpace*                          GetWorldspace() const;

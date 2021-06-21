@@ -3,6 +3,8 @@ set(sources ${sources}
 	include/RE/A/ActiveEffect.cpp
 	include/RE/A/Actor.cpp
 	include/RE/A/ActorEquipManager.cpp
+	include/RE/A/ActorKill.cpp
+	include/RE/A/ActorValueList.cpp
 	include/RE/A/ActorValueOwner.cpp
 	include/RE/A/AddCallbackVisitor.cpp
 	include/RE/A/AIFormulas.cpp
@@ -24,12 +26,14 @@ set(sources ${sources}
 	include/RE/B/BGSLocation.cpp
 	include/RE/B/BGSOpenCloseForm.cpp
 	include/RE/B/BGSPerkEntry.cpp
+	include/RE/B/BGSRefAlias.cpp
 	include/RE/B/BGSSaveLoadManager.cpp
 	include/RE/B/BGSSoundCategory.cpp
 	include/RE/B/BGSStoryTeller.cpp
 	include/RE/B/bhkCharProxyController.cpp
 	include/RE/B/BipedAnim.cpp
 	include/RE/B/BookMenu.cpp
+	include/RE/B/BooksRead.cpp
 	include/RE/B/BSAtomic.cpp
 	include/RE/B/BSAudioManager.cpp
 	include/RE/B/BSEffectShaderData.cpp
@@ -39,12 +43,14 @@ set(sources ${sources}
 	include/RE/B/BSInputDevice.cpp
 	include/RE/B/BSInputDeviceManager.cpp
 	include/RE/B/BSLightingShaderMaterialBase.cpp
+	include/RE/B/BSLightingShaderProperty.cpp
 	include/RE/B/BSPointerHandle.cpp
 	include/RE/B/BSResourceNiBinaryStream.cpp
 	include/RE/B/BSResponse.cpp
 	include/RE/B/BSScaleformManager.cpp
 	include/RE/B/BSScriptObjectBindPolicy.cpp
 	include/RE/B/BSShaderProperty.cpp
+	include/RE/B/BSShaderTextureSet.cpp
 	include/RE/B/BSSoundHandle.cpp
 	include/RE/B/BSStringPool.cpp
 	include/RE/B/BSSystemFileStorage.cpp
@@ -56,11 +62,15 @@ set(sources ${sources}
 	include/RE/B/BSXFlags.cpp
 	include/RE/C/Calendar.cpp
 	include/RE/C/ChestsLooted.cpp
+	include/RE/C/Color.cpp
 	include/RE/C/CommandTable.cpp
 	include/RE/C/Console.cpp
 	include/RE/C/ConsoleLog.cpp
 	include/RE/C/ContainerMenu.cpp
 	include/RE/C/ControlMap.cpp
+	include/RE/C/CriticalHit.cpp
+	include/RE/D/DisarmedEvent.cpp
+	include/RE/D/DragonSoulsGained.cpp
 	include/RE/E/Effect.cpp
 	include/RE/E/ExtraAliasInstanceArray.cpp
 	include/RE/E/ExtraAshPileRef.cpp
@@ -77,6 +87,7 @@ set(sources ${sources}
 	include/RE/E/ExtraLightData.cpp
 	include/RE/E/ExtraLock.cpp
 	include/RE/E/ExtraMissingLinkedRefIDs.cpp
+	include/RE/E/ExtraNorthRotation.cpp
 	include/RE/E/ExtraOwnership.cpp
 	include/RE/E/ExtraPoison.cpp
 	include/RE/E/ExtraRank.cpp
@@ -121,6 +132,7 @@ set(sources ${sources}
 	include/RE/H/hkpWorldObject.cpp
 	include/RE/H/hkReferencedObject.cpp
 	include/RE/H/hkStringPtr.cpp
+	include/RE/H/hkVector4.cpp
 	include/RE/H/HUDMeter.cpp
 	include/RE/H/HUDObject.cpp
 	include/RE/I/IAnimationGraphManagerHolder.cpp
@@ -140,11 +152,14 @@ set(sources ${sources}
 	include/RE/I/IObjectHandlePolicy.cpp
 	include/RE/I/IStackCallbackFunctor.cpp
 	include/RE/I/ItemCrafted.cpp
+	include/RE/I/ItemHarvested.cpp
 	include/RE/I/ItemList.cpp
 	include/RE/I/ItemsPickpocketed.cpp
 	include/RE/I/IVirtualMachine.cpp
+	include/RE/L/LevelIncrease.cpp
 	include/RE/L/LocalMapCamera.cpp
 	include/RE/L/Location.cpp
+	include/RE/L/LocationDiscovery.cpp
 	include/RE/L/LockpickingMenu.cpp
 	include/RE/L/LooseFileStream.cpp
 	include/RE/M/MagicFavorites.cpp
@@ -160,13 +175,18 @@ set(sources ${sources}
 	include/RE/N/NiAnimationKey.cpp
 	include/RE/N/NiAVObject.cpp
 	include/RE/N/NiBinaryStream.cpp
+	include/RE/N/NiBooleanExtraData.cpp
 	include/RE/N/NiCamera.cpp
+	include/RE/N/NiColor.cpp
 	include/RE/N/NiColorData.cpp
 	include/RE/N/NiColorKey.cpp
 	include/RE/N/NiControllerManager.cpp
 	include/RE/N/NiExtraData.cpp
 	include/RE/N/NiFloatData.cpp
+	include/RE/N/NiFloatExtraData.cpp
 	include/RE/N/NiFloatKey.cpp
+	include/RE/N/NiIntegerExtraData.cpp
+	include/RE/N/NiIntegersExtraData.cpp
 	include/RE/N/NiInterpolator.cpp
 	include/RE/N/NiMath.cpp
 	include/RE/N/NiMatrix3.cpp
@@ -177,6 +197,7 @@ set(sources ${sources}
 	include/RE/N/NiPoint3.cpp
 	include/RE/N/NiRefObject.cpp
 	include/RE/N/NiSkinInstance.cpp
+	include/RE/N/NiStringsExtraData.cpp
 	include/RE/N/NiSystem.cpp
 	include/RE/N/NiTCollection.cpp
 	include/RE/N/NiTexture.cpp
@@ -195,8 +216,12 @@ set(sources ${sources}
 	include/RE/S/Script.cpp
 	include/RE/S/ScriptEventSourceHolder.cpp
 	include/RE/S/Setting.cpp
+	include/RE/S/ShoutAttack.cpp
+	include/RE/S/SkillIncrease.cpp
 	include/RE/S/Sky.cpp
 	include/RE/S/SkyrimVM.cpp
+	include/RE/S/SoulsTrapped.cpp
+	include/RE/S/SpellsLearned.cpp
 	include/RE/S/Stack.cpp
 	include/RE/S/StackFrame.cpp
 	include/RE/S/Stream.cpp
@@ -227,6 +252,7 @@ set(sources ${sources}
 	include/RE/T/TESObjectWEAP.cpp
 	include/RE/T/TESQuest.cpp
 	include/RE/T/TESRace.cpp
+	include/RE/T/TESSpellList.cpp
 	include/RE/T/TESTopic.cpp
 	include/RE/T/TESTopicInfo.cpp
 	include/RE/T/TESWorldSpace.cpp
@@ -245,7 +271,9 @@ set(sources ${sources}
 	include/SKSE/Interfaces.cpp
 	include/SKSE/Logger.cpp
 	include/SKSE/RegistrationMap.cpp
+	include/SKSE/RegistrationMapUnique.cpp
 	include/SKSE/RegistrationSet.cpp
+	include/SKSE/RegistrationSetUnique.cpp
 	include/SKSE/Trampoline.cpp
 	include/SKSE/Impl/PCH.cpp
 	include/SKSE/Impl/WinAPI.cpp

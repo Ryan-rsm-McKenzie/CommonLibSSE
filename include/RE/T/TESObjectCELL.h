@@ -201,6 +201,7 @@ namespace RE
 
 		float    GetNorthRotation();
 		TESForm* GetOwner();
+		float    GetWaterHeight() const;
 		bool     IsAttached() const;
 		bool     IsExteriorCell() const;
 		bool     IsInteriorCell() const;

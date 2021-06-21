@@ -1,7 +1,12 @@
 #include "RE/M/Misc.h"
 
+#include "RE/B/BSTCreateFactoryManager.h"
+#include "RE/B/BSTDerivedCreator.h"
+#include "RE/G/GameSettingCollection.h"
 #include "RE/I/INIPrefSettingCollection.h"
 #include "RE/I/INISettingCollection.h"
+#include "RE/I/InterfaceStrings.h"
+#include "RE/M/MessageBoxData.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/Setting.h"
 #include "RE/T/TESObjectREFR.h"
@@ -34,6 +39,36 @@ namespace RE
 		using func_t = decltype(&DebugNotification);
 		REL::Relocation<func_t> func{ Offset::DebugNotification };
 		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
+	}
+
+	void DebugMessageBox(std::string_view a_message)
+	{
+		const auto factoryManager = MessageDataFactoryManager::GetSingleton();
+		const auto uiStrHolder = InterfaceStrings::GetSingleton();
+
+		if (factoryManager && uiStrHolder) {
+			const auto factory = factoryManager->GetCreator<MessageBoxData>(uiStrHolder->messageBoxData);
+			const auto messageBox = factory ? factory->Create() : nullptr;
+			if (messageBox) {
+				messageBox->unk38 = 0;
+				messageBox->unk3C = -1;
+				messageBox->unk48 = 10;
+				messageBox->bodyText = a_message;
+				const auto gameSettings = GameSettingCollection::GetSingleton();
+				const auto sOk = gameSettings ? gameSettings->GetSetting("sOk") : nullptr;
+				if (sOk) {
+					messageBox->buttonText.push_back(sOk->GetString());
+					messageBox->unk38 = 25;
+					messageBox->QueueMessage();
+				}
+			}
+		}
+	}
+
+	float GetDurationOfApplicationRunTime()
+	{
+		REL::Relocation<float*> runtime{ REL::ID(523662) };
+		return *runtime;
 	}
 
 	Setting* GetINISetting(const char* a_name)

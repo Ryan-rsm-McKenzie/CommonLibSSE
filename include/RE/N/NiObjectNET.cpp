@@ -6,6 +6,8 @@
 #include "RE/N/NiTCollection.h"
 #include "RE/N/NiTimeController.h"
 
+#include <boost/algorithm/string.hpp>
+
 namespace RE
 {
 	bool NiObjectNET::AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra)
@@ -135,6 +137,21 @@ namespace RE
 	std::uint16_t NiObjectNET::GetExtraDataSize() const
 	{
 		return extraDataSize;
+	}
+
+	bool NiObjectNET::HasExtraData(const BSFixedString& a_key) const
+	{
+		if (a_key.empty() || !extra || extraDataSize == 0) {
+			return false;
+		}
+
+		for (std::uint16_t i = 0; i < extraDataSize; i++) {
+			if (auto extraData = extra[i]; extraData && !extraData->name.empty() && boost::icontains(extraData->name.c_str(), a_key.c_str())) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	bool NiObjectNET::InsertExtraData(NiExtraData* a_extra)

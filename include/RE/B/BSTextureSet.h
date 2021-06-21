@@ -1,11 +1,10 @@
 #pragma once
 
 #include "RE/N/NiObject.h"
+#include "RE/N/NiSourceTexture.h"
 
 namespace RE
 {
-	class NiSourceTexture;
-
 	class BSTextureSet : public NiObject
 	{
 	public:
@@ -28,6 +27,8 @@ namespace RE
 				kMultilayer,
 				kBacklightMask,
 				kSpecular = kBacklightMask,
+				kUnused08,
+				kUsedTotal = kUnused08,
 
 				kTotal
 			};

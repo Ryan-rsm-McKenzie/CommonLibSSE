@@ -138,6 +138,7 @@ namespace RE
 		[[nodiscard]] constexpr ActorValue   GetMagickSkill() const noexcept { return data.associatedSkill; }
 		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
 		[[nodiscard]] constexpr bool         HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
+		[[nodiscard]] bool                   HasKeyword(std::string_view a_editorID) { return HasKeywordString(a_editorID); }
 
 		// members
 		FilterValidation_t*          filterValidationFunction;   // 058

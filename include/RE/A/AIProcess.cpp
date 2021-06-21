@@ -45,6 +45,18 @@ namespace RE
 		}
 	}
 
+	TESPackage* AIProcess::GetRunningPackage() const
+	{
+		TESPackage* package = nullptr;
+		if (middleHigh) {
+			package = middleHigh->runOncePackage.package;
+		}
+		if (!package) {
+			package = currentPackage.package;
+		}
+		return package;
+	}
+
 	bool AIProcess::InHighProcess() const
 	{
 		switch (*processLevel) {

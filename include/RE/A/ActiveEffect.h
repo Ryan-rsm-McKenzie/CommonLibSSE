@@ -10,6 +10,8 @@
 namespace RE
 {
 	class Actor;
+	class BGSLoadFormBuffer;
+	class BGSSaveFormBuffer;
 	class EffectSetting;
 	class MagicItem;
 	class MagicTarget;
@@ -48,8 +50,8 @@ namespace RE
 		virtual void           Unk_05(void);        // 05
 		virtual void           Unk_06(void);        // 06 - { return 0; }
 		virtual void           Unk_07(void);        // 07 - { return; }
-		virtual void           Unk_08(void);        // 08
-		virtual void           Unk_09(void);        // 09
+		virtual void           LoadGame(BGSSaveFormBuffer* a_buf);  // 08
+		virtual void           SaveGame(BGSLoadFormBuffer* a_buf);  // 09
 		virtual void           Unk_0A(void);        // 0A
 		virtual void           Unk_0B(void);        // 0B - { unk88 = 4; }
 		virtual void           Unk_0C(void);        // 0C

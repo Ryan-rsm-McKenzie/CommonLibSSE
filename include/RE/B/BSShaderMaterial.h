@@ -23,6 +23,7 @@ namespace RE
 			kParallaxOcc = 7,
 			kMultiTexLand = 8,
 			kLODLand = 9,
+			kUnknown = 10,
 			kMultilayerParallax = 11,
 			kTreeAnim = 12,
 			kMultiIndexTriShapeSnow = 14,

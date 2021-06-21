@@ -2,6 +2,7 @@
 
 #include "RE/B/BGSEncounterZone.h"
 #include "RE/E/ExtraNorthRotation.h"
+#include "RE/N/NiMath.h"
 #include "RE/T/TESFaction.h"
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESWorldSpace.h"
@@ -23,7 +24,7 @@ namespace RE
 		ForEachReference([&](TESObjectREFR& ref) {
 			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
 			return distance <= a_radius ?
-			           a_callback(ref) :
+                       a_callback(ref) :
                        true;
 		});
 	}
@@ -78,6 +79,21 @@ namespace RE
 		}
 
 		return zone ? zone->data.zoneOwner : nullptr;
+	}
+
+	float TESObjectCELL::GetWaterHeight() const
+	{
+		auto height = -NI_INFINITY;
+
+		if (cellFlags.none(Flag::kHasWater) || cellFlags.any(Flag::kIsInteriorCell)) {
+			return height;
+		}
+
+		if (waterHeight < 2147483600.0f) {
+			return waterHeight;
+		}
+
+		return worldSpace ? worldSpace->GetWaterHeight() : height;
 	}
 
 	bool TESObjectCELL::IsAttached() const

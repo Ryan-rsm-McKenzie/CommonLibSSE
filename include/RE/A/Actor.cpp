@@ -6,6 +6,7 @@
 #include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/B/BSFaceGenAnimationData.h"
 #include "RE/B/BSFaceGenNiNode.h"
+#include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
 #include "RE/F/FormTraits.h"
@@ -42,6 +43,13 @@ namespace RE
 		using func_t = decltype(&Actor::AddSpell);
 		REL::Relocation<func_t> func{ Offset::Actor::AddSpell };
 		return func(this, a_spell);
+	}
+
+	void Actor::AddToFaction(TESFaction* a_faction, std::int8_t a_rank)
+	{
+		using func_t = decltype(&Actor::AddToFaction);
+		REL::Relocation<func_t> func{ REL::ID(36678) };
+		return func(this, a_faction, a_rank);
 	}
 
 	void Actor::AllowBleedoutDialogue(bool a_canTalk)
@@ -114,6 +122,13 @@ namespace RE
 		return GetHandle();
 	}
 
+	bool Actor::Decapitate()
+	{
+		using func_t = decltype(&Actor::Decapitate);
+		REL::Relocation<func_t> func{ REL::ID(36631) };
+		return func(this);
+	}
+
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = decltype(&Actor::DispelWornItemEnchantments);
@@ -126,6 +141,19 @@ namespace RE
 		using func_t = decltype(&Actor::DoReset3D);
 		REL::Relocation<func_t> func{ Offset::Actor::DoReset3D };
 		return func(this, a_updateWeight);
+	}
+
+	void Actor::EnableAI(bool a_enable)
+	{
+		if (a_enable) {
+			boolBits.set(Actor::BOOL_BITS::kProcessMe);
+		} else {
+			boolBits.reset(Actor::BOOL_BITS::kProcessMe);
+			auto controller = GetCharController();
+			if (controller) {
+				controller->SetLinearVelocityImpl(0.0f);
+			}
+		}
 	}
 
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
@@ -289,17 +317,29 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
-	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	RE::TESObjectARMO* Actor::GetSkin() const
 	{
-		if (const auto worn = GetWornArmor(a_slot); worn) {
-			return worn;
-		} else if (const auto base = GetActorBase(); base && base->skin) {
+		if (const auto base = GetActorBase(); base && base->skin) {
 			return base->skin;
 		} else if (const auto aRace = GetRace(); aRace && aRace->skin) {
 			return aRace->skin;
 		}
-
 		return nullptr;
+	}
+
+	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		if (const auto worn = GetWornArmor(a_slot); worn) {
+			return worn;
+		}
+		return GetSkin();
+	}
+
+	SOUL_LEVEL Actor::GetSoulSize() const
+	{
+		using func_t = decltype(&Actor::GetSoulSize);
+		REL::Relocation<func_t> func{ REL::ID(37862) };
+		return func(this);
 	}
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
@@ -342,6 +382,13 @@ namespace RE
 		using func_t = decltype(&Actor::HasPerk);
 		REL::Relocation<func_t> func{ Offset::Actor::HasPerk };
 		return func(this, a_perk);
+	}
+
+	bool Actor::HasSpell(SpellItem* a_spell) const
+	{
+		using func_t = decltype(&Actor::HasSpell);
+		REL::Relocation<func_t> func{ REL::ID(37828) };
+		return func(this, a_spell);
 	}
 
 	void Actor::InterruptCast(bool a_restoreMagicka) const
@@ -415,6 +462,13 @@ namespace RE
 		return func(this, a_actor);
 	}
 
+	bool Actor::IsLimbGone(std::uint32_t a_limb)
+	{
+		using func_t = decltype(&Actor::IsLimbGone);
+		REL::Relocation<func_t> func{ REL::ID(19338) };
+		return func(this, a_limb);
+	}
+
 	bool Actor::IsOnMount() const
 	{
 		return !IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
@@ -459,9 +513,23 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
 	}
 
+	void Actor::KillImmediate()
+	{
+		using func_t = decltype(&Actor::KillImmediate);
+		REL::Relocation<func_t> func{ REL::ID(36723) };
+		return func(this);
+	}
+
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
+	}
+
+	void Actor::RemoveSelectedSpell(SpellItem* a_spell)
+	{
+		using func_t = decltype(&Actor::RemoveSelectedSpell);
+		REL::Relocation<func_t> func{ REL::ID(37820) };
+		return func(this, a_spell);
 	}
 
 	bool Actor::RemoveSpell(SpellItem* a_spell)
@@ -551,6 +619,31 @@ namespace RE
 		using func_t = decltype(&Actor::UpdateWeaponAbility);
 		REL::Relocation<func_t> func{ Offset::Actor::UpdateWeaponAbility };
 		return func(this, a_weapon, a_extraData, a_leftHand);
+	}
+
+	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject& a_obj)> a_visitor)
+	{
+		enum
+		{
+			k3rd,
+			k1st,
+			kTotal
+		};
+
+		char addonString[WinAPI::MAX_PATH]{ '\0' };
+		a_arma->GetNodeName(addonString, this, a_armor, -1);
+		std::array<NiAVObject*, kTotal> skeletonRoot = { Get3D(k3rd), Get3D(k1st) };
+		if (skeletonRoot[k1st] == skeletonRoot[k3rd]) {
+			skeletonRoot[k1st] = nullptr;
+		}
+		for (std::size_t i = 0; i < skeletonRoot.size(); ++i) {
+			if (skeletonRoot[i]) {
+				const auto obj = skeletonRoot[i]->GetObjectByName(addonString);
+				if (obj) {
+					a_visitor(i == k1st, *obj);
+				}
+			}
+		}
 	}
 
 	bool Actor::VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor)

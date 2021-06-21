@@ -13,6 +13,8 @@ namespace RE
 {
 	class Actor;
 	class BSTempEffect;
+	class ModelReferenceEffect;
+	class ShaderReferenceEffect;
 	class SyncQueueObj;
 
 	class ProcessLists : public BSTSingletonSDM<ProcessLists>
@@ -33,6 +35,10 @@ namespace RE
 		static ProcessLists* GetSingleton();
 
 		void ClearCachedFactionFightReactions() const;
+		void GetMagicEffects(std::function<bool(BSTempEffect& a_tempEffect)> a_fn);
+		void GetModelEffects(std::function<bool(ModelReferenceEffect& a_modelEffect)> a_fn);
+		void GetShaderEffects(std::function<bool(ShaderReferenceEffect& a_shaderEffect)> a_fn);
+		void StopAllMagicEffects(TESObjectREFR& a_ref);
 		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
 
 		// members

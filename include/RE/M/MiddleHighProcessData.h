@@ -299,7 +299,7 @@ namespace RE
 		bool                                           beenAttacked;                // 322
 		bool                                           unk323;                      // 323
 		bool                                           unk324;                      // 324
-		bool                                           unk325;                      // 325
+		bool                                           soulTrapped;                 // 325
 		bool                                           unk326;                      // 326
 		bool                                           unk327;                      // 327
 		bool                                           unk328;                      // 328
@@ -312,7 +312,7 @@ namespace RE
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330
 		bool                                           unk331;                      // 331
-		bool                                           unk332;                      // 332
+		bool                                           inDeferredKill;              // 332
 		bool                                           pad333;                      // 333
 		std::uint32_t                                  pad334;                      // 334
 	};

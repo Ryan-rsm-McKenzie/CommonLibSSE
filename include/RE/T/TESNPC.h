@@ -234,22 +234,28 @@ namespace RE
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
-		void          ChangeHeadPart(BGSHeadPart* a_target);
-		BGSHeadPart** GetBaseOverlays() const;
-		BGSHeadPart*  GetCurrentHeadPartByType(HeadPartType a_type);
-		BGSHeadPart*  GetHeadPartByType(HeadPartType a_type);
-		BGSHeadPart*  GetHeadPartOverlayByType(HeadPartType a_type);
-		float         GetHeight() const;
-		std::uint32_t GetNumBaseOverlays() const;
-		TESRace*      GetRace();
-		TESNPC*       GetRootFaceNPC();
-		const TESNPC* GetRootFaceNPC() const;
-		SEX           GetSex() const;
-		bool          HasOverlays();
-		void          SetFaceTexture(BGSTextureSet* a_textureSet);
-		void          SetHairColor(BGSColorForm* a_hairColor);
-		void          SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
-		void          UpdateNeck(BSFaceGenNiNode* a_faceNode);
+		bool                         AddPerk(BGSPerk* a_perk, std::int8_t a_rank);
+		void                         ChangeHeadPart(BGSHeadPart* a_target);
+		BGSHeadPart**                GetBaseOverlays() const;
+		BGSHeadPart*                 GetCurrentHeadPartByType(HeadPartType a_type);
+		BGSHeadPart*                 GetHeadPartByType(HeadPartType a_type);
+		BGSHeadPart*                 GetHeadPartOverlayByType(HeadPartType a_type);
+		float                        GetHeight() const;
+		std::uint32_t                GetNumBaseOverlays() const;
+		std::optional<std::uint32_t> GetPerkIndex(BGSPerk* a_perk) const;
+		TESSpellList::SpellData*     GetSpellList();
+		TESRace*                     GetRace();
+		TESNPC*                      GetRootFaceNPC();
+		const TESNPC*                GetRootFaceNPC() const;
+		SEX                          GetSex() const;
+		bool                         HasKeyword(std::string_view a_editorID);
+		bool                         HasOverlays();
+		bool                         IsInFaction(TESFaction* a_faction) const;
+		bool                         RemovePerk(BGSPerk* a_perk);
+		void                         SetFaceTexture(BGSTextureSet* a_textureSet);
+		void                         SetHairColor(BGSColorForm* a_hairColor);
+		void                         SetSkinFromTint(NiColorA* a_result, TintMask* a_tintMask, bool a_fromTint);
+		void                         UpdateNeck(BSFaceGenNiNode* a_faceNode);
 
 		// members
 		Skills                                      playerSkills;     // 190 - DNAM

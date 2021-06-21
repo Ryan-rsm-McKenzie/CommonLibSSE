@@ -3,6 +3,7 @@
 #include "RE/E/ExtraCharge.h"
 #include "RE/E/ExtraDataList.h"
 #include "RE/E/ExtraEnchantment.h"
+#include "RE/E/ExtraHotkey.h"
 #include "RE/E/ExtraLeveledItem.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/E/ExtraWorn.h"
@@ -182,6 +183,20 @@ namespace RE
 			for (const auto& xList : *extraLists) {
 				const auto xEnch = xList->GetByType<ExtraEnchantment>();
 				if (xEnch && xEnch->enchantment) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	bool InventoryEntryData::IsFavorited() const
+	{
+		if (extraLists) {
+			for (const auto& xList : *extraLists) {
+				const auto favorited = xList->HasType<ExtraHotkey>();
+				if (favorited) {
 					return true;
 				}
 			}

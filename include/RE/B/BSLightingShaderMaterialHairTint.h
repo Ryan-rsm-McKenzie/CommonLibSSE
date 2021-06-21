@@ -9,6 +9,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
+		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialHairTint;
+		inline static constexpr auto FEATURE = Feature::kHairTint;
 
 		virtual ~BSLightingShaderMaterialHairTint();  // 00
 
@@ -17,12 +19,21 @@ namespace RE
 		virtual void              CopyMembers(BSShaderMaterial* a_other) override;  // 02
 		virtual std::uint32_t     ComputeCRC32(void) override;                      // 04
 		virtual Feature           GetFeature() const override;                      // 06 - { return Feature::kHairTint; }
-		virtual void              SaveBinary(void) override;                        // 0C
-		virtual void              LoadBinary(void) override;                        // 0D
+		virtual void              SaveBinary(NiStream& a_stream) override;          // 0C
+		virtual void              LoadBinary(NiStream& a_stream) override;          // 0D
 
 		// members
 		NiColor       tintColor;  // A0
 		std::uint32_t padAC;      // AC
+
+	protected:
+		BSLightingShaderMaterialHairTint* ctor()
+		{
+			using func_t = decltype(&BSLightingShaderMaterialHairTint::ctor);
+			REL::Relocation<func_t> func{ REL::ID(100095) };
+			return func(this);
+		}
+		friend class BSLightingShaderMaterialBase;
 	};
 	static_assert(sizeof(BSLightingShaderMaterialHairTint) == 0xB0);
 }

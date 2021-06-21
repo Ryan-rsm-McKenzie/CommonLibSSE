@@ -22,6 +22,16 @@ namespace RE
 		}
 	}
 
+	bool BGSBaseAlias::IsEssential() const
+	{
+		return flags.all(FLAGS::kEssential);
+	}
+
+	bool BGSBaseAlias::IsProtected() const
+	{
+		return flags.all(FLAGS::kProtected);
+	}
+
 	bool BGSBaseAlias::IsQuestObject() const
 	{
 		return flags.all(FLAGS::kQuestObject);

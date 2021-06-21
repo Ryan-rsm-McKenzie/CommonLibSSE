@@ -268,6 +268,13 @@ namespace RE
 		return func(this, a_changes);
 	}
 
+	void ExtraDataList::SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword)
+	{
+		using func_t = decltype(&ExtraDataList::SetLinkedRef);
+		REL::Relocation<func_t> func{ REL::ID(11633) };
+		return func(this, a_targetRef, a_keyword);
+	}
+
 	void ExtraDataList::SetOwner(TESForm* a_owner)
 	{
 		if (a_owner && a_owner->IsDynamicForm()) {

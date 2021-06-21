@@ -65,6 +65,8 @@ namespace RE
 
 		const BSFixedString& GetTypeString() const;
 		VMTypeID             GetVMTypeID() const;
+		bool                 IsEssential() const;
+		bool                 IsProtected() const;
 		bool                 IsQuestObject() const;
 
 		// members

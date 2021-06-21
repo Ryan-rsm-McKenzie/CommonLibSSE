@@ -1,6 +1,7 @@
 #include "RE/T/TESForm.h"
 
 #include "RE/B/BGSDefaultObjectManager.h"
+#include "RE/B/BGSKeywordForm.h"
 #include "RE/F/FormTraits.h"
 #include "RE/I/IObjectHandlePolicy.h"
 #include "RE/I/InventoryEntryData.h"
@@ -55,6 +56,65 @@ namespace RE
 		} else {
 			return -1.0;
 		}
+	}
+
+	bool TESForm::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	{
+		if (!a_keywords.empty()) {
+			const auto keywordForm = As<BGSKeywordForm>();
+			if (keywordForm) {
+				const auto has_keyword = [&]() {
+					return [&](const RE::BGSKeyword* a_keyword) {
+						return a_keyword && keywordForm->HasKeyword(a_keyword);
+					};
+				};
+				if (a_matchAll) {
+					return std::ranges::any_of(a_keywords, has_keyword());
+				} else {
+					return std::ranges::all_of(a_keywords, has_keyword());
+				}
+			}
+		}
+		return true;
+	}
+
+	bool TESForm::HasKeywords(BGSListForm* a_keywords, bool a_matchAll) const
+	{
+		if (a_keywords) {
+			const auto keywordForm = As<BGSKeywordForm>();
+			if (keywordForm) {
+				const auto form_has_keyword = [&]() {
+					return [&](const RE::TESForm* a_form) {
+						const auto keyword = a_form ? a_form->As<BGSKeyword>() : nullptr;
+						return keyword && keywordForm->HasKeyword(keyword);
+					};
+				};
+				const auto id_has_keyword = [&]() {
+					return [&](const std::uint32_t a_ID) {
+						const auto keyword = LookupByID<BGSKeyword>(a_ID);
+						return keyword && keywordForm->HasKeyword(keyword);
+					};
+				};
+				if (a_matchAll) {
+					if (std::ranges::any_of(a_keywords->forms, form_has_keyword())) {
+						return true;
+					}
+					if (a_keywords->scriptAddedTempForms && std::ranges::any_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
+						return true;
+					}
+					return false;
+				} else {
+					if (std::ranges::none_of(a_keywords->forms, form_has_keyword())) {
+						return false;
+					}
+					if (a_keywords->scriptAddedTempForms && std::ranges::none_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
+						return false;
+					}
+					return true;
+				}
+			}
+		}
+		return true;
 	}
 
 	bool TESForm::HasVMAD() const

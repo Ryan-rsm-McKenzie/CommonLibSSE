@@ -2,6 +2,8 @@
 
 namespace RE
 {
+	class NiColor;
+	
 	struct Color
 	{
 	public:
@@ -43,6 +45,15 @@ namespace RE
 			alpha(a_alpha)
 		{}
 
+		constexpr Color(std::uint32_t a_hexValue) noexcept :
+			red((a_hexValue >> 16) & 0xFF),
+			green((a_hexValue >> 8) & 0xFF),
+			blue((a_hexValue)&0xFF),
+			alpha(0)
+		{
+		}
+
+		Color(const NiColor& a_rhs); 
 		~Color() noexcept = default;
 
 		constexpr Color& operator=(const Color& a_rhs) noexcept
@@ -93,6 +104,10 @@ namespace RE
 			assert(a_idx < kTotal);
 			return std::addressof(red)[a_idx];
 		}
+
+		static std::string   ColorToString(const Color& a_rhs);
+		static std::uint32_t ColorToInt(const Color& a_rhs);
+		std::uint32_t        ColorToInt() const;
 
 		// members
 		std::uint8_t red;    // 0
