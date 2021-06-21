@@ -6,8 +6,8 @@ namespace RE
 	{}
 
 	GFxResourceKey::GFxResourceKey() :
-		_keyInterface(0),
-		_keyData(0)
+		_keyInterface(nullptr),
+		_keyData(nullptr)
 	{}
 
 	GFxResourceKey::GFxResourceKey(KeyInterface* a_keyIntfc, KeyHandle a_keyHandle) :
@@ -49,7 +49,7 @@ namespace RE
 
 	const char* GFxResourceKey::GetFileURL() const
 	{
-		return _keyInterface ? _keyInterface->GetFileURL(_keyData) : 0;
+		return _keyInterface ? _keyInterface->GetFileURL(_keyData) : nullptr;
 	}
 
 	GFxResourceKey::KeyInterface* GFxResourceKey::GetKeyInterface() const
