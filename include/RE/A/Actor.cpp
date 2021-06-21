@@ -317,7 +317,7 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
-	RE::TESObjectARMO* Actor::GetSkin() const
+	TESObjectARMO* Actor::GetSkin() const
 	{
 		if (const auto base = GetActorBase(); base && base->skin) {
 			return base->skin;
@@ -621,7 +621,7 @@ namespace RE
 		return func(this, a_weapon, a_extraData, a_leftHand);
 	}
 
-	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, RE::NiAVObject& a_obj)> a_visitor)
+	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor)
 	{
 		enum
 		{

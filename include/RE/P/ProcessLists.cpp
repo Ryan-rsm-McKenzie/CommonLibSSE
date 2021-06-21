@@ -35,7 +35,7 @@ namespace RE
 	void ProcessLists::GetModelEffects(std::function<bool(ModelReferenceEffect& a_modelEffect)> a_fn)
 	{
 		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
-			const auto modelEffect = a_tempEffect.As<RE::ModelReferenceEffect>();
+			const auto modelEffect = a_tempEffect.As<ModelReferenceEffect>();
 			if (modelEffect && !a_fn(*modelEffect)) {
 				return false;
 			}
@@ -46,7 +46,7 @@ namespace RE
 	void ProcessLists::GetShaderEffects(std::function<bool(ShaderReferenceEffect& a_shaderEffect)> a_fn)
 	{
 		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
-			const auto shaderEffect = a_tempEffect.As<RE::ShaderReferenceEffect>();
+			const auto shaderEffect = a_tempEffect.As<ShaderReferenceEffect>();
 			if (shaderEffect && !a_fn(*shaderEffect)) {
 				return false;
 			}

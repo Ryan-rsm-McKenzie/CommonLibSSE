@@ -16,7 +16,7 @@ namespace RE
 		if (actorValues) {
 			for (auto i = 0; i < 164; i++) {
 				if (boost::icontains(actorValues[i]->enumName, a_enumName)) {
-					AV = static_cast<RE::ActorValue>(i);
+					AV = static_cast<ActorValue>(i);
 					break;
 				}
 			}

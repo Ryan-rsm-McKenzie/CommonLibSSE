@@ -111,7 +111,7 @@ namespace RE
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
 	{
-		auto                                gState = RE::BSGraphics::State::GetSingleton();
+		auto                                gState = BSGraphics::State::GetSingleton();
 		BSTSmartPointer<BSEffectShaderData> newShaderData(new RE::BSEffectShaderData());
 		newShaderData->fillColor = a_color;
 		newShaderData->baseTexture = gState->defaultTextureWhite;
