@@ -95,7 +95,7 @@ namespace RE
 			++a_pos;
 		}
 
-		if (a_wstr && IsLineFeedChar(a_wstr[a_pos])) {
+		if (IsLineFeedChar(a_wstr[a_pos])) {
 			++a_pos;
 		}
 
