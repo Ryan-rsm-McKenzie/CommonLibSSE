@@ -149,9 +149,9 @@ namespace RE
 		time.tm_min = 0;
 		time.tm_hour = static_cast<int>(GetHour());
 		time.tm_mday = static_cast<int>(GetDay());
-		time.tm_mon = GetMonth();
-		time.tm_year = GetYear();
-		time.tm_wday = GetDayOfWeek();
+		time.tm_mon = static_cast<int>(GetMonth());
+		time.tm_year = static_cast<int>(GetYear());
+		time.tm_wday = static_cast<int>(GetDayOfWeek());
 
 		time.tm_yday = time.tm_mday;
 		for (int i = 0; i < time.tm_mon - 1; ++i) {
