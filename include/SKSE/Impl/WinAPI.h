@@ -2,12 +2,12 @@
 
 namespace SKSE::WinAPI
 {
-	inline constexpr auto IMAGE_SCN_MEM_EXECUTE{ static_cast<std::uint32_t>(0x20000000) };
-	inline constexpr auto IMAGE_SCN_MEM_WRITE{ static_cast<std::uint32_t>(0x80000000) };
-	inline const auto     INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
-	inline constexpr auto MAX_PATH{ static_cast<std::uint32_t>(260) };
-	inline constexpr auto MEM_RELEASE{ static_cast<std::uint32_t>(0x00008000) };
-	inline constexpr auto PAGE_EXECUTE_READWRITE{ static_cast<std::uint32_t>(0x40) };
+	inline static constexpr auto IMAGE_SCN_MEM_EXECUTE{ static_cast<std::uint32_t>(0x20000000) };
+	inline static constexpr auto IMAGE_SCN_MEM_WRITE{ static_cast<std::uint32_t>(0x80000000) };
+	inline static const auto     INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
+	inline static constexpr auto MAX_PATH{ static_cast<std::uint32_t>(260) };
+	inline static constexpr auto MEM_RELEASE{ static_cast<std::uint32_t>(0x00008000) };
+	inline static constexpr auto PAGE_EXECUTE_READWRITE{ static_cast<std::uint32_t>(0x40) };
 
 	struct CRITICAL_SECTION
 	{
