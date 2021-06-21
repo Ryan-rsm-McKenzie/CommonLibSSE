@@ -18,9 +18,7 @@ namespace RE
 
 	bool NiObject::IsEqual(NiObject* a_object)
 	{
-		return a_object ?
-		           std::strcmp(GetRTTI()->GetName(), a_object->GetRTTI()->GetName()) == 0 :
-                   false;
+		return a_object != nullptr && std::strcmp(GetRTTI()->GetName(), a_object->GetRTTI()->GetName()) == 0;
 	}
 
 	void NiObject::ProcessClone(NiCloningProcess& a_cloning)
