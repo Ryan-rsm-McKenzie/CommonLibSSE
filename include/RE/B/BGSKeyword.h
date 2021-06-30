@@ -21,12 +21,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSKeyword();  // 00
+		~BGSKeyword() override;  // 00
 
 		// override (TESForm)
-		virtual bool        Load(TESFile* a_mod) override;                // 06
-		virtual const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
-		virtual bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; }
+		bool        Load(TESFile* a_mod) override;                // 06
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; }
 
 		// members
 		BSFixedString formEditorID;  // 20

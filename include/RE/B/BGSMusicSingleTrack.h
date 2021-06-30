@@ -20,18 +20,18 @@ namespace RE
 		};
 		static_assert(sizeof(LoopData) == 0xC);
 
-		virtual ~BGSMusicSingleTrack();  // 00
+		~BGSMusicSingleTrack() override;  // 00
 
 		// override (BGSMusicTrack)
-		virtual void      DoUpdate() override;                                    // 01
-		virtual void      DoPlay() override;                                      // 02
-		virtual void      DoPause() override;                                     // 03
-		virtual void      DoFinish(bool a_arg1, float a_arg2) override;           // 04
-		virtual float     GetDurationImpl() const override;                       // 05
-		virtual TrackType GetType() const override;                               // 06 - "BGSMusicSingleTrack"
-		virtual void      DoSetDuckingAttenuation(std::uint16_t a_val) override;  // 09
-		virtual void      DoClearDucking() override;                              // 0A
-		virtual void      Load(TESFile* a_mod) override;                          // 0C
+		void      DoUpdate() override;                                    // 01
+		void      DoPlay() override;                                      // 02
+		void      DoPause() override;                                     // 03
+		void      DoFinish(bool a_arg1, float a_arg2) override;           // 04
+		float     GetDurationImpl() const override;                       // 05
+		TrackType GetType() const override;                               // 06 - "BGSMusicSingleTrack"
+		void      DoSetDuckingAttenuation(std::uint16_t a_val) override;  // 09
+		void      DoClearDucking() override;                              // 0A
+		void      Load(TESFile* a_mod) override;                          // 0C
 
 		// members
 		BSResource::ID  trackID;                    // 20 - ANAM

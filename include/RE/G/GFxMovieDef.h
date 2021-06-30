@@ -60,7 +60,7 @@ namespace RE
 		{
 		public:
 			MemoryContext() = delete;
-			virtual ~MemoryContext();  // 00
+			~MemoryContext() override;  // 00
 		};
 		static_assert(sizeof(MemoryContext) == 0x10);
 

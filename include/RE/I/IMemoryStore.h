@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IMemoryStore;
 
-		virtual ~IMemoryStore() = default;  // 00
+		~IMemoryStore() override = default;  // 00
 
 		// add
 		virtual void* AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) = 0;                                                 // 04

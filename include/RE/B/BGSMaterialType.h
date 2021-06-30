@@ -29,12 +29,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSMaterialType();  // 00
+		~BGSMaterialType() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;           // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData() override;           // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BGSMaterialType*                      parentType;          // 20 - PNAM

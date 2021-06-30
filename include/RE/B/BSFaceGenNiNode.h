@@ -16,12 +16,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSFaceGenNiNode;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
 
-		virtual ~BSFaceGenNiNode();  // 00
+		~BSFaceGenNiNode() override;  // 00
 
 		// override (NiNode)
-		virtual const NiRTTI* GetRTTI() const override;                                                 // 02
-		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;                        // 17
-		virtual void          UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;  // 2C
+		const NiRTTI* GetRTTI() const override;                                                 // 02
+		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;                        // 17
+		void          UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;  // 2C
 
 		// add
 		virtual void FixSkinInstances(NiNode* a_skeleton, bool a_arg2);  // 3E

@@ -11,11 +11,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_HUDMeter;
 
 		HUDMeter(GFxMovieView* a_view);
-		virtual ~HUDMeter() = default;  // 00
+		~HUDMeter() override = default;  // 00
 
 		// override (HUDObject)
-		virtual void Update() override;                              // 01
-		virtual bool ProcessMessage(UIMessage* a_message) override;  // 02 - { return false; }
+		void Update() override;                              // 01
+		bool ProcessMessage(UIMessage* a_message) override;  // 02 - { return false; }
 
 		// add
 		virtual float GetFillPct();  // 05 - { return 100.0; }

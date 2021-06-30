@@ -73,19 +73,19 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectTREE();  // 00
+		~TESObjectTREE() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual bool ReplaceModel() override;                                                                                                                                  // 44
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
-		virtual void OnRemove3D(NiAVObject* a_obj3D) override;                                                                                                                 // 4F
-		virtual void OnCheckModels() override;                                                                                                                                 // 50 - { return; }
-		virtual void OnCopyReference() override;                                                                                                                               // 51 - { return; }
-		virtual void OnFinishScale() override;                                                                                                                                 // 52 - { return; }
+		void InitializeData() override;                                                                                                                                // 04
+		bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void InitItemImpl() override;                                                                                                                                  // 13
+		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		bool ReplaceModel() override;                                                                                                                                  // 44
+		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		void OnRemove3D(NiAVObject* a_obj3D) override;                                                                                                                 // 4F
+		void OnCheckModels() override;                                                                                                                                 // 50 - { return; }
+		void OnCopyReference() override;                                                                                                                               // 51 - { return; }
+		void OnFinishScale() override;                                                                                                                                 // 52 - { return; }
 
 		// members
 		OBJ_TREE                                    data;      // 88

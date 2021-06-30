@@ -23,12 +23,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESContainer;
 
-		virtual ~TESContainer();  // 00
+		~TESContainer() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01 - { return; }
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01 - { return; }
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		inline void ForEachContainerObject(std::function<bool(ContainerObject&)> a_fn) const
 		{

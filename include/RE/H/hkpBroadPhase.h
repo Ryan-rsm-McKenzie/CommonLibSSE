@@ -66,7 +66,7 @@ namespace RE
 		};
 		static_assert(sizeof(hkpCastAabbInput) == 0x40);
 
-		virtual ~hkpBroadPhase();  // 00
+		~hkpBroadPhase() override;  // 00
 
 		// add
 		virtual BroadPhaseType       GetType() const = 0;                                                                                                                                                                                                // 03

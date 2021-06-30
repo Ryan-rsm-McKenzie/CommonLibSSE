@@ -47,13 +47,13 @@ namespace RE
 		};
 		static_assert(sizeof(Dialogue) == 0x58);
 
-		virtual ~MenuTopicManager();  // 00
+		~MenuTopicManager() override;  // 00
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
 		static MenuTopicManager* GetSingleton()
 		{

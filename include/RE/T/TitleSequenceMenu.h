@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_TitleSequenceMenu;
 		constexpr static std::string_view MENU_NAME = "TitleSequence Menu";
 
-		virtual ~TitleSequenceMenu();  // 00
+		~TitleSequenceMenu() override;  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 	};
 	static_assert(sizeof(TitleSequenceMenu) == 0x30);
 }

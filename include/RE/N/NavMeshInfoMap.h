@@ -28,20 +28,20 @@ namespace RE
 			};
 		};
 
-		virtual ~NavMeshInfoMap();  // 00
+		~NavMeshInfoMap() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;    // 06
-		virtual void InitItemImpl() override;          // 13
-		virtual void SetAltered(bool a_set) override;  // 24
+		bool Load(TESFile* a_mod) override;    // 06
+		void InitItemImpl() override;          // 13
+		void SetAltered(bool a_set) override;  // 24
 
 		// override (BSNavmeshInfoMap)
 
-		virtual BSNavmeshInfo* GetNavMeshInfoFixID(std::uint32_t a_id) override;                                                      // 01
-		virtual BSNavmeshInfo* GetNavmeshInfo(std::uint32_t a_id) override;                                                           // 02
-		virtual void           GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) override;                                       // 03
-		virtual void           BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) override;  // 04
-		virtual void           ForEach(IVisitor* a_visitor) override;                                                                 // 05
+		BSNavmeshInfo* GetNavMeshInfoFixID(std::uint32_t a_id) override;                                                      // 01
+		BSNavmeshInfo* GetNavmeshInfo(std::uint32_t a_id) override;                                                           // 02
+		void           GetAllNavMeshInfo(BSTArray<BSNavmeshInfo*>& a_results) override;                                       // 03
+		void           BuildListOfConnectedInfos(const BSNavmeshInfo* a_info, BSTArray<BSNavmeshInfo*>& a_results) override;  // 04
+		void           ForEach(IVisitor* a_visitor) override;                                                                 // 05
 
 		// members
 		bool                                                 updateAll;         // 78

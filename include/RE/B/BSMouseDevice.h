@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMouseDevice;
 
-		virtual ~BSMouseDevice();  // 00
+		~BSMouseDevice() override;  // 00
 
 		// add
 		virtual void Unk_09(void);  // 09 - { return; }

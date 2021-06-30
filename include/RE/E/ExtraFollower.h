@@ -20,10 +20,10 @@ namespace RE
 		};
 		static_assert(sizeof(FollowerInfo) == 0x8);
 
-		virtual ~ExtraFollower();  // 00
+		~ExtraFollower() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kFollower; }
+		ExtraDataType GetType() const override;  // 01 - { return kFollower; }
 
 		// members
 		BSTArray<FollowerInfo> actorFollowers;  // 10

@@ -36,13 +36,13 @@ namespace RE
 		};
 		static_assert(sizeof(UnkData1) == 0x60);
 
-		virtual ~HUDNotifications();  // 00
+		~HUDNotifications() override;  // 00
 
 		// override (HUDObject)
-		virtual void Update() override;                                        // 01
-		virtual bool ProcessMessage(UIMessage* a_message) override;            // 02
-		virtual void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
-		virtual void CleanUp() override;                                       // 04
+		void Update() override;                                        // 01
+		bool ProcessMessage(UIMessage* a_message) override;            // 02
+		void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
+		void CleanUp() override;                                       // 04
 
 		// members
 		BSTArray<UnkData1> unk28;                  // 28

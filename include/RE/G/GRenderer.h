@@ -381,7 +381,7 @@ namespace RE
 		};
 		static_assert(sizeof(BlurFilterParams) == 0x44);
 
-		virtual ~GRenderer();  // 00
+		~GRenderer() override;  // 00
 
 		// add
 		virtual bool           GetRenderCaps(RenderCaps* a_caps) = 0;                                                                                                                                                                                                             // 01

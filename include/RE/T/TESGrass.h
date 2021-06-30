@@ -62,12 +62,12 @@ namespace RE
 		};
 		static_assert(sizeof(GRASS_DATA) == 0x20);
 
-		virtual ~TESGrass();  // 00
+		~TESGrass() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// add
 		virtual std::uint8_t      GetDensity() const;                                         // 53 - { return data.density; }

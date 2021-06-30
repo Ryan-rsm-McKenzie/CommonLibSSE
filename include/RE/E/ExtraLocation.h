@@ -13,11 +13,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLocation;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLocation;
 
-		virtual ~ExtraLocation();  // 00
+		~ExtraLocation() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kLocation; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return location != a_rhs->location; }
+		ExtraDataType GetType() const override;                             // 01 - { return kLocation; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return location != a_rhs->location; }
 
 		// members
 		BGSLocation* location;  // 10

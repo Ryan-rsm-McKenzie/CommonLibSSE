@@ -127,7 +127,7 @@ namespace RE
 		};
 		using Key = Keys::Key;
 
-		virtual ~BSKeyboardDevice();  // 00
+		~BSKeyboardDevice() override;  // 00
 
 		// add
 		virtual void Unk_09(void) = 0;  // 09

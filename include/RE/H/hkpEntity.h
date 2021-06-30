@@ -65,11 +65,11 @@ namespace RE
 		};
 		static_assert(sizeof(ExtendedListeners) == 0x20);
 
-		virtual ~hkpEntity();  // 00
+		~hkpEntity() override;  // 00
 
 		// override (hkpWorldObject)
-		virtual void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
-		virtual hkMotionState* GetMotionState() override;                                                                         // 05 - { return 0; }
+		void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		hkMotionState* GetMotionState() override;                                                                         // 05 - { return 0; }
 
 		// add
 		virtual void DeallocateInternalArrays();  // 06

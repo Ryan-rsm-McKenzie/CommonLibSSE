@@ -34,18 +34,18 @@ namespace RE
 			};
 		};
 
-		virtual ~MistMenu();  // 00
+		~MistMenu() override;  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
-		virtual void               PostDisplay() override;                                                // 06
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               PostDisplay() override;                                                // 06
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;              // 01
-		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-		virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
-		virtual bool ProcessButton(ButtonEvent* a_event) override;          // 05
+		bool CanProcess(InputEvent* a_event) override;              // 01
+		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+		bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 		// members
 		NiColor       ambientColors[Colors::kTotal];  // 058

@@ -86,20 +86,20 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectBOOK();  // 00
+		~TESObjectBOOK() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual void ClearData() override;                                                                                                                                     // 05 - { return TESForm::ClearData(); }
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4D
+		void InitializeData() override;                                                                                                                                // 04
+		void ClearData() override;                                                                                                                                     // 05 - { return TESForm::ClearData(); }
+		bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		void InitItemImpl() override;                                                                                                                                  // 13
+		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4D
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		bool       TeachesSkill() const;
 		bool       TeachesSpell() const;

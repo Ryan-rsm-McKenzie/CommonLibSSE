@@ -119,12 +119,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESAIForm;
 
-		virtual ~TESAIForm();  // 00
+		~TESAIForm() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		bool             AggroRadiusBehaviourIsEnabled() const;
 		ACTOR_AGGRESSION GetAggressionLevel() const;

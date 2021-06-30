@@ -10,11 +10,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IDEvent;
 
-		virtual ~IDEvent();  // 00
+		~IDEvent() override;  // 00
 
 		// override
-		virtual bool                 HasIDCode() const override;   // 01 - { return true; }
-		virtual const BSFixedString& QUserEvent() const override;  // 02 - { return userEvent; }
+		bool                 HasIDCode() const override;   // 01 - { return true; }
+		const BSFixedString& QUserEvent() const override;  // 02 - { return userEvent; }
 
 		[[nodiscard]] constexpr std::uint32_t GetIDCode() const noexcept { return idCode; }
 

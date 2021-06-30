@@ -11,12 +11,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSKeywordForm;
 
-		virtual ~BGSKeywordForm();  // 00
+		~BGSKeywordForm() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01 - { return; }
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01 - { return; }
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
 		virtual bool        HasKeyword(const BGSKeyword* a_keyword) const;  // 04

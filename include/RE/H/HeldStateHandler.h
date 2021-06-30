@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_HeldStateHandler;
 
-		virtual ~HeldStateHandler();  // 00
+		~HeldStateHandler() override;  // 00
 
 		// add
 		virtual void UpdateHeldStateActive(const ButtonEvent* a_event);  // 05

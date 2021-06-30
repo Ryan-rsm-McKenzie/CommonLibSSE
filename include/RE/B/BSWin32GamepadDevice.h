@@ -35,14 +35,14 @@ namespace RE
 		};
 		using Key = Keys::Key;
 
-		virtual ~BSWin32GamepadDevice();  // 00
+		~BSWin32GamepadDevice() override;  // 00
 
 		// override (BSPCGamepadDeviceDelegate)
-		virtual void Initialize() override;           // 01
-		virtual void Process(float a_arg1) override;  // 02
-		virtual void Unk_03(void) override;           // 03 - { return; }
-		virtual void Reset() override;                // 08 - { std::memset(&unk0D8, 0, 0x50); }
-		virtual void Unk_09(void) override;           // 09 - { return; }
+		void Initialize() override;           // 01
+		void Process(float a_arg1) override;  // 02
+		void Unk_03(void) override;           // 03 - { return; }
+		void Reset() override;                // 08 - { std::memset(&unk0D8, 0, 0x50); }
+		void Unk_09(void) override;           // 09 - { return; }
 
 		// members
 		std::uint32_t unk0D8;     // 0D8

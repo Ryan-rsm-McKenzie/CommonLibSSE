@@ -21,14 +21,14 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_TrainingMenu;
 		constexpr static std::string_view MENU_NAME = "Training Menu";
 
-		virtual ~TrainingMenu();  // 00
+		~TrainingMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_cbReg) override;    // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+		void               Accept(CallbackProcessor* a_cbReg) override;    // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		// members
 		void*         unk38;            // 38 - smart ptr

@@ -29,15 +29,15 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSListForm();  // 00
+		~BGSListForm() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;                         // 05
-		virtual bool Load(TESFile* a_mod) override;                // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
-		virtual void InitItemImpl() override;                      // 13
+		void ClearData() override;                         // 05
+		bool Load(TESFile* a_mod) override;                // 06
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		void InitItemImpl() override;                      // 13
 
 		void AddForm(TESForm* a_form);
 		bool HasForm(const TESForm* a_form) const;

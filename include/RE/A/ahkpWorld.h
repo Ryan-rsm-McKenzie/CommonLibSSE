@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ahkpWorld;
 
-		virtual ~ahkpWorld();  // 00
+		~ahkpWorld() override;  // 00
 
 		// members
 		std::uint64_t unk430;  // 430

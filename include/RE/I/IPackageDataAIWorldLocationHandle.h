@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
 
-		virtual ~IPackageDataAIWorldLocationHandle();  // 00
+		~IPackageDataAIWorldLocationHandle() override;  // 00
 	};
 	static_assert(sizeof(IPackageDataAIWorldLocationHandle) == 0x10);
 }

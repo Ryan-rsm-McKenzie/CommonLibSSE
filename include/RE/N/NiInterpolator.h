@@ -18,15 +18,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiInterpolator;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiInterpolator;
 
-		virtual ~NiInterpolator();  // 00
+		~NiInterpolator() override;  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                          // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;           // 18 - { NiObject::LoadBinary(a_stream); }
-		virtual void          LinkObject(NiStream& a_stream) override;           // 19 - { NiObject::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;           // 1B - { NiObject::SaveBinary(a_stream); }
-		virtual bool          IsEqual(NiObject* a_object) override;              // 1C - { return NiObject::IsEqual(a_stream); }
+		const NiRTTI* GetRTTI() const override;                          // 02
+		void          LoadBinary(NiStream& a_stream) override;           // 18 - { NiObject::LoadBinary(a_stream); }
+		void          LinkObject(NiStream& a_stream) override;           // 19 - { NiObject::LinkObject(a_stream); }
+		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;           // 1B - { NiObject::SaveBinary(a_stream); }
+		bool          IsEqual(NiObject* a_object) override;              // 1C - { return NiObject::IsEqual(a_stream); }
 
 		// add
 		virtual bool                Update1(float a_time, NiObjectNET* a_interpTarget, NiQuatTransform& a_value);  // 25 - { return false; }

@@ -36,7 +36,7 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_hkbStateMachine__StateInfo;
 
-			virtual ~StateInfo();  // 00
+			~StateInfo() override;  // 00
 
 			// members
 			std::uint64_t unk30;  // 30
@@ -56,7 +56,7 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
 
-			virtual ~TransitionInfoArray();  // 00
+			~TransitionInfoArray() override;  // 00
 
 			// members
 			std::uint64_t unk10;  // 10
@@ -64,31 +64,31 @@ namespace RE
 		};
 		static_assert(sizeof(TransitionInfoArray) == 0x20);
 
-		virtual ~hkbStateMachine();  // 00
+		~hkbStateMachine() override;  // 00
 
 		// override (hkbGenerator)
-		virtual hkClass* GetClassType() const override;                                                                     // 01
-		virtual void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
-		virtual void     Unk_03(void) override;                                                                             // 03
-		virtual void     Unk_04(void) override;                                                                             // 04
-		virtual void     Unk_05(void) override;                                                                             // 05
-		virtual void     Unk_06(void) override;                                                                             // 06
-		virtual void     Unk_07(void) override;                                                                             // 07
-		virtual void     Unk_08(void) override;                                                                             // 08
-		virtual void     Unk_09(void) override;                                                                             // 09
-		virtual void     Unk_0A(void) override;                                                                             // 0A
-		virtual void     Unk_0C(void) override;                                                                             // 0C
-		virtual void     Unk_0D(void) override;                                                                             // 0D
-		virtual void     Unk_0E(void) override;                                                                             // 0E
-		virtual void     Unk_0F(void) override;                                                                             // 0F
-		virtual void     Unk_10(void) override;                                                                             // 10
-		virtual void     Unk_11(void) override;                                                                             // 11
-		virtual void     Unk_12(void) override;                                                                             // 12
-		virtual void     Unk_14(void) override;                                                                             // 14
-		virtual void     Unk_17(void) override;                                                                             // 17
-		virtual void     Unk_18(void) override;                                                                             // 18 - { return 1; }
-		virtual void     Unk_19(void) override;                                                                             // 19
-		virtual void     Unk_1B(void) override;                                                                             // 1B - { echoNextUpdate = true; }
+		hkClass* GetClassType() const override;                                                                     // 01
+		void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void     Unk_03(void) override;                                                                             // 03
+		void     Unk_04(void) override;                                                                             // 04
+		void     Unk_05(void) override;                                                                             // 05
+		void     Unk_06(void) override;                                                                             // 06
+		void     Unk_07(void) override;                                                                             // 07
+		void     Unk_08(void) override;                                                                             // 08
+		void     Unk_09(void) override;                                                                             // 09
+		void     Unk_0A(void) override;                                                                             // 0A
+		void     Unk_0C(void) override;                                                                             // 0C
+		void     Unk_0D(void) override;                                                                             // 0D
+		void     Unk_0E(void) override;                                                                             // 0E
+		void     Unk_0F(void) override;                                                                             // 0F
+		void     Unk_10(void) override;                                                                             // 10
+		void     Unk_11(void) override;                                                                             // 11
+		void     Unk_12(void) override;                                                                             // 12
+		void     Unk_14(void) override;                                                                             // 14
+		void     Unk_17(void) override;                                                                             // 17
+		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
+		void     Unk_19(void) override;                                                                             // 19
+		void     Unk_1B(void) override;                                                                             // 1B - { echoNextUpdate = true; }
 
 		// members
 		hkbEvent                                                       eventToSendWhenStateOrTransitionChanges;  // 048

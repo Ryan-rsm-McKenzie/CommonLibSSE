@@ -28,12 +28,12 @@ namespace RE
 		};
 		static_assert(sizeof(PerkData) == 0x10);
 
-		virtual ~TweenMenu();  // 00
+		~TweenMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;  // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
-		virtual void               PostDisplay() override;                           // 06
+		void               Accept(CallbackProcessor* a_processor) override;  // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+		void               PostDisplay() override;                           // 06
 
 		// members
 		BSTArray<PerkData> perkData;  // 30

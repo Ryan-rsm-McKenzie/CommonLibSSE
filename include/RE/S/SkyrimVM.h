@@ -139,7 +139,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
 
-		virtual ~SkyrimVM();  // 00
+		~SkyrimVM() override;  // 00
 
 		static SkyrimVM* GetSingleton();
 

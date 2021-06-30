@@ -20,14 +20,14 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSAcousticSpace();  // 00
+		~BGSAcousticSpace() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void        InitializeData() override;                 // 04
-		virtual bool        Load(TESFile* a_mod) override;             // 06
-		virtual void        InitItemImpl() override;                   // 13
-		virtual void        UnClone3D(TESObjectREFR* a_ref) override;  // 41
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;    // 4A - { return 0; }
+		void        InitializeData() override;                 // 04
+		bool        Load(TESFile* a_mod) override;             // 06
+		void        InitItemImpl() override;                   // 13
+		void        UnClone3D(TESObjectREFR* a_ref) override;  // 41
+		NiAVObject* Clone3D(TESObjectREFR* a_ref) override;    // 4A - { return 0; }
 
 		// members
 		BGSSoundDescriptorForm* loopingSound;  // 30 - SNAM

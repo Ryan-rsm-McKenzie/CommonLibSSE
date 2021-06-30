@@ -13,11 +13,11 @@ namespace RE
 
 		ExtraHealth();
 		explicit ExtraHealth(float a_health);
-		virtual ~ExtraHealth() = default;  // 00
+		~ExtraHealth() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kHealth; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return health != a_rhs->health; }
+		ExtraDataType GetType() const override;                             // 01 - { return kHealth; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return health != a_rhs->health; }
 
 		// members
 		float         health;  // 10

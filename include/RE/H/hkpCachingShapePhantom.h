@@ -26,22 +26,22 @@ namespace RE
 
 		using hkpCollisionDetail = CollisionDetail;
 
-		virtual ~hkpCachingShapePhantom();  // 00
+		~hkpCachingShapePhantom() override;  // 00
 
 		// override (hkpShapePhantom)
-		virtual void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                                                                    // 02
-		virtual hkpPhantomType GetType() const override;                                                                                                                                                            // 06 - { return hkpPhantomType::kCachingShape; }
-		virtual void           AddOverlappingCollidable(hkpCollidable* a_collidable) override;                                                                                                                      // 08
-		virtual bool           IsOverlappingCollidableAdded(const hkpCollidable* a_collidable) override;                                                                                                            // 09
-		virtual void           RemoveOverlappingCollidable(hkpCollidable* a_collidable) override;                                                                                                                   // 0A
-		virtual void           EnsureDeterministicOrder() override;                                                                                                                                                 // 0B
-		virtual hkpPhantom*    Clone() const override;                                                                                                                                                              // 0C
-		virtual void           UpdateShapeCollectionFilter() override;                                                                                                                                              // 0D
-		virtual void           DeallocateInternalArrays() override;                                                                                                                                                 // 0E
-		virtual void           SetPositionAndLinearCast(const hkVector4& a_position, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) override;      // 0F
-		virtual void           SetTransformAndLinearCast(const hkTransform& a_transform, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) override;  // 10
-		virtual void           GetClosestPoints(hkpCdPointCollector& a_collector, const hkpCollisionInput* a_input = 0) override;                                                                                   // 11
-		virtual void           GetPenetrations(hkpCdBodyPairCollector& a_collector, const hkpCollisionInput* a_input = 0) override;                                                                                 // 12
+		void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                                                                    // 02
+		hkpPhantomType GetType() const override;                                                                                                                                                            // 06 - { return hkpPhantomType::kCachingShape; }
+		void           AddOverlappingCollidable(hkpCollidable* a_collidable) override;                                                                                                                      // 08
+		bool           IsOverlappingCollidableAdded(const hkpCollidable* a_collidable) override;                                                                                                            // 09
+		void           RemoveOverlappingCollidable(hkpCollidable* a_collidable) override;                                                                                                                   // 0A
+		void           EnsureDeterministicOrder() override;                                                                                                                                                 // 0B
+		hkpPhantom*    Clone() const override;                                                                                                                                                              // 0C
+		void           UpdateShapeCollectionFilter() override;                                                                                                                                              // 0D
+		void           DeallocateInternalArrays() override;                                                                                                                                                 // 0E
+		void           SetPositionAndLinearCast(const hkVector4& a_position, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) override;      // 0F
+		void           SetTransformAndLinearCast(const hkTransform& a_transform, const hkpLinearCastInput& a_input, hkpCdPointCollector& a_castCollector, hkpCdPointCollector* a_startCollector) override;  // 10
+		void           GetClosestPoints(hkpCdPointCollector& a_collector, const hkpCollisionInput* a_input = 0) override;                                                                                   // 11
+		void           GetPenetrations(hkpCdBodyPairCollector& a_collector, const hkpCollisionInput* a_input = 0) override;                                                                                 // 12
 
 		// members
 		hkArray<CollisionDetail> collisionDetails;  // 1A0

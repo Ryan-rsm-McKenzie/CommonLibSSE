@@ -18,13 +18,13 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
-		virtual ~UISaveLoadManager();  // 00
+		~UISaveLoadManager() override;  // 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
 
 		// members
 		void*         unk18;  // 18

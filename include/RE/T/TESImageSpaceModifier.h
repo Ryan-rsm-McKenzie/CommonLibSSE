@@ -182,14 +182,14 @@ namespace RE
 		};
 		static_assert(sizeof(DOF) == 0x18);
 
-		virtual ~TESImageSpaceModifier();  // 00
+		~TESImageSpaceModifier() override;  // 00
 
 		// override (TESForm)
-		virtual void        InitializeData() override;                    // 04
-		virtual void        ClearData() override;                         // 05
-		virtual bool        Load(TESFile* a_mod) override;                // 06
-		virtual const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
-		virtual bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; }
+		void        InitializeData() override;                    // 04
+		void        ClearData() override;                         // 05
+		bool        Load(TESFile* a_mod) override;                // 06
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; }
 
 		// members
 		ImageSpaceModifierData         data;                  // 020 - DNAM

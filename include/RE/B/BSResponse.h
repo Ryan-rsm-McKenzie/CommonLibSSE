@@ -19,7 +19,7 @@ namespace RE
 		using functor_type = IHandlerFunctor<Handler, Parameter>;
 
 		BSResponse() = default;
-		virtual ~BSResponse() = default;  // 00
+		~BSResponse() override = default;  // 00
 
 		using BSIntrusiveRefCounted::operator new;
 		using BSIntrusiveRefCounted::operator delete;

@@ -61,10 +61,10 @@ namespace RE
 		};
 		static_assert(sizeof(FormatPrefs) == 0x10);
 
-		virtual ~NiTexture();
+		~NiTexture() override;
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;  // 02
+		const NiRTTI* GetRTTI() const override;  // 02
 
 		// add
 		virtual void Unk_25(void);  // 25 - { return 0; }

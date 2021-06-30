@@ -20,7 +20,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MapCamera;
 
-		virtual ~MapCamera();  // 00
+		~MapCamera() override;  // 00
 
 		// add
 		virtual void Unk_03(void);  // 03

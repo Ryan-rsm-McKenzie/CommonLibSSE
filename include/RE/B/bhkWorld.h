@@ -10,7 +10,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_bhkWorld;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkWorld;
 
-		virtual ~bhkWorld();  // 00
+		~bhkWorld() override;  // 00
 
 		// add
 		virtual void Unk_32(void);  // 32

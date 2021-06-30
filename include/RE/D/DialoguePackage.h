@@ -12,14 +12,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_DialoguePackage;
 		inline static constexpr auto FORMTYPE = FormType::Package;
 
-		virtual ~DialoguePackage();  // 00
+		~DialoguePackage() override;  // 00
 
 		// override (TESPackage)
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;      // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;      // 0F
-		virtual void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10 - { TESForm::InitLoadGame(a_buf); }
-		virtual void Copy(TESForm* a_srcForm) override;                // 2F - { TESForm::Copy(a_srcForm); }
-		virtual bool IsPackageOwner(Actor* a_actor) override;          // 3F
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;      // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;      // 0F
+		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;  // 10 - { TESForm::InitLoadGame(a_buf); }
+		void Copy(TESForm* a_srcForm) override;                // 2F - { TESForm::Copy(a_srcForm); }
+		bool IsPackageOwner(Actor* a_actor) override;          // 3F
 
 		// members
 		std::uint32_t   unk0E0;  // 0E0

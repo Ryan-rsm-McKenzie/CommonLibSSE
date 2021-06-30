@@ -61,7 +61,7 @@ namespace RE
 			kAll
 		};
 
-		virtual ~hkpWorldCinfo();  // 00
+		~hkpWorldCinfo() override;  // 00
 
 		// members
 		hkVector4                                                gravity;                                                    // 010

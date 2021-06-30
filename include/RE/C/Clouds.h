@@ -19,11 +19,11 @@ namespace RE
 			kTotalLayers = 32
 		};
 
-		virtual ~Clouds();  // 00
+		~Clouds() override;  // 00
 
 		// override (SkyObject)
-		virtual void Unk_02(void) override;                      // 02
-		virtual void Update(Sky* a_sky, float a_arg2) override;  // 03
+		void Unk_02(void) override;                      // 02
+		void Update(Sky* a_sky, float a_arg2) override;  // 03
 
 		// members
 		NiPointer<BSGeometry> clouds[kTotalLayers];        // 010

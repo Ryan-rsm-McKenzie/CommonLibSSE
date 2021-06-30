@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpConstraintOwner;
 
-		virtual ~hkpConstraintOwner();  // 00
+		~hkpConstraintOwner() override;  // 00
 
 		// add
 		virtual void AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint);         // 03 - { return; }

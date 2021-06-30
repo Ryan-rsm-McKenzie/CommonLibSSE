@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSLocAlias;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(141);
 
-		virtual ~BGSLocAlias();  // 00
+		~BGSLocAlias() override;  // 00
 
 		// members
 		std::uint64_t unk28;       // 28

@@ -24,11 +24,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTeleport;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTeleport;
 
-		virtual ~ExtraTeleport();  // 00
+		~ExtraTeleport() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kTeleport; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kTeleport; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		DoorTeleportData* teleportData;  // 10

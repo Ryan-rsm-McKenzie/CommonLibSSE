@@ -22,7 +22,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementControllerNPC;
 
-		virtual ~MovementControllerNPC();  // 00
+		~MovementControllerNPC() override;  // 00
 
 		// add
 		virtual void Unk_0A(void);  // 0A

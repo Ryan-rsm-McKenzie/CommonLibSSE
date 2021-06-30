@@ -25,12 +25,12 @@ namespace RE
 		};
 		static_assert(sizeof(SpellData) == 0x28);
 
-		virtual ~TESSpellList();  // 00
+		~TESSpellList() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01 - { return; }
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01 - { return; }
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// members
 		SpellData* actorEffects;  // 08 - SPLO

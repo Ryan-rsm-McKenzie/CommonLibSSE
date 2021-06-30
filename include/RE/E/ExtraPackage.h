@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPackage;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPackage;
 
-		virtual ~ExtraPackage();  // 00
+		~ExtraPackage() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kPackage; }
+		ExtraDataType GetType() const override;  // 01 - { return kPackage; }
 
 		// members
 		TESPackage*     unk10;           // 10

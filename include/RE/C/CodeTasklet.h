@@ -69,10 +69,10 @@ namespace RE
 					kARRAY_RFINDELEMENT
 				};
 
-				virtual ~CodeTasklet();  // 00
+				~CodeTasklet() override;  // 00
 
 				// override (IFuncCallQuery)
-				virtual bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;  // 01
+				bool GetFunctionCallInfo(CallType& a_callType, BSTSmartPointer<ObjectTypeInfo>& a_arg2, BSFixedString& a_arg3, Variable& a_arg4, BSScrapArray<Variable>& a_arg5) override;  // 01
 
 				// members
 				Stack*                                        stack;                    // 10

@@ -26,7 +26,7 @@ namespace RE
 		};
 		static_assert(sizeof(CodeInfo) == 0x10);
 
-		virtual ~hkpMoppCode();  // 00
+		~hkpMoppCode() override;  // 00
 
 		// members
 		CodeInfo                                 info;       // 10

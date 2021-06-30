@@ -12,13 +12,13 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__SimpleAllocMemoryPagePolicy;
 
-			virtual ~SimpleAllocMemoryPagePolicy();  // 00
+			~SimpleAllocMemoryPagePolicy() override;  // 00
 
 			// override (IMemoryPagePolicy)
-			virtual void Unk_01(void) override;  // 01 - { return maxPageSize; }
-			virtual void Unk_02(void) override;  // 02
-			virtual void Unk_03(void) override;  // 03
-			virtual void Unk_04(void) override;  // 04
+			void Unk_01(void) override;  // 01 - { return maxPageSize; }
+			void Unk_02(void) override;  // 02
+			void Unk_03(void) override;  // 03
+			void Unk_04(void) override;  // 04
 
 			// members
 			const std::uint32_t minPageSize;               // 08

@@ -37,13 +37,13 @@ namespace RE
 		};
 		static_assert(sizeof(LoadNIFData) == 0x50);
 
-		virtual ~TESLoadScreen();  // 00
+		~TESLoadScreen() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04 - { return; }
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04 - { return; }
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		TESCondition  conditions;   // 20

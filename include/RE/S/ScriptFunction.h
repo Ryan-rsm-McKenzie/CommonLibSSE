@@ -17,29 +17,29 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
 
-				virtual ~ScriptFunction();  // 00
+				~ScriptFunction() override;  // 00
 
 				// override (IFunction)
-				virtual const BSFixedString& GetName() const override;                                                                                                  // 01 - { return functionName; }
-				virtual const BSFixedString& GetObjectTypeName() const override;                                                                                        // 02 - { return scriptName; }
-				virtual const BSFixedString& GetStateName() const override;                                                                                             // 03 - { return stateName; }
-				virtual TypeInfo             GetReturnType() const override;                                                                                            // 04 - { return returnType; }
-				virtual std::uint32_t        GetParamCount() const override;                                                                                            // 05 - { return varInfo.numParams; }
-				virtual void                 GetParam(std::uint32_t a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const override;                               // 06
-				virtual std::uint32_t        GetStackFrameSize() const override;                                                                                        // 07 - { return (descTable.totalEntries - descTable.paramCount) + GetNumParams(); }
-				virtual bool                 GetIsNative() const override;                                                                                              // 08 - { return false; }
-				virtual bool                 GetIsStatic() const override;                                                                                              // 09 - { return isStatic; }
-				virtual bool                 GetIsEmpty() const override;                                                                                               // 0A - { return instructions.numInstructionBits == 0; }
-				virtual FunctionType         GetFunctionType() const override;                                                                                          // 0B - { return functionType; }
-				virtual std::uint32_t        GetUserFlags() const override;                                                                                             // 0C - { return userFlags; }
-				virtual const BSFixedString& GetDocString() const override;                                                                                             // 0D - { return docString; }
-				virtual void                 InsertLocals(StackFrame* a_frame) override;                                                                                // 0E
-				virtual CallResult           Call(const BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4) override;  // 0F
-				virtual const BSFixedString& GetSourceFilename() const override;                                                                                        // 10 - { return sourceFileName; }
-				virtual bool                 TranslateIPToLineNumber(std::uint32_t a_indexPtr, std::uint32_t& a_lineNumberOut) const override;                          // 11
-				virtual bool                 GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const override;                                     // 12
-				virtual bool                 CanBeCalledFromTasklets() const override;                                                                                  // 13 - { return true; }
-				virtual void                 SetCallableFromTasklets(bool a_callable) override;                                                                         // 14 - { return; }
+				const BSFixedString& GetName() const override;                                                                                                  // 01 - { return functionName; }
+				const BSFixedString& GetObjectTypeName() const override;                                                                                        // 02 - { return scriptName; }
+				const BSFixedString& GetStateName() const override;                                                                                             // 03 - { return stateName; }
+				TypeInfo             GetReturnType() const override;                                                                                            // 04 - { return returnType; }
+				std::uint32_t        GetParamCount() const override;                                                                                            // 05 - { return varInfo.numParams; }
+				void                 GetParam(std::uint32_t a_idx, BSFixedString& a_nameOut, TypeInfo& a_typeOut) const override;                               // 06
+				std::uint32_t        GetStackFrameSize() const override;                                                                                        // 07 - { return (descTable.totalEntries - descTable.paramCount) + GetNumParams(); }
+				bool                 GetIsNative() const override;                                                                                              // 08 - { return false; }
+				bool                 GetIsStatic() const override;                                                                                              // 09 - { return isStatic; }
+				bool                 GetIsEmpty() const override;                                                                                               // 0A - { return instructions.numInstructionBits == 0; }
+				FunctionType         GetFunctionType() const override;                                                                                          // 0B - { return functionType; }
+				std::uint32_t        GetUserFlags() const override;                                                                                             // 0C - { return userFlags; }
+				const BSFixedString& GetDocString() const override;                                                                                             // 0D - { return docString; }
+				void                 InsertLocals(StackFrame* a_frame) override;                                                                                // 0E
+				CallResult           Call(const BSTSmartPointer<Stack>& a_stack, ErrorLogger* a_logger, Internal::VirtualMachine* a_vm, bool a_arg4) override;  // 0F
+				const BSFixedString& GetSourceFilename() const override;                                                                                        // 10 - { return sourceFileName; }
+				bool                 TranslateIPToLineNumber(std::uint32_t a_indexPtr, std::uint32_t& a_lineNumberOut) const override;                          // 11
+				bool                 GetVarNameForStackIndex(std::uint32_t a_idx, BSFixedString& a_nameOut) const override;                                     // 12
+				bool                 CanBeCalledFromTasklets() const override;                                                                                  // 13 - { return true; }
+				void                 SetCallableFromTasklets(bool a_callable) override;                                                                         // 14 - { return; }
 
 				// members
 				BSFixedString                                 name;             // 10

@@ -12,15 +12,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_bhkSerializable;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkSerializable;
 
-		virtual ~bhkSerializable();  // 00
+		~bhkSerializable() override;  // 00
 
 		// override (bhkRefObject)
-		virtual const NiRTTI* GetRTTI() const override;                          // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;           // 18
-		virtual void          LinkObject(NiStream& a_stream) override;           // 19
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;           // 1B
-		virtual void          Unk_25(void) override;                             // 25
+		const NiRTTI* GetRTTI() const override;                          // 02
+		void          LoadBinary(NiStream& a_stream) override;           // 18
+		void          LinkObject(NiStream& a_stream) override;           // 19
+		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;           // 1B
+		void          Unk_25(void) override;                             // 25
 
 		// add
 		virtual hkpWorld* GetWorld();        // 27 - { return 0; }

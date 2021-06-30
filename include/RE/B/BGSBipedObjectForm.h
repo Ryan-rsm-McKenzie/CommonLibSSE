@@ -51,12 +51,12 @@ namespace RE
 		using BipedObjectSlot = BIPED_MODEL::BipedObjectSlot;
 		using FirstPersonFlag = BIPED_MODEL::BipedObjectSlot;
 
-		virtual ~BGSBipedObjectForm();  // 00
+		~BGSBipedObjectForm() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02 - { return; }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02 - { return; }
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		BipedObjectSlot AddSlotToMask(BipedObjectSlot a_slot);
 		ArmorType       GetArmorType() const;

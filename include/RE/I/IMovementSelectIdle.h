@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IMovementSelectIdle;
 
-		virtual ~IMovementSelectIdle();  // 00
+		~IMovementSelectIdle() override;  // 00
 
 		// add
 		virtual void Unk_01(void) = 0;  // 01

@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraDetachTime;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDetachTime;
 
-		virtual ~ExtraDetachTime();  // 00
+		~ExtraDetachTime() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kDetachTime; }
+		ExtraDataType GetType() const override;  // 01 - { return kDetachTime; }
 
 		// members
 		std::uint32_t time;   // 10

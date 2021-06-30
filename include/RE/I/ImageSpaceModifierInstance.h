@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstance;
 
-		virtual ~ImageSpaceModifierInstance();  // 00
+		~ImageSpaceModifierInstance() override;  // 00
 
 		// add
 		virtual void Unk_25(void);      // 25 - { return 0; }

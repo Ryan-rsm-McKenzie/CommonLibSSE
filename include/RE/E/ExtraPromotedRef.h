@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPromotedRef;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPromotedRef;
 
-		virtual ~ExtraPromotedRef();  // 00
+		~ExtraPromotedRef() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kPromotedRef };
+		ExtraDataType GetType() const override;  // 01 - { return kPromotedRef };
 
 		// members
 		BSTArray<TESForm*> promotedRefOwners;  // 10

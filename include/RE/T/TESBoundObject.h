@@ -34,14 +34,14 @@ namespace RE
 		};
 		static_assert(sizeof(BOUND_DATA) == 0xC);
 
-		virtual ~TESBoundObject();  // 00
+		~TESBoundObject() override;  // 00
 
 		// override (TESObject)
-		virtual void        LoadObjectBound(TESFile* a_mod) override;                                                                                                                 // 26
-		virtual bool        IsBoundObject() const override;                                                                                                                           // 27 - { return true; }
-		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                                                                                                      // 40
-		virtual bool        ReplaceModel() override;                                                                                                                                  // 44
+		void        LoadObjectBound(TESFile* a_mod) override;                                                                                                                 // 26
+		bool        IsBoundObject() const override;                                                                                                                           // 27 - { return true; }
+		bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                                                                                                      // 40
+		bool        ReplaceModel() override;                                                                                                                                  // 44
 
 		// add
 		virtual void          SetObjectVoiceType(BGSVoiceType* a_voiceType);                                                 // 48 - { return; }

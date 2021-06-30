@@ -24,10 +24,10 @@ namespace RE
 			};
 		};
 
-		virtual ~TESWordOfPower();  // 00
+		~TESWordOfPower() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
 		BSFixedString translation;  // 30 - TNAM

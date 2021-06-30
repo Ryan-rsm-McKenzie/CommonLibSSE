@@ -193,8 +193,8 @@ namespace SKSE
 		public:
 			Task(TaskFn&& a_fn);
 
-			virtual void Run() override;
-			virtual void Dispose() override;
+			void Run() override;
+			void Dispose() override;
 
 		private:
 			TaskFn _fn;
@@ -205,8 +205,8 @@ namespace SKSE
 		public:
 			UITask(TaskFn&& a_fn);
 
-			virtual void Run() override;
-			virtual void Dispose() override;
+			void Run() override;
+			void Dispose() override;
 
 		private:
 			TaskFn _fn;

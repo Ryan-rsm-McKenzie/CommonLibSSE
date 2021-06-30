@@ -15,12 +15,12 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__CompiledScriptLoader;
 
-			virtual ~CompiledScriptLoader();  // 00
+			~CompiledScriptLoader() override;  // 00
 
 			// override (ILoader)
-			virtual ILoader* Clone() override;                                                                  // 01
-			virtual void     SetScriptStore(const BSTSmartPointer<IStore>& a_store) override;                   // 02
-			virtual bool     GetClass(const char* a_name, BSScript::UnlinkedTypes::Object& a_object) override;  // 03
+			ILoader* Clone() override;                                                                  // 01
+			void     SetScriptStore(const BSTSmartPointer<IStore>& a_store) override;                   // 02
+			bool     GetClass(const char* a_name, BSScript::UnlinkedTypes::Object& a_object) override;  // 03
 
 			// members
 			ErrorLogger*            errorHandler;  // 08

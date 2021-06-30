@@ -10,7 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterStateManager;
 
-		virtual ~hkpCharacterStateManager();  // 00
+		~hkpCharacterStateManager() override;  // 00
 
 		// members
 		hkpCharacterState* registeredState[hkpCharacterStateType::kTotal];  // 00

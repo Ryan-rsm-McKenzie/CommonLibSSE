@@ -26,11 +26,11 @@ namespace RE
 
 		ExtraHotkey();
 		explicit ExtraHotkey(Hotkey a_hotkey);
-		virtual ~ExtraHotkey() = default;  // 00
+		~ExtraHotkey() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kHotkey }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { hotkey != a_rhs->hotkey; }
+		ExtraDataType GetType() const override;                             // 01 - { return kHotkey }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { hotkey != a_rhs->hotkey; }
 
 		// members
 		stl::enumeration<Hotkey, std::uint8_t> hotkey;  // 10

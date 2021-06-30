@@ -12,10 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraDistantData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDistantData;
 
-		virtual ~ExtraDistantData();  // 00
+		~ExtraDistantData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kDistantData; }
+		ExtraDataType GetType() const override;  // 01 - { return kDistantData; }
 
 		// members
 		NiPoint3      landNormal;  // 10

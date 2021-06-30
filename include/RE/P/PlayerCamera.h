@@ -52,10 +52,10 @@ namespace RE
 		};
 		static_assert(sizeof(Unk120) == 0x10);
 
-		virtual ~PlayerCamera();  // 00
+		~PlayerCamera() override;  // 00
 
 		// override (TESCamera)
-		virtual void SetCameraRoot(NiPointer<NiNode> a_root) override;  // 01
+		void SetCameraRoot(NiPointer<NiNode> a_root) override;  // 01
 
 		static PlayerCamera* GetSingleton();
 

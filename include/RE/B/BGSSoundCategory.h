@@ -32,21 +32,21 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSSoundCategory();  // 00
+		~BGSSoundCategory() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// override (BGSSoundCategory)
-		virtual bool          Matches(const BSISoundCategory* a_category) const override;  // 01
-		virtual float         GetCategoryVolume() const override;                          // 02
-		virtual void          SetCategoryVolume(float a_value) override;                   // 03
-		virtual float         GetCategoryFrequency() const override;                       // 04
-		virtual void          SetCategoryFrequency(float a_value) override;                // 05
-		virtual std::uint16_t GetCategoryAttenuation() const override;                     // 06
-		virtual void          SetCategoryAttenuation(std::uint16_t a_value) override;      // 07
+		bool          Matches(const BSISoundCategory* a_category) const override;  // 01
+		float         GetCategoryVolume() const override;                          // 02
+		void          SetCategoryVolume(float a_value) override;                   // 03
+		float         GetCategoryFrequency() const override;                       // 04
+		void          SetCategoryFrequency(float a_value) override;                // 05
+		std::uint16_t GetCategoryAttenuation() const override;                     // 06
+		void          SetCategoryAttenuation(std::uint16_t a_value) override;      // 07
 
 		float GetDefaultMenuValue() const;
 		float GetStaticVolumeMultiplier() const;

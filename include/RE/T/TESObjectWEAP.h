@@ -207,21 +207,21 @@ namespace RE
 		};
 		static_assert(sizeof(Unk1B8) == 0x30);
 
-		virtual ~TESObjectWEAP();  // 00
+		~TESObjectWEAP() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void        InitializeData() override;                    // 04
-		virtual void        ClearData() override;                         // 05
-		virtual bool        Load(TESFile* a_mod) override;                // 06
-		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void        InitItemImpl() override;                      // 13
-		virtual TESFile*    GetDescriptionOwnerFile() const override;     // 14
-		virtual bool        GetPlayable() const override;                 // 19 - { return ~((data.flags >> 7) & 1); }
-		virtual const char* GetObjectTypeName() const override;           // 39 - { return g_animationStrings[data.animationType]; }
+		void        InitializeData() override;                    // 04
+		void        ClearData() override;                         // 05
+		bool        Load(TESFile* a_mod) override;                // 06
+		void        SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void        LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void        InitItemImpl() override;                      // 13
+		TESFile*    GetDescriptionOwnerFile() const override;     // 14
+		bool        GetPlayable() const override;                 // 19 - { return ~((data.flags >> 7) & 1); }
+		const char* GetObjectTypeName() const override;           // 39 - { return g_animationStrings[data.animationType]; }
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		float         GetSpeed() const;
 		float         GetReach() const;

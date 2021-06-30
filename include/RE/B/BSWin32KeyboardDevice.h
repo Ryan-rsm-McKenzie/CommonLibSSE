@@ -9,15 +9,15 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32KeyboardDevice;
 
-		virtual ~BSWin32KeyboardDevice();  // 00
+		~BSWin32KeyboardDevice() override;  // 00
 
 		// override (BSKeyboardDevice)
-		virtual void Initialize() override;           // 01
-		virtual void Process(float a_unk1) override;  // 02
-		virtual void Unk_03(void) override;           // 03
-		virtual void Reset() override;                // 08 - { std::memset(&curState, 0, 0x200); }
-		virtual void Unk_09(void) override;           // 09 - { return; }
-		virtual void Unk_0A(void) override;           // 0A - { return; }
+		void Initialize() override;           // 01
+		void Process(float a_unk1) override;  // 02
+		void Unk_03(void) override;           // 03
+		void Reset() override;                // 08 - { std::memset(&curState, 0, 0x200); }
+		void Unk_09(void) override;           // 09 - { return; }
+		void Unk_0A(void) override;           // 0A - { return; }
 
 		bool IsPressed(std::uint32_t a_keyCode) const;
 

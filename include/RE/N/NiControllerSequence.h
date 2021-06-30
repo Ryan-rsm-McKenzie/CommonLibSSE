@@ -62,18 +62,18 @@ namespace RE
 		};
 		static_assert(sizeof(IDTag) == 0x28);
 
-		virtual ~NiControllerSequence();  // 00
+		~NiControllerSequence() override;  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                            // 02
-		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;   // 17
-		virtual void          LoadBinary(NiStream& a_stream) override;             // 18
-		virtual void          LinkObject(NiStream& a_stream) override;             // 19
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;    // 1A
-		virtual void          SaveBinary(NiStream& a_stream) override;             // 1B
-		virtual bool          IsEqual(NiObject* a_object) override;                // 1C
-		virtual void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
-		virtual void          PostLinkObject(NiStream& a_stream) override;         // 1E
+		const NiRTTI* GetRTTI() const override;                            // 02
+		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;   // 17
+		void          LoadBinary(NiStream& a_stream) override;             // 18
+		void          LinkObject(NiStream& a_stream) override;             // 19
+		bool          RegisterStreamables(NiStream& a_stream) override;    // 1A
+		void          SaveBinary(NiStream& a_stream) override;             // 1B
+		bool          IsEqual(NiObject* a_object) override;                // 1C
+		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
+		void          PostLinkObject(NiStream& a_stream) override;         // 1E
 
 		// add
 		virtual bool Deactivate(float a_easeOutTime, bool a_transition);  // 25

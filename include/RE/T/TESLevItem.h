@@ -31,18 +31,18 @@ namespace RE
 			};
 		};
 
-		virtual ~TESLevItem();  // 00
+		~TESLevItem() override;  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;                // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
-		virtual void InitItemImpl() override;                      // 13
+		bool Load(TESFile* a_mod) override;                // 06
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		void InitItemImpl() override;                      // 13
 
 		// override (TESLeveledList)
-		virtual std::int32_t GetLevDifferenceMax() override;                            // 06 - { return iLevItemLevelDifferenceMax; }
-		virtual bool         GetCanContainFormsOfType(FormType a_type) const override;  // 07
+		std::int32_t GetLevDifferenceMax() override;                            // 06 - { return iLevItemLevelDifferenceMax; }
+		bool         GetCanContainFormsOfType(FormType a_type) const override;  // 07
 	};
 	static_assert(sizeof(TESLevItem) == 0x58);
 }

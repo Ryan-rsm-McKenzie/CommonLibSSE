@@ -11,7 +11,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
 
-		virtual ~ButtonEvent();  // 00
+		~ButtonEvent() override;  // 00
 
 		constexpr float Value() const noexcept { return value; }
 		constexpr float HeldDuration() const noexcept { return heldDownSecs; }

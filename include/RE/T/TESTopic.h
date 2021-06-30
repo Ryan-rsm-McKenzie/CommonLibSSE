@@ -146,19 +146,19 @@ namespace RE
 			};
 		};
 
-		virtual ~TESTopic();  // 00
+		~TESTopic() override;  // 00
 
 		// override (TESForm)
-		virtual bool        Load(TESFile* a_mod) override;                // 06
-		virtual void        InitItemImpl() override;                      // 13
-		virtual const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
-		virtual bool        SetFormEditorID(const char* a_str) override;  // 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
-		virtual bool        IsParentForm() override;                      // 34 - { return true; }
-		virtual bool        IsFormTypeChild(FormType a_type) override;    // 36 - { return a_type == FormType::Info }
+		bool        Load(TESFile* a_mod) override;                // 06
+		void        InitItemImpl() override;                      // 13
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
+		bool        IsParentForm() override;                      // 34 - { return true; }
+		bool        IsFormTypeChild(FormType a_type) override;    // 36 - { return a_type == FormType::Info }
 
 		// override (TESFullName)
-		virtual std::uint32_t GetFullNameLength() const override;  // 04
-		virtual const char*   GetFullName() const override;        // 05
+		std::uint32_t GetFullNameLength() const override;  // 04
+		const char*   GetFullName() const override;        // 05
 
 		float GetPriority() const;
 

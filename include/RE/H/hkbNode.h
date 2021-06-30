@@ -10,7 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbNode;
 
-		virtual ~hkbNode();  // 00
+		~hkbNode() override;  // 00
 
 		// add
 		virtual void Unk_04(void);  // 04 - { return; }

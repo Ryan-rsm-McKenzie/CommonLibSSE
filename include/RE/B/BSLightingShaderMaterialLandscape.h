@@ -13,15 +13,15 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
 
-		virtual ~BSLightingShaderMaterialLandscape();  // 00
+		~BSLightingShaderMaterialLandscape() override;  // 00
 
 		// override (BSLightingShaderMaterialBase)
-		virtual BSShaderMaterial* Create() override;                              // 01
-		virtual void              CopyMembers(BSShaderMaterial* a_src) override;  // 02
-		virtual Feature           GetFeature() const override;                    // 06 - { return Feature::kMultiTexLandLODBlend; }
-		virtual void              ClearTextures(void) override;                   // 09
-		virtual void              ReceiveValuesFromRootMaterial(void) override;   // 0A
-		virtual void              GetTextures(void) override;                     // 0B
+		BSShaderMaterial* Create() override;                              // 01
+		void              CopyMembers(BSShaderMaterial* a_src) override;  // 02
+		Feature           GetFeature() const override;                    // 06 - { return Feature::kMultiTexLandLODBlend; }
+		void              ClearTextures(void) override;                   // 09
+		void              ReceiveValuesFromRootMaterial(void) override;   // 0A
+		void              GetTextures(void) override;                     // 0B
 
 		// members
 		std::uint32_t              numLandscapeTextures;        // 0A0

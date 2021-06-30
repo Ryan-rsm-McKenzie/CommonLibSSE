@@ -24,14 +24,14 @@ namespace RE
 				kRealJail = 1 << 1
 			};
 
-			virtual ~SendPlayerToJailFunctor();  // 00
+			~SendPlayerToJailFunctor() override;  // 00
 
 			// override (DelayFunctor)
-			virtual RE::BSScript::Variable operator()() override;                                                              // 01
-			virtual bool                   IsLatent() const override;                                                          // 02 - { return true; }
-			virtual bool                   SaveImpl(BSStorage& a_storage) const override;                                      // 04
-			virtual FunctorType            GetType() const override;                                                           // 05 - { return 19; }
-			virtual bool                   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3) override;  // 06
+			RE::BSScript::Variable operator()() override;                                                              // 01
+			bool                   IsLatent() const override;                                                          // 02 - { return true; }
+			bool                   SaveImpl(BSStorage& a_storage) const override;                                      // 04
+			FunctorType            GetType() const override;                                                           // 05 - { return 19; }
+			bool                   LoadImpl(const BSStorage& a_storage, std::uint32_t a_arg2, bool& a_arg3) override;  // 06
 
 			// members
 			FormID                                     faction;  // 10

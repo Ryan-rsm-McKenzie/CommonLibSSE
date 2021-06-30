@@ -75,11 +75,11 @@ namespace RE
 		};
 		static_assert(sizeof(Timing) == 0x8);
 
-		virtual ~TESClimate();  // 00
+		~TESClimate() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
 		TESModel                   nightSky;                        // 20

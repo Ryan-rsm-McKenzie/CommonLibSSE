@@ -24,16 +24,16 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
 
-		virtual ~BookMenu();  // 00
+		~BookMenu() override;  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
-		virtual void               PostDisplay() override;                                                // 06
-		virtual void               PreDisplay() override;                                                 // 07
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               PostDisplay() override;                                                // 06
+		void               PreDisplay() override;                                                 // 07
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
 		[[nodiscard]] TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
 

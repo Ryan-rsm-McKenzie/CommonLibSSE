@@ -22,12 +22,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSMovementType();  // 00
+		~BGSMovementType() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		Movement::TypeData movementTypeData;  // 20

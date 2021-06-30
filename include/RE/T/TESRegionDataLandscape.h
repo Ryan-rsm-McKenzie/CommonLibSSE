@@ -14,14 +14,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESRegionDataLandscape;
 		inline static constexpr auto TYPE = Type::kLand;
 
-		virtual ~TESRegionDataLandscape();  // 00
+		~TESRegionDataLandscape() override;  // 00
 
 		// override (TESRegionData)
-		virtual Type GetType() const override;                              // 03 - { return Type::kLand; }
-		virtual void ConstructSelf() override;                              // 04
-		virtual void Unk_05(void) override;                                 // 05
-		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
-		virtual bool IsLoaded() const override;                             // 07
+		Type GetType() const override;                              // 03 - { return Type::kLand; }
+		void ConstructSelf() override;                              // 04
+		void Unk_05(void) override;                                 // 05
+		void CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
+		bool IsLoaded() const override;                             // 07
 
 		// add
 		virtual bool LoadIcon(TESFile* a_mod);           // 08

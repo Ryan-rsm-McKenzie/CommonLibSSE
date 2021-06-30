@@ -51,20 +51,20 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectDOOR();  // 00
+		~TESObjectDOOR() override;  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void        InitializeData() override;                                                                                                                                // 04
-		virtual void        ClearData() override;                                                                                                                                     // 05
-		virtual bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void        InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
-		virtual bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
-		virtual bool        CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
+		void        InitializeData() override;                                                                                                                                // 04
+		void        ClearData() override;                                                                                                                                     // 05
+		bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void        InitItemImpl() override;                                                                                                                                  // 13
+		bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
+		bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		bool        CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
 
 		// override (BGSOpenCloseForm)
-		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;  // 01
+		void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;  // 01
 
 		// members
 		std::uint64_t                        unk90;            // 90

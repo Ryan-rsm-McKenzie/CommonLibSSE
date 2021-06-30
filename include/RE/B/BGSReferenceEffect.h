@@ -39,13 +39,13 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x18);
 
-		virtual ~BGSReferenceEffect();  // 00
+		~BGSReferenceEffect() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		Data data;  // 20 - DATA

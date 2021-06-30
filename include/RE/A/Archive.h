@@ -14,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Archive;
 
-		virtual ~Archive();  // 00
+		~Archive() override;  // 00
 
 		// members
 		std::uint64_t unk1C0;  // 1C0

@@ -27,10 +27,10 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x58);
 
-		virtual ~ExtraInfoGeneralTopic();  // 00
+		~ExtraInfoGeneralTopic() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kInfoGeneralTopic; }
+		ExtraDataType GetType() const override;  // 01 - { return kInfoGeneralTopic; }
 
 		// members
 		Data* unk10;  // 10

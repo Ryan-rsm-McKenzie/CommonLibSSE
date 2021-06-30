@@ -12,14 +12,14 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSImagespaceShader;
 
-		virtual ~BSImagespaceShader();  // 00
+		~BSImagespaceShader() override;  // 00
 
 		// override (BSShader)
-		virtual void Unk_02(void) override;  // 02
-		virtual void Unk_03(void) override;  // 03
-		virtual void Unk_06(void) override;  // 06
-		virtual void Unk_07(void) override;  // 07
-		virtual void Unk_09(void) override;  // 09
+		void Unk_02(void) override;  // 02
+		void Unk_03(void) override;  // 03
+		void Unk_06(void) override;  // 06
+		void Unk_07(void) override;  // 07
+		void Unk_09(void) override;  // 09
 
 		// add
 		virtual void Unk_0A(void);  // 0A - { return; }

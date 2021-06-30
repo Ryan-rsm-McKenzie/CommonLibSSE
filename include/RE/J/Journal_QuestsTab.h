@@ -10,10 +10,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Journal_QuestsTab;
 
-		virtual ~Journal_QuestsTab();  // 00
+		~Journal_QuestsTab() override;  // 00
 
 		// override (JournalTab)
-		virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
+		void Accept(CallbackProcessor* a_cbReg) override;  // 01
 
 		// members
 		GFxValue      unk18;  // 18

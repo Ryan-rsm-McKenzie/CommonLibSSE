@@ -38,23 +38,23 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_TES;
 
-			virtual ~SystemEventAdapter();  // 00
+			~SystemEventAdapter() override;  // 00
 
 			// override (BSTEventSink<BSSystemEvent>)
-			virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
+			BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
 			// members
 			std::uint64_t unk08;  // 08
 		};
 		static_assert(sizeof(SystemEventAdapter) == 0x10);
 
-		virtual ~TES();  // 00
+		~TES() override;  // 00
 
 		// override (BSTEventSink<BSResource::ArchiveStreamOpenedEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;  // 01 - { return BSEventNotifyControl::kContinue; }
+		BSEventNotifyControl ProcessEvent(const BSResource::ArchiveStreamOpenedEvent* a_event, BSTEventSource<BSResource::ArchiveStreamOpenedEvent>* a_eventSource) override;  // 01 - { return BSEventNotifyControl::kContinue; }
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01
 
 		static TES* GetSingleton();
 

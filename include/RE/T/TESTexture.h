@@ -11,12 +11,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTexture;
 
-		virtual ~TESTexture();  // 00
+		~TESTexture() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
 		virtual std::uint32_t GetMaxAllowedSize();                     // 04 - { return 0; }

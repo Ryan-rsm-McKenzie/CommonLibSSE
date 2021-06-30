@@ -14,11 +14,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraActivateRef;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kActivateRef;
 
-		virtual ~ExtraActivateRef();  // 00
+		~ExtraActivateRef() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kActivateRef; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kActivateRef; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		BSSimpleList<REF_ACTIVATE_DATA*> parents;        // 10

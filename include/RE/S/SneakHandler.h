@@ -9,11 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SneakHandler;
 
-		virtual ~SneakHandler();  // 00
+		~SneakHandler() override;  // 00
 
 		// override (PlayerInputHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;                                  // 01
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
+		bool CanProcess(InputEvent* a_event) override;                                  // 01
+		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
 	};
 	static_assert(sizeof(SneakHandler) == 0x10);
 }

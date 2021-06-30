@@ -85,15 +85,15 @@ namespace RE
 		};
 		static_assert(sizeof(MegaBlockPage) == 0x200000);
 
-		virtual ~BSSmallBlockAllocator();  // 00
+		~BSSmallBlockAllocator() override;  // 00
 
 		// override (IMemoryStore)
-		virtual std::size_t Size(const void* a_block) const override;                                   // 01
-		virtual void        GetMemoryStats(MemoryStats* a_stats) override;                              // 02
-		virtual bool        ContainsBlockImpl(const void* a_block) const override;                      // 03
-		virtual void*       AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override;  // 04
-		virtual void        DeallocateAlignImpl(void*& a_freeBlock) override;                           // 05
-		virtual void*       TryAllocateImpl(std::size_t a_size, std::uint32_t a_alignment) override;    // 06
+		std::size_t Size(const void* a_block) const override;                                   // 01
+		void        GetMemoryStats(MemoryStats* a_stats) override;                              // 02
+		bool        ContainsBlockImpl(const void* a_block) const override;                      // 03
+		void*       AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override;  // 04
+		void        DeallocateAlignImpl(void*& a_freeBlock) override;                           // 05
+		void*       TryAllocateImpl(std::size_t a_size, std::uint32_t a_alignment) override;    // 06
 
 		// members
 		Pool              pools[64];            // 0008

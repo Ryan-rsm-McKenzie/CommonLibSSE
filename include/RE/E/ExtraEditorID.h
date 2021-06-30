@@ -12,10 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraEditorID;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEditorID;
 
-		virtual ~ExtraEditorID();  // 00
+		~ExtraEditorID() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kEditorID; }
+		ExtraDataType GetType() const override;  // 01 - { return kEditorID; }
 
 		// members
 		BSFixedString editorID;  // 10

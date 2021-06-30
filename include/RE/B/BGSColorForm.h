@@ -30,12 +30,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSColorForm();  // 00
+		~BGSColorForm() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
 
 		bool IsPlayable() const;
 
