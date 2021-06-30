@@ -33,14 +33,14 @@ namespace RE
 		};
 		static_assert(sizeof(Attributes) == 0x10);
 
-		virtual ~BSSystemFileStorage();  // 00
+		~BSSystemFileStorage() override;  // 00
 
 		// override (BSStorage)
-		virtual std::size_t              GetSize() const override;                                                       // 01
-		virtual std::size_t              GetPosition() const override;                                                   // 02
-		virtual BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const override;  // 03
-		virtual BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const override;                // 04
-		virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;               // 05
+		std::size_t              GetSize() const override;                                                       // 01
+		std::size_t              GetPosition() const override;                                                   // 02
+		BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const override;  // 03
+		BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const override;                // 04
+		BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;               // 05
 
 		bool IsGoodForRead() const;
 

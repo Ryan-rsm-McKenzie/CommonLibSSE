@@ -16,7 +16,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI__void___cdecl_BSResource__RegisterPrefix_char_const_____ptr64_char_const_____ptr64_BSResource__Location_____ptr64_____2___Traverser;
 
 			// override (LocationTraverser)
-			virtual void ProcessName(const char* a_name, Location& a_location) override;  // 00
+			void ProcessName(const char* a_name, Location& a_location) override;  // 00
 
 			// add
 			virtual ~Traverser();  // 01

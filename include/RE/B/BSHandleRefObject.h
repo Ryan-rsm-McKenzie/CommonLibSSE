@@ -15,7 +15,7 @@ namespace RE
 			kHandleValid = 1 << 10
 		};
 
-		virtual ~BSHandleRefObject();  // 00
+		~BSHandleRefObject() override;  // 00
 
 		void          DecRefCount();
 		void          IncRefCount();

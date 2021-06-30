@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_LevelUpMenu;
 		constexpr static std::string_view MENU_NAME = "LevelUp Menu";
 
-		virtual ~LevelUpMenu();  // 00
+		~LevelUpMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
+		void Accept(CallbackProcessor* a_cbReg) override;  // 01
 
 		// members
 		bool          unk30;  // 30

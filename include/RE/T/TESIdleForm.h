@@ -46,16 +46,16 @@ namespace RE
 			};
 		};
 
-		virtual ~TESIdleForm();  // 00
+		~TESIdleForm() override;  // 00
 
 		// override (TESForm)
-		virtual void        InitializeData() override;                                          // 04
-		virtual void        ClearData() override;                                               // 05
-		virtual bool        Load(TESFile* a_mod) override;                                      // 06
-		virtual TESForm*    CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
-		virtual void        InitItemImpl() override;                                            // 13
-		virtual const char* GetFormEditorID() const override;                                   // 32 - { return formEditorID.c_str(); }
-		virtual bool        SetFormEditorID(const char* a_str) override;                        // 33
+		void        InitializeData() override;                                          // 04
+		void        ClearData() override;                                               // 05
+		bool        Load(TESFile* a_mod) override;                                      // 06
+		TESForm*    CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
+		void        InitItemImpl() override;                                            // 13
+		const char* GetFormEditorID() const override;                                   // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;                        // 33
 
 		// members
 		TESCondition  conditions;     // 20

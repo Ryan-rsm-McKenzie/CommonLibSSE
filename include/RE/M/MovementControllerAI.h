@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MovementControllerAI;
 
-		virtual ~MovementControllerAI();  // 00
+		~MovementControllerAI() override;  // 00
 
 		// add
 		virtual void Unk_05(void);  // 05

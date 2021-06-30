@@ -48,12 +48,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSMovableStatic();  // 00
+		~BGSMovableStatic() override;  // 00
 
 		// override (TESObjectSTAT)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BGSSoundDescriptorForm* soundLoop;  // A0 - SNAM

@@ -28,13 +28,13 @@ namespace RE
 	class BSTCommonMessageQueue : public BSTMessageQueue<T>
 	{
 	public:
-		virtual ~BSTCommonMessageQueue();  // 00
+		~BSTCommonMessageQueue() override;  // 00
 
 		// override (BSTMessageQueue<T>)
-		virtual bool Push(T* a_obj) override;     // 01
-		virtual bool TryPush(T* a_obj) override;  // 02
-		virtual bool Pop(T* a_obj) override;      // 03
-		virtual bool TryPop(T* a_obj) override;   // 04
+		bool Push(T* a_obj) override;     // 01
+		bool TryPush(T* a_obj) override;  // 02
+		bool Pop(T* a_obj) override;      // 03
+		bool TryPop(T* a_obj) override;   // 04
 
 	protected:
 		// add
@@ -62,12 +62,12 @@ namespace RE
 	class BSTCommonLLMessageQueue : public BSTCommonMessageQueue<T>
 	{
 	public:
-		virtual ~BSTCommonLLMessageQueue();  // 00
+		~BSTCommonLLMessageQueue() override;  // 00
 
 	protected:
 		// override (BSTCommonMessageQueue<T>)
-		virtual bool PushInternal(T* a_obj) override;  // 05
-		virtual bool PopInternal(T* a_obj) override;   // 06
+		bool PushInternal(T* a_obj) override;  // 05
+		bool PopInternal(T* a_obj) override;   // 06
 
 	public:
 		BSTFreeList<T>*      freeList;  // 10
@@ -84,8 +84,8 @@ namespace RE
 
 	protected:
 		// override (BSTCommonMessageQueue<T>)
-		virtual bool PushInternal(T* a_obj) override;  // 05
-		virtual bool PopInternal(T* a_obj) override;   // 06
+		bool PushInternal(T* a_obj) override;  // 05
+		bool PopInternal(T* a_obj) override;   // 06
 
 	public:
 		char          queueBuffer[sizeof(T) * SIZE];  // 10

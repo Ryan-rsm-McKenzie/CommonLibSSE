@@ -18,15 +18,15 @@ namespace RE
 			kReplaceDefault = 2
 		};
 
-		virtual ~BGSEntryPointFunctionDataActivateChoice();  // 00
+		~BGSEntryPointFunctionDataActivateChoice() override;  // 00
 
 		// override (BGSEntryPointFunctionData)
-		virtual FunctionType GetType() const override;                   // 01 - { return kDataActivateChoice; }
-		virtual bool         LoadFunctionData(TESFile* a_mod) override;  // 02
-		virtual void         ResolveForms(TESFile* a_mod) override;      // 03
-		virtual void         Unk_05(void) override;                      // 05
-		virtual void         SetPerk(BGSPerk* a_perk) override;          // 06 - { perk = a_perk; }
-		virtual BGSPerk*     GetPerk() override;                         // 07 - { return perk; }
+		FunctionType GetType() const override;                   // 01 - { return kDataActivateChoice; }
+		bool         LoadFunctionData(TESFile* a_mod) override;  // 02
+		void         ResolveForms(TESFile* a_mod) override;      // 03
+		void         Unk_05(void) override;                      // 05
+		void         SetPerk(BGSPerk* a_perk) override;          // 06 - { perk = a_perk; }
+		BGSPerk*     GetPerk() override;                         // 07 - { return perk; }
 
 		bool ReplacesDefault() const;
 		bool RunsImmediately() const;

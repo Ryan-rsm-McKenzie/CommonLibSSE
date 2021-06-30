@@ -40,24 +40,24 @@ namespace RE
 		};
 		static_assert(sizeof(ReverbParams) == 0xE);
 
-		virtual ~BGSReverbParameters();  // 00
+		~BGSReverbParameters() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// override (BSIReverbType)
-		virtual std::int32_t DoGetRoomLevel() const override;        // 00 - { return data.roomFilter * 100; }
-		virtual std::int32_t DoGetRoomHFLevel() const override;      // 01 - { return data.roomHFFilter * 100; }
-		virtual float        DoGetDecayTime() const override;        // 02 - { return data.decayTime * 0.001; }
-		virtual float        DoGetDecayHFRatio() const override;     // 03 - { return data.decayHFRatio * 0.0099999998; }
-		virtual std::int32_t DoGetReflectionLevel() const override;  // 04 - { return data.reflections * 100; }
-		virtual float        DoGetReflectionDelay() const override;  // 05 - { return data.reflectDelay * 0.0012000001; }
-		virtual std::int32_t DoGetReverbLevel() const override;      // 06 - { return data.reverb * 100; }
-		virtual float        DoGetReverbDelay() const override;      // 07 - { return data.reverbDelay * 0.001; }
-		virtual float        DoGetDiffusion() const override;        // 08 - { return data.diffusionPct; }
-		virtual float        DoGetDensity() const override;          // 09 - { return data.densityPct; }
-		virtual float        DoGetHFReference() const override;      // 0A - { return data.hfReference; }
+		std::int32_t DoGetRoomLevel() const override;        // 00 - { return data.roomFilter * 100; }
+		std::int32_t DoGetRoomHFLevel() const override;      // 01 - { return data.roomHFFilter * 100; }
+		float        DoGetDecayTime() const override;        // 02 - { return data.decayTime * 0.001; }
+		float        DoGetDecayHFRatio() const override;     // 03 - { return data.decayHFRatio * 0.0099999998; }
+		std::int32_t DoGetReflectionLevel() const override;  // 04 - { return data.reflections * 100; }
+		float        DoGetReflectionDelay() const override;  // 05 - { return data.reflectDelay * 0.0012000001; }
+		std::int32_t DoGetReverbLevel() const override;      // 06 - { return data.reverb * 100; }
+		float        DoGetReverbDelay() const override;      // 07 - { return data.reverbDelay * 0.001; }
+		float        DoGetDiffusion() const override;        // 08 - { return data.diffusionPct; }
+		float        DoGetDensity() const override;          // 09 - { return data.densityPct; }
+		float        DoGetHFReference() const override;      // 0A - { return data.hfReference; }
 
 		// members
 		ReverbParams  data;   // 28 - DATA

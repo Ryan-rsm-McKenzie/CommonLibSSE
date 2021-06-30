@@ -112,12 +112,12 @@ namespace RE
 			kRefPermanentlyDeleted = 1 << 7
 		};
 
-		virtual ~TESForm();  // 00
+		~TESForm() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01 - { return; }
-		virtual void ClearDataComponent() override;                     // 02 - { SetEditorID(""); }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01 - { return; }
+		void ClearDataComponent() override;                     // 02 - { SetEditorID(""); }
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
 		virtual void                 InitializeData();                                                                                                                                // 04 - { return; }

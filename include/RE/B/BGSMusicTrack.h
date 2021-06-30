@@ -13,10 +13,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicTrack;
 
-		virtual ~BGSMusicTrack();  // 00
+		~BGSMusicTrack() override;  // 00
 
 		// override (BSIMusicTrack)
-		virtual bool TestCanPlay() const override;  // 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
+		bool TestCanPlay() const override;  // 07 - { return conditions ? conditions->Run(g_thePlayer, g_thePlayer) : true; }
 
 		// add
 		virtual void InitItem(TESForm* a_form);  // 0B

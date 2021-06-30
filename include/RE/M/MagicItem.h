@@ -60,18 +60,18 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-		virtual ~MagicItem();  // 00
+		~MagicItem() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;          // 04 - { TESForm::InitDefaults(); }
-		virtual bool Load(TESFile* a_mod) override;      // 06
-		virtual void InitItemImpl() override;            // 13
-		virtual bool IsMagicItem() const override;       // 29 - { return true; }
-		virtual void Copy(TESForm* a_srcForm) override;  // 2F
-		virtual bool IsAutoCalc() const override;        // 3E - { return (GetData().flags & 1) == 0; }
+		void InitializeData() override;          // 04 - { TESForm::InitDefaults(); }
+		bool Load(TESFile* a_mod) override;      // 06
+		void InitItemImpl() override;            // 13
+		bool IsMagicItem() const override;       // 29 - { return true; }
+		void Copy(TESForm* a_srcForm) override;  // 2F
+		bool IsAutoCalc() const override;        // 3E - { return (GetData().flags & 1) == 0; }
 
 		// override (BGSKeywordForm)
-		virtual bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
+		bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
 
 		// add
 		virtual MagicSystem::SpellType   GetSpellType() const = 0;                                     // 53

@@ -31,30 +31,30 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSTempEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffect;
 
-		virtual ~BSTempEffect();  // 00
+		~BSTempEffect() override;  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI*                 GetRTTI() const override;                   // 02
-		virtual NiNode*                       AsNode() override;                          // 03 - { return 0; }
-		virtual NiSwitchNode*                 AsSwitchNode() override;                    // 04 - { return 0; }
-		virtual BSFadeNode*                   AsFadeNode() override;                      // 05 - { return 0; }
-		virtual BSMultiBoundNode*             AsMultiBoundNode() override;                // 06 - { return 0; }
-		virtual BSGeometry*                   AsGeometry() override;                      // 07 - { return 0; }
-		virtual NiTriStrips*                  AsTriStrips() override;                     // 08 - { return 0; }
-		virtual BSTriShape*                   AsTriShape() override;                      // 09 - { return 0; }
-		virtual BSSegmentedTriShape*          AsSegmentedTriShape() override;             // 0A - { return 0; }
-		virtual BSSubIndexTriShape*           AsSubIndexTriShape() override;              // 0B - { return 0; }
-		virtual BSDynamicTriShape*            AsDynamicTriShape() override;               // 0C - { return 0; }
-		virtual NiGeometry*                   AsNiGeometry() override;                    // 0D - { return 0; }
-		virtual NiTriBasedGeom*               AsNiTriBasedGeom() override;                // 0E - { return 0; }
-		virtual NiTriShape*                   AsNiTriShape() override;                    // 0F - { return 0; }
-		virtual NiParticles*                  AsParticlesGeom() override;                 // 10 - { return 0; }
-		virtual BSLines*                      AsLinesGeom() override;                     // 11 - { return 0; }
-		virtual bhkNiCollisionObject*         AsBhkNiCollisionObject() override;          // 12 - { return 0; }
-		virtual bhkBlendCollisionObject*      AsBhkBlendCollisionObject() override;       // 13 - { return 0; }
-		virtual bhkAttachmentCollisionObject* AsBhkAttachmentCollisionObject() override;  // 14 - { return 0; }
-		virtual bhkRigidBody*                 AsBhkRigidBody() override;                  // 15 - { return 0; }
-		virtual bhkLimitedHingeConstraint*    AsBhkLimitedHingeConstraint() override;     // 16 - { return 0; }
+		const NiRTTI*                 GetRTTI() const override;                   // 02
+		NiNode*                       AsNode() override;                          // 03 - { return 0; }
+		NiSwitchNode*                 AsSwitchNode() override;                    // 04 - { return 0; }
+		BSFadeNode*                   AsFadeNode() override;                      // 05 - { return 0; }
+		BSMultiBoundNode*             AsMultiBoundNode() override;                // 06 - { return 0; }
+		BSGeometry*                   AsGeometry() override;                      // 07 - { return 0; }
+		NiTriStrips*                  AsTriStrips() override;                     // 08 - { return 0; }
+		BSTriShape*                   AsTriShape() override;                      // 09 - { return 0; }
+		BSSegmentedTriShape*          AsSegmentedTriShape() override;             // 0A - { return 0; }
+		BSSubIndexTriShape*           AsSubIndexTriShape() override;              // 0B - { return 0; }
+		BSDynamicTriShape*            AsDynamicTriShape() override;               // 0C - { return 0; }
+		NiGeometry*                   AsNiGeometry() override;                    // 0D - { return 0; }
+		NiTriBasedGeom*               AsNiTriBasedGeom() override;                // 0E - { return 0; }
+		NiTriShape*                   AsNiTriShape() override;                    // 0F - { return 0; }
+		NiParticles*                  AsParticlesGeom() override;                 // 10 - { return 0; }
+		BSLines*                      AsLinesGeom() override;                     // 11 - { return 0; }
+		bhkNiCollisionObject*         AsBhkNiCollisionObject() override;          // 12 - { return 0; }
+		bhkBlendCollisionObject*      AsBhkBlendCollisionObject() override;       // 13 - { return 0; }
+		bhkAttachmentCollisionObject* AsBhkAttachmentCollisionObject() override;  // 14 - { return 0; }
+		bhkRigidBody*                 AsBhkRigidBody() override;                  // 15 - { return 0; }
+		bhkLimitedHingeConstraint*    AsBhkLimitedHingeConstraint() override;     // 16 - { return 0; }
 
 		// add
 		virtual void             Initialize();                                     // 25 - { initialized = true; }

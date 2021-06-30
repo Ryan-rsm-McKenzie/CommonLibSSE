@@ -261,7 +261,7 @@ namespace RE
 		};
 		static_assert(sizeof(PlayerSkills) == 0x8);
 
-		virtual ~PlayerCharacter();  // 000
+		~PlayerCharacter() override;  // 000
 
 		// add
 		virtual void          Unk_12A(void);                                                   // 12A

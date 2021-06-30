@@ -29,13 +29,13 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSEquipSlot();  // 00
+		~BGSEquipSlot() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BSTArray<BGSEquipSlot*>               parentSlots;  // 20 - PNAM

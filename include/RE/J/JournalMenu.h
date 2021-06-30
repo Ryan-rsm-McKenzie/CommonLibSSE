@@ -24,20 +24,20 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_JournalMenu;
 		constexpr static std::string_view MENU_NAME = "Journal Menu";
 
-		virtual ~JournalMenu();  // 00
+		~JournalMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;                       // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
-		virtual void               PostDisplay() override;                                                // 06
+		void               Accept(CallbackProcessor* a_processor) override;                       // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               PostDisplay() override;                                                // 06
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;              // 01
-		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool CanProcess(InputEvent* a_event) override;              // 01
+		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
 
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
 		// members
 		Journal_QuestsTab questsTab;  // 48

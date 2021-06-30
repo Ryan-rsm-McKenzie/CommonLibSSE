@@ -21,11 +21,11 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObject();  // 00
+		~TESObject() override;  // 00
 
 		// override (TESForm)
-		virtual bool          IsObject() const override;     // 28 - { return true; }
-		virtual std::uint32_t GetRefCount() const override;  // 2D - { return 0; }
+		bool          IsObject() const override;     // 28 - { return true; }
+		std::uint32_t GetRefCount() const override;  // 2D - { return 0; }
 
 		// add
 		virtual void          Unk_3B(void);                                // 3B - { return 0; }

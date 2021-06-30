@@ -99,16 +99,16 @@ namespace RE
 		};
 		static_assert(sizeof(KEYWORD_DATA) == 0x10);
 
-		virtual ~BGSLocation();  // 00
+		~BGSLocation() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;                    // 04
-		virtual bool Load(TESFile* a_mod) override;                // 06
-		virtual bool FindInFileFast(TESFile* a_mod) override;      // 0C
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
-		virtual void InitItemImpl() override;                      // 13
+		void InitializeData() override;                    // 04
+		bool Load(TESFile* a_mod) override;                // 06
+		bool FindInFileFast(TESFile* a_mod) override;      // 0C
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		void InitItemImpl() override;                      // 13
 
 		bool IsCleared() const;
 		bool IsChild(const BGSLocation* a_possibleChild) const;

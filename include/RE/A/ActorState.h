@@ -136,17 +136,17 @@ namespace RE
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
 
-		virtual ~ActorState();  // 00
+		~ActorState() override;  // 00
 
 		// override (IMovementState)
-		virtual void Unk_01(void) override;  // 01 - { return 0; }
-		virtual void Unk_02(void) override;  // 02 - { return; }
-		virtual void Unk_03(void) override;  // 03 - { return; }
-		virtual void Unk_04(void) override;  // 04 - { return; }
-		virtual void Unk_05(void) override;  // 05 - { return 0.0; }
-		virtual void Unk_06(void) override;  // 06 - { return 0.0; }
-		virtual void Unk_07(void) override;  // 07 - { return; }
-		virtual void Unk_08(void) override;  // 08 - { return 0; }
+		void Unk_01(void) override;  // 01 - { return 0; }
+		void Unk_02(void) override;  // 02 - { return; }
+		void Unk_03(void) override;  // 03 - { return; }
+		void Unk_04(void) override;  // 04 - { return; }
+		void Unk_05(void) override;  // 05 - { return 0.0; }
+		void Unk_06(void) override;  // 06 - { return 0.0; }
+		void Unk_07(void) override;  // 07 - { return; }
+		void Unk_08(void) override;  // 08 - { return 0; }
 
 		// add
 		virtual void Unk_14(void);  // 14

@@ -29,10 +29,10 @@ namespace RE
 
 	protected:
 		// override (Parent)
-		virtual std::uint32_t hash_function(key_type a_key) const override;                                      // 01
-		virtual bool          key_eq(key_type a_lhs, key_type a_rhs) const override;                             // 02
-		virtual void          assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;  // 03
-		virtual void          clear_value(value_type* a_value) override;                                         // 04
+		std::uint32_t hash_function(key_type a_key) const override;                                      // 01
+		bool          key_eq(key_type a_lhs, key_type a_rhs) const override;                             // 02
+		void          assign_value(value_type* a_value, key_type a_key, mapped_type a_mapped) override;  // 03
+		void          clear_value(value_type* a_value) override;                                         // 04
 
 		// members
 		bool          _copy;   // 20

@@ -55,21 +55,21 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectACTI();  // 00
+		~TESObjectACTI() override;  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void          InitializeData() override;                                                                                                                                // 04
-		virtual void          ClearData() override;                                                                                                                                     // 05
-		virtual bool          Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void          SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
-		virtual void          LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
-		virtual void          InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool          GetIgnoredBySandbox() const override;                                                                                                                     // 22 - { return (flags >> 1) & 1; }
-		virtual bool          IsWater() const override;                                                                                                                                 // 2A - { return waterType != 0; }
-		virtual bool          Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual TESWaterForm* GetWaterType() const override;                                                                                                                            // 3D - { return waterType; }
-		virtual bool          GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
-		virtual bool          CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
+		void          InitializeData() override;                                                                                                                                // 04
+		void          ClearData() override;                                                                                                                                     // 05
+		bool          Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void          SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		void          LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		void          InitItemImpl() override;                                                                                                                                  // 13
+		bool          GetIgnoredBySandbox() const override;                                                                                                                     // 22 - { return (flags >> 1) & 1; }
+		bool          IsWater() const override;                                                                                                                                 // 2A - { return waterType != 0; }
+		bool          Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		TESWaterForm* GetWaterType() const override;                                                                                                                            // 3D - { return waterType; }
+		bool          GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		bool          CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
 
 		// members
 		BGSSoundDescriptorForm*                    soundLoop;      // A8 - SNAM

@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_DeviceConnectEvent;
 
-		virtual ~DeviceConnectEvent();  // 00
+		~DeviceConnectEvent() override;  // 00
 
 		// members
 		bool          connected;  // 18

@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraBiped;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kBiped;
 
-		virtual ~ExtraBiped();  // 00
+		~ExtraBiped() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kBiped; }
+		ExtraDataType GetType() const override;  // 01 - { return kBiped; }
 
 		// members
 		BSTSmartPointer<BipedAnim> biped;  // 10

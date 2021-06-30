@@ -14,8 +14,8 @@ namespace RE
 		virtual ~BGSPackageDataPointerTemplate();  // 00
 
 		// override (BGSNamedPackageData<Parent>)
-		virtual void                 Unk_05(void) override;         // 05 - { return 1; }
-		virtual const BSFixedString& GetTypeName() const override;  // 0B - { return TYPE_NAME; }
+		void                 Unk_05(void) override;         // 05 - { return 1; }
+		const BSFixedString& GetTypeName() const override;  // 0B - { return TYPE_NAME; }
 
 		// add
 		virtual void LoadPointer(TESFile* a_mod) = 0;  // ??

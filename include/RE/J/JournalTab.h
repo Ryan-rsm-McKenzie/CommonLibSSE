@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_JournalTab;
 
-		virtual ~JournalTab();  // 00
+		~JournalTab() override;  // 00
 
 		// add
 		virtual void Unk_02(void);  // 02 - { return; }

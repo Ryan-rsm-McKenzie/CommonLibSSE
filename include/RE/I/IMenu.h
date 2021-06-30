@@ -59,10 +59,10 @@ namespace RE
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;
 
-		virtual ~IMenu() = default;  // 00
+		~IMenu() override = default;  // 00
 
 		// override (FxDelegateHandler)
-		virtual void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
+		void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
 
 		// add
 		virtual void               PostCreate();                                                 // 02 - { return; }

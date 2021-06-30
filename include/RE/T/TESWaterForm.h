@@ -102,14 +102,14 @@ namespace RE
 			};
 		};
 
-		virtual ~TESWaterForm();  // 00
+		~TESWaterForm() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool GetDangerous() const override;                                                                                                                            // 1B - { return flags & 1; }
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		void InitializeData() override;                                                                                                                                // 04
+		bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void InitItemImpl() override;                                                                                                                                  // 13
+		bool GetDangerous() const override;                                                                                                                            // 1B - { return flags & 1; }
+		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
 
 		// members
 		bool                                 needUpdate;               // 040

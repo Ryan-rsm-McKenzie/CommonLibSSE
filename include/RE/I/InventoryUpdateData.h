@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_InventoryUpdateData;
 
-		virtual ~InventoryUpdateData() = default;  // 00
+		~InventoryUpdateData() override = default;  // 00
 
 		// members
 		RefHandle     unk10;  // 10

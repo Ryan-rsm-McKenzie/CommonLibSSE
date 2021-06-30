@@ -9,11 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceTemp;
 
-		virtual ~ImageSpaceModifierInstanceTemp();  // 00
+		~ImageSpaceModifierInstanceTemp() override;  // 00
 
 		// override (ImageSpaceModifierInstance)
-		virtual void Unk_25(void) override;  // 25
-		virtual void Unk_28(void) override;  // 28
+		void Unk_25(void) override;  // 25
+		void Unk_28(void) override;  // 28
 
 		// members
 		float         duration;  // 28

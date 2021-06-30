@@ -14,16 +14,16 @@ namespace RE
 		using KeyType = NiAnimationKey::KeyType;
 		using KeyContent = NiAnimationKey::KeyContent;
 
-		virtual ~NiKeyBasedInterpolator();  // 00
+		~NiKeyBasedInterpolator() override;  // 00
 
 		// override (NiInterpolator)
-		virtual const NiRTTI* GetRTTI() const override;                                         // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;                          // 18 - { NiInterpolator::LoadBinary(a_stream); }
-		virtual void          LinkObject(NiStream& a_stream) override;                          // 19 - { NiInterpolator::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;                 // 1A - { return NiInterpolator::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;                          // 1B - { NiInterpolator::SaveBinary(a_stream); }
-		virtual bool          IsEqual(NiObject* a_object) override;                             // 1C - { return NiInterpolator::IsEqual(a_stream); }
-		virtual void          GetActiveTimeRange(float& a_start, float& a_end) const override;  // 32
+		const NiRTTI* GetRTTI() const override;                                         // 02
+		void          LoadBinary(NiStream& a_stream) override;                          // 18 - { NiInterpolator::LoadBinary(a_stream); }
+		void          LinkObject(NiStream& a_stream) override;                          // 19 - { NiInterpolator::LinkObject(a_stream); }
+		bool          RegisterStreamables(NiStream& a_stream) override;                 // 1A - { return NiInterpolator::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;                          // 1B - { NiInterpolator::SaveBinary(a_stream); }
+		bool          IsEqual(NiObject* a_object) override;                             // 1C - { return NiInterpolator::IsEqual(a_stream); }
+		void          GetActiveTimeRange(float& a_start, float& a_end) const override;  // 32
 
 		// add
 		virtual std::uint16_t GetKeyChannelCount() const = 0;                      // 39

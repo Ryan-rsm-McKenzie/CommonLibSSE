@@ -422,11 +422,11 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSDefaultObjectManager();  // 00
+		~BGSDefaultObjectManager() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
 		{

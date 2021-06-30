@@ -13,7 +13,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptor;
 
-		virtual ~BGSSoundDescriptor();  // 00
+		~BGSSoundDescriptor() override;  // 00
 
 		// add
 		virtual void          InitSound(TESForm* a_src);  // 03

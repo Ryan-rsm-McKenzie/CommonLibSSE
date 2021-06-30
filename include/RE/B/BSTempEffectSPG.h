@@ -14,15 +14,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSTempEffectSPG;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectSPG;
 
-		virtual ~BSTempEffectSPG();  // 00
+		~BSTempEffectSPG() override;  // 00
 
-		virtual const NiRTTI*    GetRTTI() const override;                           // 02
-		virtual void             Detach() override;                                  // 27
-		virtual bool             Update(float a_arg1) override;                      // 28
-		virtual TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return kSPG; }
-		virtual void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
-		virtual void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
-		virtual void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
+		const NiRTTI*    GetRTTI() const override;                           // 02
+		void             Detach() override;                                  // 27
+		bool             Update(float a_arg1) override;                      // 28
+		TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return kSPG; }
+		void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
+		void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
+		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
 
 		// members;
 		BGSShaderParticleGeometryData* data;   // 30

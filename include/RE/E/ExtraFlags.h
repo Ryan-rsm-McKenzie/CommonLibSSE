@@ -21,10 +21,10 @@ namespace RE
 			kPlayerHasTaken = 1 << 5
 		};
 
-		virtual ~ExtraFlags();  // 00
+		~ExtraFlags() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kFlags; }
+		ExtraDataType GetType() const override;  // 01 - { return kFlags; }
 
 		[[nodiscard]] constexpr bool IsActivationBlocked() const noexcept { return flags.all(Flag::kBlockActivate); }
 

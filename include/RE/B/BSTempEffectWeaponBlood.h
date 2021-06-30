@@ -12,10 +12,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectWeaponBlood;
 
-		virtual ~BSTempEffectWeaponBlood();  // 00
+		~BSTempEffectWeaponBlood() override;  // 00
 
-		virtual bool             Update(float a_arg1) override;  // 28
-		virtual TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return 1; }
+		bool             Update(float a_arg1) override;  // 28
+		TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return 1; }
 
 		// members;
 		NiPointer<NiAVObject> weapon3D;        // 030

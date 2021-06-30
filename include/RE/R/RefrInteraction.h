@@ -10,7 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_RefrInteraction;
 
-		virtual ~RefrInteraction();  // 00
+		~RefrInteraction() override;  // 00
 
 		// add
 		virtual void Unk_02(void);      // 02 - { a_arg1 = g_invalidRefHandle; }

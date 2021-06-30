@@ -21,10 +21,10 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSMenuIcon();  // 00
+		~BGSMenuIcon() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;  // 06 - { return true; }
+		bool Load(TESFile* a_mod) override;  // 06 - { return true; }
 	};
 	static_assert(sizeof(BGSMenuIcon) == 0x30);
 }

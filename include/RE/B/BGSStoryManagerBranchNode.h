@@ -21,14 +21,14 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSStoryManagerBranchNode();  // 00
+		~BGSStoryManagerBranchNode() override;  // 00
 
 		// override (BGSStoryManagerNodeBase)
-		virtual void                                     ClearData() override;                                           // 05 - { BGSStoryManagerNodeBase::ClearData(); }
-		virtual void                                     InitItemImpl() override;                                        // 13
-		virtual std::uint32_t                            QChildCount() const override;                                   // 3B - { return nodeChildren.size(); }
-		virtual BGSStoryManagerTreeForm*                 GetChild(std::uint32_t a_idx) const override;                   // 3C - { return children[a_idx]; }
-		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E - { return a_visitor->VisitBranchNode(this); }
+		void                                     ClearData() override;                                           // 05 - { BGSStoryManagerNodeBase::ClearData(); }
+		void                                     InitItemImpl() override;                                        // 13
+		std::uint32_t                            QChildCount() const override;                                   // 3B - { return nodeChildren.size(); }
+		BGSStoryManagerTreeForm*                 GetChild(std::uint32_t a_idx) const override;                   // 3C - { return children[a_idx]; }
+		BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E - { return a_visitor->VisitBranchNode(this); }
 
 		// members
 		BSTArray<BGSStoryManagerNodeBase*> children;  // 48

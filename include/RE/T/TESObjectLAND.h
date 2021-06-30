@@ -80,17 +80,17 @@ namespace RE
 		};
 		static_assert(sizeof(LoadedLandData) == 0x49D0);
 
-		virtual ~TESObjectLAND();  // 00
+		~TESObjectLAND() override;  // 00
 
 		// override (TESForm)
-		virtual bool     Load(TESFile* a_mod) override;                                                        // 06 - { return true; }
-		virtual TESForm* CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09
-		virtual void     SetAltered(bool a_set) override;                                                      // 24
-		virtual bool     BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
-		virtual void     CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
+		bool     Load(TESFile* a_mod) override;                                                        // 06 - { return true; }
+		TESForm* CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09
+		void     SetAltered(bool a_set) override;                                                      // 24
+		bool     BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
+		void     CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
 
 		// override (TESChildCell)
-		virtual TESObjectCELL* GetSaveParentCell() override;  // 01 - { return parentCell; }
+		TESObjectCELL* GetSaveParentCell() override;  // 01 - { return parentCell; }
 
 		// members
 		OBJ_LAND              data;            // 28 - DATA

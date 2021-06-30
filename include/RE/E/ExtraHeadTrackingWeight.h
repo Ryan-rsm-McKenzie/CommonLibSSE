@@ -11,11 +11,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHeadTrackingWeight;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
 
-		virtual ~ExtraHeadTrackingWeight();  // 00
+		~ExtraHeadTrackingWeight() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kHeadTrackingWeight; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return weight != a_rhs->weight; }
+		ExtraDataType GetType() const override;                             // 01 - { return kHeadTrackingWeight; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return weight != a_rhs->weight; }
 
 		// members
 		float         weight;  // 10

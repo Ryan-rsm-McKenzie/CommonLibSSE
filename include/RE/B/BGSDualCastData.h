@@ -42,11 +42,11 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSDualCastData();  // 00
+		~BGSDualCastData() override;  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BGSDualCastDataDEF data;  // 30 - DATA

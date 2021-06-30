@@ -50,7 +50,7 @@ namespace SKSE
 			LogEventHandler() = default;
 			LogEventHandler(const LogEventHandler&) = delete;
 			LogEventHandler(LogEventHandler&&) = delete;
-			~LogEventHandler() = default;
+			~LogEventHandler() override = default;
 
 			LogEventHandler& operator=(const LogEventHandler&) = delete;
 			LogEventHandler& operator=(LogEventHandler&&) = delete;

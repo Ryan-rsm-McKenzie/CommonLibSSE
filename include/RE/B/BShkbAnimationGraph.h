@@ -33,22 +33,22 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BShkbAnimationGraph;
 
-		virtual ~BShkbAnimationGraph();  // 00
+		~BShkbAnimationGraph() override;  // 00
 
 		// override (BSIRagdollDriver)
-		virtual void Unk_01(void) override;                 // 01
-		virtual void Unk_02(void) override;                 // 02
-		virtual void Unk_03(void) override;                 // 03
-		virtual void SetWorld(bhkWorld* a_world) override;  // 04 - { world = a_world; }
-		virtual void Unk_05(void) override;                 // 05
-		virtual void Unk_06(void) override;                 // 06
-		virtual void Unk_07(void) override;                 // 07
-		virtual void Unk_08(void) override;                 // 08
-		virtual void Unk_09(void) override;                 // 09
-		virtual void Unk_0A(void) override;                 // 0A
-		virtual void Unk_0B(void) override;                 // 0B
-		virtual void Unk_0C(void) override;                 // 0C
-		virtual void Unk_0D(void) override;                 // 0D
+		void Unk_01(void) override;                 // 01
+		void Unk_02(void) override;                 // 02
+		void Unk_03(void) override;                 // 03
+		void SetWorld(bhkWorld* a_world) override;  // 04 - { world = a_world; }
+		void Unk_05(void) override;                 // 05
+		void Unk_06(void) override;                 // 06
+		void Unk_07(void) override;                 // 07
+		void Unk_08(void) override;                 // 08
+		void Unk_09(void) override;                 // 09
+		void Unk_0A(void) override;                 // 0A
+		void Unk_0B(void) override;                 // 0B
+		void Unk_0C(void) override;                 // 0C
+		void Unk_0D(void) override;                 // 0D
 
 		template <class T>
 		[[nodiscard]] inline BSTEventSource<T>* GetEventSource()

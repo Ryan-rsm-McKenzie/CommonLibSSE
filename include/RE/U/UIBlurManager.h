@@ -15,7 +15,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_UIBlurManager;
 
-		virtual ~UIBlurManager();  // 00
+		~UIBlurManager() override;  // 00
 
 		static UIBlurManager* GetSingleton();
 

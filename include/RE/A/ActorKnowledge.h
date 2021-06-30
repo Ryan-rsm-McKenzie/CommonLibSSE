@@ -21,7 +21,7 @@ namespace RE
 			kNone = 0
 		};
 
-		virtual ~ActorKnowledge();  // 00
+		~ActorKnowledge() override;  // 00
 
 		// members
 		ActorHandle                                     owner;                        // 10

@@ -56,13 +56,13 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCustomPackageData;
 
-		virtual ~TESCustomPackageData();  // 00
+		~TESCustomPackageData() override;  // 00
 
 		// override (TESPackageData)
-		virtual void Copy(TESPackageData* a_package, TESForm* a_form) override;  // 01
-		virtual void InitItem(TESForm* a_form) override;                         // 03
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                // 04 - { return; }
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                // 05 - { return; }
+		void Copy(TESPackageData* a_package, TESForm* a_form) override;  // 01
+		void InitItem(TESForm* a_form) override;                         // 03
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;                // 04 - { return; }
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;                // 05 - { return; }
 
 		// members
 		BGSPackageDataList                     data;                     // 08

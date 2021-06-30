@@ -51,11 +51,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLock;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLock;
 
-		virtual ~ExtraLock();  // 00
+		~ExtraLock() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kLock; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kLock; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		REFR_LOCK* lock;  // 10

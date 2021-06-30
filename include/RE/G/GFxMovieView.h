@@ -64,7 +64,7 @@ namespace RE
 			kShapesNoInvisible = 3
 		};
 
-		virtual ~GFxMovieView();
+		~GFxMovieView() override;
 
 		// add
 		virtual void                        SetViewport(const GViewport& a_viewDesc);                                                                           // 19 - pure - Sets the render-target surface viewport to which the movie is scaled.

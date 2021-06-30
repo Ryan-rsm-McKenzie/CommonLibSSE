@@ -22,15 +22,15 @@ namespace RE
 			};
 		};
 
-		virtual ~TESSoulGem();  // 00
+		~TESSoulGem() override;  // 00
 
 		// override (TESObjectMISC)
-		virtual void InitializeData() override;                                   // 04
-		virtual void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 54
-		virtual void InitImpl() override;                                         // 55
+		void InitializeData() override;                                   // 04
+		void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 54
+		void InitImpl() override;                                         // 55
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		[[nodiscard]] constexpr SOUL_LEVEL GetContainedSoul() const noexcept { return *currentSoul; }
 		[[nodiscard]] constexpr SOUL_LEVEL GetMaximumCapacity() const noexcept { return *soulCapacity; }

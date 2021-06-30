@@ -18,21 +18,21 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ThirdPersonState;
 
-		virtual ~ThirdPersonState();  // 00
+		~ThirdPersonState() override;  // 00
 
 		// override (TESCameraState)
-		virtual void Begin() override;                                               // 01
-		virtual void End() override;                                                 // 02
-		virtual void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
-		virtual void GetRotation(NiQuaternion& a_rotation) override;                 // 04
-		virtual void GetTranslation(NiPoint3& a_translation) override;               // 05
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;                    // 06
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;                    // 07
-		virtual void Revert(BGSLoadFormBuffer* a_buf) override;                      // 08
+		void Begin() override;                                               // 01
+		void End() override;                                                 // 02
+		void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
+		void GetRotation(NiQuaternion& a_rotation) override;                 // 04
+		void GetTranslation(NiPoint3& a_translation) override;               // 05
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;                    // 06
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;                    // 07
+		void Revert(BGSLoadFormBuffer* a_buf) override;                      // 08
 
 		// override (PlayerInputHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;                                          // 01
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 04
+		bool CanProcess(InputEvent* a_event) override;                                          // 01
+		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_movementData) override;  // 04
 
 		// add
 		virtual void SetCameraHandle(RefHandle& a_handle);        // 09 - { return; }

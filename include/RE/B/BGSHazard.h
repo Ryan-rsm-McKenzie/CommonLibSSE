@@ -55,12 +55,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSHazard();  // 00
+		~BGSHazard() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BGSHazardData data;  // 80 - DATA

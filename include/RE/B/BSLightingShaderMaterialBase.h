@@ -14,16 +14,16 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialBase;
 
-		virtual ~BSLightingShaderMaterialBase();  // 00
+		~BSLightingShaderMaterialBase() override;  // 00
 
 		// override (BSShaderMaterial)
-		virtual BSShaderMaterial* Create() override = 0;                            // 01
-		virtual void              CopyMembers(BSShaderMaterial* a_other) override;  // 02
-		virtual bool              DoIsCopy(BSShaderMaterial* a_other) override;     // 03
-		virtual std::uint32_t     ComputeCRC32(void) override;                      // 04
-		virtual BSShaderMaterial* GetDefault() override;                            // 05
-		virtual Feature           GetFeature() const override;                      // 06 - { return Feature::kDefault; }
-		virtual Type              GetType() const override;                         // 07 - { return Type::kLighting; }
+		BSShaderMaterial* Create() override = 0;                            // 01
+		void              CopyMembers(BSShaderMaterial* a_other) override;  // 02
+		bool              DoIsCopy(BSShaderMaterial* a_other) override;     // 03
+		std::uint32_t     ComputeCRC32(void) override;                      // 04
+		BSShaderMaterial* GetDefault() override;                            // 05
+		Feature           GetFeature() const override;                      // 06 - { return Feature::kDefault; }
+		Type              GetType() const override;                         // 07 - { return Type::kLighting; }
 
 		// add
 		virtual void OnLoadTextureSet(void);               // 08

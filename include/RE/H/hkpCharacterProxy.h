@@ -25,16 +25,16 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterProxy;
 
-		virtual ~hkpCharacterProxy();  // 00
+		~hkpCharacterProxy() override;  // 00
 
 		// override (hkReferencedObject)
-		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		// override (hkpEntityListener)
-		virtual void EntityRemovedCallback(hkpEntity* a_entity) override;  // 02
+		void EntityRemovedCallback(hkpEntity* a_entity) override;  // 02
 
 		// override (hkpPhantomListener)
-		virtual void PhantomRemovedCallback(hkpPhantom* a_phantom) override;  // 02
+		void PhantomRemovedCallback(hkpPhantom* a_phantom) override;  // 02
 
 		// add
 		virtual void UpdateManifold(const hkpAllCdPointCollector& a_startPointCollector, const hkpAllCdPointCollector& a_castCollector, hkArray<hkpRootCdPoint>& a_manifold, hkArray<hkpRigidBody*>& a_bodies, hkArray<hkpPhantom*>& a_phantoms, bool a_isMultithreaded = false);  // 03

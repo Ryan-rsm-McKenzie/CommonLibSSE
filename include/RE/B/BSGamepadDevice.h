@@ -14,10 +14,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSGamepadDevice;
 
-		virtual ~BSGamepadDevice();  // 00
+		~BSGamepadDevice() override;  // 00
 
 		// override (BSInputDevice)
-		virtual bool IsEnabled() const override;  // 07 - { return connected && userIndex != -1; }
+		bool IsEnabled() const override;  // 07 - { return connected && userIndex != -1; }
 
 		// add
 		virtual void Unk_09(void) = 0;  // 09

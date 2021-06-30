@@ -29,13 +29,13 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSDialogueBranch();  // 00
+		~BGSDialogueBranch() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;          // 20 - DNAM

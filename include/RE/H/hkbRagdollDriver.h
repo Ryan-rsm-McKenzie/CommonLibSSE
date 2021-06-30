@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbRagdollDriver;
 
-		virtual ~hkbRagdollDriver();  // 00
+		~hkbRagdollDriver() override;  // 00
 
 		// members
 		std::uint64_t unk10;  // 10

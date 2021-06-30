@@ -13,11 +13,11 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_MessageBoxMenu;
 		constexpr static std::string_view MENU_NAME = "MessageBoxMenu";
 
-		virtual ~MessageBoxMenu();  // 00
+		~MessageBoxMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;  // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+		void               Accept(CallbackProcessor* a_processor) override;  // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
 		// members
 		std::uint8_t  unk30;  // 30

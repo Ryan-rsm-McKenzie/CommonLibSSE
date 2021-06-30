@@ -44,13 +44,13 @@ namespace RE
 		};
 		static_assert(sizeof(MESSAGEBOX_BUTTON) == 0x10);
 
-		virtual ~BGSMessage();  // 00
+		~BGSMessage() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BGSMenuIcon*                                 icon;         // 40 - INAM

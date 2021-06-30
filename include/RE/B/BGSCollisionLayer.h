@@ -34,13 +34,13 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSCollisionLayer();  // 00
+		~BGSCollisionLayer() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;            // 05
-		virtual bool Load(TESFile* a_mod) override;   // 06
-		virtual void InitItemImpl() override;         // 13
-		virtual void SetDelete(bool a_set) override;  // 23 - { TESForm::SetDelete(a_set); }
+		void ClearData() override;            // 05
+		bool Load(TESFile* a_mod) override;   // 06
+		void InitItemImpl() override;         // 13
+		void SetDelete(bool a_set) override;  // 23 - { TESForm::SetDelete(a_set); }
 
 		// members
 		std::uint32_t                         collisionIdx;  // 30 - BNAM

@@ -46,20 +46,20 @@ namespace RE
 		static_assert(sizeof(EntryData) == 0x8);
 
 		// override (BGSPerkEntry)
-		virtual bool       CheckConditionFilters(std::uint32_t a_numArgs, void* a_args) override;  // 00
-		virtual EntryPoint GetFunction() override;                                                 // 01 - { return function; }
-		virtual void*      GetFunctionData() const override;                                       // 02 - { return functionData; }
+		bool       CheckConditionFilters(std::uint32_t a_numArgs, void* a_args) override;  // 00
+		EntryPoint GetFunction() override;                                                 // 01 - { return function; }
+		void*      GetFunctionData() const override;                                       // 02 - { return functionData; }
 
-		virtual ~BGSEntryPointPerkEntry();  // 03
+		~BGSEntryPointPerkEntry() override;  // 03
 
-		virtual PERK_ENTRY_TYPE GetType() const override;                  // 04 - { return kEntryPoint; }
-		virtual void            ClearData() override;                      // 05
-		virtual void            InitItem(TESFile* a_owner) override;       // 06
-		virtual bool            Load(TESFile* a_file) override;            // 07
-		virtual void            SetParent(BGSPerk* a_parent) override;     // 08
-		virtual std::uint16_t   GetID() const override;                    // 09
-		virtual void            ApplyPerkEntry(Actor* a_actor) override;   // 0A
-		virtual void            RemovePerkEntry(Actor* a_actor) override;  // 0B
+		PERK_ENTRY_TYPE GetType() const override;                  // 04 - { return kEntryPoint; }
+		void            ClearData() override;                      // 05
+		void            InitItem(TESFile* a_owner) override;       // 06
+		bool            Load(TESFile* a_file) override;            // 07
+		void            SetParent(BGSPerk* a_parent) override;     // 08
+		std::uint16_t   GetID() const override;                    // 09
+		void            ApplyPerkEntry(Actor* a_actor) override;   // 0A
+		void            RemovePerkEntry(Actor* a_actor) override;  // 0B
 
 		bool IsEntryPoint(EntryPoint a_entryPoint) const;
 

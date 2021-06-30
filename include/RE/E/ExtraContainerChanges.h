@@ -15,10 +15,10 @@ namespace RE
 
 		ExtraContainerChanges();
 		explicit ExtraContainerChanges(InventoryChanges* a_changes);
-		virtual ~ExtraContainerChanges();  // 00
+		~ExtraContainerChanges() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kContainerChanges; }
+		ExtraDataType GetType() const override;  // 01 - { return kContainerChanges; }
 
 		// members
 		InventoryChanges* changes;  // 10

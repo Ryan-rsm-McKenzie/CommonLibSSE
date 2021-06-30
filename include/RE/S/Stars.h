@@ -12,11 +12,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Stars;
 
-		virtual ~Stars();  // 00
+		~Stars() override;  // 00
 
 		// override (SkyObject)
-		virtual void Unk_02(void) override;                      // 02
-		virtual void Update(Sky* a_sky, float a_arg2) override;  // 03
+		void Unk_02(void) override;                      // 02
+		void Update(Sky* a_sky, float a_arg2) override;  // 03
 
 		// members
 		NiPointer<NiNode> stars;  // 10

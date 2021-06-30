@@ -18,22 +18,22 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback;
 
-				virtual ~CreationConfirmCallback();  // 00
+				~CreationConfirmCallback() override;  // 00
 
 				// override (IMessageBoxCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				void Run(Message a_msg) override;  // 01
 
 				// members
 				ConstructibleObjectMenu* menu;  // 10
 			};
 			static_assert(sizeof(CreationConfirmCallback) == 0x18);
 
-			virtual ~ConstructibleObjectMenu();  // 00
+			~ConstructibleObjectMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_06(void) override;                        // 06
-			virtual void Unk_07(void) override;                        // 07
+			void Accept(CallbackProcessor* a_cbReg) override;  // 01
+			void Unk_06(void) override;                        // 06
+			void Unk_07(void) override;                        // 07
 
 			// members
 			BSTArray<void*> unk100;  // 100

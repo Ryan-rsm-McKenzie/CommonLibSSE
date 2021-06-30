@@ -39,7 +39,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiObject;
 
-		virtual ~NiObject() = default;  // 00
+		~NiObject() override = default;  // 00
 
 		// add
 		virtual const NiRTTI*                 GetRTTI() const;                                                            // 02

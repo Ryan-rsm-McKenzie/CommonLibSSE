@@ -70,33 +70,33 @@ namespace RE
 		};
 		static_assert(sizeof(GameData) == 0x4);
 
-		virtual ~IngredientItem();  // 00
+		~IngredientItem() override;  // 00
 
 		// override (MagicItem)
-		virtual void                     InitializeData() override;                                             // 04
-		virtual void                     ClearData() override;                                                  // 05
-		virtual void                     SaveGame(BGSSaveFormBuffer* a_buf) override;                           // 0E
-		virtual void                     LoadGame(BGSLoadFormBuffer* a_buf) override;                           // 0F
-		virtual void                     Revert(BGSLoadFormBuffer* a_buf) override;                             // 12
-		virtual void                     InitItemImpl() override;                                               // 13
-		virtual MagicSystem::SpellType   GetSpellType() const override;                                         // 53 - { return MagicSystem::SpellType::kIngredient; }
-		virtual MagicSystem::CastingType GetCastingType() const override;                                       // 55 - { return  MagicSystem::CastingType::kFireAndForget; }
-		virtual MagicSystem::Delivery    GetDelivery() const override;                                          // 57 - { return MagicSystem::Delivery::kSelf; }
-		virtual bool                     IsFood() const override;                                               // 5D - { return (GetData()->flags >> 1) & 1; }
-		virtual bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
-		virtual std::uint32_t            GetMaxEffectCount() const override;                                    // 65 - { return 4; }
-		virtual ActorValue               GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
-		virtual std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'ENIT'; }
-		virtual void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
-		virtual void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A
-		virtual const MagicItem::Data*   GetData1() const override;                                             // 6C - { return &effectData; }
-		virtual MagicItem::Data*         GetData2() override;                                                   // 6D - { return &effectData; }
-		virtual std::uint32_t            GetDataSize() const override;                                          // 6E - { return 0x8; }
-		virtual void                     InitFromChunk(TESFile* a_mod) override;                                // 6F
-		virtual void                     InitChunk() override;                                                  // 70
+		void                     InitializeData() override;                                             // 04
+		void                     ClearData() override;                                                  // 05
+		void                     SaveGame(BGSSaveFormBuffer* a_buf) override;                           // 0E
+		void                     LoadGame(BGSLoadFormBuffer* a_buf) override;                           // 0F
+		void                     Revert(BGSLoadFormBuffer* a_buf) override;                             // 12
+		void                     InitItemImpl() override;                                               // 13
+		MagicSystem::SpellType   GetSpellType() const override;                                         // 53 - { return MagicSystem::SpellType::kIngredient; }
+		MagicSystem::CastingType GetCastingType() const override;                                       // 55 - { return  MagicSystem::CastingType::kFireAndForget; }
+		MagicSystem::Delivery    GetDelivery() const override;                                          // 57 - { return MagicSystem::Delivery::kSelf; }
+		bool                     IsFood() const override;                                               // 5D - { return (GetData()->flags >> 1) & 1; }
+		bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
+		std::uint32_t            GetMaxEffectCount() const override;                                    // 65 - { return 4; }
+		ActorValue               GetAssociatedSkill() const override;                                   // 66 - { return ActorValue::kConfidence; }
+		std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'ENIT'; }
+		void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
+		void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A
+		const MagicItem::Data*   GetData1() const override;                                             // 6C - { return &effectData; }
+		MagicItem::Data*         GetData2() override;                                                   // 6D - { return &effectData; }
+		std::uint32_t            GetDataSize() const override;                                          // 6E - { return 0x8; }
+		void                     InitFromChunk(TESFile* a_mod) override;                                // 6F
+		void                     InitChunk() override;                                                  // 70
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		// members
 		Data          data;      // 130 - ENIT

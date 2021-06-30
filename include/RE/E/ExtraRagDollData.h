@@ -33,11 +33,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRagDollData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRagDollData;
 
-		virtual ~ExtraRagDollData();  // 00
+		~ExtraRagDollData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kRagDollData; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kRagDollData; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		RagDollData* ragDollData;  // 10

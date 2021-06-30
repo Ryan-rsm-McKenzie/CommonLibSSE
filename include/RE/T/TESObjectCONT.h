@@ -57,19 +57,19 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectCONT();  // 00
+		~TESObjectCONT() override;  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void InitializeData() override;                                                                                                                                // 04
-		virtual bool Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
-		virtual bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
+		void InitializeData() override;                                                                                                                                // 04
+		bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void InitItemImpl() override;                                                                                                                                  // 13
+		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		bool CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3) override;                                                    // 4D
 
 		// override (BGSOpenCloseForm)
-		virtual void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;   // 01
-		virtual void HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;  // 02
+		void HandleOpen(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;   // 01
+		void HandleClose(TESObjectREFR* a_target, TESObjectREFR* a_activator) override;  // 02
 
 		// members
 		CONT_DATA               data;        // B9 - DATA

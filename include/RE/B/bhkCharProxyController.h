@@ -15,18 +15,18 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharProxyController;
 
-		virtual ~bhkCharProxyController();  // 00
+		~bhkCharProxyController() override;  // 00
 
 		// override (hkpCharacterProxyListener)
-		virtual void ProcessConstraintsCallback(const hkpCharacterProxy* a_proxy, const hkArray<hkpRootCdPoint>& a_manifold, hkpSimplexSolverInput& a_input) override;                  // 01
-		virtual void ContactPointAddedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point) override;                                                               // 02
-		virtual void ContactPointRemovedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point) override;                                                             // 03
-		virtual void CharacterInteractionCallback(hkpCharacterProxy* a_proxy, hkpCharacterProxy* a_otherProxy, const hkContactPoint& a_contact) override;                               // 04
-		virtual void ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output) override;  // 05
+		void ProcessConstraintsCallback(const hkpCharacterProxy* a_proxy, const hkArray<hkpRootCdPoint>& a_manifold, hkpSimplexSolverInput& a_input) override;                  // 01
+		void ContactPointAddedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point) override;                                                               // 02
+		void ContactPointRemovedCallback(const hkpCharacterProxy* a_proxy, const hkpRootCdPoint& a_point) override;                                                             // 03
+		void CharacterInteractionCallback(hkpCharacterProxy* a_proxy, hkpCharacterProxy* a_otherProxy, const hkContactPoint& a_contact) override;                               // 04
+		void ObjectInteractionCallback(hkpCharacterProxy* a_proxy, const hkpCharacterObjectInteractionEvent& a_input, hkpCharacterObjectInteractionResult& a_output) override;  // 05
 
 		// override (bhkCharacterController)
-		virtual void GetLinearVelocityImpl(hkVector4& a_velocity) const override;  // 06
-		virtual void SetLinearVelocityImpl(const hkVector4& a_velocity) override;  // 07
+		void GetLinearVelocityImpl(hkVector4& a_velocity) const override;  // 06
+		void SetLinearVelocityImpl(const hkVector4& a_velocity) override;  // 07
 
 		hkpCharacterProxy* GetCharacterProxy() const;
 

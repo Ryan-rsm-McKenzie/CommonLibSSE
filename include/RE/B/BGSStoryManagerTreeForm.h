@@ -45,7 +45,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryManagerTreeForm;
 
-		virtual ~BGSStoryManagerTreeForm();  // 00
+		~BGSStoryManagerTreeForm() override;  // 00
 
 		// add
 		virtual std::uint32_t                            QChildCount() const;                                       // 3B - { return 0; }

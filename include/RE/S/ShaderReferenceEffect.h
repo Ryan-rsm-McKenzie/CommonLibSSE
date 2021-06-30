@@ -32,29 +32,29 @@ namespace RE
 		};
 		static_assert(sizeof(Data090) == 0x10);
 
-		virtual ~ShaderReferenceEffect();  // 00
+		~ShaderReferenceEffect() override;  // 00
 
 		// override (ReferenceEffect)
-		virtual const NiRTTI*    GetRTTI() const override;                                  // 02
-		virtual bool             Update(float a_arg1) override;                             // 28
-		virtual NiAVObject*      Get3D() const override;                                    // 29 - { return lastRootNode.get(); }
-		virtual TEMP_EFFECT_TYPE GetType() const override;                                  // 2C - { return 10; }
-		virtual void             SaveGame(BGSSaveGameBuffer* a_buf) override;               // 2D
-		virtual void             LoadGame(BGSLoadGameBuffer* a_buf) override;               // 2E
-		virtual void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;         // 2F - { return ReferenceEffect::Unk_2F(); }
-		virtual bool             IsInterfaceEffect() const override;                        // 30 - { return (unk130 >> 1) & 1; }
-		virtual void             SetInterfaceEffect(bool a_set) override;                   // 31
-		virtual bool             GetStackable() const override;                             // 32 - { return true; }
-		virtual bool             GetStackableMatch(BSTempEffect* a_effect) const override;  // 33
-		virtual void             Push() override;                                           // 34 - { if (effectShaderData) ++pushCount; }
-		virtual void             Pop() override;                                            // 35
-		virtual void             Unk_36(void) override;                                     // 36
-		virtual void             Unk_37(void) override;                                     // 37
-		virtual void             Unk_38(void) override;                                     // 38
-		virtual void             Unk_39(void) override;                                     // 39
-		virtual void             UpdatePosition() override;                                 // 3B
-		virtual void             Unk_3C(void) override;                                     // 3C
-		virtual void             Unk_3E(void) override;                                     // 3E
+		const NiRTTI*    GetRTTI() const override;                                  // 02
+		bool             Update(float a_arg1) override;                             // 28
+		NiAVObject*      Get3D() const override;                                    // 29 - { return lastRootNode.get(); }
+		TEMP_EFFECT_TYPE GetType() const override;                                  // 2C - { return 10; }
+		void             SaveGame(BGSSaveGameBuffer* a_buf) override;               // 2D
+		void             LoadGame(BGSLoadGameBuffer* a_buf) override;               // 2E
+		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;         // 2F - { return ReferenceEffect::Unk_2F(); }
+		bool             IsInterfaceEffect() const override;                        // 30 - { return (unk130 >> 1) & 1; }
+		void             SetInterfaceEffect(bool a_set) override;                   // 31
+		bool             GetStackable() const override;                             // 32 - { return true; }
+		bool             GetStackableMatch(BSTempEffect* a_effect) const override;  // 33
+		void             Push() override;                                           // 34 - { if (effectShaderData) ++pushCount; }
+		void             Pop() override;                                            // 35
+		void             Unk_36(void) override;                                     // 36
+		void             Unk_37(void) override;                                     // 37
+		void             Unk_38(void) override;                                     // 38
+		void             Unk_39(void) override;                                     // 39
+		void             UpdatePosition() override;                                 // 3B
+		void             Unk_3C(void) override;                                     // 3C
+		void             Unk_3E(void) override;                                     // 3E
 
 		// members
 		BSTArray<Data048>     unk048;            // 048

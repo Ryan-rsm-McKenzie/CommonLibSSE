@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSFaceGenAnimationData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenAnimationData;
 
-		virtual ~BSFaceGenAnimationData();  // 00
+		~BSFaceGenAnimationData() override;  // 00
 
 		// override (NiExtraData)
-		virtual const NiRTTI* GetRTTI() const override;  // 02
+		const NiRTTI* GetRTTI() const override;  // 02
 
 		void ClearExpressionOverride() noexcept { exprOverride = false; }
 

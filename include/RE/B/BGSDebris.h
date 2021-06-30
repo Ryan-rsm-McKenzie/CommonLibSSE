@@ -50,12 +50,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSDebris();  // 00
+		~BGSDebris() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04 - { return; }
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04 - { return; }
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
 		BSSimpleList<BGSDebrisData*> data;  // 28

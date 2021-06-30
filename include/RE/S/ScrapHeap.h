@@ -38,14 +38,14 @@ namespace RE
 		};
 		static_assert(sizeof(FreeTreeNode) == 0x30);
 
-		virtual ~ScrapHeap() { WinAPI::VirtualFree(baseAddress, 0, WinAPI::MEM_RELEASE); }  // 00
+		~ScrapHeap() override { WinAPI::VirtualFree(baseAddress, 0, WinAPI::MEM_RELEASE); }  // 00
 
 		// override (IMemoryStore)
-		virtual std::size_t Size(void const* a_mem) const override { return *static_cast<const std::size_t*>(a_mem) & ~(std::size_t{ 3 } << 62); }  // 01
-		virtual void        GetMemoryStats(MemoryStats*) override { return; }                                                                       // 02
-		virtual bool        ContainsBlockImpl(const void* a_block) const override { return baseAddress <= a_block && a_block <= endAddress; }       // 03
-		virtual void*       AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }     // 04
-		virtual void        DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block), a_block = nullptr; }                                // 05
+		std::size_t Size(void const* a_mem) const override { return *static_cast<const std::size_t*>(a_mem) & ~(std::size_t{ 3 } << 62); }  // 01
+		void        GetMemoryStats(MemoryStats*) override { return; }                                                                       // 02
+		bool        ContainsBlockImpl(const void* a_block) const override { return baseAddress <= a_block && a_block <= endAddress; }       // 03
+		void*       AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }     // 04
+		void        DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block), a_block = nullptr; }                                // 05
 
 		void* Allocate(std::size_t a_size, std::size_t a_alignment);
 		void  Deallocate(void* a_mem);

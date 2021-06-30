@@ -49,11 +49,11 @@ namespace RE
 			kNone = 3
 		};
 
-		virtual ~ImageSpaceModifierInstanceDOF();  // 00
+		~ImageSpaceModifierInstanceDOF() override;  // 00
 
 		// override (ImageSpaceModifierInstanceTemp)
-		virtual void Unk_26(void) override;  // 26
-		virtual void Unk_28(void) override;  // 28
+		void Unk_26(void) override;  // 26
+		void Unk_28(void) override;  // 28
 
 		// members
 		ImageSpaceModData data;  // 30

@@ -20,7 +20,7 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSAction();  // 00
+		~BGSAction() override;  // 00
 
 		// members
 		std::uint32_t index;  // 28

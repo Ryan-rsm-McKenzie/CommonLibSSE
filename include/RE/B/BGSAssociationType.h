@@ -49,11 +49,11 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSAssociationType();  // 00
+		~BGSAssociationType() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
 		BSFixedString                          associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT

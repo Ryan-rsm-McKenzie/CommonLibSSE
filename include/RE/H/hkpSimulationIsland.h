@@ -17,14 +17,14 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpSimulationIsland;
 
-		virtual ~hkpSimulationIsland();  // 00
+		~hkpSimulationIsland() override;  // 00
 
 		// override (hkpConstraintOwner)
-		virtual const hkClass* GetClassType() const override;                                                                     // 01 - { return &hkpSimulationIslandClass; }
-		virtual void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
-		virtual void           AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;                 // 03
-		virtual void           RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;            // 04
-		virtual void           AddCallbackRequest(hkpConstraintInstance* a_constraint, std::int32_t a_request) override;          // 05
+		const hkClass* GetClassType() const override;                                                                     // 01 - { return &hkpSimulationIslandClass; }
+		void           CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void           AddConstraintToCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;                 // 03
+		void           RemoveConstraintFromCriticalLockedIsland(hkpConstraintInstance* a_constraint) override;            // 04
+		void           AddCallbackRequest(hkpConstraintInstance* a_constraint, std::int32_t a_request) override;          // 05
 
 		// members
 		hkpWorld*     world;                   // 20

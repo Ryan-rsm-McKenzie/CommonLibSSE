@@ -9,10 +9,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModelTri;
 
-		virtual ~TESModelTri();  // 00
+		~TESModelTri() override;  // 00
 
 		// override (TESModel)
-		virtual void SetModel(const char* a_model) override;  // 05
+		void SetModel(const char* a_model) override;  // 05
 	};
 	static_assert(sizeof(TESModelTri) == 0x28);
 }

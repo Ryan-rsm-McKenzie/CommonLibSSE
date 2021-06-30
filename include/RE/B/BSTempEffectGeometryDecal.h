@@ -19,14 +19,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSTempEffectGeometryDecal;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectGeometryDecal;
 
-		virtual ~BSTempEffectGeometryDecal();  // 00
+		~BSTempEffectGeometryDecal() override;  // 00
 
-		virtual const NiRTTI*    GetRTTI() const override;       // 02
-		virtual void             Initialize() override;          // 25
-		virtual void             Attach() override;              // 26
-		virtual bool             Update(float a_arg1) override;  // 28
-		virtual NiAVObject*      Get3D() const override;         // 29
-		virtual TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kGeometryDecal; }
+		const NiRTTI*    GetRTTI() const override;       // 02
+		void             Initialize() override;          // 25
+		void             Attach() override;              // 26
+		bool             Update(float a_arg1) override;  // 28
+		NiAVObject*      Get3D() const override;         // 29
+		TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kGeometryDecal; }
 
 		// members
 		NiPointer<BSGeometry>             decal;                   // 30

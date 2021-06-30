@@ -25,19 +25,19 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_HUDMenu;
 		constexpr static std::string_view MENU_NAME = "HUD Menu";
 
-		virtual ~HUDMenu();  // 00
+		~HUDMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;                       // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
-		virtual void               RefreshPlatform() override;                                            // 08
+		void               Accept(CallbackProcessor* a_processor) override;                       // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               RefreshPlatform() override;                                            // 08
 
 		// override (BSTEventSink<UserEventEnabledEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const UserEventEnabledEvent* a_event, BSTEventSource<UserEventEnabledEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const UserEventEnabledEvent* a_event, BSTEventSource<UserEventEnabledEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
 
 		// members
 		BSTArray<HUDObject*> objects;  // 40

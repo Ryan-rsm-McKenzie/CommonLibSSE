@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCell3D;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCell3D;
 
-		virtual ~ExtraCell3D();  // 00
+		~ExtraCell3D() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kCell3D; }
+		ExtraDataType GetType() const override;  // 01 - { return kCell3D; }
 
 		// members
 		NiPointer<NiNode> cellNode;  // 10

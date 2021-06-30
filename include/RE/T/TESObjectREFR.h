@@ -192,49 +192,49 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectREFR();  // 00
+		~TESObjectREFR() override;  // 00
 
 		// override (TESForm)
-		virtual void                 InitializeData() override;                                                            // 04
-		virtual void                 ClearData() override;                                                                 // 05
-		virtual bool                 Load(TESFile* a_mod) override;                                                        // 06
-		virtual TESForm*             CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09
-		virtual bool                 CheckSaveGame(BGSSaveFormBuffer* a_buf) override;                                     // 0D
-		virtual void                 SaveGame(BGSSaveFormBuffer* a_buf) override;                                          // 0E
-		virtual void                 LoadGame(BGSLoadFormBuffer* a_buf) override;                                          // 0F
-		virtual void                 InitLoadGame(BGSLoadFormBuffer* a_buf) override;                                      // 10
-		virtual void                 FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                                    // 11
-		virtual void                 Revert(BGSLoadFormBuffer* a_buf) override;                                            // 12
-		virtual void                 InitItemImpl() override;                                                              // 13
-		virtual FormType             GetSavedFormType() const override;                                                    // 15
-		virtual void                 GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;                  // 16
-		virtual bool                 GetRandomAnim() const override;                                                       // 18 - { return data.objectReference->GetRandomAnim(); }
-		virtual bool                 IsHeadingMarker() const override;                                                     // 1A - { return data.objectReference->formType == FormType::Light ? (flags & RecordFlags::kNeverFades) != 0 : false; }
-		virtual bool                 GetDangerous() const override;                                                        // 1B - { return data.objectReference->GetDangerous(); }
-		virtual bool                 GetObstacle() const override;                                                         // 1D - { return data.objectReference ? data.objectReference->GetObstacle() : false; }
-		virtual bool                 GetOnLocalMap() const override;                                                       // 1F - { return (flags >> 9) & 1 && data.objectReference->GetOnLocalMap(); }
-		virtual bool                 GetMustUpdate() const override;                                                       // 20 - { return data.objectReference->GetMustUpdate(); }
-		virtual void                 SetOnLocalMap(bool a_set) override;                                                   // 21
-		virtual bool                 GetIgnoredBySandbox() const override;                                                 // 22
-		virtual void                 SetDelete(bool a_set) override;                                                       // 23
-		virtual void                 SetAltered(bool a_set) override;                                                      // 24
-		virtual bool                 IsWater() const override;                                                             // 2A - { return data.objectReference ? data.objectReference->IsWater() : false; }
-		virtual TESObjectREFR*       AsReference1() override;                                                              // 2B - { return this; }
-		virtual const TESObjectREFR* AsReference2() const override;                                                        // 2C - { return this; }
-		virtual bool                 BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
-		virtual void                 CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
-		virtual const char*          GetFormEditorID() const override;                                                     // 32
+		void                 InitializeData() override;                                                            // 04
+		void                 ClearData() override;                                                                 // 05
+		bool                 Load(TESFile* a_mod) override;                                                        // 06
+		TESForm*             CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09
+		bool                 CheckSaveGame(BGSSaveFormBuffer* a_buf) override;                                     // 0D
+		void                 SaveGame(BGSSaveFormBuffer* a_buf) override;                                          // 0E
+		void                 LoadGame(BGSLoadFormBuffer* a_buf) override;                                          // 0F
+		void                 InitLoadGame(BGSLoadFormBuffer* a_buf) override;                                      // 10
+		void                 FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                                    // 11
+		void                 Revert(BGSLoadFormBuffer* a_buf) override;                                            // 12
+		void                 InitItemImpl() override;                                                              // 13
+		FormType             GetSavedFormType() const override;                                                    // 15
+		void                 GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;                  // 16
+		bool                 GetRandomAnim() const override;                                                       // 18 - { return data.objectReference->GetRandomAnim(); }
+		bool                 IsHeadingMarker() const override;                                                     // 1A - { return data.objectReference->formType == FormType::Light ? (flags & RecordFlags::kNeverFades) != 0 : false; }
+		bool                 GetDangerous() const override;                                                        // 1B - { return data.objectReference->GetDangerous(); }
+		bool                 GetObstacle() const override;                                                         // 1D - { return data.objectReference ? data.objectReference->GetObstacle() : false; }
+		bool                 GetOnLocalMap() const override;                                                       // 1F - { return (flags >> 9) & 1 && data.objectReference->GetOnLocalMap(); }
+		bool                 GetMustUpdate() const override;                                                       // 20 - { return data.objectReference->GetMustUpdate(); }
+		void                 SetOnLocalMap(bool a_set) override;                                                   // 21
+		bool                 GetIgnoredBySandbox() const override;                                                 // 22
+		void                 SetDelete(bool a_set) override;                                                       // 23
+		void                 SetAltered(bool a_set) override;                                                      // 24
+		bool                 IsWater() const override;                                                             // 2A - { return data.objectReference ? data.objectReference->IsWater() : false; }
+		TESObjectREFR*       AsReference1() override;                                                              // 2B - { return this; }
+		const TESObjectREFR* AsReference2() const override;                                                        // 2C - { return this; }
+		bool                 BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
+		void                 CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
+		const char*          GetFormEditorID() const override;                                                     // 32
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_dispatcher) override;  // 01
 
 		// override (IAnimationGraphManagerHolder)
-		virtual bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;                                                 // 02
-		virtual bool SetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_in) override;                                                        // 03
-		virtual bool PopulateGraphNodesToTarget(BSScrapArray<NiAVObject*>& a_nodes) override;                                                                      // 04
-		virtual bool ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;                                                                // 05
-		virtual bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;                                                        // 08
-		virtual void PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2) override;  // 0D
+		bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;                                                 // 02
+		bool SetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_in) override;                                                        // 03
+		bool PopulateGraphNodesToTarget(BSScrapArray<NiAVObject*>& a_nodes) override;                                                                      // 04
+		bool ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;                                                                // 05
+		bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;                                                        // 08
+		void PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2) override;  // 0D
 
 		// add
 		virtual void                              Predestroy();                                                                                                                                                                                                // 3B

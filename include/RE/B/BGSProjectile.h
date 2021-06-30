@@ -90,17 +90,17 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSProjectile();  // 00
+		~BGSProjectile() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void        InitializeData() override;                                                                                                                                // 04
-		virtual void        ClearData() override;                                                                                                                                     // 05
-		virtual bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void        InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                                                                                                      // 40
-		virtual void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
-		virtual bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+		void        InitializeData() override;                                                                                                                                // 04
+		void        ClearData() override;                                                                                                                                     // 05
+		bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void        InitItemImpl() override;                                                                                                                                  // 13
+		bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                                                                                                      // 40
+		void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
+		bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
 
 		// members
 		BGSProjectileData data;              // 080 - DATA

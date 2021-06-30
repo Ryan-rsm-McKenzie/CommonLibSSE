@@ -34,11 +34,11 @@ namespace RE
 			};
 		};
 
-		virtual ~TESEyes();  // 00
+		~TESEyes() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04 - { flags = 0; }
-		virtual bool Load(TESFile* a_mod) override;  // 06 - { return true; }
+		void InitializeData() override;      // 04 - { flags = 0; }
+		bool Load(TESFile* a_mod) override;  // 06 - { return true; }
 
 		// members
 		stl::enumeration<Flag, std::uint8_t> flags;  // 40 - DATA

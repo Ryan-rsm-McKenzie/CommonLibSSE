@@ -16,7 +16,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMusicManager;
 
-		virtual ~BSMusicManager();  // 00
+		~BSMusicManager() override;  // 00
 
 		// override (BSTEventSink<BSMusicEvent>)
 		BSEventNotifyControl ProcessEvent(const BSMusicEvent* a_event, BSTEventSource<BSMusicEvent>* a_eventSource) override;  // 01

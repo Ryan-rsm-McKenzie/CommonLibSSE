@@ -13,15 +13,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiInterpController;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiInterpController;
 
-		virtual ~NiInterpController();  // 00
+		~NiInterpController() override;  // 00
 
 		// override (NiTimeController)
-		virtual const NiRTTI* GetRTTI() const override;                          // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;           // 18 - { NiTimeController::LoadBinary(a_stream); }
-		virtual void          LinkObject(NiStream& a_stream) override;           // 19 - { NiTimeController::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiTimeController::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;           // 1B - { NiTimeController::SaveBinary(a_stream); }
-		virtual bool          IsEqual(NiObject* a_object) override;              // 1C - { NiTimeController::IsEqual(a_object); }
+		const NiRTTI* GetRTTI() const override;                          // 02
+		void          LoadBinary(NiStream& a_stream) override;           // 18 - { NiTimeController::LoadBinary(a_stream); }
+		void          LinkObject(NiStream& a_stream) override;           // 19 - { NiTimeController::LinkObject(a_stream); }
+		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiTimeController::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;           // 1B - { NiTimeController::SaveBinary(a_stream); }
+		bool          IsEqual(NiObject* a_object) override;              // 1C - { NiTimeController::IsEqual(a_object); }
 
 		// add
 		virtual std::uint16_t        GetInterpolatorCount() const = 0;                                                                                                                                                                  // 2F

@@ -33,25 +33,25 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESActorBase;
 
-		virtual ~TESActorBase();  // 00
+		~TESActorBase() override;  // 00
 
 		// override (TESBoundAnimObject)
-		virtual bool AddChange(std::uint32_t a_changeFlags) override;     // 0A
-		virtual void RemoveChange(std::uint32_t a_changeFlags) override;  // 0B
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;         // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;         // 0F
-		virtual bool IsAutoCalc() const override;                         // 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
-		virtual void SetAutoCalc(bool a_autoCalc) override;               // 3F
+		bool AddChange(std::uint32_t a_changeFlags) override;     // 0A
+		void RemoveChange(std::uint32_t a_changeFlags) override;  // 0B
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;         // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;         // 0F
+		bool IsAutoCalc() const override;                         // 3E - { return formType == FormType::NPC && (TESActorBaseData::flags >> 4) & 1; }
+		void SetAutoCalc(bool a_autoCalc) override;               // 3F
 
 		// override (TESAIForm)
-		virtual float GetActorValue(ActorValue a_akValue) override;                                                      // 01
-		virtual float GetPermanentActorValue(ActorValue a_akValue) override;                                             // 02
-		virtual float GetBaseActorValue(ActorValue a_akValue) override;                                                  // 03
-		virtual void  SetBaseActorValue(ActorValue a_akValue, float a_value) override;                                   // 04
-		virtual void  ModActorValue(ActorValue a_akValue, float a_value) override;                                       // 05
-		virtual void  RestoreActorValue(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_akValue, float a_value) override;  // 06
-		virtual void  SetActorValue(ActorValue a_akValue, float a_value) override;                                       // 07
-		virtual bool  GetIsPlayerOwner() const override;                                                                 // 08
+		float GetActorValue(ActorValue a_akValue) override;                                                      // 01
+		float GetPermanentActorValue(ActorValue a_akValue) override;                                             // 02
+		float GetBaseActorValue(ActorValue a_akValue) override;                                                  // 03
+		void  SetBaseActorValue(ActorValue a_akValue, float a_value) override;                                   // 04
+		void  ModActorValue(ActorValue a_akValue, float a_value) override;                                       // 05
+		void  RestoreActorValue(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_akValue, float a_value) override;  // 06
+		void  SetActorValue(ActorValue a_akValue, float a_value) override;                                       // 07
+		bool  GetIsPlayerOwner() const override;                                                                 // 08
 
 		// add
 		virtual bool            GetHasPLSpecTex() const;                        // 53 - { return false; }

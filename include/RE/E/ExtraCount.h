@@ -13,11 +13,11 @@ namespace RE
 
 		ExtraCount();
 		explicit ExtraCount(std::int16_t a_count);
-		virtual ~ExtraCount() = default;  // 00
+		~ExtraCount() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kCount; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return return count != a_rhs->count; }
+		ExtraDataType GetType() const override;                             // 01 - { return kCount; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return return count != a_rhs->count; }
 
 		// members
 		std::int16_t  count;  // 10

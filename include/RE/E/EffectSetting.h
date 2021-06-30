@@ -122,17 +122,17 @@ namespace RE
 		};
 		static_assert(sizeof(SoundPair) == 0x10);
 
-		virtual ~EffectSetting();  // 00
+		~EffectSetting() override;  // 00
 
 		// override (TESForm)
-		virtual void        ClearData() override;                // 05
-		virtual bool        Load(TESFile* a_mod) override;       // 06
-		virtual void        InitItemImpl() override;             // 13
-		virtual void        Copy(TESForm* a_srcForm) override;   // 2F
-		virtual const char* GetObjectTypeName() const override;  // 39
+		void        ClearData() override;                // 05
+		bool        Load(TESFile* a_mod) override;       // 06
+		void        InitItemImpl() override;             // 13
+		void        Copy(TESForm* a_srcForm) override;   // 2F
+		const char* GetObjectTypeName() const override;  // 39
 
 		// override (BGSKeywordForm)
-		virtual bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
+		bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
 
 		[[nodiscard]] constexpr Archetype    GetArchetype() const noexcept { return data.archetype; }
 		[[nodiscard]] constexpr ActorValue   GetMagickSkill() const noexcept { return data.associatedSkill; }

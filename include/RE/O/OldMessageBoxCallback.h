@@ -11,10 +11,10 @@ namespace RE
 
 		using Callback = void(Message);
 
-		virtual ~OldMessageBoxCallback();  // 00
+		~OldMessageBoxCallback() override;  // 00
 
 		// override (IMessageBoxCallback)
-		virtual void Run(Message a_msg) override;  // 01
+		void Run(Message a_msg) override;  // 01
 
 		// members
 		Callback* callback;  // 10

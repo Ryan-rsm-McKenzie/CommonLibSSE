@@ -12,10 +12,10 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__IStore;
 
-			virtual ~IStore();  // 00
+			~IStore() override;  // 00
 
 			// override (BSStorage)
-			virtual BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;  // 05
+			BSStorageDefs::ErrorCode Write(std::size_t a_numBytes, const std::byte* a_bytes) override;  // 05
 
 			// add
 			virtual bool                 Open(const char* a_fileName) = 0;  // 06

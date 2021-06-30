@@ -39,13 +39,13 @@ namespace RE
 		};
 		static_assert(sizeof(QueuedReg) == 0x10);
 
-		virtual ~MenuControls();  // 00
+		~MenuControls() override;  // 00
 
 		// override (BSTEventSink<InputEvent*>)
-		virtual BSEventNotifyControl ProcessEvent(InputEvent* const* a_event, BSTEventSource<InputEvent*>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(InputEvent* const* a_event, BSTEventSource<InputEvent*>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<MenuModeChangeEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;  // 01
 
 		static MenuControls* GetSingleton();
 

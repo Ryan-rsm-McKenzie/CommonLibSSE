@@ -16,10 +16,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpPhantom;
 
-		virtual ~hkpPhantom();  // 00
+		~hkpPhantom() override;  // 00
 
 		// override (hkpWorldObject)
-		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		// add
 		virtual hkpPhantomType GetType() const = 0;                                                  // 06

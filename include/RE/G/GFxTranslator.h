@@ -90,7 +90,7 @@ namespace RE
 
 		GFxTranslator();
 		explicit GFxTranslator(WordWrappingType a_wwMode);
-		virtual ~GFxTranslator() = default;  // 00
+		~GFxTranslator() override = default;  // 00
 
 		// add
 		virtual TranslateCap GetCaps() const;                            // 01 - { return TranslateCap::kNone; } - Specifies capabilities of the Translate implementation

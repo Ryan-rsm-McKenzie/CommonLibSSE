@@ -36,7 +36,7 @@ namespace RE
 			kTotal
 		};
 
-		virtual ~hkpMotion();  // 00
+		~hkpMotion() override;  // 00
 
 		// add
 		virtual void SetMass(float a_mass);                                                                                                               // 03 - { SetMassInv(a_mass); }

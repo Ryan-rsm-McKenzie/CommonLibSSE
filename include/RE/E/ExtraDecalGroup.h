@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraDecalGroup;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDecalGroup;
 
-		virtual ~ExtraDecalGroup();  // 00
+		~ExtraDecalGroup() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kDecalGroup; }
+		ExtraDataType GetType() const override;  // 01 - { return kDecalGroup; }
 
 		// members
 		BGSDecalGroup* decalGroup;  // 10
