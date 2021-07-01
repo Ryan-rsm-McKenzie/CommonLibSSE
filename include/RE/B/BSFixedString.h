@@ -197,14 +197,14 @@ namespace RE
 			[[nodiscard]] inline BSStringPool::Entry* get_proxy() noexcept
 			{
 				return _data ?
-				           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
+                           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
                            nullptr;
 			}
 
 			[[nodiscard]] inline const BSStringPool::Entry* get_proxy() const noexcept
 			{
 				return _data ?
-				           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
+                           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
                            nullptr;
 			}
 

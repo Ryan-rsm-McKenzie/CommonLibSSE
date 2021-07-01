@@ -25,7 +25,7 @@ namespace RE
 		[[nodiscard]] TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y) const noexcept
 		{
 			return (a_x < length && a_y < length) ?
-			           cells[(a_x * length) + a_y] :
+                       cells[(a_x * length) + a_y] :
                        nullptr;
 		};
 

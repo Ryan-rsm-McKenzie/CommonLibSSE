@@ -18,7 +18,7 @@ namespace RE
 		auto           endIt = charBreakInfoArray + SIZE;
 		auto           it = std::lower_bound(charBreakInfoArray, endIt, key, [](const CharBreakInfo& a_lhs, const CharBreakInfo& a_rhs) -> bool {
             return a_lhs.ch < a_rhs.ch;
-				  });
+        });
 
 		if (it == endIt || a_ch < it->ch) {
 			return false;

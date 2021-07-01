@@ -19,7 +19,7 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-			           a_number :
+                       a_number :
                        a_number + a_multiple - remainder;
 		}
 
@@ -31,7 +31,7 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-			           a_number :
+                       a_number :
                        a_number - remainder;
 		}
 	}
