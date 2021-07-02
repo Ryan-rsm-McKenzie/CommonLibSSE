@@ -358,8 +358,16 @@ namespace RE
 	{
 		return IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
 	}
+	
+	
+	bool Actor::IsBlocking() const
+	{
+		using func_t = decltype(&Actor::IsBlocking);
+		REL::Relocation<func_t> func{ REL::ID(36927) };
+		return func(this);
+	}
 
-
+	
 	bool Actor::IsCommandedActor() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsCommandedActor);
