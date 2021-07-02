@@ -519,6 +519,7 @@ namespace RE
 		bool						 IsAMount() const;
 		bool						 IsAnimationDriven() const;
 		bool						 IsBeingRidden() const;
+		bool						 IsBlocking() const;
 		bool						 IsCommandedActor() const;
 		bool						 IsEssential() const;
 		bool						 IsFactionInCrimeGroup(const TESFaction* a_faction) const;
