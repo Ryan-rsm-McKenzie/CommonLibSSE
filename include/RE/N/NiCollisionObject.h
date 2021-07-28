@@ -23,11 +23,11 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;              // 1C
 
 		// add
-		virtual void Unk_25(void);      // 25
-		virtual void Unk_26(void) = 0;  // 26
-		virtual void Unk_27(void) = 0;  // 27
-		virtual void Unk_28(void);      // 28 - { return; }
-		virtual void Unk_29(void);      // 29 - { return; }
+		virtual void Unk_25();      // 25
+		virtual void Unk_26() = 0;  // 26
+		virtual void Unk_27() = 0;  // 27
+		virtual void Unk_28();      // 28 - { return; }
+		virtual void Unk_29();      // 29 - { return; }
 
 		// members
 		NiAVObject* sceneObject;  // 10

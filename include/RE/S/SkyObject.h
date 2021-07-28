@@ -16,7 +16,7 @@ namespace RE
 
 		// add
 		virtual NiNode* GetRoot();                         // 01 - { return root.get(); }
-		virtual void    Unk_02(void);                      // 02
+		virtual void    Unk_02();                      // 02
 		virtual void    Update(Sky* a_sky, float a_arg2);  // 03 - { return; }
 
 		// members

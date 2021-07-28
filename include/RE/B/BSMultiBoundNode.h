@@ -35,8 +35,8 @@ namespace RE
 		// add
 		virtual BSMultiBoundRoom* GetMultiBoundRoom();                    // 3E - { return 0; }
 		virtual bool              QPointWithin(const NiPoint3& a_point);  // 3F
-		virtual void              Unk_40(void);                           // 40
-		virtual void              Unk_41(void);                           // 41
+		virtual void              Unk_40();                           // 40
+		virtual void              Unk_41();                           // 41
 
 		// members
 		NiPointer<BSMultiBound>           multiBound;     // 128

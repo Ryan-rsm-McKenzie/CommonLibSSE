@@ -89,8 +89,8 @@ namespace RE
 		virtual void          CopyFromTemplateForms(TESActorBase** a_templateForms);  // 04 - { return; }
 		virtual bool          GetIsGhost() const;                                     // 05 - { return (flags >> 29) & 1; }
 		virtual bool          GetInvulnerable() const;                                // 06 - { test flags, 80000000h; }
-		virtual void          Unk_07(void);                                           // 07 - { return 1; }
-		virtual BGSVoiceType* GetVoiceType(void);                                     // 08 - { return voice; }
+		virtual void          Unk_07();                                           // 07 - { return 1; }
+		virtual BGSVoiceType* GetVoiceType();                                     // 08 - { return voice; }
 
 		[[nodiscard]] constexpr bool AffectsStealthMeter() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntAffectStealthMeter); }
 		[[nodiscard]] constexpr bool Bleeds() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntBleed); }

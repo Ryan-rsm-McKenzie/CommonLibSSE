@@ -16,20 +16,20 @@ namespace RE
 
 		// override (BGSSceneAction)
 		bool          LoadSceneAction(TESFile* a_mod) override;                     // 01
-		void          Unk_02(void) override;                                        // 02
-		void          Unk_03(void) override;                                        // 03
+		void          Unk_02() override;                                        // 02
+		void          Unk_03() override;                                        // 03
 		bool          Loops() const override;                                       // 05 - { return (flags >> 16) & 1; }
 		bool          FacesTarget() const override;                                 // 06 - { return (flags >> 15) & 1; }
 		Type          GetType() const override;                                     // 07 - { return kDialogue; }
 		void          LoadBuffer(void* a_arg1, BGSLoadGameBuffer* a_buf) override;  // 09
-		void          Unk_0A(void) override;                                        // 0A
-		void          Unk_0B(void) override;                                        // 0B
-		void          Unk_0C(void) override;                                        // 0C
+		void          Unk_0A() override;                                        // 0A
+		void          Unk_0B() override;                                        // 0B
+		void          Unk_0C() override;                                        // 0C
 		EmotionType   GetEmotionType() const override;                              // 0E - { return emotionType; }
 		std::uint32_t GetEmotionValue() const override;                             // 0F - { return emotionValue; }
-		void          Unk_10(void) override;                                        // 10
-		void          Unk_11(void) override;                                        // 11
-		void          Unk_13(void) override;                                        // 13
+		void          Unk_10() override;                                        // 10
+		void          Unk_11() override;                                        // 11
+		void          Unk_13() override;                                        // 13
 
 		// members
 		TESTopic*     topic;             // 20 - DATA

@@ -12,10 +12,10 @@ namespace RE
 		~CombatGroupDetectionListener() override;  // 00
 
 		// override (DetectionListener)
-		void Unk_02(void) override;  // 01
+		void Unk_02() override;  // 01
 
 		// add
-		virtual void Unk_05(void);  // 01 - { unk10 = 0; }
+		virtual void Unk_05();  // 01 - { unk10 = 0; }
 
 		// members
 		void* unk10;  // 10

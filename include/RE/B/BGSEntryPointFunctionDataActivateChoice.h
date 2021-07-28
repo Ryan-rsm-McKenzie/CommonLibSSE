@@ -24,7 +24,7 @@ namespace RE
 		FunctionType GetType() const override;                   // 01 - { return kDataActivateChoice; }
 		bool         LoadFunctionData(TESFile* a_mod) override;  // 02
 		void         ResolveForms(TESFile* a_mod) override;      // 03
-		void         Unk_05(void) override;                      // 05
+		void         Unk_05() override;                      // 05
 		void         SetPerk(BGSPerk* a_perk) override;          // 06 - { perk = a_perk; }
 		BGSPerk*     GetPerk() override;                         // 07 - { return perk; }
 

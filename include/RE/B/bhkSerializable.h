@@ -20,20 +20,20 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;           // 19
 		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
 		void          SaveBinary(NiStream& a_stream) override;           // 1B
-		void          Unk_25(void) override;                             // 25
+		void          Unk_25() override;                             // 25
 
 		// add
 		virtual hkpWorld* GetWorld();        // 27 - { return 0; }
-		virtual void      Unk_28(void);      // 28 - { return 0; }
-		virtual void      Unk_29(void);      // 29 - { return 0; }
-		virtual void      Unk_2A(void);      // 2A - { return 0; }
-		virtual void      Unk_2B(void);      // 2B
-		virtual void      Unk_2C(void);      // 2C - { return 1; }
-		virtual void      Unk_2D(void);      // 2D
-		virtual void      Unk_2E(void) = 0;  // 2E
-		virtual void      Unk_2F(void) = 0;  // 2F
-		virtual void      Unk_30(void);      // 30
-		virtual void      Unk_31(void);      // 31
+		virtual void      Unk_28();      // 28 - { return 0; }
+		virtual void      Unk_29();      // 29 - { return 0; }
+		virtual void      Unk_2A();      // 2A - { return 0; }
+		virtual void      Unk_2B();      // 2B
+		virtual void      Unk_2C();      // 2C - { return 1; }
+		virtual void      Unk_2D();      // 2D
+		virtual void      Unk_2E() = 0;  // 2E
+		virtual void      Unk_2F() = 0;  // 2F
+		virtual void      Unk_30();      // 30
+		virtual void      Unk_31();      // 31
 
 		// members
 		bhkSerializable* serializable;  // 18

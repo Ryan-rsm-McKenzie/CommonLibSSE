@@ -31,12 +31,12 @@ namespace RE
 		TEMP_EFFECT_TYPE GetType() const override;                     // 2C - { return 9; }
 		void             SaveGame(BGSSaveGameBuffer* a_buf) override;  // 2D
 		void             LoadGame(BGSLoadGameBuffer* a_buf) override;  // 2E
-		void             Unk_36(void) override;                        // 36
-		void             Unk_3A(void) override;                        // 3A
+		void             Unk_36() override;                        // 36
+		void             Unk_3A() override;                        // 3A
 		void             UpdatePosition() override;                    // 3B
-		void             Unk_3C(void) override;                        // 3C
-		void             Unk_3D(void) override;                        // 3D - { return unkD0 & 1; }
-		void             Unk_3E(void) override;                        // 3E
+		void             Unk_3C() override;                        // 3C
+		void             Unk_3D() override;                        // 3D - { return unkD0 & 1; }
+		void             Unk_3E() override;                        // 3E
 
 		// members
 		RefAttachTechniqueInput hitEffectArtData;  // 68

@@ -13,9 +13,9 @@ namespace RE
 		virtual ~BSBatchRenderer();  // 00
 
 		// add
-		virtual void Unk_01(void);  // 01
-		virtual void Unk_02(void);  // 02
-		virtual void Unk_03(void);  // 03
+		virtual void Unk_01();  // 01
+		virtual void Unk_02();  // 02
+		virtual void Unk_03();  // 03
 
 		// members
 		BSTArray<void*>              unk008;      // 008

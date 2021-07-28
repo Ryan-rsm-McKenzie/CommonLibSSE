@@ -17,12 +17,12 @@ namespace RE
 		~BGSPackageDataLocation() override;  // 00
 
 		// override (BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation, kPackageDataLocationTypeName>)
-		void Unk_06(void) override;                            // 06
-		void Unk_07(void) override;                            // 07
+		void Unk_06() override;                            // 06
+		void Unk_07() override;                            // 07
 		void LoadBuffer(BGSLoadFormBuffer* a_buf) override;    // 08
-		void Unk_09(void) override;                            // 09 - { return; }
+		void Unk_09() override;                            // 09 - { return; }
 		bool GetDataAsString(BSString* a_dst) const override;  // 0A
-		void Unk_0C(void) override;                            // 0C - { return pointer->type == PackageLocation::Type::kNearPackageStartLocation; }
+		void Unk_0C() override;                            // 0C - { return pointer->type == PackageLocation::Type::kNearPackageStartLocation; }
 	};
 	static_assert(sizeof(BGSPackageDataLocation) == 0x20);
 }

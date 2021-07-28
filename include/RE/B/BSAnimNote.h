@@ -29,7 +29,7 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;               // 1C
 
 		// add
-		virtual void Unk_25(void);  // 25
+		virtual void Unk_25();  // 25
 	};
 	//static_assert(sizeof(BSAnimNote) == 0x);
 }

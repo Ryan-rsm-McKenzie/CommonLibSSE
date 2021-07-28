@@ -96,31 +96,31 @@ namespace RE
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C - { return false; }
 		void          PostLinkObject(NiStream& a_stream) override;        // 1E - { NiObjectNET::PostLinkObject(a_stream); }
-		void          Unk_27(void) override;                              // 27 - { return 1; }
-		void          Unk_29(void) override;                              // 29
+		void          Unk_27() override;                              // 27 - { return 1; }
+		void          Unk_29() override;                              // 29
 
 		// add
-		virtual void Unk_2A(void) = 0;           // 2A
-		virtual void Unk_2B(void);               // 2B - { return 0; }
-		virtual void Unk_2C(void);               // 2C - { return 0; }
-		virtual void Unk_2D(void);               // 2D - { return 0; }
-		virtual void Unk_2E(void);               // 2E - { return 1; }
-		virtual void Unk_2F(void);               // 2F - { return 0; }
-		virtual void Unk_30(void);               // 30
-		virtual void Unk_31(void);               // 31 - { return; }
-		virtual void Unk_32(void);               // 32 - { return 1.0; }
-		virtual void Unk_33(void);               // 33 - { return 1; }
-		virtual void Unk_34(void);               // 34
-		virtual void Unk_35(void);               // 35 - { return 0; }
-		virtual void Unk_36(void);               // 36 - { return 0; }
-		virtual void Unk_37(void);               // 37 - { return 0; }
-		virtual void Unk_38(void);               // 38 - { return 0; }
+		virtual void Unk_2A() = 0;           // 2A
+		virtual void Unk_2B();               // 2B - { return 0; }
+		virtual void Unk_2C();               // 2C - { return 0; }
+		virtual void Unk_2D();               // 2D - { return 0; }
+		virtual void Unk_2E();               // 2E - { return 1; }
+		virtual void Unk_2F();               // 2F - { return 0; }
+		virtual void Unk_30();               // 30
+		virtual void Unk_31();               // 31 - { return; }
+		virtual void Unk_32();               // 32 - { return 1.0; }
+		virtual void Unk_33();               // 33 - { return 1; }
+		virtual void Unk_34();               // 34
+		virtual void Unk_35();               // 35 - { return 0; }
+		virtual void Unk_36();               // 36 - { return 0; }
+		virtual void Unk_37();               // 37 - { return 0; }
+		virtual void Unk_38();               // 38 - { return 0; }
 		virtual bool AcceptsEffectData() const;  // 39 - { return false; }
-		virtual void Unk_3A(void);               // 3A - { return; }
-		virtual void Unk_3B(void);               // 3B - { return; }
-		virtual void Unk_3C(void);               // 3C - { return 0; }
-		virtual void Unk_3D(void);               // 3D - { return 0; }
-		virtual void Unk_3E(void);               // 3E - { return 0; }
+		virtual void Unk_3A();               // 3A - { return; }
+		virtual void Unk_3B();               // 3B - { return; }
+		virtual void Unk_3C();               // 3C - { return 0; }
+		virtual void Unk_3D();               // 3D - { return 0; }
+		virtual void Unk_3E();               // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 

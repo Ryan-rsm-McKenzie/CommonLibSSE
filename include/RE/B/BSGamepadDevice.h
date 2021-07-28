@@ -20,12 +20,12 @@ namespace RE
 		bool IsEnabled() const override;  // 07 - { return connected && userIndex != -1; }
 
 		// add
-		virtual void Unk_09(void) = 0;  // 09
-		virtual void Unk_0A(void);      // 0A - { return; }
-		virtual void Unk_0B(void);      // 0B - { return; }
-		virtual void Unk_0C(void);      // 0C - { return 0; }
-		virtual void Unk_0D(void);      // 0D
-		virtual void Unk_0E(void);      // 0E - { return; }
+		virtual void Unk_09() = 0;  // 09
+		virtual void Unk_0A();      // 0A - { return; }
+		virtual void Unk_0B();      // 0B - { return; }
+		virtual void Unk_0C();      // 0C - { return 0; }
+		virtual void Unk_0D();      // 0D
+		virtual void Unk_0E();      // 0E - { return; }
 
 		// members
 		std::int32_t  userIndex;          // C8

@@ -37,18 +37,18 @@ namespace RE
 		bool                  RegisterStreamables(NiStream& a_stream) override;  // 1A
 		void                  SaveBinary(NiStream& a_stream) override;           // 1B
 		bool                  IsEqual(NiObject* a_object) override;              // 1C
-		void                  Unk_25(void) override;                             // 25
-		void                  Unk_26(void) override;                             // 26
-		void                  Unk_27(void) override;                             // 27 - { return; }
+		void                  Unk_25() override;                             // 25
+		void                  Unk_26() override;                             // 26
+		void                  Unk_27() override;                             // 27 - { return; }
 
 		// add
-		virtual void Unk_2A(void);      // 2A
-		virtual void Unk_2B(void) = 0;  // 2B
-		virtual void Unk_2C(void) = 0;  // 2C
-		virtual void Unk_2D(void) = 0;  // 2D
-		virtual void Unk_2E(void) = 0;  // 2E
-		virtual void Unk_2F(void);      // 2F
-		virtual void Unk_30(void);      // 30 - { return 1; }
+		virtual void Unk_2A();      // 2A
+		virtual void Unk_2B() = 0;  // 2B
+		virtual void Unk_2C() = 0;  // 2C
+		virtual void Unk_2D() = 0;  // 2D
+		virtual void Unk_2E() = 0;  // 2E
+		virtual void Unk_2F();      // 2F
+		virtual void Unk_30();      // 30 - { return 1; }
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 18

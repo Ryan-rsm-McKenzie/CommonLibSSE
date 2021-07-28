@@ -18,13 +18,13 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;           // 19
 		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A
 		void          SaveBinary(NiStream& a_stream) override;           // 1B
-		void          Unk_26(void) override;                             // 26
+		void          Unk_26() override;                             // 26
 		hkpWorld*     GetWorld() override;                               // 27 - { return world; }
-		void          Unk_28(void) override;                             // 28 - { return world; }
-		void          Unk_29(void) override;                             // 29
+		void          Unk_28() override;                             // 28 - { return world; }
+		void          Unk_29() override;                             // 29
 
 		// add
-		virtual void Unk_32(void);  // 32 - { return Unk_29(); }
+		virtual void Unk_32();  // 32 - { return Unk_29(); }
 
 		// members
 		hkpWorld* world;  // 20

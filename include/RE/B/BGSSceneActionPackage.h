@@ -17,16 +17,16 @@ namespace RE
 
 		// override (BGSSceneAction)
 		bool LoadSceneAction(TESFile* a_mod) override;                     // 01
-		void Unk_02(void) override;                                        // 02
+		void Unk_02() override;                                        // 02
 		Type GetType() const override;                                     // 07 - { return kPackage; }
-		void Unk_08(void) override;                                        // 08
+		void Unk_08() override;                                        // 08
 		void LoadBuffer(void* a_arg1, BGSLoadGameBuffer* a_buf) override;  // 09
-		void Unk_0A(void) override;                                        // 0A
-		void Unk_0B(void) override;                                        // 0B
-		void Unk_10(void) override;                                        // 10
-		void Unk_11(void) override;                                        // 11
-		void Unk_12(void) override;                                        // 12
-		void Unk_13(void) override;                                        // 13
+		void Unk_0A() override;                                        // 0A
+		void Unk_0B() override;                                        // 0B
+		void Unk_10() override;                                        // 10
+		void Unk_11() override;                                        // 11
+		void Unk_12() override;                                        // 12
+		void Unk_13() override;                                        // 13
 
 		// members
 		std::uint64_t         unk20;     // 20

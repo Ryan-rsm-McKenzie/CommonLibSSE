@@ -58,7 +58,7 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;              // 1C
 
 		// add
-		virtual void Unk_25(void);  // 25
+		virtual void Unk_25();  // 25
 
 		// members
 		std::uint32_t          numPartitions;  // 10

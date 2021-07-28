@@ -31,8 +31,8 @@ namespace RE
 
 			// override (CraftingSubMenu)
 			void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			void Unk_02(void) override;                        // 02
-			void Unk_05(void) override;                        // 05
+			void Unk_02() override;                        // 02
+			void Unk_05() override;                        // 05
 
 			// members
 			void*         unk100;  // 100

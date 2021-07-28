@@ -15,10 +15,10 @@ namespace RE
 		// override (BSLightingShaderMaterialBase)
 		BSShaderMaterial* Create() override;                              // 01
 		void              CopyMembers(BSShaderMaterial* a_src) override;  // 02
-		std::uint32_t     ComputeCRC32(void) override;                    // 04
+		std::uint32_t     ComputeCRC32() override;                    // 04
 		Feature           GetFeature() const override;                    // 06 - { return Feature::kMultiIndexTriShapeSnow; }
-		void              SaveBinary(void) override;                      // 0C
-		void              LoadBinary(void) override;                      // 0D
+		void              SaveBinary() override;                      // 0C
+		void              LoadBinary() override;                      // 0D
 
 		// members
 		NiColorA sparkleParams;  // A0

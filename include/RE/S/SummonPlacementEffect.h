@@ -33,7 +33,7 @@ namespace RE
 		void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
 		void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
 		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
-		void             Unk_36(void) override;                              // 36
+		void             Unk_36() override;                              // 36
 
 		// members
 		BGSArtObject*                          effectArt;  // 68

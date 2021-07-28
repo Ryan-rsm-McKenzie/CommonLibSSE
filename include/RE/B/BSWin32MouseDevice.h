@@ -33,9 +33,9 @@ namespace RE
 		// override (BSMouseDevice)
 		void Initialize() override;           // 01
 		void Process(float a_arg1) override;  // 02
-		void Unk_03(void) override;           // 03
+		void Unk_03() override;           // 03
 		void Reset() override;                // 08
-		void Unk_09(void) override;           // 09
+		void Unk_09() override;           // 09
 
 		// members
 		std::uint64_t      unk78;  // 78

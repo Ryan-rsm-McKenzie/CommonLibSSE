@@ -13,10 +13,10 @@ namespace RE
 		~BGSProcedureTreeConditionalItem() override;  // 00
 
 		// override (IProcedureTreeItem)
-		void Unk_01(void) override;          // 01
-		void Unk_02(void) override;          // 02
+		void Unk_01() override;          // 01
+		void Unk_02() override;          // 02
 		void Load(TESFile* a_mod) override;  // 03
-		void Unk_07(void) override;          // 07
+		void Unk_07() override;          // 07
 
 		// members
 		TESCondition conditions;  // 08

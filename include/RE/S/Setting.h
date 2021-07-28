@@ -34,7 +34,7 @@ namespace RE
 		virtual ~Setting();  // 00
 
 		// add
-		virtual bool Unk_01(void);  // 01 - { return false; }
+		virtual bool Unk_01();  // 01 - { return false; }
 
 		bool        IsManaged() const;
 		Type        GetType() const;

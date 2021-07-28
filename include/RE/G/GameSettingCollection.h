@@ -19,7 +19,7 @@ namespace RE
 		bool CloseHandle() override;                     // 06 - { handle = 0; return true; }
 
 		// add
-		virtual void Unk_0A(void);  // 0A
+		virtual void Unk_0A();  // 0A
 
 		static GameSettingCollection* GetSingleton();
 

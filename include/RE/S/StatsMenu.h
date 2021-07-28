@@ -61,7 +61,7 @@ namespace RE
 
 		// override (IMenu)
 		void               Accept(CallbackProcessor* a_processor) override;  // 01
-		void               Unk_03(void) override;                            // 03 - { unk321 = 1; }
+		void               Unk_03() override;                            // 03 - { unk321 = 1; }
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 		void               PostDisplay() override;                           // 06
 

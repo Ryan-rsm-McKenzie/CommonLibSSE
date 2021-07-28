@@ -20,12 +20,12 @@ namespace RE
 			~CraftingSubMenu() override;  // 00
 
 			// add
-			virtual void Unk_02(void);  // 02 - { return; }
-			virtual void Unk_03(void);  // 03 - { return; }
-			virtual void Unk_04(void);  // 04 - { return 1; }
-			virtual void Unk_05(void);  // 05 - { return 0; }
-			virtual void Unk_06(void);  // 06 - { return; }
-			virtual void Unk_07(void);  // 07 - { return; }
+			virtual void Unk_02();  // 02 - { return; }
+			virtual void Unk_03();  // 03 - { return; }
+			virtual void Unk_04();  // 04 - { return 1; }
+			virtual void Unk_05();  // 05 - { return 0; }
+			virtual void Unk_06();  // 06 - { return; }
+			virtual void Unk_07();  // 07 - { return; }
 
 			// members
 			std::uint64_t unk018;  // 018

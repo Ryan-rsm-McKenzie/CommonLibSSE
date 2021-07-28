@@ -52,8 +52,8 @@ namespace RE
 		~ImageSpaceModifierInstanceDOF() override;  // 00
 
 		// override (ImageSpaceModifierInstanceTemp)
-		void Unk_26(void) override;  // 26
-		void Unk_28(void) override;  // 28
+		void Unk_26() override;  // 26
+		void Unk_28() override;  // 28
 
 		// members
 		ImageSpaceModData data;  // 30

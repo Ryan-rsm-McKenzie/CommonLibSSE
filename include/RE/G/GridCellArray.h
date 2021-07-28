@@ -15,12 +15,12 @@ namespace RE
 		~GridCellArray() override;  // 00
 
 		// override (GridArray)
-		void Unk_02(void) override;  // 02
-		void Unk_03(void) override;  // 03
-		void Unk_05(void) override;  // 05
-		void Unk_06(void) override;  // 06
-		void Unk_07(void) override;  // 07
-		void Unk_08(void) override;  // 08
+		void Unk_02() override;  // 02
+		void Unk_03() override;  // 03
+		void Unk_05() override;  // 05
+		void Unk_06() override;  // 06
+		void Unk_07() override;  // 07
+		void Unk_08() override;  // 08
 
 		[[nodiscard]] TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y) const noexcept
 		{

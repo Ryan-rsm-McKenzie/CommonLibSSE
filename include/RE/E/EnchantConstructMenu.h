@@ -66,9 +66,9 @@ namespace RE
 
 			// override (CraftingSubMenu)
 			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_04(void) override;                        // 04 - { return unk20C != 3 || unk1A0; }
-			virtual void Unk_05(void) override;                        // 05
-			virtual void Unk_07(void) override;                        // 07
+			virtual void Unk_04() override;                        // 04 - { return unk20C != 3 || unk1A0; }
+			virtual void Unk_05() override;                        // 05
+			virtual void Unk_07() override;                        // 07
 
 			// members
 			std::uint64_t unk100;  // 100

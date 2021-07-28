@@ -17,7 +17,7 @@ namespace RE
 		~hkbBindable() override;  // 00
 
 		// add
-		virtual void Unk_03(void);  // 03
+		virtual void Unk_03();  // 03
 
 		// members
 		hkRefPtr<hkbVariableBindingSet> variableBindingSet;  // 10

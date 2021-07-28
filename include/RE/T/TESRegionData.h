@@ -45,7 +45,7 @@ namespace RE
 		virtual void LoadData(TESForm* a_form);                        // 02 - { return; }
 		virtual Type GetType() const = 0;                              // 03
 		virtual void ConstructSelf() = 0;                              // 04
-		virtual void Unk_05(void) = 0;                                 // 05
+		virtual void Unk_05() = 0;                                 // 05
 		virtual void CopyFrom(TESRegionData* a_src, bool a_copy) = 0;  // 06
 		virtual bool IsLoaded() const = 0;                             // 07
 

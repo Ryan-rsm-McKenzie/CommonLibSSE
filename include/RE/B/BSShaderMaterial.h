@@ -47,7 +47,7 @@ namespace RE
 		virtual BSShaderMaterial* Create();                                // 01
 		virtual void              CopyMembers(BSShaderMaterial* a_other);  // 02
 		virtual bool              DoIsCopy(BSShaderMaterial* a_other);     // 03
-		virtual std::uint32_t     ComputeCRC32(void);                      // 04
+		virtual std::uint32_t     ComputeCRC32();                      // 04
 		virtual BSShaderMaterial* GetDefault();                            // 05
 		virtual Feature           GetFeature() const;                      // 06 - { return Feature::kDefault; }
 		virtual Type              GetType() const;                         // 07 - { return Type::kBase; }

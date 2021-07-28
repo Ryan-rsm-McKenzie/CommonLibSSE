@@ -19,9 +19,9 @@ namespace RE
 		BSShaderMaterial* Create() override;                              // 01
 		void              CopyMembers(BSShaderMaterial* a_src) override;  // 02
 		Feature           GetFeature() const override;                    // 06 - { return Feature::kMultiTexLandLODBlend; }
-		void              ClearTextures(void) override;                   // 09
-		void              ReceiveValuesFromRootMaterial(void) override;   // 0A
-		void              GetTextures(void) override;                     // 0B
+		void              ClearTextures() override;                   // 09
+		void              ReceiveValuesFromRootMaterial() override;   // 0A
+		void              GetTextures() override;                     // 0B
 
 		// members
 		std::uint32_t              numLandscapeTextures;        // 0A0

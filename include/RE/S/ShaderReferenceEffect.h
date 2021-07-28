@@ -48,13 +48,13 @@ namespace RE
 		bool             GetStackableMatch(BSTempEffect* a_effect) const override;  // 33
 		void             Push() override;                                           // 34 - { if (effectShaderData) ++pushCount; }
 		void             Pop() override;                                            // 35
-		void             Unk_36(void) override;                                     // 36
-		void             Unk_37(void) override;                                     // 37
-		void             Unk_38(void) override;                                     // 38
-		void             Unk_39(void) override;                                     // 39
+		void             Unk_36() override;                                     // 36
+		void             Unk_37() override;                                     // 37
+		void             Unk_38() override;                                     // 38
+		void             Unk_39() override;                                     // 39
 		void             UpdatePosition() override;                                 // 3B
-		void             Unk_3C(void) override;                                     // 3C
-		void             Unk_3E(void) override;                                     // 3E
+		void             Unk_3C() override;                                     // 3C
+		void             Unk_3E() override;                                     // 3E
 
 		// members
 		BSTArray<Data048>     unk048;            // 048

@@ -19,8 +19,8 @@ namespace RE
 		const NiRTTI* GetRTTI() const override;  // 02
 
 		// add
-		virtual void Unk_25(void);  // 25
-		virtual void Unk_26(void);  // 26
+		virtual void Unk_25();  // 25
+		virtual void Unk_26();  // 26
 
 		// members
 		hkRefPtr<hkReferencedObject> referencedObject;  // 10

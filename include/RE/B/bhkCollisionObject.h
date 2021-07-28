@@ -19,13 +19,13 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;            // 19 - { bhkNiCollisionObject::LinkObject(a_stream); }
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return bhkNiCollisionObject::RegisterStreamables(a_stream); }
 		void          SaveBinary(NiStream& a_stream) override;            // 1B - { bhkNiCollisionObject::SaveBinary(a_stream); }
-		void          Unk_26(void) override;                              // 26
-		void          Unk_2A(void) override;                              // 2A
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C
-		void          Unk_2D(void) override;                              // 2D
-		void          Unk_2E(void) override;                              // 2E
-		void          Unk_2F(void) override;                              // 2F
+		void          Unk_26() override;                              // 26
+		void          Unk_2A() override;                              // 2A
+		void          Unk_2B() override;                              // 2B
+		void          Unk_2C() override;                              // 2C
+		void          Unk_2D() override;                              // 2D
+		void          Unk_2E() override;                              // 2E
+		void          Unk_2F() override;                              // 2F
 	};
 	static_assert(sizeof(bhkCollisionObject) == 0x28);
 }

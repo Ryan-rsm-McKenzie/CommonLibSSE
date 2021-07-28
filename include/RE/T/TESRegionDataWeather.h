@@ -18,12 +18,12 @@ namespace RE
 		// override (TESRegionData)
 		Type GetType() const override;                              // 03 - { return Type::kWeather; }
 		void ConstructSelf() override;                              // 04
-		void Unk_05(void) override;                                 // 05
+		void Unk_05() override;                                 // 05
 		void CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
 		bool IsLoaded() const override;                             // 07 - { return weatherTypes.next || weatherTypes.cur; }
 
 		// add
-		virtual void Unk_08(void);  // 08
+		virtual void Unk_08();  // 08
 
 		// members
 		BSSimpleList<WeatherType*> weatherTypes;  // 10

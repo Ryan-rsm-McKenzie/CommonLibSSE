@@ -15,10 +15,10 @@ namespace RE
 		~ImageSpaceModifierInstance() override;  // 00
 
 		// add
-		virtual void Unk_25(void);      // 25 - { return 0; }
-		virtual void Unk_26(void) = 0;  // 26
-		virtual void Unk_27(void);      // 27 - { return 0; }
-		virtual void Unk_28(void) = 0;  // 28
+		virtual void Unk_25();      // 25 - { return 0; }
+		virtual void Unk_26() = 0;  // 26
+		virtual void Unk_27();      // 27 - { return 0; }
+		virtual void Unk_28() = 0;  // 28
 
 		// members
 		std::uint32_t         unk10;     // 10

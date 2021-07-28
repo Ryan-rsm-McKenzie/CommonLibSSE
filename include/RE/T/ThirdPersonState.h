@@ -36,7 +36,7 @@ namespace RE
 
 		// add
 		virtual void SetCameraHandle(RefHandle& a_handle);        // 09 - { return; }
-		virtual void Unk_0A(void);                                // 0A - { return; }
+		virtual void Unk_0A();                                // 0A - { return; }
 		virtual void ProcessWeaponDrawnChange(bool a_drawn);      // 0B
 		virtual bool GetFreeRotationMode() const;                 // 0C
 		virtual void SetFreeRotationMode(bool a_weaponSheathed);  // 0D

@@ -15,8 +15,8 @@ namespace RE
 		~JournalTab() override;  // 00
 
 		// add
-		virtual void Unk_02(void);  // 02 - { return; }
-		virtual void Unk_03(void);  // 03 - { return; }
+		virtual void Unk_02();  // 02 - { return; }
+		virtual void Unk_03();  // 03 - { return; }
 
 		// members
 		GPtr<GFxMovieView> view;  // 10

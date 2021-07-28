@@ -66,7 +66,7 @@ namespace RE
 
 		// add
 		virtual void               PostCreate();                                                 // 02 - { return; }
-		virtual void               Unk_03(void);                                                 // 03 - { return; }
+		virtual void               Unk_03();                                                 // 03 - { return; }
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);                         // 04
 		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime);  // 05
 		virtual void               PostDisplay();                                                // 06

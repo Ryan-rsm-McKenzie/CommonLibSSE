@@ -25,11 +25,11 @@ namespace RE
 			BSStorageDefs::ErrorCode Seek(std::size_t a_offset, BSStorageDefs::SeekMode a_seekMode) const override;  // 03
 			BSStorageDefs::ErrorCode Read(std::size_t a_numBytes, std::byte* a_bytes) const override;                // 04
 			bool                     Open(const char* a_fileName) override;                                          // 06
-			void                     Close(void) override;                                                           // 07
+			void                     Close() override;                                                           // 07
 			const BSFixedString&     GetRelPath() override;                                                          // 08 - { return relPath; }
 			bool                     HasOpenFile() override;                                                         // 09 - { return hasOpenFile; }
 			bool                     FileIsGood() override;                                                          // 0A - { return fileIsGood; }
-			void                     Unk_0B(void) override;                                                          // 0B
+			void                     Unk_0B() override;                                                          // 0B
 
 			// members
 			std::uint64_t       unk20;        // 20

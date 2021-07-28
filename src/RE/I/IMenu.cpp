@@ -16,7 +16,7 @@ namespace RE
 	void IMenu::PostCreate()
 	{}
 
-	void IMenu::Unk_03(void)
+	void IMenu::Unk_03()
 	{}
 
 	UI_MESSAGE_RESULTS IMenu::ProcessMessage(UIMessage& a_message)

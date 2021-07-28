@@ -13,7 +13,7 @@ namespace RE
 
 		// override (bhkCharacterState)
 		hkpCharacterStateType GetType() const override;  // 03 - { return kOnGround; }
-		void                  Unk_08(void) override;     // 08
+		void                  Unk_08() override;     // 08
 
 		// members
 		std::uint64_t unk10;  // 10

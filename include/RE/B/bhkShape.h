@@ -19,13 +19,13 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return bhkSerializable::RegisterStreamables(a_stream); }
 		void          SaveBinary(NiStream& a_stream) override;           // 1B
 		bool          IsEqual(NiObject* a_object) override;              // 1C
-		void          Unk_26(void) override;                             // 26
+		void          Unk_26() override;                             // 26
 
 		// add
-		virtual void Unk_32(void);  // 32
-		virtual void Unk_33(void);  // 33
-		virtual void Unk_34(void);  // 34 - { return 0; }
-		virtual void Unk_35(void);  // 35
+		virtual void Unk_32();  // 32
+		virtual void Unk_33();  // 33
+		virtual void Unk_34();  // 34 - { return 0; }
+		virtual void Unk_35();  // 35
 
 		// members
 		std::uint64_t unk20;  // 20

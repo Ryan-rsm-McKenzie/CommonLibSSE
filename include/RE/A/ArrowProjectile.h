@@ -25,19 +25,19 @@ namespace RE
 		// override (MissileProjectile)
 		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
 		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		void Unk_AA(void) override;                        // AA
+		void Unk_AA() override;                        // AA
 		void UpdateImpl(float a_delta) override;           // AB
-		void Unk_AC(void) override;                        // AC
-		void Unk_AD(void) override;                        // AD
-		void Unk_AF(void) override;                        // AF
-		void Unk_B0(void) override;                        // B0
-		void Unk_B1(void) override;                        // B1 - { return 1; }
-		void Unk_B5(void) override;                        // B5
-		void Unk_B9(void) override;                        // B9 - { return (unk1CC >> 22) & 1; }
-		void Unk_BD(void) override;                        // BD
+		void Unk_AC() override;                        // AC
+		void Unk_AD() override;                        // AD
+		void Unk_AF() override;                        // AF
+		void Unk_B0() override;                        // B0
+		void Unk_B1() override;                        // B1 - { return 1; }
+		void Unk_B5() override;                        // B5
+		void Unk_B9() override;                        // B9 - { return (unk1CC >> 22) & 1; }
+		void Unk_BD() override;                        // BD
 		void Handle3DLoaded() override;                    // C0
-		void Unk_C2(void) override;                        // C2 - { return 1; }
-		void Unk_C3(void) override;                        // C3 - { return 1; }
+		void Unk_C2() override;                        // C2 - { return 1; }
+		void Unk_C3() override;                        // C3 - { return 1; }
 
 		// members
 		std::uint64_t unk1E0;  // 1E0

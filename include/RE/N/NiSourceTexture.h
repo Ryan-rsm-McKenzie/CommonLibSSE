@@ -27,12 +27,12 @@ namespace RE
 
 		// override (NiTexture)
 		const NiRTTI* GetRTTI() const override;  // 02
-		void          Unk_25(void) override;     // 25 - { return 0; }
-		void          Unk_26(void) override;     // 26 - { return 0; }
-		void          Unk_27(void) override;     // 27
-		void          Unk_28(void) override;     // 28
-		void          Unk_29(void) override;     // 29 - { return; }
-		void          Unk_2A(void) override;     // 2A - { return; }
+		void          Unk_25() override;     // 25 - { return 0; }
+		void          Unk_26() override;     // 26 - { return 0; }
+		void          Unk_27() override;     // 27
+		void          Unk_28() override;     // 28
+		void          Unk_29() override;     // 29 - { return; }
+		void          Unk_2A() override;     // 2A - { return; }
 
 		// members
 		BSResource::Stream*  unk40;            // 40

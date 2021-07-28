@@ -68,7 +68,7 @@ namespace RE
 		// add
 		virtual BSMultiIndexTriShape*   AsMultiIndexTriShape();    // 35 - { return 0; }
 		virtual BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
-		virtual void                    Unk_37(void);              // 37 - { return 0; }
+		virtual void                    Unk_37();              // 37 - { return 0; }
 
 		// members
 		NiBound                              modelBound;                  // 110

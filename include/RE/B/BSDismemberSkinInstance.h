@@ -30,7 +30,7 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiSkinInstance::RegisterStreamables(a_stream) != false; }
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C
-		void          Unk_25(void) override;                              // 25
+		void          Unk_25() override;                              // 25
 
 		// members
 		std::int32_t  numPartitions;  // 88

@@ -29,7 +29,7 @@ namespace RE
 		void          PostLinkObject(NiStream& a_stream) override;        // 1E - { return; }
 
 		// add
-		virtual void Unk_25(void);  // 25
+		virtual void Unk_25();  // 25
 
 		static NiSkinInstance* Create();
 

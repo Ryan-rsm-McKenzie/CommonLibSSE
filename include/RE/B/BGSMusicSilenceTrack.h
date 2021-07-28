@@ -12,7 +12,7 @@ namespace RE
 		~BGSMusicSilenceTrack() override;  // 00
 
 		// override (BGSMusicTrack)
-		void      DoUpdate(void) override;                       // 01
+		void      DoUpdate() override;                       // 01
 		void      DoPlay() override;                             // 02
 		void      DoPause() override;                            // 03
 		void      DoFinish(bool a_arg1, float a_arg2) override;  // 04

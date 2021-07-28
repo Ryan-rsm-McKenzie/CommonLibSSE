@@ -90,9 +90,9 @@ namespace RE
 		void                        Release() override;                                                                                                                                                                           // 45
 
 		// add
-		virtual void Unk_46(void);  // 46
-		virtual void Unk_47(void);  // 47
-		virtual void Unk_48(void);  // 48
+		virtual void Unk_46();  // 46
+		virtual void Unk_47();  // 47
+		virtual void Unk_48();  // 48
 
 		// members
 		std::uint64_t                         unk0018;                          // 0018

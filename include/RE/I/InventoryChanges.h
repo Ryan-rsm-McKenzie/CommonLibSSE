@@ -21,8 +21,8 @@ namespace RE
 
 			// add
 			virtual bool Visit(InventoryEntryData* a_entryData) = 0;  // 01
-			virtual void Unk_02(void);                                // 02 - { return 1; }
-			virtual void Unk_03(void);                                // 03
+			virtual void Unk_02();                                // 02 - { return 1; }
+			virtual void Unk_03();                                // 03
 		};
 		static_assert(sizeof(IItemChangeVisitor) == 0x8);
 

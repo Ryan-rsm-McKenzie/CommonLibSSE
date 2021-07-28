@@ -13,7 +13,7 @@ namespace RE
 		~RefAttachTechniqueInput() override;  // 00
 
 		// override (BSAttachTechniques::AttachTechniqueInput)
-		void Unk_01(void) override;  // 01
+		void Unk_01() override;  // 01
 
 		// members
 		std::uint64_t unk20;  // 20

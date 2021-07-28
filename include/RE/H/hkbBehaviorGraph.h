@@ -24,16 +24,16 @@ namespace RE
 		// override (hkbGenerator)
 		hkClass* GetClassType() const override;                                                                     // 01
 		void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
-		void     Unk_04(void) override;                                                                             // 04
-		void     Unk_05(void) override;                                                                             // 05
-		void     Unk_06(void) override;                                                                             // 06
-		void     Unk_07(void) override;                                                                             // 07
-		void     Unk_09(void) override;                                                                             // 09
-		void     Unk_0C(void) override;                                                                             // 0C
-		void     Unk_16(void) override;                                                                             // 16 - { return 1; }
-		void     Unk_17(void) override;                                                                             // 17
-		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
-		void     Unk_19(void) override;                                                                             // 19
+		void     Unk_04() override;                                                                             // 04
+		void     Unk_05() override;                                                                             // 05
+		void     Unk_06() override;                                                                             // 06
+		void     Unk_07() override;                                                                             // 07
+		void     Unk_09() override;                                                                             // 09
+		void     Unk_0C() override;                                                                             // 0C
+		void     Unk_16() override;                                                                             // 16 - { return 1; }
+		void     Unk_17() override;                                                                             // 17
+		void     Unk_18() override;                                                                             // 18 - { return 1; }
+		void     Unk_19() override;                                                                             // 19
 
 		// members
 		stl::enumeration<VariableMode, std::uint8_t> variableMode;                     // 048

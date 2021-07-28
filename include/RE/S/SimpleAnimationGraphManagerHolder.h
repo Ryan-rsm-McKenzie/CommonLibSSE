@@ -18,7 +18,7 @@ namespace RE
 		bool ConstructAnimationGraph(BSTSmartPointer<BShkbAnimationGraph>& a_out) override;                 // 05
 
 		// add
-		virtual void Unk_13(void);  // 13 - { return; }
+		virtual void Unk_13();  // 13 - { return; }
 
 		// members
 		BSTSmartPointer<BSAnimationGraphManager>          animationGraphManager;  // 08

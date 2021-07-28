@@ -14,7 +14,7 @@ namespace RE
 		virtual ~BGSPackageDataPointerTemplate();  // 00
 
 		// override (BGSNamedPackageData<Parent>)
-		void                 Unk_05(void) override;         // 05 - { return 1; }
+		void                 Unk_05() override;         // 05 - { return 1; }
 		const BSFixedString& GetTypeName() const override;  // 0B - { return TYPE_NAME; }
 
 		// add

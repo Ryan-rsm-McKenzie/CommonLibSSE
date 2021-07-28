@@ -13,7 +13,7 @@ namespace RE
 
 		// override (bhkCharacterState)
 		hkpCharacterStateType GetType() const override;  // 03 - { return kFlying; }
-		void                  Unk_08(void) override;     // 08
+		void                  Unk_08() override;     // 08
 	};
 	static_assert(sizeof(bhkCharacterStateFlying) == 0x10);
 }

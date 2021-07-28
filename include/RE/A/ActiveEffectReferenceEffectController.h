@@ -16,10 +16,10 @@ namespace RE
 		virtual ~ActiveEffectReferenceEffectController();  // 00
 
 		// override (ReferenceEffectController)
-		virtual void             Unk_01(void) override;                                   // 01
-		virtual void             Unk_02(void) override;                                   // 02
-		virtual void             Unk_03(void) override;                                   // 03
-		virtual void             Unk_04(void) override;                                   // 04
+		virtual void             Unk_01() override;                                   // 01
+		virtual void             Unk_02() override;                                   // 02
+		virtual void             Unk_03() override;                                   // 03
+		virtual void             Unk_04() override;                                   // 04
 		virtual const NiPoint3&  GetSourcePosition() override;                            // 05
 		virtual bool             GetUseSourcePosition() override;                         // 06
 		virtual bool             GetNoInitialFlare() override;                            // 07

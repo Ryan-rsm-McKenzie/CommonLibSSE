@@ -21,7 +21,7 @@ namespace RE
 
 		// override (SimpleAnimationGraphManagerHolder)
 		bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;  // 08
-		void Unk_0C(void) override;                                                                  // 0C
+		void Unk_0C() override;                                                                  // 0C
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
 		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01 - runs PlaySound on BSAnimationGraphEvent::optionalStr

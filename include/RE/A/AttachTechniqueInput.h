@@ -12,7 +12,7 @@ namespace RE
 			virtual ~AttachTechniqueInput();  // 00
 
 			// add
-			virtual void Unk_01(void);  // 01
+			virtual void Unk_01();  // 01
 
 			// members
 			void*         unk08;  // 08 - smart ptr

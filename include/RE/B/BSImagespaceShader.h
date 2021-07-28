@@ -15,18 +15,18 @@ namespace RE
 		~BSImagespaceShader() override;  // 00
 
 		// override (BSShader)
-		void Unk_02(void) override;  // 02
-		void Unk_03(void) override;  // 03
-		void Unk_06(void) override;  // 06
-		void Unk_07(void) override;  // 07
-		void Unk_09(void) override;  // 09
+		void Unk_02() override;  // 02
+		void Unk_03() override;  // 03
+		void Unk_06() override;  // 06
+		void Unk_07() override;  // 07
+		void Unk_09() override;  // 09
 
 		// add
-		virtual void Unk_0A(void);  // 0A - { return; }
-		virtual void Unk_0B(void);  // 0B - { return; }
-		virtual void Unk_0C(void);  // 0C
-		virtual void Unk_0D(void);  // 0D
-		virtual void Unk_0E(void);  // 0E
+		virtual void Unk_0A();  // 0A - { return; }
+		virtual void Unk_0B();  // 0B - { return; }
+		virtual void Unk_0C();  // 0C
+		virtual void Unk_0D();  // 0D
+		virtual void Unk_0E();  // 0E
 
 		// members
 		std::uint64_t unk120;  // 120

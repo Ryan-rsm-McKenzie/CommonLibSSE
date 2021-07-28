@@ -12,7 +12,7 @@ namespace RE
 		~BSImagespaceShaderBlur3() override;  // 00
 
 		// override (BSImagespaceShader)
-		void Unk_0D(void) override;  // 0D
+		void Unk_0D() override;  // 0D
 	};
 	static_assert(sizeof(BSImagespaceShaderBlur3) == 0x1A8);
 }

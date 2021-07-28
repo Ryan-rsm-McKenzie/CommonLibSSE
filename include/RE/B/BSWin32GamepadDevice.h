@@ -40,9 +40,9 @@ namespace RE
 		// override (BSPCGamepadDeviceDelegate)
 		void Initialize() override;           // 01
 		void Process(float a_arg1) override;  // 02
-		void Unk_03(void) override;           // 03 - { return; }
+		void Unk_03() override;           // 03 - { return; }
 		void Reset() override;                // 08 - { std::memset(&unk0D8, 0, 0x50); }
-		void Unk_09(void) override;           // 09 - { return; }
+		void Unk_09() override;           // 09 - { return; }
 
 		// members
 		std::uint32_t unk0D8;     // 0D8

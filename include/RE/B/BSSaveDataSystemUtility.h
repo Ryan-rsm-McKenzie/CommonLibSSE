@@ -18,7 +18,7 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility__Entry;
 
-			virtual void Unk_00(void);  // 00
+			virtual void Unk_00();  // 00
 
 			// members
 			std::uint64_t unk008;  // 008
@@ -75,21 +75,21 @@ namespace RE
 		// add
 		virtual bool    CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) = 0;                               // 01
 		virtual errno_t PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;  // 02 - a_dst must be 0x104 in length
-		virtual void    Unk_03(void);                                                                                    // 03 - { return Unk_04(); }
-		virtual void    Unk_04(void);                                                                                    // 04 - { return; }
-		virtual void    Unk_05(void);                                                                                    // 05
-		virtual void    Unk_06(void) = 0;                                                                                // 06
-		virtual void    Unk_07(void);                                                                                    // 07
-		virtual void    Unk_08(void);                                                                                    // 08 - { return; }
-		virtual void    Unk_09(void);                                                                                    // 09 - { return; }
-		virtual void    Unk_0A(void);                                                                                    // 0A
-		virtual void    Unk_0B(void);                                                                                    // 0B - { return; }
-		virtual void    Unk_0C(void);                                                                                    // 0C
-		virtual void    Unk_0D(void);                                                                                    // 0D - { return; }
-		virtual void    Unk_0E(void);                                                                                    // 0E - { return 1; }
-		virtual void    Unk_0F(void);                                                                                    // 0F - { return 1; }
-		virtual void    Unk_10(void);                                                                                    // 10 - { return 0; }
-		virtual void    Unk_11(void);                                                                                    // 11 - { return; }
+		virtual void    Unk_03();                                                                                    // 03 - { return Unk_04(); }
+		virtual void    Unk_04();                                                                                    // 04 - { return; }
+		virtual void    Unk_05();                                                                                    // 05
+		virtual void    Unk_06() = 0;                                                                                // 06
+		virtual void    Unk_07();                                                                                    // 07
+		virtual void    Unk_08();                                                                                    // 08 - { return; }
+		virtual void    Unk_09();                                                                                    // 09 - { return; }
+		virtual void    Unk_0A();                                                                                    // 0A
+		virtual void    Unk_0B();                                                                                    // 0B - { return; }
+		virtual void    Unk_0C();                                                                                    // 0C
+		virtual void    Unk_0D();                                                                                    // 0D - { return; }
+		virtual void    Unk_0E();                                                                                    // 0E - { return 1; }
+		virtual void    Unk_0F();                                                                                    // 0F - { return 1; }
+		virtual void    Unk_10();                                                                                    // 10 - { return 0; }
+		virtual void    Unk_11();                                                                                    // 11 - { return; }
 
 		// members
 		std::uint32_t unk060;       // 060

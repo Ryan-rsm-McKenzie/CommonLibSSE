@@ -28,7 +28,7 @@ namespace RE
 		std::uint32_t GetRefCount() const override;  // 2D - { return 0; }
 
 		// add
-		virtual void          Unk_3B(void);                                // 3B - { return 0; }
+		virtual void          Unk_3B();                                // 3B - { return 0; }
 		virtual bool          IsBoundAnimObject();                         // 3C - { return false; }
 		virtual TESWaterForm* GetWaterType() const;                        // 3D - { return 0; }
 		virtual bool          IsAutoCalc() const;                          // 3E - { return false; }

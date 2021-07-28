@@ -17,7 +17,7 @@ namespace RE
 		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03 - { return; }
 
 		// add
-		virtual void Unk_04(void) = 0;  // 04
+		virtual void Unk_04() = 0;  // 04
 	};
 	static_assert(sizeof(BGSPreloadable) == 0x8);
 }

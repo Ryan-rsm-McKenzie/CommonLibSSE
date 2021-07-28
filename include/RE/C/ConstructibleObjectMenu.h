@@ -32,8 +32,8 @@ namespace RE
 
 			// override (CraftingSubMenu)
 			void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			void Unk_06(void) override;                        // 06
-			void Unk_07(void) override;                        // 07
+			void Unk_06() override;                        // 06
+			void Unk_07() override;                        // 07
 
 			// members
 			BSTArray<void*> unk100;  // 100

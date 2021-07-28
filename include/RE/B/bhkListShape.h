@@ -19,15 +19,15 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;            // 19
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
-		void          Unk_26(void) override;                              // 26
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C - { return 40; }
-		void          Unk_2D(void) override;                              // 2D
-		void          Unk_2E(void) override;                              // 2E
-		void          Unk_2F(void) override;                              // 2F
-		void          Unk_32(void) override;                              // 32
-		void          Unk_35(void) override;                              // 35
-		void          Unk_36(void) override;                              // 36
+		void          Unk_26() override;                              // 26
+		void          Unk_2B() override;                              // 2B
+		void          Unk_2C() override;                              // 2C - { return 40; }
+		void          Unk_2D() override;                              // 2D
+		void          Unk_2E() override;                              // 2E
+		void          Unk_2F() override;                              // 2F
+		void          Unk_32() override;                              // 32
+		void          Unk_35() override;                              // 35
+		void          Unk_36() override;                              // 36
 
 		// members
 		std::uint64_t unk28;  // 28

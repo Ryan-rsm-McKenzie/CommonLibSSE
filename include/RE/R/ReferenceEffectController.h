@@ -19,10 +19,10 @@ namespace RE
 		virtual ~ReferenceEffectController();  // 00
 
 		// add
-		virtual void             Unk_01(void);                                   // 01 - { return; }
-		virtual void             Unk_02(void);                                   // 02 - { return 0.0; }
-		virtual void             Unk_03(void);                                   // 03 - { return 1.0; }
-		virtual void             Unk_04(void);                                   // 04 - { return; }
+		virtual void             Unk_01();                                   // 01 - { return; }
+		virtual void             Unk_02();                                   // 02 - { return 0.0; }
+		virtual void             Unk_03();                                   // 03 - { return 1.0; }
+		virtual void             Unk_04();                                   // 04 - { return; }
 		virtual const NiPoint3&  GetSourcePosition();                            // 05 - { return NiPoint3(); }
 		virtual bool             GetUseSourcePosition();                         // 06 - { return true; }
 		virtual bool             GetNoInitialFlare();                            // 07 - { return false; }

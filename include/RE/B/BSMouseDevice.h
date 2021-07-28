@@ -12,7 +12,7 @@ namespace RE
 		~BSMouseDevice() override;  // 00
 
 		// add
-		virtual void Unk_09(void);  // 09 - { return; }
+		virtual void Unk_09();  // 09 - { return; }
 
 		// members
 		bool          backgroundMouse;  // 70

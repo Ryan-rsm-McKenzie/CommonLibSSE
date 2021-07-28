@@ -15,10 +15,10 @@ namespace RE
 			~SimpleAllocMemoryPagePolicy() override;  // 00
 
 			// override (IMemoryPagePolicy)
-			void Unk_01(void) override;  // 01 - { return maxPageSize; }
-			void Unk_02(void) override;  // 02
-			void Unk_03(void) override;  // 03
-			void Unk_04(void) override;  // 04
+			void Unk_01() override;  // 01 - { return maxPageSize; }
+			void Unk_02() override;  // 02
+			void Unk_03() override;  // 03
+			void Unk_04() override;  // 04
 
 			// members
 			const std::uint32_t minPageSize;               // 08

@@ -2,12 +2,12 @@
 
 namespace RE
 {
-	bool ThumbstickEvent::IsLeft(void) const
+	bool ThumbstickEvent::IsLeft() const
 	{
 		return idCode == InputType::kLeftThumbstick;
 	}
 
-	bool ThumbstickEvent::IsRight(void) const
+	bool ThumbstickEvent::IsRight() const
 	{
 		return idCode == InputType::kRightThumbstick;
 	}

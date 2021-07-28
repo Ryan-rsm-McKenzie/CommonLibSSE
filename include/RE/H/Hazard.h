@@ -41,8 +41,8 @@ namespace RE
 		bool OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 
 		// add
-		virtual void Unk_A2(void);                // A2
-		virtual void Unk_A3(void);                // A3 - { return; }
+		virtual void Unk_A2();                // A2
+		virtual void Unk_A3();                // A3 - { return; }
 		virtual bool IsNotGeneratedForm() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
 
 		// members

@@ -22,27 +22,27 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C
-		void          Unk_29(void) override;                              // 29
-		void          Unk_2A(void) override;                              // 2A
-		void          Unk_2B(void) override;                              // 2B
-		void          Unk_2C(void) override;                              // 2C - { return 0x110; }
-		void          Unk_2D(void) override;                              // 2D
-		void          Unk_2E(void) override;                              // 2E
-		void          Unk_2F(void) override;                              // 2F
-		void          Unk_30(void) override;                              // 30
-		void          Unk_32(void) override;                              // 32
+		void          Unk_29() override;                              // 29
+		void          Unk_2A() override;                              // 2A
+		void          Unk_2B() override;                              // 2B
+		void          Unk_2C() override;                              // 2C - { return 0x110; }
+		void          Unk_2D() override;                              // 2D
+		void          Unk_2E() override;                              // 2E
+		void          Unk_2F() override;                              // 2F
+		void          Unk_30() override;                              // 30
+		void          Unk_32() override;                              // 32
 
 		// add
-		virtual void Unk_33(void);  // 33
-		virtual void Unk_34(void);  // 34
-		virtual void Unk_35(void);  // 35
-		virtual void Unk_36(void);  // 36
-		virtual void Unk_37(void);  // 37
-		virtual void Unk_38(void);  // 38
-		virtual void Unk_39(void);  // 39
-		virtual void Unk_3A(void);  // 3A
-		virtual void Unk_3B(void);  // 3B
-		virtual void Unk_3C(void);  // 3C
+		virtual void Unk_33();  // 33
+		virtual void Unk_34();  // 34
+		virtual void Unk_35();  // 35
+		virtual void Unk_36();  // 36
+		virtual void Unk_37();  // 37
+		virtual void Unk_38();  // 38
+		virtual void Unk_39();  // 39
+		virtual void Unk_3A();  // 3A
+		virtual void Unk_3B();  // 3B
+		virtual void Unk_3C();  // 3C
 
 		// members
 		BSTArray<void*> unk28;  // 28 - array of smart ptrs

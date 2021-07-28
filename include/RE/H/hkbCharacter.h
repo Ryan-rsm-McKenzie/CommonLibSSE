@@ -20,8 +20,8 @@ namespace RE
 		~hkbCharacter() override;  // 00
 
 		// add
-		virtual void Unk_03(void);  // 03
-		virtual void Unk_04(void);  // 04
+		virtual void Unk_03();  // 03
+		virtual void Unk_04();  // 04
 
 		// members
 		hkArray<hkbCharacter*>      nearbyCharacters;           // 10

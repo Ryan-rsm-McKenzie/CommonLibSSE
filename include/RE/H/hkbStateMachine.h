@@ -69,26 +69,26 @@ namespace RE
 		// override (hkbGenerator)
 		hkClass* GetClassType() const override;                                                                     // 01
 		void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
-		void     Unk_03(void) override;                                                                             // 03
-		void     Unk_04(void) override;                                                                             // 04
-		void     Unk_05(void) override;                                                                             // 05
-		void     Unk_06(void) override;                                                                             // 06
-		void     Unk_07(void) override;                                                                             // 07
-		void     Unk_08(void) override;                                                                             // 08
-		void     Unk_09(void) override;                                                                             // 09
-		void     Unk_0A(void) override;                                                                             // 0A
-		void     Unk_0C(void) override;                                                                             // 0C
-		void     Unk_0D(void) override;                                                                             // 0D
-		void     Unk_0E(void) override;                                                                             // 0E
-		void     Unk_0F(void) override;                                                                             // 0F
-		void     Unk_10(void) override;                                                                             // 10
-		void     Unk_11(void) override;                                                                             // 11
-		void     Unk_12(void) override;                                                                             // 12
-		void     Unk_14(void) override;                                                                             // 14
-		void     Unk_17(void) override;                                                                             // 17
-		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
-		void     Unk_19(void) override;                                                                             // 19
-		void     Unk_1B(void) override;                                                                             // 1B - { echoNextUpdate = true; }
+		void     Unk_03() override;                                                                             // 03
+		void     Unk_04() override;                                                                             // 04
+		void     Unk_05() override;                                                                             // 05
+		void     Unk_06() override;                                                                             // 06
+		void     Unk_07() override;                                                                             // 07
+		void     Unk_08() override;                                                                             // 08
+		void     Unk_09() override;                                                                             // 09
+		void     Unk_0A() override;                                                                             // 0A
+		void     Unk_0C() override;                                                                             // 0C
+		void     Unk_0D() override;                                                                             // 0D
+		void     Unk_0E() override;                                                                             // 0E
+		void     Unk_0F() override;                                                                             // 0F
+		void     Unk_10() override;                                                                             // 10
+		void     Unk_11() override;                                                                             // 11
+		void     Unk_12() override;                                                                             // 12
+		void     Unk_14() override;                                                                             // 14
+		void     Unk_17() override;                                                                             // 17
+		void     Unk_18() override;                                                                             // 18 - { return 1; }
+		void     Unk_19() override;                                                                             // 19
+		void     Unk_1B() override;                                                                             // 1B - { echoNextUpdate = true; }
 
 		// members
 		hkbEvent                                                       eventToSendWhenStateOrTransitionChanges;  // 048

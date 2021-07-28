@@ -17,14 +17,14 @@ namespace RE
 		~BSShader() override;  // 00
 
 		// add
-		virtual void Unk_02(void) = 0;  // 02
-		virtual void Unk_03(void) = 0;  // 03
-		virtual void Unk_04(void);      // 04 - { return; }
-		virtual void Unk_05(void);      // 05 - { return; }
-		virtual void Unk_06(void) = 0;  // 06
-		virtual void Unk_07(void) = 0;  // 07
-		virtual void Unk_08(void);      // 08 - { return; }
-		virtual void Unk_09(void);      // 09
+		virtual void Unk_02() = 0;  // 02
+		virtual void Unk_03() = 0;  // 03
+		virtual void Unk_04();      // 04 - { return; }
+		virtual void Unk_05();      // 05 - { return; }
+		virtual void Unk_06() = 0;  // 06
+		virtual void Unk_07() = 0;  // 07
+		virtual void Unk_08();      // 08 - { return; }
+		virtual void Unk_09();      // 09
 
 		// members
 		std::uint64_t unk20;  // 20

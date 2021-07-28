@@ -10,7 +10,7 @@ namespace RE
 		virtual ~NiBoneMatrixSetterI();  // 00
 
 		// add
-		virtual void Unk_01(void);  // 01
+		virtual void Unk_01();  // 01
 	};
 	static_assert(sizeof(NiBoneMatrixSetterI) == 0x8);
 }

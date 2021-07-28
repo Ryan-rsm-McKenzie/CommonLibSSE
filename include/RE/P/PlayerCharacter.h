@@ -264,11 +264,11 @@ namespace RE
 		~PlayerCharacter() override;  // 000
 
 		// add
-		virtual void          Unk_12A(void);                                                   // 12A
+		virtual void          Unk_12A();                                                   // 12A
 		virtual std::uint32_t GetViolentCrimeGoldValue(const TESFaction* a_faction) const;     // 12B
 		virtual std::uint32_t GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;  // 12C
 		virtual void          ClearAllCrimeGold(TESFaction* a_faction);                        // 12D
-		virtual void          Unk_12E(void);                                                   // 12E - { return 0; }
+		virtual void          Unk_12E();                                                   // 12E - { return 0; }
 
 		static PlayerCharacter* GetSingleton();
 
