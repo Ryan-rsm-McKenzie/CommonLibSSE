@@ -430,7 +430,7 @@ namespace REL
 				return WinAPI::GetEnvironmentVariable(
 					ENVIRONMENT.data(),
 					_filename.data(),
-					_filename.size());
+					static_cast<std::uint32_t>(_filename.size()));
 			};
 
 			_filename.resize(getFilename());
