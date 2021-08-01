@@ -1,17 +1,6 @@
 name: Apply Formatting
 
-on:
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/formatting.yml'
-      - 'include/**/*.h'
-      - 'src/**/*.h'
-      - 'src/**/*.cpp'
-  pull_request:
-    branches: [ master ]
-  pull_request_target:
-  workflow_dispatch:
+on: [ push, pull_request, pull_request_target ]
 
 jobs:
   clang-format:
@@ -19,12 +8,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
         
     - name: Run clang-format
       run: find -type f \( -name *.h -o -name *.cpp \) | xargs clang-format-12 -style=file -i
 
-    - uses: stefanzweifel/git-auto-commit-action@v4.9.0
+    - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: apply formatting
