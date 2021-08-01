@@ -18,7 +18,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+      with:
+        ref: ${{ github.head_ref }}
+        
     - name: Run clang-format
       run: find -type f \( -name *.h -o -name *.cpp \) | xargs clang-format-12 -style=file -i
 
