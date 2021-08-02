@@ -9,8 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
     - name: Run generator
-      run: python3.9 ${{ github.workspace }}/scripts/cmake_generate.py
+      run: python ${{ github.workspace }}/scripts/cmake_generate.py
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
