@@ -50,6 +50,7 @@ def make_cmake():
 	for file in tmp:
 		name = file.replace("\\", "/")
 		sources.append(name)
+	sources.sort()
 
 	def do_make(a_filename, a_varname, a_files):
 		with open("cmake/{}.cmake".format(a_filename), "w", encoding="utf-8") as out:
