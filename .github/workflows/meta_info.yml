@@ -18,4 +18,4 @@ jobs:
 
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: apply formatting
+        commit_message: regenerate meta files
