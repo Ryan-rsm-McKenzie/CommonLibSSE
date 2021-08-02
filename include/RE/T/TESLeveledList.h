@@ -44,10 +44,10 @@ namespace RE
 		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual std::uint8_t GetChanceNone();                                      // 04 - { if (global) return global->value; else return chanceNone; }
-		virtual bool         GetMultCalc();                                        // 05 - { return (flags >> 1) & 1; }
-		virtual std::int32_t GetLevDifferenceMax();                                // 06 - { return 0; }
-		[[nodiscard]] virtual bool         GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
+		virtual std::uint8_t       GetChanceNone();                                      // 04 - { if (global) return global->value; else return chanceNone; }
+		virtual bool               GetMultCalc();                                        // 05 - { return (flags >> 1) & 1; }
+		virtual std::int32_t       GetLevDifferenceMax();                                // 06 - { return 0; }
+		[[nodiscard]] virtual bool GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
 
 		[[nodiscard]] std::vector<TESForm*> GetContainedForms() const;
 

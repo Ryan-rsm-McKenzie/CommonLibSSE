@@ -41,10 +41,10 @@ namespace SKSE
 			kTotal
 		};
 
-		[[nodiscard]] PluginHandle      GetPluginHandle() const;
-		const PluginInfo* GetPluginInfo(const char* a_name) const;
-		[[nodiscard]] std::uint32_t     GetReleaseIndex() const;
-		[[nodiscard]] void*             QueryInterface(std::uint32_t a_id) const;
+		[[nodiscard]] PluginHandle  GetPluginHandle() const;
+		const PluginInfo*           GetPluginInfo(const char* a_name) const;
+		[[nodiscard]] std::uint32_t GetReleaseIndex() const;
+		[[nodiscard]] void*         QueryInterface(std::uint32_t a_id) const;
 	};
 
 	class ScaleformInterface
@@ -294,10 +294,10 @@ namespace SKSE
 
 		[[nodiscard]] std::uint32_t Version() const;
 
-		bool  Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
+		bool                Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
 		[[nodiscard]] void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
-		bool  RegisterListener(EventCallback* a_callback) const;
-		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
+		bool                RegisterListener(EventCallback* a_callback) const;
+		bool                RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
 		[[nodiscard]] const detail::SKSEMessagingInterface* GetProxy() const;

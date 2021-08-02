@@ -42,11 +42,11 @@ namespace RE
 			DataDesc();
 			~DataDesc();
 
-			void  AddRef();
-			void  Release();
+			void                AddRef();
+			void                Release();
 			[[nodiscard]] UPInt GetCapacity() const;
 			[[nodiscard]] bool  IsFull() const;
-			void  SetFull(bool a_set);
+			void                SetFull(bool a_set);
 
 			// members
 			UPInt                 capacity;  // 00
@@ -84,14 +84,14 @@ namespace RE
 		reference       operator[](size_type a_pos);
 		const_reference operator[](size_type a_pos) const;
 
-		char&       front();
+		char&                     front();
 		[[nodiscard]] const char& front() const;
 
-		char&       back();
+		char&                     back();
 		[[nodiscard]] const char& back() const;
 
 		[[nodiscard]] const char* data() const noexcept;
-		char*       data() noexcept;
+		char*                     data() noexcept;
 
 		[[nodiscard]] const char* c_str() const noexcept;
 
@@ -121,10 +121,10 @@ namespace RE
 		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
-		GString*  ctor(const char* a_str);
+		GString*                ctor(const char* a_str);
 		[[nodiscard]] HeapType  heap_type() const;
 		[[nodiscard]] DataDesc* get_desc() const;
-		void      set_desc(DataDesc* a_desc);
+		void                    set_desc(DataDesc* a_desc);
 
 		// members
 		DataDescUnion _dataDesc;  // 0

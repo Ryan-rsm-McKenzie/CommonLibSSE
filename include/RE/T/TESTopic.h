@@ -157,8 +157,8 @@ namespace RE
 		bool        IsFormTypeChild(FormType a_type) override;    // 36 - { return a_type == FormType::Info }
 
 		// override (TESFullName)
-		std::uint32_t GetFullNameLength() const override;  // 04
-		[[nodiscard]] const char*   GetFullName() const override;        // 05
+		std::uint32_t             GetFullNameLength() const override;  // 04
+		[[nodiscard]] const char* GetFullName() const override;        // 05
 
 		[[nodiscard]] float GetPriority() const;
 

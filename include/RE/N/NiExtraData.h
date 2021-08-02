@@ -28,7 +28,7 @@ namespace RE
 		static NiExtraData* Create(std::size_t a_size, std::uintptr_t a_vtbl);
 
 		[[nodiscard]] const BSFixedString& GetName() const;
-		void                 SetName(const BSFixedString& a_name);
+		void                               SetName(const BSFixedString& a_name);
 
 		// members
 		BSFixedString name;  // 10

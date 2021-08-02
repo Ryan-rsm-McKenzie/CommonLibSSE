@@ -43,7 +43,7 @@ namespace RE
 		}
 
 		[[nodiscard]] std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
-		std::int32_t                    CountObjectsInContainer(TESBoundObject* a_object) const;
+		std::int32_t                                  CountObjectsInContainer(TESBoundObject* a_object) const;
 
 		// members
 		ContainerObject** containerObjects;     // 08

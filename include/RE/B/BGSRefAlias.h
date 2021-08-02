@@ -142,8 +142,8 @@ namespace RE
 		~BGSRefAlias() override;  // 00
 
 		// override (BGSBaseAlias)
-		bool                 Load(TESFile* a_mod) override;       // 01
-		void                 InitItem(TESForm* a_form) override;  // 02
+		bool                               Load(TESFile* a_mod) override;       // 01
+		void                               InitItem(TESForm* a_form) override;  // 02
 		[[nodiscard]] const BSFixedString& QType() const override;              // 03 - { return "Ref"; }
 
 		// members

@@ -25,7 +25,7 @@ namespace RE
 		void set_endian_swap(bool a_doSwap) override;  // 05
 
 		// add
-		virtual void          seek(std::int32_t a_offset, std::int32_t a_from);  // 06
+		virtual void                        seek(std::int32_t a_offset, std::int32_t a_from);  // 06
 		[[nodiscard]] virtual std::uint32_t size() const;                                      // 07
 
 		// members

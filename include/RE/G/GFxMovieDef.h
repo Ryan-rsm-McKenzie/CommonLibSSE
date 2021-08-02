@@ -92,21 +92,21 @@ namespace RE
 		[[nodiscard]] virtual GRectF                 GetFrameRect() const = 0;                                                                                       // 0A
 		[[nodiscard]] virtual std::uint32_t          GetSWFFlags() const = 0;                                                                                        // 0B
 		[[nodiscard]] virtual const char*            GetFileURL() const = 0;                                                                                         // 0C
-		virtual void                   WaitForLoadFinish(bool a_cancel = false) const = 0;                                                             // 0D
-		virtual void                   WaitForFrame(std::uint32_t a_frame) const = 0;                                                                  // 0E
+		virtual void                                 WaitForLoadFinish(bool a_cancel = false) const = 0;                                                             // 0D
+		virtual void                                 WaitForFrame(std::uint32_t a_frame) const = 0;                                                                  // 0E
 		[[nodiscard]] virtual std::uint32_t          GetFileAttributes() const = 0;                                                                                  // 0F
-		virtual std::uint32_t          GetMetadata(char* a_buff, std::uint32_t a_buffSize) const = 0;                                                  // 10
+		virtual std::uint32_t                        GetMetadata(char* a_buff, std::uint32_t a_buffSize) const = 0;                                                  // 10
 		[[nodiscard]] virtual GMemoryHeap*           GetLoadDataHeap() const = 0;                                                                                    // 11
 		[[nodiscard]] virtual GMemoryHeap*           GetBindDataHeap() const = 0;                                                                                    // 12
 		[[nodiscard]] virtual GMemoryHeap*           GetImageHeap() const = 0;                                                                                       // 13
 		[[nodiscard]] virtual GFxResource*           GetMovieDataResource() const = 0;                                                                               // 14
 		[[nodiscard]] virtual const GFxExporterInfo* GetExporterInfo() const = 0;                                                                                    // 15
-		virtual MemoryContext*         CreateMemoryContext(const char* a_heapName, const MemoryParams& a_memParams, bool a_debugHeap) = 0;             // 16
-		virtual GFxMovieView*          CreateInstance(const MemoryParams& a_memParams, bool a_initFirstFrame = true) = 0;                              // 17
-		virtual GFxMovieView*          CreateInstance(MemoryContext* a_memContext, bool a_initFirstFrame = true) = 0;                                  // 18
-		virtual void                   VisitImportedMovies(ImportVisitor* a_visitor) = 0;                                                              // 19
-		virtual void                   VisitResources(ResourceVisitor* a_visitor, VisitResourceMask a_visitMask = VisitResourceMask::kAllImages) = 0;  // 1A
-		virtual GFxResource*           GetResource(const char* a_exportName) const = 0;                                                                // 1B
+		virtual MemoryContext*                       CreateMemoryContext(const char* a_heapName, const MemoryParams& a_memParams, bool a_debugHeap) = 0;             // 16
+		virtual GFxMovieView*                        CreateInstance(const MemoryParams& a_memParams, bool a_initFirstFrame = true) = 0;                              // 17
+		virtual GFxMovieView*                        CreateInstance(MemoryContext* a_memContext, bool a_initFirstFrame = true) = 0;                                  // 18
+		virtual void                                 VisitImportedMovies(ImportVisitor* a_visitor) = 0;                                                              // 19
+		virtual void                                 VisitResources(ResourceVisitor* a_visitor, VisitResourceMask a_visitMask = VisitResourceMask::kAllImages) = 0;  // 1A
+		virtual GFxResource*                         GetResource(const char* a_exportName) const = 0;                                                                // 1B
 
 		GFxMovieView* CreateInstance(bool a_initFirstFrame = true, UPInt a_memoryArena = 0);
 	};

@@ -271,15 +271,15 @@ namespace RE
 		~TESPackage() override;  // 00
 
 		// override (TESForm)
-		void          InitializeData() override;                    // 04
-		void          ClearData() override;                         // 05
-		bool          Load(TESFile* a_mod) override;                // 06
-		void          SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		void          LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		void          Revert(BGSLoadFormBuffer* a_buf) override;    // 12
-		void          InitItemImpl() override;                      // 13
-		std::uint32_t GetRefCount() const override;                 // 2D - { return refCount; }
-		[[nodiscard]] const char*   GetObjectTypeName() const override;           // 39 - { return g_packageTypeStrings[packData.packType]; }
+		void                      InitializeData() override;                    // 04
+		void                      ClearData() override;                         // 05
+		bool                      Load(TESFile* a_mod) override;                // 06
+		void                      SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void                      LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void                      Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		void                      InitItemImpl() override;                      // 13
+		std::uint32_t             GetRefCount() const override;                 // 2D - { return refCount; }
+		[[nodiscard]] const char* GetObjectTypeName() const override;           // 39 - { return g_packageTypeStrings[packData.packType]; }
 
 		// add
 		virtual bool IsActorAtLocation(Actor* a_actor, bool a_arg2, float a_arg3, bool a_arg4);                      // 3B

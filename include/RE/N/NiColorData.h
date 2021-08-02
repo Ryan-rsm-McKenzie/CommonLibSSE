@@ -23,7 +23,7 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;     // 1C
 
 		[[nodiscard]] std::uint32_t GetNumKeys() const;
-		NiColorKey*   GetAnim(std::uint32_t& a_numKeys, NiColorKey::KeyType& a_type, std::uint8_t& a_size) const;
+		NiColorKey*                 GetAnim(std::uint32_t& a_numKeys, NiColorKey::KeyType& a_type, std::uint8_t& a_size) const;
 
 		// members
 		std::uint32_t numKeys;  // 10

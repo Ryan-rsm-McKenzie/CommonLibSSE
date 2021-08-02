@@ -108,7 +108,7 @@ namespace RE
 		[[nodiscard]] bool       IsBookTome() const;
 		[[nodiscard]] bool       IsNoteScroll() const;
 		[[nodiscard]] ActorValue GetSkill() const;
-		SpellItem* GetSpell();
+		SpellItem*               GetSpell();
 
 		// members
 		OBJ_BOOK       data;                 // 110 - DATA

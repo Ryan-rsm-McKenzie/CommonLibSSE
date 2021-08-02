@@ -16,8 +16,8 @@ namespace RE
 		TESForm* CreateImpl() override;  // 01
 
 	public:
-		const char* GetFormName() const override;  // 02 - { return _name; }
-		[[nodiscard]] FormType    GetFormType() const override;  // 03 - { return FORM_TYPE; }
+		const char*            GetFormName() const override;  // 02 - { return _name; }
+		[[nodiscard]] FormType GetFormType() const override;  // 03 - { return FORM_TYPE; }
 
 		inline T* Create()
 		{

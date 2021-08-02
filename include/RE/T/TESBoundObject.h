@@ -44,17 +44,17 @@ namespace RE
 		bool        ReplaceModel() override;                                                                                                                                  // 44
 
 		// add
-		virtual void          SetObjectVoiceType(BGSVoiceType* a_voiceType);                                                 // 48 - { return; }
+		virtual void                        SetObjectVoiceType(BGSVoiceType* a_voiceType);                                                 // 48 - { return; }
 		[[nodiscard]] virtual BGSVoiceType* GetObjectVoiceType() const;                                                                    // 49 - { return 0; }
-		virtual NiAVObject*   Clone3D(TESObjectREFR* a_ref);                                                                 // 4A - { Clone3D(a_ref, false); }
-		virtual bool          ReplaceModel(const char* a_str);                                                               // 4B
-		virtual bool          GetActivateText(TESObjectREFR* a_activator, BSString& a_dst);                                  // 4C
-		virtual bool          CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3);  // 4D
-		virtual void          HandleRemoveItemFromContainer(TESObjectREFR* a_container);                                     // 4E - { return; }
-		virtual void          OnRemove3D(NiAVObject* a_obj3D);                                                               // 4F - { return; }
-		virtual void          OnCheckModels();                                                                               // 50 - { return; }
-		virtual void          OnCopyReference();                                                                             // 51 - { return; }
-		virtual void          OnFinishScale();                                                                               // 52 - { return; }
+		virtual NiAVObject*                 Clone3D(TESObjectREFR* a_ref);                                                                 // 4A - { Clone3D(a_ref, false); }
+		virtual bool                        ReplaceModel(const char* a_str);                                                               // 4B
+		virtual bool                        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst);                                  // 4C
+		virtual bool                        CalculateDoFavor(Actor* a_activator, bool a_arg2, TESObjectREFR* a_toActivate, float a_arg3);  // 4D
+		virtual void                        HandleRemoveItemFromContainer(TESObjectREFR* a_container);                                     // 4E - { return; }
+		virtual void                        OnRemove3D(NiAVObject* a_obj3D);                                                               // 4F - { return; }
+		virtual void                        OnCheckModels();                                                                               // 50 - { return; }
+		virtual void                        OnCopyReference();                                                                             // 51 - { return; }
+		virtual void                        OnFinishScale();                                                                               // 52 - { return; }
 
 		// members
 		BOUND_DATA    boundData;  // 20 - OBND

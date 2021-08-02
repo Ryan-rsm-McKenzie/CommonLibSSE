@@ -60,7 +60,7 @@ namespace RE
 			[[nodiscard]] bool            IsObject() const;
 			[[nodiscard]] bool            IsObjectArray() const;
 			[[nodiscard]] bool            IsString() const;
-			void            SetType(RawType a_type);
+			void                          SetType(RawType a_type);
 
 		protected:
 			// members

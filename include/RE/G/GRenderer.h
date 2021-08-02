@@ -193,9 +193,9 @@ namespace RE
 
 			[[nodiscard]] GRenderer* GetRenderer() const;
 			[[nodiscard]] Handle     GetRendererData() const;
-			void       SetRendererData(Handle a_handle);
-			void       ReleaseData(CachedDataType a_type);
-			void       ReleaseDataByRenderer();
+			void                     SetRendererData(Handle a_handle);
+			void                     ReleaseData(CachedDataType a_type);
+			void                     ReleaseDataByRenderer();
 
 			// members
 			GRenderer* renderer;  // 00

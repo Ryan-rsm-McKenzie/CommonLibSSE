@@ -59,8 +59,8 @@ namespace RE
 		virtual ~BGSBaseAlias();  // 00
 
 		// add
-		virtual bool                 Load(TESFile* a_mod) = 0;       // 01
-		virtual void                 InitItem(TESForm* a_form) = 0;  // 02
+		virtual bool                               Load(TESFile* a_mod) = 0;       // 01
+		virtual void                               InitItem(TESForm* a_form) = 0;  // 02
 		[[nodiscard]] virtual const BSFixedString& QType() const = 0;              // 03
 
 		[[nodiscard]] const BSFixedString& GetTypeString() const;

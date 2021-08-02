@@ -13,9 +13,9 @@ namespace RE
 		[[nodiscard]] const char* c_str() const noexcept;
 
 		// capacity
-		[[nodiscard]] bool empty() const noexcept;
-		[[nodiscard]] size_type          size() const;
-		[[nodiscard]] size_type          length() const;
+		[[nodiscard]] bool      empty() const noexcept;
+		[[nodiscard]] size_type size() const;
+		[[nodiscard]] size_type length() const;
 
 	protected:
 		enum

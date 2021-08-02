@@ -21,11 +21,11 @@ namespace RE
 
 		~BSTempEffectGeometryDecal() override;  // 00
 
-		const NiRTTI*    GetRTTI() const override;       // 02
-		void             Initialize() override;          // 25
-		void             Attach() override;              // 26
-		bool             Update(float a_arg1) override;  // 28
-		NiAVObject*      Get3D() const override;         // 29
+		const NiRTTI*                  GetRTTI() const override;       // 02
+		void                           Initialize() override;          // 25
+		void                           Attach() override;              // 26
+		bool                           Update(float a_arg1) override;  // 28
+		NiAVObject*                    Get3D() const override;         // 29
 		[[nodiscard]] TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kGeometryDecal; }
 
 		// members

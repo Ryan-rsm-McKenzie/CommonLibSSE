@@ -68,7 +68,7 @@ namespace RE
 		[[nodiscard]] std::string   GetDayName() const;
 		[[nodiscard]] std::uint32_t GetDayOfWeek() const;
 		[[nodiscard]] float         GetDaysPassed() const;
-		void          GetTimeDateString(char* a_dest, std::uint32_t a_max, bool a_showYear) const;
+		void                        GetTimeDateString(char* a_dest, std::uint32_t a_max, bool a_showYear) const;
 		[[nodiscard]] float         GetHour() const;
 		[[nodiscard]] float         GetHoursPassed() const;
 		[[nodiscard]] std::uint32_t GetMonth() const;

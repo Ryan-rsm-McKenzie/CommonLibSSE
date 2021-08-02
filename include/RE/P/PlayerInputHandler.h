@@ -21,7 +21,7 @@ namespace RE
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data);          // 04 - { return; }
 
 		[[nodiscard]] bool IsInputEventHandlingEnabled() const;
-		void SetInputEventHandlingEnabled(bool a_enabled);
+		void               SetInputEventHandlingEnabled(bool a_enabled);
 
 		// members
 		bool          inputEventHandlingEnabled;  // 08

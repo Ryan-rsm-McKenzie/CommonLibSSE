@@ -58,14 +58,14 @@ namespace RE
 		reference       operator[](size_type a_pos);
 		const_reference operator[](size_type a_pos) const;
 
-		wchar_t&       front();
+		wchar_t&                     front();
 		[[nodiscard]] const wchar_t& front() const;
 
-		wchar_t&       back();
+		wchar_t&                     back();
 		[[nodiscard]] const wchar_t& back() const;
 
 		[[nodiscard]] const wchar_t* data() const noexcept;
-		wchar_t*       data() noexcept;
+		wchar_t*                     data() noexcept;
 
 		[[nodiscard]] const wchar_t* c_str() const noexcept;
 

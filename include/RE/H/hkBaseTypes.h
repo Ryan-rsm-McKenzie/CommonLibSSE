@@ -22,7 +22,7 @@ namespace RE
 				operator float() const;
 
 	protected:
-		void  SetFloat(const float& a_val);
+		void                SetFloat(const float& a_val);
 		[[nodiscard]] float GetFloat() const;
 
 		// members

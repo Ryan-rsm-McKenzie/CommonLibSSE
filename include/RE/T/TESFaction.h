@@ -171,19 +171,19 @@ namespace RE
 		[[nodiscard]] bool         IgnoresStealing() const;
 		[[nodiscard]] bool         IgnoresTrespass() const;
 		[[nodiscard]] bool         IgnoresWerewolf() const;
-		bool         IsFactionInCrimeGroup(const TESFaction* a_other) const;
+		bool                       IsFactionInCrimeGroup(const TESFaction* a_other) const;
 		[[nodiscard]] bool         IsPlayerEnemy() const;
 		[[nodiscard]] bool         IsPlayerExpelled() const;
 		[[nodiscard]] bool         IsVendor() const;
-		void         ModCrimeGold(std::int32_t a_amount, bool a_violent);
-		void         PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
+		void                       ModCrimeGold(std::int32_t a_amount, bool a_violent);
+		void                       PlayerPayCrimeGold(bool a_removeStolenItems = true, bool a_goToJail = true);
 		[[nodiscard]] bool         ReportsCrimesAgainstMembers() const;
-		void         SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
-		void         SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther = false, bool a_otherIsFriendToSelf = false);
-		void         SetCrimeGold(std::int32_t a_gold);
-		void         SetCrimeGoldViolent(std::int32_t a_gold);
-		void         SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
-		void         SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
+		void                       SendPlayerToJail(bool a_removeInventory = true, bool a_realJail = true);
+		void                       SetAlly(TESFaction* a_other, bool a_selfIsFriendToOther = false, bool a_otherIsFriendToSelf = false);
+		void                       SetCrimeGold(std::int32_t a_gold);
+		void                       SetCrimeGoldViolent(std::int32_t a_gold);
+		void                       SetEnemy(TESFaction* a_other, bool a_selfIsNeutralToOther = false, bool a_otherIsNeutralToSelf = false);
+		void                       SetFactionFightReaction(TESFaction* a_faction, FIGHT_REACTION a_fightReaction);
 		[[nodiscard]] bool         TracksCrimes() const;
 		[[nodiscard]] bool         UsesCrimeGoldDefaults() const;
 
