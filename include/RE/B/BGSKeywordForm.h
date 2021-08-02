@@ -19,7 +19,7 @@ namespace RE
 		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual bool        HasKeyword(const BGSKeyword* a_keyword) const;  // 04
+		virtual bool                      HasKeyword(const BGSKeyword* a_keyword) const;  // 04
 		[[nodiscard]] virtual BGSKeyword* GetDefaultKeyword() const;                      // 05 - { return 0; }
 
 		[[nodiscard]] bool                       HasKeyword(FormID a_formID) const;

@@ -14,7 +14,7 @@ namespace RE
 
 		~BSTempEffectWeaponBlood() override;  // 00
 
-		bool             Update(float a_arg1) override;  // 28
+		bool                           Update(float a_arg1) override;  // 28
 		[[nodiscard]] TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return 1; }
 
 		// members;

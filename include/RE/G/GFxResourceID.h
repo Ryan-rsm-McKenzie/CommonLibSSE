@@ -54,7 +54,7 @@ namespace RE
 		[[nodiscard]] std::uint32_t   GetIDValue() const;
 		[[nodiscard]] std::uint32_t   GetIDIndex() const;
 		[[nodiscard]] IDTypes::IDType GetIDType() const;
-		GFxResourceID   GenerateNextID();
+		GFxResourceID                 GenerateNextID();
 
 	protected:
 		// members

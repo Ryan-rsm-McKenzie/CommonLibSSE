@@ -26,9 +26,9 @@ namespace RE
 			kLeveled = 1 << 2
 		};
 
-		LOCK_LEVEL     GetLockLevel(const TESObjectREFR* a_containerRef) const;
+		LOCK_LEVEL                   GetLockLevel(const TESObjectREFR* a_containerRef) const;
 		[[nodiscard]] constexpr bool IsLocked() const noexcept { return flags.all(Flag::kLocked); }
-		void           SetLocked(bool a_locked);
+		void                         SetLocked(bool a_locked);
 
 		// members
 		std::int8_t                          baseLevel;  // 00

@@ -25,18 +25,18 @@ namespace RE
 
 		// add
 		[[nodiscard]] virtual std::uint16_t        GetInterpolatorCount() const = 0;                                                                                                                                                                  // 2F
-		virtual const char*          GetInterpolatorID(std::uint16_t a_index = 0) = 0;                                                                                                                                                  // 30
-		virtual std::uint16_t        GetInterpolatorIndex(const char* a_id) const = 0;                                                                                                                                                  // 31
+		virtual const char*                        GetInterpolatorID(std::uint16_t a_index = 0) = 0;                                                                                                                                                  // 30
+		virtual std::uint16_t                      GetInterpolatorIndex(const char* a_id) const = 0;                                                                                                                                                  // 31
 		[[nodiscard]] virtual std::uint16_t        GetInterpolatorIndexFx(const BSFixedString& a_id) const = 0;                                                                                                                                       // 32
 		[[nodiscard]] virtual NiInterpolator*      GetInterpolator(std::uint16_t a_index = 0) const = 0;                                                                                                                                              // 33
-		virtual void                 SetInterpolator(NiInterpolator* a_interpolator, std::uint16_t a_index = 0) = 0;                                                                                                                    // 34
-		virtual void                 ResetTimeExtrema();                                                                                                                                                                                // 35
-		virtual const char*          GetCtlrID();                                                                                                                                                                                       // 36 - { return 0; }
-		virtual NiInterpolator*      CreatePoseInterpolator(std::uint16_t a_index) = 0;                                                                                                                                                 // 37
-		virtual void                 SynchronizePoseInterpolator(NiInterpolator* a_interp, std::uint16_t a_index = 0) = 0;                                                                                                              // 38
+		virtual void                               SetInterpolator(NiInterpolator* a_interpolator, std::uint16_t a_index = 0) = 0;                                                                                                                    // 34
+		virtual void                               ResetTimeExtrema();                                                                                                                                                                                // 35
+		virtual const char*                        GetCtlrID();                                                                                                                                                                                       // 36 - { return 0; }
+		virtual NiInterpolator*                    CreatePoseInterpolator(std::uint16_t a_index) = 0;                                                                                                                                                 // 37
+		virtual void                               SynchronizePoseInterpolator(NiInterpolator* a_interp, std::uint16_t a_index = 0) = 0;                                                                                                              // 38
 		[[nodiscard]] virtual NiBlendInterpolator* CreateBlendInterpolator(std::uint16_t a_index = 0, bool a_managerControlled = false, bool a_accumulateAnimations = false, float a_weightThreshold = 0.0, std::uint8_t a_arraySize = 2) const = 0;  // 39
-		virtual void                 GuaranteeTimeRange(float a_startTime, float a_endTime) = 0;                                                                                                                                        // 3A
-		virtual bool                 InterpolatorIsCorrectType(NiInterpolator* a_interpolator, std::uint16_t a_index) const = 0;                                                                                                        // 3B
+		virtual void                               GuaranteeTimeRange(float a_startTime, float a_endTime) = 0;                                                                                                                                        // 3A
+		virtual bool                               InterpolatorIsCorrectType(NiInterpolator* a_interpolator, std::uint16_t a_index) const = 0;                                                                                                        // 3B
 	};
 	static_assert(sizeof(NiInterpController) == 0x48);
 }

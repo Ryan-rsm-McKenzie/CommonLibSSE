@@ -36,12 +36,12 @@ namespace RE
 		[[nodiscard]] RenderFlag    GetStrokeRenderFlags() const;
 		[[nodiscard]] RenderCapBits GetRendererCapBits() const;
 		[[nodiscard]] GRenderer*    GetRenderer() const;
-		void          SetRenderFlags(RenderFlag a_flags);
+		void                        SetRenderFlags(RenderFlag a_flags);
 		[[nodiscard]] RenderFlag    GetRenderFlags() const;
-		void          SetMaxCurvePixelError(float a_pixelError);
+		void                        SetMaxCurvePixelError(float a_pixelError);
 		[[nodiscard]] float         GetMaxCurvePixelError() const;
 		[[nodiscard]] float         GetStrokerAAWidth() const;
-		void          SetStrokerAAWidth(float a_aawidth);
+		void                        SetStrokerAAWidth(float a_aawidth);
 
 		// members
 		GPtr<GRenderer>                                renderer;            // 18

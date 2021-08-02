@@ -80,15 +80,15 @@ namespace RE
 		std::int32_t GetAllocatedSize(const void* a_obj, std::int32_t a_numBytes) override;                              // 09
 
 		// override (IMemoryHeap)
-		std::size_t   Size(const void* a_block) const override;                                      // 01
-		void          GetMemoryStats(MemoryStats* a_stats) override;                                 // 02
-		const char*   GetName() const override;                                                      // 07 - { return "bhkThreadMemorySource"; }
-		void*         Allocate(std::size_t a_size, std::uint32_t a_alignment) override;              // 08
-		void          Deallocate(void* a_pointer, std::uint32_t) override;                           // 09
-		bool          PointerInHeap(const void* a_pointer) const override;                           // 0A
-		std::size_t   TotalSize(const void* a_pointer) const override;                               // 0B
-		void          GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;               // 0C
-		bool          ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;  // 0D
+		std::size_t                 Size(const void* a_block) const override;                                      // 01
+		void                        GetMemoryStats(MemoryStats* a_stats) override;                                 // 02
+		const char*                 GetName() const override;                                                      // 07 - { return "bhkThreadMemorySource"; }
+		void*                       Allocate(std::size_t a_size, std::uint32_t a_alignment) override;              // 08
+		void                        Deallocate(void* a_pointer, std::uint32_t) override;                           // 09
+		bool                        PointerInHeap(const void* a_pointer) const override;                           // 0A
+		std::size_t                 TotalSize(const void* a_pointer) const override;                               // 0B
+		void                        GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;               // 0C
+		bool                        ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;  // 0D
 		[[nodiscard]] std::uint32_t GetPageSize() const override;                                                  // 0E
 
 		// members

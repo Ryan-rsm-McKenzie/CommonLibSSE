@@ -39,8 +39,8 @@ namespace RE
 		void Revert(BGSLoadFormBuffer* a_buf) override;    // 12
 		void InitItemImpl() override;                      // 13
 
-		void AddForm(TESForm* a_form);
-		bool HasForm(const TESForm* a_form) const;
+		void               AddForm(TESForm* a_form);
+		bool               HasForm(const TESForm* a_form) const;
 		[[nodiscard]] bool HasForm(FormID a_formID) const;
 
 		// members

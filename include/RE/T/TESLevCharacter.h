@@ -45,8 +45,8 @@ namespace RE
 		NiAVObject* Clone3D(TESObjectREFR* a_ref) override;       // 4A - { return 0; }
 
 		// override (TESLeveledList)
-		std::int32_t GetLevDifferenceMax() override;                            // 06 - { return iLevCharLevelDifferenceMax; }
-		[[nodiscard]] bool         GetCanContainFormsOfType(FormType a_type) const override;  // 07 - { return a_type <= FormType::LeveledCharacter; }
+		std::int32_t       GetLevDifferenceMax() override;                            // 06 - { return iLevCharLevelDifferenceMax; }
+		[[nodiscard]] bool GetCanContainFormsOfType(FormType a_type) const override;  // 07 - { return a_type <= FormType::LeveledCharacter; }
 	};
 	static_assert(sizeof(TESLevCharacter) == 0x90);
 }

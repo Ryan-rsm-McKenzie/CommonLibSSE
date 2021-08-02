@@ -27,19 +27,19 @@ namespace RE
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 		void          PostLinkObject(NiStream& a_stream) override;         // 1E
 
-		bool              AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra);
-		bool              AddExtraData(NiExtraData* a_extra);
-		void              DeleteExtraData(std::uint16_t a_extraDataIndex);
+		bool                            AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra);
+		bool                            AddExtraData(NiExtraData* a_extra);
+		void                            DeleteExtraData(std::uint16_t a_extraDataIndex);
 		[[nodiscard]] NiTimeController* GetControllers() const;
-		NiTimeController* GetController(const NiRTTI* a_rtti) const;
+		NiTimeController*               GetController(const NiRTTI* a_rtti) const;
 		[[nodiscard]] NiExtraData*      GetExtraData(const BSFixedString& a_key) const;
 		[[nodiscard]] NiExtraData*      GetExtraDataAt(std::uint16_t a_extraDataIndex) const;
 		[[nodiscard]] std::uint16_t     GetExtraDataSize() const;
-		bool              InsertExtraData(NiExtraData* a_extra);
-		void              RemoveAllExtraData();
-		bool              RemoveExtraData(const BSFixedString& a_key);
-		bool              RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
-		bool              SetExtraDataSize(std::uint16_t a_size);
+		bool                            InsertExtraData(NiExtraData* a_extra);
+		void                            RemoveAllExtraData();
+		bool                            RemoveExtraData(const BSFixedString& a_key);
+		bool                            RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
+		bool                            SetExtraDataSize(std::uint16_t a_size);
 
 		// members
 		BSFixedString               name;           // 10

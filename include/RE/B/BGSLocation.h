@@ -111,8 +111,8 @@ namespace RE
 		void InitItemImpl() override;                      // 13
 
 		[[nodiscard]] bool IsCleared() const;
-		bool IsChild(const BGSLocation* a_possibleChild) const;
-		bool IsParent(const BGSLocation* a_possibleParent) const;
+		bool               IsChild(const BGSLocation* a_possibleChild) const;
+		bool               IsParent(const BGSLocation* a_possibleParent) const;
 		[[nodiscard]] bool IsLoaded() const;
 
 		// members

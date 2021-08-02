@@ -40,8 +40,8 @@ namespace RE
 			[[nodiscard]] const char*    GetInstanceName() const;                                                    // An input method which returns the instance name of the textfield being translated.
 			[[nodiscard]] const wchar_t* GetKey() const;                                                             // An input method which returns the 'key' string - original text value of the textfield being translated.
 			[[nodiscard]] bool           IsKeyHTML() const;                                                          // Determines if the key string (returned by GetKey) is HTML or not.
-			void           SetResult(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);      // An output method which sets the translated string as a plain text.
-			void           SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen = UPINT_MAX);  // An output method which sets translated string as a HTML text.
+			void                         SetResult(const wchar_t* a_resultText, UPInt a_resultLen = UPINT_MAX);      // An output method which sets the translated string as a plain text.
+			void                         SetResultHTML(const wchar_t* a_resultHTML, UPInt a_resultLen = UPINT_MAX);  // An output method which sets translated string as a HTML text.
 
 			// members
 			const wchar_t*                       key;           // 00
@@ -94,8 +94,8 @@ namespace RE
 
 		// add
 		[[nodiscard]] virtual TranslateCap GetCaps() const;                            // 01 - { return TranslateCap::kNone; } - Specifies capabilities of the Translate implementation
-		virtual void         Translate(TranslateInfo* a_translateInfo);  // 02 - { return; } - Translate method implements a UTF-8/UCS-2 translation interface and performs lookup of 'a_translateInfo->GetKey()' string for language translation, filling in the destination buffer by calling TranslateInfo::SetResult or TranslateInfo::SetResultHTML method. 'a_translateInfo' is guaranteed to be not null. If neither TranslateInfo::SetResult nor TranslateInfo::SetResultHTML is called then original text will not be changed
-		virtual bool         OnWordWrapping(LineFormatDesc* a_desc);     // 03 - OnWordWrapping is a virtual method, a callback, which is invoked once a necessity of word-wrapping for any text field is determined. This method is invoked only if custom word-wrapping is turned on by using the Translator(a_wwMode) constructor
+		virtual void                       Translate(TranslateInfo* a_translateInfo);  // 02 - { return; } - Translate method implements a UTF-8/UCS-2 translation interface and performs lookup of 'a_translateInfo->GetKey()' string for language translation, filling in the destination buffer by calling TranslateInfo::SetResult or TranslateInfo::SetResultHTML method. 'a_translateInfo' is guaranteed to be not null. If neither TranslateInfo::SetResult nor TranslateInfo::SetResultHTML is called then original text will not be changed
+		virtual bool                       OnWordWrapping(LineFormatDesc* a_desc);     // 03 - OnWordWrapping is a virtual method, a callback, which is invoked once a necessity of word-wrapping for any text field is determined. This method is invoked only if custom word-wrapping is turned on by using the Translator(a_wwMode) constructor
 
 		[[nodiscard]] bool CanReceiveHTML() const;
 		[[nodiscard]] bool NeedStripNewLines() const;

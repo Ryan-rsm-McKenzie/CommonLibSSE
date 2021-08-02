@@ -48,7 +48,7 @@ namespace RE
 		// add
 		[[nodiscard]] virtual bool CheckTagLoader(std::int32_t a_tagType) const;  // 05
 
-		GFxMovieDef*   CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
+		GFxMovieDef*                 CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
 		[[nodiscard]] GFxLoaderImpl* GetLoaderImpl() const;
 
 		// members

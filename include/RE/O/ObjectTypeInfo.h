@@ -111,7 +111,7 @@ namespace RE
 
 				[[nodiscard]] constexpr std::uint32_t GetNumFuncs() const noexcept { return memberFunctionCount; }
 				Func*                                 GetFuncIter();
-				[[nodiscard]] const Func*                           GetFuncIter() const;
+				[[nodiscard]] const Func*             GetFuncIter() const;
 
 				// members
 				BSFixedString name;                     // 00

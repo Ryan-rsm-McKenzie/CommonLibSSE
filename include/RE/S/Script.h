@@ -40,11 +40,11 @@ namespace RE
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
 
-		void        ClearCommand();
-		void        CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
-		void        CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		void                      ClearCommand();
+		void                      CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		void                      CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
 		[[nodiscard]] std::string GetCommand() const;
-		void        SetCommand(std::string_view a_command);
+		void                      SetCommand(std::string_view a_command);
 
 		// members
 		SCRIPT_HEADER                           header;                       // 20

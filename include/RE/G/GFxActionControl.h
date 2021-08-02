@@ -24,7 +24,7 @@ namespace RE
 		{}
 
 		[[nodiscard]] constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
-		constexpr void               SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
+		constexpr void                             SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() noexcept { actionFlags.set(ActionControlFlags::kVerbose); }
 		constexpr void UnsetVerboseLogging() noexcept { actionFlags.reset(ActionControlFlags::kVerbose); }

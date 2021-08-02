@@ -17,8 +17,8 @@ namespace RE
 
 		~BSHandleRefObject() override;  // 00
 
-		void          DecRefCount();
-		void          IncRefCount();
+		void                        DecRefCount();
+		void                        IncRefCount();
 		[[nodiscard]] bool          IsHandleValid() const;
 		[[nodiscard]] std::uint32_t QRefCount() const;
 	};

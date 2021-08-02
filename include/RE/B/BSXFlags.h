@@ -41,7 +41,7 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;               // 1C - { return NiIntegerExtraData::IsEqual(a_object); }
 
 		[[nodiscard]] Flag GetFlags() const;
-		void SetFlags(Flag a_flags);
+		void               SetFlags(Flag a_flags);
 	};
 	static_assert(sizeof(BSXFlags) == 0x20);
 }

@@ -25,7 +25,7 @@ namespace RE
 		// add
 		[[nodiscard]] virtual bool                                 DoGetUsesHRTF() const = 0;                                                                   // 01
 		[[nodiscard]] virtual bool                                 DoGetHasSpeakerBias() const = 0;                                                             // 02
-		virtual bool                                 DoGetSpeakerBias(std::uint32_t a_arg1, std::uint32_t a_arg2, float (&a_arg3)[8]) const = 0;  // 03
+		virtual bool                                               DoGetSpeakerBias(std::uint32_t a_arg1, std::uint32_t a_arg2, float (&a_arg3)[8]) const = 0;  // 03
 		[[nodiscard]] virtual bool                                 DoGetAttenuatesWithDistance() const = 0;                                                     // 04
 		[[nodiscard]] virtual bool                                 DoGetAudibility(float a_distance) const = 0;                                                 // 05
 		[[nodiscard]] virtual std::uint32_t                        DoGetSupportedInputChannels() const = 0;                                                     // 06

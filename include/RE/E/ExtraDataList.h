@@ -161,7 +161,7 @@ namespace RE
 		{
 		public:
 			[[nodiscard]] bool HasType(std::uint32_t a_type) const;
-			void MarkType(std::uint32_t a_type, bool a_cleared);
+			void               MarkType(std::uint32_t a_type, bool a_cleared);
 
 			// members
 			std::uint8_t bits[0x18];  // 00

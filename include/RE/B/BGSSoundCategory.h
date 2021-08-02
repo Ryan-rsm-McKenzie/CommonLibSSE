@@ -51,8 +51,8 @@ namespace RE
 		[[nodiscard]] float GetDefaultMenuValue() const;
 		[[nodiscard]] float GetStaticVolumeMultiplier() const;
 		[[nodiscard]] bool  IsMenuCategory() const;
-		void  SetDefaultMenuValue(float a_val);
-		void  SetStaticVolumeMultiplier(float a_val);
+		void                SetDefaultMenuValue(float a_val);
+		void                SetStaticVolumeMultiplier(float a_val);
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;             // 38 - FNAM
