@@ -918,11 +918,20 @@ set(SOURCES
 	include/RE/H/HighProcessData.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
+	include/RE/H/hkaAnimatedReferenceFrame.h
+	include/RE/H/hkaAnimation.h
+	include/RE/H/hkaAnimationBinding.h
+	include/RE/H/hkaAnimationControl.h
+	include/RE/H/hkaAnnotationTrack.h
+	include/RE/H/hkaDefaultAnimationControl.h
+	include/RE/H/hkaSplineCompressedAnimation.h
 	include/RE/H/hkBaseObject.h
 	include/RE/H/hkBaseTypes.h
 	include/RE/H/hkbBehaviorGraph.h
 	include/RE/H/hkbBindable.h
 	include/RE/H/hkbCharacter.h
+	include/RE/H/hkbClipGenerator.h
+	include/RE/H/hkbContext.h
 	include/RE/H/hkbEvent.h
 	include/RE/H/hkbEventBase.h
 	include/RE/H/hkbGenerator.h
@@ -995,6 +1004,7 @@ set(SOURCES
 	include/RE/H/hkpWorldObject.h
 	include/RE/H/hkpWorldRayCastInput.h
 	include/RE/H/hkpWorldRayCastOutput.h
+	include/RE/H/hkQsTransform.h
 	include/RE/H/hkQuaternion.h
 	include/RE/H/hkReferencedObject.h
 	include/RE/H/hkRefPtr.h
