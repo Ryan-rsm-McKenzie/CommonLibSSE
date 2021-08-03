@@ -81,7 +81,7 @@ namespace RE
 		bool                         unkB4;                 // B4
 		bool                         unkB5;                 // B5
 		bool                         unkB6;                 // B6
-		bool                         unkB7;                 // B7
+		bool                         dialogueListHasChild;  // B7
 		bool                         unkB8;                 // B8
 		bool                         unkB9;                 // B9
 		bool                         unkBA;                 // BA
