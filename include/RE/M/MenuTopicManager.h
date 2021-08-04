@@ -61,6 +61,20 @@ namespace RE
 			return *singleton;
 		}
 
+		bool SetTopic(std::uint32_t a_chosenIndex)
+		{
+			using func_t = decltype(&MenuTopicManager::SetTopic);
+			REL::Relocation<func_t> func{ REL::ID(34444) };
+			return func(this, a_chosenIndex);
+		}
+
+		void SayResponse(std::uint32_t a_chosenIndex, void* a_arg2 = nullptr)
+		{
+			using func_t = decltype(&MenuTopicManager::SayResponse);
+			REL::Relocation<func_t> func{ REL::ID(34456) };
+			return func(this, a_chosenIndex, a_arg2);
+		}
+
 		// members
 		BSSimpleList<Dialogue*>*     selectedResponseNode;  // 18
 		BSSimpleList<Dialogue*>*     dialogueList;          // 20
