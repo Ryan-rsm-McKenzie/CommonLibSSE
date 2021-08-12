@@ -45,7 +45,7 @@ namespace RE
 	bool UI::IsMenuOpen(const std::string_view& a_menuName)
 	{
 		auto menu = GetMenu(a_menuName);
-		return menu ? menu->OnStack() : false;
+		return menu && menu->OnStack();
 	}
 
 	bool UI::IsModalMenuOpen() const
