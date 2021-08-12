@@ -21,13 +21,11 @@ namespace RE
 	template <class T>
 	struct BSTSmartPointerAutoPtr
 	{
-		template <class T>
 		constexpr static void Acquire(T* a_ptr)
 		{
 			return;
 		}
 
-		template <class T>
 		static void Release(T* a_ptr)
 		{
 			delete a_ptr;
