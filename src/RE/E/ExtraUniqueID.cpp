@@ -24,6 +24,6 @@ namespace RE
 	bool ExtraUniqueID::IsNotEqual(const BSExtraData* a_rhs) const
 	{
 		auto rhs = static_cast<const ExtraUniqueID*>(a_rhs);
-		return rhs->uniqueID != rhs->uniqueID || baseID != rhs->baseID;
+		return uniqueID != rhs->uniqueID || baseID != rhs->baseID;
 	}
 }
