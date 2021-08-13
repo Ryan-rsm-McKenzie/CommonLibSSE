@@ -12,7 +12,7 @@ namespace RE
 		using base = NiTStringMap<T>;
 
 	public:
-		using key_type = base::key_type;
+		using key_type = typename base::key_type;
 
 		virtual ~BSTCaseInsensitiveStringMap();  // 00
 
