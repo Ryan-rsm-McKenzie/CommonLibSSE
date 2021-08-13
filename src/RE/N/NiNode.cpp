@@ -7,7 +7,7 @@ namespace RE
 	NiNode* NiNode::Create(std::uint16_t a_arrBufLen)
 	{
 		auto node = malloc<NiNode>();
-		std::memset(node, 0, sizeof(NiNode));
+		std::memset(reinterpret_cast<void*>(node), 0, sizeof(NiNode));
 		node->Ctor(a_arrBufLen);
 		return node;
 	}
