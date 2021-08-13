@@ -33,8 +33,8 @@ namespace RE
 
 		inline ~BSTArrayBase() noexcept { _size = 0; }
 
-		constexpr BSTArrayBase& operator=(const BSTArrayBase&) noexcept = default;
-		constexpr BSTArrayBase& operator=(BSTArrayBase&&) noexcept = default;
+		BSTArrayBase& operator=(const BSTArrayBase&) noexcept = default;
+		BSTArrayBase& operator=(BSTArrayBase&&) noexcept = default;
 
 		[[nodiscard]] constexpr bool      empty() const noexcept { return _size == 0; }
 		[[nodiscard]] constexpr size_type size() const noexcept { return _size; }
