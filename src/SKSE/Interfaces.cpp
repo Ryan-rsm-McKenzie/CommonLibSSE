@@ -65,7 +65,7 @@ namespace SKSE
 
 	bool ScaleformInterface::Register(RegCallback* a_callback, const char* a_name) const
 	{
-		auto result = GetProxy()->Register(a_name, a_callback);
+		auto result = GetProxy()->Register(a_name, reinterpret_cast<void*>(a_callback));
 		if (!result) {
 			log::error("Failed to register {} for scaleform interface callback", a_name);
 		}
@@ -74,7 +74,7 @@ namespace SKSE
 
 	void ScaleformInterface::Register(RegInvCallback* a_callback) const
 	{
-		GetProxy()->RegisterForInventory(a_callback);
+		GetProxy()->RegisterForInventory(reinterpret_cast<void*>(a_callback));
 	}
 
 	const detail::SKSEScaleformInterface* ScaleformInterface::GetProxy() const
@@ -95,22 +95,22 @@ namespace SKSE
 
 	void SerializationInterface::SetFormDeleteCallback(FormDeleteCallback* a_callback) const
 	{
-		GetProxy()->SetFormDeleteCallback(GetPluginHandle(), a_callback);
+		GetProxy()->SetFormDeleteCallback(GetPluginHandle(), reinterpret_cast<void*>(a_callback));
 	}
 
 	void SerializationInterface::SetLoadCallback(EventCallback* a_callback) const
 	{
-		GetProxy()->SetLoadCallback(GetPluginHandle(), a_callback);
+		GetProxy()->SetLoadCallback(GetPluginHandle(), reinterpret_cast<void*>(a_callback));
 	}
 
 	void SerializationInterface::SetRevertCallback(EventCallback* a_callback) const
 	{
-		GetProxy()->SetRevertCallback(GetPluginHandle(), a_callback);
+		GetProxy()->SetRevertCallback(GetPluginHandle(), reinterpret_cast<void*>(a_callback));
 	}
 
 	void SerializationInterface::SetSaveCallback(EventCallback* a_callback) const
 	{
-		GetProxy()->SetSaveCallback(GetPluginHandle(), a_callback);
+		GetProxy()->SetSaveCallback(GetPluginHandle(), reinterpret_cast<void*>(a_callback));
 	}
 
 	bool SerializationInterface::WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const void* a_buf, std::uint32_t a_length) const
@@ -226,7 +226,7 @@ namespace SKSE
 			a_fn(vm);
 			return true;
 		} else {
-			auto result = GetProxy()->Register(a_fn);
+			auto result = GetProxy()->Register(reinterpret_cast<void*>(a_fn));
 			if (!result) {
 				log::error("Failed to register for papyrus interface");
 			}
@@ -242,7 +242,7 @@ namespace SKSE
 			a_fn(vm);
 			return true;
 		} else {
-			auto result = GetProxy()->Register(a_fn);
+			auto result = GetProxy()->Register(reinterpret_cast<void*>(a_fn));
 			if (!result) {
 				log::error("Failed to register for papyrus interface");
 			}
@@ -282,7 +282,7 @@ namespace SKSE
 
 	bool MessagingInterface::RegisterListener(const char* a_sender, EventCallback* a_callback) const
 	{
-		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, a_callback);
+		auto result = GetProxy()->RegisterListener(GetPluginHandle(), a_sender, reinterpret_cast<void*>(a_callback));
 		if (!result) {
 			log::error("Failed to register messaging listener for {}", a_sender);
 		}
