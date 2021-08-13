@@ -115,7 +115,7 @@ namespace RE
 			[[nodiscard]] inline const_pointer data() const noexcept
 			{
 				const auto proxy = get_proxy();
-				const auto cstr = proxy ? proxy->data<value_type>() : nullptr;
+				const auto cstr = proxy ? proxy->template data<value_type>() : nullptr;
 				return cstr ? cstr : EMPTY;
 			}
 
