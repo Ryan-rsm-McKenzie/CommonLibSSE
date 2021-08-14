@@ -31,13 +31,10 @@ namespace RE
 
 		struct DataDesc
 		{
-#pragma warning(push)
-#pragma warning(disable: 4293)  // '<<': shift count negative or too big, undefined behavior
 			enum : UPInt
 			{
-				kFullFlag = static_cast<UPInt>(static_cast<UPInt>(1) << FlagConstant::kReserveIsSizeShift)
+				kFullFlag = 1ull << FlagConstant::kReserveIsSizeShift
 			};
-#pragma warning(pop)
 
 			DataDesc();
 			~DataDesc();
