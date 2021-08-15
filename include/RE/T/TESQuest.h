@@ -233,6 +233,7 @@ namespace RE
 		TESCondition*                            QConditions() override;                                         // 3D - { return &objConditions; }
 		BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E
 
+		void		  ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr);
 		bool          EnsureQuestStarted(bool& a_result, bool a_startNow);
 		std::uint16_t GetCurrentStageID() const;
 		bool          IsActive() const;

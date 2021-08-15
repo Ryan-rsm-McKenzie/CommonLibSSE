@@ -10,6 +10,13 @@ namespace RE
 		return *reinterpret_cast<const std::uintptr_t*>(this) != 0;
 	}
 
+	void TESQuest::ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr)
+	{
+		using func_t = decltype(&TESQuest::ForceRefIntoAliasID);
+		REL::Relocation<func_t> func{ Offset::TESQuest::ForceRefIntoAliasID };
+		func(this, a_alias, a_refr);
+	}
+
 	bool TESQuest::EnsureQuestStarted(bool& a_result, bool a_startNow)
 	{
 		using func_t = decltype(&TESQuest::EnsureQuestStarted);
