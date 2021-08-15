@@ -116,7 +116,7 @@ namespace RE
 		[[nodiscard]] constexpr size_type capacity() const noexcept { return _capacity; }
 
 	protected:
-		inline void* allocate(std::size_t a_size)
+		static inline void* allocate(std::size_t a_size)
 		{
 			const auto mem = malloc(a_size);
 			if (!mem) {
@@ -127,7 +127,7 @@ namespace RE
 			}
 		}
 
-		inline void deallocate(void* a_ptr) { free(a_ptr); }
+		static inline void deallocate(void* a_ptr) { free(a_ptr); }
 
 		constexpr void set_allocator_traits(void* a_data, std::uint32_t a_capacity, std::size_t) noexcept
 		{
