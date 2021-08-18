@@ -1,4 +1,3 @@
-#include "BGSIdleCollection.h"
 #include "RE/B/BGSIdleCollection.h"
 #include "RE/T/TESIdleForm.h"
 

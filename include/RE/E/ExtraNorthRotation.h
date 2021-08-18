@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNorthRotation;
 
 		ExtraNorthRotation();
-		~ExtraNorthRotation() override;  // 00
+		~ExtraNorthRotation() override = default;  // 00
 
 		// override (BSExtraData)
 		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kNorthRotation; }
