@@ -1,8 +1,7 @@
 #pragma once
 
-#include "RE/N/NiRefObject.h"
-
 #include "RE/B/BSTArray.h"
+#include "RE/N/NiRefObject.h"
 #include "RE/N/NiSmartPointer.h"
 
 namespace RE
@@ -15,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSPortalGraph;
 
-		virtual ~BSPortalGraph();  // 00
+		~BSPortalGraph() override;  // 00
 
 		// members
 		std::uint64_t                   unk10;             // 10

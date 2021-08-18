@@ -27,34 +27,34 @@ namespace RE
 			kUsesHands = 1 << 4
 		};
 
-		virtual ~ActorMagicCaster();  // 00
+		~ActorMagicCaster() override;  // 00
 
-		// override
-		virtual void                       Unk_03(void) override;                        // 03
-		virtual void                       Unk_04(void) override;                        // 04
-		virtual void                       Unk_05(void) override;                        // 05
-		virtual void                       Unk_06(void) override;                        // 06
-		virtual void                       Unk_07(void) override;                        // 07 - { return; }
-		virtual void                       Unk_08(void) override;                        // 08 - { return; }
-		virtual void                       Unk_09(void) override;                        // 09 - { return; }
-		virtual void                       Unk_0A(void) override;                        // 0A
-		virtual TESObjectREFR*             GetTarget() override;                         // 0B - { return actor; }
-		virtual Actor*                     GetCaster() override;                         // 0C - { return actor; }
-		virtual NiNode*                    GetMagicNode() override;                      // 0E - { return magicNode; }
-		virtual void                       ClearMagicNode() override;                    // 0F - { magicNode = 0; }
-		virtual void                       Unk_10(void) override;                        // 10 - { return; }
-		virtual void                       AttachCastingArt() override;                  // 11 - { return; }
-		virtual void                       DetachCastingArt() override;                  // 12 - { return; }
-		virtual void                       Unk_13(void) override;                        // 13 - { return; }
-		virtual void                       CalculateMagickaCost() override;              // 14
-		virtual MagicSystem::CastingSource GetCastingSource() override;                  // 15 - { return castingSource; }
-		virtual bool                       IsDualCasting() override;                     // 16 - { return flags & 1; }
-		virtual void                       SetDualCasting(bool a_set) override;          // 17
-		virtual void                       SaveGame(BGSSaveGameBuffer* a_buf) override;  // 18
-		virtual void                       LoadGame(BGSLoadGameBuffer* a_buf) override;  // 19
-		virtual void                       Unk_1A(void) override;                        // 1A
-		virtual void                       Unk_1B(void) override;                        // 1B
-		virtual void                       Unk_1C(void) override;                        // 1C
+		// override (MagicCaster)
+		void                       Unk_03(void) override;                        // 03
+		void                       Unk_04(void) override;                        // 04
+		void                       Unk_05(void) override;                        // 05
+		void                       Unk_06(void) override;                        // 06
+		void                       Unk_07(void) override;                        // 07 - { return; }
+		void                       Unk_08(void) override;                        // 08 - { return; }
+		void                       Unk_09(void) override;                        // 09 - { return; }
+		void                       Unk_0A(void) override;                        // 0A
+		TESObjectREFR*             GetTarget() override;                         // 0B - { return actor; }
+		Actor*                     GetCaster() override;                         // 0C - { return actor; }
+		NiNode*                    GetMagicNode() override;                      // 0E - { return magicNode; }
+		void                       ClearMagicNode() override;                    // 0F - { magicNode = 0; }
+		void                       Unk_10(void) override;                        // 10 - { return; }
+		void                       AttachCastingArt() override;                  // 11 - { return; }
+		void                       DetachCastingArt() override;                  // 12 - { return; }
+		void                       Unk_13(void) override;                        // 13 - { return; }
+		void                       CalculateMagickaCost() override;              // 14
+		MagicSystem::CastingSource GetCastingSource() override;                  // 15 - { return castingSource; }
+		bool                       IsDualCasting() override;                     // 16 - { return flags & 1; }
+		void                       SetDualCasting(bool a_set) override;          // 17
+		void                       SaveGame(BGSSaveGameBuffer* a_buf) override;  // 18
+		void                       LoadGame(BGSLoadGameBuffer* a_buf) override;  // 19
+		void                       Unk_1A(void) override;                        // 1A
+		void                       Unk_1B(void) override;                        // 1B
+		void                       Unk_1C(void) override;                        // 1C
 
 		// add
 		virtual void Unk_1D(void);  // 1D

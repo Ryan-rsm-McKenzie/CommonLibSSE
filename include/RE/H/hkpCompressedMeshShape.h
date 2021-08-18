@@ -70,14 +70,14 @@ namespace RE
 		};
 		static_assert(sizeof(ConvexPiece) == 0x50);
 
-		virtual ~hkpCompressedMeshShape();  // 00
+		~hkpCompressedMeshShape() override;  // 00
 
 		// override (hkpShapeCollection)
-		virtual void         CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;     // 02
-		virtual std::int32_t CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const override;  // 06
-		virtual void         GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;      // 07
-		virtual void         InitWeldingInfo(hkpWeldingUtility::WeldingType a_weldingType) override;                               // 0B
-		virtual void         SetWeldingInfo(hkpShapeKey a_key, std::int16_t a_weldingInfo) override;                               // 0C
+		void         CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;     // 02
+		std::int32_t CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const override;  // 06
+		void         GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;      // 07
+		void         InitWeldingInfo(hkpWeldingUtility::WeldingType a_weldingType) override;                               // 0B
+		void         SetWeldingInfo(hkpShapeKey a_key, std::int16_t a_weldingInfo) override;                               // 0C
 
 		// members
 		std::int32_t                                                   bitsPerIndex;                // 030

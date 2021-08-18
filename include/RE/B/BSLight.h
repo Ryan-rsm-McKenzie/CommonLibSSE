@@ -35,7 +35,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x20);
 
-		virtual ~BSLight();  // 00
+		~BSLight() override;  // 00
 
 		// add
 		virtual bool Unk_02(NiLight* a_light);  // 02

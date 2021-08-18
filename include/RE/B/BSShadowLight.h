@@ -29,7 +29,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0xF0);
 
-		virtual ~BSShadowLight();  // 00
+		~BSShadowLight() override;  // 00
 
 		// add
 		virtual void Unk_04();      // 04

@@ -8,7 +8,7 @@ namespace RE
 	class CombatInventoryItemMagicT : public CombatInventoryItemMagic
 	{
 	public:
-		virtual ~CombatInventoryItemMagicT();  // 00
+		~CombatInventoryItemMagicT() override;  // 00
 	};
 	static_assert(sizeof(CombatInventoryItemMagicT<void*, void*>) == 0x50);
 }

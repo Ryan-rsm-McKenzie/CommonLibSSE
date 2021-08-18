@@ -1,7 +1,6 @@
 #pragma once
 
 #include "RE/N/NiAVObject.h"
-
 #include "RE/N/NiColor.h"
 
 namespace RE
@@ -12,13 +11,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiLight;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiLight;
 
-		virtual ~NiLight();  // 00
+		~NiLight() override;  // 00
 
 		// override (NiAVObject)
-		virtual const NiRTTI* GetRTTI() const override;                 // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;  // 18
-		virtual void          SaveBinary(NiStream& a_stream) override;  // 1B
-		virtual bool          IsEqual(NiObject* a_object) override;     // 1C
+		const NiRTTI* GetRTTI() const override;                 // 02
+		void          LoadBinary(NiStream& a_stream) override;  // 18
+		void          SaveBinary(NiStream& a_stream) override;  // 1B
+		bool          IsEqual(NiObject* a_object) override;     // 1C
 
 		// members
 		NiColor       ambient;   // 110

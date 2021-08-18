@@ -9,12 +9,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpConvexShape;
 
-		virtual ~hkpConvexShape();  // 00
+		~hkpConvexShape() override;  // 00
 
 		// override (hkpSphereRepShape)
-		virtual float GetMaximumProjection(const hkVector4& a_direction) const override;                                                                         // 03
-		virtual bool  IsConvex() const override;                                                                                                                 // 05 - { return true; }
-		virtual void  CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
+		float GetMaximumProjection(const hkVector4& a_direction) const override;                                                                         // 03
+		bool  IsConvex() const override;                                                                                                                 // 05 - { return true; }
+		void  CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
 
 		// add
 		virtual void          GetCentreImpl(hkVector4& a_centreOut) = 0;  // 0D

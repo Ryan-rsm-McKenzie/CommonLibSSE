@@ -30,11 +30,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_CombatInventoryItem;
 
-		virtual ~CombatInventoryItem();  // 00
+		~CombatInventoryItem() override;  // 00
 
-		// override
-		virtual void SaveGame(BGSSaveGameBuffer* a_buf) override;  // 03
-		virtual void LoadGame(BGSLoadGameBuffer* a_buf) override;  // 04
+		// override (CombatObject)
+		void SaveGame(BGSSaveGameBuffer* a_buf) override;  // 03
+		void LoadGame(BGSLoadGameBuffer* a_buf) override;  // 04
 
 		// add
 		virtual float                 Unk_05();                                              // 05 - { return 0.0; }

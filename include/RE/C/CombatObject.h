@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_CombatObject;
 
-		virtual ~CombatObject();  // 00
+		~CombatObject() override;  // 00
 
 		// add
 		virtual std::uint32_t Unk_02() = 0;                        // 02

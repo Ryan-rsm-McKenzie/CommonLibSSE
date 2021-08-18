@@ -12,11 +12,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_CombatMagicCaster;
 
-		virtual ~CombatMagicCaster();  // 00
+		~CombatMagicCaster() override;  // 00
 
-		// override
-		virtual void SaveGame(BGSSaveGameBuffer* a_buf) override;  // 03
-		virtual void LoadGame(BGSLoadGameBuffer* a_buf) override;  // 04
+		// override (CombatObject)
+		void SaveGame(BGSSaveGameBuffer* a_buf) override;  // 03
+		void LoadGame(BGSLoadGameBuffer* a_buf) override;  // 04
 
 		// add
 		virtual void Unk_05() = 0;  // 05
