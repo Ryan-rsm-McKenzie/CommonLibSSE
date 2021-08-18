@@ -3,7 +3,7 @@
 namespace RE
 {
 	class NiColor;
-	
+
 	struct Color
 	{
 	public:
@@ -53,7 +53,7 @@ namespace RE
 		{
 		}
 
-		Color(const NiColor& a_rhs); 
+		Color(const NiColor& a_rhs);
 		~Color() noexcept = default;
 
 		constexpr Color& operator=(const Color& a_rhs) noexcept

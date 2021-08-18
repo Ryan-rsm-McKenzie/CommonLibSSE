@@ -8,7 +8,7 @@ namespace RE
 	TESObjectREFR* BGSRefAlias::GetReference()
 	{
 		TESObjectREFR* ref = nullptr;
-		const auto owner = owningQuest;
+		const auto     owner = owningQuest;
 		if (owner) {
 			ObjectRefHandle handle{};
 			owner->CreateRefHandleByAliasID(handle, aliasID);

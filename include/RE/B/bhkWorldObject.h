@@ -20,7 +20,7 @@ namespace RE
 		void          SaveBinary(NiStream& a_stream) override;           // 1B
 		void          AdjustRefCount(bool a_increment) override;         // 26
 		hkpWorld*     GetWorld1() override;                              // 27 - { return world; }
-		ahkpWorld*	  GetWorld2() override;								 // 28 - { return world; }
+		ahkpWorld*    GetWorld2() override;                              // 28 - { return world; }
 		void          Unk_29(void) override;                             // 29
 
 		// add

@@ -16,12 +16,12 @@ namespace RE
 		~bhkSerializable() override;  // 00
 
 		// override (bhkRefObject)
-		const NiRTTI* GetRTTI() const override;                          // 02
-		void          LoadBinary(NiStream& a_stream) override;           // 18
-		void          LinkObject(NiStream& a_stream) override;           // 19
-		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
-		void          SaveBinary(NiStream& a_stream) override;           // 1B
-		void          SetReferencedObject(hkReferencedObject* a_object) override;                             // 25
+		const NiRTTI* GetRTTI() const override;                                    // 02
+		void          LoadBinary(NiStream& a_stream) override;                     // 18
+		void          LinkObject(NiStream& a_stream) override;                     // 19
+		bool          RegisterStreamables(NiStream& a_stream) override;            // 1A - { return NiObject::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;                     // 1B
+		void          SetReferencedObject(hkReferencedObject* a_object) override;  // 25
 
 		// add
 		virtual hkpWorld*  GetWorld1();       // 27 - { return 0; }

@@ -94,7 +94,7 @@ namespace RE
 	bool TESContainer::RemoveObjectFromContainer(TESBoundObject* a_object, std::int32_t a_count)
 	{
 		auto index = GetContainerObjectIndex(a_object, a_count);
-		if (index.has_value()) {		
+		if (index.has_value()) {
 			auto oldData = containerObjects;
 			if (oldData) {
 				containerObjects = calloc<ContainerObject*>(--numContainerObjects);

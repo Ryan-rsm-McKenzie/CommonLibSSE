@@ -32,7 +32,7 @@ namespace RE
 		if (!GetIndex(a_element).has_value()) {
 			auto oldData = value;
 			value = NiAlloc<std::int32_t>(++size);
-			
+
 			if (oldData) {
 				for (std::uint32_t i = 0; i < size - 1; i++) {
 					value[i] = oldData[i];
@@ -40,7 +40,7 @@ namespace RE
 				NiFree(oldData);
 				oldData = nullptr;
 			}
-			
+
 			value[size - 1] = a_element;
 			return true;
 		}
@@ -52,7 +52,7 @@ namespace RE
 		if (auto index = GetIndex(a_element); index.has_value()) {
 			auto oldData = value;
 			value = NiAlloc<std::int32_t>(--size);
-			
+
 			for (std::uint32_t i = 0; i < size + 1; i++) {
 				if (i != index) {
 					value[i] = oldData[i];
@@ -60,7 +60,7 @@ namespace RE
 			}
 			NiFree(oldData);
 			oldData = nullptr;
-			
+
 			return true;
 		}
 		return false;

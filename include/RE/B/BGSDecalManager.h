@@ -38,4 +38,3 @@ namespace RE
 	};
 	static_assert(sizeof(BGSDecalManager) == 0x90);
 };
-

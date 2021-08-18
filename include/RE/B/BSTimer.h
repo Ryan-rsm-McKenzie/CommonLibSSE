@@ -9,8 +9,8 @@ namespace RE
 		{
 			REL::Relocation<float*> value{ REL::ID(511883) };
 			return *value;
-		}	
-		
+		}
+
 		// members
 		std::uint64_t unk00;                          // 00
 		std::uint32_t lastPerformanceCount;           // 08

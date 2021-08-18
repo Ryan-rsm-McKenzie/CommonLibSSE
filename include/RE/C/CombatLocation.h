@@ -5,7 +5,7 @@
 namespace RE
 {
 	class TESForm;
-	
+
 	struct CombatLocation
 	{
 		// members

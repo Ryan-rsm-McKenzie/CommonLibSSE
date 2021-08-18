@@ -1,5 +1,4 @@
 #include "BGSIdleCollection.h"
-#include "BGSIdleCollection.h"
 #include "RE/B/BGSIdleCollection.h"
 #include "RE/T/TESIdleForm.h"
 
@@ -31,7 +30,7 @@ namespace RE
 		}
 		return idleCollection;
 	}
-	
+
 	std::optional<std::uint32_t> BGSIdleCollection::GetIndex(TESIdleForm* a_idle)
 	{
 		std::optional<std::uint32_t> index = std::nullopt;

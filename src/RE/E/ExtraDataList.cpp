@@ -258,7 +258,7 @@ namespace RE
 	ObjectRefHandle ExtraDataList::GetTeleportLinkedDoor()
 	{
 		auto xTeleport = GetByType<ExtraTeleport>();
-		
+
 		return xTeleport && xTeleport->teleportData ?
                    xTeleport->teleportData->linkedDoor :
                    ObjectRefHandle();

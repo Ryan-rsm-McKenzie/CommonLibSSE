@@ -30,7 +30,7 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(29303) };
 		return func(this);
 	}
-	
+
 	void NiAVObject::CullNode(bool a_cull)
 	{
 		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {
@@ -233,12 +233,12 @@ namespace RE
 				if (lightingShader->flags.any(RE::BSShaderProperty::EShaderPropertyFlag::kSkinned) || lightingShader->flags.any(RE::BSShaderProperty::EShaderPropertyFlag::kTreeAnim)) {
 					return BSVisit::BSVisitControl::kContinue;
 				}
-				
+
 				lightingShader->SetFlags(RE::BSShaderProperty::EShaderPropertyFlag8::kProjectedUV, true);
 				if (a_isSnow) {
 					lightingShader->SetFlags(RE::BSShaderProperty::EShaderPropertyFlag8::kSnow, true);
 				}
-				
+
 				lightingShader->projectedUVParams = a_projectedUVParams;
 				lightingShader->projectedUVColor = a_projectedUVColor;
 

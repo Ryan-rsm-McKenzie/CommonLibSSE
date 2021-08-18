@@ -13,9 +13,9 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_LightEffect;
 
 		// override (ActiveEffect)
-		virtual void Unk_04(void) override;                        // 04
-		virtual void Unk_10(void) override;                        // 0A
-		virtual void Unk_11(void) override;                        // 0B
+		virtual void Unk_04(void) override;  // 04
+		virtual void Unk_10(void) override;  // 0A
+		virtual void Unk_11(void) override;  // 0B
 
 		virtual ~LightEffect();  // 13
 

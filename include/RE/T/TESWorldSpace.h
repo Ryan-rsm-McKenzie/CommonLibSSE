@@ -178,7 +178,7 @@ namespace RE
 		bool        IsParentForm() override;                                            // 34 - { return true; }
 		bool        IsFormTypeChild(FormType a_type) override;                          // 36
 
-		[[nodiscard]] bool			 HasMaxHeightData() const;
+		[[nodiscard]] bool           HasMaxHeightData() const;
 		[[nodiscard]] TESObjectCELL* GetSkyCell();
 		[[nodiscard]] float          GetWaterHeight() const;
 

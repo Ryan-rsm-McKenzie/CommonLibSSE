@@ -33,18 +33,18 @@ namespace RE
 		[[nodiscard]] NiTimeController* GetControllers() const;
 		NiTimeController*               GetController(const NiRTTI* a_rtti) const;
 
-		[[nodiscard]] NiExtraData*      GetExtraData(const BSFixedString& a_key) const;
+		[[nodiscard]] NiExtraData* GetExtraData(const BSFixedString& a_key) const;
 		template <class T>
 		[[nodiscard]] T* GetExtraData(const BSFixedString& a_key) const;
 
-		[[nodiscard]] NiExtraData*      GetExtraDataAt(std::uint16_t a_extraDataIndex) const;
-		[[nodiscard]] std::uint16_t     GetExtraDataSize() const;
-		[[nodiscard]] bool				HasExtraData(const BSFixedString& a_key) const;
-		bool                            InsertExtraData(NiExtraData* a_extra);
-		void                            RemoveAllExtraData();
-		bool                            RemoveExtraData(const BSFixedString& a_key);
-		bool                            RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
-		bool                            SetExtraDataSize(std::uint16_t a_size);
+		[[nodiscard]] NiExtraData*  GetExtraDataAt(std::uint16_t a_extraDataIndex) const;
+		[[nodiscard]] std::uint16_t GetExtraDataSize() const;
+		[[nodiscard]] bool          HasExtraData(const BSFixedString& a_key) const;
+		bool                        InsertExtraData(NiExtraData* a_extra);
+		void                        RemoveAllExtraData();
+		bool                        RemoveExtraData(const BSFixedString& a_key);
+		bool                        RemoveExtraDataAt(std::uint16_t a_extraDataIndex);
+		bool                        SetExtraDataSize(std::uint16_t a_size);
 
 		// members
 		BSFixedString               name;           // 10

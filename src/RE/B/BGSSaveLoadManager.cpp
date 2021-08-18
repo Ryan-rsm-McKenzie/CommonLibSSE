@@ -18,7 +18,6 @@ namespace RE
 		Load_Impl(a_fileName, -1, 0, true);
 	}
 
-
 	void BGSSaveLoadManager::Load(const char* a_fileName, bool a_checkForMods)
 	{
 		Load_Impl(a_fileName, -1, 0, a_checkForMods);

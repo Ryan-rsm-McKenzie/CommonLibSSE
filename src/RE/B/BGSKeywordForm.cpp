@@ -21,8 +21,7 @@ namespace RE
 		}
 		return false;
 	}
-	
-	
+
 	bool BGSKeywordForm::HasKeyword(FormID a_formID) const
 	{
 		if (keywords) {

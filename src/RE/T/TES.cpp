@@ -49,7 +49,7 @@ namespace RE
 		if (a_origin && a_radius > 0.0f) {
 			const auto originPos = a_origin->GetPosition();
 			const auto radiusSquared = a_radius * a_radius;
-			
+
 			if (interiorCell) {
 				interiorCell->ForEachReferenceInRange(originPos, radiusSquared, [&](TESObjectREFR& a_ref) {
 					return a_callback(a_ref);

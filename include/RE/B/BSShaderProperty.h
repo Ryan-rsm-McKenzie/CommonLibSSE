@@ -169,27 +169,27 @@ namespace RE
 		void          Unk_29(void) override;                              // 29
 
 		// add
-		virtual void             Unk_2A(void) = 0;                     // 2A
-		virtual void             Unk_2B(void);                         // 2B - { return 0; }
-		virtual void             Unk_2C(void);                         // 2C - { return 0; }
-		virtual void             Unk_2D(void);                         // 2D - { return 0; }
-		virtual void             Unk_2E(void);                         // 2E - { return 1; }
-		virtual void             Unk_2F(void);                         // 2F - { return 0; }
-		virtual bool             DoIsCopy(BSShaderProperty* a_other);  // 30
-		virtual void             SetMaterialAlpha(float a_alpha);      // 31 - { return; }
+		virtual void                           Unk_2A(void) = 0;                     // 2A
+		virtual void                           Unk_2B(void);                         // 2B - { return 0; }
+		virtual void                           Unk_2C(void);                         // 2C - { return 0; }
+		virtual void                           Unk_2D(void);                         // 2D - { return 0; }
+		virtual void                           Unk_2E(void);                         // 2E - { return 1; }
+		virtual void                           Unk_2F(void);                         // 2F - { return 0; }
+		virtual bool                           DoIsCopy(BSShaderProperty* a_other);  // 30
+		virtual void                           SetMaterialAlpha(float a_alpha);      // 31 - { return; }
 		[[nodiscard]] virtual float            GetMaterialAlpha();                   // 32 - { return 1.0; }
-		virtual void             Unk_33(void);                         // 33 - { return 1; }
-		virtual void             Unk_34(void);                         // 34
-		virtual void             Unk_35(void);                         // 35 - { return 0; }
-		virtual void             Unk_36(void);                         // 36 - { return 0; }
+		virtual void                           Unk_33(void);                         // 33 - { return 1; }
+		virtual void                           Unk_34(void);                         // 34
+		virtual void                           Unk_35(void);                         // 35 - { return 0; }
+		virtual void                           Unk_36(void);                         // 36 - { return 0; }
 		[[nodiscard]] virtual NiSourceTexture* GetPrimaryTexture();                  // 37 - { return 0; }
-		virtual void             Unk_38(void);                         // 38 - { return 0; }
+		virtual void                           Unk_38(void);                         // 38 - { return 0; }
 		[[nodiscard]] virtual bool             AcceptsEffectData() const;            // 39 - { return false; }
-		virtual void             Unk_3A(void);                         // 3A - { return; }
-		virtual void             Unk_3B(void);                         // 3B - { return; }
-		virtual void             Unk_3C(void);                         // 3C - { return 0; }
-		virtual void             Unk_3D(void);                         // 3D - { return 0; }
-		virtual void             Unk_3E(void);                         // 3E - { return 0; }
+		virtual void                           Unk_3A(void);                         // 3A - { return; }
+		virtual void                           Unk_3B(void);                         // 3B - { return; }
+		virtual void                           Unk_3C(void);                         // 3C - { return 0; }
+		virtual void                           Unk_3D(void);                         // 3D - { return 0; }
+		virtual void                           Unk_3E(void);                         // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
