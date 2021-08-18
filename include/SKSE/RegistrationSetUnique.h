@@ -39,6 +39,7 @@ namespace SKSE
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);
 			bool Load(SerializationInterface* a_intfc);
+			void Revert(SerializationInterface*);
 
 		protected:
 			using Lock = std::recursive_mutex;

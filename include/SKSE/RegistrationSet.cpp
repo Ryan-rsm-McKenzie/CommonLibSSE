@@ -192,12 +192,17 @@ namespace SKSE
 				} else {
 					auto result = _handles.insert(handle);
 					if (!result.second) {
-						log::error("Loaded duplicate handle ({})", handle);
+						//log::error("Loaded duplicate handle ({})", handle);
 					}
 				}
 			}
 
 			return true;
+		}
+
+		void RegistrationSetBase::Revert(SerializationInterface*)
+		{
+			Clear();
 		}
 
 		bool RegistrationSetBase::Register(const void* a_object, RE::VMTypeID a_typeID)
@@ -222,7 +227,7 @@ namespace SKSE
 			_lock.unlock();
 
 			if (!result.second) {
-				log::warn("Handle already registered ({})", handle);
+				//log::warn("Handle already registered ({})", handle);
 			} else {
 				policy->PersistHandle(handle);
 			}

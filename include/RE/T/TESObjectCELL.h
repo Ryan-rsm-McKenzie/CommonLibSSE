@@ -20,6 +20,7 @@
 namespace RE
 {
 	class bhkWorld;
+	class BSPortalGraph;
 	class NavMesh;
 	class NiNode;
 
@@ -69,7 +70,7 @@ namespace RE
 	{
 	public:
 		// members
-		void*                                                unk000;                // 000 - smart ptr
+		NiPointer<BSPortalGraph>                             portalGraph;           // 000 - smart ptr
 		NiPointer<NiNode>                                    cell3D;                // 008
 		void*                                                unk010;                // 010 - smart ptr
 		void*                                                unk018;                // 018 - smart ptr

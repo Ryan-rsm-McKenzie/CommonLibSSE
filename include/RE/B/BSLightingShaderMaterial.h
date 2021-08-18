@@ -21,7 +21,7 @@ namespace RE
 		BSLightingShaderMaterial* ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterial::ctor);
-			REL::Relocation<func_t> func{ REL::ID(254404) };
+			REL::Relocation<func_t> func{ REL::ID(100004) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

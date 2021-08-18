@@ -9,19 +9,7 @@
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "variables": [
-        {
-          "name": "xbyak_DIR",
-          "value": "C:/Dev/vcpkg/installed/x64-windows-static-md/share/xbyak",
-          "type": "PATH"
-        },
-        {
-          "name": "SKSE_SUPPORT_XBYAK",
-          "value": "True",
-          "type": "BOOL"
-        }
-      ]
+      "ctestCommandArgs": ""
     }
   ]
 }

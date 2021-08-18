@@ -57,7 +57,7 @@ namespace RE
 	void ProcessLists::StopAllMagicEffects(TESObjectREFR& a_ref)
 	{
 		auto handle = a_ref.CreateRefHandle();
-		GetMagicEffects([&](RE::BSTempEffect& a_tempEffect) {
+		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
 			const auto referenceEffect = a_tempEffect.As<ReferenceEffect>();
 			if (referenceEffect && referenceEffect->target == handle) {
 				referenceEffect->finished = true;

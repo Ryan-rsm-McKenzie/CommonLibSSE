@@ -28,7 +28,7 @@ namespace RE
 			return *singleton;
 		}
 
-		void CreateBulletWaterDisplacement(const RE::NiPoint3& a_pos, float a_scale)
+		void CreateBulletWaterDisplacement(const NiPoint3& a_pos, float a_scale)
 		{
 			using func_t = decltype(&BGSWaterSystemManager::CreateBulletWaterDisplacement);
 			REL::Relocation<func_t> func{ REL::ID(31410) };

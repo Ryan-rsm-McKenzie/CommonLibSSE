@@ -13,6 +13,6 @@ namespace RE
 
 	bool Sky::GetIsSnowing()
 	{
-		return currentWeather && currentWeather->data.flags.all(RE::TESWeather::WeatherDataFlag::kSnow);
+		return currentWeather && currentWeather->data.flags.all(TESWeather::WeatherDataFlag::kSnow);
 	}
 }

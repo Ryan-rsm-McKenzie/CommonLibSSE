@@ -247,7 +247,7 @@ namespace RE
 		return ObjectRefHandle(this);
 	}
 
-	float TESObjectREFR::GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs)
+	float TESObjectREFR::GetHeadingAngle(const NiPoint3& a_pos, bool a_abs)
 	{
 		float theta = NiFastATan2(a_pos.x - GetPositionX(), a_pos.y - GetPositionY());
 		float heading = rad_to_deg(theta - GetAngleZ());

@@ -28,6 +28,11 @@ namespace RE
 		virtual void ClearDataComponent() override;                     // 02
 		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
+		bool                         AddIdle(TESIdleForm* a_idle);
+		static BGSIdleCollection*    Create();
+		std::optional<std::uint32_t> GetIndex(TESIdleForm* a_idle);
+		bool                         RemoveIdle(TESIdleForm* a_idle);
+
 		// members
 		stl::enumeration<IdleFlags, std::int8_t> idleFlags;          // 08 - IDLF
 		std::int8_t                              idleCount;          // 09 - IDLC
@@ -36,6 +41,14 @@ namespace RE
 		TESIdleForm**                            idles;              // 10 - IDLA
 		float                                    timerCheckForIdle;  // 18 - IDLT
 		std::uint32_t                            pad1C;              // 1C
+
+	private:
+		[[nodiscard]] BGSIdleCollection* ctor()
+		{
+			using func_t = decltype(&BGSIdleCollection::ctor);
+			REL::Relocation<func_t> func{ REL::ID(14127) };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(BGSIdleCollection) == 0x20);
 }

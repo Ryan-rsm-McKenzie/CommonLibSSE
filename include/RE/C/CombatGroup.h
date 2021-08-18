@@ -40,9 +40,9 @@ namespace RE
 
 		struct MemberData
 		{
-			ActorHandle handle;  // 00
-			float       unk04;   // 04
-			float       unk08;   // 08
+			ActorHandle handle;                    // 00
+			float       groupStrengthUpdateTimer;  // 04
+			float       threatValue;               // 08
 		};
 		static_assert(sizeof(MemberData) == 0x0C);
 

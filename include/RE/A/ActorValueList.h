@@ -19,8 +19,8 @@ namespace RE
 		ActorValue      LookupActorValueByName(std::string_view a_enumName);
 
 		// members
-		std::uint32_t   unk00;             // 00
-		std::uint32_t   pad04;             // 04
-		ActorValueInfo* actorValues[164];  // 08
+		std::uint32_t   unk00;                                                // 00
+		std::uint32_t   pad04;                                                // 04
+		ActorValueInfo* actorValues[stl::to_underlying(ActorValue::kTotal)];  // 08
 	};
 }

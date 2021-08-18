@@ -308,6 +308,11 @@ namespace SKSE
 			return true;
 		}
 
+		void RegistrationMapBase::Revert(SerializationInterface*)
+		{
+			Clear();
+		}
+
 		bool RegistrationMapBase::Register(const void* a_object, Key a_key, RE::VMTypeID a_typeID)
 		{
 			assert(a_object);

@@ -11,6 +11,7 @@
 #include "RE/E/ExtraOwnership.h"
 #include "RE/E/ExtraReferenceHandle.h"
 #include "RE/E/ExtraSoul.h"
+#include "RE/E/ExtraTeleport.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
@@ -252,6 +253,15 @@ namespace RE
 	{
 		auto xSoul = GetByType<ExtraSoul>();
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
+	}
+
+	ObjectRefHandle ExtraDataList::GetTeleportLinkedDoor()
+	{
+		auto xTeleport = GetByType<ExtraTeleport>();
+		
+		return xTeleport && xTeleport->teleportData ?
+                   xTeleport->teleportData->linkedDoor :
+                   ObjectRefHandle();
 	}
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)

@@ -227,11 +227,16 @@ namespace SKSE
 				}
 				auto result = _handles.insert({ refHandle, vmHandle });
 				if (!result.second) {
-					log::error("Loaded duplicate handle ({},{})", refHandle, vmHandle);
+					//log::error("Loaded duplicate handle ({},{})", refHandle, vmHandle);
 				}
 			}
 
 			return true;
+		}
+
+		void RegistrationSetUniqueBase::Revert(SerializationInterface*)
+		{
+			Clear();
 		}
 
 		bool RegistrationSetUniqueBase::Register(const void* a_object, RE::RefHandle a_refHandle, RE::VMTypeID a_typeID)

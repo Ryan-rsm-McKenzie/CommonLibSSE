@@ -4,8 +4,10 @@
 #include "RE/B/BGSAttackData.h"
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSDefaultObjectManager.h"
+#include "RE/B/BSAnimationGraphManager.h"
 #include "RE/B/BSFaceGenAnimationData.h"
 #include "RE/B/BSFaceGenNiNode.h"
+#include "RE/B/BShkbAnimationGraph.h"
 #include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
@@ -36,6 +38,32 @@ namespace RE
 	bool Actor::LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut)
 	{
 		return LookupReferenceByHandle(a_refHandle, a_refrOut);
+	}
+
+	bool Actor::AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const
+	{
+		BSAnimationGraphManagerPtr graphManager;
+		GetAnimationGraphManager(graphManager);
+		if (graphManager) {
+			bool sinked = false;
+			for (auto& animationGraph : graphManager->graphs) {
+				if (sinked) {
+					break;
+				}
+				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (auto& sink : eventSource->sinks) {
+					if (sink == a_sink) {
+						sinked = true;
+						break;
+					}
+				}
+			}
+			if (!sinked) {
+				graphManager->graphs.front()->GetEventSource<BSAnimationGraphEvent>()->AddEventSink(a_sink);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	bool Actor::AddSpell(SpellItem* a_spell)
@@ -173,6 +201,13 @@ namespace RE
 	{
 		auto obj = GetBaseObject();
 		return obj ? obj->As<TESNPC>() : nullptr;
+	}
+
+	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
+	{
+		using func_t = decltype(&Actor::GetActorValueModifier);
+		REL::Relocation<func_t> func{ REL::ID(37524) };
+		return func(this, a_modifier, a_value);
 	}
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
@@ -518,6 +553,28 @@ namespace RE
 		using func_t = decltype(&Actor::KillImmediate);
 		REL::Relocation<func_t> func{ REL::ID(36723) };
 		return func(this);
+	}
+
+	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink)
+	{
+		BSAnimationGraphManagerPtr graphManager;
+		GetAnimationGraphManager(graphManager);
+		if (graphManager) {
+			bool sinked = true;
+			for (auto& animationGraph : graphManager->graphs) {
+				if (!sinked) {
+					break;
+				}
+				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (auto& sink : eventSource->sinks) {
+					if (sink == a_sink) {
+						eventSource->RemoveEventSink(a_sink);
+						sinked = false;
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	void Actor::RemoveExtraArrows3D()

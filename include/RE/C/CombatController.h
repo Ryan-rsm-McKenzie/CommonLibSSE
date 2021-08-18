@@ -7,23 +7,23 @@
 
 namespace RE
 {
+	class CombatAimController;
 	class CombatAreaStandard;
 	class CombatGroup;
-	class CombatAimController;
 	class CombatInventoryController;
 	class CombatTargetSelectorStandard;
+	class CombatTimers;
 	class TESCombatStyle;
 
 	class CombatController
 	{
 	public:
-		struct Data08;
 		struct Data18;
 		struct Data20;
 
 		// members
 		CombatGroup*                            combatGroup;             // 00
-		Data08*                                 data08;                  // 08
+		CombatTimers*                           timers;                  // 08
 		CombatInventoryController*              inventoryController;     // 10
 		Data18*                                 data18;                  // 18
 		Data20*                                 data20;                  // 20
@@ -31,7 +31,7 @@ namespace RE
 		ActorHandle                             currentTargetHandle;     // 2C
 		ActorHandle                             target;                  // 30
 		std::uint8_t                            unk34;                   // 34
-		bool                                    unk35;                   // 35
+		bool                                    startedCombat;           // 35
 		std::uint8_t                            unk36;                   // 36
 		std::uint8_t                            unk37;                   // 37
 		TESCombatStyle*                         combatStyle;             // 38

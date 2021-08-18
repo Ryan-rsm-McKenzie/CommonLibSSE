@@ -44,10 +44,10 @@ namespace RE
 		// members
 		std::uint8_t                                  unk011;         // 011
 		std::uint16_t                                 unk012;         // 012
-		NiPoint3                                      unk014;         // 014
-		NiPoint3                                      unk020;         // 020
-		float                                         unk02C;         // 02C
-		float                                         unk030;         // 030
+		NiPoint3                                      itemPosCopy;    // 014
+		NiPoint3                                      itemPos;        // 020
+		float                                         itemScaleCopy;  // 02C
+		float                                         itemScale;      // 030
 		std::uint32_t                                 unk034;         // 034
 		TESObjectREFR*                                tempRef;        // 038
 		ExtraDataList                                 originalExtra;  // 040

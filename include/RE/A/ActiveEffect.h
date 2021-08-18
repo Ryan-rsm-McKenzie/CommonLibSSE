@@ -26,6 +26,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ActiveEffect;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(142);
 
+		class ForEachHitEffectVisitor
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
+
+			virtual ~ForEachHitEffectVisitor();  // 00
+
+			// add
+			virtual std::uint32_t Accept(ReferenceEffect* a_hitEffect) = 0;  // 01
+		};
+
 		enum class Flag
 		{
 			kHasConditions = 1 << 7,
@@ -42,25 +53,25 @@ namespace RE
 		};
 
 		// add
-		virtual void           Unk_00(void);        // 00
-		virtual void           Unk_01(void);        // 01
-		virtual void           Unk_02(void);        // 02 - { return; }
-		virtual TESObjectREFR* GetVisualsTarget();  // 03 - { return target ? target->GetTargetStatsObject() : 0; }
-		virtual void           Unk_04(void);        // 04 - { return; }
-		virtual void           Unk_05(void);        // 05
-		virtual void           Unk_06(void);        // 06 - { return 0; }
-		virtual void           Unk_07(void);        // 07 - { return; }
+		virtual void           Unk_00(void);                        // 00
+		virtual void           Unk_01(void);                        // 01
+		virtual void           Unk_02(void);                        // 02 - { return; }
+		virtual TESObjectREFR* GetVisualsTarget();                  // 03 - { return target ? target->GetTargetStatsObject() : 0; }
+		virtual void           Unk_04(void);                        // 04 - { return; }
+		virtual void           Unk_05(void);                        // 05
+		virtual void           Unk_06(void);                        // 06 - { return 0; }
+		virtual void           Unk_07(void);                        // 07 - { return; }
 		virtual void           LoadGame(BGSSaveFormBuffer* a_buf);  // 08
 		virtual void           SaveGame(BGSLoadFormBuffer* a_buf);  // 09
-		virtual void           Unk_0A(void);        // 0A
-		virtual void           Unk_0B(void);        // 0B - { unk88 = 4; }
-		virtual void           Unk_0C(void);        // 0C
-		virtual void           Unk_0D(void);        // 0D - { return; }
-		virtual void           Unk_0E(void);        // 0E - { return; }
-		virtual void           Unk_0F(void);        // 0F - { return; }
-		virtual void           Unk_10(void);        // 10
-		virtual void           Unk_11(void);        // 11 - { return 0; }
-		virtual void           Unk_12(void);        // 12 - { return; }
+		virtual void           Unk_0A(void);                        // 0A
+		virtual void           Unk_0B(void);                        // 0B - { unk88 = 4; }
+		virtual void           Unk_0C(void);                        // 0C
+		virtual void           Unk_0D(void);                        // 0D - { return; }
+		virtual void           Unk_0E(void);                        // 0E - { return; }
+		virtual void           Unk_0F(void);                        // 0F - { return; }
+		virtual void           Unk_10(void);                        // 10
+		virtual void           Unk_11(void);                        // 11 - { return 0; }
+		virtual void           Unk_12(void);                        // 12 - { return; }
 
 		virtual ~ActiveEffect();  // 13
 

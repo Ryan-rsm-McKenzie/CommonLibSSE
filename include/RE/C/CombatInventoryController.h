@@ -39,7 +39,7 @@ namespace RE
 		CombatController*                        parentController;   // 000
 		BSTArray<NiPointer<CombatInventoryItem>> inventoryItems[7];  // 008
 		BSTArray<TESForm*>                       unk0B0;             // 0B0
-		BSTArray<TESForm*>                       unk0C8;             // 0c8
+		BSTArray<TESForm*>                       unk0C8;             // 0C8
 		BSTArray<BGSEquipSlot*>*                 raceEquipSlots;     // 0E0
 		std::uint64_t                            unk0E8;             // 0E8
 		std::uint32_t                            unk0F0;             // 0F0

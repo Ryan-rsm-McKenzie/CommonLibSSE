@@ -17,6 +17,20 @@
 
 namespace RE
 {
+	void NiAVObject::ClearDecals()
+	{
+		using func_t = decltype(&NiAVObject::ClearDecals);
+		REL::Relocation<func_t> func{ REL::ID(15547) };
+		return func(this);
+	}
+
+	void NiAVObject::ClearWeaponBlood()
+	{
+		using func_t = decltype(&NiAVObject::ClearWeaponBlood);
+		REL::Relocation<func_t> func{ REL::ID(29303) };
+		return func(this);
+	}
+	
 	void NiAVObject::CullNode(bool a_cull)
 	{
 		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {
@@ -112,7 +126,7 @@ namespace RE
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
 	{
 		auto                                gState = BSGraphics::State::GetSingleton();
-		BSTSmartPointer<BSEffectShaderData> newShaderData(new RE::BSEffectShaderData());
+		BSTSmartPointer<BSEffectShaderData> newShaderData(new BSEffectShaderData());
 		newShaderData->fillColor = a_color;
 		newShaderData->baseTexture = gState->defaultTextureWhite;
 
@@ -203,6 +217,33 @@ namespace RE
 				}
 			}
 
+			return BSVisit::BSVisitControl::kContinue;
+		});
+	}
+
+	void NiAVObject::UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow)
+	{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
+			using State = BSGeometry::States;
+			using Feature = BSShaderMaterial::Feature;
+
+			auto effect = a_geometry->properties[State::kEffect];
+			auto lightingShader = netimmerse_cast<BSLightingShaderProperty*>(effect.get());
+			if (lightingShader) {
+				if (lightingShader->flags.any(RE::BSShaderProperty::EShaderPropertyFlag::kSkinned) || lightingShader->flags.any(RE::BSShaderProperty::EShaderPropertyFlag::kTreeAnim)) {
+					return BSVisit::BSVisitControl::kContinue;
+				}
+				
+				lightingShader->SetFlags(RE::BSShaderProperty::EShaderPropertyFlag8::kProjectedUV, true);
+				if (a_isSnow) {
+					lightingShader->SetFlags(RE::BSShaderProperty::EShaderPropertyFlag8::kSnow, true);
+				}
+				
+				lightingShader->projectedUVParams = a_projectedUVParams;
+				lightingShader->projectedUVColor = a_projectedUVColor;
+
+				lightingShader->InitializeGeometry(a_geometry);
+			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
 	}

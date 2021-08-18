@@ -21,6 +21,7 @@ set(sources ${sources}
 	include/RE/B/BGSEntryPointPerkEntry.cpp
 	include/RE/B/BGSFootstepManager.cpp
 	include/RE/B/BGSHeadPart.cpp
+	include/RE/B/BGSIdleCollection.cpp
 	include/RE/B/BGSKeywordForm.cpp
 	include/RE/B/BGSListForm.cpp
 	include/RE/B/BGSLocation.cpp
@@ -66,6 +67,7 @@ set(sources ${sources}
 	include/RE/C/CommandTable.cpp
 	include/RE/C/Console.cpp
 	include/RE/C/ConsoleLog.cpp
+	include/RE/C/ContainerItemExtra.cpp
 	include/RE/C/ContainerMenu.cpp
 	include/RE/C/ControlMap.cpp
 	include/RE/C/CriticalHit.cpp

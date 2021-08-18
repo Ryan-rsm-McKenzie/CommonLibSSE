@@ -377,7 +377,7 @@ namespace RE
 		virtual void                 AttachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CD
 		virtual void                 DetachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CE
 		virtual bool                 AddShout(TESShout* a_shout);                                                                                                                                                     // 0CF
-		virtual void                 Unk_D0(void);                                                                                                                                                                    // 0D0 - { return; }
+		virtual void                 UnlockWord(TESWordOfPower* a_power);                                                                                                                                                                    // 0D0 - { return; }
 		virtual void                 Unk_D1(void);                                                                                                                                                                    // 0D1
 		virtual std::uint32_t        UseAmmo(std::uint32_t a_shotCount);                                                                                                                                              // 0D2
 		virtual bool                 CalculateCachedOwnerIsInCombatantFaction() const;                                                                                                                                // 0D3
@@ -469,6 +469,7 @@ namespace RE
 		static NiPointer<Actor> LookupByHandle(RefHandle a_refHandle);
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
+		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		bool                         AddSpell(SpellItem* a_spell);
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
@@ -487,6 +488,7 @@ namespace RE
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
+		float                        GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
@@ -529,6 +531,7 @@ namespace RE
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void                         KillImmediate();
+		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink);
 		void                         RemoveExtraArrows3D();
 		void                         RemoveSelectedSpell(SpellItem* a_spell);
 		bool                         RemoveSpell(SpellItem* a_spell);

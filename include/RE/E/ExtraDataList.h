@@ -152,6 +152,7 @@ namespace RE
 		TESObjectREFR*        GetLinkedRef(BGSKeyword* a_keyword);
 		TESForm*              GetOwner();
 		SOUL_LEVEL            GetSoulLevel() const;
+		ObjectRefHandle       GetTeleportLinkedDoor();
 		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void                  SetInventoryChanges(InventoryChanges* a_changes);
 		void                  SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword);

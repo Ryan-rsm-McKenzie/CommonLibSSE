@@ -9,7 +9,7 @@
 
 namespace RE
 {
-	void TESObjectCELL::ForEachReference(std::function<bool(RE::TESObjectREFR&)> a_callback) const
+	void TESObjectCELL::ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const
 	{
 		BSSpinLockGuard locker(spinLock);
 		for (const auto& ref : references) {

@@ -15,6 +15,7 @@ set(headers ${headers}
 	include/RE/A/ActorEquipManager.h
 	include/RE/A/ActorKill.h
 	include/RE/A/ActorKnowledge.h
+	include/RE/A/ActorMagicCaster.h
 	include/RE/A/ActorMover.h
 	include/RE/A/ActorPackage.h
 	include/RE/A/ActorSpeedChannel.h
@@ -43,6 +44,7 @@ set(headers ${headers}
 	include/RE/A/Atmosphere.h
 	include/RE/A/AttachAshPileFunctor.h
 	include/RE/A/AttachedScript.h
+	include/RE/A/AttachLightHitEffectVisitor.h
 	include/RE/A/AttachTechniqueInput.h
 	include/RE/A/AttackAnimationArrayMap.h
 	include/RE/A/AttackBlockHandler.h
@@ -264,6 +266,7 @@ set(headers ${headers}
 	include/RE/B/BSISoundOutputModel.h
 	include/RE/B/BSKeyboardDevice.h
 	include/RE/B/BSLensFlareRenderData.h
+	include/RE/B/BSLight.h
 	include/RE/B/BSLightingShaderMaterial.h
 	include/RE/B/BSLightingShaderMaterialBase.h
 	include/RE/B/BSLightingShaderMaterialEnvmap.h
@@ -295,6 +298,7 @@ set(headers ${headers}
 	include/RE/B/BSPointerHandle.h
 	include/RE/B/BSPointerHandleManager.h
 	include/RE/B/BSPointerHandleSmartPointer.h
+	include/RE/B/BSPortalGraph.h
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSResourceNiBinaryStream.h
@@ -307,6 +311,7 @@ set(headers ${headers}
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
 	include/RE/B/BSShaderTextureSet.h
+	include/RE/B/BSShadowLight.h
 	include/RE/B/BSSmallBlockAllocator.h
 	include/RE/B/BSSoundHandle.h
 	include/RE/B/BSStorage.h
@@ -368,7 +373,20 @@ set(headers ${headers}
 	include/RE/C/CombatGroup.h
 	include/RE/C/CombatGroupDetectionListener.h
 	include/RE/C/CombatInventoryController.h
+	include/RE/C/CombatInventoryItem.h
+	include/RE/C/CombatInventoryItemMagic.h
+	include/RE/C/CombatInventoryItemMagicT.h
+	include/RE/C/CombatInventoryItemPotion.h
+	include/RE/C/CombatInventoryItemScroll.h
+	include/RE/C/CombatInventoryItemShout.h
+	include/RE/C/CombatInventoryItemStaff.h
 	include/RE/C/CombatLocation.h
+	include/RE/C/CombatMagicCaster.h
+	include/RE/C/CombatMagicCasterOffensive.h
+	include/RE/C/CombatMagicCasterRestore.h
+	include/RE/C/CombatMagicCasterTargetEffect.h
+	include/RE/C/CombatObject.h
+	include/RE/C/CombatTimers.h
 	include/RE/C/CommandEffect.h
 	include/RE/C/CommandTable.h
 	include/RE/C/CommonTypeTraits.h
@@ -392,6 +410,7 @@ set(headers ${headers}
 	include/RE/C/CreditsMenu.h
 	include/RE/C/Crime.h
 	include/RE/C/CriticalHit.h
+	include/RE/C/CrosshairPickData.h
 	include/RE/C/CursorMenu.h
 	include/RE/D/DecalData.h
 	include/RE/D/DefaultObjectsReadyEvent.h
@@ -875,6 +894,7 @@ set(headers ${headers}
 	include/RE/K/KinectMenu.h
 	include/RE/L/LevelIncrease.h
 	include/RE/L/LevelUpMenu.h
+	include/RE/L/LightEffect.h
 	include/RE/L/LinkerProcessor.h
 	include/RE/L/LoadingMenu.h
 	include/RE/L/LoadWaitSpinner.h
@@ -967,6 +987,7 @@ set(headers ${headers}
 	include/RE/N/NiInterpController.h
 	include/RE/N/NiInterpolator.h
 	include/RE/N/NiKeyBasedInterpolator.h
+	include/RE/N/NiLight.h
 	include/RE/N/NiMath.h
 	include/RE/N/NiMatrix3.h
 	include/RE/N/NiMemManager.h
@@ -977,6 +998,7 @@ set(headers ${headers}
 	include/RE/N/NiPlane.h
 	include/RE/N/NiPoint2.h
 	include/RE/N/NiPoint3.h
+	include/RE/N/NiPointLight.h
 	include/RE/N/NiProperty.h
 	include/RE/N/NiQuaternion.h
 	include/RE/N/NiRect.h
@@ -1007,6 +1029,7 @@ set(headers ${headers}
 	include/RE/N/NiTransform.h
 	include/RE/N/NiTSet.h
 	include/RE/N/NiTStringMap.h
+	include/RE/N/NonActorMagicCaster.h
 	include/RE/N/NonActorMagicTarget.h
 	include/RE/O/Object.h
 	include/RE/O/ObjectTypeInfo.h
@@ -1146,6 +1169,7 @@ set(headers ${headers}
 	include/RE/T/TESFile.h
 	include/RE/T/TESFlora.h
 	include/RE/T/TESForm.h
+	include/RE/T/TESFormDeleteEvent.h
 	include/RE/T/TESFullName.h
 	include/RE/T/TESFurniture.h
 	include/RE/T/TESFurnitureEvent.h
@@ -1276,10 +1300,10 @@ set(headers ${headers}
 	include/SKSE/RegistrationSetUnique.h
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
-	include/SKSE/Util.h
 	include/SKSE/Version.h
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
+	include/SKSE/Impl/Util.h
 	include/SKSE/Impl/WinAPI.h
 )

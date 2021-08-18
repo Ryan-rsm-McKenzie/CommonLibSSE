@@ -1,9 +1,5 @@
 #pragma once
 
-#pragma warning(push)
-#include <boost/algorithm/string.hpp>
-#pragma warning(pop)
-
 namespace SKSE
 {
 	namespace stl
@@ -90,14 +86,36 @@ namespace SKSE
 
 		namespace string
 		{
+			namespace detail
+			{
+				// trim from left
+				inline std::string& ltrim(std::string& a_str)
+				{
+					a_str.erase(0, a_str.find_first_not_of(" \t\n\r\f\v"));
+					return a_str;
+				}
+
+				// trim from right
+				inline std::string& rtrim(std::string& a_str)
+				{
+					a_str.erase(a_str.find_last_not_of(" \t\n\r\f\v") + 1);
+					return a_str;
+				}
+			}
+
+			inline std::string& trim(std::string& a_str)
+			{
+				return detail::ltrim(detail::rtrim(a_str));
+			}
+
+			inline std::string trim_copy(std::string a_str)
+			{
+				return trim(a_str);
+			}
+
 			inline constexpr size_t const_hash(std::string_view toHash)
 			{
 				return hash::hash_string(toHash);
-			}
-
-			inline bool is_only_digit(const std::string& a_str)
-			{
-				return std::ranges::all_of(a_str, ::isdigit);
 			}
 
 			inline bool is_empty(char* a_char)
@@ -105,11 +123,35 @@ namespace SKSE
 				return !a_char || *a_char == '\0';
 			}
 
-			inline std::vector<std::string> split(const std::string& str, const std::string& a_delims)
+			inline bool is_only_digit(std::string_view a_str)
 			{
-				std::vector<std::string> cont;
-				boost::algorithm::split(cont, str, boost::is_any_of(a_delims));
-				return cont;
+				return std::ranges::all_of(a_str, ::isdigit);
+			}
+
+			inline bool is_only_space(std::string_view a_str)
+			{
+				return std::ranges::all_of(a_str, ::isspace);
+			}
+
+			inline bool icontains(std::string_view a_str1, std::string_view a_str2)
+			{
+				if (a_str2.length() > a_str1.length())
+					return false;
+
+				auto found = std::ranges::search(a_str1, a_str2,
+					[](char ch1, char ch2) {
+						return std::toupper(static_cast<unsigned char>(ch1)) == std::toupper(static_cast<unsigned char>(ch2));
+					});
+
+				return !found.empty();
+			}
+
+			inline bool iequals(std::string_view a_str1, std::string_view a_str2)
+			{
+				return std::ranges::equal(a_str1, a_str2,
+					[](char ch1, char ch2) {
+						return std::toupper(static_cast<unsigned char>(ch1)) == std::toupper(static_cast<unsigned char>(ch2));
+					});
 			}
 
 			template <class T>
@@ -123,14 +165,36 @@ namespace SKSE
 					return static_cast<T>(std::stoull(a_str));
 				} else if (a_hex) {
 					return static_cast<T>(std::stoul(a_str, nullptr, 16));
-				} else{
+				} else {
 					return static_cast<T>(std::stoul(a_str));
 				}
+			}
+
+			inline std::string remove_non_alphanumeric(std::string& a_str)
+			{
+				std::ranges::replace_if(
+					a_str, [](unsigned char c) { return !std::isalnum(c); }, ' ');
+				return trim_copy(a_str);
+			}
+
+			inline std::vector<std::string> split(const std::string& a_str, const std::string& a_deliminator)
+			{
+				std::vector<std::string> list;
+				std::string              strCopy = a_str;
+				size_t                   pos = 0;
+				std::string              token;
+				while ((pos = strCopy.find(a_deliminator)) != std::string::npos) {
+					token = strCopy.substr(0, pos);
+					list.push_back(token);
+					strCopy.erase(0, pos + a_deliminator.length());
+				}
+				list.push_back(strCopy);
+				return list;
 			}
 		}
 
 		template <typename First, typename... T>
-		[[nodiscard]] bool is(First&& first, T&&... t)
+		[[nodiscard]] bool is_in(First&& first, T&&... t)
 		{
 			return ((first == t) || ...);
 		}

@@ -64,7 +64,7 @@ namespace RE
 			const auto keywordForm = As<BGSKeywordForm>();
 			if (keywordForm) {
 				const auto has_keyword = [&]() {
-					return [&](const RE::BGSKeyword* a_keyword) {
+					return [&](const BGSKeyword* a_keyword) {
 						return a_keyword && keywordForm->HasKeyword(a_keyword);
 					};
 				};
@@ -84,7 +84,7 @@ namespace RE
 			const auto keywordForm = As<BGSKeywordForm>();
 			if (keywordForm) {
 				const auto form_has_keyword = [&]() {
-					return [&](const RE::TESForm* a_form) {
+					return [&](const TESForm* a_form) {
 						const auto keyword = a_form ? a_form->As<BGSKeyword>() : nullptr;
 						return keyword && keywordForm->HasKeyword(keyword);
 					};

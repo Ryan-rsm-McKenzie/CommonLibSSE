@@ -1,6 +1,5 @@
 #include "SKSE/RegistrationMapUnique.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -10,7 +9,6 @@ namespace SKSE
 			_eventName(a_eventName),
 			_lock()
 		{}
-
 
 		RegistrationMapUniqueBase::RegistrationMapUniqueBase(const RegistrationMapUniqueBase& a_rhs) :
 			_regs(),
@@ -32,7 +30,6 @@ namespace SKSE
 			}
 		}
 
-
 		RegistrationMapUniqueBase::RegistrationMapUniqueBase(RegistrationMapUniqueBase&& a_rhs) :
 			_regs(),
 			_eventName(a_rhs._eventName),
@@ -42,7 +39,6 @@ namespace SKSE
 			_regs = std::move(a_rhs._regs);
 			a_rhs._regs.clear();
 		}
-
 
 		RegistrationMapUniqueBase::~RegistrationMapUniqueBase()
 		{
@@ -56,7 +52,6 @@ namespace SKSE
 				}
 			}
 		}
-
 
 		RegistrationMapUniqueBase& RegistrationMapUniqueBase::operator=(const RegistrationMapUniqueBase& a_rhs)
 		{
@@ -86,7 +81,6 @@ namespace SKSE
 			return *this;
 		}
 
-
 		RegistrationMapUniqueBase& RegistrationMapUniqueBase::operator=(RegistrationMapUniqueBase&& a_rhs)
 		{
 			if (this == &a_rhs) {
@@ -106,11 +100,10 @@ namespace SKSE
 			return *this;
 		}
 
-
 		bool RegistrationMapUniqueBase::Register(RE::ActiveEffect* a_activeEffect, Key a_key)
 		{
 			assert(a_activeEffect);
-			
+
 			auto target = a_activeEffect->GetTargetActor();
 			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
 
@@ -121,11 +114,10 @@ namespace SKSE
 			}
 		}
 
-
 		bool RegistrationMapUniqueBase::Register(RE::BGSRefAlias* a_alias, Key a_key)
 		{
 			assert(a_alias);
-	
+
 			auto target = a_alias->GetActorReference();
 			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
 
@@ -136,11 +128,10 @@ namespace SKSE
 			}
 		}
 
-
 		bool RegistrationMapUniqueBase::Unregister(RE::ActiveEffect* a_activeEffect, Key a_key)
 		{
 			assert(a_activeEffect);
-			
+
 			auto target = a_activeEffect->GetTargetActor();
 			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
 
@@ -150,7 +141,6 @@ namespace SKSE
 				return false;
 			}
 		}
-
 
 		bool RegistrationMapUniqueBase::Unregister(RE::BGSRefAlias* a_alias, Key a_key)
 		{
@@ -166,11 +156,10 @@ namespace SKSE
 			}
 		}
 
-
 		void RegistrationMapUniqueBase::UnregisterAll(RE::ActiveEffect* a_activeEffect)
 		{
 			assert(a_activeEffect);
-			
+
 			auto target = a_activeEffect->GetTargetActor();
 			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
 
@@ -178,7 +167,6 @@ namespace SKSE
 				UnregisterAll(a_activeEffect, std::move(handle), RE::ActiveEffect::VMTYPEID);
 			}
 		}
-
 
 		void RegistrationMapUniqueBase::UnregisterAll(RE::BGSRefAlias* a_alias)
 		{
@@ -192,11 +180,10 @@ namespace SKSE
 			}
 		}
 
-
 		void RegistrationMapUniqueBase::Clear()
 		{
-			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			auto   vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto   policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& [key, handles] : _regs) {
@@ -208,7 +195,6 @@ namespace SKSE
 			_regs.clear();
 		}
 
-
 		bool RegistrationMapUniqueBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
 		{
 			assert(a_intfc);
@@ -219,7 +205,6 @@ namespace SKSE
 
 			return Save(a_intfc);
 		}
-
 
 		bool RegistrationMapUniqueBase::Save(SerializationInterface* a_intfc)
 		{
@@ -266,7 +251,6 @@ namespace SKSE
 			return true;
 		}
 
-
 		bool RegistrationMapUniqueBase::Load(SerializationInterface* a_intfc)
 		{
 			assert(a_intfc);
@@ -281,9 +265,9 @@ namespace SKSE
 
 			for (std::size_t i = 0; i < numKeys; ++i) {
 				// Key
-				Key curKey;
+				Key        curKey;
 				RE::FormID formID;
-				bool match;
+				bool       match;
 
 				a_intfc->ReadRecordData(formID);
 				if (!a_intfc->ResolveFormID(formID, formID)) {
@@ -301,18 +285,18 @@ namespace SKSE
 				}
 				// Regs
 				RE::RefHandle refHandle;
-				RE::VMHandle vmHandle;
+				RE::VMHandle  vmHandle;
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					if (!a_intfc->ReadRecordData(refHandle)) {
 						log::warn("Error reading refHandle ({})", refHandle);
 						return false;
-					}										
+					}
 					a_intfc->ReadRecordData(vmHandle);
 					if (!a_intfc->ResolveHandle(vmHandle, vmHandle)) {
 						log::warn("Failed to resolve handle ({})", vmHandle);
 						return false;
 					}
-					
+
 					auto result = _regs[curKey].insert({ refHandle, vmHandle });
 					if (!result.second) {
 						log::error("Loaded duplicate handle ({},{})", refHandle, vmHandle);
@@ -323,6 +307,10 @@ namespace SKSE
 			return true;
 		}
 
+		void RegistrationMapUniqueBase::Revert(SerializationInterface*)
+		{
+			Clear();
+		}
 
 		bool RegistrationMapUniqueBase::Register(const void* a_object, RE::RefHandle a_refHandle, Key a_key, RE::VMTypeID a_typeID)
 		{
@@ -335,7 +323,7 @@ namespace SKSE
 			}
 
 			const auto invalidHandle = policy->EmptyHandle();
-			auto handle = policy->GetHandleForObject(a_typeID, a_object);
+			auto       handle = policy->GetHandleForObject(a_typeID, a_object);
 			if (handle == invalidHandle) {
 				log::error("Failed to create handle!");
 				return false;
@@ -352,7 +340,6 @@ namespace SKSE
 			}
 			return result.second;
 		}
-
 
 		bool RegistrationMapUniqueBase::Unregister(const void* a_object, std::uint32_t a_refHandle, Key a_key, RE::VMTypeID a_typeID)
 		{
@@ -372,8 +359,8 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto handlePair = std::pair{ a_refHandle, handle };
-			auto it = _regs[a_key].find(handlePair);
+			auto   handlePair = std::pair{ a_refHandle, handle };
+			auto   it = _regs[a_key].find(handlePair);
 			if (it == _regs[a_key].end()) {
 				log::warn("Could not find registration");
 				return false;
@@ -383,7 +370,6 @@ namespace SKSE
 				return true;
 			}
 		}
-
 
 		void RegistrationMapUniqueBase::UnregisterAll(const void* a_object, std::uint32_t a_refHandle, RE::VMTypeID a_typeID)
 		{
@@ -403,7 +389,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto handlePair = std::pair{ a_refHandle, handle };
+			auto   handlePair = std::pair{ a_refHandle, handle };
 			for (auto i = _regs.begin(); i != _regs.end(); i++) {
 				auto result = i->second.erase(handlePair);
 				if (result != 0) {

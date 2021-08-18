@@ -35,8 +35,8 @@ namespace RE
 		virtual void             Unk_36(void) override;                        // 36
 		virtual void             Unk_3A(void) override;                        // 3A
 		virtual void             UpdatePosition() override;                    // 3B
-		virtual void             Unk_3C(void) override;                        // 3C
-		virtual void             Unk_3D(void) override;                        // 3D - { return unkD0 & 1; }
+		virtual NiAVObject*      GetTargetRoot() override;                     // 3C
+		virtual bool             Unk_3D(void) override;                        // 3D - { return unkD0 & 1; }
 		virtual void             Unk_3E(void) override;                        // 3E
 
 		// members

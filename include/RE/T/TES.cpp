@@ -16,7 +16,7 @@ namespace RE
 	void TES::ForEachReference(std::function<bool(TESObjectREFR& a_ref)> a_callback)
 	{
 		if (interiorCell) {
-			interiorCell->ForEachReference([&](RE::TESObjectREFR& a_ref) {
+			interiorCell->ForEachReference([&](TESObjectREFR& a_ref) {
 				return a_callback(a_ref);
 			});
 		} else {
@@ -27,7 +27,7 @@ namespace RE
 					do {
 						const auto cell = gridCells->GetCell(x, y);
 						if (cell && cell->IsAttached()) {
-							cell->ForEachReference([&](RE::TESObjectREFR& a_ref) {
+							cell->ForEachReference([&](TESObjectREFR& a_ref) {
 								return a_callback(a_ref);
 							});
 						}
@@ -38,7 +38,7 @@ namespace RE
 			}
 		}
 		if (const auto skyCell = worldSpace ? worldSpace->GetSkyCell() : nullptr; skyCell) {
-			skyCell->ForEachReference([&](RE::TESObjectREFR& a_ref) {
+			skyCell->ForEachReference([&](TESObjectREFR& a_ref) {
 				return a_callback(a_ref);
 			});
 		}
@@ -69,7 +69,7 @@ namespace RE
 							if (cell && cell->IsAttached()) {
 								const auto cellCoords = cell->GetCoordinates();
 								if (cellCoords) {
-									const RE::NiPoint2 worldPos{ cellCoords->worldX, cellCoords->worldY };
+									const NiPoint2 worldPos{ cellCoords->worldX, cellCoords->worldY };
 									if (worldPos.x < xPlus && (worldPos.x + 4096.0f) > xMinus && worldPos.y < yPlus && (worldPos.y + 4096.0f) > yMinus) {
 										cell->ForEachReferenceInRange(originPos, radiusSquared, [&](TESObjectREFR& a_ref) {
 											return a_callback(a_ref);
@@ -90,7 +90,7 @@ namespace RE
 				});
 			}
 		} else {
-			ForEachReference([&](RE::TESObjectREFR& a_ref) {
+			ForEachReference([&](TESObjectREFR& a_ref) {
 				return a_callback(a_ref);
 			});
 		}

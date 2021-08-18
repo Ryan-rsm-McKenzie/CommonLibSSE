@@ -455,7 +455,7 @@ namespace REL
 		{
 			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
 			if (handle == nullptr) {
-				stl::report_and_fail("failed to obtain module handle"sv);
+				stl::report_and_fail("Failed to obtain module handle! SkyrimSE.exe has been renamed (please don't rename skse64_loader.exe to SkyrimSE.exe), or you're attempting to run this on the VR version."sv);
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 			_natvis = _base;
@@ -564,7 +564,7 @@ namespace REL
 				_stream(a_filename.data(), a_mode)
 			{
 				if (!_stream.is_open()) {
-					stl::report_and_fail("failed to open file"sv);
+					stl::report_and_fail("Failed to open file! Address Library is either missing or not correctly installed for your game version"sv);
 				}
 
 				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);

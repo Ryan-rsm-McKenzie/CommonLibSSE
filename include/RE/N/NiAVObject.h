@@ -110,6 +110,8 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 33
 		virtual void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
+		void                         ClearDecals();
+		void                         ClearWeaponBlood();
 		void                         CullNode(bool a_cull);
 		[[nodiscard]] bool           GetAppCulled() const;
 		[[nodiscard]] BSGeometry*    GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
@@ -123,6 +125,7 @@ namespace RE
 		void                         UpdateBodyTint(const NiColor& a_color);
 		void                         UpdateHairColor(const NiColor& a_color);
 		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
+		void                         UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
 		void                         UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2);
 
 		// members
