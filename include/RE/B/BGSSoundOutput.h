@@ -62,12 +62,12 @@ namespace RE
 			};
 			static_assert(sizeof(DataType) == 0x10);
 
-			virtual ~DynamicAttenuationCharacteristics();  // 00
+			~DynamicAttenuationCharacteristics() override;  // 00
 
 			// override (BSIAttenuationCharacteristics)
-			virtual float        GetMaxDistance() const override;                    // 01 - { return data.maxDistance; }
-			virtual float        GetMinDistance() const override;                    // 02 - { return data.minDistance; }
-			virtual std::uint8_t GetCurveValue(std::uint32_t a_idx) const override;  // 03 - { return a_idx >= 5 ? 0 : data.curve[a_idx]; }
+			float        GetMaxDistance() const override;                    // 01 - { return data.maxDistance; }
+			float        GetMinDistance() const override;                    // 02 - { return data.minDistance; }
+			std::uint8_t GetCurveValue(std::uint32_t a_idx) const override;  // 03 - { return a_idx >= 5 ? 0 : data.curve[a_idx]; }
 
 			// members
 			DataType data;  // 00
@@ -97,23 +97,23 @@ namespace RE
 		};
 		static_assert(sizeof(SpeakerArrays) == 0x18);
 
-		virtual ~BGSSoundOutput();  // 00
+		~BGSSoundOutput() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// override (BSISoundOutputModel)
-		virtual bool                                 DoGetUsesHRTF() const override;                                                                   // 01 - { return type == kUsesHRTF; }
-		virtual bool                                 DoGetHasSpeakerBias() const override;                                                             // 02 - { return type == kDefinedSpeakerOutput; }
-		virtual bool                                 DoGetSpeakerBias(std::uint32_t a_arg1, std::uint32_t a_arg2, float (&a_arg3)[8]) const override;  // 03
-		virtual bool                                 DoGetAttenuatesWithDistance() const override;                                                     // 04 - { return data.flags & 1; }
-		virtual bool                                 DoGetAudibility(float a_distance) const override;                                                 // 05 - { float maxDistance = attenuationValues ? attenuationValues->GetMaxDistance() : 3.4028235e38; return a_distance > maxDistance; }
-		virtual std::uint32_t                        DoGetSupportedInputChannels() const override;                                                     // 06 - { return 2; }
-		virtual const BSIAttenuationCharacteristics* DoGetAttenuation() const override;                                                                // 07 - { return attenuationValues; }
-		virtual float                                DoGetReverbSendLevel() const override;                                                            // 08 - { return data.reverbSendPct * 0.0099999998; }
-		virtual bool                                 DoGetSupportsMonitor(std::uint32_t a_arg1) const override;                                        // 09
+		bool                                 DoGetUsesHRTF() const override;                                                                   // 01 - { return type == kUsesHRTF; }
+		bool                                 DoGetHasSpeakerBias() const override;                                                             // 02 - { return type == kDefinedSpeakerOutput; }
+		bool                                 DoGetSpeakerBias(std::uint32_t a_arg1, std::uint32_t a_arg2, float (&a_arg3)[8]) const override;  // 03
+		bool                                 DoGetAttenuatesWithDistance() const override;                                                     // 04 - { return data.flags & 1; }
+		bool                                 DoGetAudibility(float a_distance) const override;                                                 // 05 - { float maxDistance = attenuationValues ? attenuationValues->GetMaxDistance() : 3.4028235e38; return a_distance > maxDistance; }
+		std::uint32_t                        DoGetSupportedInputChannels() const override;                                                     // 06 - { return 2; }
+		const BSIAttenuationCharacteristics* DoGetAttenuation() const override;                                                                // 07 - { return attenuationValues; }
+		float                                DoGetReverbSendLevel() const override;                                                            // 08 - { return data.reverbSendPct * 0.0099999998; }
+		[[nodiscard]] bool                   DoGetSupportsMonitor(std::uint32_t a_arg1) const override;                                        // 09
 
 		// members
 		Data                                  data;            // 28 - NAM1

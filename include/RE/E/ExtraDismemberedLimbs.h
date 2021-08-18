@@ -27,10 +27,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
-		virtual ~ExtraDismemberedLimbs();  // 00
+		~ExtraDismemberedLimbs() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kDismemberedLimbs; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kDismemberedLimbs; }
 
 		// members
 		std::uint16_t                                               limbs;             // 10

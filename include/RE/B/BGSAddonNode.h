@@ -39,12 +39,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSAddonNode();  // 00
+		~BGSAddonNode() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		std::uint32_t           index;  // 68 - DATA

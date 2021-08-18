@@ -9,12 +9,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MenuOpenHandler;
 
-		virtual ~MenuOpenHandler();  // 00
+		~MenuOpenHandler() override;  // 00
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;      // 01
-		virtual bool ProcessKinect(KinectEvent* a_event) override;  // 02
-		virtual bool ProcessButton(ButtonEvent* a_event) override;  // 05
+		bool CanProcess(InputEvent* a_event) override;      // 01
+		bool ProcessKinect(KinectEvent* a_event) override;  // 02
+		bool ProcessButton(ButtonEvent* a_event) override;  // 05
 
 		// members
 		bool          unk10;  // 10

@@ -16,17 +16,17 @@ namespace RE
 			kAppendOnly = 2
 		};
 
-		~NiFile();  // 00
+		~NiFile() override;  // 00
 
 		// override (NiBinaryStream)
-		virtual bool good() const override;                    // 01 - { return isGood; }
-		virtual void seek(std::int32_t a_numBytes) override;   // 02
-		virtual void get_info(BufferInfo& a_buf) override;     // 04
-		virtual void set_endian_swap(bool a_doSwap) override;  // 05
+		bool good() const override;                    // 01 - { return isGood; }
+		void seek(std::int32_t a_numBytes) override;   // 02
+		void get_info(BufferInfo& a_buf) override;     // 04
+		void set_endian_swap(bool a_doSwap) override;  // 05
 
 		// add
-		virtual void          seek(std::int32_t a_offset, std::int32_t a_from);  // 06
-		virtual std::uint32_t size() const;                                      // 07
+		virtual void                        seek(std::int32_t a_offset, std::int32_t a_from);  // 06
+		[[nodiscard]] virtual std::uint32_t size() const;                                      // 07
 
 		// members
 		std::uint32_t                             bufferAllocSize;  // 20

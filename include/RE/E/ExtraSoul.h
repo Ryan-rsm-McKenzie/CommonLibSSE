@@ -14,13 +14,13 @@ namespace RE
 
 		ExtraSoul();
 		explicit ExtraSoul(SOUL_LEVEL a_level);
-		virtual ~ExtraSoul() = default;  // 00
+		~ExtraSoul() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { reutrn kSoul; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return soul != a_rhs->soul; }
+		ExtraDataType GetType() const override;                             // 01 - { reutrn kSoul; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return soul != a_rhs->soul; }
 
-		SOUL_LEVEL GetContainedSoul() const;
+		[[nodiscard]] SOUL_LEVEL GetContainedSoul() const;
 
 		// members
 		stl::enumeration<SOUL_LEVEL, std::uint8_t> soul;   // 10

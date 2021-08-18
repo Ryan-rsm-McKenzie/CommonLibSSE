@@ -14,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MessageBoxData;
 
-		virtual ~MessageBoxData();  // 00
+		~MessageBoxData() override;  // 00
 
 		void QueueMessage()
 		{

@@ -52,16 +52,16 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectSTAT();  // 00
+		~TESObjectSTAT() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void ClearData() override;              // 05
-		virtual bool Load(TESFile* a_mod) override;     // 06
-		virtual void InitItemImpl() override;           // 13
-		virtual bool GetPlayable() const override;      // 19 - { return true; }
-		virtual bool IsHeadingMarker() const override;  // 1A - { return (flags >> 2) & 1; }
+		void               ClearData() override;              // 05
+		bool               Load(TESFile* a_mod) override;     // 06
+		void               InitItemImpl() override;           // 13
+		bool               GetPlayable() const override;      // 19 - { return true; }
+		[[nodiscard]] bool IsHeadingMarker() const override;  // 1A - { return (flags >> 2) & 1; }
 
-		bool HasTreeLOD() const;
+		[[nodiscard]] bool HasTreeLOD() const;
 
 		// members
 		TESObjectSTATData data;  // 68 - DNAM

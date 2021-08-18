@@ -40,7 +40,7 @@ namespace RE
 		};
 		static_assert(sizeof(RAYCAST_DATA) == 0xD0);
 
-		virtual ~bhkWorld();  // 00
+		~bhkWorld() override;  // 00
 
 		// override (bhkSerializable)
 		virtual const NiRTTI* GetRTTI() const override;                                    // 02

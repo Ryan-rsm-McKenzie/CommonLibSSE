@@ -10,17 +10,17 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiShadeProperty;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiShadeProperty;
 
-		virtual ~NiShadeProperty();  // 00
+		~NiShadeProperty() override;  // 00
 
 		// override (NiProperty)
-		virtual const NiRTTI* GetRTTI() const override;                           // 02
-		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
-		virtual void          LoadBinary(NiStream& a_stream) override;            // 18 - { NiProperty::LoadBinary(a_stream); }
-		virtual void          LinkObject(NiStream& a_stream) override;            // 19 - { NiProperty::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiProperty::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B - { NiProperty::SaveBinary(a_stream); }
-		virtual bool          IsEqual(NiObject* a_object) override;               // 1C - { return NiProperty::IsEqual(a_object); }
-		virtual Type          GetType() const override;                           // 25 - { return Type::kShade; }
+		const NiRTTI*      GetRTTI() const override;                           // 02
+		NiObject*          CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		void               LoadBinary(NiStream& a_stream) override;            // 18 - { NiProperty::LoadBinary(a_stream); }
+		void               LinkObject(NiStream& a_stream) override;            // 19 - { NiProperty::LinkObject(a_stream); }
+		bool               RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiProperty::RegisterStreamables(a_stream); }
+		void               SaveBinary(NiStream& a_stream) override;            // 1B - { NiProperty::SaveBinary(a_stream); }
+		bool               IsEqual(NiObject* a_object) override;               // 1C - { return NiProperty::IsEqual(a_object); }
+		[[nodiscard]] Type GetType() const override;                           // 25 - { return Type::kShade; }
 
 		// add
 		virtual bool InitializeGeometry(BSGeometry* a_geometry);  // 27 - { return 1; }

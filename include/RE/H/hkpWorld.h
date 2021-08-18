@@ -63,10 +63,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpWorld;
 
-		virtual ~hkpWorld();  // 00
+		~hkpWorld() override;  // 00
 
 		// override (hkReferencedObject)
-		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		inline void CastRay(const hkpWorldRayCastInput& a_input, hkpWorldRayCastOutput& a_output) const
 		{

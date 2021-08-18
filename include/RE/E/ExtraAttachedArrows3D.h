@@ -26,11 +26,11 @@ namespace RE
 		};
 		static_assert(sizeof(DataItem) == 0x18);
 
-		virtual ~ExtraAttachedArrows3D();  // 00
+		~ExtraAttachedArrows3D() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kAttachedArrows3D; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kAttachedArrows3D; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		BSTArray<DataItem> data;           // 10

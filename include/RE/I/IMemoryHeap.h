@@ -32,22 +32,22 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IMemoryHeap;
 
-		virtual ~IMemoryHeap() = default;  // 00
+		~IMemoryHeap() override = default;  // 00
 
 		// override (IMemoryStore)
-		virtual bool  ContainsBlockImpl(const void* a_block) const override { return PointerInHeap(a_block); }                             // 03
-		virtual void* AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }  // 04
-		virtual void  DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block, 0); }                                             // 05
+		bool  ContainsBlockImpl(const void* a_block) const override { return PointerInHeap(a_block); }                             // 03
+		void* AllocateAlignImpl(std::size_t a_size, std::uint32_t a_alignment) override { return Allocate(a_size, a_alignment); }  // 04
+		void  DeallocateAlignImpl(void*& a_block) override { Deallocate(a_block, 0); }                                             // 05
 
 		// add
-		virtual const char*   GetName() const = 0;                                                      // 07
-		virtual void*         Allocate(std::size_t a_size, std::uint32_t a_alignment) = 0;              // 08
-		virtual void          Deallocate(void* a_mem, std::uint32_t) = 0;                               // 09
-		virtual bool          PointerInHeap(const void* a_pointer) const = 0;                           // 0A
-		virtual std::size_t   TotalSize(const void* a_pointer) const = 0;                               // 0B
-		virtual void          GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) = 0;               // 0C
-		virtual bool          ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) = 0;  // 0D
-		virtual std::uint32_t GetPageSize() const = 0;                                                  // 0E
+		[[nodiscard]] virtual const char*   GetName() const = 0;                                                      // 07
+		virtual void*                       Allocate(std::size_t a_size, std::uint32_t a_alignment) = 0;              // 08
+		virtual void                        Deallocate(void* a_mem, std::uint32_t) = 0;                               // 09
+		virtual bool                        PointerInHeap(const void* a_pointer) const = 0;                           // 0A
+		virtual std::size_t                 TotalSize(const void* a_pointer) const = 0;                               // 0B
+		virtual void                        GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) = 0;               // 0C
+		virtual bool                        ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) = 0;  // 0D
+		[[nodiscard]] virtual std::uint32_t GetPageSize() const = 0;                                                  // 0E
 	};
 	static_assert(sizeof(IMemoryHeap) == 0x8);
 }

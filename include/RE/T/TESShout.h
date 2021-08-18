@@ -53,16 +53,16 @@ namespace RE
 		};
 		using VariationID = VariationIDs::VariationID;
 
-		virtual ~TESShout();  // 00
+		~TESShout() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
-		virtual bool GetKnown() const override;      // 17
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
+		bool GetKnown() const override;      // 17
 
 		// override (BGSEquipType)
-		virtual BGSEquipSlot* GetEquipSlot() const override;                // 04
-		virtual void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
+		BGSEquipSlot* GetEquipSlot() const override;                // 04
+		void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
 
 		// members
 		Variation variations[VariationIDs::kTotal];  // 60 - SNAM

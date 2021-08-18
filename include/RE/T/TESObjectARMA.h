@@ -39,13 +39,13 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectARMA();  // 00
+		~TESObjectARMA() override;  // 00
 
 		// override (TESObject)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		bool IsValidRace(TESRace* a_sourceRace) const;
 		void GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);

@@ -14,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbBindable;
 
-		virtual ~hkbBindable();  // 00
+		~hkbBindable() override;  // 00
 
 		// add
 		virtual void Unk_03(void);  // 03

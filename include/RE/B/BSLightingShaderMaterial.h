@@ -11,11 +11,11 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterial;
 		inline static constexpr auto FEATURE = Feature::kDefault;
 
-		virtual ~BSLightingShaderMaterial();  // 00
+		~BSLightingShaderMaterial() override;  // 00
 
 		// override (BSLightingShaderMaterialBase)
-		virtual BSShaderMaterial* Create() override;            // 01
-		virtual Feature           GetFeature() const override;  // 06 - { return Feature::kDefault; }
+		BSShaderMaterial* Create() override;            // 01
+		Feature           GetFeature() const override;  // 06 - { return Feature::kDefault; }
 
 	protected:
 		BSLightingShaderMaterial* ctor()

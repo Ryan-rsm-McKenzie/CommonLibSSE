@@ -18,19 +18,19 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_RaceSexMenu;
 		constexpr static std::string_view MENU_NAME = "RaceSex Menu";
 
-		virtual ~RaceSexMenu();  // 00
+		~RaceSexMenu() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;                       // 01
-		virtual void               PostCreate() override;                                                 // 02
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
+		void               Accept(CallbackProcessor* a_processor) override;                       // 01
+		void               PostCreate() override;                                                 // 02
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
+		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) = 0;          // 01
-		virtual bool ProcessThumbstick(ThumbstickEvent* a_event);  // 03
-		virtual bool ProcessMouseMove(MouseMoveEvent* a_event);    // 04
-		virtual bool ProcessButton(ButtonEvent* a_event);          // 05
+		bool CanProcess(InputEvent* a_event) override = 0;          // 01
+		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+		bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 		// members
 		BSTArray<void*>                      unk040[7];  // 040

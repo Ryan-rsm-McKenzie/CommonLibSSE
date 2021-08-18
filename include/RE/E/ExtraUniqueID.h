@@ -13,11 +13,11 @@ namespace RE
 
 		ExtraUniqueID();
 		ExtraUniqueID(FormID a_baseID, std::uint16_t a_uniqueID);
-		virtual ~ExtraUniqueID() = default;  // 00
+		~ExtraUniqueID() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kUniqueID; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return uniqueID != a_rhs->uniqueID || baseID != a_rhs->baseID; }
+		ExtraDataType GetType() const override;                             // 01 - { return kUniqueID; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return uniqueID != a_rhs->uniqueID || baseID != a_rhs->baseID; }
 
 		// members
 		FormID        baseID;    // 10

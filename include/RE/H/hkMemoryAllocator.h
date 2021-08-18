@@ -38,12 +38,12 @@ namespace RE
 			virtual ~ExtendedInterface();  // 00
 
 			// add
-			virtual void        GarbageCollect() = 0;                                           // 01
-			virtual void        IncrementalGarbageCollect(std::int32_t a_numBlocks) = 0;        // 02
-			virtual hkResult    SetMemorySoftLimit(std::size_t a_maxMemory) = 0;                // 03
-			virtual std::size_t GetMemorySoftLimit() const = 0;                                 // 04
-			virtual bool        CanAllocTotal(std::int32_t a_numBytes) = 0;                     // 05
-			virtual hkResult    WalkMemory(MemoryWalkCallback* a_callback, void* a_param) = 0;  // 06
+			virtual void                      GarbageCollect() = 0;                                           // 01
+			virtual void                      IncrementalGarbageCollect(std::int32_t a_numBlocks) = 0;        // 02
+			virtual hkResult                  SetMemorySoftLimit(std::size_t a_maxMemory) = 0;                // 03
+			[[nodiscard]] virtual std::size_t GetMemorySoftLimit() const = 0;                                 // 04
+			virtual bool                      CanAllocTotal(std::int32_t a_numBytes) = 0;                     // 05
+			virtual hkResult                  WalkMemory(MemoryWalkCallback* a_callback, void* a_param) = 0;  // 06
 		};
 		static_assert(sizeof(ExtendedInterface) == 0x8);
 

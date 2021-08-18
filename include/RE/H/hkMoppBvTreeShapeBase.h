@@ -14,12 +14,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkMoppBvTreeShapeBase;
 
-		virtual ~hkMoppBvTreeShapeBase();  // 00
+		~hkMoppBvTreeShapeBase() override;  // 00
 
 		// override (hkpBvTreeShape)
-		virtual void          CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override = 0;  // 02
-		virtual void          QueryAabb(const hkAabb& a_aabb, hkArray<hkpShapeKey>& a_hits) const override;                          // 0B
-		virtual std::uint32_t QueryAabbImpl(const hkAabb& a_aabb, hkpShapeKey* a_hits, std::int32_t a_maxNumKeys) const override;    // 0C
+		void          CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override = 0;  // 02
+		void          QueryAabb(const hkAabb& a_aabb, hkArray<hkpShapeKey>& a_hits) const override;                          // 0B
+		std::uint32_t QueryAabbImpl(const hkAabb& a_aabb, hkpShapeKey* a_hits, std::int32_t a_maxNumKeys) const override;    // 0C
 
 		// add
 		virtual void QueryObb(const hkTransform& a_obbToMopp, const hkVector4& a_extent, float tolerance, hkArray<hkpShapeKey>& a_hits) const;  // 0E

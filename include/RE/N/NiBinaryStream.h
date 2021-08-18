@@ -29,11 +29,11 @@ namespace RE
 		virtual ~NiBinaryStream();  // 00
 
 		// add
-		virtual bool          good() const = 0;                    // 01
-		virtual void          seek(std::int32_t a_numBytes) = 0;   // 02
-		virtual std::uint32_t tell() const;                        // 03 - { return _absoluteCurrentPos; }
-		virtual void          get_info(BufferInfo& a_buf);         // 04
-		virtual void          set_endian_swap(bool a_doSwap) = 0;  // 05
+		[[nodiscard]] virtual bool          good() const = 0;                    // 01
+		virtual void                        seek(std::int32_t a_numBytes) = 0;   // 02
+		[[nodiscard]] virtual std::uint32_t tell() const;                        // 03 - { return _absoluteCurrentPos; }
+		virtual void                        get_info(BufferInfo& a_buf);         // 04
+		virtual void                        set_endian_swap(bool a_doSwap) = 0;  // 05
 
 		template <class CharT>
 		bool get(CharT& a_ch);

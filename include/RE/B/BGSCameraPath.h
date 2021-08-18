@@ -51,14 +51,14 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSCameraPath();  // 00
+		~BGSCameraPath() override;  // 00
 
 		// override (TESForm)
-		virtual void     InitializeData() override;                                          // 04
-		virtual void     ClearData() override;                                               // 05
-		virtual bool     Load(TESFile* a_mod) override;                                      // 06
-		virtual TESForm* CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
-		virtual void     InitItemImpl() override;                                            // 13
+		void     InitializeData() override;                                          // 04
+		void     ClearData() override;                                               // 05
+		bool     Load(TESFile* a_mod) override;                                      // 06
+		TESForm* CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
+		void     InitItemImpl() override;                                            // 13
 
 		// members
 		TESCondition                 conditions;  // 20

@@ -75,15 +75,15 @@ namespace RE
 		};
 		static_assert(sizeof(Partition) == 0x50);
 
-		virtual ~NiSkinPartition();  // 00
+		~NiSkinPartition() override;  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                          // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;           // 18
-		virtual void          LinkObject(NiStream& a_stream) override;           // 19 - { NiObject::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;           // 1B
-		virtual bool          IsEqual(NiObject* a_object) override;              // 1C
+		const NiRTTI* GetRTTI() const override;                          // 02
+		void          LoadBinary(NiStream& a_stream) override;           // 18
+		void          LinkObject(NiStream& a_stream) override;           // 19 - { NiObject::LinkObject(a_stream); }
+		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A - { return NiObject::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;           // 1B
+		bool          IsEqual(NiObject* a_object) override;              // 1C
 
 		// add
 		virtual void Unk_25(void);  // 25

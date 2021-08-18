@@ -207,43 +207,43 @@ namespace RE
 		};
 		static_assert(sizeof(Unk1B8) == 0x30);
 
-		virtual ~TESObjectWEAP();  // 00
+		~TESObjectWEAP() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void        InitializeData() override;                    // 04
-		virtual void        ClearData() override;                         // 05
-		virtual bool        Load(TESFile* a_mod) override;                // 06
-		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void        InitItemImpl() override;                      // 13
-		virtual TESFile*    GetDescriptionOwnerFile() const override;     // 14
-		virtual bool        GetPlayable() const override;                 // 19 - { return ~((data.flags >> 7) & 1); }
-		virtual const char* GetObjectTypeName() const override;           // 39 - { return g_animationStrings[data.animationType]; }
+		void        InitializeData() override;                    // 04
+		void        ClearData() override;                         // 05
+		bool        Load(TESFile* a_mod) override;                // 06
+		void        SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void        LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void        InitItemImpl() override;                      // 13
+		TESFile*    GetDescriptionOwnerFile() const override;     // 14
+		bool        GetPlayable() const override;                 // 19 - { return ~((data.flags >> 7) & 1); }
+		const char* GetObjectTypeName() const override;           // 39 - { return g_animationStrings[data.animationType]; }
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		float         GetSpeed() const;
-		float         GetReach() const;
-		float         GetStagger() const;
-		float         GetMinRange() const;
-		float         GetMaxRange() const;
-		std::uint16_t GetCritDamage() const;
-		void          GetNodeName(char* a_dstBuff) const;
-		WEAPON_TYPE   GetWeaponType() const;
-		bool          IsBound() const;
-		bool          IsMelee() const;
-		bool          IsRanged() const;
-		bool          IsHandToHandMelee() const;
-		bool          IsOneHandedSword() const;
-		bool          IsOneHandedDagger() const;
-		bool          IsOneHandedAxe() const;
-		bool          IsOneHandedMace() const;
-		bool          IsTwoHandedSword() const;
-		bool          IsTwoHandedAxe() const;
-		bool          IsBow() const;
-		bool          IsStaff() const;
-		bool          IsCrossbow() const;
+		[[nodiscard]] float         GetSpeed() const;
+		[[nodiscard]] float         GetReach() const;
+		[[nodiscard]] float         GetStagger() const;
+		[[nodiscard]] float         GetMinRange() const;
+		[[nodiscard]] float         GetMaxRange() const;
+		[[nodiscard]] std::uint16_t GetCritDamage() const;
+		void                        GetNodeName(char* a_dstBuff) const;
+		[[nodiscard]] WEAPON_TYPE   GetWeaponType() const;
+		[[nodiscard]] bool          IsBound() const;
+		[[nodiscard]] bool          IsMelee() const;
+		[[nodiscard]] bool          IsRanged() const;
+		[[nodiscard]] bool          IsHandToHandMelee() const;
+		[[nodiscard]] bool          IsOneHandedSword() const;
+		[[nodiscard]] bool          IsOneHandedDagger() const;
+		[[nodiscard]] bool          IsOneHandedAxe() const;
+		[[nodiscard]] bool          IsOneHandedMace() const;
+		[[nodiscard]] bool          IsTwoHandedSword() const;
+		[[nodiscard]] bool          IsTwoHandedAxe() const;
+		[[nodiscard]] bool          IsBow() const;
+		[[nodiscard]] bool          IsStaff() const;
+		[[nodiscard]] bool          IsCrossbow() const;
 
 		// members
 		Data                                         weaponData;              // 168 - DNAM

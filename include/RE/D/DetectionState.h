@@ -10,7 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_DetectionState;
 
-		virtual ~DetectionState();  // 00
+		~DetectionState() override;  // 00
 
 		// members
 		std::int32_t level;  // 10

@@ -16,10 +16,10 @@ namespace RE
 			_pad(0)
 		{}
 
-		virtual ~FxResponseArgs() = default;  // 00
+		~FxResponseArgs() override = default;  // 00
 
 		// override (FxResponseArgsBase)
-		virtual std::uint32_t GetValues(GFxValue** a_params) override  // 01
+		std::uint32_t GetValues(GFxValue** a_params) override  // 01
 		{
 			*a_params = _values;
 			return _index;
@@ -91,7 +91,7 @@ namespace RE
 			}
 		}
 
-		virtual ~FxResponseArgsEx() = default;
+		~FxResponseArgsEx() override = default;
 
 		FxResponseArgsEx& operator=(const FxResponseArgsEx&) = default;
 		FxResponseArgsEx& operator=(FxResponseArgsEx&&) = default;
@@ -134,7 +134,7 @@ namespace RE
 		[[nodiscard]] constexpr size_type max_size() const noexcept { return size(); }
 
 	protected:
-		virtual std::uint32_t GetValues(GFxValue** a_params) override  // 01
+		std::uint32_t GetValues(GFxValue** a_params) override  // 01
 		{
 			*a_params = _args.data();
 			return static_cast<std::uint32_t>(_args.size());

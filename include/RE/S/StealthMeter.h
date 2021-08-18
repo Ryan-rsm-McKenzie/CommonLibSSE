@@ -10,12 +10,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_StealthMeter;
 
-		virtual ~StealthMeter();  // 00
+		~StealthMeter() override;  // 00
 
 		// override (HUDObject)
-		virtual void Update() override;                                        // 01
-		virtual bool ProcessMessage(UIMessage* a_message) override;            // 02
-		virtual void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
+		void Update() override;                                        // 01
+		bool ProcessMessage(UIMessage* a_message) override;            // 02
+		void RegisterHUDComponent(FxDelegateArgs& a_params) override;  // 03
 
 		// members
 		GFxValue      stealthMeter;     // 28

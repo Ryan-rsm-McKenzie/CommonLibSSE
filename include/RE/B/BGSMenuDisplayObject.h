@@ -11,15 +11,15 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMenuDisplayObject;
 
-		virtual ~BGSMenuDisplayObject();  // 00
+		~BGSMenuDisplayObject() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02 - { return; }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02 - { return; }
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual TESBoundObject* GetMenuDisplayObject() const;  // 04 - { return menuDispObject; }
+		[[nodiscard]] virtual TESBoundObject* GetMenuDisplayObject() const;  // 04 - { return menuDispObject; }
 
 		// members
 		TESBoundObject* menuDispObject;  // 08 - MDOB

@@ -217,21 +217,21 @@ namespace RE
 			};
 		};
 
-		virtual ~TESQuest();  // 00
+		~TESQuest() override;  // 00
 
 		// override (BGSStoryManagerTreeForm)
-		virtual void                                     InitializeData() override;                                      // 04
-		virtual void                                     ClearData() override;                                           // 05
-		virtual bool                                     Load(TESFile* a_mod) override;                                  // 06
-		virtual void                                     SaveGame(BGSSaveFormBuffer* a_buf) override;                    // 0E
-		virtual void                                     LoadGame(BGSLoadFormBuffer* a_buf) override;                    // 0F
-		virtual void                                     FinishLoadGame(BGSLoadFormBuffer* a_buf) override;              // 11
-		virtual void                                     Revert(BGSLoadFormBuffer* a_buf) override;                      // 12
-		virtual void                                     InitItemImpl() override;                                        // 13
-		virtual const char*                              GetFormEditorID() const override;                               // 32 - { return formEditorID.c_str(); }
-		virtual bool                                     SetFormEditorID(const char* a_str) override;                    // 33
-		virtual TESCondition*                            QConditions() override;                                         // 3D - { return &objConditions; }
-		virtual BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E
+		void                                     InitializeData() override;                                      // 04
+		void                                     ClearData() override;                                           // 05
+		bool                                     Load(TESFile* a_mod) override;                                  // 06
+		void                                     SaveGame(BGSSaveFormBuffer* a_buf) override;                    // 0E
+		void                                     LoadGame(BGSLoadFormBuffer* a_buf) override;                    // 0F
+		void                                     FinishLoadGame(BGSLoadFormBuffer* a_buf) override;              // 11
+		void                                     Revert(BGSLoadFormBuffer* a_buf) override;                      // 12
+		void                                     InitItemImpl() override;                                        // 13
+		const char*                              GetFormEditorID() const override;                               // 32 - { return formEditorID.c_str(); }
+		bool                                     SetFormEditorID(const char* a_str) override;                    // 33
+		TESCondition*                            QConditions() override;                                         // 3D - { return &objConditions; }
+		BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E
 
 		ObjectRefHandle&                         CreateRefHandleByAliasID(ObjectRefHandle& a_handle, std::uint32_t a_aliasID);
 		bool                                     EnsureQuestStarted(bool& a_result, bool a_startNow);

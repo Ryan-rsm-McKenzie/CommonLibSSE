@@ -37,12 +37,12 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-		virtual ~PackageLocation();  // 00
+		~PackageLocation() override;  // 00
 
 		// override (IAIWorldLocationHandle)
-		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;                       // 01
-		virtual PackageLocation*        GetAsPackageLocation() override;                                                    // 02 - { return this; }
-		virtual bool                    IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;  // 03
+		const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;                       // 01
+		PackageLocation*        GetAsPackageLocation() override;                                                    // 02 - { return this; }
+		bool                    IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;  // 03
 
 		// members
 		stl::enumeration<Type, std::uint8_t> locType;  // 08

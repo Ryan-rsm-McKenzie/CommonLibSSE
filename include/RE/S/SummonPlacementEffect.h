@@ -25,16 +25,16 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_SummonPlacementEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kMagicSummon;
 
-		virtual ~SummonPlacementEffect();  // 00
+		~SummonPlacementEffect() override;  // 00
 
 		// override (ReferenceEffect)
-		virtual const NiRTTI*    GetRTTI() const override;                           // 02
-		virtual bool             Update(float a_arg1) override;                      // 28
-		virtual TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return kMagicSummon; }
-		virtual void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
-		virtual void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
-		virtual void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
-		virtual void             Unk_36(void) override;                              // 36
+		const NiRTTI*    GetRTTI() const override;                           // 02
+		bool             Update(float a_arg1) override;                      // 28
+		TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return kMagicSummon; }
+		void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
+		void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
+		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
+		void             Unk_36(void) override;                              // 36
 
 		// members
 		BGSArtObject*                          effectArt;  // 68

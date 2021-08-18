@@ -163,24 +163,24 @@ namespace RE
 		};
 		static_assert(sizeof(ShortPoint) == 0x4);
 
-		virtual ~TESWorldSpace();  // 00
+		~TESWorldSpace() override;  // 00
 
 		// override (TESForm)
-		virtual void        InitializeData() override;                                          // 04
-		virtual void        ClearData() override;                                               // 05
-		virtual bool        Load(TESFile* a_mod) override;                                      // 06
-		virtual bool        LoadPartial(TESFile* a_mod) override;                               // 07
-		virtual TESForm*    CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
-		virtual bool        FindInFileFast(TESFile* a_mod) override;                            // 0C
-		virtual void        InitItemImpl() override;                                            // 13
-		virtual const char* GetFormEditorID() const override;                                   // 32 - { return editorID.c_str(); }
-		virtual bool        SetFormEditorID(const char* a_str) override;                        // 33 - { editorID = a_str; }
-		virtual bool        IsParentForm() override;                                            // 34 - { return true; }
-		virtual bool        IsFormTypeChild(FormType a_type) override;                          // 36
+		void        InitializeData() override;                                          // 04
+		void        ClearData() override;                                               // 05
+		bool        Load(TESFile* a_mod) override;                                      // 06
+		bool        LoadPartial(TESFile* a_mod) override;                               // 07
+		TESForm*    CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;  // 09
+		bool        FindInFileFast(TESFile* a_mod) override;                            // 0C
+		void        InitItemImpl() override;                                            // 13
+		const char* GetFormEditorID() const override;                                   // 32 - { return editorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;                        // 33 - { editorID = a_str; }
+		bool        IsParentForm() override;                                            // 34 - { return true; }
+		bool        IsFormTypeChild(FormType a_type) override;                          // 36
 
-		bool           HasMaxHeightData() const;
-		TESObjectCELL* GetSkyCell();
-		float          GetWaterHeight() const;
+		[[nodiscard]] bool			 HasMaxHeightData() const;
+		[[nodiscard]] TESObjectCELL* GetSkyCell();
+		[[nodiscard]] float          GetWaterHeight() const;
 
 		// members
 		BSTHashMap<CellID, TESObjectCELL*>                            cellMap;                  // 058

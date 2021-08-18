@@ -67,7 +67,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterController;
 
-		virtual ~bhkCharacterController();  // 00
+		~bhkCharacterController() override;  // 00
 
 		// add
 		virtual void  GetPositionImpl(hkVector4& a_pos, bool a_applyCenterOffset) const = 0;                    // 02

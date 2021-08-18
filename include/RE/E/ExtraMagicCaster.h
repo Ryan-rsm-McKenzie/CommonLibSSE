@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMagicCaster;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
 
-		virtual ~ExtraMagicCaster();  // 00
+		~ExtraMagicCaster() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kMagicCaster; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kMagicCaster; }
 	};
 	static_assert(sizeof(ExtraMagicCaster) == 0x58);
 }

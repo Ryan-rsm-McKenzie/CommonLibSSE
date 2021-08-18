@@ -69,7 +69,7 @@ namespace RE
 		kWaitingForSitAnim = 2,
 
 		kIsSitting = 3,
-		kRidingMount = kIsSitting,
+		kRidingMount = static_cast<std::underlying_type_t<SIT_SLEEP_STATE>>(kIsSitting),
 
 		kWantToStand = 4,
 
@@ -136,17 +136,17 @@ namespace RE
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
 
-		virtual ~ActorState();  // 00
+		~ActorState() override;  // 00
 
 		// override (IMovementState)
-		virtual void Unk_01(void) override;  // 01 - { return 0; }
-		virtual void Unk_02(void) override;  // 02 - { return; }
-		virtual void Unk_03(void) override;  // 03 - { return; }
-		virtual void Unk_04(void) override;  // 04 - { return; }
-		virtual void Unk_05(void) override;  // 05 - { return 0.0; }
-		virtual void Unk_06(void) override;  // 06 - { return 0.0; }
-		virtual void Unk_07(void) override;  // 07 - { return; }
-		virtual void Unk_08(void) override;  // 08 - { return 0; }
+		void Unk_01(void) override;  // 01 - { return 0; }
+		void Unk_02(void) override;  // 02 - { return; }
+		void Unk_03(void) override;  // 03 - { return; }
+		void Unk_04(void) override;  // 04 - { return; }
+		void Unk_05(void) override;  // 05 - { return 0.0; }
+		void Unk_06(void) override;  // 06 - { return 0.0; }
+		void Unk_07(void) override;  // 07 - { return; }
+		void Unk_08(void) override;  // 08 - { return 0; }
 
 		// add
 		virtual void Unk_14(void);  // 14
@@ -181,9 +181,9 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] bool IsSneaking() const noexcept { return actorState1.sneaking; }
-		[[nodiscard]] bool IsSprinting() const noexcept { return actorState1.sprinting; }
-		[[nodiscard]] bool IsSwimming() const noexcept { return actorState1.swimming; }
+		[[nodiscard]] bool IsSneaking() const noexcept { return static_cast<bool>(actorState1.sneaking); }
+		[[nodiscard]] bool IsSprinting() const noexcept { return static_cast<bool>(actorState1.sprinting); }
+		[[nodiscard]] bool IsSwimming() const noexcept { return static_cast<bool>(actorState1.swimming); }
 		[[nodiscard]] bool IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconcious; }
 		[[nodiscard]] bool IsWalking() const noexcept { return actorState1.walking; }
 

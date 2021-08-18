@@ -55,10 +55,10 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
-			virtual ~Thread();  // 00
+			~Thread() override;  // 00
 
-			virtual void Unk_01(void) override;  // 01
-			virtual void Unk_02(void) override;  // 02
+			void Unk_01(void) override;  // 01
+			void Unk_02(void) override;  // 02
 
 			// members
 			bool                                                                    isRunnning;                   // 50
@@ -70,16 +70,16 @@ namespace RE
 		};
 		static_assert(sizeof(Thread) == 0xC0);
 
-		virtual ~BGSSaveLoadManager();  // 00
+		~BGSSaveLoadManager() override;  // 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<RaceSexMenuEvent::NameChangedEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const RaceSexMenuEvent::NameChangedEvent* a_event, BSTEventSource<RaceSexMenuEvent::NameChangedEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const RaceSexMenuEvent::NameChangedEvent* a_event, BSTEventSource<RaceSexMenuEvent::NameChangedEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
 		static BGSSaveLoadManager* GetSingleton();
 

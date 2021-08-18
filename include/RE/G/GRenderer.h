@@ -191,11 +191,11 @@ namespace RE
 			CachedData();
 			~CachedData();
 
-			GRenderer* GetRenderer() const;
-			Handle     GetRendererData() const;
-			void       SetRendererData(Handle a_handle);
-			void       ReleaseData(CachedDataType a_type);
-			void       ReleaseDataByRenderer();
+			[[nodiscard]] GRenderer* GetRenderer() const;
+			[[nodiscard]] Handle     GetRendererData() const;
+			void                     SetRendererData(Handle a_handle);
+			void                     ReleaseData(CachedDataType a_type);
+			void                     ReleaseDataByRenderer();
 
 			// members
 			GRenderer* renderer;  // 00
@@ -316,7 +316,7 @@ namespace RE
 		public:
 			enum
 			{
-				kVFormat = VertexFormat::kXY16iC32
+				kVFormat = static_cast<std::underlying_type_t<VertexFormat>>(VertexFormat::kXY16iC32)
 			};
 
 			// members
@@ -331,7 +331,7 @@ namespace RE
 		public:
 			enum
 			{
-				kVFormat = VertexFormat::kXY16iCF32
+				kVFormat = static_cast<std::underlying_type_t<VertexFormat>>(VertexFormat::kXY16iCF32)
 			};
 
 			// members
@@ -381,7 +381,7 @@ namespace RE
 		};
 		static_assert(sizeof(BlurFilterParams) == 0x44);
 
-		virtual ~GRenderer();  // 00
+		~GRenderer() override;  // 00
 
 		// add
 		virtual bool           GetRenderCaps(RenderCaps* a_caps) = 0;                                                                                                                                                                                                             // 01

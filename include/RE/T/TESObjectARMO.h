@@ -51,16 +51,16 @@ namespace RE
 		};
 
 		// override (TESBoundObject)
-		virtual void     InitializeData() override;                    // 04
-		virtual bool     Load(TESFile* a_mod) override;                // 06
-		virtual void     SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void     LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void     InitItemImpl() override;                      // 13
-		virtual TESFile* GetDescriptionOwnerFile() const override;     // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
-		virtual void     Copy(TESForm* a_srcForm) override;            // 2F
+		void     InitializeData() override;                    // 04
+		bool     Load(TESFile* a_mod) override;                // 06
+		void     SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void     LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void     InitItemImpl() override;                      // 13
+		TESFile* GetDescriptionOwnerFile() const override;     // 14 - { return templateArmor ? templateArmor->GetFile(-1) : GetFile(-1); }
+		void     Copy(TESForm* a_srcForm) override;            // 2F
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		float          GetArmorRating();
 		TESObjectARMA* GetArmorAddon(TESRace* a_race);

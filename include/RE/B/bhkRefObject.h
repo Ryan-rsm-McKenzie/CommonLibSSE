@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_bhkRefObject;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRefObject;
 
-		virtual ~bhkRefObject();  // 00
+		~bhkRefObject() override;  // 00
 
 		// override(NiObject)
-		virtual const NiRTTI* GetRTTI() const override;  // 02
+		[[nodiscard]] const NiRTTI* GetRTTI() const override;  // 02
 
 		// add
 		virtual void SetReferencedObject(hkReferencedObject* a_object);  // 25

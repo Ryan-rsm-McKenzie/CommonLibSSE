@@ -14,12 +14,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BleedoutCameraState;
 
-		virtual ~BleedoutCameraState();  // 00
+		~BleedoutCameraState() override;  // 00
 
 		// override (ThirdPersonState)
-		virtual void Begin() override;                                               // 01
-		virtual void End() override;                                                 // 02
-		virtual void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
+		void Begin() override;                                               // 01
+		void End() override;                                                 // 02
+		void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
 
 		// members
 		NiMatrix3             rotationMtx;        // 0E8

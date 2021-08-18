@@ -35,14 +35,14 @@ namespace RE
 		};
 		static_assert(sizeof(FILE_DATA) == 0x10);
 
-		virtual ~BGSMaterialObject();  // 00
+		~BGSMaterialObject() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// override (BSMaterialObject)
-		virtual void EnsureLoaded() override;  // 01
+		void EnsureLoaded() override;  // 01
 
 		// members
 		BSTArray<FILE_DATA> fileData;  // A0 - DNAM

@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_AddCallbackVisitor;
 
 		AddCallbackVisitor(FxDelegateHandler* a_handler, FxDelegate::CallbackHash* a_hash);
-		virtual ~AddCallbackVisitor() = default;  // 00
+		~AddCallbackVisitor() override = default;  // 00
 
 		// override (FxDelegateHandler::CallbackProcessor)
-		virtual void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn* a_method) override;  // 01
+		void Process(const GString& a_methodName, FxDelegateHandler::CallbackFn* a_method) override;  // 01
 
 		// members
 		FxDelegateHandler*        handler;  // 08

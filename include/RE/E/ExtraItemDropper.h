@@ -12,10 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraItemDropper;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kItemDropper;
 
-		virtual ~ExtraItemDropper();  // 00
+		~ExtraItemDropper() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kItemDropper; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kItemDropper; }
 
 		// members
 		ObjectRefHandle dropper;  // 10

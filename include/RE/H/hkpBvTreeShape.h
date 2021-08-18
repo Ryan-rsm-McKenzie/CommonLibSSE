@@ -20,10 +20,10 @@ namespace RE
 			kUser
 		};
 
-		virtual ~hkpBvTreeShape();  // 00
+		~hkpBvTreeShape() override;  // 00
 
 		// override (hkpShape)
-		virtual const hkpShapeContainer* GetContainer() const override = 0;  // 04
+		const hkpShapeContainer* GetContainer() const override = 0;  // 04
 
 		// add
 		virtual void          QueryAabb(const hkAabb& a_aabb, hkArray<hkpShapeKey>& a_hits) const = 0;                        // 0B

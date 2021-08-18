@@ -16,12 +16,12 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_CompactingStore__Store;
 
-			virtual ~Store();  // 00
+			~Store() override;  // 00
 
 			// override (IMemoryStoreBase)
-			virtual std::size_t Size(const void* a_block) const override;               // 01
-			virtual void        GetMemoryStats(MemoryStats* a_stats) override;          // 02
-			virtual bool        ContainsBlockImpl(const void* a_block) const override;  // 03
+			std::size_t Size(const void* a_block) const override;               // 01
+			void        GetMemoryStats(MemoryStats* a_stats) override;          // 02
+			bool        ContainsBlockImpl(const void* a_block) const override;  // 03
 
 			// members
 			BSNonReentrantSpinLock lock;

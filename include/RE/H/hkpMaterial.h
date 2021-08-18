@@ -17,8 +17,8 @@ namespace RE
 			kTotal
 		};
 
-		ResponseType GetResponseType() const;
-		void         SetResponseType(ResponseType a_type);
+		[[nodiscard]] ResponseType GetResponseType() const;
+		void                       SetResponseType(ResponseType a_type);
 
 		// members
 		stl::enumeration<ResponseType, std::uint8_t> responseType;               // 00

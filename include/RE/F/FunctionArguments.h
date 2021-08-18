@@ -58,9 +58,9 @@ namespace RE
 				_args(std::move(a_rhs._args))
 			{}
 
-			virtual ~FunctionArguments() = default;  // 00
+			~FunctionArguments() override = default;  // 00
 
-			virtual bool operator()(BSScrapArray<Variable>& a_dst) const override  // 01
+			bool operator()(BSScrapArray<Variable>& a_dst) const override  // 01
 			{
 				a_dst.resize(sizeof...(Args));
 				auto& args = const_cast<std::add_lvalue_reference_t<std::decay_t<decltype(_args)>>>(_args);

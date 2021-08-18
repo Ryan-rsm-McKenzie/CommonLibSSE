@@ -20,8 +20,8 @@ namespace RE
 		virtual void ProcessMouseMove(MouseMoveEvent* a_event, PlayerControlsData* a_data);    // 03 - { return; }
 		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data);          // 04 - { return; }
 
-		bool IsInputEventHandlingEnabled() const;
-		void SetInputEventHandlingEnabled(bool a_enabled);
+		[[nodiscard]] bool IsInputEventHandlingEnabled() const;
+		void               SetInputEventHandlingEnabled(bool a_enabled);
 
 		// members
 		bool          inputEventHandlingEnabled;  // 08

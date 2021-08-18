@@ -29,10 +29,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraNavMeshPortal;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
 
-		virtual ~ExtraNavMeshPortal();  // 00
+		~ExtraNavMeshPortal() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kNavMeshPortal; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kNavMeshPortal; }
 
 		// members
 		NAVMESH_PORTAL portal;  // 10

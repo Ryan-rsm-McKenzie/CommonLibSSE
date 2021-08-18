@@ -58,13 +58,13 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_LocalMapMenu__InputHandler;
 
-			virtual ~InputHandler();  // 00
+			~InputHandler() override;  // 00
 
 			// override (MenuEventHandler)
-			virtual bool CanProcess(InputEvent* a_event) override;              // 01
-			virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-			virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
-			virtual bool ProcessButton(ButtonEvent* a_event) override;          // 05
+			bool CanProcess(InputEvent* a_event) override;              // 01
+			bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+			bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+			bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 			// members
 			LocalMapMenu* localMapMenu;  // 10

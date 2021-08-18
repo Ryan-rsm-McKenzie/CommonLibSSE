@@ -32,7 +32,7 @@ namespace RE
 		public MenuEventHandler                      // 00
 	{
 	public:
-		virtual ~Inventory3DManager();  // 00
+		~Inventory3DManager() override;  // 00
 
 		static Inventory3DManager* GetSingleton();
 

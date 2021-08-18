@@ -14,18 +14,18 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_ReferenceEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefDefault;
 
-		virtual ~ReferenceEffect();  // 00
+		~ReferenceEffect() override;  // 00
 
 		// override (BSTempEffect)
-		virtual const NiRTTI*    GetRTTI() const override;                           // 02
-		virtual void             Detach() override;                                  // 27
-		virtual bool             Update(float a_arg1) override;                      // 28
-		virtual bool             GetManagerHandlesSaveLoad() const override;         // 2A
-		virtual bool             GetClearWhenCellIsUnloaded() const override;        // 2B
-		virtual TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return 8; }
-		virtual void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
-		virtual void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
-		virtual void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
+		const NiRTTI*    GetRTTI() const override;                           // 02
+		void             Detach() override;                                  // 27
+		bool             Update(float a_arg1) override;                      // 28
+		bool             GetManagerHandlesSaveLoad() const override;         // 2A
+		bool             GetClearWhenCellIsUnloaded() const override;        // 2B
+		TEMP_EFFECT_TYPE GetType() const override;                           // 2C - { return 8; }
+		void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
+		void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
+		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
 
 		// add
 		virtual void        Unk_36(void);      // 36 - { return 0; }

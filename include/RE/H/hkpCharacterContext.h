@@ -48,7 +48,7 @@ namespace RE
 			kRigidBody = 1
 		};
 
-		virtual ~hkpCharacterContext();  // 00
+		~hkpCharacterContext() override;  // 00
 
 		stl::enumeration<CharacterType, std::uint32_t> characterType;          // 10
 		std::uint32_t                                  pad14;                  // 14

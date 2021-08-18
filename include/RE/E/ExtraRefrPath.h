@@ -16,10 +16,10 @@ namespace RE
 		{
 		};
 
-		virtual ~ExtraRefrPath();  // 00
+		~ExtraRefrPath() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kRefrPath; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kRefrPath; }
 
 		// members
 		NiPoint3                                   startPos;          // 10

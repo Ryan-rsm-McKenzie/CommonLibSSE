@@ -26,7 +26,7 @@ namespace RE
 			Stream(const Stream& a_rhs);
 			Stream(Stream&& a_rhs);
 			Stream(std::uint32_t a_totalSize);
-			virtual ~Stream() = default;  // 00
+			~Stream() override = default;  // 00
 
 			// add
 			virtual void      DoClone(BSTSmartPointer<Stream>& a_out) const = 0;                                           // 05

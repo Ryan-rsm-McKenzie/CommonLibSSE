@@ -43,28 +43,28 @@ namespace RE
 		};
 
 		inline NiTimeController() { ctor(); }
-		virtual ~NiTimeController() { dtor(); }  // 00
+		~NiTimeController() override { dtor(); }  // 00
 
 		// override (NiObject)
-		virtual const NiRTTI* GetRTTI() const override;                            // 02
-		virtual void          LoadBinary(NiStream& a_stream) override;             // 18
-		virtual void          LinkObject(NiStream& a_stream) override;             // 19
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;    // 1A
-		virtual void          SaveBinary(NiStream& a_stream) override;             // 1B
-		virtual bool          IsEqual(NiObject* a_object) override;                // 1C
-		virtual void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
+		const NiRTTI* GetRTTI() const override;                            // 02
+		void          LoadBinary(NiStream& a_stream) override;             // 18
+		void          LinkObject(NiStream& a_stream) override;             // 19
+		bool          RegisterStreamables(NiStream& a_stream) override;    // 1A
+		void          SaveBinary(NiStream& a_stream) override;             // 1B
+		bool          IsEqual(NiObject* a_object) override;                // 1C
+		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 
 		// add
-		virtual void  Start(float a_time);                             // 25
-		virtual void  Stop();                                          // 26
-		virtual void  Update(float a_time) = 0;                        // 27
-		virtual void  SetTarget(NiObjectNET* a_target);                // 28
-		virtual bool  IsTransformController() const { return false; }  // 29
-		virtual bool  IsVertexController() const { return false; }     // 2A
-		virtual float ComputeScaledTime(float a_time);                 // 2B
-		virtual void  OnPreDisplay() { return; }                       // 2C
-		virtual bool  IsStreamable() const { return true; }            // 2D
-		virtual bool  TargetIsRequiredType() const = 0;                // 2E
+		virtual void               Start(float a_time);                             // 25
+		virtual void               Stop();                                          // 26
+		virtual void               Update(float a_time) = 0;                        // 27
+		virtual void               SetTarget(NiObjectNET* a_target);                // 28
+		[[nodiscard]] virtual bool IsTransformController() const { return false; }  // 29
+		[[nodiscard]] virtual bool IsVertexController() const { return false; }     // 2A
+		virtual float              ComputeScaledTime(float a_time);                 // 2B
+		virtual void               OnPreDisplay() { return; }                       // 2C
+		[[nodiscard]] virtual bool IsStreamable() const { return true; }            // 2D
+		[[nodiscard]] virtual bool TargetIsRequiredType() const = 0;                // 2E
 
 		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
 

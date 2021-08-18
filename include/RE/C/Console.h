@@ -17,11 +17,11 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_Console;
 		constexpr static std::string_view MENU_NAME = "Console";
 
-		virtual ~Console();  // 00
+		~Console() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;  // 01
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+		void               Accept(CallbackProcessor* a_processor) override;  // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
 		static NiPointer<TESObjectREFR> GetSelectedRef();
 		static ObjectRefHandle          GetSelectedRefHandle();

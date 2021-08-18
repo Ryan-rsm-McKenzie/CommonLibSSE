@@ -37,19 +37,19 @@ namespace RE
 		static_assert(sizeof(Data) == 0x10);
 
 		// override (NiCullingProcess)
-		virtual const NiRTTI* GetRTTI() const override;  // 00
+		const NiRTTI* GetRTTI() const override;  // 00
 
-		virtual ~BSCullingProcess();  // 15
+		~BSCullingProcess() override;  // 15
 
-		virtual void Process1(NiAVObject* a_object, std::uint32_t a_arg2) override;                                   // 16
-		virtual void Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet) override;  // 17
-		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2) override;                             // 18
+		void Process1(NiAVObject* a_object, std::uint32_t a_arg2) override;                                   // 16
+		void Process2(const NiCamera* a_camera, NiAVObject* a_scene, NiVisibleArray* a_visibleSet) override;  // 17
+		void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2) override;                             // 18
 
 		// add
-		virtual void AppendNonAccum(NiAVObject& a_object);               // 19
-		virtual bool TestBaseVisibility1(BSMultiBound& a_bound);         // 1A
-		virtual bool TestBaseVisibility2(BSOcclusionPlane& a_bound);     // 1B
-		virtual bool TestBaseVisibility3(const NiBound& a_bound) const;  // 1C
+		virtual void               AppendNonAccum(NiAVObject& a_object);               // 19
+		virtual bool               TestBaseVisibility1(BSMultiBound& a_bound);         // 1A
+		virtual bool               TestBaseVisibility2(BSOcclusionPlane& a_bound);     // 1B
+		[[nodiscard]] virtual bool TestBaseVisibility3(const NiBound& a_bound) const;  // 1C
 
 		BSTArray<NiPointer<NiAVObject>>                   unk00128;           // 00128
 		BSTLocklessQueue::ObjMultiProdCons<Data, 4096, 0> cullQueue;          // 00140

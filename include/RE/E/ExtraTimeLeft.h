@@ -11,11 +11,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTimeLeft;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTimeLeft;
 
-		virtual ~ExtraTimeLeft();  // 00
+		~ExtraTimeLeft() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kTimeLeft; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return time != a_rhs->time; }
+		ExtraDataType GetType() const override;                             // 01 - { return kTimeLeft; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return time != a_rhs->time; }
 
 		// members
 		float         time;   // 10

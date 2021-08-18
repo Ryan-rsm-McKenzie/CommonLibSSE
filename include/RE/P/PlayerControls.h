@@ -38,7 +38,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_PlayerControls;
 
 		PlayerControls();
-		virtual ~PlayerControls() = default;  // 00
+		~PlayerControls() override = default;  // 00
 
 		static PlayerControls* GetSingleton();
 

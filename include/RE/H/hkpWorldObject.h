@@ -45,10 +45,10 @@ namespace RE
 			kTotal
 		};
 
-		virtual ~hkpWorldObject();  // 00
+		~hkpWorldObject() override;  // 00
 
 		// override (hkReferencedObject)
-		virtual void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
 
 		// add
 		virtual hkWorldOperation::Result SetShape(const hkpShape* a_shape);               // 03 - { return hkWorldOperation::Result::kDone; }

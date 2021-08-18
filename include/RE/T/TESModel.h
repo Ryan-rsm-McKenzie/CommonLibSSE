@@ -17,17 +17,17 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModel;
 
-		virtual ~TESModel();  // 00
+		~TESModel() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual const char*          GetModel() const;               // 04 - { return model.c_str(); }
-		virtual void                 SetModel(const char* a_model);  // 05 - { model = a_model; }
-		virtual TESModelTextureSwap* GetAsModelTextureSwap();        // 06 - { return 0; }
+		[[nodiscard]] virtual const char* GetModel() const;               // 04 - { return model.c_str(); }
+		virtual void                      SetModel(const char* a_model);  // 05 - { model = a_model; }
+		virtual TESModelTextureSwap*      GetAsModelTextureSwap();        // 06 - { return 0; }
 
 		// members
 		BSFixedString   model;        // 08 - MODL

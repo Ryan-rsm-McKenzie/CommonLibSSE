@@ -66,7 +66,7 @@ namespace RE
 		[[nodiscard]] inline TypeInfo::RawType GetRawType()
 		{
 			using value_type = typename T::value_type;
-			if constexpr (is_builtin_v<value_type>) {
+			if constexpr (is_builtin_convertible_v<value_type>) {
 				return *(stl::enumeration{ vm_type_v<T> } + TypeInfo::RawType::kNoneArray);
 			} else if constexpr (is_form_pointer_v<value_type>) {
 				return *(stl::enumeration{ GetRawTypeFromVMType(static_cast<VMTypeID>(unwrapped_type_t<T>::FORMTYPE)) } + TypeInfo::RawType::kObject);

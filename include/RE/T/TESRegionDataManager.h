@@ -22,15 +22,15 @@ namespace RE
 		virtual ~TESRegionDataManager();  // 00
 
 		// add
-		virtual TESRegion*              GetLastLoadedRegion();                                 // 01 - { return lastLoadedRegion; }
-		virtual TESRegionData*          ConstructRegionData(REGION_DATA_ID a_id) const;        // 02
-		virtual TESRegionDataObjects*   AsRegionDataObjects(TESRegionData* a_data) const;      // 03
-		virtual TESRegionDataWeather*   AsRegionDataWeather(TESRegionData* a_data) const;      // 04
-		virtual TESRegionDataMap*       AsRegionDataMap(TESRegionData* a_data) const;          // 05
-		virtual TESRegionDataLandscape* AsRegionDataLandscape(TESRegionData* a_data) const;    // 06
-		virtual TESRegionDataGrass*     AsRegionDataGrass(TESRegionData* a_data) const;        // 07
-		virtual TESRegionDataSound*     AsRegionDataSound(TESRegionData* a_data) const;        // 08
-		virtual bool                    LoadRegionData(TESFile* a_file, TESRegion* a_region);  // 09
+		virtual TESRegion*                   GetLastLoadedRegion();                                 // 01 - { return lastLoadedRegion; }
+		[[nodiscard]] virtual TESRegionData* ConstructRegionData(REGION_DATA_ID a_id) const;        // 02
+		virtual TESRegionDataObjects*        AsRegionDataObjects(TESRegionData* a_data) const;      // 03
+		virtual TESRegionDataWeather*        AsRegionDataWeather(TESRegionData* a_data) const;      // 04
+		virtual TESRegionDataMap*            AsRegionDataMap(TESRegionData* a_data) const;          // 05
+		virtual TESRegionDataLandscape*      AsRegionDataLandscape(TESRegionData* a_data) const;    // 06
+		virtual TESRegionDataGrass*          AsRegionDataGrass(TESRegionData* a_data) const;        // 07
+		virtual TESRegionDataSound*          AsRegionDataSound(TESRegionData* a_data) const;        // 08
+		virtual bool                         LoadRegionData(TESFile* a_file, TESRegion* a_region);  // 09
 
 		// members
 		TESRegion* lastLoadedRegion;  // 08

@@ -12,11 +12,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHorse;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHorse;
 
-		virtual ~ExtraHorse();  // 00
+		~ExtraHorse() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kHorse; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return horseRef != a_rhs->horseRef; }
+		ExtraDataType GetType() const override;                             // 01 - { return kHorse; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return horseRef != a_rhs->horseRef; }
 
 		// members
 		ObjectRefHandle horseRef;  // 10

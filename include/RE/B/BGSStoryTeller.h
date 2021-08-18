@@ -18,10 +18,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSStoryTeller;
 
-		virtual ~BGSStoryTeller();  // 00
+		~BGSStoryTeller() override;  // 00
 
 		// override (BSTEventSink<TESQuestStageItemDoneEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const TESQuestStageItemDoneEvent* a_event, BSTEventSource<TESQuestStageItemDoneEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const TESQuestStageItemDoneEvent* a_event, BSTEventSource<TESQuestStageItemDoneEvent>* a_eventSource) override;  // 01
 
 		static BGSStoryTeller* GetSingleton();
 

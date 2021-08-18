@@ -15,7 +15,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAttackDataMap;
 
-		virtual ~BGSAttackDataMap();  // 00
+		~BGSAttackDataMap() override;  // 00
 
 		// members
 		BSTHashMap<BSFixedString, NiPointer<BGSAttackData>> attackDataMap;    // 10

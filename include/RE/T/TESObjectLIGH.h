@@ -80,22 +80,22 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectLIGH();  // 00
+		~TESObjectLIGH() override;  // 00
 
 		// override (TESBoundAnimObject)
-		virtual void        InitializeData() override;                                                                                                                                // 04
-		virtual bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
-		virtual void        SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
-		virtual void        LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
-		virtual void        InitItemImpl() override;                                                                                                                                  // 13
-		virtual bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
-		virtual NiAVObject* LoadGraphics(TESObjectREFR* a_ref) override;                                                                                                              // 47
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
+		void        InitializeData() override;                                                                                                                                // 04
+		bool        Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void        SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		void        LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		void        InitItemImpl() override;                                                                                                                                  // 13
+		bool        Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
+		NiAVObject* LoadGraphics(TESObjectREFR* a_ref) override;                                                                                                              // 47
+		NiAVObject* Clone3D(TESObjectREFR* a_ref) override;                                                                                                                   // 4A
 
 		// override (BGSEquipType)
-		virtual BGSEquipSlot* GetEquipSlot() const override;                // 04
-		virtual void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
+		BGSEquipSlot* GetEquipSlot() const override;                // 04
+		void          SetEquipSlot(BGSEquipSlot* a_slot) override;  // 05 - { return; }
 
 		[[nodiscard]] constexpr bool CanBeCarried() const noexcept { return data.flags.all(TES_LIGHT_FLAGS::kCanCarry); }
 

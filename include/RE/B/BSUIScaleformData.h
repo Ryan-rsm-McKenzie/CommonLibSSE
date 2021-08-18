@@ -11,7 +11,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSUIScaleformData;
 
-		virtual ~BSUIScaleformData();  // 00
+		~BSUIScaleformData() override;  // 00
 
 		// members
 		GFxEvent* scaleformEvent;  // 10

@@ -5,8 +5,8 @@
  	A MovieClip that derives from the Dialog component will have the following inspectable properties:<ul>
 	<li><i>visible</i>: Hides the component if set to false.</li>
 	<li><i>disabled</i>: Disables the component if set to true.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li>
-	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li>
+	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	There are no states for the Dialog component. The MovieClip displayed as the dialog view may or may not have its own states.
@@ -71,7 +71,7 @@ class gfx.controls.Dialog extends UIComponent
 	/* INITIALIZATION */
 
 	/**
-	 * The constructor is called when a Dialog or a sub-class of Dialog is instatiated on stage or by using {@code attachMovie()} in ActionScript. This component can <b>not</b> be instantiated using {@code new} syntax. When creating new components that extend Dialog, ensure that a {@code super()} call is made first in the constructor.
+	 * The constructor is called when a Dialog or a sub-class of Dialog is instantiated on stage or by using {@code attachMovie()} in ActionScript. This component can <b>not</b> be instantiated using {@code new} syntax. When creating new components that extend Dialog, ensure that a {@code super()} call is made first in the constructor.
 	 */
 	public function Dialog()
 	{
@@ -210,7 +210,7 @@ class gfx.controls.Dialog extends UIComponent
 
 
 	/**
-	 * Populate the UI with data, usually passed in via the initObject of {@code Dialog.show()}. This method can be overriden in child classes, or can be added to the timeline of a Dialog.
+	 * Populate the UI with data, usually passed in via the initObject of {@code Dialog.show()}. This method can be overridden in child classes, or can be added to the timeline of a Dialog.
 	 */
 	private function populateUI(): Void
 	{}

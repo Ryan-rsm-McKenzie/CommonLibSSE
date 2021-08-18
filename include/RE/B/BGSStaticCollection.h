@@ -21,12 +21,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSStaticCollection();  // 00
+		~BGSStaticCollection() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 	};
 	static_assert(sizeof(BGSStaticCollection) == 0x68);
 }

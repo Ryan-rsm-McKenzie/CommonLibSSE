@@ -21,12 +21,12 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSOutfit();  // 00
+		~BGSOutfit() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		BSTArray<TESForm*> outfitItems;  // 20 - INAM

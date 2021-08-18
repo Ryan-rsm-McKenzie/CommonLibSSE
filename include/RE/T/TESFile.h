@@ -45,18 +45,18 @@ namespace RE
 			kSmallFile = 1 << 9
 		};
 
-		TESFile*                Duplicate(std::uint32_t a_cacheSize = 0x4000);
-		std::uint32_t           GetCurrentSubRecordType();
-		constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
-		constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
-		FormType                GetFormType();
-		bool                    IsFormInMod(FormID formID) const;
-		constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
-		constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
-		constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
-		void                    ReadData(void* a_buf, std::uint32_t a_size);
-		bool                    Seek(std::uint32_t a_offset);
-		bool                    SeekNextSubrecord();
+		TESFile*                              Duplicate(std::uint32_t a_cacheSize = 0x4000);
+		std::uint32_t                         GetCurrentSubRecordType();
+		[[nodiscard]] constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
+		[[nodiscard]] constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
+		FormType                              GetFormType();
+		[[nodiscard]] bool					  IsFormInMod(FormID a_formID) const;
+		[[nodiscard]] constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
+		[[nodiscard]] constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
+		[[nodiscard]] constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
+		void                                  ReadData(void* a_buf, std::uint32_t a_size);
+		bool                                  Seek(std::uint32_t a_offset);
+		bool                                  SeekNextSubrecord();
 
 		// members
 		stl::enumeration<Error, std::uint32_t>      lastError;                        // 000

@@ -22,17 +22,17 @@ namespace RE
 			virtual ~Location();  // 00
 
 			// add
-			virtual ErrorCode     DoMount();                                                                                                             // 01 - { return ErrorCode::kNone; }
-			virtual void          DoUnmount();                                                                                                           // 02 - { return; }
-			virtual ErrorCode     DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_readOnly) = 0;     // 03
-			virtual ErrorCode     DoCreateAsyncStream(const char* a_path, BSTSmartPointer<AsyncStream>& a_out, Location*& a_location, bool a_readOnly);  // 04 - { return ErrorCode::kUnsupported; }
-			virtual ErrorCode     DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) = 0;                                              // 05
-			virtual ErrorCode     DoGetInfo1(const char* a_path, Info& a_info, Location*& a_location);                                                   // 06 - { return ErrorCode::kUnsupported; }
-			virtual ErrorCode     DoGetInfo2(const char* a_path, Info& a_info, LocationTraverser* a_traverser);                                          // 07 - { return ErrorCode::kUnsupported; }
-			virtual ErrorCode     DoDelete(const char* a_path);                                                                                          // 08 - { return ErrorCode::kUnsupported; }
-			virtual const char*   DoGetName() const;                                                                                                     // 09 - { return 0; }
-			virtual std::uint32_t DoQBufferHint() const;                                                                                                 // 0A - { return 0x80000; }
-			virtual std::uint32_t DoGetMinimumAsyncPacketSize() const;                                                                                   // 0B - { return 0x80000; }
+			virtual ErrorCode                   DoMount();                                                                                                             // 01 - { return ErrorCode::kNone; }
+			virtual void                        DoUnmount();                                                                                                           // 02 - { return; }
+			virtual ErrorCode                   DoCreateStream(const char* a_path, BSTSmartPointer<Stream>& a_stream, Location*& a_location, bool a_readOnly) = 0;     // 03
+			virtual ErrorCode                   DoCreateAsyncStream(const char* a_path, BSTSmartPointer<AsyncStream>& a_out, Location*& a_location, bool a_readOnly);  // 04 - { return ErrorCode::kUnsupported; }
+			virtual ErrorCode                   DoTraversePrefix(const char* a_path, LocationTraverser& a_traverser) = 0;                                              // 05
+			virtual ErrorCode                   DoGetInfo1(const char* a_path, Info& a_info, Location*& a_location);                                                   // 06 - { return ErrorCode::kUnsupported; }
+			virtual ErrorCode                   DoGetInfo2(const char* a_path, Info& a_info, LocationTraverser* a_traverser);                                          // 07 - { return ErrorCode::kUnsupported; }
+			virtual ErrorCode                   DoDelete(const char* a_path);                                                                                          // 08 - { return ErrorCode::kUnsupported; }
+			[[nodiscard]] virtual const char*   DoGetName() const;                                                                                                     // 09 - { return 0; }
+			[[nodiscard]] virtual std::uint32_t DoQBufferHint() const;                                                                                                 // 0A - { return 0x80000; }
+			[[nodiscard]] virtual std::uint32_t DoGetMinimumAsyncPacketSize() const;                                                                                   // 0B - { return 0x80000; }
 
 			TES_HEAP_REDEFINE_NEW();
 

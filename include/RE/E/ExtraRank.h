@@ -13,11 +13,11 @@ namespace RE
 
 		ExtraRank();
 		explicit ExtraRank(std::int32_t a_rank);
-		virtual ~ExtraRank() = default;  // 00
+		~ExtraRank() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kRank; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return rank != a_rhs->rank; }
+		ExtraDataType GetType() const override;                             // 01 - { return kRank; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return rank != a_rhs->rank; }
 
 		// members
 		std::int32_t  rank;   // 10

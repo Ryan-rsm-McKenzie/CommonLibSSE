@@ -18,10 +18,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMissingRefIDs;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMissingRefIDs;
 
-		virtual ~ExtraMissingRefIDs();  // 00
+		~ExtraMissingRefIDs() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kMissingRefIDs; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kMissingRefIDs; }
 
 		// members
 		ActivateParentID* IDs;     // 10

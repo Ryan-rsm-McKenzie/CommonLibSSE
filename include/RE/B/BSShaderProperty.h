@@ -154,19 +154,19 @@ namespace RE
 			kHDLODObjects = 63
 		};
 
-		virtual ~BSShaderProperty();  // 00
+		~BSShaderProperty() override;  // 00
 
 		// override (NiShadeProperty)
-		virtual const NiRTTI* GetRTTI() const override;                           // 02
-		virtual NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return 0; }
-		virtual void          LoadBinary(NiStream& a_stream) override;            // 18
-		virtual void          LinkObject(NiStream& a_stream) override;            // 19 - { NiShadeProperty::LinkObject(a_stream); }
-		virtual bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
-		virtual void          SaveBinary(NiStream& a_stream) override;            // 1B
-		virtual bool          IsEqual(NiObject* a_object) override;               // 1C - { return false; }
-		virtual void          PostLinkObject(NiStream& a_stream) override;        // 1E - { NiObjectNET::PostLinkObject(a_stream); }
-		virtual bool          InitializeGeometry(BSGeometry* a_geometry);         // 27 - { return 1; }
-		virtual void          Unk_29(void) override;                              // 29
+		const NiRTTI* GetRTTI() const override;                           // 02
+		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17 - { return 0; }
+		void          LoadBinary(NiStream& a_stream) override;            // 18
+		void          LinkObject(NiStream& a_stream) override;            // 19 - { NiShadeProperty::LinkObject(a_stream); }
+		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiShadeProperty::RegisterStreamables(a_stream); }
+		void          SaveBinary(NiStream& a_stream) override;            // 1B
+		bool          IsEqual(NiObject* a_object) override;               // 1C - { return false; }
+		void          PostLinkObject(NiStream& a_stream) override;        // 1E - { NiObjectNET::PostLinkObject(a_stream); }
+		bool          InitializeGeometry(BSGeometry* a_geometry);         // 27 - { return 1; }
+		void          Unk_29(void) override;                              // 29
 
 		// add
 		virtual void             Unk_2A(void) = 0;                     // 2A
@@ -177,14 +177,14 @@ namespace RE
 		virtual void             Unk_2F(void);                         // 2F - { return 0; }
 		virtual bool             DoIsCopy(BSShaderProperty* a_other);  // 30
 		virtual void             SetMaterialAlpha(float a_alpha);      // 31 - { return; }
-		virtual float            GetMaterialAlpha();                   // 32 - { return 1.0; }
+		[[nodiscard]] virtual float            GetMaterialAlpha();                   // 32 - { return 1.0; }
 		virtual void             Unk_33(void);                         // 33 - { return 1; }
 		virtual void             Unk_34(void);                         // 34
 		virtual void             Unk_35(void);                         // 35 - { return 0; }
 		virtual void             Unk_36(void);                         // 36 - { return 0; }
-		virtual NiSourceTexture* GetPrimaryTexture();                  // 37 - { return 0; }
+		[[nodiscard]] virtual NiSourceTexture* GetPrimaryTexture();                  // 37 - { return 0; }
 		virtual void             Unk_38(void);                         // 38 - { return 0; }
-		virtual bool             AcceptsEffectData() const;            // 39 - { return false; }
+		[[nodiscard]] virtual bool             AcceptsEffectData() const;            // 39 - { return false; }
 		virtual void             Unk_3A(void);                         // 3A - { return; }
 		virtual void             Unk_3B(void);                         // 3B - { return; }
 		virtual void             Unk_3C(void);                         // 3C - { return 0; }

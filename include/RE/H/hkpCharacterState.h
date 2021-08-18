@@ -37,7 +37,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpCharacterState;
 
-		virtual ~hkpCharacterState();  // 00
+		~hkpCharacterState() override;  // 00
 
 		virtual hkpCharacterStateType GetType() const = 0;                                                                                                                            // 03
 		virtual void                  EnterState(hkpCharacterContext& a_context, hkpCharacterStateType a_prevState, const hkpCharacterInput& a_input, hkpCharacterOutput& a_output);  // 04 - { return; }

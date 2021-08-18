@@ -31,22 +31,19 @@ namespace RE
 
 		struct DataDesc
 		{
-#pragma warning(push)
-#pragma warning(disable: 4293)  // '<<': shift count negative or too big, undefined behavior
 			enum : UPInt
 			{
-				kFullFlag = static_cast<UPInt>(1 << FlagConstant::kReserveIsSizeShift)
+				kFullFlag = 1ull << FlagConstant::kReserveIsSizeShift
 			};
-#pragma warning(pop)
 
 			DataDesc();
 			~DataDesc();
 
-			void  AddRef();
-			void  Release();
-			UPInt GetCapacity() const;
-			bool  IsFull() const;
-			void  SetFull(bool a_set);
+			void                AddRef();
+			void                Release();
+			[[nodiscard]] UPInt GetCapacity() const;
+			[[nodiscard]] bool  IsFull() const;
+			void                SetFull(bool a_set);
 
 			// members
 			UPInt                 capacity;  // 00
@@ -84,25 +81,25 @@ namespace RE
 		reference       operator[](size_type a_pos);
 		const_reference operator[](size_type a_pos) const;
 
-		char&       front();
-		const char& front() const;
+		char&                     front();
+		[[nodiscard]] const char& front() const;
 
-		char&       back();
-		const char& back() const;
+		char&                     back();
+		[[nodiscard]] const char& back() const;
 
-		const char* data() const noexcept;
-		char*       data() noexcept;
+		[[nodiscard]] const char* data() const noexcept;
+		char*                     data() noexcept;
 
-		const char* c_str() const noexcept;
+		[[nodiscard]] const char* c_str() const noexcept;
 
 		operator std::string_view() const noexcept;
 
 		// Capacity
 		[[nodiscard]] bool empty() const noexcept;
 
-		size_type size() const noexcept;
+		[[nodiscard]] size_type size() const noexcept;
 
-		size_type length() const noexcept;
+		[[nodiscard]] size_type length() const noexcept;
 
 		// Operations
 		void clear() noexcept;
@@ -121,10 +118,10 @@ namespace RE
 		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
-		GString*  ctor(const char* a_str);
-		HeapType  heap_type() const;
-		DataDesc* get_desc() const;
-		void      set_desc(DataDesc* a_desc);
+		GString*                ctor(const char* a_str);
+		[[nodiscard]] HeapType  heap_type() const;
+		[[nodiscard]] DataDesc* get_desc() const;
+		void                    set_desc(DataDesc* a_desc);
 
 		// members
 		DataDescUnion _dataDesc;  // 0

@@ -19,12 +19,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BSMultiIndexTriShape;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
 
-		virtual ~BSMultiIndexTriShape();  // 00
+		~BSMultiIndexTriShape() override;  // 00
 
 		// override (BSGeometry)
-		virtual const NiRTTI*         GetRTTI() const override;                           // 02
-		virtual NiObject*             CreateClone(NiCloningProcess& a_cloning) override;  // 17
-		virtual BSMultiIndexTriShape* AsMultiIndexTriShape() override;                    // 35 - { return this; }
+		const NiRTTI*         GetRTTI() const override;                           // 02
+		NiObject*             CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		BSMultiIndexTriShape* AsMultiIndexTriShape() override;                    // 35 - { return this; }
 
 		// members
 		BSGraphics::IndexBuffer*    altIndexBuffer;            // 160

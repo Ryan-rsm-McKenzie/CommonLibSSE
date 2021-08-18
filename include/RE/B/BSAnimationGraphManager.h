@@ -66,10 +66,10 @@ namespace RE
 		};
 		static_assert(sizeof(AnimationVariable) == 0x10);
 
-		virtual ~BSAnimationGraphManager();  // 00
+		~BSAnimationGraphManager() override;  // 00
 
 		// override (BSTEventSink<BSAnimationGraphEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
 		// members
 		std::uint32_t                                       pad0C;                 // 0C

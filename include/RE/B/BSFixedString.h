@@ -115,7 +115,7 @@ namespace RE
 			[[nodiscard]] inline const_pointer data() const noexcept
 			{
 				const auto proxy = get_proxy();
-				const auto cstr = proxy ? proxy->data<value_type>() : nullptr;
+				const auto cstr = proxy ? proxy->template data<value_type>() : nullptr;
 				return cstr ? cstr : EMPTY;
 			}
 
@@ -135,13 +135,7 @@ namespace RE
 
 			[[nodiscard]] inline friend bool operator==(const BSFixedString& a_lhs, const BSFixedString& a_rhs) noexcept
 			{
-				if (a_lhs._data == a_rhs._data) {
-					return true;
-				} else if (a_lhs.empty() && a_rhs.empty()) {
-					return true;
-				} else {
-					return false;
-				}
+				return a_lhs._data == a_rhs._data || a_lhs.empty() && a_rhs.empty();
 			}
 
 			[[nodiscard]] inline friend bool operator!=(const BSFixedString& a_lhs, const BSFixedString& a_rhs) noexcept { return !(a_lhs == a_rhs); }
@@ -197,14 +191,14 @@ namespace RE
 			[[nodiscard]] inline BSStringPool::Entry* get_proxy() noexcept
 			{
 				return _data ?
-				           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
+                           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
                            nullptr;
 			}
 
 			[[nodiscard]] inline const BSStringPool::Entry* get_proxy() const noexcept
 			{
 				return _data ?
-				           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
+                           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
                            nullptr;
 			}
 

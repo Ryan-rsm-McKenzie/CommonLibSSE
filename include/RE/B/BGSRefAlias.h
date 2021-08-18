@@ -139,12 +139,12 @@ namespace RE
 		};
 		static_assert(sizeof(GenericFillData) == 0x18);
 
-		virtual ~BGSRefAlias();  // 00
+		~BGSRefAlias() override;  // 00
 
 		// override (BGSBaseAlias)
-		virtual bool                 Load(TESFile* a_mod) override;       // 01
-		virtual void                 InitItem(TESForm* a_form) override;  // 02
-		virtual const BSFixedString& QType() const override;              // 03 - { return "Ref"; }
+		bool                               Load(TESFile* a_mod) override;       // 01
+		void                               InitItem(TESForm* a_form) override;  // 02
+		[[nodiscard]] const BSFixedString& QType() const override;              // 03 - { return "Ref"; }
 
 		TESObjectREFR* GetReference();
 		Actor*         GetActorReference();

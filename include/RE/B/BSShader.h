@@ -14,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShader;
 
-		virtual ~BSShader();  // 00
+		~BSShader() override;  // 00
 
 		// add
 		virtual void Unk_02(void) = 0;  // 02

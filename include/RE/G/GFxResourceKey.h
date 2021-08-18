@@ -44,12 +44,12 @@ namespace RE
 		GFxResourceKey(const GFxResourceKey& a_rhs);
 		~GFxResourceKey();
 
-		GFxResourceKey& operator=(const GFxResourceKey& a_rhs);
-		bool            operator==(const GFxResourceKey& a_other) const;
-		KeyType         GetKeyType() const;
-		const char*     GetFileURL() const;
-		KeyInterface*   GetKeyInterface() const;
-		KeyHandle       GetKeyData() const;
+		GFxResourceKey&             operator=(const GFxResourceKey& a_rhs);
+		bool                        operator==(const GFxResourceKey& a_other) const;
+		[[nodiscard]] KeyType       GetKeyType() const;
+		[[nodiscard]] const char*   GetFileURL() const;
+		[[nodiscard]] KeyInterface* GetKeyInterface() const;
+		[[nodiscard]] KeyHandle     GetKeyData() const;
 
 	protected:
 		// members

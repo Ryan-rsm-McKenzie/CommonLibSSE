@@ -53,13 +53,13 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSShaderParticleGeometryData();  // 00
+		~BGSShaderParticleGeometryData() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		BSTArray<SETTING_VALUE> data;             // 20 - DATA - size == DataID::kTotal
 		TESTexture              particleTexture;  // 38 - ICON

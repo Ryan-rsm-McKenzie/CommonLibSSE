@@ -49,7 +49,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
 
 			// override (PerkRankVisitor)
-			virtual bool operator()(const PerkRankData* a_entry) override;  // 00
+			bool operator()(const PerkRankData* a_entry) override;  // 00
 		};
 		static_assert(sizeof(FindPerkInRanksVisitor) == 0x8);
 
@@ -59,7 +59,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
 
 			// override (PerkRankVisitor)
-			virtual bool operator()(const PerkRankData* a_entry) override;  // 00
+			bool operator()(const PerkRankData* a_entry) override;  // 00
 		};
 		static_assert(sizeof(ApplyPerksVisitor) == 0x8);
 
@@ -69,17 +69,17 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_BGSPerk__AddPerkVisitor;
 
 			// override (PerkRankVisitor)
-			virtual bool operator()(const PerkRankData* a_entry) override;  // 00
+			bool operator()(const PerkRankData* a_entry) override;  // 00
 		};
 		static_assert(sizeof(AddPerkVisitor) == 0x8);
 
-		virtual ~BGSPerk();  // 00
+		~BGSPerk() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		PerkData                data;            // 50 - DATA

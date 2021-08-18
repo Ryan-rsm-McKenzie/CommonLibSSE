@@ -204,7 +204,7 @@ class gfx.layout.StagePanel extends UIComponent
 					clip[w] = vwidth - metrics.left - metrics.right;
 					break;
 
-				// Stage center alignent takes care of CENTER case automatically
+				// Stage center alignment takes care of CENTER case automatically
 			}
 
 			// Vertical alignment
@@ -222,7 +222,7 @@ class gfx.layout.StagePanel extends UIComponent
 					clip[h] = vheight - metrics.top - metrics.bottom;
 					break;
 
-				// Stage center alignent takes care of CENTER case automatically
+				// Stage center alignment takes care of CENTER case automatically
 			}
 		}
 	}

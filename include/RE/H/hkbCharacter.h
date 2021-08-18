@@ -17,7 +17,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_hkbCharacter;
 
-		virtual ~hkbCharacter();  // 00
+		~hkbCharacter() override;  // 00
 
 		// add
 		virtual void Unk_03(void);  // 03

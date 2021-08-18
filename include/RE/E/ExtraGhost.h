@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraGhost;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGhost;
 
-		virtual ~ExtraGhost();  // 00
+		~ExtraGhost() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kGhost; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kGhost; }
 
 		// members
 		bool          ghost;  // 10

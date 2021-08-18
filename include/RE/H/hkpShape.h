@@ -100,7 +100,7 @@ namespace RE
 
 		using RegsiterFunc = void(ShapeFuncs& a_sf);
 
-		virtual ~hkpShape();  // 00
+		~hkpShape() override;  // 00
 
 		// add
 		virtual float                    GetMaximumProjection(const hkVector4& a_direction) const;                                                                                      // 03

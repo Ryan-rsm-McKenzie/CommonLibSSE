@@ -36,21 +36,21 @@ namespace RE
 		};
 		static_assert(sizeof(ChildInfo) == 0x20);
 
-		virtual ~hkpListShape();  // 00
+		~hkpListShape() override;  // 00
 
 		// override (hkpShapeCollection)
-		virtual void         CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                          // 02
-		virtual std::int32_t CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const override;                                       // 06
-		virtual void         GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;                                           // 07
-		virtual bool         CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;                                          // 08
-		virtual void         CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
+		void         CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;                                          // 02
+		std::int32_t CalcSizeForSpu(const CalcSizeForSpuInput& a_input, std::int32_t a_spuBufferSizeLeft) const override;                                       // 06
+		void         GetAabbImpl(const hkTransform& a_localToWorld, float a_tolerance, hkAabb& a_out) const override;                                           // 07
+		bool         CastRayImpl(const hkpShapeRayCastInput& a_input, hkpShapeRayCastOutput& a_output) const override;                                          // 08
+		void         CastRayWithCollectorImpl(const hkpShapeRayCastInput& a_input, const hkpCdBody& a_cdBody, hkpRayHitCollector& a_collector) const override;  // 09
 
 		// override (hkpShapeContainer)
-		virtual std::int32_t    GetNumChildShapes() const override;                                         // 01 - { return m_childInfo.getSize() - m_numDisabledChildren; }
-		virtual hkpShapeKey     GetFirstKey() const override;                                               // 02 - { return hkpListShape::getNextKey(hkpShapeKey(-1)); }
-		virtual hkpShapeKey     GetNextKey(hkpShapeKey a_oldKey) const override;                            // 03
-		virtual std::uint32_t   GetCollisionFilterInfo(hkpShapeKey a_key) const override;                   // 04
-		virtual const hkpShape* GetChildShape(hkpShapeKey a_key, hkpShapeBuffer& a_buffer) const override;  // 05
+		std::int32_t    GetNumChildShapes() const override;                                         // 01 - { return m_childInfo.getSize() - m_numDisabledChildren; }
+		hkpShapeKey     GetFirstKey() const override;                                               // 02 - { return hkpListShape::getNextKey(hkpShapeKey(-1)); }
+		hkpShapeKey     GetNextKey(hkpShapeKey a_oldKey) const override;                            // 03
+		std::uint32_t   GetCollisionFilterInfo(hkpShapeKey a_key) const override;                   // 04
+		const hkpShape* GetChildShape(hkpShapeKey a_key, hkpShapeBuffer& a_buffer) const override;  // 05
 
 		// members
 		hkArray<ChildInfo> childInfo;            // 30

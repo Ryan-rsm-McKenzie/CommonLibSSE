@@ -72,17 +72,17 @@ namespace RE
 		virtual ~GTexture() = default;  // 00
 
 		// add
-		virtual bool         InitTexture(GImageBase* a_im, ImageTexUsage a_usage = ImageTexUsage::kWrap) = 0;                                                                   // 01
-		virtual bool         InitDynamicTexture(std::int32_t a_width, std::int32_t a_height, GImage::ImageFormat a_format, std::int32_t a_mipmaps, ImageTexUsage a_usage) = 0;  // 02
-		virtual void         Update(std::int32_t a_level, std::int32_t a_num, const UpdateRect* a_rects, const GImageBase* a_im) = 0;                                           // 03
-		virtual std::int32_t Map(std::int32_t a_level, std::int32_t a_num, MapRect* a_maps, MapFlags a_flags = MapFlags::kNone) = 0;                                            // 04
-		virtual bool         Unmap(std::int32_t a_level, std::int32_t a_num, MapRect* a_maps, MapFlags a_flags = MapFlags::kNone) = 0;                                          // 05
-		virtual GRenderer*   GetRenderer() const = 0;                                                                                                                           // 06
-		virtual bool         IsDataValid() const = 0;                                                                                                                           // 07
-		virtual Handle       GetUserData() const = 0;                                                                                                                           // 08
-		virtual void         SetUserData(Handle a_data) = 0;                                                                                                                    // 09
-		virtual void         AddChangeHandler(ChangeHandler* a_handler) = 0;                                                                                                    // 0A
-		virtual void         RemoveChangeHandler(ChangeHandler* a_handler) = 0;                                                                                                 // 0B
+		virtual bool                     InitTexture(GImageBase* a_im, ImageTexUsage a_usage = ImageTexUsage::kWrap) = 0;                                                                   // 01
+		virtual bool                     InitDynamicTexture(std::int32_t a_width, std::int32_t a_height, GImage::ImageFormat a_format, std::int32_t a_mipmaps, ImageTexUsage a_usage) = 0;  // 02
+		virtual void                     Update(std::int32_t a_level, std::int32_t a_num, const UpdateRect* a_rects, const GImageBase* a_im) = 0;                                           // 03
+		virtual std::int32_t             Map(std::int32_t a_level, std::int32_t a_num, MapRect* a_maps, MapFlags a_flags = MapFlags::kNone) = 0;                                            // 04
+		virtual bool                     Unmap(std::int32_t a_level, std::int32_t a_num, MapRect* a_maps, MapFlags a_flags = MapFlags::kNone) = 0;                                          // 05
+		[[nodiscard]] virtual GRenderer* GetRenderer() const = 0;                                                                                                                           // 06
+		[[nodiscard]] virtual bool       IsDataValid() const = 0;                                                                                                                           // 07
+		[[nodiscard]] virtual Handle     GetUserData() const = 0;                                                                                                                           // 08
+		virtual void                     SetUserData(Handle a_data) = 0;                                                                                                                    // 09
+		virtual void                     AddChangeHandler(ChangeHandler* a_handler) = 0;                                                                                                    // 0A
+		virtual void                     RemoveChangeHandler(ChangeHandler* a_handler) = 0;                                                                                                 // 0B
 
 		// members
 		GAtomicInt<std::int32_t> refCount;  // 08

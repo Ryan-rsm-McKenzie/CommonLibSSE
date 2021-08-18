@@ -27,7 +27,7 @@ namespace RE
 		};
 		static_assert(sizeof(CallbackProcessor) == 0x8);
 
-		virtual ~FxDelegateHandler() = default;  // 00
+		~FxDelegateHandler() override = default;  // 00
 
 		// add
 		virtual void Accept(CallbackProcessor* a_cbReg) = 0;  // 01

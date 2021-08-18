@@ -32,19 +32,19 @@ namespace RE
 			};
 		};
 
-		virtual ~Script();  // 00
+		~Script() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void InitializeData() override;      // 04
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
-		void        ClearCommand();
-		void        CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
-		void        CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
-		std::string GetCommand() const;
-		void        SetCommand(std::string_view a_command);
+		void                      ClearCommand();
+		void                      CompileAndRun(TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		void                      CompileAndRun(ScriptCompiler* a_compiler, TESObjectREFR* a_targetRef, COMPILER_NAME a_name = COMPILER_NAME::kSystemWindowCompiler);
+		[[nodiscard]] std::string GetCommand() const;
+		void                      SetCommand(std::string_view a_command);
 
 		// members
 		SCRIPT_HEADER                           header;                       // 20

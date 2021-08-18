@@ -71,14 +71,14 @@ namespace RE
 				_retType = GetRawType<result_type>();
 			}
 
-			virtual ~NativeFunction() = default;  // 00
+			~NativeFunction() override = default;  // 00
 
-			virtual bool HasStub() const override  // 15
+			bool HasStub() const override  // 15
 			{
 				return static_cast<bool>(_stub);
 			}
 
-			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
+			bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
 			{
 				base_type base{};
 				if constexpr (std::negation_v<is_static_base<base_type>>) {

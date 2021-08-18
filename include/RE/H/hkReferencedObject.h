@@ -25,7 +25,7 @@ namespace RE
 		};
 
 		hkReferencedObject();
-		virtual ~hkReferencedObject() = default;  // 00
+		~hkReferencedObject() override = default;  // 00
 
 		// add
 		virtual const hkClass* GetClassType() const;                                                                     // 01 - { return 0; }

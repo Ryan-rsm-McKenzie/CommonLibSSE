@@ -19,16 +19,16 @@ namespace RE
 			kTotal
 		};
 
-		virtual ~BGSEquipType();  // 00
+		~BGSEquipType() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01 - { equipSlot = 0; }
-		virtual void ClearDataComponent() override;                     // 02 - { return; }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01 - { equipSlot = 0; }
+		void ClearDataComponent() override;                     // 02 - { return; }
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual BGSEquipSlot* GetEquipSlot() const;                // 04 - { return equipSlot; }
-		virtual void          SetEquipSlot(BGSEquipSlot* a_slot);  // 05 - { equipSlot = a_slot; }
+		[[nodiscard]] virtual BGSEquipSlot* GetEquipSlot() const;                // 04 - { return equipSlot; }
+		virtual void                        SetEquipSlot(BGSEquipSlot* a_slot);  // 05 - { equipSlot = a_slot; }
 
 		// members
 		BGSEquipSlot* equipSlot;  // 08 - ETYP

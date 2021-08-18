@@ -719,8 +719,8 @@ namespace RE
 
 	private:
 		// members
-		ScrapHeap* _allocator{ MemoryManager::GetSingleton().GetThreadScrapHeap() };  // 00 (20)
-		std::byte* _entries{ nullptr };                                               // 08 (28)
+		ScrapHeap* _allocator{ MemoryManager::GetSingleton()->GetThreadScrapHeap() };  // 00 (20)
+		std::byte* _entries{ nullptr };                                                // 08 (28)
 	};
 
 	template <
@@ -757,7 +757,7 @@ namespace RE
 			Hash,
 			KeyEq,
 			BSTScatterTableTraits<Key, T>,
-			typename BSTStaticHashMapBase<N>::Allocator>;
+			BSTStaticHashMapBase<N>::template Allocator>;
 
 	template <
 		class Key,

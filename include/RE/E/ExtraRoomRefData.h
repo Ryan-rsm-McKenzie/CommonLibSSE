@@ -29,11 +29,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRoomRefData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRoomRefData;
 
-		virtual ~ExtraRoomRefData();  // 00
+		~ExtraRoomRefData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kRoomRefData; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kRoomRefData; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		RoomRefData* data;  // 10

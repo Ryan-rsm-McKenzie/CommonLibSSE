@@ -23,20 +23,20 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_LoadWaitSpinner;
 		constexpr static std::string_view MENU_NAME = "LoadWaitSpinner";
 
-		virtual ~LoadWaitSpinner();  // 00
+		~LoadWaitSpinner() override;  // 00
 
 		// override (IMenu)
-		virtual void               Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+		void               Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
 		// override (BSTEventSink<BSSystemEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BSGamerProfileEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
 
 		// members
 		GFxValue              root;    // 48 - "Menu_mc"

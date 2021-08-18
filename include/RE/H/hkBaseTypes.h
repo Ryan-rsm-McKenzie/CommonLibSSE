@@ -22,8 +22,8 @@ namespace RE
 				operator float() const;
 
 	protected:
-		void  SetFloat(const float& a_val);
-		float GetFloat() const;
+		void                SetFloat(const float& a_val);
+		[[nodiscard]] float GetFloat() const;
 
 		// members
 		std::int16_t _value;  // 0

@@ -15,15 +15,15 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialLandscape;
 		inline static constexpr auto FEATURE = Feature::kMultiTexLandLODBlend;
 
-		virtual ~BSLightingShaderMaterialLandscape();  // 00
+		~BSLightingShaderMaterialLandscape() override;  // 00
 
 		// override (BSLightingShaderMaterialBase)
-		virtual BSShaderMaterial* Create() override;                                                                                                                 // 01
-		virtual void              CopyMembers(BSShaderMaterial* a_src) override;                                                                                     // 02
-		virtual Feature           GetFeature() const override;                                                                                                       // 06 - { return Feature::kMultiTexLandLODBlend; }
-		virtual void              ClearTextures() override;                                                                                                          // 09
-		virtual void              ReceiveValuesFromRootMaterial(bool a_skinned, bool a_rimLighting, bool a_softLighting, bool a_backLighting, bool a_MSN) override;  // 0A
-		virtual void              GetTextures(void) override;                                                                                                        // 0B
+		BSShaderMaterial* Create() override;                                                                                                                 // 01
+		void              CopyMembers(BSShaderMaterial* a_src) override;                                                                                     // 02
+		Feature           GetFeature() const override;                                                                                                       // 06 - { return Feature::kMultiTexLandLODBlend; }
+		void              ClearTextures() override;                                                                                                          // 09
+		void              ReceiveValuesFromRootMaterial(bool a_skinned, bool a_rimLighting, bool a_softLighting, bool a_backLighting, bool a_MSN) override;  // 0A
+		void              GetTextures(void) override;                                                                                                        // 0B
 
 		// members
 		std::uint32_t              numLandscapeTextures;        // 0A0

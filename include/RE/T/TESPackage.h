@@ -268,18 +268,18 @@ namespace RE
 			};
 		};
 
-		virtual ~TESPackage();  // 00
+		~TESPackage() override;  // 00
 
 		// override (TESForm)
-		virtual void          InitializeData() override;                    // 04
-		virtual void          ClearData() override;                         // 05
-		virtual bool          Load(TESFile* a_mod) override;                // 06
-		virtual void          SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void          LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void          Revert(BGSLoadFormBuffer* a_buf) override;    // 12
-		virtual void          InitItemImpl() override;                      // 13
-		virtual std::uint32_t GetRefCount() const override;                 // 2D - { return refCount; }
-		virtual const char*   GetObjectTypeName() const override;           // 39 - { return g_packageTypeStrings[packData.packType]; }
+		void                      InitializeData() override;                    // 04
+		void                      ClearData() override;                         // 05
+		bool                      Load(TESFile* a_mod) override;                // 06
+		void                      SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void                      LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void                      Revert(BGSLoadFormBuffer* a_buf) override;    // 12
+		void                      InitItemImpl() override;                      // 13
+		std::uint32_t             GetRefCount() const override;                 // 2D - { return refCount; }
+		[[nodiscard]] const char* GetObjectTypeName() const override;           // 39 - { return g_packageTypeStrings[packData.packType]; }
 
 		// add
 		virtual bool IsActorAtLocation(Actor* a_actor, bool a_arg2, float a_arg3, bool a_arg4);                      // 3B

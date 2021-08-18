@@ -20,7 +20,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-		virtual ~BSUIMessageData();  // 00
+		~BSUIMessageData() override;  // 00
 
 		// members
 		BSString*     str;       // 10

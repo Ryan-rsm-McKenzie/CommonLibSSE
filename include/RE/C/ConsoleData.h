@@ -17,7 +17,7 @@ namespace RE
 		{
 		};
 
-		virtual ~ConsoleData();  // 00
+		~ConsoleData() override;  // 00
 
 		// members
 		BSString*                                 str;      // 10

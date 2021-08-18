@@ -19,12 +19,12 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_BSScript__LinkerProcessor;
 
-			virtual ~LinkerProcessor();  // 00
+			~LinkerProcessor() override;  // 00
 
 			// override (IObjectProcessor)
-			virtual IObjectProcessor* Clone() override;                                    // 01
-			virtual void              SetLoader(ILoader* a_loader) override;               // 02 - { loader = a_loader; }
-			virtual bool              Process(const BSFixedString& a_className) override;  // 03
+			IObjectProcessor* Clone() override;                                    // 01
+			void              SetLoader(ILoader* a_loader) override;               // 02 - { loader = a_loader; }
+			bool              Process(const BSFixedString& a_className) override;  // 03
 
 			// members
 			IVirtualMachine*                                            vm;                  // 08

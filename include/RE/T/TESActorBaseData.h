@@ -78,19 +78,19 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESActorBaseData;
 
-		virtual ~TESActorBaseData();
+		~TESActorBaseData() override;
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual void          CopyFromTemplateForms(TESActorBase** a_templateForms);  // 04 - { return; }
-		virtual bool          GetIsGhost() const;                                     // 05 - { return (flags >> 29) & 1; }
-		virtual bool          GetInvulnerable() const;                                // 06 - { test flags, 80000000h; }
-		virtual void          Unk_07(void);                                           // 07 - { return 1; }
-		virtual BGSVoiceType* GetVoiceType(void);                                     // 08 - { return voice; }
+		virtual void               CopyFromTemplateForms(TESActorBase** a_templateForms);  // 04 - { return; }
+		[[nodiscard]] virtual bool GetIsGhost() const;                                     // 05 - { return (flags >> 29) & 1; }
+		[[nodiscard]] virtual bool GetInvulnerable() const;                                // 06 - { test flags, 80000000h; }
+		virtual void               Unk_07(void);                                           // 07 - { return 1; }
+		virtual BGSVoiceType*      GetVoiceType(void);                                     // 08 - { return voice; }
 
 		[[nodiscard]] constexpr bool AffectsStealthMeter() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntAffectStealthMeter); }
 		[[nodiscard]] constexpr bool Bleeds() const noexcept { return actorData.actorBaseFlags.none(ACTOR_BASE_DATA::Flag::kDoesntBleed); }

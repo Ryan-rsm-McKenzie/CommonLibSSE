@@ -138,7 +138,7 @@ class gfx.data.DataProvider extends Array
 
 
 	/**
-	 * Clean up callBacks and other data references in the DataProvider. No clean up is required in this simple implmentation beyond cleaning up event queues.
+	 * Clean up callBacks and other data references in the DataProvider. No clean up is required in this simple implementation beyond cleaning up event queues.
 	 */
 	public function cleanUp(): Void
 	{

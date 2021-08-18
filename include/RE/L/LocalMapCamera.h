@@ -20,11 +20,11 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_LocalMapCamera__DefaultState;
 
-			virtual ~DefaultState();  // 00
+			~DefaultState() override;  // 00
 
 			// add
-			virtual void Begin() override;                                               // 01
-			virtual void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
+			void Begin() override;                                               // 01
+			void Update(BSTSmartPointer<TESCameraState>& a_nextState) override;  // 03
 
 			// members
 			NiPoint3      initialPosition;       // 20
@@ -37,7 +37,7 @@ namespace RE
 		static_assert(sizeof(DefaultState) == 0x48);
 
 		LocalMapCamera(float a_zRotation);
-		virtual ~LocalMapCamera();  // 00
+		~LocalMapCamera() override;  // 00
 
 		void SetAreaBounds(NiPoint3& a_maxExtent, NiPoint3& a_minExtent);
 		void SetDefaultStateInitialPosition(NiPoint3& a_position);

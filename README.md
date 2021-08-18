@@ -1,4 +1,7 @@
-# CommonLibSSE
+# `CommonLibSSE`
+[![C++20](https://img.shields.io/static/v1?label=standard&message=C%2B%2B20&color=blue&logo=c%2B%2B&&logoColor=white&style=flat)](https://en.cppreference.com/w/cpp/compiler_support)
+[![Platform](https://img.shields.io/static/v1?label=platform&message=windows&color=dimgray&style=flat)](#)
+[![Main CI](https://img.shields.io/github/workflow/status/Ryan-rsm-McKenzie/CommonLibSSE/Main%20CI?logo=github&logoColor=white)](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE/actions/workflows/main_ci.yml)
 
 ## Build Dependencies
 * [Boost](https://www.boost.org/)

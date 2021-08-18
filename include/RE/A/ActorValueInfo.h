@@ -39,15 +39,15 @@ namespace RE
 		};
 		static_assert(sizeof(Skill) == 0x10);
 
-		virtual ~ActorValueInfo();  // 00
+		~ActorValueInfo() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;           // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// override (TESIcon)
-		virtual const char* GetDefaultPath() const override;  // 06 - { return "Textures\\"; }
+		[[nodiscard]] const char* GetDefaultPath() const override;  // 06 - { return "Textures\\"; }
 
 		// members
 		const char*           enumName;      // 050

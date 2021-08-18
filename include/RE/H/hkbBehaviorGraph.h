@@ -19,21 +19,21 @@ namespace RE
 			kMaintainValuesWhenInactive = 1,
 		};
 
-		virtual ~hkbBehaviorGraph();  // 00
+		~hkbBehaviorGraph() override;  // 00
 
 		// override (hkbGenerator)
-		virtual hkClass* GetClassType() const override;                                                            // 01
-		virtual void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const;  // 02
-		virtual void     Unk_04(void) override;                                                                    // 04
-		virtual void     Unk_05(void) override;                                                                    // 05
-		virtual void     Unk_06(void) override;                                                                    // 06
-		virtual void     Unk_07(void) override;                                                                    // 07
-		virtual void     Unk_09(void) override;                                                                    // 09
-		virtual void     Unk_0C(void) override;                                                                    // 0C
-		virtual void     Unk_16(void) override;                                                                    // 16 - { return 1; }
-		virtual void     Unk_17(void) override;                                                                    // 17
-		virtual void     Unk_18(void) override;                                                                    // 18 - { return 1; }
-		virtual void     Unk_19(void) override;                                                                    // 19
+		hkClass* GetClassType() const override;                                                                     // 01
+		void     CalcContentStatistics(hkStatisticsCollector* a_collector, const hkClass* a_class) const override;  // 02
+		void     Unk_04(void) override;                                                                             // 04
+		void     Unk_05(void) override;                                                                             // 05
+		void     Unk_06(void) override;                                                                             // 06
+		void     Unk_07(void) override;                                                                             // 07
+		void     Unk_09(void) override;                                                                             // 09
+		void     Unk_0C(void) override;                                                                             // 0C
+		void     Unk_16(void) override;                                                                             // 16 - { return 1; }
+		void     Unk_17(void) override;                                                                             // 17
+		void     Unk_18(void) override;                                                                             // 18 - { return 1; }
+		void     Unk_19(void) override;                                                                             // 19
 
 		// members
 		stl::enumeration<VariableMode, std::uint8_t> variableMode;                     // 048

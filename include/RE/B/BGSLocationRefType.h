@@ -20,10 +20,10 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSLocationRefType();  // 00
+		~BGSLocationRefType() override;  // 00
 
 		// override (BGSKeyword)
-		virtual void InitItemImpl() override;  // 13
+		void InitItemImpl() override;  // 13
 	};
 	static_assert(sizeof(BGSLocationRefType) == 0x28);
 }

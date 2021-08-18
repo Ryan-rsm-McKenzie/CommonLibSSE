@@ -27,11 +27,11 @@ namespace RE
 			bool         affectLand;  // 3
 		};
 
-		virtual ~ShadowSceneNode();  // 00
+		~ShadowSceneNode() override;  // 00
 
 		// override (NiNode)
-		virtual const NiRTTI* GetRTTI() const override;                         // 02
-		virtual void          OnVisible(NiCullingProcess& a_process) override;  // 34
+		const NiRTTI* GetRTTI() const override;                         // 02
+		void          OnVisible(NiCullingProcess& a_process) override;  // 34
 
 		// members
 		std::uint64_t                   unk128;          // 128

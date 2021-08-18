@@ -21,12 +21,12 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSPerkRankArray;
 
-		virtual ~BGSPerkRankArray();  // 00
+		~BGSPerkRankArray() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;              // 01 - { return; }
-		virtual void ClearDataComponent() override;                   // 02
-		virtual void CopyComponent(BaseFormComponent* rhs) override;  // 03
+		void InitializeDataComponent() override;              // 01 - { return; }
+		void ClearDataComponent() override;                   // 02
+		void CopyComponent(BaseFormComponent* rhs) override;  // 03
 
 		// members
 		PerkRankData* perks;      // 08 - PRKR

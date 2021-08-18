@@ -65,12 +65,12 @@ namespace RE
 			};
 		};
 
-		virtual ~TESRegion();  // 00
+		~TESRegion() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData(void) override;       // 05
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		void ClearData(void) override;       // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// add
 		virtual bool Validate();  // 3B

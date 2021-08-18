@@ -38,11 +38,11 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x4);
 
-		virtual ~BGSArtObject();  // 00
+		~BGSArtObject() override;  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;  // 06
-		virtual void InitItemImpl() override;        // 13
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
 		Data          data;   // 68 - DNAM

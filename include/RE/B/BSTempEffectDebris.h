@@ -14,12 +14,12 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectDebris;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDebris;
 
-		virtual ~BSTempEffectDebris();  // 00
+		~BSTempEffectDebris() override;  // 00
 
-		virtual const NiRTTI*    GetRTTI() const override;       // 02
-		virtual bool             Update(float a_arg1) override;  // 28
-		virtual NiAVObject*      Get3D() const override;         // 29
-		virtual TEMP_EFFECT_TYPE GetType() const;                // 2C - { return kDebris; }
+		const NiRTTI*    GetRTTI() const override;       // 02
+		bool             Update(float a_arg1) override;  // 28
+		NiAVObject*      Get3D() const override;         // 29
+		TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kDebris; }
 
 		// members;
 		NiPointer<NiAVObject> debris3D;        // 030

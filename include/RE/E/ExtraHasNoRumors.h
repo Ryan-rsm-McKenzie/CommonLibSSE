@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHasNoRumors;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHasNoRumors;
 
-		virtual ~ExtraHasNoRumors();  // 00
+		~ExtraHasNoRumors() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kHasNoRumors; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kHasNoRumors; }
 
 		// members
 		bool          noRumors;  // 10

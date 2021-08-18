@@ -21,12 +21,12 @@ namespace RE
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectParticle;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kParticle;
 
-		virtual ~BSTempEffectParticle();  // 00
+		~BSTempEffectParticle() override;  // 00
 
-		virtual const NiRTTI*    GetRTTI() const override;       // 02
-		virtual void             Detach() override;              // 27
-		virtual bool             Update(float a_arg1) override;  // 28
-		virtual TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kParticle; }
+		const NiRTTI*                  GetRTTI() const override;       // 02
+		void                           Detach() override;              // 27
+		bool                           Update(float a_arg1) override;  // 28
+		[[nodiscard]] TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kParticle; }
 
 		// members
 		NiPointer<NiAVObject>                       particle3D;         // 30

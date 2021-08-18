@@ -45,9 +45,9 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAttackData;
 
-		virtual ~BGSAttackData();  // 00
+		~BGSAttackData() override;  // 00
 
-		bool IsLeftAttack() const;
+		[[nodiscard]] bool IsLeftAttack() const;
 
 		// members
 		BSFixedString event;  // 10 - ATKE

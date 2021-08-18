@@ -63,10 +63,10 @@ namespace RE
 			kEnchantment = 6,
 
 			kPotion = 7,
-			kAlchemy = kPotion,
+			kAlchemy = static_cast<std::underlying_type_t<SpellType>>(kPotion),
 
 			kWortCraft = 8,
-			kIngredient = kWortCraft,
+			kIngredient = static_cast<std::underlying_type_t<SpellType>>(kWortCraft),
 
 			kLeveledSpell = 9,
 			kAddiction = 10,

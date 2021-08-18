@@ -22,10 +22,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLight;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLight;
 
-		virtual ~ExtraLight();  // 00
+		~ExtraLight() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kLight; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kLight; }
 
 		// members
 		REFR_LIGHT* lightData;  // 10

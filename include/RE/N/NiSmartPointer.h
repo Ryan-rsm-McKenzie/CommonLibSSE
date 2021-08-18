@@ -250,4 +250,4 @@ namespace RE
 
 #define NiSmartPointer(className) \
 	class className;              \
-	using className##Ptr = RE::NiPointer<className>;
+	using className##Ptr = RE::NiPointer<className>

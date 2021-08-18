@@ -17,15 +17,15 @@ namespace RE
 		enum class WordWrappingType
 		{
 			kNone = 0,
-			kDefault = kNone,        // - Custom word-wrapping is off, OnWordWrapping will not be invoked
-			kAsian = 1 << 0,         // - Turns on Chinese word-wrapping rules
-			kProhibition = 1 << 1,   // - Prohibits certain chars at start/end of line (turns on Japanese prohibition rule)
-			kNoHangulWrap = 1 << 2,  // - Turns on Korean-specific word-wrapping rules
+			kDefault = static_cast<std::underlying_type_t<WordWrappingType>>(kNone),  // - Custom word-wrapping is off, OnWordWrapping will not be invoked
+			kAsian = 1 << 0,                                                          // - Turns on Chinese word-wrapping rules
+			kProhibition = 1 << 1,                                                    // - Prohibits certain chars at start/end of line (turns on Japanese prohibition rule)
+			kNoHangulWrap = 1 << 2,                                                   // - Turns on Korean-specific word-wrapping rules
 			kCustom = 1 << 7,
-			kLast = kNoHangulWrap,
+			kLast = static_cast<std::underlying_type_t<WordWrappingType>>(kNoHangulWrap),
 			kHyphenation = kLast < 1,
 			kKorean = kProhibition | kNoHangulWrap,
-			kJapanese = kProhibition,
+			kJapanese = static_cast<std::underlying_type_t<WordWrappingType>>(kProhibition),
 			kChinese = kProhibition | kAsian,
 			kAll = kAsian | kProhibition | kNoHangulWrap
 		};

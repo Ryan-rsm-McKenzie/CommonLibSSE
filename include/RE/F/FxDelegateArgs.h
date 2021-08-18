@@ -13,11 +13,11 @@ namespace RE
 	public:
 		FxDelegateArgs(GFxValue a_responseID, FxDelegateHandler* a_handler, GFxMovieView* a_movie, const GFxValue* a_vals, std::uint32_t a_numArgs);
 
-		void               Respond(FxResponseArgsBase& a_params) const;
-		const GFxValue&    operator[](UPInt a_pos) const;
-		FxDelegateHandler* GetHandler() const;
-		GFxMovieView*      GetMovie() const;
-		std::uint32_t      GetArgCount() const;
+		void                             Respond(FxResponseArgsBase& a_params) const;
+		const GFxValue&                  operator[](UPInt a_pos) const;
+		[[nodiscard]] FxDelegateHandler* GetHandler() const;
+		[[nodiscard]] GFxMovieView*      GetMovie() const;
+		[[nodiscard]] std::uint32_t      GetArgCount() const;
 
 	protected:
 		// members

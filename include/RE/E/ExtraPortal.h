@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPortal;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPortal;
 
-		virtual ~ExtraPortal();  // 00
+		~ExtraPortal() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kPortal; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kPortal; }
 
 		// members
 		NiPointer<BSPortal> portal;  // 10

@@ -66,30 +66,30 @@ namespace RE
 		};
 		static_assert(sizeof(MegaBlockPage) == 0x200000);
 
-		virtual ~bhkThreadMemorySource();  // 00
+		~bhkThreadMemorySource() override;  // 00
 
 		// override (hkMemoryAllocator)
-		virtual void*        BlockAlloc(std::int32_t a_numBytes) override;                                                       // 01
-		virtual void         BlockFree(void* a_ptr, std::int32_t a_numBytes) override;                                           // 02
-		virtual void*        BufAlloc(std::int32_t& a_reqNumBytesInOut) override;                                                // 03
-		virtual void         BufFree(void* a_ptr, std::int32_t a_numBytes) override;                                             // 04
-		virtual void*        BufRealloc(void* a_ptrOld, std::int32_t a_oldNumBytes, std::int32_t& a_reqNumBytesInOut) override;  // 05
-		virtual void         BlockAllocBatch(void** a_ptrsOut, std::int32_t a_numPtrs, std::int32_t a_blockSize) override;       // 06
-		virtual void         BlockFreeBatch(void** a_ptrsIn, std::int32_t a_numPtrs, std::int32_t a_blockSize) override;         // 07
-		virtual void         GetMemoryStatistics(MemoryStatistics& a_usage) override;                                            // 08
-		virtual std::int32_t GetAllocatedSize(const void* a_obj, std::int32_t a_numBytes) override;                              // 09
+		void*        BlockAlloc(std::int32_t a_numBytes) override;                                                       // 01
+		void         BlockFree(void* a_ptr, std::int32_t a_numBytes) override;                                           // 02
+		void*        BufAlloc(std::int32_t& a_reqNumBytesInOut) override;                                                // 03
+		void         BufFree(void* a_ptr, std::int32_t a_numBytes) override;                                             // 04
+		void*        BufRealloc(void* a_ptrOld, std::int32_t a_oldNumBytes, std::int32_t& a_reqNumBytesInOut) override;  // 05
+		void         BlockAllocBatch(void** a_ptrsOut, std::int32_t a_numPtrs, std::int32_t a_blockSize) override;       // 06
+		void         BlockFreeBatch(void** a_ptrsIn, std::int32_t a_numPtrs, std::int32_t a_blockSize) override;         // 07
+		void         GetMemoryStatistics(MemoryStatistics& a_usage) override;                                            // 08
+		std::int32_t GetAllocatedSize(const void* a_obj, std::int32_t a_numBytes) override;                              // 09
 
 		// override (IMemoryHeap)
-		virtual std::size_t   Size(const void* a_block) const override;                                      // 01
-		virtual void          GetMemoryStats(MemoryStats* a_stats) override;                                 // 02
-		virtual const char*   GetName() const override;                                                      // 07 - { return "bhkThreadMemorySource"; }
-		virtual void*         Allocate(std::size_t a_size, std::uint32_t a_alignment) override;              // 08
-		virtual void          Deallocate(void* a_pointer, std::uint32_t) override;                           // 09
-		virtual bool          PointerInHeap(const void* a_pointer) const override;                           // 0A
-		virtual std::size_t   TotalSize(const void* a_pointer) const override;                               // 0B
-		virtual void          GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;               // 0C
-		virtual bool          ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;  // 0D
-		virtual std::uint32_t GetPageSize() const override;                                                  // 0E
+		std::size_t                 Size(const void* a_block) const override;                                      // 01
+		void                        GetMemoryStats(MemoryStats* a_stats) override;                                 // 02
+		const char*                 GetName() const override;                                                      // 07 - { return "bhkThreadMemorySource"; }
+		void*                       Allocate(std::size_t a_size, std::uint32_t a_alignment) override;              // 08
+		void                        Deallocate(void* a_pointer, std::uint32_t) override;                           // 09
+		bool                        PointerInHeap(const void* a_pointer) const override;                           // 0A
+		std::size_t                 TotalSize(const void* a_pointer) const override;                               // 0B
+		void                        GetHeapStats(HeapStats* a_stats, bool a_fullBlockInfo) override;               // 0C
+		bool                        ShouldTrySmallBlockPools(std::size_t a_size, MEM_CONTEXT a_context) override;  // 0D
+		[[nodiscard]] std::uint32_t GetPageSize() const override;                                                  // 0E
 
 		// members
 		BSCriticalSection  lock;                    // 10

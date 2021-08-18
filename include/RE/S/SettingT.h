@@ -9,7 +9,7 @@ namespace RE
 	class SettingT : public Setting
 	{
 	public:
-		virtual ~SettingT();  // 00
+		~SettingT() override;  // 00
 	};
 	static_assert(sizeof(SettingT<void*>) == 0x18);
 }

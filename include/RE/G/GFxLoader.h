@@ -41,15 +41,15 @@ namespace RE
 		};
 
 		// override (GFxStateBag)
-		virtual GFxStateBag* GetStateBagImpl() const override;  // 00
+		GFxStateBag* GetStateBagImpl() const override;  // 00
 
-		virtual ~GFxLoader();  // 01
+		~GFxLoader() override;  // 01
 
 		// add
-		virtual bool CheckTagLoader(std::int32_t a_tagType) const;  // 05
+		[[nodiscard]] virtual bool CheckTagLoader(std::int32_t a_tagType) const;  // 05
 
-		GFxMovieDef*   CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
-		GFxLoaderImpl* GetLoaderImpl() const;
+		GFxMovieDef*                 CreateMovie(const char* a_filename, LoadConstants a_loadConstants = LoadConstants::kLoadAll, UPInt a_memoryArena = 0);
+		[[nodiscard]] GFxLoaderImpl* GetLoaderImpl() const;
 
 		// members
 		GFxLoaderImpl*  impl;               // 08

@@ -57,40 +57,40 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x28);
 
-		virtual ~SpellItem();  // 00
+		~SpellItem() override;  // 00
 
 		// override (MagicItem)
-		virtual void                     InitializeData() override;                                             // 04
-		virtual void                     ClearData() override;                                                  // 05
-		virtual void                     InitItemImpl() override;                                               // 13
-		virtual MagicSystem::SpellType   GetSpellType() const override;                                         // 53 - { return data.spellType; }
-		virtual void                     SetCastingType(MagicSystem::CastingType a_type) override;              // 54 - { data.castingType = a_type; }
-		virtual MagicSystem::CastingType GetCastingType() const override;                                       // 55 - { return data.castingType; }
-		virtual void                     SetDelivery(MagicSystem::Delivery a_type) override;                    // 56 - { if (Unk_58()) { data.delivery = a_type; } }
-		virtual MagicSystem::Delivery    GetDelivery() const override;                                          // 57 - { return data.delivery; }
-		virtual float                    GetFixedCastDuration() const override;                                 // 59 - { return (GetCastingType() == MagicSystem::CastingType::kConcentration) ? data.castDuration : 0.0; }
-		virtual float                    GetRange() const override;                                             // 5A - { return data.range; }
-		virtual bool                     IgnoresResistance() const override;                                    // 5B - { return (GetData()->flags >> 20) & 1; }
-		virtual bool                     IgnoreLOS() const override;                                            // 5C - { return (GetData()->flags >> 19) & 1; }
-		virtual bool                     GetNoAbsorb() const override;                                          // 5E - { return (GetData()->flags >> 21) & 1; }
-		virtual bool                     GetNoDualCastModifications() const override;                           // 5F - { return (GetData()->flags >> 23) & 1; }
-		virtual bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
-		virtual void                     AdjustCost(float& a_cost, Actor* a_actor) const override;              // 63
-		virtual float                    GetChargeTime() const override;                                        // 64
-		virtual ActorValue               GetAssociatedSkill() const override;                                   // 66
-		virtual bool                     IsTwoHanded() const override;                                          // 67 - { BGSEquipSlot* equipSlot = BGSEquipType::GetEquipSlot(); return equipSlot && equipSlot->flags & 1; }
-		virtual std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'SPIT'; }
-		virtual void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
-		virtual void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A
-		virtual void                     LoadChunkDataPostProcess(TESFile* a_mod) override;                     // 6B
-		virtual const MagicItem::Data*   GetData1() const override;                                             // 6C - { return &data; }
-		virtual MagicItem::Data*         GetData2() override;                                                   // 6D - { return &data; }
-		virtual std::uint32_t            GetDataSize() const override;                                          // 6E - { return 0x28; }
-		virtual void                     InitFromChunk(TESFile* a_mod) override;                                // 6F
-		virtual void                     InitChunk() override;                                                  // 70
+		void                     InitializeData() override;                                             // 04
+		void                     ClearData() override;                                                  // 05
+		void                     InitItemImpl() override;                                               // 13
+		MagicSystem::SpellType   GetSpellType() const override;                                         // 53 - { return data.spellType; }
+		void                     SetCastingType(MagicSystem::CastingType a_type) override;              // 54 - { data.castingType = a_type; }
+		MagicSystem::CastingType GetCastingType() const override;                                       // 55 - { return data.castingType; }
+		void                     SetDelivery(MagicSystem::Delivery a_type) override;                    // 56 - { if (Unk_58()) { data.delivery = a_type; } }
+		MagicSystem::Delivery    GetDelivery() const override;                                          // 57 - { return data.delivery; }
+		float                    GetFixedCastDuration() const override;                                 // 59 - { return (GetCastingType() == MagicSystem::CastingType::kConcentration) ? data.castDuration : 0.0; }
+		float                    GetRange() const override;                                             // 5A - { return data.range; }
+		bool                     IgnoresResistance() const override;                                    // 5B - { return (GetData()->flags >> 20) & 1; }
+		bool                     IgnoreLOS() const override;                                            // 5C - { return (GetData()->flags >> 19) & 1; }
+		bool                     GetNoAbsorb() const override;                                          // 5E - { return (GetData()->flags >> 21) & 1; }
+		bool                     GetNoDualCastModifications() const override;                           // 5F - { return (GetData()->flags >> 23) & 1; }
+		bool                     GetSkillUsageData(SkillUsageData& a_data) const override;              // 60
+		void                     AdjustCost(float& a_cost, Actor* a_actor) const override;              // 63
+		float                    GetChargeTime() const override;                                        // 64
+		ActorValue               GetAssociatedSkill() const override;                                   // 66
+		bool                     IsTwoHanded() const override;                                          // 67 - { BGSEquipSlot* equipSlot = BGSEquipType::GetEquipSlot(); return equipSlot && equipSlot->flags & 1; }
+		std::uint32_t            GetChunkID() override;                                                 // 68 - { return 'SPIT'; }
+		void                     CopyMagicItemData(MagicItem* a_src) override;                          // 69
+		void                     LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID) override;  // 6A
+		void                     LoadChunkDataPostProcess(TESFile* a_mod) override;                     // 6B
+		const MagicItem::Data*   GetData1() const override;                                             // 6C - { return &data; }
+		MagicItem::Data*         GetData2() override;                                                   // 6D - { return &data; }
+		std::uint32_t            GetDataSize() const override;                                          // 6E - { return 0x28; }
+		void                     InitFromChunk(TESFile* a_mod) override;                                // 6F
+		void                     InitChunk() override;                                                  // 70
 
 		// override (BGSMenuDisplayObject)
-		virtual TESBoundObject* GetMenuDisplayObject() const override;  // 04 - { return menuDispObject; }
+		[[nodiscard]] TESBoundObject* GetMenuDisplayObject() const override;  // 04 - { return menuDispObject; }
 
 		// members
 		Data data;  // C0 - SPIT

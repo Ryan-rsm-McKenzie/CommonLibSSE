@@ -36,20 +36,20 @@ namespace RE
 			kSpecialLoot = 1 << 3
 		};
 
-		virtual ~TESLeveledList();  // 00
+		~TESLeveledList() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;                // 01
-		virtual void ClearDataComponent() override;                     // 02
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
 		// add
-		virtual std::uint8_t GetChanceNone();                                      // 04 - { if (global) return global->value; else return chanceNone; }
-		virtual bool         GetMultCalc();                                        // 05 - { return (flags >> 1) & 1; }
-		virtual std::int32_t GetLevDifferenceMax();                                // 06 - { return 0; }
-		virtual bool         GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
+		virtual std::uint8_t       GetChanceNone();                                      // 04 - { if (global) return global->value; else return chanceNone; }
+		virtual bool               GetMultCalc();                                        // 05 - { return (flags >> 1) & 1; }
+		virtual std::int32_t       GetLevDifferenceMax();                                // 06 - { return 0; }
+		[[nodiscard]] virtual bool GetCanContainFormsOfType(FormType a_type) const = 0;  // 07
 
-		std::vector<TESForm*> GetContainedForms() const;
+		[[nodiscard]] std::vector<TESForm*> GetContainedForms() const;
 
 		// members
 		SimpleArray<LEVELED_OBJECT> entries;       // 08

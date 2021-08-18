@@ -51,9 +51,9 @@ namespace RE
 			struct Interval
 			{
 			public:
-				std::tm ConvertInterval(std::uint8_t a_time) const;
-				std::tm GetBeginTime() const;
-				std::tm GetEndTime() const;
+				[[nodiscard]] std::tm ConvertInterval(std::uint8_t a_time) const;
+				[[nodiscard]] std::tm GetBeginTime() const;
+				[[nodiscard]] std::tm GetEndTime() const;
 
 				// members
 				std::uint8_t begin;  // 0
@@ -61,9 +61,9 @@ namespace RE
 			};
 			static_assert(sizeof(Interval) == 0x2);
 
-			bool         IncludesMasser() const;
-			bool         IncludesSecunda() const;
-			std::uint8_t GetPhaseLength() const;
+			[[nodiscard]] bool         IncludesMasser() const;
+			[[nodiscard]] bool         IncludesSecunda() const;
+			[[nodiscard]] std::uint8_t GetPhaseLength() const;
 
 			// members
 			Interval                                        sunrise;          // 0
@@ -75,11 +75,11 @@ namespace RE
 		};
 		static_assert(sizeof(Timing) == 0x8);
 
-		virtual ~TESClimate();  // 00
+		~TESClimate() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;      // 04
-		virtual bool Load(TESFile* a_mod) override;  // 06
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
 		TESModel                   nightSky;                        // 20

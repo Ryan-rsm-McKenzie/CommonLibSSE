@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRegionList;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRegionList;
 
-		virtual ~ExtraRegionList();  // 00
+		~ExtraRegionList() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kRegionList; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kRegionList; }
 
 		// members
 		TESRegionList* list;  // 10

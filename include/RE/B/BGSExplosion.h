@@ -64,14 +64,14 @@ namespace RE
 			};
 		};
 
-		virtual ~BGSExplosion();  // 00
+		~BGSExplosion() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void        InitializeData() override;                            // 04
-		virtual bool        Load(TESFile* a_mod) override;                        // 06
-		virtual void        InitItemImpl() override;                              // 13
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
-		virtual void        UnClone3D(TESObjectREFR* a_ref) override;             // 41
+		void        InitializeData() override;                            // 04
+		bool        Load(TESFile* a_mod) override;                        // 06
+		void        InitItemImpl() override;                              // 13
+		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;  // 40
+		void        UnClone3D(TESObjectREFR* a_ref) override;             // 41
 
 		// members
 		BGSExplosionData data;  // 98 - DATA

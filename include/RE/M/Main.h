@@ -52,13 +52,13 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_Main;
 
-		virtual ~Main();  // 00
+		~Main() override;  // 00
 
 		// override (BSTEventSink<PositionPlayerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01 - { return BSEventNotifyControl::kContinue; }
+		BSEventNotifyControl ProcessEvent(const PositionPlayerEvent* a_event, BSTEventSource<PositionPlayerEvent>* a_eventSource) override;  // 01 - { return BSEventNotifyControl::kContinue; }
 
 		// override (BSTEventSink<BSGamerProfileEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
 
 		static Main* GetSingleton();
 

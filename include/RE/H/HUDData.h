@@ -36,7 +36,7 @@ namespace RE
 			kDungeon15 = 15
 		};
 
-		virtual ~HUDData();  // 00
+		~HUDData() override;  // 00
 
 		// members
 		stl::enumeration<Type, std::uint32_t>      type;       // 10

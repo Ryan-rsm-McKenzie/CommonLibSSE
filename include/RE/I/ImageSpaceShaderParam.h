@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ImageSpaceShaderParam;
 
-		virtual ~ImageSpaceShaderParam();  // 00
+		~ImageSpaceShaderParam() override;  // 00
 
 		// members
 		std::uint64_t                        unk08;  // 08
