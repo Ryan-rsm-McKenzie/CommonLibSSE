@@ -216,12 +216,12 @@ namespace SKSE
 				a_intfc->ReadRecordData(formID);
 				if (!a_intfc->ResolveFormID(formID, formID)) {
 					log::warn("Error reading formID ({:X})", formID);
-					return false;
+					continue;
 				}
 				a_intfc->ReadRecordData(vmHandle);
 				if (!a_intfc->ResolveHandle(vmHandle, vmHandle)) {
 					log::warn("Failed to resolve vmHandle ({})", vmHandle);
-					return false;
+					continue;
 				}
 				_handles.insert({ formID, vmHandle });
 			}

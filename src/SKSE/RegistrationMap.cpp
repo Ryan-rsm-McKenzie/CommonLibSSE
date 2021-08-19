@@ -244,63 +244,55 @@ namespace SKSE
 		{
 			assert(a_intfc);
 			std::size_t numKeys;
-			if (!a_intfc->ReadRecordData(numKeys)) {
-				log::warn("Error loading key count");
-				return false;
-			}
+			a_intfc->ReadRecordData(numKeys);
 
 			Locker locker(_lock);
 			_regs.clear();
 
-			for (std::size_t i = 0; i < numKeys; ++i) {
-				// Key
-				size_t keyIndex;
-				if (!a_intfc->ReadRecordData(keyIndex)) {
-					log::warn("Error reading key index");
-					continue;
-				}
-				Key curKey;
-				if (keyIndex == 0) {
-					std::string str;
-					size_t      str_size;
+			//Key
+			size_t keyIndex;
+			Key    curKey;
+			//string
+			std::string str;
+			size_t      str_size;
+			//formID
+			RE::FormID formID;
+			//formType
+			RE::FormType formType;
+			// Reg count
+			std::size_t numRegs;
+			// Regs
+			RE::VMHandle handle;
 
+			for (std::size_t i = 0; i < numKeys; ++i) {
+				//Key
+				a_intfc->ReadRecordData(keyIndex);
+				if (keyIndex == 0) {
 					a_intfc->ReadRecordData(str_size);
 					str.reserve(str_size);
 					a_intfc->ReadRecordData(str.data(), static_cast<std::uint32_t>(str_size));
-
 					curKey = str;
 				} else if (keyIndex == 1) {
-					RE::FormID formID;
-
 					a_intfc->ReadRecordData(formID);
 					if (a_intfc->ResolveFormID(formID, formID)) {
 						curKey = formID;
 					} else {
-						log::warn("Failed to resolve formID ({})", formID);
+						log::warn("Failed to resolve formID ({:X})", formID);
+						continue;
 					}
 				} else if (keyIndex == 2) {
-					RE::FormType formType;
-
 					a_intfc->ReadRecordData(formType);
 					curKey = formType;
 				}
 				// Reg count
-				std::size_t numRegs;
-				if (!a_intfc->ReadRecordData(numRegs)) {
-					log::warn("Error loading reg count or reg count is zero");
-					continue;
-				}
+				a_intfc->ReadRecordData(numRegs);
 				// Regs
-				RE::VMHandle handle;
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(handle);
 					if (!a_intfc->ResolveHandle(handle, handle)) {
 						log::warn("Failed to resolve handle ({})", handle);
 					} else {
-						auto result = _regs[curKey].insert(handle);
-						if (!result.second) {
-							log::error("Loaded duplicate handle ({})", handle);
-						}
+						_regs[curKey].insert(handle);
 					}
 				}
 			}

@@ -260,47 +260,38 @@ namespace SKSE
 			Locker locker(_lock);
 			_regs.clear();
 
-			for (std::size_t i = 0; i < numKeys; ++i) {
-				// Key
-				Key        curKey;
-				RE::FormID keyFormID;
-				bool       match;
+			// Key
+			Key        curKey;
+			RE::FormID keyFormID;
+			bool       match;
+			// Reg count
+			std::size_t numRegs;
+			// Regs
+			RE::FormID   targetFormID;
+			RE::VMHandle vmHandle;
 
-				a_intfc->ReadRecordData(keyFormID);
+		    for (std::size_t i = 0; i < numKeys; ++i) {
+			    a_intfc->ReadRecordData(keyFormID);
 				if (!a_intfc->ResolveFormID(keyFormID, keyFormID)) {
 					log::warn("Failed to resolve formID ({:X})", keyFormID);
-					return false;
+					continue;
 				}
 				a_intfc->ReadRecordData(match);
 				curKey = std::pair{ keyFormID, match };
 
-				// Reg count
-				std::size_t numRegs;
-				a_intfc->ReadRecordData(numRegs);
-				if (numRegs == 0) {
-					log::warn("Error loading reg count or reg count is zero");
-					return false;
-				}
-
-				// Regs
-				RE::FormID targetFormID;
-				RE::VMHandle  vmHandle;
+		        a_intfc->ReadRecordData(numRegs);
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(targetFormID);
 					if (!a_intfc->ResolveFormID(targetFormID, targetFormID)) {
 						log::warn("Error reading target formID ({:X})", targetFormID);
-						return false;
+						continue;
 					}
 					a_intfc->ReadRecordData(vmHandle);
 					if (!a_intfc->ResolveHandle(vmHandle, vmHandle)) {
 						log::warn("Failed to resolve handle ({})", vmHandle);
-						return false;
+						continue;
 					}
-
-					auto result = _regs[curKey].insert({ targetFormID, vmHandle });
-					if (!result.second) {
-						log::error("Loaded duplicate handle ({:X},{})", targetFormID, vmHandle);
-					}
+					_regs[curKey].insert({ targetFormID, vmHandle });
 				}
 			}
 
