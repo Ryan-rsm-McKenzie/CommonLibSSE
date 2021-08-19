@@ -185,7 +185,7 @@ namespace SKSE
 			Locker locker(_lock);
 			_handles.clear();
 
-		    RE::VMHandle handle;
+			RE::VMHandle handle;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(handle);
 				if (!a_intfc->ResolveHandle(handle, handle)) {

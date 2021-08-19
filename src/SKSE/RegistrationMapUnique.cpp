@@ -270,8 +270,8 @@ namespace SKSE
 			RE::FormID   targetFormID;
 			RE::VMHandle vmHandle;
 
-		    for (std::size_t i = 0; i < numKeys; ++i) {
-			    a_intfc->ReadRecordData(keyFormID);
+			for (std::size_t i = 0; i < numKeys; ++i) {
+				a_intfc->ReadRecordData(keyFormID);
 				if (!a_intfc->ResolveFormID(keyFormID, keyFormID)) {
 					log::warn("Failed to resolve formID ({:X})", keyFormID);
 					continue;
@@ -279,7 +279,7 @@ namespace SKSE
 				a_intfc->ReadRecordData(match);
 				curKey = std::pair{ keyFormID, match };
 
-		        a_intfc->ReadRecordData(numRegs);
+				a_intfc->ReadRecordData(numRegs);
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(targetFormID);
 					if (!a_intfc->ResolveFormID(targetFormID, targetFormID)) {
