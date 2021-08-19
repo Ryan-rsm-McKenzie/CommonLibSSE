@@ -265,7 +265,6 @@ namespace SKSE
 			RE::VMHandle handle;
 
 			for (std::size_t i = 0; i < numKeys; ++i) {
-				//Key
 				a_intfc->ReadRecordData(keyIndex);
 				if (keyIndex == 0) {
 					a_intfc->ReadRecordData(str_size);
@@ -284,9 +283,7 @@ namespace SKSE
 					a_intfc->ReadRecordData(formType);
 					curKey = formType;
 				}
-				// Reg count
 				a_intfc->ReadRecordData(numRegs);
-				// Regs
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(handle);
 					if (!a_intfc->ResolveHandle(handle, handle)) {
