@@ -40,6 +40,7 @@ namespace SKSE
 			void UnregisterAll(const RE::TESForm* a_form);
 			void UnregisterAll(const RE::BGSBaseAlias* a_alias);
 			void UnregisterAll(const RE::ActiveEffect* a_activeEffect);
+			void UnregisterAll(RE::VMHandle a_handle);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);

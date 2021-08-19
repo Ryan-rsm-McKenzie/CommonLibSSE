@@ -104,67 +104,67 @@ namespace SKSE
 		{
 			assert(a_activeEffect);
 
-			auto target = a_activeEffect->GetTargetActor();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+			const auto target = a_activeEffect->GetTargetActor();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				return Register(a_activeEffect, std::move(handle), std::move(a_key), RE::ActiveEffect::VMTYPEID);
-			} else {
-				return false;
+			if (formID != 0) {
+				return Register(a_activeEffect, std::move(formID), std::move(a_key), RE::ActiveEffect::VMTYPEID);
 			}
-		}
+
+		    return false;
+        }
 
 		bool RegistrationMapUniqueBase::Register(RE::BGSRefAlias* a_alias, Key a_key)
 		{
 			assert(a_alias);
 
-			auto target = a_alias->GetActorReference();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+			const auto target = a_alias->GetActorReference();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				return Register(a_alias, std::move(handle), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
-			} else {
-				return false;
+			if (formID != 0) {
+				return Register(a_alias, std::move(formID), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
 			}
-		}
+
+		    return false;
+        }
 
 		bool RegistrationMapUniqueBase::Unregister(RE::ActiveEffect* a_activeEffect, Key a_key)
 		{
 			assert(a_activeEffect);
 
-			auto target = a_activeEffect->GetTargetActor();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+            const auto target = a_activeEffect->GetTargetActor();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				return Unregister(a_activeEffect, std::move(handle), std::move(a_key), RE::ActiveEffect::VMTYPEID);
-			} else {
-				return false;
+			if (formID != 0) {
+				return Unregister(a_activeEffect, std::move(formID), std::move(a_key), RE::ActiveEffect::VMTYPEID);
 			}
-		}
+
+		    return false;
+        }
 
 		bool RegistrationMapUniqueBase::Unregister(RE::BGSRefAlias* a_alias, Key a_key)
 		{
 			assert(a_alias);
 
-			auto target = a_alias->GetActorReference();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+			const auto target = a_alias->GetActorReference();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				return Unregister(a_alias, std::move(handle), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
-			} else {
-				return false;
+			if (formID != 0) {
+				return Unregister(a_alias, std::move(formID), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
 			}
+
+		    return false;
 		}
 
 		void RegistrationMapUniqueBase::UnregisterAll(RE::ActiveEffect* a_activeEffect)
 		{
 			assert(a_activeEffect);
 
-			auto target = a_activeEffect->GetTargetActor();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+			const auto target = a_activeEffect->GetTargetActor();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				UnregisterAll(a_activeEffect, std::move(handle), RE::ActiveEffect::VMTYPEID);
+			if (formID != 0) {
+				UnregisterAll(a_activeEffect, std::move(formID), RE::ActiveEffect::VMTYPEID);
 			}
 		}
 
@@ -172,11 +172,11 @@ namespace SKSE
 		{
 			assert(a_alias);
 
-			auto target = a_alias->GetActorReference();
-			auto handle = target ? target->CreateRefHandle().native_handle() : 0;
+			const auto target = a_alias->GetActorReference();
+			const auto formID = target ? target->GetFormID() : 0;
 
-			if (handle != 0) {
-				UnregisterAll(a_alias, std::move(handle), RE::BGSRefAlias::VMTYPEID);
+			if (formID != 0) {
+				UnregisterAll(a_alias, std::move(formID), RE::BGSRefAlias::VMTYPEID);
 			}
 		}
 
@@ -236,9 +236,9 @@ namespace SKSE
 					return false;
 				}
 				// Regs
-				for (auto& [refHandle, vmHandle] : reg.second) {
-					if (!a_intfc->WriteRecordData(refHandle)) {
-						log::error("Failed to save reg ({})", refHandle);
+				for (auto& [formID, vmHandle] : reg.second) {
+					if (!a_intfc->WriteRecordData(formID)) {
+						log::error("Failed to save reg ({:X})", formID);
 						return false;
 					}
 					if (!a_intfc->WriteRecordData(vmHandle)) {
@@ -255,10 +255,7 @@ namespace SKSE
 		{
 			assert(a_intfc);
 			std::size_t numKeys;
-			if (!a_intfc->ReadRecordData(numKeys)) {
-				log::warn("Error loading key count");
-				return false;
-			}
+			a_intfc->ReadRecordData(numKeys);
 
 			Locker locker(_lock);
 			_regs.clear();
@@ -266,29 +263,32 @@ namespace SKSE
 			for (std::size_t i = 0; i < numKeys; ++i) {
 				// Key
 				Key        curKey;
-				RE::FormID formID;
+				RE::FormID keyFormID;
 				bool       match;
 
-				a_intfc->ReadRecordData(formID);
-				if (!a_intfc->ResolveFormID(formID, formID)) {
-					log::warn("Failed to resolve formID ({})", formID);
+				a_intfc->ReadRecordData(keyFormID);
+				if (!a_intfc->ResolveFormID(keyFormID, keyFormID)) {
+					log::warn("Failed to resolve formID ({:X})", keyFormID);
 					return false;
 				}
 				a_intfc->ReadRecordData(match);
+				curKey = std::pair{ keyFormID, match };
 
-				curKey = std::pair{ formID, match };
 				// Reg count
 				std::size_t numRegs;
-				if (!a_intfc->ReadRecordData(numRegs)) {
+				a_intfc->ReadRecordData(numRegs);
+				if (numRegs == 0) {
 					log::warn("Error loading reg count or reg count is zero");
 					return false;
 				}
+
 				// Regs
-				RE::RefHandle refHandle;
+				RE::FormID targetFormID;
 				RE::VMHandle  vmHandle;
 				for (std::size_t k = 0; k < numRegs; ++k) {
-					if (!a_intfc->ReadRecordData(refHandle)) {
-						log::warn("Error reading refHandle ({})", refHandle);
+					a_intfc->ReadRecordData(targetFormID);
+					if (!a_intfc->ResolveFormID(targetFormID, targetFormID)) {
+						log::warn("Error reading target formID ({:X})", targetFormID);
 						return false;
 					}
 					a_intfc->ReadRecordData(vmHandle);
@@ -297,9 +297,9 @@ namespace SKSE
 						return false;
 					}
 
-					auto result = _regs[curKey].insert({ refHandle, vmHandle });
+					auto result = _regs[curKey].insert({ targetFormID, vmHandle });
 					if (!result.second) {
-						log::error("Loaded duplicate handle ({},{})", refHandle, vmHandle);
+						log::error("Loaded duplicate handle ({:X},{})", targetFormID, vmHandle);
 					}
 				}
 			}
@@ -312,7 +312,7 @@ namespace SKSE
 			Clear();
 		}
 
-		bool RegistrationMapUniqueBase::Register(const void* a_object, RE::RefHandle a_refHandle, Key a_key, RE::VMTypeID a_typeID)
+		bool RegistrationMapUniqueBase::Register(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
 		{
 			assert(a_object);
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -330,18 +330,17 @@ namespace SKSE
 			}
 
 			_lock.lock();
-			auto result = _regs[a_key].insert({ a_refHandle, handle });
+			auto result = _regs[a_key].insert({ a_formID, handle });
 			_lock.unlock();
 
-			if (!result.second) {
-				//log::warn("Handle already registered in key : ({})", handle);
-			} else {
+			if (result.second) {
 				policy->PersistHandle(handle);
 			}
-			return result.second;
+
+		    return result.second;
 		}
 
-		bool RegistrationMapUniqueBase::Unregister(const void* a_object, std::uint32_t a_refHandle, Key a_key, RE::VMTypeID a_typeID)
+		bool RegistrationMapUniqueBase::Unregister(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
 		{
 			assert(a_object);
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -359,10 +358,9 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto   handlePair = std::pair{ a_refHandle, handle };
+			auto   handlePair = std::pair{ a_formID, handle };
 			auto   it = _regs[a_key].find(handlePair);
 			if (it == _regs[a_key].end()) {
-				log::warn("Could not find registration");
 				return false;
 			} else {
 				policy->ReleaseHandle((*it).second);
@@ -371,7 +369,7 @@ namespace SKSE
 			}
 		}
 
-		void RegistrationMapUniqueBase::UnregisterAll(const void* a_object, std::uint32_t a_refHandle, RE::VMTypeID a_typeID)
+		void RegistrationMapUniqueBase::UnregisterAll(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID)
 		{
 			assert(a_object);
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -389,11 +387,29 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto   handlePair = std::pair{ a_refHandle, handle };
+			auto   handlePair = std::pair{ a_formID, handle };
 			for (auto i = _regs.begin(); i != _regs.end(); i++) {
 				auto result = i->second.erase(handlePair);
 				if (result != 0) {
 					policy->ReleaseHandle(handle);
+				}
+			}
+		}
+
+		void RegistrationMapUniqueBase::UnregisterAll(RE::VMHandle a_handle)
+		{
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				log::error("Failed to get handle policy!");
+				return;
+			}
+
+			Locker locker(_lock);
+			for (auto i = _regs.begin(); i != _regs.end(); i++) {
+				auto result = std::erase_if(i->second, [&](const auto& handlePair) { return handlePair.second == a_handle; });
+				if (result != 0) {
+					policy->ReleaseHandle(a_handle);
 				}
 			}
 		}

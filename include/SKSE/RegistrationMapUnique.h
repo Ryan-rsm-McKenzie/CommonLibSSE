@@ -25,7 +25,7 @@ namespace SKSE
 		{
 		public:
 			using Key = std::pair<RE::FormID, bool>;
-			using Handles = std::pair<RE::RefHandle, RE::VMHandle>;
+			using Handles = std::pair<RE::FormID, RE::VMHandle>;
 
 			RegistrationMapUniqueBase() = delete;
 			RegistrationMapUniqueBase(const std::string_view& a_eventName);
@@ -42,6 +42,7 @@ namespace SKSE
 			bool Unregister(RE::BGSRefAlias* a_alias, Key a_key);
 			void UnregisterAll(RE::ActiveEffect* a_activeEffect);
 			void UnregisterAll(RE::BGSRefAlias* a_alias);
+			void UnregisterAll(RE::VMHandle a_handle);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -52,12 +53,12 @@ namespace SKSE
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
 
-			bool Register(const void* a_object, RE::RefHandle a_refHandle, Key a_key, RE::VMTypeID a_typeID);
-			bool Unregister(const void* a_object, RE::RefHandle a_refHandle, Key a_key, RE::VMTypeID a_typeID);
-			void UnregisterAll(const void* a_object, RE::RefHandle a_refHandle, RE::VMTypeID a_typeID);
+			bool Register(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID);
+			bool Unregister(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID);
+			void UnregisterAll(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 
 			template <class T>
-			inline bool GetMatch(T* a_filter, RE::TESForm* a_form, bool a_match)
+			bool GetMatch(T* a_filter, RE::TESForm* a_form, bool a_match)
 			{
 				bool result = false;
 
@@ -65,20 +66,26 @@ namespace SKSE
 					switch (a_form->GetFormType()) {
 					case T::FORMTYPE:
 						{
-							result = a_match ? a_filter == a_form : a_filter != a_form;
+							result = a_match ?
+                                         a_filter == a_form :
+                                         a_filter != a_form;
 						}
 						break;
 					case RE::FormType::Keyword:
 						{
 							if (auto keyword = a_form->As<RE::BGSKeyword>(); keyword) {
-								result = a_match ? a_filter->HasKeyword(keyword) : !a_filter->HasKeyword(keyword);
+								result = a_match ?
+                                             a_filter->HasKeyword(keyword) :
+                                             !a_filter->HasKeyword(keyword);
 							}
 						}
 						break;
 					case RE::FormType::FormList:
 						{
 							if (auto list = a_form->As<RE::BGSListForm>(); list) {
-								result = a_match ? a_filter->HasKeywords(list, false) : !a_filter->HasKeywords(list, false);
+								result = a_match ?
+                                             a_filter->HasKeywords(list, false) :
+                                             !a_filter->HasKeywords(list, false);
 							}
 						}
 						break;
@@ -133,9 +140,9 @@ namespace SKSE
 					auto& [filterID, match] = key;
 					auto form = RE::TESForm::LookupByID(filterID);
 					if (GetMatch(a_filter, form, match)) {
-						auto targetHandle{ a_target->CreateRefHandle().native_handle() };
-						for (auto& [refHandle, vmHandle] : handles) {
-							if (refHandle == targetHandle) {
+                        const auto targetFormID = a_target->GetFormID();
+						for (auto& [formID, vmHandle] : handles) {
+							if (formID == targetFormID) {
 								auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 								vm->SendEvent(vmHandle, eventName, args);
 							}
@@ -196,9 +203,9 @@ namespace SKSE
 						auto& [filterID, match] = key;
 						auto form = RE::TESForm::LookupByID(filterID);
 						if (GetMatch(a_filter, form, match)) {
-							auto targetHandle{ a_target->CreateRefHandle().native_handle() };
-							for (auto& [refHandle, vmHandle] : handles) {
-								if (refHandle == targetHandle) {
+							const auto targetFormID = a_target->GetFormID();
+							for (auto& [formID, vmHandle] : handles) {
+								if (formID == targetFormID) {
 									auto args = RE::MakeFunctionArguments();
 									vm->SendEvent(vmHandle, eventName, args);
 								}

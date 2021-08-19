@@ -20,7 +20,7 @@ namespace SKSE
 		class RegistrationSetUniqueBase
 		{
 		public:
-			using Handles = std::pair<RE::RefHandle, RE::VMHandle>;
+			using Handles = std::pair<RE::FormID, RE::VMHandle>;
 
 			RegistrationSetUniqueBase() = delete;
 			RegistrationSetUniqueBase(const std::string_view& a_eventName);
@@ -35,6 +35,7 @@ namespace SKSE
 			bool Register(RE::ActiveEffect* a_activeEffect);
 			bool Unregister(RE::BGSRefAlias* a_alias);
 			bool Unregister(RE::ActiveEffect* a_activeEffect);
+			bool Unregister(RE::VMHandle a_handle);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);
@@ -45,8 +46,8 @@ namespace SKSE
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
 
-			bool Register(const void* a_object, RE::RefHandle a_refHandle, RE::VMTypeID a_typeID);
-			bool Unregister(const void* a_object, RE::RefHandle a_refHandle, RE::VMTypeID a_typeID);
+			bool Register(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
+			bool Unregister(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 
 			std::set<Handles> _handles;
 			std::string       _eventName;
@@ -88,9 +89,9 @@ namespace SKSE
 
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 
-				auto targetHandle{ a_target->CreateRefHandle().native_handle() };
-				for (auto& [refHandle, vmHandle] : _handles) {
-					if (refHandle == targetHandle) {
+				const auto targetFormID = a_target->GetFormID();
+				for (auto& [formID, vmHandle] : _handles) {
+					if (formID == targetFormID) {
 						auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 						vm->SendEvent(vmHandle, eventName, args);
 					}
@@ -144,9 +145,9 @@ namespace SKSE
 
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 				if (vm) {
-					auto targetHandle{ a_target->CreateRefHandle().native_handle() };
-					for (auto& [refHandle, vmHandle] : _handles) {
-						if (refHandle == targetHandle) {
+					const auto targetFormID = a_target->GetFormID();
+					for (auto& [formID, vmHandle] : _handles) {
+						if (formID == targetFormID) {
 							auto args = RE::MakeFunctionArguments();
 							vm->SendEvent(vmHandle, eventName, args);
 						}

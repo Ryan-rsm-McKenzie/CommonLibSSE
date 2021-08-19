@@ -334,11 +334,10 @@ namespace SKSE
 			auto result = _regs[a_key].insert(handle);
 			_lock.unlock();
 
-			if (!result.second) {
-				//log::warn("Handle already registered in key : ({})", handle);
-			} else {
+			if (result.second) {
 				policy->PersistHandle(handle);
 			}
+
 			return result.second;
 		}
 
@@ -362,7 +361,6 @@ namespace SKSE
 			Locker locker(_lock);
 			auto   it = _regs[a_key].find(handle);
 			if (it == _regs[a_key].end()) {
-				//log::warn("Could not find registration");
 				return false;
 			} else {
 				policy->ReleaseHandle(*it);
@@ -393,6 +391,24 @@ namespace SKSE
 				auto result = i->second.erase(handle);
 				if (result != 0) {
 					policy->ReleaseHandle(handle);
+				}
+			}
+		}
+
+		void RegistrationMapBase::UnregisterAll(RE::VMHandle a_handle)
+		{
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				log::error("Failed to get handle policy!");
+				return;
+			}
+
+			Locker locker(_lock);
+			for (auto i = _regs.begin(); i != _regs.end(); i++) {
+				auto result = i->second.erase(a_handle);
+				if (result != 0) {
+					policy->ReleaseHandle(a_handle);
 				}
 			}
 		}

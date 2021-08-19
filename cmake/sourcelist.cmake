@@ -1300,10 +1300,8 @@ set(SOURCES
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
 	include/SKSE/RegistrationMap.h
-	include/SKSE/RegistrationMapUnique.cpp
 	include/SKSE/RegistrationMapUnique.h
 	include/SKSE/RegistrationSet.h
-	include/SKSE/RegistrationSetUnique.cpp
 	include/SKSE/RegistrationSetUnique.h
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
@@ -1584,6 +1582,8 @@ set(SOURCES
 	src/SKSE/Interfaces.cpp
 	src/SKSE/Logger.cpp
 	src/SKSE/RegistrationMap.cpp
+	src/SKSE/RegistrationMapUnique.cpp
 	src/SKSE/RegistrationSet.cpp
+	src/SKSE/RegistrationSetUnique.cpp
 	src/SKSE/Trampoline.cpp
 )

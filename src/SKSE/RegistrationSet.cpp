@@ -190,10 +190,7 @@ namespace SKSE
 				if (!a_intfc->ResolveHandle(handle, handle)) {
 					log::warn("Failed to resolve handle ({})", handle);
 				} else {
-					auto result = _handles.insert(handle);
-					if (!result.second) {
-						//log::error("Loaded duplicate handle ({})", handle);
-					}
+					_handles.insert(handle);
 				}
 			}
 
@@ -226,12 +223,11 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 
-			if (!result.second) {
-				//log::warn("Handle already registered ({})", handle);
-			} else {
+			if (result.second) {
 				policy->PersistHandle(handle);
 			}
-			return result.second;
+
+		    return result.second;
 		}
 
 		bool RegistrationSetBase::Unregister(const void* a_object, RE::VMTypeID a_typeID)
@@ -254,7 +250,26 @@ namespace SKSE
 			Locker locker(_lock);
 			auto   it = _handles.find(handle);
 			if (it == _handles.end()) {
-				log::warn("Could not find registration");
+				return false;
+			} else {
+				policy->ReleaseHandle(*it);
+				_handles.erase(it);
+				return true;
+			}
+		}
+
+		bool RegistrationSetBase::Unregister(RE::VMHandle a_handle)
+		{
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				log::error("Failed to get handle policy!");
+				return false;
+			}
+
+			Locker locker(_lock);
+			auto   it = _handles.find(a_handle);
+			if (it == _handles.end()) {
 				return false;
 			} else {
 				policy->ReleaseHandle(*it);
