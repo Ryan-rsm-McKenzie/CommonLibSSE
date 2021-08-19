@@ -227,7 +227,7 @@ namespace SKSE
 				policy->PersistHandle(handle);
 			}
 
-		    return result.second;
+			return result.second;
 		}
 
 		bool RegistrationSetBase::Unregister(const void* a_object, RE::VMTypeID a_typeID)

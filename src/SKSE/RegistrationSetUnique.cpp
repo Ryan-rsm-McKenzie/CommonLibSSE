@@ -301,7 +301,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			auto   it = std::ranges::find_if(_handles, [&](const auto& handlePair) { return handlePair.second == a_handle;});
+			auto   it = std::ranges::find_if(_handles, [&](const auto& handlePair) { return handlePair.second == a_handle; });
 			if (it == _handles.end()) {
 				return false;
 			} else {
