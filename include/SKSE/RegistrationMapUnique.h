@@ -140,7 +140,7 @@ namespace SKSE
 					auto& [filterID, match] = key;
 					auto form = RE::TESForm::LookupByID(filterID);
 					if (GetMatch(a_filter, form, match)) {
-                        const auto targetFormID = a_target->GetFormID();
+						const auto targetFormID = a_target->GetFormID();
 						for (auto& [formID, vmHandle] : handles) {
 							if (formID == targetFormID) {
 								auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);

@@ -111,8 +111,8 @@ namespace SKSE
 				return Register(a_activeEffect, std::move(formID), std::move(a_key), RE::ActiveEffect::VMTYPEID);
 			}
 
-		    return false;
-        }
+			return false;
+		}
 
 		bool RegistrationMapUniqueBase::Register(RE::BGSRefAlias* a_alias, Key a_key)
 		{
@@ -125,22 +125,22 @@ namespace SKSE
 				return Register(a_alias, std::move(formID), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
 			}
 
-		    return false;
-        }
+			return false;
+		}
 
 		bool RegistrationMapUniqueBase::Unregister(RE::ActiveEffect* a_activeEffect, Key a_key)
 		{
 			assert(a_activeEffect);
 
-            const auto target = a_activeEffect->GetTargetActor();
+			const auto target = a_activeEffect->GetTargetActor();
 			const auto formID = target ? target->GetFormID() : 0;
 
 			if (formID != 0) {
 				return Unregister(a_activeEffect, std::move(formID), std::move(a_key), RE::ActiveEffect::VMTYPEID);
 			}
 
-		    return false;
-        }
+			return false;
+		}
 
 		bool RegistrationMapUniqueBase::Unregister(RE::BGSRefAlias* a_alias, Key a_key)
 		{
@@ -153,7 +153,7 @@ namespace SKSE
 				return Unregister(a_alias, std::move(formID), std::move(a_key), RE::BGSRefAlias::VMTYPEID);
 			}
 
-		    return false;
+			return false;
 		}
 
 		void RegistrationMapUniqueBase::UnregisterAll(RE::ActiveEffect* a_activeEffect)
@@ -328,7 +328,7 @@ namespace SKSE
 				policy->PersistHandle(handle);
 			}
 
-		    return result.second;
+			return result.second;
 		}
 
 		bool RegistrationMapUniqueBase::Unregister(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
