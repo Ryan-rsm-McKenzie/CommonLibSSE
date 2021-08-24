@@ -18,6 +18,7 @@
 namespace RE
 {
 	enum class LOCK_LEVEL;
+	class hkpCollidable;
 	class Actor;
 	class ActorCause;
 	class BGSAnimationSequencer;
@@ -335,7 +336,7 @@ namespace RE
 		virtual bool                              IsDead(bool a_notEssential = true) const;                                                                                                                                                                    // 99
 		virtual BSAnimNoteReceiver*               CreateAnimNoteReceiver();                                                                                                                                                                                    // 9A
 		virtual BSAnimNoteReceiver*               GetAnimNoteReceiver();                                                                                                                                                                                       // 9B
-		virtual void                              Unk_9C(void);                                                                                                                                                                                                // 9C
+		virtual bool                              ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);                                                                                                                         // 9C
 		virtual void                              Unk_9D(void);                                                                                                                                                                                                // 9D - { return 0; }
 		virtual TESAmmo*                          GetCurrentAmmo() const;                                                                                                                                                                                      // 9E - { return 0; }
 		virtual BGSDecalGroup*                    GetDecalGroup() const;                                                                                                                                                                                       // 9F

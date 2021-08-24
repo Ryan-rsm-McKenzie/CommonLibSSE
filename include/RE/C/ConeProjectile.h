@@ -15,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ConeProjectile;
+		inline static constexpr auto VTABLE = VTABLE_ConeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileCone;
 
 		struct RecordFlags
@@ -43,6 +44,11 @@ namespace RE
 
 		// add
 		virtual void Unk_C2(void);  // C2 - { return 1; }
+
+		inline float GetHeight() const
+		{
+			return initialCollisionSphereRadius * 2;
+		}
 
 		// members
 		ImpactResult             impactResult;                  // 1D8

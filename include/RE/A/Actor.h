@@ -320,7 +320,7 @@ namespace RE
 		void                    Unk_96(void) override;                                                                                                                                                                                                // 096
 		void                    SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                                                        // 098
 		bool                    IsDead(bool a_notEssential = true) const override;                                                                                                                                                                    // 099
-		void                    Unk_9C(void) override;                                                                                                                                                                                                // 09C
+		bool                    ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime) override;                                                                                                                         // 09C
 		void                    Unk_9D(void) override;                                                                                                                                                                                                // 09D
 		TESAmmo*                GetCurrentAmmo() const override;                                                                                                                                                                                      // 09E
 		void                    UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                                                                 // 0A1
@@ -509,6 +509,7 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
+		bool                         HasKeywordString(std::string_view a_formEditorID);
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;

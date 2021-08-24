@@ -48,6 +48,7 @@ set(SOURCES
 	include/RE/B/BGSAbilityPerkEntry.h
 	include/RE/B/BGSAcousticSpace.h
 	include/RE/B/BGSAction.h
+	include/RE/B/BGSActorCellEvent.h
 	include/RE/B/BGSActorEvent.h
 	include/RE/B/BGSAddonNode.h
 	include/RE/B/BGSAnimationSequencer.h
@@ -71,6 +72,7 @@ set(SOURCES
 	include/RE/B/BGSDebris.h
 	include/RE/B/BGSDecalGroup.h
 	include/RE/B/BGSDecalManager.h
+	include/RE/B/BGSDecalNode.h
 	include/RE/B/BGSDefaultObjectManager.h
 	include/RE/B/BGSDestructibleObjectForm.h
 	include/RE/B/BGSDialogueBranch.h
@@ -238,7 +240,11 @@ set(SOURCES
 	include/RE/B/BSLightingShaderProperty.h
 	include/RE/B/BSMaterialObject.h
 	include/RE/B/BSMouseDevice.h
+	include/RE/B/BSMultiBound.h
+	include/RE/B/BSMultiBoundAABB.h
 	include/RE/B/BSMultiBoundNode.h
+	include/RE/B/BSMultiBoundOBB.h
+	include/RE/B/BSMultiBoundShape.h
 	include/RE/B/BSMultiIndexTriShape.h
 	include/RE/B/BSMusicEvent.h
 	include/RE/B/BSMusicManager.h
@@ -430,6 +436,7 @@ set(SOURCES
 	include/RE/E/EnchantmentItem.h
 	include/RE/E/ErrorCodes.h
 	include/RE/E/ErrorLogger.h
+	include/RE/E/Explosion.h
 	include/RE/E/ExtraAction.h
 	include/RE/E/ExtraActivateLoopSound.h
 	include/RE/E/ExtraActivateRef.h
@@ -921,6 +928,7 @@ set(SOURCES
 	include/RE/M/MapMoveHandler.h
 	include/RE/M/MapZoomHandler.h
 	include/RE/M/MarkerUsedData.h
+	include/RE/M/MaterialIDs.h
 	include/RE/M/MemoryHeap.h
 	include/RE/M/MemoryManager.h
 	include/RE/M/MemoryPage.h
@@ -1256,6 +1264,7 @@ set(SOURCES
 	include/RE/T/TESValueForm.h
 	include/RE/T/TESWaitStopEvent.h
 	include/RE/T/TESWaterForm.h
+	include/RE/T/TESWaterObject.h
 	include/RE/T/TESWeather.h
 	include/RE/T/TESWeightForm.h
 	include/RE/T/TESWordOfPower.h

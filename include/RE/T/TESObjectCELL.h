@@ -19,7 +19,8 @@
 
 namespace RE
 {
-	class bhkWorld;
+    class BSTempEffectParticle;
+    class bhkWorld;
 	class BSPortalGraph;
 	class NavMesh;
 	class NiNode;
@@ -206,6 +207,9 @@ namespace RE
 		bool     IsAttached() const;
 		bool     IsExteriorCell() const;
 		bool     IsInteriorCell() const;
+
+		BSTempEffectParticle* PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target);
+
 		void     SetActorOwner(TESNPC* a_owner);
 		void     SetFactionOwner(TESFaction* a_owner);
 		void     SetFogColor(Color a_near, Color a_far);

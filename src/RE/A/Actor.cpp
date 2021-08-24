@@ -412,6 +412,12 @@ namespace RE
 		return nullptr;
 	}
 
+	bool Actor::HasKeywordString(std::string_view a_formEditorID)
+	{
+        const auto base = GetActorBase();
+		return base && base->HasKeyword(a_formEditorID);
+	}
+
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);

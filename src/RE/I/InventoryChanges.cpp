@@ -41,6 +41,13 @@ namespace RE
 		return func(this);
 	}
 
+	std::uint32_t InventoryChanges::GetWornMask()
+	{
+		using func_t = decltype(&InventoryChanges::GetWornMask);
+		REL::Relocation<func_t> func{ REL::ID(15806) };
+		return func(this);
+	}
+
 	void InventoryChanges::SendContainerChangedEvent(ExtraDataList* a_itemExtraList, TESObjectREFR* a_fromRefr, TESForm* a_item, std::int32_t a_count)
 	{
 		using func_t = decltype(&InventoryChanges::SendContainerChangedEvent);

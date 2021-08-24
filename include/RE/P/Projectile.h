@@ -1,11 +1,12 @@
 #pragma once
 
+#include "RE/B/BGSProjectile.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
-#include "RE/M/MagicSystem.h"
+#include "RE/I/ImpactResults.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 #include "RE/T/TESObjectREFR.h"
@@ -14,6 +15,7 @@ namespace RE
 {
 	class bhkCollisionObject;
 	class bhkSimpleShapePhantom;
+	class BGSMaterialType;
 	class QueuedFile;
 
 	class Projectile : public TESObjectREFR
@@ -25,16 +27,19 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint64_t                 unk00;     // 00
-			std::uint64_t                 unk08;     // 08
-			std::uint64_t                 unk10;     // 10
-			ObjectRefHandle               collidee;  // 18
-			NiPointer<bhkCollisionObject> colObj;    // 20
-			std::uint64_t                 unk28;     // 28
-			std::uint64_t                 unk30;     // 30
-			std::uint64_t                 unk38;     // 38
-			std::uint64_t                 unk40;     // 40
-			std::uint64_t                 unk48;     // 48
+			NiPoint3                      desiredTargetLoc;    // 00
+			NiPoint3                      negativeVelocity;    // 0C
+			ObjectRefHandle               collidee;            // 18
+			NiPointer<bhkCollisionObject> colObj;              // 20
+			BGSMaterialType*              material;            // 28
+			std::int32_t                  damageRootNodeType;  // 30
+			std::uint32_t                 unk34;               // 34
+			NiNode*                       damageRootNode;      // 38
+			ImpactResult                  impactResult;        // 40
+			std::uint16_t                 unk44;               // 44
+			std::uint16_t                 unk46;               // 46
+			std::uint8_t                  unk48;               // 48
+			std::uint8_t                  unk49;               // 49
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 
@@ -95,6 +100,13 @@ namespace RE
 		virtual void Unk_BF(void);                   // BF - { return; }
 		virtual void Handle3DLoaded();               // C0 - { return; }
 		virtual void Unk_C1(void);                   // C1 - { return 0; }
+
+		inline float GetHeight() const
+		{
+			auto obj = GetObjectReference();
+			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
+		}
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098

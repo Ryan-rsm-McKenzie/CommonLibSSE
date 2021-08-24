@@ -2,6 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FormTypes.h"
+#include "RE/M/MaterialIDs.h"
 #include "RE/N/NiColor.h"
 #include "RE/T/TESForm.h"
 
@@ -39,7 +40,7 @@ namespace RE
 		// members
 		BGSMaterialType*                      parentType;          // 20 - PNAM
 		BSFixedString                         materialName;        // 28 - MNAM
-		std::uint32_t                         materialID;          // 30
+		MATERIAL_ID                           materialID;          // 30
 		NiColor                               materialColor;       // 34 - CNAM
 		float                                 buoyancy;            // 40 - BNAM
 		stl::enumeration<FLAG, std::uint32_t> flags;               // 44 - FNAM

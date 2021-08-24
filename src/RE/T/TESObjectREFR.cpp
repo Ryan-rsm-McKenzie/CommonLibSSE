@@ -450,7 +450,8 @@ namespace RE
 
 	float TESObjectREFR::GetWaterHeight() const
 	{
-		float waterHeight, flt_max = -NI_INFINITY;
+		float           waterHeight = -NI_INFINITY;
+		constexpr float flt_max = -NI_INFINITY;
 
 		if (loadedData) {
 			waterHeight = loadedData->relevantWaterHeight;
