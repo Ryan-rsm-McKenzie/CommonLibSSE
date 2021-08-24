@@ -19,8 +19,8 @@
 
 namespace RE
 {
-    class BSTempEffectParticle;
-    class bhkWorld;
+	class BSTempEffectParticle;
+	class bhkWorld;
 	class BSPortalGraph;
 	class NavMesh;
 	class NiNode;
@@ -210,15 +210,15 @@ namespace RE
 
 		BSTempEffectParticle* PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target);
 
-		void     SetActorOwner(TESNPC* a_owner);
-		void     SetFactionOwner(TESFaction* a_owner);
-		void     SetFogColor(Color a_near, Color a_far);
-		void     SetFogPlanes(float a_near, float a_far);
-		void     SetFogPower(float a_power);
-		void     SetHandChanged(bool a_changed);
-		void     SetOwner(TESForm* a_owner);
-		void     SetPublic(bool a_public);
-		bool     UsesSkyLighting() const;
+		void SetActorOwner(TESNPC* a_owner);
+		void SetFactionOwner(TESFaction* a_owner);
+		void SetFogColor(Color a_near, Color a_far);
+		void SetFogPlanes(float a_near, float a_far);
+		void SetFogPower(float a_power);
+		void SetHandChanged(bool a_changed);
+		void SetOwner(TESForm* a_owner);
+		void SetPublic(bool a_public);
+		bool UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock                        grassCreateLock;   // 030

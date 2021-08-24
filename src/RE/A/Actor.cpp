@@ -414,7 +414,7 @@ namespace RE
 
 	bool Actor::HasKeywordString(std::string_view a_formEditorID)
 	{
-        const auto base = GetActorBase();
+		const auto base = GetActorBase();
 		return base && base->HasKeyword(a_formEditorID);
 	}
 

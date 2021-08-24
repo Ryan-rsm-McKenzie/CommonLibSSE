@@ -15,7 +15,7 @@ namespace RE
 			{
 				kNone = 0x00,
 
-			    kEscape = 0x01,
+				kEscape = 0x01,
 				kNum1 = 0x02,
 				kNum2 = 0x03,
 				kNum3 = 0x04,

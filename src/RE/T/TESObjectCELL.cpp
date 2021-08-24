@@ -83,7 +83,7 @@ namespace RE
 
 	float TESObjectCELL::GetWaterHeight() const
 	{
-        constexpr auto height = -NI_INFINITY;
+		constexpr auto height = -NI_INFINITY;
 
 		if (cellFlags.none(Flag::kHasWater) || cellFlags.any(Flag::kIsInteriorCell)) {
 			return height;
