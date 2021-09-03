@@ -146,8 +146,8 @@ namespace RE
 		void                               InitItem(TESForm* a_form) override;  // 02
 		[[nodiscard]] const BSFixedString& QType() const override;              // 03 - { return "Ref"; }
 
-		TESObjectREFR* GetReference();
-		Actor*         GetActorReference();
+		TESObjectREFR* GetReference() const;
+		Actor*         GetActorReference() const;
 
 		// members
 		GenericFillData fillData;    // 28

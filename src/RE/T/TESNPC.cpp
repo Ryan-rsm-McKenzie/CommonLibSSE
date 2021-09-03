@@ -37,6 +37,16 @@ namespace RE
 		return func(this, a_target);
 	}
 
+	bool TESNPC::ContainsKeyword(std::string_view a_editorID)
+	{
+		if (ContainsKeywordString(a_editorID)) {
+			return true;
+		} else if (auto npcRace = GetRace(); npcRace && npcRace->ContainsKeywordString(a_editorID)) {
+			return true;
+		}
+		return false;
+	}
+
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
 	{
 		using func_t = decltype(&TESNPC::GetBaseOverlays);

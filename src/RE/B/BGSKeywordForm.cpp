@@ -1,6 +1,7 @@
 #include "RE/B/BGSKeywordForm.h"
 
 #include "RE/B/BGSKeyword.h"
+#include "SKSE/Impl/Util.h"
 
 namespace RE
 {
@@ -19,6 +20,19 @@ namespace RE
 			keywords[numKeywords - 1] = a_keyword;
 			return true;
 		}
+		return false;
+	}
+
+	bool BGSKeywordForm::ContainsKeywordString(std::string_view a_editorID) const
+	{
+		if (keywords) {
+			for (std::uint32_t idx = 0; idx < numKeywords; ++idx) {
+				if (keywords[idx] && stl::string::icontains(keywords[idx]->formEditorID, a_editorID)) {
+					return true;
+				}
+			}
+		}
+
 		return false;
 	}
 

@@ -5,23 +5,23 @@
 
 namespace RE
 {
-	TESObjectREFR* BGSRefAlias::GetReference()
-	{
+	TESObjectREFR* BGSRefAlias::GetReference() const
+    {
 		TESObjectREFR* ref = nullptr;
 		const auto     owner = owningQuest;
 		if (owner) {
 			ObjectRefHandle handle{};
 			owner->CreateRefHandleByAliasID(handle, aliasID);
 
-			auto refPtr = handle.get();
+            const auto refPtr = handle.get();
 			ref = refPtr.get();
 		}
 		return ref;
 	}
 
-	Actor* BGSRefAlias::GetActorReference()
-	{
-		auto ref = GetReference();
+	Actor* BGSRefAlias::GetActorReference() const
+    {
+        const auto ref = GetReference();
 		return ref ? ref->As<Actor>() : nullptr;
 	}
 }
