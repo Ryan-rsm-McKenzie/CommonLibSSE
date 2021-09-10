@@ -41,6 +41,22 @@ namespace RE
 		kHasDialogueData = 1 << 15
 	};
 
+	enum class QuestType
+	{
+		kNone = 0,
+		kMainQuest = 1,
+		kMagesGuild = 2,
+		kThievesGuild = 3,
+		kDarkBrotherhood = 4,
+		kCompanionsQuest = 5,
+		kMiscellaneous = 6,
+		kDaedric = 7,
+		kSideQuest = 8,
+		kCivilWar = 9,
+		kDLC01_Vampire = 10,
+		kDLC02_Dragonborn = 11
+	};
+
 	enum class QUEST_OBJECTIVE_FLAGS
 	{
 		kNone = 0,
@@ -85,27 +101,11 @@ namespace RE
 	struct QUEST_DATA  // DNAM
 	{
 	public:
-		enum class Type
-		{
-			kNone = 0,
-			kMainQuest = 1,
-			kMagesGuild = 2,
-			kThievesGuild = 3,
-			kDarkBrotherhood = 4,
-			kCompanionsQuest = 5,
-			kMiscellaneous = 6,
-			kDaedric = 7,
-			kSideQuest = 8,
-			kCivilWar = 9,
-			kDLC01_Vampire = 10,
-			kDLC02_Dragonborn = 11
-		};
-
 		// members
 		float                                      questDelayTime;  // 0
 		stl::enumeration<QuestFlag, std::uint16_t> flags;           // 4
 		std::int8_t                                priority;        // 6
-		stl::enumeration<Type, std::uint8_t>       questType;       // 7
+		stl::enumeration<QuestType, std::uint8_t>  type;            // 7
 	};
 	static_assert(sizeof(QUEST_DATA) == 0x8);
 
@@ -236,6 +236,8 @@ namespace RE
 		void		  ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr);
 		bool          EnsureQuestStarted(bool& a_result, bool a_startNow);
 		std::uint16_t GetCurrentStageID() const;
+		std::int8_t   GetPriority() const;
+		QuestType     GetType() const;
 		bool          IsActive() const;
 		bool          IsCompleted() const;
 		bool          IsEnabled() const;

@@ -29,6 +29,16 @@ namespace RE
 		return currentStage;
 	}
 
+	std::int8_t TESQuest::GetPriority() const
+	{
+		return data.priority;
+	}
+
+	QuestType TESQuest::GetType() const
+	{
+		return data.type.get();
+	}
+
 	bool TESQuest::IsActive() const
 	{
 		return data.flags.all(QuestFlag::kActive);
