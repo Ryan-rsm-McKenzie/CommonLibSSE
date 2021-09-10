@@ -70,11 +70,11 @@ namespace RE
 		kDLC02CastleKarstaag = 59,
 		kTotalLocationTypes,
 
-		kDoor, 
-		kQuestTarget, 
-		kQuestTargetDoor, 
-		kMultipleQuestTarget, 
-		kPlayerSet, 
+		kDoor,
+		kQuestTarget,
+		kQuestTargetDoor,
+		kMultipleQuestTarget,
+		kPlayerSet,
 		kYouAreHere
 	};
 
