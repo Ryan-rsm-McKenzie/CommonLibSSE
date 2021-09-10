@@ -28,6 +28,7 @@ namespace RE
 		using ScaleModeType = GFxMovieView::ScaleModeType;
 
 		static BSScaleformManager* GetSingleton();
+		static bool                FileExists(const char* a_fileName);
 
 		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 
@@ -51,7 +52,6 @@ namespace RE
 	private:
 		static std::optional<std::string>                           BuildFilePath(std::string_view a_fileName);
 		static std::tuple<float, float, std::int32_t, std::int32_t> CollectDisplayInfo();
-		static bool                                                 FileExists(const char* a_fileName);
 	};
 	static_assert(sizeof(BSScaleformManager) == 0x40);
 }
