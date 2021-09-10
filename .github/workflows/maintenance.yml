@@ -1,6 +1,6 @@
 name: Scripted maintenance
 
-on: [ push, pull_request_target ]
+on: push
 
 jobs:
   maintenance:
@@ -8,8 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
 
     - uses: actions/setup-python@v2
       with:
