@@ -206,13 +206,16 @@ namespace RE
 		struct PlayerSkills
 		{
 		public:
+			
+
 			struct Data
 			{
 			public:
 				struct Skills
 				{
-					enum Skill : std::uint32_t
-					{
+					enum Skill : std::int32_t
+					{	
+						kNone = -1,
 						kOneHanded = 0,
 						kTwoHanded = 1,
 						kArchery = 2,
