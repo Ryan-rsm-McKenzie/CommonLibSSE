@@ -44,6 +44,15 @@ namespace RE
 		return data.flags.all(QuestFlag::kEnabled);
 	}
 
+	bool TESQuest::IsNamed() const
+	{
+		auto name = this->GetName();
+		if (name && strlen(name) != 0) {
+			return true;
+		}
+		return false;
+	}
+
 	bool TESQuest::IsRunning() const
 	{
 		return !IsStopping() && !promoteTask;

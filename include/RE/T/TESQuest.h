@@ -241,6 +241,7 @@ namespace RE
 		bool          IsActive() const;
 		bool          IsCompleted() const;
 		bool          IsEnabled() const;
+		bool          IsNamed() const;
 		bool          IsRunning() const;
 		bool          IsStarting() const;
 		bool          IsStopped() const;
