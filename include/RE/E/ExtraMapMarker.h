@@ -98,10 +98,10 @@ namespace RE
 		constexpr void SetVisible(bool a_value) noexcept { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
 
 		// members
-		stl::enumeration<Flag, std::uint8_t>        flags;         // 10
-		stl::enumeration<MARKER_TYPE, std::uint8_t> type;          // 11
-		std::uint16_t                               unk12;         // 12 - not pad
-		std::uint32_t                               pad04;         // 14
+		stl::enumeration<Flag, std::uint8_t>        flags;  // 10
+		stl::enumeration<MARKER_TYPE, std::uint8_t> type;   // 11
+		std::uint16_t                               unk12;  // 12 - not pad
+		std::uint32_t                               pad04;  // 14
 	};
 	static_assert(sizeof(MapMarkerData) == 0x18);
 
