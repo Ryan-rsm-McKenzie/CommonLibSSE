@@ -651,7 +651,6 @@ namespace RE
 		{
 			inline constexpr REL::ID EnsureQuestStarted(static_cast<std::uint64_t>(24481));
 			inline constexpr REL::ID ResetQuest(static_cast<std::uint64_t>(24486));
-			inline constexpr REL::ID ForceRefIntoAliasID(static_cast<std::uint64_t>(24523));
 		}
 
 		namespace ThirdPersonState

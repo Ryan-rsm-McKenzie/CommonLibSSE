@@ -13,7 +13,7 @@ namespace RE
 	void TESQuest::ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr)
 	{
 		using func_t = decltype(&TESQuest::ForceRefIntoAliasID);
-		REL::Relocation<func_t> func{ Offset::TESQuest::ForceRefIntoAliasID };
+		REL::Relocation<func_t> func{ REL::ID(24523) };
 		func(this, a_alias, a_refr);
 	}
 
@@ -27,16 +27,6 @@ namespace RE
 	std::uint16_t TESQuest::GetCurrentStageID() const
 	{
 		return currentStage;
-	}
-
-	std::int8_t TESQuest::GetPriority() const
-	{
-		return data.priority;
-	}
-
-	QuestType TESQuest::GetType() const
-	{
-		return data.type.get();
 	}
 
 	bool TESQuest::IsActive() const

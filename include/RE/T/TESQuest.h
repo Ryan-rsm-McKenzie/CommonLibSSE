@@ -236,8 +236,8 @@ namespace RE
 		void          ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr);
 		bool          EnsureQuestStarted(bool& a_result, bool a_startNow);
 		std::uint16_t GetCurrentStageID() const;
-		std::int8_t   GetPriority() const;
-		QuestType     GetType() const;
+		std::int8_t   GetPriority() const { return data.priority; }
+		QuestType     GetType() const { return data.type.get(); }
 		bool          IsActive() const;
 		bool          IsCompleted() const;
 		bool          IsEnabled() const;
