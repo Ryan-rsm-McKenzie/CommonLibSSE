@@ -15,6 +15,13 @@ namespace RE
 		return *singleton;
 	}
 
+	bool BSScaleformManager::FileExists(const char* a_fileName)
+	{
+		using func_t = decltype(&BSScaleformManager::FileExists);
+		REL::Relocation<func_t> func{ REL::ID(80087) };
+		return func(a_fileName);
+	}
+
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
@@ -196,12 +203,5 @@ namespace RE
 		const auto [width, height] = state->frameBufferViewport;
 
 		return { safeZoneX, safeZoneY, static_cast<std::int32_t>(width), static_cast<std::int32_t>(height) };
-	}
-
-	bool BSScaleformManager::FileExists(const char* a_fileName)
-	{
-		using func_t = decltype(&BSScaleformManager::FileExists);
-		REL::Relocation<func_t> func{ REL::ID(80087) };
-		return func(a_fileName);
 	}
 }
