@@ -294,6 +294,8 @@ namespace RE
 		virtual void		  Unk_12E(void);												   // 12E - { return 0; }
 
 		static PlayerCharacter* GetSingleton();
+		static bool				IsGodMode();
+		static void				SetGodMode(bool a_enable);
 
 		void					 ActivatePickRef();
 		void					 AddSkillExperience(ActorValue a_skill, float a_experience);
