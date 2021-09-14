@@ -19,7 +19,22 @@ namespace RE
 		return singleton->get();
 	}
 
+	
+	bool PlayerCharacter::IsGodMode()
+	{
+		REL::Relocation<bool*> g_IsGodMode{ REL::ID(517711) };
+		return *g_IsGodMode;
+	}
 
+
+	void PlayerCharacter::SetGodMode(bool a_enable)
+	{
+		using func_t = decltype(&PlayerCharacter::SetGodMode);
+		REL::Relocation<func_t> func{ REL::ID(39424) };
+		return func(a_enable);
+	}
+	
+	
 	void PlayerCharacter::ActivatePickRef()
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
