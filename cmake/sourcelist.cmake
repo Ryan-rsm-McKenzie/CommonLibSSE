@@ -994,7 +994,6 @@ set(SOURCES
 	include/RE/P/Projectile.h
 	include/RE/P/PropertyTypeInfo.h
 	include/RE/Q/QuestEvents.h
-	include/RE/Q/QuestObjectiveStates.h
 	include/RE/R/RaceSexCamera.h
 	include/RE/R/RaceSexMenu.h
 	include/RE/R/RaceSexMenuEvent.h
