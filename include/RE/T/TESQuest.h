@@ -10,6 +10,7 @@
 #include "RE/D/DialogueTypes.h"
 #include "RE/F/FormTypes.h"
 #include "RE/Q/QuestEvents.h"
+#include "RE/Q/QuestObjectiveStates.h"
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESFullName.h"
 
@@ -54,6 +55,13 @@ namespace RE
 		kCivilWar = 9,
 		kDLC01_Vampire = 10,
 		kDLC02_Dragonborn = 11
+	};
+
+	enum class QUEST_OBJECTIVE_FLAGS
+	{
+		kNone = 0,
+		kORWithPrevious = 1 << 0,
+		kNoStatsTracking = 1 << 1
 	};
 
 	struct BGSQuestInstanceText
@@ -152,33 +160,16 @@ namespace RE
 	class BGSQuestObjective
 	{
 	public:
-		enum class Flags
-		{
-			kNone = 0,
-			kORWithPrevious = 1 << 0,
-			kNoStatsTracking = 1 << 1
-		};
-
-		enum class State
-		{
-			kDormant = 0,
-			kDisplayed = 1,
-			kCompleted = 2,
-			kCompletedDisplayed = 3,
-			kFailed = 4,
-			kFailedDisplayed = 5
-		};
-
 		// members
-		BSFixedString                          displayText;  // 00 - NNAM
-		TESQuest*                              ownerQuest;   // 08
-		TESQuestTarget**                       targets;      // 10 - QSTA
-		std::uint32_t                          numTargets;   // 18
-		std::uint16_t                          index;        // 1C - QOBJ
-		bool                                   initialized;  // 1E
-		stl::enumeration<State, std::uint8_t>  state;        // 1E
-		stl::enumeration<Flags, std::uint32_t> flags;        // 20 - FNAM
-		std::uint32_t                          pad24;        // 24
+		BSFixedString                                          displayText;  // 00 - NNAM
+		TESQuest*                                              ownerQuest;   // 08
+		TESQuestTarget**                                       targets;      // 10 - QSTA
+		std::uint32_t                                          numTargets;   // 18
+		std::uint16_t                                          index;        // 1C - QOBJ
+		bool                                                   initialized;  // 1E
+		stl::enumeration<QUEST_OBJECTIVE_STATE, std::uint8_t>  state;        // 1E
+		stl::enumeration<QUEST_OBJECTIVE_FLAGS, std::uint32_t> flags;        // 20 - FNAM
+		std::uint32_t                                          pad24;        // 24
 	};
 	static_assert(sizeof(BGSQuestObjective) == 0x28);
 
