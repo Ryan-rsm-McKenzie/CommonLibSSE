@@ -212,7 +212,7 @@ namespace SKSE
 				if (a_search.empty()) {
 					return;
 				}
-				
+
 				size_t pos = 0;
 				while ((pos = a_str.find(a_search, pos)) != std::string::npos) {
 					a_str.replace(pos, a_search.length(), a_replace);

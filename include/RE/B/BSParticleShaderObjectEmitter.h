@@ -11,7 +11,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSParticleShaderObjectEmitter;
 
-        ~BSParticleShaderObjectEmitter() override;  // 00
+		~BSParticleShaderObjectEmitter() override;  // 00
 
 		// override (BSParticleShaderEmitter)
 		void Unk_02(void) override;  // 02
