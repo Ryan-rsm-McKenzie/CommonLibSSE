@@ -6,6 +6,7 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/B/BaseFormComponent.h"
 #include "RE/F/FormTypes.h"
+#include "RE/T/TESFile.h"
 
 namespace RE
 {
@@ -284,6 +285,17 @@ namespace RE
 		[[nodiscard]] FormID        GetFormID() const noexcept { return formID; }
 		[[nodiscard]] FormType      GetFormType() const noexcept { return *formType; }
 		[[nodiscard]] std::int32_t  GetGoldValue() const;
+
+		[[nodiscard]] FormID GetLocalFormID()
+		{
+			auto file = GetFile(0);
+
+			RE::FormID fileIndex = file->compileIndex << (3 * 8);
+			fileIndex += file->smallFileCompileIndex << ((1 * 8) + 4);
+
+			return formID & ~fileIndex;
+		}
+
 		[[nodiscard]] const char*   GetName() const;
 		[[nodiscard]] float         GetWeight() const;
 		[[nodiscard]] bool          HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;

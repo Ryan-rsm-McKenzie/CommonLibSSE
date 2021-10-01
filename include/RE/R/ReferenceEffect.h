@@ -5,6 +5,7 @@
 
 namespace RE
 {
+	class BGSArtObject;
 	class ReferenceEffectController;
 
 	class ReferenceEffect : public BSTempEffect
@@ -28,15 +29,15 @@ namespace RE
 		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
 
 		// add
-		virtual void        Unk_36(void);      // 36 - { return 0; }
-		virtual void        Unk_37(void);      // 37 - { return; }
-		virtual void        Unk_38(void);      // 38 - { return; }
-		virtual void        Unk_39(void);      // 39
-		virtual void        Unk_3A(void);      // 3A
-		virtual void        UpdatePosition();  // 3B - { return; }
-		virtual NiAVObject* GetTargetRoot();   // 3C
-		virtual bool        Unk_3D(void);      // 3D - { return 1; }
-		virtual void        Unk_3E(void);      // 3E - { return; }
+		virtual void        Unk_36(void);                                  // 36 - { return 0; }
+		virtual void        RemoveEffectShaderData();                      // 37 - { return; }
+		virtual void        AddEffectShaderData();                         // 38 - { return; }
+		virtual void        InvalidateTarget();                            // 39
+		virtual void        UpdateCellDynamicNode(BGSArtObject* a_model);  // 3A
+		virtual void        UpdatePosition();                              // 3B - { return; }
+		virtual NiAVObject* GetTargetRoot();                               // 3C
+		virtual bool        IsModelAttached();                             // 3D - { return 1; }
+		virtual void        Clear();                                       // 3E - { return; }
 
 		// members
 		ReferenceEffectController* controller;     // 30

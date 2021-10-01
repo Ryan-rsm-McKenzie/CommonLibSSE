@@ -125,12 +125,35 @@ namespace SKSE
 
 			inline bool is_only_digit(std::string_view a_str)
 			{
-				return std::ranges::all_of(a_str, ::isdigit);
+				return std::ranges::all_of(a_str, [](char c) {
+					return std::isdigit(static_cast<unsigned char>(c));
+				});
+			}
+
+			inline bool is_only_hex(std::string_view a_str)
+			{
+				if (a_str.compare(0, 2, "0x") == 0 || a_str.compare(0, 2, "0X") == 0) {
+					return a_str.size() > 2 && std::all_of(a_str.begin() + 2, a_str.end(), [](char c) {
+						return std::isxdigit(static_cast<unsigned char>(c));
+					});
+				}
+				return std::ranges::all_of(a_str, [](char c) {
+					return std::isxdigit(static_cast<unsigned char>(c));
+				});
+			}
+
+			inline bool is_only_letter(std::string_view a_str)
+			{
+				return std::ranges::all_of(a_str, [](char c) {
+					return std::isalpha(static_cast<unsigned char>(c));
+				});
 			}
 
 			inline bool is_only_space(std::string_view a_str)
 			{
-				return std::ranges::all_of(a_str, ::isspace);
+				return std::ranges::all_of(a_str, [](char c) {
+					return std::isspace(static_cast<unsigned char>(c));
+				});
 			}
 
 			inline bool icontains(std::string_view a_str1, std::string_view a_str2)
@@ -173,8 +196,39 @@ namespace SKSE
 			inline std::string remove_non_alphanumeric(std::string& a_str)
 			{
 				std::ranges::replace_if(
-					a_str, [](unsigned char c) { return !std::isalnum(c); }, ' ');
+					a_str, [](char c) { return !std::isalnum(static_cast<unsigned char>(c)); }, ' ');
 				return trim_copy(a_str);
+			}
+
+			inline std::string remove_non_numeric(std::string& a_str)
+			{
+				std::ranges::replace_if(
+					a_str, [](char c) { return !std::isdigit(static_cast<unsigned char>(c)); }, ' ');
+				return trim_copy(a_str);
+			}
+
+			inline void replace_all(std::string& a_str, std::string_view a_search, std::string_view a_replace)
+			{
+				if (a_search.empty()) {
+					return;
+				}
+				
+				size_t pos = 0;
+				while ((pos = a_str.find(a_search, pos)) != std::string::npos) {
+					a_str.replace(pos, a_search.length(), a_replace);
+					pos += a_replace.length();
+				}
+			}
+
+			inline void replace_first_instance(std::string& a_str, std::string_view a_search, std::string_view a_replace)
+			{
+				if (a_search.empty()) {
+					return;
+				}
+
+				if (auto pos = a_str.find(a_search); pos != std::string::npos) {
+					a_str.replace(pos, a_search.length(), a_replace);
+				}
 			}
 
 			inline std::vector<std::string> split(const std::string& a_str, const std::string& a_deliminator)

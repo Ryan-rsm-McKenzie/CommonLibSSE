@@ -220,9 +220,9 @@ namespace SKSE
 			for (auto& reg : _regs) {
 				// Key
 				auto key = reg.first;
-				auto& [formID, match] = key;
-				if (!a_intfc->WriteRecordData(formID)) {
-					log::error("Failed to save reg key as formID ({})!", formID);
+				auto& [regID, match] = key;
+				if (!a_intfc->WriteRecordData(regID)) {
+					log::error("Failed to save reg key as formID ({:X})!", regID);
 					return false;
 				}
 				if (!a_intfc->WriteRecordData(match)) {

@@ -41,7 +41,7 @@ namespace RE
 		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
 	}
 
-	void DebugMessageBox(std::string_view a_message)
+	void DebugMessageBox(const BSString& a_message)
 	{
 		const auto factoryManager = MessageDataFactoryManager::GetSingleton();
 		const auto uiStrHolder = InterfaceStrings::GetSingleton();

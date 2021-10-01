@@ -9,7 +9,7 @@ namespace RE
 			auto oldData = idles;
 			idles = calloc<TESIdleForm*>(++idleCount);
 			if (oldData) {
-				for (std::uint32_t i = 0; i < idleCount - 1; i++) {
+				for (std::int8_t i = 0; i < idleCount - 1; i++) {
 					idles[i] = oldData[i];
 				}
 				free(oldData);
@@ -34,7 +34,7 @@ namespace RE
 	{
 		std::optional<std::uint32_t> index = std::nullopt;
 		if (idles) {
-			for (std::uint32_t i = 0; i < idleCount; i++) {
+			for (std::int8_t i = 0; i < idleCount; i++) {
 				if (idles[i] && idles[i] == a_idle) {
 					index = i;
 					break;
@@ -51,7 +51,7 @@ namespace RE
 			auto oldData = idles;
 			if (oldData) {
 				idles = calloc<TESIdleForm*>(--idleCount);
-				for (std::uint32_t i = 0; i < idleCount + 1; i++) {
+				for (std::int8_t i = 0; i < idleCount + 1; i++) {
 					if (index != i) {
 						idles[i] = oldData[i];
 					}

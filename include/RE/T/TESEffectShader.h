@@ -9,7 +9,18 @@ namespace RE
 {
 	enum class D3DBLEND;
 	enum class D3DBLENDOP;
-	enum class D3DCMPFUNC;
+
+	enum class D3DCMPFUNC
+	{
+		kNever = 1,
+		kLess,
+		kEqual,
+	    kLessEqual,
+		kGreater,
+		kNotEqual,
+		kGreaterEqual,
+		kAlways
+	};
 
 	struct EffectShaderData  // DATA
 	{

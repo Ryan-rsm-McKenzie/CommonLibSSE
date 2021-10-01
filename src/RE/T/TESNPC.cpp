@@ -41,10 +41,11 @@ namespace RE
 	{
 		if (ContainsKeywordString(a_editorID)) {
 			return true;
-		} else if (auto npcRace = GetRace(); npcRace && npcRace->ContainsKeywordString(a_editorID)) {
-			return true;
 		}
-		return false;
+        if (auto npcRace = GetRace(); npcRace && npcRace->ContainsKeywordString(a_editorID)) {
+            return true;
+        }
+        return false;
 	}
 
 	BGSHeadPart** TESNPC::GetBaseOverlays() const
@@ -167,10 +168,11 @@ namespace RE
 	{
 		if (HasKeywordString(a_editorID)) {
 			return true;
-		} else if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
-			return true;
 		}
-		return false;
+        if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
+            return true;
+        }
+        return false;
 	}
 
 	bool TESNPC::HasOverlays()

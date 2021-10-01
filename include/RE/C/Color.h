@@ -105,6 +105,169 @@ namespace RE
 			return std::addressof(red)[a_idx];
 		}
 
+		[[nodiscard]] Color operator+(const Color& a_rhs) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] += a_rhs[i];
+			}
+			return tmp;
+		}
+
+		Color& operator+=(const Color& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) += a_rhs[i];
+			}
+			return *this;
+		}
+
+		[[nodiscard]] Color operator-(const Color& a_rhs) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] -= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		Color& operator-=(const Color& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) -= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend Color operator-(std::uint8_t a_lhs, const Color& a_rhs)
+		{
+			return Color(
+				a_lhs - a_rhs.red,
+				a_lhs - a_rhs.green,
+				a_lhs - a_rhs.blue,
+				a_lhs - a_rhs.alpha);
+		}
+
+		[[nodiscard]] Color operator*(const Color& a_rhs) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] *= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		Color& operator*=(const Color& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) *= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend Color operator*(std::uint8_t a_lhs, const Color& a_rhs)
+		{
+			return Color(
+				a_lhs * a_rhs.red,
+				a_lhs * a_rhs.green,
+				a_lhs * a_rhs.blue,
+				a_lhs * a_rhs.alpha);
+		}
+
+		[[nodiscard]] Color operator/(const Color& a_rhs) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] /= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		Color& operator/=(const Color& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) /= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend Color operator/(std::uint8_t a_lhs, const Color& a_rhs)
+		{
+			return Color(
+				a_lhs / a_rhs.red,
+				a_lhs / a_rhs.green,
+				a_lhs / a_rhs.blue,
+				a_lhs / a_rhs.alpha);
+		}
+
+		[[nodiscard]] Color operator+(std::uint8_t a_value) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] += a_value;
+			}
+			return tmp;
+		}
+
+		Color& operator+=(std::uint8_t a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) += a_value;
+			}
+			return *this;
+		}
+
+		[[nodiscard]] Color operator-(std::uint8_t a_value) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] -= a_value;
+			}
+			return tmp;
+		}
+
+		Color& operator-=(std::uint8_t a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) -= a_value;
+			}
+			return *this;
+		}
+
+		[[nodiscard]] Color operator*(std::uint8_t a_value) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] *= a_value;
+			}
+			return tmp;
+		}
+
+		Color& operator*=(std::uint8_t a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) *= a_value;
+			}
+			return *this;
+		}
+
+		[[nodiscard]] Color operator/(std::uint8_t a_value) const noexcept
+		{
+			Color tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] /= a_value;
+			}
+			return tmp;
+		}
+
+		Color& operator/=(std::uint8_t a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) /= a_value;
+			}
+			return *this;
+		}
+
 		static std::string   ColorToString(const Color& a_rhs);
 		static std::uint32_t ColorToInt(const Color& a_rhs);
 		std::uint32_t        ColorToInt() const;

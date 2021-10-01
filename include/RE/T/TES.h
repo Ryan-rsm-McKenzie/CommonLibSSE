@@ -18,6 +18,7 @@ namespace RE
 	class BSTempNodeManager;
 	class GridCellArray;
 	class ImageSpaceModifierInstance;
+	class NavMeshInfoMap;
 	class NiNode;
 	class Sky;
 	class TESNPC;
@@ -156,7 +157,7 @@ namespace RE
 		std::uint64_t                                       unk288;                     // 288
 		SystemEventAdapter                                  unk290;                     // 290
 		std::uint64_t                                       unk2A0;                     // 2A0
-		std::uint64_t                                       unk2A8;                     // 2A8
+		NavMeshInfoMap*                                     unk2A8;                     // 2A8
 		std::uint64_t                                       unk2B0;                     // 2B0
 	};
 	static_assert(sizeof(TES) == 0x2B8);

@@ -188,11 +188,14 @@ set(SOURCES
 	include/RE/B/BSAudioManagerThread.h
 	include/RE/B/BSBatchRenderer.h
 	include/RE/B/BSBitField.h
+	include/RE/B/BSBloodSplatterShaderProperty.h
 	include/RE/B/BSBound.h
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
 	include/RE/B/BSDismemberSkinInstance.h
 	include/RE/B/BSEffectShaderData.h
+	include/RE/B/BSEffectShaderMaterial.h
+	include/RE/B/BSEffectShaderProperty.h
 	include/RE/B/BSExtraData.h
 	include/RE/B/BSFaceGenAnimationData.h
 	include/RE/B/BSFaceGenKeyframe.h
@@ -254,6 +257,9 @@ set(SOURCES
 	include/RE/B/BSNiNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
+	include/RE/B/BSParticleShaderEmitter.h
+	include/RE/B/BSParticleShaderObjectEmitter.h
+	include/RE/B/BSParticleShaderProperty.h
 	include/RE/B/BSPathingCell.h
 	include/RE/B/BSPointerHandle.h
 	include/RE/B/BSPointerHandleManager.h
@@ -1331,6 +1337,7 @@ set(SOURCES
 	src/RE/B/BGSBaseAlias.cpp
 	src/RE/B/BGSBipedObjectForm.cpp
 	src/RE/B/BGSColorForm.cpp
+	src/RE/B/BGSDebris.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
 	src/RE/B/BGSFootstepManager.cpp
@@ -1341,6 +1348,7 @@ set(SOURCES
 	src/RE/B/BGSLocation.cpp
 	src/RE/B/BGSOpenCloseForm.cpp
 	src/RE/B/BGSPerkEntry.cpp
+	src/RE/B/BGSPerkRankArray.cpp
 	src/RE/B/BGSRefAlias.cpp
 	src/RE/B/BGSSaveLoadManager.cpp
 	src/RE/B/BGSSoundCategory.cpp
