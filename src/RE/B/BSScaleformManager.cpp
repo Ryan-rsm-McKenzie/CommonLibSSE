@@ -9,17 +9,17 @@
 
 namespace RE
 {
-	BSScaleformManager* BSScaleformManager::GetSingleton()
-	{
-		REL::Relocation<BSScaleformManager**> singleton{ REL::ID(516573) };
-		return *singleton;
-	}
-
 	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{
 		using func_t = decltype(&BSScaleformManager::FileExists);
 		REL::Relocation<func_t> func{ REL::ID(80087) };
 		return func(a_fileName);
+	}
+
+	BSScaleformManager* BSScaleformManager::GetSingleton()
+	{
+		REL::Relocation<BSScaleformManager**> singleton{ REL::ID(516573) };
+		return *singleton;
 	}
 
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)

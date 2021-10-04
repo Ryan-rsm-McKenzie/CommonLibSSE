@@ -27,8 +27,8 @@ namespace RE
 	public:
 		using ScaleModeType = GFxMovieView::ScaleModeType;
 
-		static BSScaleformManager* GetSingleton();
 		static bool                FileExists(const char* a_fileName);
+		static BSScaleformManager* GetSingleton();
 
 		bool LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode = ScaleModeType::kShowAll, float a_backGroundAlpha = 0.0);
 

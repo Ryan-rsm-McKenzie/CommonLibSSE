@@ -41,7 +41,7 @@ namespace RE
 		kHasDialogueData = 1 << 15
 	};
 
-	enum class QuestType
+	enum class QUEST_TYPE
 	{
 		kNone = 0,
 		kMainQuest = 1,
@@ -105,7 +105,7 @@ namespace RE
 		float                                      questDelayTime;  // 0
 		stl::enumeration<QuestFlag, std::uint16_t> flags;           // 4
 		std::int8_t                                priority;        // 6
-		stl::enumeration<QuestType, std::uint8_t>  type;            // 7
+		stl::enumeration<QUEST_TYPE, std::uint8_t> type;            // 7
 	};
 	static_assert(sizeof(QUEST_DATA) == 0x8);
 
@@ -233,25 +233,25 @@ namespace RE
 		TESCondition*                            QConditions() override;                                         // 3D - { return &objConditions; }
 		BGSStoryManagerTreeVisitor::VisitControl AcceptVisitor(BGSStoryManagerTreeVisitor& a_visitor) override;  // 3E
 
-		void          ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr);
-		bool          EnsureQuestStarted(bool& a_result, bool a_startNow);
-		std::uint16_t GetCurrentStageID() const;
-		std::int8_t   GetPriority() const { return data.priority; }
-		QuestType     GetType() const { return data.type.get(); }
-		bool          IsActive() const;
-		bool          IsCompleted() const;
-		bool          IsEnabled() const;
-		bool          IsNamed() const;
-		bool          IsRunning() const;
-		bool          IsStarting() const;
-		bool          IsStopped() const;
-		bool          IsStopping() const;
-		void          Reset();
-		void          ResetAndUpdate();
-		void          SetEnabled(bool a_set);
-		bool          Start();
-		bool          StartsEnabled() const;
-		void          Stop();
+		bool                      EnsureQuestStarted(bool& a_result, bool a_startNow);
+		void                      ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr);
+		std::uint16_t             GetCurrentStageID() const;
+		[[nodiscard]] std::int8_t GetPriority() const { return data.priority; }
+		[[nodiscard]] QUEST_TYPE  GetType() const { return data.type.get(); }
+		bool                      IsActive() const;
+		bool                      IsCompleted() const;
+		bool                      IsEnabled() const;
+		[[nodiscard]] bool        IsNamed() const;
+		bool                      IsRunning() const;
+		bool                      IsStarting() const;
+		bool                      IsStopped() const;
+		bool                      IsStopping() const;
+		void                      Reset();
+		void                      ResetAndUpdate();
+		void                      SetEnabled(bool a_set);
+		bool                      Start();
+		bool                      StartsEnabled() const;
+		void                      Stop();
 
 		// members
 		BSTArray<BGSQuestInstanceText*>                      instanceData;                             // 038

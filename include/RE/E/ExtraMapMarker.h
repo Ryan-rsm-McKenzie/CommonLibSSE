@@ -94,9 +94,9 @@ namespace RE
 			kUnk7 = 1 << 7
 		};
 
-		const char* GetName() { return locationName.GetFullName(); }
-		void        SetHidden(bool a_value) { a_value ? flags.set(Flag::kShowAllHidden) : flags.reset(Flag::kShowAllHidden); }
-		void        SetVisible(bool a_value) { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
+		[[nodiscard]] const char* GetName() { return locationName.GetFullName(); }
+		void                      SetHidden(bool a_value) { a_value ? flags.set(Flag::kShowAllHidden) : flags.reset(Flag::kShowAllHidden); }
+		void                      SetVisible(bool a_value) { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
 
 		// members
 		TESFullName                                  locationName;  // 00

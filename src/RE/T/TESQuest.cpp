@@ -10,18 +10,18 @@ namespace RE
 		return *reinterpret_cast<const std::uintptr_t*>(this) != 0;
 	}
 
-	void TESQuest::ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr)
-	{
-		using func_t = decltype(&TESQuest::ForceRefIntoAliasID);
-		REL::Relocation<func_t> func{ REL::ID(24523) };
-		func(this, a_alias, a_refr);
-	}
-
 	bool TESQuest::EnsureQuestStarted(bool& a_result, bool a_startNow)
 	{
 		using func_t = decltype(&TESQuest::EnsureQuestStarted);
 		REL::Relocation<func_t> func{ Offset::TESQuest::EnsureQuestStarted };
 		return func(this, a_result, a_startNow);
+	}
+
+	void TESQuest::ForceRefIntoAliasID(std::uint32_t a_alias, TESObjectREFR* a_refr)
+	{
+		using func_t = decltype(&TESQuest::ForceRefIntoAliasID);
+		REL::Relocation<func_t> func{ REL::ID(24523) };
+		func(this, a_alias, a_refr);
 	}
 
 	std::uint16_t TESQuest::GetCurrentStageID() const
@@ -46,11 +46,8 @@ namespace RE
 
 	bool TESQuest::IsNamed() const
 	{
-		auto name = this->GetName();
-		if (name && strlen(name) != 0) {
-			return true;
-		}
-		return false;
+		const auto name = this->GetName();
+		return name && name[0] != '\0';
 	}
 
 	bool TESQuest::IsRunning() const
