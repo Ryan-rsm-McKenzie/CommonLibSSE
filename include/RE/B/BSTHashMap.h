@@ -134,6 +134,10 @@ namespace RE
 			using iterator_category = typename super::iterator_category;
 
 			iterator_base() = default;
+			~iterator_base() = default;
+
+			iterator_base(const volatile iterator_base&) = delete;
+			iterator_base& operator=(const volatile iterator_base&) = delete;
 
 			template <class V>
 			iterator_base(const iterator_base<V>& a_rhs) noexcept  //
@@ -141,8 +145,6 @@ namespace RE
 				_first(a_rhs._first),
 				_last(a_rhs._last)
 			{}
-
-			~iterator_base() = default;
 
 			template <class V>
 			iterator_base& operator=(const iterator_base<V>& a_rhs) noexcept  //
@@ -734,6 +736,12 @@ namespace RE
 			KeyEq,
 			BSTScatterTableTraits<Key, T>,
 			BSTScatterTableHeapAllocator>;
+
+	namespace detail
+	{
+		using _dummy_bsthashmap = BSTHashMap<int, int>;
+		BOOST_STL_INTERFACES_STATIC_ASSERT_CONCEPT(_dummy_bsthashmap::iterator, std::forward_iterator);
+	}
 
 	template <
 		class Key,
