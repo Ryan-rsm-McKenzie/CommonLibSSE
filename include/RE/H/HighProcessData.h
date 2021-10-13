@@ -13,6 +13,7 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/T/TESShout.h"
+#include "RE/M/Movement.h"
 
 namespace RE
 {
@@ -158,21 +159,7 @@ namespace RE
 		RefHandle                                             unk0E0;                         // 0E0
 		std::uint32_t                                         unk0E4;                         // 0E4
 		std::uint64_t                                         unk0E8;                         // 0E8
-		BSFixedString                                         voiceSubtitle;                  // 0F0
-		float                                                 unk0F8;                         // 0F8
-		float                                                 unk0FC;                         // 0FC
-		float                                                 unk100;                         // 100
-		float                                                 unk104;                         // 104
-		float                                                 unk108;                         // 108
-		float                                                 unk10C;                         // 10C
-		float                                                 unk110;                         // 110
-		float                                                 unk114;                         // 114
-		float                                                 unk118;                         // 118
-		float                                                 unk11C;                         // 11C
-		float                                                 unk120;                         // 120
-		float                                                 unk124;                         // 124
-		float                                                 unk128;                         // 128
-		float                                                 unk12C;                         // 12C
+		Movement::TypeData                                    maxspeeds;                      // 0F0
 		stl::enumeration<FADE_STATE, std::uint32_t>           fadeState;                      // 130
 		std::uint32_t                                         unk134;                         // 134
 		std::uint64_t                                         unk138;                         // 138
