@@ -20,6 +20,13 @@ namespace RE
 
 		static INISettingCollection* GetSingleton();
 
+		bool ReadFromFile(const char* a_fileName)
+		{
+			using func_t = decltype(&INISettingCollection::ReadFromFile);
+			REL::Relocation<func_t> func{ REL::ID(22845) };
+			return func(this, a_fileName);
+		}
+
 		Setting* GetSetting(const char* a_name);
 	};
 	static_assert(sizeof(INISettingCollection) == 0x128);

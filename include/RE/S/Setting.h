@@ -11,13 +11,16 @@ namespace RE
 
 		enum class Type
 		{
-			kUnknown = 0,
 			kBool,
-			kFloat,
+			kChar,
+			kH,
 			kSignedInteger,
-			kColor,
+			kUnsignedInteger,
+			kFloat,
 			kString,
-			kUnsignedInteger
+			kColor,
+			kA,
+			kUnknown
 		};
 
 		union Data
