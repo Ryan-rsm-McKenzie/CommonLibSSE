@@ -39,7 +39,7 @@ namespace RE
 		{}
 
 		// add
-		virtual void Execute() = 0;                              // 01
+		virtual void Execute() = 0;  // 01
 
 		virtual void OnAbandon([[maybe_unused]] bool a_started)  // 02
 		{}

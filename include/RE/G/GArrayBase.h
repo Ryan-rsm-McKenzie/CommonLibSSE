@@ -51,7 +51,7 @@ namespace RE
 			iterator operator++(std::int32_t)
 			{
 				iterator it(*this);
-				operator++();
+						 operator++();
 				return it;
 			}
 
@@ -68,7 +68,7 @@ namespace RE
 			iterator operator--(std::int32_t)
 			{
 				iterator it(*this);
-				operator--();
+						 operator--();
 				return it;
 			}
 
@@ -153,52 +153,51 @@ namespace RE
 
 			const_iterator& operator++()
 			{
-			    if (array) {
+				if (array) {
 					if (curIndex < static_cast<std::int32_t>(array->GetSize())) {
 						++curIndex;
 					}
-			    }
-			    return *this;
+				}
+				return *this;
 			}
 
 			const_iterator operator++(std::int32_t)
 			{
-			    const_iterator it(*this);
-			    operator++();
-			    return it;
+				const_iterator it(*this);
+							   operator++();
+				return it;
 			}
 
 			const_iterator& operator--()
 			{
-			    if (array)
-			    {
-			        if (curIndex >= 0)
-			            --curIndex;
-			    }
-			    return *this;
+				if (array) {
+					if (curIndex >= 0)
+						--curIndex;
+				}
+				return *this;
 			}
 
 			const_iterator operator--(std::int32_t)
 			{
-			    const_iterator it(*this);
-			    operator--();
-			    return it;
+				const_iterator it(*this);
+							   operator--();
+				return it;
 			}
 
 			const_iterator operator+(std::int32_t a_delta) const
 			{
-			    return const_iterator(array, curIndex + a_delta);
+				return const_iterator(array, curIndex + a_delta);
 			}
 
 			const_iterator operator-(std::int32_t a_delta) const
 			{
-			    return const_iterator(array, curIndex - a_delta);
+				return const_iterator(array, curIndex - a_delta);
 			}
 
 			SPInt operator-(const const_iterator& a_right) const
 			{
-			    assert(array == a_right.array);
-			    return curIndex - a_right.curIndex;
+				assert(array == a_right.array);
+				return curIndex - a_right.curIndex;
 			}
 
 			const ValueType& operator*() const
@@ -231,7 +230,7 @@ namespace RE
 
 		private:
 			const SelfType* array;
-			SPInt curIndex;
+			SPInt           curIndex;
 		};
 
 		GFC_MEMORY_REDEFINE_NEW(GArrayBase, AllocatorType::StatId);

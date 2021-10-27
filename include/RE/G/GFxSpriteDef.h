@@ -32,10 +32,10 @@ namespace RE
 		GFxCharacter* CreateCharacter() override;                                       // 09
 
 		// override (GFxTimelineDef)
-		std::uint32_t    GetFrameCount() override;                                                                          // 0A
-		ExecuteTagList*  GetMovieTagArray(ExecuteTagList& a_data, std::int32_t a_frameNumber) override;                     // 0B
-		ExecuteTagList*  GetImportTagArray(ExecuteTagList& a_data, std::int32_t a_frameNumber) override;                    // 0C - { return nullptr; }
-		bool             GetLabeledFrame(const char* a_label, std::int32_t& a_frameNumber, bool a_labelIsNumber) override;  // 0D
+		std::uint32_t   GetFrameCount() override;                                                                          // 0A
+		ExecuteTagList* GetMovieTagArray(ExecuteTagList& a_data, std::int32_t a_frameNumber) override;                     // 0B
+		ExecuteTagList* GetImportTagArray(ExecuteTagList& a_data, std::int32_t a_frameNumber) override;                    // 0C - { return nullptr; }
+		bool            GetLabeledFrame(const char* a_label, std::int32_t& a_frameNumber, bool a_labelIsNumber) override;  // 0D
 
 		// override (GFxTimelineIODef)
 		void SetLoadingExecuteTagList(ExecuteTagList* a_data) override;  // 0E

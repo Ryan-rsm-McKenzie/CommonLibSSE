@@ -14,17 +14,17 @@ namespace RE
 		{}
 
 		// add
-		virtual GString      GetResourceName()                                                                 // 01
+		virtual GString GetResourceName()  // 01
 		{
 			return GString();
 		}
 
-		virtual GMemoryHeap* GetResourceHeap() const                                                           // 02
+		virtual GMemoryHeap* GetResourceHeap() const  // 02
 		{
 			return nullptr;
 		}
 
-		virtual void         GetStats([[maybe_unused]] GStatBag* a_bag, [[maybe_unused]] bool a_reset = true)  // 03
+		virtual void GetStats([[maybe_unused]] GStatBag* a_bag, [[maybe_unused]] bool a_reset = true)  // 03
 		{}
 	};
 	static_assert(sizeof(GFxResourceReport) == 0x8);

@@ -7,7 +7,7 @@ namespace RE
 	class GWaitCondition
 	{
 	public:
-		GWaitConditionImpl* impl; // 00
+		GWaitConditionImpl* impl;  // 00
 	};
 	static_assert(sizeof(GWaitCondition) == 0x8);
 }

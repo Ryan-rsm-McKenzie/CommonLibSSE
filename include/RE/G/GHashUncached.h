@@ -21,7 +21,7 @@ namespace RE
 			Allocator,
 			GHashNode<C, U, HashF>,
 			GHashsetNodeEntry<GHashNode<C, U, HashF>,
-			typename GHashNode<C, U, HashF>::NodeHashF>>
+				typename GHashNode<C, U, HashF>::NodeHashF>>
 	{
 	public:
 		using BaseType = GHash<
@@ -31,7 +31,7 @@ namespace RE
 			Allocator,
 			GHashNode<C, U, HashF>,
 			GHashsetNodeEntry<GHashNode<C, U, HashF>,
-			typename GHashNode<C, U, HashF>::NodeHashF>>;
+				typename GHashNode<C, U, HashF>::NodeHashF>>;
 		using SelfType = GHashUncached<C, U, HashF, Allocator>;
 
 		GHashUncached()

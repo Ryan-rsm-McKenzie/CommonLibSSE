@@ -621,9 +621,9 @@ set(SOURCES
 	include/RE/G/GFxMorphCharacterDef.h
 	include/RE/G/GFxMovie.h
 	include/RE/G/GFxMovieBindProcess.h
-	include/RE/G/GFxMovieDefBindStates.h
 	include/RE/G/GFxMovieDataDef.h
 	include/RE/G/GFxMovieDef.h
+	include/RE/G/GFxMovieDefBindStates.h
 	include/RE/G/GFxMovieDefImpl.h
 	include/RE/G/GFxMovieImageLoadTask.h
 	include/RE/G/GFxMovieRoot.h

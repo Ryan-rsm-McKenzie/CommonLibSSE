@@ -12,14 +12,14 @@ namespace RE
 	class GWaitable : public GRefCountBase<GWaitable, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		using WaitHandler = void(*)(void* a_data);
+		using WaitHandler = void (*)(void* a_data);
 
 		class HandlerStruct
 		{
 		public:
 			// members
 			WaitHandler handler;
-			void* userData;
+			void*       userData;
 		};
 
 		struct HandlerArray : public GNewOverrideBase<GStatGroups::kGStat_Default_Mem>

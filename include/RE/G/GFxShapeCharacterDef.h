@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/G/GFxShapeWithStyles.h"
 #include "RE/G/GFxShapeBaseCharacterDef.h"
+#include "RE/G/GFxShapeWithStyles.h"
 
 namespace RE
 {

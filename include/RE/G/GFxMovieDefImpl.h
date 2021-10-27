@@ -6,8 +6,8 @@
 #include "RE/G/GFxResource.h"
 #include "RE/G/GFxResourceKey.h"
 #include "RE/G/GFxResourceLib.h"
-#include "RE/G/GRefCountBase.h"
 #include "RE/G/GPtr.h"
+#include "RE/G/GRefCountBase.h"
 #include "RE/G/GStats.h"
 
 namespace RE

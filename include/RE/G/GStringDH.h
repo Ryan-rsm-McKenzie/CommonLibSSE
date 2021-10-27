@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/G/GString.h"
 #include "RE/G/GMemory.h"
 #include "RE/G/GMemoryHeap.h"
+#include "RE/G/GString.h"
 
 namespace RE
 {
@@ -19,7 +19,7 @@ namespace RE
 		{}
 
 		// members
-		GMemoryHeap* heap; // 08
+		GMemoryHeap* heap;  // 08
 	};
 	static_assert(sizeof(GStringDH) == 0x10);
 }
