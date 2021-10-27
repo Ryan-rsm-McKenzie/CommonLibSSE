@@ -44,14 +44,16 @@ namespace RE
 			kImported,
 		};
 
+		struct ImportSource
+		{
+			std::uint32_t index;
+			std::uint32_t unk04;
+		};
+
 		union ResourceUnion
 		{
 			GFxResource* resource;
-			struct
-			{
-				std::uint32_t index;
-				std::uint32_t unk04;
-			};
+			ImportSource importSource;
 		};
 
 		SourceType    type;   // 00
@@ -129,10 +131,10 @@ namespace RE
 
 			void Free()
 			{
-				const auto heap = GMemory::GetGlobalHeap();
+				const auto globalHeap = GMemory::GetGlobalHeap();
 				void*      block = lastBlock;
 				while (block) {
-					heap->Free(block);
+					globalHeap->Free(block);
 					block = static_cast<void**>(block)[0];
 				}
 			}

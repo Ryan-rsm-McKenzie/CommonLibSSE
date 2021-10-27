@@ -8,9 +8,9 @@ namespace RE
 {
 	class GHeapMemVisitor;
 	class GHeapSegVisitor;
+	class GStatBag;
 	class GSysAllocPaged;
 	struct GAllocDebugInfo;
-	struct GStatBag;
 
 	class GMemoryHeap : public GListNode<GMemoryHeap>
 	{

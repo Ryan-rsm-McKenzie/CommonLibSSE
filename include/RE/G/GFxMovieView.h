@@ -15,8 +15,8 @@ namespace RE
 	class GMatrix3D;
 	class GMemoryHeap;
 	class GPoint3F;
+	class GStatBag;
 	class GViewport;
-	struct GStatBag;
 
 	class GFxMovieView :
 		public GFxMovie,    // 00
