@@ -29,7 +29,7 @@ namespace RE
 			kTIFF = 19,  // TIFF image file format
 
 			// Sound formats
-			kWAVE = 20,  // WAVE image file format
+			kWAVE = 20,  // WAVE sound file format
 
 			kNextAvail,
 			kOriginal = 65535

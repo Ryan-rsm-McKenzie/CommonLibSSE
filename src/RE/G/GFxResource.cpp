@@ -1,10 +1,11 @@
 #include "RE/G/GFxResource.h"
+#include "RE/G/GFxResourceLibBase.h"
 
 namespace RE
 {
 	GFxResource::GFxResource() :
 		_refCount{ 1 },
-		_pad14(0),
+		_pad0C(0),
 		_lib(nullptr)
 	{}
 
@@ -43,6 +44,18 @@ namespace RE
 		}
 	}
 
+	void GFxResource::Release()
+	{
+		stl::atomic_ref myRefCount{ _refCount.value };
+		if (--myRefCount == 0) {
+			if (_lib) {
+				_lib->RemoveResourceOnRelease(this);
+				_lib = nullptr;
+			}
+			delete this;
+		}
+	}
+
 	std::int32_t GFxResource::GetRefCount() const
 	{
 		return _refCount.value;
@@ -57,7 +70,7 @@ namespace RE
 	GFxResource::ResourceType GFxResource::GetResourceType() const
 	{
 		return static_cast<GFxResource::ResourceType>(
-			stl::to_underlying(GetResourceUse()) >>
+			GetResourceTypeCode() >>
 			stl::to_underlying(ResourceType::kTypeCode_Shift));
 	}
 

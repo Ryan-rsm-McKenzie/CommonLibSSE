@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/G/GFxLoaderImpl.h"
+#include "RE/G/GFxResourceLib.h"
 #include "RE/G/GFxStateBag.h"
 #include "RE/G/GPtr.h"
 
@@ -52,10 +54,10 @@ namespace RE
 		[[nodiscard]] GFxLoaderImpl* GetLoaderImpl() const;
 
 		// members
-		GFxLoaderImpl*  impl;               // 08
-		GFxResourceLib* strongResourceLib;  // 10
-		std::uint32_t   defLoadFlags;       // 18
-		std::uint32_t   pad1C;              // 1C
+		GPtr<GFxLoaderImpl>  impl;               // 08
+		GPtr<GFxResourceLib> strongResourceLib;  // 10
+		std::uint32_t        defLoadFlags;       // 18
+		std::uint32_t        pad1C;              // 1C
 	};
 	static_assert(sizeof(GFxLoader) == 0x20);
 }

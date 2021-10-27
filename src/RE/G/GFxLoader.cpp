@@ -11,6 +11,6 @@ namespace RE
 
 	GFxLoaderImpl* GFxLoader::GetLoaderImpl() const
 	{
-		return impl;
+		return impl.get();
 	}
 }

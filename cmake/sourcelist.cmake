@@ -576,16 +576,19 @@ set(SOURCES
 	include/RE/F/FxDelegateHandler.h
 	include/RE/F/FxResponseArgs.h
 	include/RE/F/FxResponseArgsBase.h
+	include/RE/G/GAcquireInterface.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
 	include/RE/G/GArray.h
 	include/RE/G/GArrayBase.h
+	include/RE/G/GArrayConstPolicy.h
 	include/RE/G/GArrayData.h
 	include/RE/G/GArrayDataBase.h
 	include/RE/G/GArrayDefaultPolicy.h
 	include/RE/G/GAtomic.h
 	include/RE/G/GColor.h
 	include/RE/G/GConstructorMov.h
+	include/RE/G/GEvent.h
 	include/RE/G/GFixedSizeHash.h
 	include/RE/G/GFxActionControl.h
 	include/RE/G/GFxEvent.h
@@ -595,6 +598,7 @@ set(SOURCES
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
 	include/RE/G/GFxLoader.h
+	include/RE/G/GFxLoaderImpl.h
 	include/RE/G/GFxLog.h
 	include/RE/G/GFxLogBase.h
 	include/RE/G/GFxLogConstants.h
@@ -607,6 +611,9 @@ set(SOURCES
 	include/RE/G/GFxResource.h
 	include/RE/G/GFxResourceID.h
 	include/RE/G/GFxResourceKey.h
+	include/RE/G/GFxResourceLib.h
+	include/RE/G/GFxResourceLibBase.h
+	include/RE/G/GFxResourceWeakLib.h
 	include/RE/G/GFxSpecialKeysState.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h
@@ -628,6 +635,7 @@ set(SOURCES
 	include/RE/G/GMatrix3D.h
 	include/RE/G/GMemory.h
 	include/RE/G/GMemoryHeap.h
+	include/RE/G/GMutex.h
 	include/RE/G/GNewOverrideBase.h
 	include/RE/G/GPoint.h
 	include/RE/G/GPtr.h
@@ -647,6 +655,8 @@ set(SOURCES
 	include/RE/G/GSysAllocPaged.h
 	include/RE/G/GTexture.h
 	include/RE/G/GViewport.h
+	include/RE/G/GWaitCondition.h
+	include/RE/G/GWaitable.h
 	include/RE/G/GameSettingCollection.h
 	include/RE/G/GiftMenu.h
 	include/RE/G/GlobalLocations.h
