@@ -88,9 +88,29 @@ namespace RE
 		return data;
 	}
 
-	GRenderer::Cxform::Cxform() :
-		matrix{ 0.0 }
-	{}
+	GRenderer::Cxform GRenderer::Cxform::Identity;
+
+	GRenderer::Cxform::Cxform()
+	{
+		SetIdentity();
+	}
+
+	void GRenderer::Cxform::SetIdentity()
+	{
+		matrix[kR][kMult] = 1.0f;
+		matrix[kR][kAdd] = 0.0f;
+		matrix[kG][kMult] = 1.0f;
+		matrix[kG][kAdd] = 0.0f;
+		matrix[kB][kMult] = 1.0f;
+		matrix[kB][kAdd] = 0.0f;
+		matrix[kA][kMult] = 1.0f;
+		matrix[kA][kAdd] = 0.0f;
+	}
+
+	bool GRenderer::Cxform::IsIdentity() const
+	{
+		return *this == Identity;
+	}
 
 	bool GRenderer::Cxform::operator==(const Cxform& a_rhs) const
 	{

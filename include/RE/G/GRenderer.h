@@ -225,6 +225,8 @@ namespace RE
 		class Cxform
 		{
 		public:
+			static Cxform Identity;
+
 			enum
 			{
 				kR,
@@ -242,6 +244,10 @@ namespace RE
 			};
 
 			Cxform();
+
+			void SetIdentity();
+
+			bool IsIdentity() const;
 
 			bool operator==(const Cxform& a_rhs) const;
 
