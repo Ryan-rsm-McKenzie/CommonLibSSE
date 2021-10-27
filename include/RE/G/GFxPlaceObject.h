@@ -14,7 +14,7 @@ namespace RE
 		void Execute1(GFxSprite* a_sprite) override;  // 01
 
 		// override (GFxPlaceObjectBase)
-		void GetPlaceObjectData(GFxPlaceObjectData& a_data) override;  // 08 - pure
+		void GetPlaceObjectData(GFxPlaceObjectData& a_data) override;  // 08
 		void GetPlaceFlags(GFxPlaceFlags& a_flags) override;           // 0A
 
 		// members
