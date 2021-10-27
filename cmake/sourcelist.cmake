@@ -627,8 +627,12 @@ set(SOURCES
 	include/RE/G/GHashNode.h
 	include/RE/G/GHashSet.h
 	include/RE/G/GHashSetBase.h
+	include/RE/G/GHashSetUncached.h
+	include/RE/G/GHashUncached.h
 	include/RE/G/GHashsetCachedEntry.h
 	include/RE/G/GHashsetCachedNodeEntry.h
+	include/RE/G/GHashsetEntry.h
+	include/RE/G/GHashsetNodeEntry.h
 	include/RE/G/GImage.h
 	include/RE/G/GImageBase.h
 	include/RE/G/GList.h
