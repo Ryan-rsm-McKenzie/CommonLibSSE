@@ -605,16 +605,20 @@ set(SOURCES
 	include/RE/G/GFxFunctionHandler.h
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
+	include/RE/G/GFxLoadStates.h
 	include/RE/G/GFxLoadUpdateSync.h
 	include/RE/G/GFxLoader.h
 	include/RE/G/GFxLoaderImpl.h
+	include/RE/G/GFxLoaderTask.h
 	include/RE/G/GFxLog.h
 	include/RE/G/GFxLogBase.h
 	include/RE/G/GFxLogConstants.h
 	include/RE/G/GFxMorphCharacterDef.h
 	include/RE/G/GFxMovie.h
+	include/RE/G/GFxMovieDefBindStates.h
 	include/RE/G/GFxMovieDataDef.h
 	include/RE/G/GFxMovieDef.h
+	include/RE/G/GFxMovieDefImpl.h
 	include/RE/G/GFxMovieRoot.h
 	include/RE/G/GFxMovieView.h
 	include/RE/G/GFxPlayerStats.h
@@ -635,7 +639,9 @@ set(SOURCES
 	include/RE/G/GFxSpriteDef.h
 	include/RE/G/GFxState.h
 	include/RE/G/GFxStateBag.h
+	include/RE/G/GFxStateBagImpl.h
 	include/RE/G/GFxStaticTextCharacterDef.h
+	include/RE/G/GFxTask.h
 	include/RE/G/GFxTimelineDef.h
 	include/RE/G/GFxTranslator.h
 	include/RE/G/GFxValue.h
