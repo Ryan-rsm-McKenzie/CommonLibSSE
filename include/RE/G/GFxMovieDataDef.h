@@ -11,6 +11,31 @@
 
 namespace RE
 {
+	class GFxLog;
+
+	struct GFxMovieLoadInfo
+	{
+		std::uint32_t   totalBytes;  // 00
+		std::uint32_t   version;     // 04
+		GRectF          frameRect;   // 08
+		float           frameRate;   // 18
+		std::uint32_t   frameCount;  // 1C
+		std::uint32_t   swfFlags;    // 20
+		std::uint32_t   unk24;       // 24
+		std::uint64_t   unk28;       // 28
+		std::uint64_t   unk30;       // 30
+		std::uint64_t   unk38;       // 38
+		std::uint16_t   unk40;       // 40
+		std::uint16_t   pad42;       // 42
+		std::uint32_t   unk44;       // 44
+		GString         unk48;       // 48
+		GString         unk50;       // 50
+		void*           unk58;       // 58
+		std::uint64_t   unk60;       // 60
+		std::uint64_t   unk68;       // 68
+	};
+	static_assert(sizeof(GFxMovieLoadInfo) == 0x70);
+
 	struct GFxResourceSource
 	{
 		enum SourceType : std::int32_t
@@ -133,29 +158,6 @@ namespace RE
 		public:
 			using ResourceHash = GHashUncached<GFxResourceID, GFxResourceSource, GFxResourceID::HashOp>;
 
-			struct Struct50
-			{
-				std::uint32_t   totalBytes;  // 00
-				std::uint32_t   version;     // 04
-				GRectF          frameRect;   // 08
-				float           frameRate;   // 18
-				std::uint32_t   frameCount;  // 1C
-				std::uint32_t   swfFlags;    // 20
-				std::uint32_t   unk24;       // 24
-				std::uint64_t   unk28;       // 28
-				std::uint64_t   unk30;       // 30
-				std::uint64_t   unk38;       // 38
-				std::uint16_t   unk40;       // 40
-				std::uint16_t   pad42;       // 42
-				std::uint32_t   unk44;       // 44
-				GString         unk48;       // 48
-				GString         unk50;       // 50
-				void*           unk58;       // 58
-				std::uint64_t   unk60;       // 60
-				std::uint64_t   unk68;       // 68
-			};
-			static_assert(sizeof(Struct50) == 0x70);
-
 			~LoadTaskData() override;  // 00
 
 			// add
@@ -167,7 +169,7 @@ namespace RE
 			GMemoryHeap*              loadDataHeap;           // 038
 			GMemoryHeap*              imageHeap;              // 040
 			GString                   fileURL;                // 048
-			Struct50                  unk50;                  // 050
+			GFxMovieLoadInfo          movieInfo;              // 050
 			std::uint32_t             fileAttributes;         // 0C0
 			std::uint32_t             padC4;                  // 0C4
 			void*                     metadata;               // 0C8
