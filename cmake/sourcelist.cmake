@@ -576,6 +576,9 @@ set(SOURCES
 	include/RE/F/FxDelegateHandler.h
 	include/RE/F/FxResponseArgs.h
 	include/RE/F/FxResponseArgsBase.h
+	include/RE/G/GASDoAction.h
+	include/RE/G/GASDoInitAction.h
+	include/RE/G/GASExecuteTag.h
 	include/RE/G/GAcquireInterface.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
@@ -603,6 +606,7 @@ set(SOURCES
 	include/RE/G/GFxExternalInterface.h
 	include/RE/G/GFxFileConstants.h
 	include/RE/G/GFxFunctionHandler.h
+	include/RE/G/GFxInitImportActions.h
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
 	include/RE/G/GFxLoadProcess.h
@@ -624,7 +628,15 @@ set(SOURCES
 	include/RE/G/GFxMovieImageLoadTask.h
 	include/RE/G/GFxMovieRoot.h
 	include/RE/G/GFxMovieView.h
+	include/RE/G/GFxPlaceObject.h
+	include/RE/G/GFxPlaceObject2.h
+	include/RE/G/GFxPlaceObject2a.h
+	include/RE/G/GFxPlaceObject3.h
+	include/RE/G/GFxPlaceObjectBase.h
+	include/RE/G/GFxPlaceObjectUnpacked.h
 	include/RE/G/GFxPlayerStats.h
+	include/RE/G/GFxRemoveObject.h
+	include/RE/G/GFxRemoveObject2.h
 	include/RE/G/GFxRenderConfig.h
 	include/RE/G/GFxResource.h
 	include/RE/G/GFxResourceID.h
@@ -633,6 +645,7 @@ set(SOURCES
 	include/RE/G/GFxResourceLibBase.h
 	include/RE/G/GFxResourceReport.h
 	include/RE/G/GFxResourceWeakLib.h
+	include/RE/G/GFxSetBackgroundColor.h
 	include/RE/G/GFxShapeBase.h
 	include/RE/G/GFxShapeBaseCharacterDef.h
 	include/RE/G/GFxShapeCharacterDef.h
