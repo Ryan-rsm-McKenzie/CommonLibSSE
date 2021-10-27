@@ -415,12 +415,12 @@ namespace RE
 
 		const_iterator begin() const
 		{
-			return const_cast<SelfType*>(this)->Begin();
+			return const_cast<SelfType*>(this)->begin();
 		}
 
 		const_iterator end() const
 		{
-			return const_cast<SelfType*>(this)->End();
+			return const_cast<SelfType*>(this)->end();
 		}
 
 		template <class K>
