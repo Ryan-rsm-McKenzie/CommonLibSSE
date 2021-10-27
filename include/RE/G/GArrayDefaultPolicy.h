@@ -5,6 +5,14 @@ namespace RE
 	struct GArrayDefaultPolicy
 	{
 	public:
+		GArrayDefaultPolicy() :
+			capacity(0)
+		{}
+
+		GArrayDefaultPolicy(const GArrayDefaultPolicy&) :
+			capacity(0)
+		{}
+
 		UPInt GetMinCapacity() const { return 0; }
 		UPInt GetGranularity() const { return 4; }
 		bool  NeverShrinking() const { return false; }

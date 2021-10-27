@@ -9,30 +9,30 @@
 namespace RE
 {
 	template <class T, std::uint32_t SID = GStatGroup::kGStat_Default_Mem, class SizePolicy = GArrayDefaultPolicy>
-	class GArray : public GArrayBase<GArrayData<T, GAllocatorGH<T, SID>, SizePolicy>>
+	class GArrayLH : public GArrayBase<GArrayData<T, GAllocatorLH<T, SID>, SizePolicy>>
 	{
 	public:
 		using ValueType = T;
-		using AllocatorType = GAllocatorGH<T, SID>;
+		using AllocatorType = GAllocatorLH<T, SID>;
 		using SizePolicyType = SizePolicy;
-		using SelfType = GArray<T, SID, SizePolicy>;
-		using BaseType = GArrayBase<GArrayData<T, GAllocatorGH<T, SID>, SizePolicy>>;
+		using SelfType = GArrayLH<T, SID, SizePolicy>;
+		using BaseType = GArrayBase<GArrayData<T, GAllocatorLH<T, SID>, SizePolicy>>;
 
-		GArray() :
+		GArrayLH() :
 			BaseType()
 		{}
 
-		GArray(std::int32_t a_size) :
+		GArrayLH(std::int32_t a_size) :
 			BaseType(a_size)
 		{}
 
-		GArray(const SizePolicyType& a_policy) :
+		GArrayLH(const SizePolicyType& a_policy) :
 			BaseType()
 		{
 			SetSizePolicy(a_policy);
 		}
 
-		GArray(const SelfType& a_array) :
+		GArrayLH(const SelfType& a_array) :
 			BaseType(a_array)
 		{}
 
@@ -42,5 +42,5 @@ namespace RE
 			return *this;
 		}
 	};
-	static_assert(sizeof(GArray<void*>) == 0x18);
+	static_assert(sizeof(GArrayLH<void*>) == 0x18);
 }

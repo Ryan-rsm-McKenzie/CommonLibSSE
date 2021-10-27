@@ -6,6 +6,16 @@ namespace RE
 	struct GArrayConstPolicy
 	{
 	public:
+		using SelfType = GArrayConstPolicy<MinCapacity, Granularity, NeverShrink>;
+
+		GArrayConstPolicy() :
+			capacity(0)
+		{}
+
+		GArrayConstPolicy(const SelfType&) :
+			capacity(0)
+		{}
+
 		UPInt GetMinCapacity() const { return MinCapacity; }
 		UPInt GetGranularity() const { return Granularity; }
 		bool  NeverShrinking() const { return NeverShrink; }

@@ -579,12 +579,14 @@ set(SOURCES
 	include/RE/G/GAcquireInterface.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
+	include/RE/G/GAllocatorBaseLH.h
 	include/RE/G/GArray.h
 	include/RE/G/GArrayBase.h
 	include/RE/G/GArrayConstPolicy.h
 	include/RE/G/GArrayData.h
 	include/RE/G/GArrayDataBase.h
 	include/RE/G/GArrayDefaultPolicy.h
+	include/RE/G/GArrayLH.h
 	include/RE/G/GAtomic.h
 	include/RE/G/GColor.h
 	include/RE/G/GConstructorMov.h
