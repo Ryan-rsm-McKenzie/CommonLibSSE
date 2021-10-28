@@ -51,7 +51,7 @@ namespace RE
 			iterator operator++(std::int32_t)
 			{
 				iterator it(*this);
-				operator++();
+						 operator++();
 				return it;
 			}
 
@@ -68,7 +68,7 @@ namespace RE
 			iterator operator--(std::int32_t)
 			{
 				iterator it(*this);
-				operator--();
+						 operator--();
 				return it;
 			}
 
@@ -164,7 +164,7 @@ namespace RE
 			const_iterator operator++(std::int32_t)
 			{
 				const_iterator it(*this);
-				operator++();
+							   operator++();
 				return it;
 			}
 
@@ -180,7 +180,7 @@ namespace RE
 			const_iterator operator--(std::int32_t)
 			{
 				const_iterator it(*this);
-				operator--();
+							   operator--();
 				return it;
 			}
 
