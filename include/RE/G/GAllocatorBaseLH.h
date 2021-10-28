@@ -6,7 +6,7 @@
 namespace RE
 {
 	template <std::uint32_t SID = GStatGroup::kGStat_Default_Mem>
-	class GAllocatorBaseGH
+	class GAllocatorBaseLH
 	{
 	public:
 		enum
@@ -14,9 +14,9 @@ namespace RE
 			kStatID = SID
 		};
 
-		static void* Alloc([[maybe_unused]] const void* a_heapAddr, UPInt a_size)
+		static void* Alloc(const void* a_heapAddr, UPInt a_size)
 		{
-			return GMemory::Alloc(a_size);
+			return GMemory::AllocAutoHeap(a_heapAddr, a_size);
 		}
 
 		static void* Realloc(void* a_ptr, UPInt a_newSize)
@@ -29,5 +29,5 @@ namespace RE
 			GMemory::Free(a_ptr);
 		}
 	};
-	static_assert(sizeof(GAllocatorBaseGH<>) == 0x1);
+	static_assert(sizeof(GAllocatorBaseLH<>) == 0x1);
 }

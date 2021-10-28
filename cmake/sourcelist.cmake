@@ -578,7 +578,9 @@ set(SOURCES
 	include/RE/F/FxResponseArgsBase.h
 	include/RE/G/GAllocator.h
 	include/RE/G/GAllocatorBaseGH.h
+	include/RE/G/GAllocatorBaseLH.h
 	include/RE/G/GArray.h
+	include/RE/G/GArrayLH.h
 	include/RE/G/GArrayBase.h
 	include/RE/G/GArrayData.h
 	include/RE/G/GArrayDataBase.h

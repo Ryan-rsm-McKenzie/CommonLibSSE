@@ -594,7 +594,7 @@ namespace RE
 			}
 
 			SelfType newHash;
-			newHash.table = static_cast<TableType*>(Allocator::Alloc(sizeof(TableType) + sizeof(Entry) * a_newSize));
+			newHash.table = static_cast<TableType*>(Allocator::Alloc(a_heapAddr, sizeof(TableType) + sizeof(Entry) * a_newSize));
 			assert(newHash.table);
 
 			newHash.table->entryCount = 0;
