@@ -14,7 +14,7 @@ namespace RE
 	public:
 		BGSDebrisData();
 		BGSDebrisData(const char* a_fileName);
-		
+
 		~BGSDebrisData() = default;
 
 		enum class BGSDebrisDataFlags

@@ -15,7 +15,7 @@ namespace RE
 		kNever = 1,
 		kLess,
 		kEqual,
-	    kLessEqual,
+		kLessEqual,
 		kGreater,
 		kNotEqual,
 		kGreaterEqual,

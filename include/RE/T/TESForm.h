@@ -296,13 +296,13 @@ namespace RE
 			return formID & ~fileIndex;
 		}
 
-		[[nodiscard]] const char*   GetName() const;
-		[[nodiscard]] float         GetWeight() const;
-		[[nodiscard]] bool          HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
-		[[nodiscard]] bool          HasKeywords(BGSListForm* a_keywords, bool a_matchAll) const;
-		[[nodiscard]] bool          HasVMAD() const;
-		[[nodiscard]] bool          HasWorldModel() const noexcept;
-		void                        InitItem() { InitItemImpl(); }
+		[[nodiscard]] const char* GetName() const;
+		[[nodiscard]] float       GetWeight() const;
+		[[nodiscard]] bool        HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
+		[[nodiscard]] bool        HasKeywords(BGSListForm* a_keywords, bool a_matchAll) const;
+		[[nodiscard]] bool        HasVMAD() const;
+		[[nodiscard]] bool        HasWorldModel() const noexcept;
+		void                      InitItem() { InitItemImpl(); }
 
 		[[nodiscard]] bool Is(FormType a_type) const noexcept { return GetFormType() == a_type; }
 

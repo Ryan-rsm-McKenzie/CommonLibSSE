@@ -16,7 +16,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-	    BGSPerk*      perk;         // 00
+		BGSPerk*      perk;         // 00
 		std::int8_t   currentRank;  // 08
 		std::uint8_t  pad09;        // 09
 		std::uint16_t pad0A;        // 0A
