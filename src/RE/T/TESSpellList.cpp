@@ -15,117 +15,130 @@ namespace RE
 
 	bool TESSpellList::SpellData::AddLevSpell(TESLevSpell* a_levSpell)
 	{
-		if (!GetIndex(a_levSpell).has_value()) {
+		if (!GetIndex(a_levSpell)) {
+			std::vector<TESLevSpell*> copiedData{ levSpells, levSpells + numlevSpells };
+			copiedData.push_back(a_levSpell);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<TESLevSpell*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = levSpells;
-			levSpells = calloc<TESLevSpell*>(++numlevSpells);
-			if (oldData) {
-				for (std::uint32_t i = 0; i < numlevSpells - 1; i++) {
-					levSpells[i] = oldData[i];
-				}
-				free(oldData);
-				oldData = nullptr;
-			}
-			levSpells[numlevSpells - 1] = a_levSpell;
+
+			numlevSpells = newNum;
+			levSpells = newData;
+
+			free(oldData);
+
 			return true;
 		}
+
 		return false;
 	}
 
 	bool TESSpellList::SpellData::AddShout(TESShout* a_shout)
 	{
-		if (!GetIndex(a_shout).has_value()) {
+		if (!GetIndex(a_shout)) {
+			std::vector<TESShout*> copiedData{ shouts, shouts + numShouts };
+			copiedData.push_back(a_shout);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<TESShout*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = shouts;
-			shouts = calloc<TESShout*>(++numShouts);
-			if (oldData) {
-				for (std::uint32_t i = 0; i < numShouts - 1; i++) {
-					shouts[i] = oldData[i];
-				}
-				free(oldData);
-				oldData = nullptr;
-			}
-			shouts[numShouts - 1] = a_shout;
+
+			numShouts = newNum;
+			shouts = newData;
+
+			free(oldData);
+
 			return true;
 		}
+
 		return false;
 	}
 
 	bool TESSpellList::SpellData::AddSpell(SpellItem* a_spell)
 	{
-		if (!GetIndex(a_spell).has_value()) {
+		if (!GetIndex(a_spell)) {
+			std::vector<SpellItem*> copiedData{ spells, spells + numSpells };
+			copiedData.push_back(a_spell);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<SpellItem*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = spells;
-			spells = calloc<SpellItem*>(++numSpells);
-			if (oldData) {
-				for (std::uint32_t i = 0; i < numSpells - 1; i++) {
-					spells[i] = oldData[i];
-				}
-				free(oldData);
-				oldData = nullptr;
-			}
-			spells[numSpells - 1] = a_spell;
+
+			numSpells = newNum;
+			spells = newData;
+
+			free(oldData);
+
 			return true;
 		}
+		
 		return false;
 	}
 
 	std::optional<std::uint32_t> TESSpellList::SpellData::GetIndex(SpellItem* a_spell)
 	{
-		std::optional<std::uint32_t> index = std::nullopt;
 		if (spells) {
 			for (std::uint32_t i = 0; i < numSpells; i++) {
-				if (spells[i] && spells[i] == a_spell) {
-					index = i;
-					break;
+				if (spells[i] == a_spell) {
+					return i;
 				}
 			}
 		}
-		return index;
+		return std::nullopt;
 	}
 
 	std::optional<std::uint32_t> TESSpellList::SpellData::GetIndex(TESLevSpell* a_lvlSpell)
 	{
-		std::optional<std::uint32_t> index = std::nullopt;
 		if (levSpells) {
 			for (std::uint32_t i = 0; i < numlevSpells; i++) {
-				if (levSpells[i] && levSpells[i] == a_lvlSpell) {
-					index = i;
-					break;
+				if (levSpells[i] == a_lvlSpell) {
+					return i;
 				}
 			}
 		}
-		return index;
+		return std::nullopt;
 	}
 
 	std::optional<std::uint32_t> TESSpellList::SpellData::GetIndex(TESShout* a_shout)
 	{
-		std::optional<std::uint32_t> index = std::nullopt;
 		if (shouts) {
 			for (std::uint32_t i = 0; i < numShouts; i++) {
-				if (shouts[i] && shouts[i] == a_shout) {
-					index = i;
-					break;
+				if (shouts[i] == a_shout) {
+					return i;
 				}
 			}
 		}
-		return index;
+		return std::nullopt;
 	}
 
 	bool TESSpellList::SpellData::RemoveSpell(SpellItem* a_spell)
 	{
 		auto index = GetIndex(a_spell);
-		if (index.has_value()) {
+		if (index) {
+			std::vector<SpellItem*> copiedData{ spells, spells + numSpells };
+			copiedData.erase(copiedData.cbegin() + *index);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<SpellItem*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = spells;
-			if (oldData) {
-				spells = calloc<SpellItem*>(--numSpells);
-				for (std::uint32_t i = 0; i < numSpells + 1; i++) {
-					if (index != i) {
-						spells[i] = oldData[i];
-					}
-				}
-				free(oldData);
-				oldData = nullptr;
-				return true;
-			}
+
+			numSpells = newNum;
+			spells = newData;
+
+			free(oldData);
+
+			return true;
 		}
+
 		return false;
 	}
 }

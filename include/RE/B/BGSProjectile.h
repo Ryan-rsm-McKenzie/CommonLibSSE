@@ -79,6 +79,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSProjectile;
+		inline static constexpr auto VTABLE = VTABLE_BGSProjectile;
 		inline static constexpr auto FORMTYPE = FormType::Projectile;
 
 		struct RecordFlags

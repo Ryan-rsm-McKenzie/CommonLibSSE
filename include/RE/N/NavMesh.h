@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NavMesh;
+		inline static constexpr auto VTABLE = VTABLE_NavMesh;
 		inline static constexpr auto FORMTYPE = FormType::NavMesh;
 
 		struct RecordFlags

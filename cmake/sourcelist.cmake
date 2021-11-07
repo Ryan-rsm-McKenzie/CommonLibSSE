@@ -276,6 +276,7 @@ set(SOURCES
 	include/RE/B/BSShader.h
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
+	include/RE/B/BSShaderPropertyLightData.h
 	include/RE/B/BSShaderTextureSet.h
 	include/RE/B/BSShadowLight.h
 	include/RE/B/BSSmallBlockAllocator.h
@@ -707,6 +708,7 @@ set(SOURCES
 	include/RE/G/GrenadeProjectile.h
 	include/RE/G/GridArray.h
 	include/RE/G/GridCellArray.h
+	include/RE/H/HUDChargeMeter.h
 	include/RE/H/HUDData.h
 	include/RE/H/HUDMenu.h
 	include/RE/H/HUDMeter.h
@@ -1292,6 +1294,7 @@ set(SOURCES
 	include/RE/U/UIBlurManager.h
 	include/RE/U/UIMessage.h
 	include/RE/U/UIMessageQueue.h
+	include/RE/U/UIRenderManager.h
 	include/RE/U/UISaveLoadManager.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h

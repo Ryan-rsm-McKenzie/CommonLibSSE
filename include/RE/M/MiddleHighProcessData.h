@@ -262,7 +262,7 @@ namespace RE
 		float                                          unk2B8;                      // 2B8
 		float                                          unk2BC;                      // 2BC
 		float                                          unk2C0;                      // 2C0
-		float                                          unk2C4;                      // 2C4
+		float                                          torchEvaluationTimer;        // 2C4
 		float                                          alphaMult;                   // 2C8
 		float                                          scriptRefractPower;          // 2CC
 		float                                          unk2D0;                      // 2D0

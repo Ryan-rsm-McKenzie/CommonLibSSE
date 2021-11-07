@@ -28,6 +28,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectMISC;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectMISC;
 		inline static constexpr auto FORMTYPE = FormType::Misc;
 
 		struct RecordFlags

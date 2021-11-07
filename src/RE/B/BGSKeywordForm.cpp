@@ -7,19 +7,24 @@ namespace RE
 {
 	bool BGSKeywordForm::AddKeyword(BGSKeyword* a_keyword)
 	{
-		if (!GetKeywordIndex(a_keyword).has_value()) {
+		if (!GetKeywordIndex(a_keyword)) {
+			std::vector<BGSKeyword*> copiedData{ keywords, keywords + numKeywords };
+			copiedData.push_back(a_keyword);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<BGSKeyword*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = keywords;
-			keywords = calloc<BGSKeyword*>(++numKeywords);
-			if (oldData) {
-				for (std::uint32_t i = 0; i < numKeywords - 1; ++i) {
-					keywords[i] = oldData[i];
-				}
-				free(oldData);
-				oldData = nullptr;
-			}
-			keywords[numKeywords - 1] = a_keyword;
+
+			numKeywords = newNum;
+			keywords = newData;
+
+			free(oldData);
+
 			return true;
 		}
+		
 		return false;
 	}
 
@@ -73,16 +78,14 @@ namespace RE
 
 	std::optional<std::uint32_t> BGSKeywordForm::GetKeywordIndex(BGSKeyword* a_keyword) const
 	{
-		std::optional<std::uint32_t> index = std::nullopt;
 		if (keywords) {
 			for (std::uint32_t i = 0; i < numKeywords; ++i) {
-				if (keywords[i] && keywords[i] == a_keyword) {
-					index = i;
-					break;
+				if (keywords[i] == a_keyword) {
+					return i;
 				}
 			}
 		}
-		return index;
+		return std::nullopt;
 	}
 
 	std::uint32_t BGSKeywordForm::GetNumKeywords() const
@@ -92,28 +95,26 @@ namespace RE
 
 	bool BGSKeywordForm::RemoveKeyword(std::uint32_t a_index)
 	{
-		auto oldData = keywords;
-		if (oldData) {
-			keywords = calloc<BGSKeyword*>(--numKeywords);
-			for (std::uint32_t i = 0; i < numKeywords + 1; ++i) {
-				if (i != a_index) {
-					keywords[i] = oldData[i];
-				}
-			}
-			free(oldData);
-			oldData = nullptr;
+		std::vector<BGSKeyword*> copiedData{ keywords, keywords + numKeywords };
+		copiedData.erase(copiedData.cbegin() + a_index);
 
-			return true;
-		}
-		return false;
+		auto newNum = static_cast<std::uint32_t>(copiedData.size());
+		auto newData = calloc<BGSKeyword*>(newNum);
+		std::ranges::copy(copiedData, newData);
+
+		auto oldData = keywords;
+
+		numKeywords = newNum;
+		keywords = newData;
+
+		free(oldData);
+
+		return true;
 	}
 
 	bool BGSKeywordForm::RemoveKeyword(BGSKeyword* a_keyword)
 	{
 		auto index = GetKeywordIndex(a_keyword);
-		if (index.has_value()) {
-			return RemoveKeyword(index.value());
-		}
-		return false;
+		return index ? RemoveKeyword(*index) : false;
 	}
 }

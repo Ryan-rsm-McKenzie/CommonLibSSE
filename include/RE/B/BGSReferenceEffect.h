@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSReferenceEffect;
+		inline static constexpr auto VTABLE = VTABLE_BGSReferenceEffect;
 		inline static constexpr auto FORMTYPE = FormType::ReferenceEffect;
 
 		enum class Flag

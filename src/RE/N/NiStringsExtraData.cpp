@@ -4,6 +4,20 @@
 
 namespace RE
 {
+	void copy_string(char*& a_value, const BSFixedString& a_string)
+	{
+		size_t strLength = a_string.length() + 1;
+		a_value = NiAlloc<char>(strLength);
+		std::memcpy(a_value, a_string.c_str(), sizeof(char) * strLength);
+	}
+
+	void copy_string(char*& a_value, char*& a_copyValue)
+	{
+		size_t strLength = std::strlen(a_copyValue) + 1;
+		a_value = NiAlloc<char>(strLength);
+		std::memcpy(a_value, a_copyValue, sizeof(char) * strLength);
+	}
+
 	NiStringsExtraData* NiStringsExtraData::Create(const BSFixedString& a_name, const std::vector<BSFixedString>& a_strings)
 	{
 		auto data = NiExtraData::Create<NiStringsExtraData>();
@@ -16,20 +30,21 @@ namespace RE
 
 			for (std::uint32_t i = 0; i < size; i++) {
 				if (const auto string = a_strings[i]; !string.empty()) {
-					size_t strLength = string.length() + 1;
-					data->value[i] = NiAlloc<char>(strLength);
-					std::memcpy(data->value[i], string.c_str(), sizeof(char) * strLength);
+					copy_string(data->value[i], string);
 				}
 			}
 		}
+
 		return data;
 	}
 
 	std::optional<std::uint32_t> NiStringsExtraData::GetIndex(const BSFixedString& a_element) const
 	{
-		for (std::uint32_t i = 0; i < size; i++) {
-			if (_strnicmp(a_element.c_str(), value[i], a_element.length()) == 0) {
-				return i;
+		if (value) {
+			for (std::uint32_t i = 0; i < size; i++) {
+				if (a_element == value[i]) {
+					return i;
+				}
 			}
 		}
 		return std::nullopt;
@@ -37,71 +52,59 @@ namespace RE
 
 	bool NiStringsExtraData::Insert(const BSFixedString& a_element)
 	{
-		if (!a_element.empty() && !GetIndex(a_element).has_value()) {
-			auto oldData = value;
+		if (!a_element.empty() && !GetIndex(a_element)) {
+			auto oldValue = value;
+
 			value = NiAlloc<char*>(++size);
 
-			if (oldData) {
+			if (oldValue) {
 				for (std::uint32_t i = 0; i < size - 1; i++) {
-					size_t strLength = std::strlen(oldData[i]) + 1;
-					value[i] = NiAlloc<char>(strLength);
-					std::memcpy(value[i], oldData[i], sizeof(char) * strLength);
+					copy_string(value[i], oldValue[i]);
 
-					NiFree(oldData[i]);
+					NiFree(oldValue[i]);
 				}
-				NiFree(oldData);
-				oldData = nullptr;
+				NiFree(oldValue);
 			}
 
-			size_t strLength = a_element.length() + 1;
-			value[size - 1] = NiAlloc<char>(strLength);
-			std::memcpy(value[size - 1], a_element.data(), sizeof(char) * strLength);
+			copy_string(value[size - 1], a_element);
 
 			return true;
 		}
+
 		return false;
 	}
 
 	bool NiStringsExtraData::Remove(const BSFixedString& a_element)
 	{
-		if (!a_element.empty()) {
-			if (auto index = GetIndex(a_element); index.has_value()) {
-				auto oldData = value;
-				value = NiAlloc<char*>(--size);
+		if (auto index = GetIndex(a_element); index && !a_element.empty()) {
+			auto oldValue = value;
 
-				for (std::uint32_t i = 0; i < size + 1; i++) {
-					if (i != index) {
-						size_t strLength = std::strlen(oldData[i]) + 1;
-						value[i] = NiAlloc<char>(strLength);
-						std::memcpy(value[i], oldData[i], sizeof(char) * strLength);
-					}
-					NiFree(oldData[i]);
+			value = NiAlloc<char*>(--size);
+
+			for (std::uint32_t i = 0; i < size + 1; i++) {
+				if (i != *index) {
+					copy_string(value[i], oldValue[i]);
 				}
-				NiFree(oldData);
-				oldData = nullptr;
-
-				return true;
+				NiFree(oldValue[i]);
 			}
+			NiFree(oldValue);
+
+			return true;
 		}
+
 		return false;
 	}
 
 	bool NiStringsExtraData::Replace(const BSFixedString& a_from, const BSFixedString& a_to)
 	{
-		if (!a_from.empty() && !a_to.empty()) {
-			if (auto index = GetIndex(a_from); index.has_value()) {
-				const auto idx = index.value();
+		if (auto index = GetIndex(a_from); index && !a_to.empty()) {
+			NiFree(value[*index]);
+			
+			copy_string(value[*index], a_to);
 
-				NiFree(value[idx]);
-				value[idx] = nullptr;
-
-				size_t strLength = a_to.length() + 1;
-				value[idx] = NiAlloc<char>(strLength);
-				std::memcpy(value[idx], a_to.data(), sizeof(char) * strLength);
-
-				return true;
-			}
+			return true;
 		}
+		
 		return false;
 	}
 }

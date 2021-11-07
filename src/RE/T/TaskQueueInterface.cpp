@@ -21,4 +21,11 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(35978) };
 		return func(this, a_scale, a_pos);
 	}
+
+	std::uint32_t TaskQueueInterface::QueueRemoveSpellTask(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem)
+	{
+		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpellTask);
+		REL::Relocation<func_t> func{ REL::ID(35987) };
+		return func(this, a_actorHandle, a_spellItem);
+	}
 }

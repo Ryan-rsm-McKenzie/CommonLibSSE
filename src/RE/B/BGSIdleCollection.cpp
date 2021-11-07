@@ -5,19 +5,23 @@ namespace RE
 {
 	bool BGSIdleCollection::AddIdle(TESIdleForm* a_idle)
 	{
-		if (!GetIndex(a_idle).has_value()) {
+		if (!GetIndex(a_idle)) {
+			std::vector<TESIdleForm*> copiedData{ idles, idles + idleCount };
+			copiedData.push_back(a_idle);
+
+			auto newData = calloc<TESIdleForm*>(copiedData.size());
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = idles;
-			idles = calloc<TESIdleForm*>(++idleCount);
-			if (oldData) {
-				for (std::int8_t i = 0; i < idleCount - 1; i++) {
-					idles[i] = oldData[i];
-				}
-				free(oldData);
-				oldData = nullptr;
-			}
-			idles[idleCount - 1] = a_idle;
+
+			idleCount = static_cast<std::int8_t>(copiedData.size());
+			idles = newData;
+
+			free(oldData);
+
 			return true;
 		}
+
 		return false;
 	}
 
@@ -25,7 +29,7 @@ namespace RE
 	{
 		auto idleCollection = malloc<BGSIdleCollection>();
 		if (idleCollection) {
-			idleCollection->ctor();
+			return idleCollection->ctor();
 		}
 		return idleCollection;
 	}
@@ -35,7 +39,7 @@ namespace RE
 		std::optional<std::uint32_t> index = std::nullopt;
 		if (idles) {
 			for (std::int8_t i = 0; i < idleCount; i++) {
-				if (idles[i] && idles[i] == a_idle) {
+				if (idles[i] == a_idle) {
 					index = i;
 					break;
 				}
@@ -47,20 +51,23 @@ namespace RE
 	bool BGSIdleCollection::RemoveIdle(TESIdleForm* a_idle)
 	{
 		auto index = GetIndex(a_idle);
-		if (index.has_value()) {
+		if (index) {
+			std::vector<TESIdleForm*> copiedData{ idles, idles + idleCount };
+			copiedData.erase(copiedData.cbegin() + *index);
+
+			auto newData = calloc<TESIdleForm*>(copiedData.size());
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = idles;
-			if (oldData) {
-				idles = calloc<TESIdleForm*>(--idleCount);
-				for (std::int8_t i = 0; i < idleCount + 1; i++) {
-					if (index != i) {
-						idles[i] = oldData[i];
-					}
-				}
-				free(oldData);
-				oldData = nullptr;
-				return true;
-			}
+
+			idleCount = static_cast<std::int8_t>(copiedData.size());
+			idles = newData;
+
+			free(oldData);
+
+			return true;
 		}
+
 		return false;
 	}
 }

@@ -11,22 +11,26 @@ namespace RE
 
 	bool TESNPC::AddPerk(BGSPerk* a_perk, std::int8_t a_rank)
 	{
-		if (GetPerkIndex(a_perk) == std::nullopt) {
+		if (!GetPerkIndex(a_perk)) {
+			std::vector<PerkRankData> copiedData{ perks, perks + perkCount };
+			
 			auto newPerk = new PerkRankData(a_perk, a_rank);
-			if (newPerk) {
-				auto oldData = perks;
-				perks = calloc<PerkRankData>(++perkCount);
-				if (oldData) {
-					for (std::uint32_t i = 0; i < perkCount - 1; i++) {
-						perks[i] = oldData[i];
-					}
-					free(oldData);
-					oldData = nullptr;
-				}
-				perks[perkCount - 1] = *newPerk;
-				return true;
-			}
+			copiedData.push_back(*newPerk);
+
+			auto newCount = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<PerkRankData>(newCount);
+			std::ranges::copy(copiedData, newData);
+
+			auto oldData = perks;
+
+			perkCount = newCount;
+			perks = newData;
+
+			free(oldData);
+
+			return true;
 		}
+
 		return false;
 	}
 
@@ -57,16 +61,14 @@ namespace RE
 
 	std::optional<std::uint32_t> TESNPC::GetPerkIndex(BGSPerk* a_perk) const
 	{
-		std::optional<std::uint32_t> index = std::nullopt;
 		if (perks) {
 			for (std::uint32_t i = 0; i < perkCount; i++) {
-				if (perks[i].perk && perks[i].perk == a_perk) {
-					index = i;
-					break;
+				if (perks[i].perk == a_perk) {
+					return i;
 				}
 			}
 		}
-		return index;
+		return std::nullopt;
 	}
 
 	SEX TESNPC::GetSex() const
@@ -195,20 +197,24 @@ namespace RE
 	bool TESNPC::RemovePerk(BGSPerk* a_perk)
 	{
 		auto index = GetPerkIndex(a_perk);
-		if (index != std::nullopt) {
+		if (index) {
+			std::vector<PerkRankData> copiedData{ perks, perks + perkCount };
+			copiedData.erase(copiedData.cbegin() + *index);
+
+			auto newCount = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<PerkRankData>(newCount);
+			std::ranges::copy(copiedData, newData);
+
 			auto oldData = perks;
-			if (oldData) {
-				perks = calloc<PerkRankData>(--perkCount);
-				for (std::uint32_t i = 0; i < perkCount + 1; i++) {
-					if (index != i) {
-						perks[i] = oldData[i];
-					}
-				}
-				free(oldData);
-				oldData = nullptr;
-				return true;
-			}
+
+			perkCount = newCount;
+			perks = newData;
+
+			free(oldData);
+
+			return true;
 		}
+		
 		return false;
 	}
 

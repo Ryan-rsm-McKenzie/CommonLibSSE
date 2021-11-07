@@ -32,6 +32,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSScene;
+		inline static constexpr auto VTABLE = VTABLE_BGSScene;
 		inline static constexpr auto FORMTYPE = FormType::Scene;
 
 		enum class Flag

@@ -88,6 +88,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESClass;
+		inline static constexpr auto VTABLE = VTABLE_TESClass;
 		inline static constexpr auto FORMTYPE = FormType::Class;
 
 		struct ChangeFlags

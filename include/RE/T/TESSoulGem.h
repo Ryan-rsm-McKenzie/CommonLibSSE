@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESSoulGem;
+		inline static constexpr auto VTABLE = VTABLE_TESSoulGem;
 		inline static constexpr auto FORMTYPE = FormType::SoulGem;
 
 		struct RecordFlags

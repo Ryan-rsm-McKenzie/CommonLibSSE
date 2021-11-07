@@ -2,6 +2,7 @@
 
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiColor.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
@@ -20,11 +21,11 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;     // 1C
 
 		// members
-		NiColor       ambient;   // 110
-		NiColor       diffuse;   // 11C
-		NiColor       specular;  // 128
-		float         fade;      // 134
-		std::uint32_t unk138;    // 138
+		NiColor       ambient;  // 110
+		NiColor       diffuse;  // 11C
+		NiPoint3      radius;   // 128
+		float         fade;     // 134
+		std::uint32_t unk138;   // 138
 	};
 	static_assert(sizeof(NiLight) == 0x140);
 }

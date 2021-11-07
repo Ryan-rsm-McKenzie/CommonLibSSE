@@ -65,6 +65,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESCombatStyle;
+		inline static constexpr auto VTABLE = VTABLE_TESCombatStyle;
 		inline static constexpr auto FORMTYPE = FormType::CombatStyle;
 
 		enum class FLAG  // DATA

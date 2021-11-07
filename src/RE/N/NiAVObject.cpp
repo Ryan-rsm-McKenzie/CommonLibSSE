@@ -50,14 +50,13 @@ namespace RE
 		BSGeometry* firstGeometry = nullptr;
 
 		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
-			if (a_type == BSShaderMaterial::Feature::kNone) {
-				firstGeometry = a_geometry;
-				return BSVisit::BSVisitControl::kStop;
-			}
-
 			auto effect = a_geometry->properties[BSGeometry::States::kEffect];
 			auto lightingShader = netimmerse_cast<BSLightingShaderProperty*>(effect.get());
 			if (lightingShader) {
+				if (a_type == BSShaderMaterial::Feature::kNone) {
+					firstGeometry = a_geometry;
+					return BSVisit::BSVisitControl::kStop;
+				}
 				const auto material = lightingShader->material;
 				if (material && material->GetFeature() == a_type) {
 					firstGeometry = a_geometry;

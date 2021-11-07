@@ -40,6 +40,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDebris;
+		inline static constexpr auto VTABLE = VTABLE_BGSDebris;
 		inline static constexpr auto FORMTYPE = FormType::Debris;
 
 		struct RecordFlags

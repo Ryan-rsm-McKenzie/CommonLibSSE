@@ -118,9 +118,9 @@ namespace SKSE
 				return hash::hash_string(toHash);
 			}
 
-			inline bool is_empty(char* a_char)
+			inline bool is_empty(const char* a_char)
 			{
-				return !a_char || *a_char == '\0';
+				return a_char == nullptr || a_char[0] == '\0';
 			}
 
 			inline bool is_only_digit(std::string_view a_str)
@@ -177,6 +177,20 @@ namespace SKSE
 					});
 			}
 
+			inline std::string join(const std::vector<std::string>& a_vec, const char* a_delimiter)
+			{
+				std::ostringstream os;
+				auto               begin = a_vec.begin();
+				auto               end = a_vec.end();
+
+				if (begin != end) {
+					std::copy(begin, std::prev(end), std::ostream_iterator<std::string>(os, a_delimiter));
+					os << *std::prev(end);
+				}
+
+				return os.str();
+			}
+
 			template <class T>
 			T lexical_cast(const std::string& a_str, bool a_hex = false)
 			{
@@ -212,7 +226,7 @@ namespace SKSE
 				if (a_search.empty()) {
 					return;
 				}
-				
+
 				size_t pos = 0;
 				while ((pos = a_str.find(a_search, pos)) != std::string::npos) {
 					a_str.replace(pos, a_search.length(), a_replace);

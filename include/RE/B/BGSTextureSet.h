@@ -16,6 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSTextureSet;
+		inline static constexpr auto VTABLE = VTABLE_BGSTextureSet;
 		inline static constexpr auto FORMTYPE = FormType::TextureSet;
 
 		enum class Flag

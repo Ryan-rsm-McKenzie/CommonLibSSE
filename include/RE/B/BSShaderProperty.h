@@ -7,6 +7,7 @@
 namespace RE
 {
 	class BSShaderMaterial;
+	class BSShaderPropertyLightData;
 	class NiSourceTexture;
 
 	class BSShaderProperty : public NiShadeProperty
@@ -205,7 +206,7 @@ namespace RE
 		std::uint64_t                                        unk58;                // 58
 		BSFadeNode*                                          fadeNode;             // 60
 		BSTSmartPointer<BSEffectShaderData>                  effectData;           // 68
-		std::uint64_t                                        unk70;                // 70
+		BSShaderPropertyLightData*                           lightData;            // 70
 		BSShaderMaterial*                                    material;             // 78
 		std::uint64_t                                        unk80;                // 80
 	};

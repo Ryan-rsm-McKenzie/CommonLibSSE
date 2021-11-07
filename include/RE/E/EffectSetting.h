@@ -24,6 +24,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_EffectSetting;
+		inline static constexpr auto VTABLE = VTABLE_EffectSetting;
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);

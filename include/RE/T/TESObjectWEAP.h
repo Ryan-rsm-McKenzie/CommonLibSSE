@@ -73,6 +73,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectWEAP;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectWEAP;
 		inline static constexpr auto FORMTYPE = FormType::Weapon;
 
 		struct RecordFlags

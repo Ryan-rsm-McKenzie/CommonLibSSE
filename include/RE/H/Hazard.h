@@ -15,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Hazard;
+		inline static constexpr auto VTABLE = VTABLE_Hazard;
 		inline static constexpr auto FORMTYPE = FormType::PlacedHazard;
 
 		enum class Flags

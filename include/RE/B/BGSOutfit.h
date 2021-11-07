@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSOutfit;
+		inline static constexpr auto VTABLE = VTABLE_BGSOutfit;
 		inline static constexpr auto FORMTYPE = FormType::Outfit;
 
 		struct RecordFlags
