@@ -102,7 +102,7 @@ namespace RE
 					if (a_keywords->scriptAddedTempForms && std::ranges::none_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
 						return false;
 					}
-					return true;										
+					return true;
 				} else {
 					if (std::ranges::any_of(a_keywords->forms, form_has_keyword())) {
 						return true;

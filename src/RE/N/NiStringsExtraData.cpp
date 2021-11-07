@@ -99,12 +99,12 @@ namespace RE
 	{
 		if (auto index = GetIndex(a_from); index && !a_to.empty()) {
 			NiFree(value[*index]);
-			
+
 			copy_string(value[*index], a_to);
 
 			return true;
 		}
-		
+
 		return false;
 	}
 }

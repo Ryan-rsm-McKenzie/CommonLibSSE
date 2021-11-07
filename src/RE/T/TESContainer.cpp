@@ -57,7 +57,7 @@ namespace RE
 
 			added = true;
 		}
-		
+
 		return added;
 	}
 
@@ -117,7 +117,7 @@ namespace RE
 
 			return true;
 		}
-		
+
 		return false;
 	}
 }
