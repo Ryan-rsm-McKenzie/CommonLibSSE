@@ -255,7 +255,7 @@ namespace RE
 		float                                          unk29C;                      // 29C
 		float                                          unk2A0;                      // 2A0
 		float                                          unk2A4;                      // 2A4
-		float                                          unk2A8;                      // 2A8
+		float                                          animationDeltaSpeed;         // 2A8
 		float                                          unk2AC;                      // 2AC
 		float                                          unk2B0;                      // 2B0
 		float                                          unk2B4;                      // 2B4

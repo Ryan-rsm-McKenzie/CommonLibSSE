@@ -24,6 +24,10 @@ namespace RE
 
 		~MovementControllerNPC() override;  // 00
 
+		// override (MovementControllerAI)
+		void Unk_06(void) override;  // 06
+		void Unk_09(void) override;  // 09
+
 		// add
 		virtual void Unk_0A(void);  // 0A
 		virtual void Unk_0B(void);  // 0B
