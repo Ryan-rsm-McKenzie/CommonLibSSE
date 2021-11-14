@@ -69,6 +69,7 @@ namespace RE
 
 		void                       AddRef();                                        // Thread-safe reference count implementation; increments the reference count.
 		bool                       AddRef_NotZero();                                // Thread-safe reference count implementation ; increments a reference count if it is not zero.
+		void                       Release();                                       // Thread-Safe reference count implementation; release the resources.
 		[[nodiscard]] std::int32_t GetRefCount() const;                             // Thread-Safe reference count implementation; returns the reference count.
 		void                       SetOwnerResourceLib(GFxResourceLibBase* a_lib);  // Assigns owner library for resource.
 		[[nodiscard]] ResourceType GetResourceType() const;                         // Obtains the resource type.
@@ -76,9 +77,9 @@ namespace RE
 
 	protected:
 		// members
-		GAtomicInt<std::int32_t> _refCount;  // 10
-		std::uint32_t            _pad14;     // 14
-		GFxResourceLibBase*      _lib;       // 18
+		GAtomicInt<std::int32_t> _refCount;  // 08
+		std::uint32_t            _pad0C;     // 0C
+		GFxResourceLibBase*      _lib;       // 10
 	};
 	static_assert(sizeof(GFxResource) == 0x18);
 }

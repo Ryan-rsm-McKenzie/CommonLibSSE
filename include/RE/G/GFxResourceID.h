@@ -14,8 +14,8 @@ namespace RE
 				kGenMask = 0x00030000,
 
 				kSWF = 0,
-				kStatic = 1 << 12,
-				kExport = 1 << 13,
+				kStatic = 1 << 16,
+				kExport = 1 << 17,
 
 				kTypeShift = 18,
 
@@ -31,7 +31,7 @@ namespace RE
 				kInternalConstant = (0 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
 				kGradientImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
 				kDynFontImage = (2 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
-				kFontImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic
+				kFontImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kExport
 			};
 		};
 
