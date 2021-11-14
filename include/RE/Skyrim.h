@@ -379,6 +379,7 @@
 #include "RE/C/CodeTasklet.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/C/Color.h"
+#include "RE/C/ColorUtil.h"
 #include "RE/C/CombatController.h"
 #include "RE/C/CombatGroup.h"
 #include "RE/C/CombatGroupDetectionListener.h"

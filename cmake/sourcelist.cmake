@@ -377,6 +377,7 @@ set(SOURCES
 	include/RE/C/CodeTasklet.h
 	include/RE/C/CollisionLayers.h
 	include/RE/C/Color.h
+	include/RE/C/ColorUtil.h
 	include/RE/C/CombatController.h
 	include/RE/C/CombatGroup.h
 	include/RE/C/CombatGroupDetectionListener.h
@@ -1390,6 +1391,7 @@ set(SOURCES
 	src/RE/C/Calendar.cpp
 	src/RE/C/ChestsLooted.cpp
 	src/RE/C/Color.cpp
+	src/RE/C/ColorUtil.cpp
 	src/RE/C/CommandTable.cpp
 	src/RE/C/Console.cpp
 	src/RE/C/ConsoleLog.cpp
