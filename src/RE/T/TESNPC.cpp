@@ -13,7 +13,7 @@ namespace RE
 	{
 		if (!GetPerkIndex(a_perk)) {
 			std::vector<PerkRankData> copiedData{ perks, perks + perkCount };
-			
+
 			auto newPerk = new PerkRankData(a_perk, a_rank);
 			copiedData.push_back(*newPerk);
 
@@ -214,7 +214,7 @@ namespace RE
 
 			return true;
 		}
-		
+
 		return false;
 	}
 

@@ -78,7 +78,7 @@ namespace RE
 
 			return true;
 		}
-		
+
 		return false;
 	}
 
