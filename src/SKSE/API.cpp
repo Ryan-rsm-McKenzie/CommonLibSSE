@@ -76,7 +76,7 @@ namespace SKSE
 		}
 
 		(void)REL::Module::get();
-		(void)REL::IDDatabase::get();
+		//(void)REL::IDDatabase::get();
 
 		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;
