@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraUniqueID;
+		inline static constexpr auto VTABLE = VTABLE_ExtraUniqueID;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kUniqueID;
 
 		ExtraUniqueID();
