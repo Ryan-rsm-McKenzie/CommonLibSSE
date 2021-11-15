@@ -13,7 +13,7 @@ namespace RE
 		containerRef(a_containerRef),
 		pad14(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraReferenceHandle::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

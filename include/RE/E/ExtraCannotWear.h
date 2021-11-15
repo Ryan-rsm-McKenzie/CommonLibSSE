@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCannotWear;
+		inline static constexpr auto VTABLE = VTABLE_ExtraCannotWear;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCannotWear;
 
 		ExtraCannotWear();

@@ -12,7 +12,7 @@ namespace RE
 		pad12(0),
 		pad14(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraCount::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
+		inline static constexpr auto VTABLE = VTABLE_ExtraContainerChanges;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kContainerChanges;
 
 		ExtraContainerChanges();

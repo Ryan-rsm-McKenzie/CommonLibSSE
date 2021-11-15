@@ -6,11 +6,6 @@ namespace RE
 {
 	namespace Offset
 	{
-		namespace ActivateHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263060));
-		}
-
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
@@ -25,7 +20,6 @@ namespace RE
 			inline constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(36901));
 			inline constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(37802));
 			inline constexpr REL::ID UpdateWeaponAbility(static_cast<std::uint64_t>(37803));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(260538));
 		}
 
 		namespace ActorEquipManager
@@ -44,16 +38,6 @@ namespace RE
 		{
 			inline constexpr REL::ID SetBaseScale(static_cast<std::uint64_t>(38568));
 			inline constexpr REL::ID Update3DModel(static_cast<std::uint64_t>(38404));
-		}
-
-		namespace AttackBlockHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263058));
-		}
-
-		namespace AutoMoveHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
 		}
 
 		namespace BGSFootstepManager
@@ -116,11 +100,6 @@ namespace RE
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(69638));
 			inline constexpr REL::ID Seek(static_cast<std::uint64_t>(69640));
 			inline constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(69643));
-		}
-
-		namespace BSScaleformTranslator
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291278));
 		}
 
 		namespace BSScript
@@ -197,116 +176,11 @@ namespace RE
 			inline constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(66962));
 		}
 
-		namespace ExtraAliasInstanceArray
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229615));
-		}
-
-		namespace ExtraAshPileRef
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229561));
-		}
-
-		namespace ExtraCannotWear
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229540));
-		}
-
-		namespace ExtraCanTalkToPlayer
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229596));
-		}
-
-		namespace ExtraCharge
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229544));
-		}
-
-		namespace ExtraContainerChanges
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229886));
-		}
-
-		namespace ExtraCount
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229537));
-		}
-
 		namespace ExtraDataList
 		{
 			inline constexpr REL::ID Add(static_cast<std::uint64_t>(12176));
 			inline constexpr REL::ID SetExtraFlags(static_cast<std::uint64_t>(11903));
 			inline constexpr REL::ID SetInventoryChanges(static_cast<std::uint64_t>(11483));
-		}
-
-		namespace ExtraEnchantment
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229574));
-		}
-
-		namespace ExtraForcedTarget
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229629));
-		}
-
-		namespace ExtraHealth
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229541));
-		}
-
-		namespace ExtraHotkey
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229547));
-		}
-
-		namespace ExtraLightData
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229618));
-		}
-
-		namespace ExtraOwnership
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229534));
-		}
-
-		namespace ExtraPoison
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229573));
-		}
-
-		namespace ExtraRank
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229536));
-		}
-
-		namespace ExtraReferenceHandle
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229549));
-		}
-
-		namespace ExtraSoul
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229890));
-		}
-
-		namespace ExtraUniqueID
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229631));
-		}
-
-		namespace FavoritesHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(269539));
-		}
-
-		namespace FavoritesMenu
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(268638));
-		}
-
-		namespace FirstPersonState
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(267810));
 		}
 
 		namespace GameSettingCollection
@@ -403,25 +277,10 @@ namespace RE
 			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50258));
 		}
 
-		namespace JournalMenu
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(271141));
-		}
-
-		namespace JumpHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263065));
-		}
-
 		namespace LocalMapCamera
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(16084));
 			inline constexpr REL::ID SetNorthRotation(static_cast<std::uint64_t>(16089));
-		}
-
-		namespace LookHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263052));
 		}
 
 		namespace LooseFileStream
@@ -455,19 +314,9 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(515124));
 		}
 
-		namespace MenuOpenHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(269538));
-		}
-
 		namespace MessageDataFactoryManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(22843));
-		}
-
-		namespace MovementHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263056));
 		}
 
 		namespace NiAVObject
@@ -522,23 +371,12 @@ namespace RE
 			inline constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(39384));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517014));
 			inline constexpr REL::ID StartGrabObject(static_cast<std::uint64_t>(39475));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(261916));
 		}
 
 		namespace PlayerControls
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(41257));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514706));
-		}
-
-		namespace ReadyWeaponHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263059));
-		}
-
-		namespace RunHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263063));
 		}
 
 		namespace Script
@@ -552,11 +390,6 @@ namespace RE
 			inline constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(501789));
 		}
 
-		namespace ShoutHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263067));
-		}
-
 		namespace Sky
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13789));
@@ -566,16 +399,6 @@ namespace RE
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53144));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514315));
-		}
-
-		namespace SneakHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263066));
-		}
-
-		namespace SprintHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263057));
 		}
 
 		namespace TES
@@ -622,17 +445,6 @@ namespace RE
 			inline constexpr REL::ID HasOverlays(static_cast<std::uint64_t>(24274));
 			inline constexpr REL::ID SetSkinFromTint(static_cast<std::uint64_t>(24206));
 			inline constexpr REL::ID UpdateNeck(static_cast<std::uint64_t>(24207));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(241857));
-		}
-
-		namespace TESObjectACTI
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234000));
-		}
-
-		namespace TESObjectCONT
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(234148));
 		}
 
 		namespace TESObjectREFR
@@ -651,21 +463,6 @@ namespace RE
 		{
 			inline constexpr REL::ID EnsureQuestStarted(static_cast<std::uint64_t>(24481));
 			inline constexpr REL::ID ResetQuest(static_cast<std::uint64_t>(24486));
-		}
-
-		namespace ThirdPersonState
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(256647));
-		}
-
-		namespace TogglePOVHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263068));
-		}
-
-		namespace ToggleRunHandler
-		{
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263062));
 		}
 
 		namespace UI

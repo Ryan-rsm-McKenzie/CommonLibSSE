@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
+		inline static constexpr auto VTABLE = VTABLE_ExtraHotkey;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHotkey;
 
 		enum class Hotkey
