@@ -75,10 +75,8 @@ namespace SKSE
 			stl::report_and_fail("interface is null"sv);
 		}
 
-#if 0
 		(void)REL::Module::get();
-		(void)REL::IDDatabase::get();
-#endif
+		//(void)REL::IDDatabase::get();
 
 		auto&       storage = detail::APIStorage::get();
 		const auto& intfc = *a_intfc;
