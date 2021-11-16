@@ -301,6 +301,15 @@ namespace REL
 			return std::strong_ordering::equal;
 		}
 
+		[[nodiscard]] constexpr std::uint32_t packed() const
+		{
+			auto major = std::get<0>(_impl);
+			auto minor = std::get<1>(_impl);
+			auto build = std::get<2>(_impl);
+			auto sub = std::get<3>(_impl);
+			return ((((major)&0xFF) << 24) | (((minor)&0xFF) << 16) | (((build)&0xFFF) << 4) | ((sub)&0xF));
+		}
+
 		[[nodiscard]] std::string string() const
 		{
 			std::string result;
