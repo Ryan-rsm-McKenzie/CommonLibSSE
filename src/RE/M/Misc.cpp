@@ -104,14 +104,14 @@ namespace RE
 	void ApplyPerkEntries(std::uint8_t a_perkEntryCode, RE::Actor* a_perkOwner, RE::TESForm* a_form, float* a_value)
 	{
 		using func_t = decltype(&ApplyPerkEntries);
-		REL::Relocation<func_t> func{ REL::ID(23073) };
+		REL::Relocation<func_t> func{ REL::Offset(0x3444C0) };
 		return func(a_perkEntryCode, a_perkOwner, a_form, a_value);
 	}
 
 	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
 	{
 		using func_t = decltype(&GetArmorFinalRating);
-		REL::Relocation<func_t> func{ REL::ID(15779) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1E2B80) };
 		return func(a_armorEntryData, a_armorPerks, a_skillMultiplier);
 	}
 }

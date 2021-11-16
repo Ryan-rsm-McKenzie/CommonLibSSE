@@ -6,7 +6,7 @@ namespace RE
 	{
 		if (IsLocked()) {
 			using func_t = decltype(&REFR_LOCK::GetLockLevel);
-			REL::Relocation<func_t> func{ REL::ID(12272) };
+			REL::Relocation<func_t> func{ REL::Offset(0x13B060) };
 			return func(this, a_containerRef);
 		} else {
 			return LOCK_LEVEL::kUnlocked;
