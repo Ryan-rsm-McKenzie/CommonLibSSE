@@ -11,21 +11,21 @@ namespace RE
 	bool TaskQueueInterface::ShouldUseTaskQueue()
 	{
 		using func_t = decltype(&TaskQueueInterface::ShouldUseTaskQueue);
-		REL::Relocation<func_t> func{ REL::ID(38079) };
+		REL::Relocation<func_t> func{ REL::Offset(0x665DD0) };
 		return func();
 	}
 
 	std::uint32_t TaskQueueInterface::QueueBulletWaterDisplacementTask(float a_scale, const NiPoint3& a_pos)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueBulletWaterDisplacementTask);
-		REL::Relocation<func_t> func{ REL::ID(35978) };
+		REL::Relocation<func_t> func{ REL::Offset(0x5EA230) };
 		return func(this, a_scale, a_pos);
 	}
 
 	std::uint32_t TaskQueueInterface::QueueRemoveSpellTask(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpellTask);
-		REL::Relocation<func_t> func{ REL::ID(35987) };
+		REL::Relocation<func_t> func{ REL::Offset(0x5EA4F0) };
 		return func(this, a_actorHandle, a_spellItem);
 	}
 }

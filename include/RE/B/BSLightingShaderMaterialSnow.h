@@ -26,10 +26,10 @@ namespace RE
 		NiColorA sparkleParams;  // A0
 
 	protected:
-		BSLightingShaderMaterialSnow* ctor()
+		BSLightingShaderMaterialSnow* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialSnow::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100118) };
+			using func_t = decltype(&BSLightingShaderMaterialSnow::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F7390) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

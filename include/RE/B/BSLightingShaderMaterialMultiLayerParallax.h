@@ -40,10 +40,10 @@ namespace RE
 		std::uint32_t              padCC;                     // CC
 
 	protected:
-		BSLightingShaderMaterialMultiLayerParallax* ctor()
+		BSLightingShaderMaterialMultiLayerParallax* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialMultiLayerParallax::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100125) };
+			using func_t = decltype(&BSLightingShaderMaterialMultiLayerParallax::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F7570) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

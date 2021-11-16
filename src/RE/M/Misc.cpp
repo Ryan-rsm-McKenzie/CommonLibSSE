@@ -67,7 +67,7 @@ namespace RE
 
 	float GetDurationOfApplicationRunTime()
 	{
-		REL::Relocation<float*> runtime{ REL::ID(523662) };
+		REL::Relocation<float*> runtime{ REL::Offset(0x30064D0) };
 		return *runtime;
 	}
 

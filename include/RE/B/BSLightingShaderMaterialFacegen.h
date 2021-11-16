@@ -32,10 +32,10 @@ namespace RE
 		NiPointer<NiSourceTexture> subsurfaceTexture;  // B0
 
 	protected:
-		BSLightingShaderMaterialFacegen* ctor()
+		BSLightingShaderMaterialFacegen* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialFacegen::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100077) };
+			using func_t = decltype(&BSLightingShaderMaterialFacegen::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F5B30) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

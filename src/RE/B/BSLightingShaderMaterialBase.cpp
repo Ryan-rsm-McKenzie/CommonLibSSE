@@ -48,111 +48,73 @@ namespace RE
 			{
 				REL::Relocation<std::uintptr_t> vtbl{ BSLightingShaderMaterial::VTABLE[0] };
 				auto                            material = malloc<BSLightingShaderMaterial>();
-				if (material) {
-					std::memset(material, 0, sizeof(BSLightingShaderMaterial));
-					material->ctor();
-					((std::uintptr_t*)material)[0] = vtbl.address();
-				}
+				std::memset(material, 0, sizeof(BSLightingShaderMaterial));
+				material->Ctor();
+				((std::uintptr_t*)material)[0] = vtbl.address();
 				return material;
 			}
 		case Feature::kEnvironmentMap:
 			{
 				auto material = malloc<BSLightingShaderMaterialEnvmap>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kGlowMap:
 			{
 				auto material = malloc<BSLightingShaderMaterialGlowmap>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kParallax:
 			{
 				auto material = malloc<BSLightingShaderMaterialParallax>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kFaceGen:
 			{
 				auto material = malloc<BSLightingShaderMaterialFacegen>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kFaceGenRGBTint:
 			{
 				auto material = malloc<BSLightingShaderMaterialFacegenTint>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kHairTint:
 			{
 				auto material = malloc<BSLightingShaderMaterialHairTint>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kParallaxOcc:
 			{
 				auto material = malloc<BSLightingShaderMaterialParallaxOcc>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kMultiTexLand:
 		case Feature::kMultiTexLandLODBlend:
 			{
 				auto material = malloc<BSLightingShaderMaterialLandscape>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kLODLand:
 		case Feature::kLODLandNoise:
 			{
 				auto material = malloc<BSLightingShaderMaterialLODLandscape>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kUnknown:
 		case Feature::kMultiIndexTriShapeSnow:
 			{
 				auto material = malloc<BSLightingShaderMaterialSnow>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kMultilayerParallax:
 			{
 				auto material = malloc<BSLightingShaderMaterialMultiLayerParallax>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		case Feature::kEye:
 			{
 				auto material = malloc<BSLightingShaderMaterialEye>();
-				if (material) {
-					material->ctor();
-				}
-				return material;
+				return material->Ctor();
 			}
 		default:
 			return nullptr;

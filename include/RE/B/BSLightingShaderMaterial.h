@@ -18,10 +18,10 @@ namespace RE
 		Feature           GetFeature() const override;  // 06 - { return Feature::kDefault; }
 
 	protected:
-		BSLightingShaderMaterial* ctor()
+		BSLightingShaderMaterial* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterial::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100004) };
+			using func_t = decltype(&BSLightingShaderMaterial::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F29E0) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

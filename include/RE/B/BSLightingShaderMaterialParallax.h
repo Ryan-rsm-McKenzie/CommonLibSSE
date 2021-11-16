@@ -30,10 +30,10 @@ namespace RE
 		NiPointer<NiSourceTexture> heightTexture;  // A0
 
 	protected:
-		BSLightingShaderMaterialParallax* ctor()
+		BSLightingShaderMaterialParallax* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialParallax::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100055) };
+			using func_t = decltype(&BSLightingShaderMaterialParallax::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F50C0) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

@@ -30,10 +30,10 @@ namespace RE
 		NiPointer<NiSourceTexture> glowTexture;  // A0
 
 	protected:
-		BSLightingShaderMaterialGlowmap* ctor()
+		BSLightingShaderMaterialGlowmap* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialGlowmap::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100045) };
+			using func_t = decltype(&BSLightingShaderMaterialGlowmap::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F4C40) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

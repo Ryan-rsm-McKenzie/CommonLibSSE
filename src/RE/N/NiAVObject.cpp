@@ -20,14 +20,14 @@ namespace RE
 	void NiAVObject::ClearDecals()
 	{
 		using func_t = decltype(&NiAVObject::ClearDecals);
-		REL::Relocation<func_t> func{ REL::ID(15547) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1D7E40) };
 		return func(this);
 	}
 
 	void NiAVObject::ClearWeaponBlood()
 	{
 		using func_t = decltype(&NiAVObject::ClearWeaponBlood);
-		REL::Relocation<func_t> func{ REL::ID(29303) };
+		REL::Relocation<func_t> func{ REL::Offset(0x46C8B0) };
 		return func(this);
 	}
 
@@ -118,7 +118,7 @@ namespace RE
 	void NiAVObject::SetRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
 	{
 		using func_t = decltype(&NiAVObject::SetRigidConstraints);
-		REL::Relocation<func_t> func{ REL::ID(76271) };
+		REL::Relocation<func_t> func{ REL::Offset(0xDF54A0) };
 		return func(this, a_enable, a_arg2, a_arg3);
 	}
 
@@ -250,7 +250,7 @@ namespace RE
 	void NiAVObject::UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2)
 	{
 		using func_t = decltype(&NiAVObject::UpdateRigidBodySettings);
-		REL::Relocation<func_t> func{ REL::ID(76171) };
+		REL::Relocation<func_t> func{ REL::Offset(0xDEE3E0) };
 		return func(this, a_type, a_arg2);
 	}
 }

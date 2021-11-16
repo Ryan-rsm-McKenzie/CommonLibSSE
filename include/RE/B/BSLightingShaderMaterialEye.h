@@ -37,10 +37,10 @@ namespace RE
 		std::uint32_t              padC8;           // CC
 
 	protected:
-		BSLightingShaderMaterialEye* ctor()
+		BSLightingShaderMaterialEye* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialEye::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100033) };
+			using func_t = decltype(&BSLightingShaderMaterialEye::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F44D0) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

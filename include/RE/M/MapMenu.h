@@ -45,7 +45,7 @@ namespace RE
 		void PlaceMarker()
 		{
 			using func_t = decltype(&MapMenu::PlaceMarker);
-			REL::Relocation<func_t> func{ REL::ID(52226) };
+			REL::Relocation<func_t> func{ REL::Offset(0x9162C0) };
 			return func(this);
 		}
 

@@ -27,10 +27,10 @@ namespace RE
 		std::uint32_t padAC;      // AC
 
 	protected:
-		BSLightingShaderMaterialFacegenTint* ctor()
+		BSLightingShaderMaterialFacegenTint* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialFacegenTint::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100087) };
+			using func_t = decltype(&BSLightingShaderMaterialFacegenTint::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F6200) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

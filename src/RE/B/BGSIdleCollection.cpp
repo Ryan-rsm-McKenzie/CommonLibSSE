@@ -28,10 +28,7 @@ namespace RE
 	BGSIdleCollection* BGSIdleCollection::Create()
 	{
 		auto idleCollection = malloc<BGSIdleCollection>();
-		if (idleCollection) {
-			return idleCollection->ctor();
-		}
-		return idleCollection;
+		return idleCollection->Ctor();
 	}
 
 	std::optional<std::uint32_t> BGSIdleCollection::GetIndex(TESIdleForm* a_idle)

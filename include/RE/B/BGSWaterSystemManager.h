@@ -24,14 +24,14 @@ namespace RE
 	public:
 		[[nodiscard]] static BGSWaterSystemManager* GetSingleton()
 		{
-			REL::Relocation<BGSWaterSystemManager**> singleton{ REL::ID(514290) };
+			REL::Relocation<BGSWaterSystemManager**> singleton{ REL::Offset(0x1F5B298) };
 			return *singleton;
 		}
 
 		void CreateBulletWaterDisplacement(const NiPoint3& a_pos, float a_scale)
 		{
 			using func_t = decltype(&BGSWaterSystemManager::CreateBulletWaterDisplacement);
-			REL::Relocation<func_t> func{ REL::ID(31410) };
+			REL::Relocation<func_t> func{ REL::Offset(0x04E3600) };
 			return func(this, a_pos, a_scale);
 		}
 

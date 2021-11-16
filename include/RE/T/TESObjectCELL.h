@@ -198,7 +198,7 @@ namespace RE
 		inline BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
-			REL::Relocation<func_t> func{ REL::ID(18474) };
+			REL::Relocation<func_t> func{ REL::Offset(0x273AB0) };
 			return func(this);
 		}
 

@@ -285,7 +285,7 @@ namespace RE
 
 		namespace LooseFileStream
 		{
-			inline constexpr REL::Offset Ctor(static_cast<std::uint64_t>(0x00C72BF0));
+			//inline constexpr REL::Offset Ctor(static_cast<std::uint64_t>(0x00C72BF0));
 		}
 
 		namespace MagicFavorites

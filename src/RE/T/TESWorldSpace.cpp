@@ -10,7 +10,7 @@ namespace RE
 	TESObjectCELL* TESWorldSpace::GetSkyCell()
 	{
 		using func_t = decltype(&TESWorldSpace::GetSkyCell);
-		REL::Relocation<func_t> func{ REL::ID(20095) };
+		REL::Relocation<func_t> func{ REL::Offset(0x2C9550) };
 		return func(this);
 	}
 

@@ -41,10 +41,10 @@ namespace RE
 		std::uint32_t              pad154;                      // 154
 
 	protected:
-		BSLightingShaderMaterialLandscape* ctor()
+		BSLightingShaderMaterialLandscape* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialLandscape::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100102) };
+			using func_t = decltype(&BSLightingShaderMaterialLandscape::Ctor);
+			REL::Relocation<func_t> func{ REL::Offset(0x13F6640) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

@@ -30,7 +30,7 @@ namespace RE
 		const char* textures[Texture::kTotal];
 
 	private:
-		BSShaderTextureSet* ctor();
+		//BSShaderTextureSet* ctor();
 	};
 	static_assert(sizeof(BSShaderTextureSet) == 0x58);
 }
