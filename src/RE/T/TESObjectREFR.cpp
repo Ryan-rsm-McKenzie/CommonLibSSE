@@ -414,7 +414,7 @@ namespace RE
 	float TESObjectREFR::GetWeightInContainer()
 	{
 		using func_t = decltype(&TESObjectREFR::GetWeightInContainer);
-		REL::Relocation<func_t> func{ REL::ID(19277) };
+		REL::Relocation<func_t> func{ REL::Offset(0x2A0680) };
 		return func(this);
 	}
 
@@ -450,14 +450,14 @@ namespace RE
 	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);
-		REL::Relocation<func_t> func{ REL::ID(19201) };
+		REL::Relocation<func_t> func{ REL::Offset(0x29DA50) };
 		return func(this);
 	}
 
 	void TESObjectREFR::InitChildActivates(TESObjectREFR* a_actionRef)
 	{
 		using func_t = decltype(&TESObjectREFR::InitChildActivates);
-		REL::Relocation<func_t> func{ REL::ID(19857) };
+		REL::Relocation<func_t> func{ REL::Offset(0x2BAAF0) };
 		return func(this, a_actionRef);
 	}
 
@@ -482,14 +482,14 @@ namespace RE
 	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
 	{
 		using func_t = decltype(&TESObjectREFR::IsAnOwner);
-		REL::Relocation<func_t> func{ REL::ID(19805) };
+		REL::Relocation<func_t> func{ REL::Offset(0x2B8BF0) };
 		return func(this, a_testOwner, a_useFaction, a_requiresOwner);
 	}
 
 	bool TESObjectREFR::IsCrimeToActivate()
 	{
 		using func_t = decltype(&TESObjectREFR::IsCrimeToActivate);
-		REL::Relocation<func_t> func{ REL::ID(19400) };
+		REL::Relocation<func_t> func{ REL::Offset(0x2AC9E0) };
 		return func(this);
 	}
 
@@ -680,7 +680,7 @@ namespace RE
 	InventoryChanges* TESObjectREFR::MakeInventoryChanges()
 	{
 		using func_t = decltype(&TESObjectREFR::MakeInventoryChanges);
-		REL::Relocation<func_t> func{ REL::ID(15802) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1E4880) };
 		return func(this);
 	}
 

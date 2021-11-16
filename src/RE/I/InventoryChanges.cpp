@@ -30,7 +30,7 @@ namespace RE
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
-		REL::Relocation<func_t> func{ REL::ID(15873) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1F2E40) };
 		return func(this, a_slot);
 	}
 
@@ -58,35 +58,35 @@ namespace RE
 	void InventoryChanges::InitFromContainerExtra()
 	{
 		using func_t = decltype(&InventoryChanges::InitFromContainerExtra);
-		REL::Relocation<func_t> func{ REL::ID(15890) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1F58B0) };
 		return func(this);
 	}
 
 	void InventoryChanges::InitLeveledItems()
 	{
 		using func_t = decltype(&InventoryChanges::InitLeveledItems);
-		REL::Relocation<func_t> func{ REL::ID(15889) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1F55D0) };
 		return func(this);
 	}
 
 	void InventoryChanges::InitScripts()
 	{
 		using func_t = decltype(&InventoryChanges::InitScripts);
-		REL::Relocation<func_t> func{ REL::ID(15829) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1EC120) };
 		return func(this);
 	}
 
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
-		REL::Relocation<func_t> func{ REL::ID(15812) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1E4D00) };
 		return func(this, a_ref);
 	}
 
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Relocation<func_t> func{ REL::ID(15813) };
+		REL::Relocation<func_t> func{ REL::Offset(0x1E4DF0) };
 		return func(this);
 	}
 }

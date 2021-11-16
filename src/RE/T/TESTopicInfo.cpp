@@ -12,7 +12,7 @@ namespace RE
 	void TESTopicInfo::ResponseData::PopulateResponseText(TESFile* a_file)
 	{
 		using func_t = decltype(&TESTopicInfo::ResponseData::PopulateResponseText);
-		REL::Relocation<func_t> func{ REL::ID(24985) };
+		REL::Relocation<func_t> func{ REL::Offset(0x3A3E20) };
 		return func(this, a_file);
 	}
 
