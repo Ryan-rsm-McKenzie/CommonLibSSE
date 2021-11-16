@@ -11,14 +11,12 @@ namespace RE
 		return func();
 	}
 
-#if 0
-	void ScriptEventSourceHolder::SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef)
-	{
-		using func_t = decltype(&ScriptEventSourceHolder::SendActivateEvent);
-		REL::Relocation<func_t> func{ REL::Offset(0x0) };
-		return func(this, a_objectActivated, a_actionRef);
-	}
-#endif
+	//void ScriptEventSourceHolder::SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef)
+	//{
+	//	using func_t = decltype(&ScriptEventSourceHolder::SendActivateEvent);
+	//	REL::Relocation<func_t> func{ REL::Offset(0x0) };
+	//	return func(this, a_objectActivated, a_actionRef);
+	//}
 
 	void ScriptEventSourceHolder::SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened)
 	{
