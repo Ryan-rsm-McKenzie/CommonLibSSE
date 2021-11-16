@@ -349,4 +349,31 @@ namespace SKSE
 		const char*   name;
 		std::uint32_t version;
 	};
+
+	struct PluginVersionData
+	{
+		enum
+		{
+			kVersion = 1,
+		};
+
+		enum
+		{
+			kVersionIndependent_AddressLibraryPostAE = 1 << 0,
+			kVersionIndependent_Signatures = 1 << 1,
+		};
+
+		std::uint32_t dataVersion;
+
+		std::uint32_t pluginVersion;
+		char          name[256];
+
+		char author[256];
+		char supportEmail[256];
+
+		std::uint32_t versionIndependence;
+		std::uint32_t compatibleVersions[16];
+
+		std::uint32_t seVersionRequired;
+	};
 }
