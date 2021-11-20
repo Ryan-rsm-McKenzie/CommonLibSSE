@@ -455,10 +455,14 @@ namespace REL
 		{
 			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
 			if (handle == nullptr) {
-				stl::report_and_fail("failed to obtain module handle"sv);
+				stl::report_and_fail(
+					fmt::format(
+						"Failed to obtain module handle for: \"{0}\".\n"
+						"You have likely renamed the executable to something unexpected. "
+						"Renaming the executable back to \"{0}\" may resolve the issue."sv,
+						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
-			_natvis = _base;
 
 			load_version();
 			load_segments();
@@ -472,7 +476,11 @@ namespace REL
 			if (version) {
 				_version = *version;
 			} else {
-				stl::report_and_fail("failed to obtain file version"sv);
+				stl::report_and_fail(
+					fmt::format(
+						"Failed to obtain file version info for: {}\n"
+						"Please contact the author of this script extender plugin for further assistance."sv,
+						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
 			}
 		}
 
@@ -489,8 +497,6 @@ namespace REL
 
 		static constexpr auto ENVIRONMENT = L"SKSE_RUNTIME"sv;
 
-		static inline std::uintptr_t _natvis{ 0 };
-
 		std::wstring                        _filename;
 		std::array<Segment, Segment::total> _segments;
 		Version                             _version;
@@ -499,7 +505,81 @@ namespace REL
 
 	class IDDatabase
 	{
+	private:
+		struct mapping_t
+		{
+			std::uint64_t id;
+			std::uint64_t offset;
+		};
+
 	public:
+		class Offset2ID
+		{
+		public:
+			using value_type = mapping_t;
+			using container_type = std::vector<value_type>;
+			using size_type = typename container_type::size_type;
+			using const_iterator = typename container_type::const_iterator;
+			using const_reverse_iterator = typename container_type::const_reverse_iterator;
+
+			template <class ExecutionPolicy>
+			explicit Offset2ID(ExecutionPolicy&& a_policy)  //
+				requires(std::is_execution_policy_v<std::decay_t<ExecutionPolicy>>)
+			{
+				const std::span<const mapping_t> id2offset = IDDatabase::get()._id2offset;
+				_offset2id.reserve(id2offset.size());
+				_offset2id.insert(_offset2id.begin(), id2offset.begin(), id2offset.end());
+				std::sort(
+					a_policy,
+					_offset2id.begin(),
+					_offset2id.end(),
+					[](auto&& a_lhs, auto&& a_rhs) {
+						return a_lhs.offset < a_rhs.offset;
+					});
+			}
+
+			Offset2ID() :
+				Offset2ID(std::execution::sequenced_policy{})
+			{}
+
+			[[nodiscard]] std::uint64_t operator()(std::size_t a_offset) const
+			{
+				const mapping_t elem{ 0, a_offset };
+				const auto      it = std::lower_bound(
+                    _offset2id.begin(),
+                    _offset2id.end(),
+                    elem,
+                    [](auto&& a_lhs, auto&& a_rhs) {
+                        return a_lhs.offset < a_rhs.offset;
+                    });
+				if (it == _offset2id.end()) {
+					stl::report_and_fail(
+						fmt::format(
+							"Failed to find the offset within the database: 0x{:08X}"sv,
+							a_offset));
+				}
+
+				return it->id;
+			}
+
+			[[nodiscard]] const_iterator begin() const noexcept { return _offset2id.begin(); }
+			[[nodiscard]] const_iterator cbegin() const noexcept { return _offset2id.cbegin(); }
+
+			[[nodiscard]] const_iterator end() const noexcept { return _offset2id.end(); }
+			[[nodiscard]] const_iterator cend() const noexcept { return _offset2id.cend(); }
+
+			[[nodiscard]] const_reverse_iterator rbegin() const noexcept { return _offset2id.rbegin(); }
+			[[nodiscard]] const_reverse_iterator crbegin() const noexcept { return _offset2id.crbegin(); }
+
+			[[nodiscard]] const_reverse_iterator rend() const noexcept { return _offset2id.rend(); }
+			[[nodiscard]] const_reverse_iterator crend() const noexcept { return _offset2id.crend(); }
+
+			[[nodiscard]] size_type size() const noexcept { return _offset2id.size(); }
+
+		private:
+			container_type _offset2id;
+		};
+
 		[[nodiscard]] static IDDatabase& get()
 		{
 			static IDDatabase singleton;
@@ -508,10 +588,6 @@ namespace REL
 
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
 		{
-			if (_id2offset.empty()) {
-				stl::report_and_fail("data is empty"sv);
-			}
-
 			mapping_t  elem{ a_id, 0 };
 			const auto it = std::lower_bound(
 				_id2offset.begin(),
@@ -521,102 +597,47 @@ namespace REL
 					return a_lhs.id < a_rhs.id;
 				});
 			if (it == _id2offset.end()) {
-				stl::report_and_fail("id not found"sv);
+				stl::report_and_fail(
+					fmt::format(
+						"Failed to find the id within the address library: {}\n"
+						"This means this script extender plugin is incompatible with the address "
+						"library for this version of the game, and thus does not support it."sv,
+						a_id));
 			}
 
 			return static_cast<std::size_t>(it->offset);
 		}
 
-#ifndef NDEBUG
-		[[nodiscard]] std::uint64_t offset2id(std::size_t a_offset) const
-		{
-			if (_offset2id.empty()) {
-				stl::report_and_fail("data is empty"sv);
-			}
-
-			mapping_t  elem{ 0, a_offset };
-			const auto it = std::lower_bound(
-				_offset2id.begin(),
-				_offset2id.end(),
-				elem,
-				[](auto&& a_lhs, auto&& a_rhs) {
-					return a_lhs.offset < a_rhs.offset;
-				});
-			if (it == _offset2id.end()) {
-				stl::report_and_fail("offset not found"sv);
-			}
-
-			return it->id;
-		}
-#endif
-
 	private:
-		class istream_t
-		{
-		public:
-			using stream_type = std::ifstream;
-			using pointer = stream_type*;
-			using const_pointer = const stream_type*;
-			using reference = stream_type&;
-			using const_reference = const stream_type&;
-
-			istream_t(stl::zwstring a_filename, std::ios_base::openmode a_mode) :
-				_stream(a_filename.data(), a_mode)
-			{
-				if (!_stream.is_open()) {
-					stl::report_and_fail("failed to open file"sv);
-				}
-
-				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
-			}
-
-			void ignore(std::streamsize a_count) { _stream.ignore(a_count); }
-
-			template <class T>
-			void readin(T& a_val)
-			{
-				_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
-			}
-
-			template <
-				class T,
-				std::enable_if_t<
-					std::is_arithmetic_v<T>,
-					int> = 0>
-			T readout()
-			{
-				T val{};
-				readin(val);
-				return val;
-			}
-
-		private:
-			stream_type _stream;
-		};
+		friend Offset2ID;
 
 		class header_t
 		{
 		public:
-			void read(istream_t& a_input)
+			void read(binary_io::file_istream& a_in)
 			{
-				std::int32_t format{};
-				a_input.readin(format);
+				const auto [format] = a_in.read<std::int32_t>();
 				if (format != 1) {
-					stl::report_and_fail("unexpected format"sv);
+					stl::report_and_fail(
+						fmt::format(
+							"Unsupported address library format: {}\n"
+							"This means this script extender plugin is incompatible with the address "
+							"library available for this version of the game, and thus does not "
+							"support it."sv,
+							format));
 				}
 
-				std::int32_t version[4]{};
-				std::int32_t nameLen{};
-				a_input.readin(version);
-				a_input.readin(nameLen);
-				a_input.ignore(nameLen);
+				const auto [major, minor, patch, revision] =
+					a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
+				_version[0] = static_cast<std::uint16_t>(major);
+				_version[1] = static_cast<std::uint16_t>(minor);
+				_version[2] = static_cast<std::uint16_t>(patch);
+				_version[3] = static_cast<std::uint16_t>(revision);
 
-				a_input.readin(_pointerSize);
-				a_input.readin(_addressCount);
+				const auto [nameLen] = a_in.read<std::int32_t>();
+				a_in.seek_relative(nameLen);
 
-				for (std::size_t i = 0; i < std::extent_v<decltype(version)>; ++i) {
-					_version[i] = static_cast<std::uint16_t>(version[i]);
-				}
+				a_in.read(_pointerSize, _addressCount);
 			}
 
 			[[nodiscard]] constexpr std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
@@ -627,12 +648,6 @@ namespace REL
 			Version      _version;
 			std::int32_t _pointerSize{ 0 };
 			std::int32_t _addressCount{ 0 };
-		};
-
-		struct mapping_t
-		{
-			std::uint64_t id;
-			std::uint64_t offset;
 		};
 
 		IDDatabase() { load(); }
@@ -656,9 +671,9 @@ namespace REL
 
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
-			istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
-			header_t  header;
-			header.read(input);
+			binary_io::file_istream in(a_filename);
+			header_t                header;
+			header.read(in);
 			if (header.version() != a_version) {
 				stl::report_and_fail("version mismatch"sv);
 			}
@@ -672,29 +687,16 @@ namespace REL
 			}
 
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-			unpack_file(input, header);
+			unpack_file(in, header);
 			std::sort(
 				_id2offset.begin(),
 				_id2offset.end(),
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.id < a_rhs.id;
 				});
-			_natvis = _id2offset.data();
-
-#ifndef NDEBUG
-			_offset2id.clear();
-			_offset2id.reserve(_id2offset.size());
-			_offset2id.insert(_offset2id.begin(), _id2offset.begin(), _id2offset.end());
-			std::sort(
-				_offset2id.begin(),
-				_offset2id.end(),
-				[](auto&& a_lhs, auto&& a_rhs) {
-					return a_lhs.offset < a_rhs.offset;
-				});
-#endif
 		}
 
-		void unpack_file(istream_t& a_input, header_t a_header)
+		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
@@ -702,34 +704,34 @@ namespace REL
 			std::uint64_t prevID = 0;
 			std::uint64_t prevOffset = 0;
 			for (auto& mapping : _id2offset) {
-				a_input.readin(type);
+				a_in.read(type);
 				const auto lo = static_cast<std::uint8_t>(type & 0xF);
 				const auto hi = static_cast<std::uint8_t>(type >> 4);
 
 				switch (lo) {
 				case 0:
-					a_input.readin(id);
+					a_in.read(id);
 					break;
 				case 1:
 					id = prevID + 1;
 					break;
 				case 2:
-					id = prevID + a_input.readout<std::uint8_t>();
+					id = prevID + std::get<0>(a_in.read<std::uint8_t>());
 					break;
 				case 3:
-					id = prevID - a_input.readout<std::uint8_t>();
+					id = prevID - std::get<0>(a_in.read<std::uint8_t>());
 					break;
 				case 4:
-					id = prevID + a_input.readout<std::uint16_t>();
+					id = prevID + std::get<0>(a_in.read<std::uint16_t>());
 					break;
 				case 5:
-					id = prevID - a_input.readout<std::uint16_t>();
+					id = prevID - std::get<0>(a_in.read<std::uint16_t>());
 					break;
 				case 6:
-					id = a_input.readout<std::uint16_t>();
+					std::tie(id) = a_in.read<std::uint16_t>();
 					break;
 				case 7:
-					id = a_input.readout<std::uint32_t>();
+					std::tie(id) = a_in.read<std::uint32_t>();
 					break;
 				default:
 					stl::report_and_fail("unhandled type"sv);
@@ -739,28 +741,28 @@ namespace REL
 
 				switch (hi & 7) {
 				case 0:
-					a_input.readin(offset);
+					a_in.read(offset);
 					break;
 				case 1:
 					offset = tmp + 1;
 					break;
 				case 2:
-					offset = tmp + a_input.readout<std::uint8_t>();
+					offset = tmp + std::get<0>(a_in.read<std::uint8_t>());
 					break;
 				case 3:
-					offset = tmp - a_input.readout<std::uint8_t>();
+					offset = tmp - std::get<0>(a_in.read<std::uint8_t>());
 					break;
 				case 4:
-					offset = tmp + a_input.readout<std::uint16_t>();
+					offset = tmp + std::get<0>(a_in.read<std::uint16_t>());
 					break;
 				case 5:
-					offset = tmp - a_input.readout<std::uint16_t>();
+					offset = tmp - std::get<0>(a_in.read<std::uint16_t>());
 					break;
 				case 6:
-					offset = a_input.readout<std::uint16_t>();
+					std::tie(offset) = a_in.read<std::uint16_t>();
 					break;
 				case 7:
-					offset = a_input.readout<std::uint32_t>();
+					std::tie(offset) = a_in.read<std::uint32_t>();
 					break;
 				default:
 					stl::report_and_fail("unhandled type"sv);
@@ -777,13 +779,8 @@ namespace REL
 			}
 		}
 
-		static inline const mapping_t* _natvis{ nullptr };
-
 		detail::memory_map   _mmap;
 		std::span<mapping_t> _id2offset;
-#ifndef NDEBUG
-		std::vector<mapping_t> _offset2id;
-#endif
 	};
 
 	class Offset

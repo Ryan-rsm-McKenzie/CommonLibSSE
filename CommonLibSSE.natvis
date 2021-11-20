@@ -194,21 +194,6 @@
 		</Expand>
 	</Type>
 
-	<Type Name="RE::BSPointerHandle&lt;*&gt;">
-		<Intrinsic Name="Empty" Expression="_handle == 0" />
-		<DisplayString Condition="!Empty()">non-empty</DisplayString>
-		<DisplayString Condition="Empty()">empty</DisplayString>
-		<Expand>
-			<Item Name="[ptr]" 
-				  Condition="
-					REL::Module::_natvis != 0 &amp;&amp;
-					REL::IDDatabase::_natvis != nullptr &amp;&amp;
-					!Empty()">
-				*(RE::NiPointer&lt;RE::BSHandleRefObject&gt;*)(((char*)(REL::Module::_natvis + REL::IDDatabase::_natvis[514478].offset)) + (_handle &amp; 0xFFFFF) * 0x10 + 0x8)
-			</Item>
-		</Expand>
-	</Type>
-
 	<Type Name="RE::NiPointer&lt;*&gt;">
 		<SmartPointer Usage="Minimal">_ptr</SmartPointer>
 		<DisplayString Condition="_ptr == nullptr">empty</DisplayString>
