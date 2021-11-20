@@ -476,6 +476,32 @@ namespace SKSE
 			}
 		}
 
+		[[nodiscard]] inline auto utf8_to_utf16(std::string_view a_in) noexcept
+			-> std::optional<std::wstring>
+		{
+			const auto cvt = [&](wchar_t* a_dst, std::size_t a_length) {
+				return WinAPI::MultiByteToWideChar(
+					WinAPI::CP_UTF8,
+					0,
+					a_in.data(),
+					static_cast<int>(a_in.length()),
+					a_dst,
+					static_cast<int>(a_length));
+			};
+
+			const auto len = cvt(nullptr, 0);
+			if (len == 0) {
+				return std::nullopt;
+			}
+
+			std::wstring out(len, '\0');
+			if (cvt(out.data(), out.length()) == 0) {
+				return std::nullopt;
+			}
+
+			return out;
+		}
+
 		[[nodiscard]] inline auto utf16_to_utf8(std::wstring_view a_in) noexcept
 			-> std::optional<std::string>
 		{
@@ -507,31 +533,22 @@ namespace SKSE
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg, std::source_location a_loc = std::source_location::current())
 		{
 			const auto body = [&]() {
-				constexpr std::array directories{
-					"include/"sv,
-					"src/"sv,
-				};
-
 				const std::filesystem::path p = a_loc.file_name();
-				const auto                  filename = p.generic_string();
-				std::string_view            fileview = filename;
+				auto                        filename = p.lexically_normal().generic_string();
 
-				constexpr auto npos = std::string::npos;
-				std::size_t    pos = npos;
-				std::size_t    off = 0;
-				for (const auto& dir : directories) {
-					pos = fileview.find(dir);
-					if (pos != npos) {
-						off = dir.length();
-						break;
-					}
+				const std::regex r{ R"(^(?:[^\\\/]*[\\\/])?(?:include|src)[\\\/](.*)$)" };
+				std::smatch      matches;
+				if (std::regex_match(filename, matches, r)) {
+					filename = matches[1].str();
 				}
 
-				if (pos != npos) {
-					fileview = fileview.substr(pos + off);
-				}
-
-				return fmt::format(FMT_STRING("{}({}): {}"), fileview, a_loc.line(), a_msg);
+				return utf8_to_utf16(
+					fmt::format(
+						"{}({}): {}"sv,
+						filename,
+						a_loc.line(),
+						a_msg))
+				    .value_or(L"<character encoding error>"s);
 			}();
 
 			const auto caption = []() {
@@ -550,9 +567,9 @@ namespace SKSE
 
 				if (result && result != buf.size()) {
 					std::filesystem::path p(buf.begin(), buf.begin() + result);
-					return p.filename().string();
+					return p.filename().native();
 				} else {
-					return ""s;
+					return L""s;
 				}
 			}();
 
