@@ -301,6 +301,15 @@ namespace REL
 			return std::strong_ordering::equal;
 		}
 
+		[[nodiscard]] constexpr std::uint32_t pack() const noexcept
+		{
+			return static_cast<std::uint32_t>(
+				(_impl[0] & 0x0FF) << 24u |
+				(_impl[1] & 0x0FF) << 16u |
+				(_impl[2] & 0xFFF) << 4u |
+				(_impl[3] & 0x00F) << 0u);
+		}
+
 		[[nodiscard]] std::string string() const
 		{
 			std::string result;

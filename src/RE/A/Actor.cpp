@@ -131,7 +131,7 @@ namespace RE
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
-		REL::Relocation<func_t> func{ REL::ID(36407) };
+		REL::Relocation<func_t> func{ REL::Offset(0x600C00) };
 		return func(this, a_immediate, a_resetAI);
 	}
 
@@ -347,7 +347,7 @@ namespace RE
 	void Actor::InterruptCast(bool a_restoreMagicka) const
 	{
 		using func_t = decltype(&Actor::InterruptCast);
-		REL::Relocation<func_t> func{ REL::ID(37808) };
+		REL::Relocation<func_t> func{ REL::Offset(0x657AC0) };
 		return func(this, a_restoreMagicka);
 	}
 
@@ -467,7 +467,7 @@ namespace RE
 	bool Actor::RemoveSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::RemoveSpell);
-		REL::Relocation<func_t> func{ REL::ID(37772) };
+		REL::Relocation<func_t> func{ REL::Offset(0x6553A0) };
 		return func(this, a_spell);
 	}
 
@@ -481,7 +481,7 @@ namespace RE
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
-		REL::Relocation<func_t> func{ REL::ID(36427) };
+		REL::Relocation<func_t> func{ REL::Offset(0x603230) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 

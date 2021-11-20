@@ -6,6 +6,7 @@ namespace RE
 {
 	namespace BSResource
 	{
+#if 0
 		LooseFileStream* LooseFileStream::Create(BSFixedString a_prefix, BSFixedString a_dirName, BSFixedString a_fileName, std::uint32_t a_fileSize, bool a_readOnly, Location* a_location)
 		{
 			auto mem = malloc<LooseFileStream>();
@@ -18,5 +19,6 @@ namespace RE
 			REL::Relocation<func_t> func{ Offset::LooseFileStream::Ctor };
 			return func(this, a_prefix, a_dirName, a_fileName, a_fileSize, a_readOnly, a_location);
 		}
+#endif
 	}
 }
