@@ -13,6 +13,7 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
+find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 
@@ -89,6 +90,7 @@ target_include_directories(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
+		binary_io::binary_io
 		Boost::headers
 		spdlog::spdlog
 		Version.lib
