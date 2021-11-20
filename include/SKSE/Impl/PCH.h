@@ -17,6 +17,7 @@
 #include <cwchar>
 #include <cwctype>
 #include <exception>
+#include <execution>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -56,6 +57,7 @@ static_assert(
 	"wrap std::time_t instead");
 
 #pragma warning(push)
+#include <binary_io/file_stream.hpp>
 #include <boost/stl_interfaces/iterator_interface.hpp>
 #include <spdlog/spdlog.h>
 #pragma warning(pop)
@@ -474,6 +476,34 @@ namespace SKSE
 			}
 		}
 
+		[[nodiscard]] inline auto utf16_to_utf8(std::wstring_view a_in) noexcept
+			-> std::optional<std::string>
+		{
+			const auto cvt = [&](char* a_dst, std::size_t a_length) {
+				return WinAPI::WideCharToMultiByte(
+					WinAPI::CP_UTF8,
+					0,
+					a_in.data(),
+					static_cast<int>(a_in.length()),
+					a_dst,
+					static_cast<int>(a_length),
+					nullptr,
+					nullptr);
+			};
+
+			const auto len = cvt(nullptr, 0);
+			if (len == 0) {
+				return std::nullopt;
+			}
+
+			std::string out(len, '\0');
+			if (cvt(out.data(), out.length()) == 0) {
+				return std::nullopt;
+			}
+
+			return out;
+		}
+
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg, std::source_location a_loc = std::source_location::current())
 		{
 			const auto body = [&]() {
@@ -504,9 +534,9 @@ namespace SKSE
 				return fmt::format(FMT_STRING("{}({}): {}"), fileview, a_loc.line(), a_msg);
 			}();
 
-			const auto caption = []() -> std::string {
-				const auto        maxPath = WinAPI::GetMaxPath();
-				std::vector<char> buf;
+			const auto caption = []() {
+				const auto           maxPath = WinAPI::GetMaxPath();
+				std::vector<wchar_t> buf;
 				buf.reserve(maxPath);
 				buf.resize(maxPath / 2);
 				std::uint32_t result = 0;
@@ -522,7 +552,7 @@ namespace SKSE
 					std::filesystem::path p(buf.begin(), buf.begin() + result);
 					return p.filename().string();
 				} else {
-					return {};
+					return ""s;
 				}
 			}();
 
@@ -545,7 +575,7 @@ namespace SKSE
 		}
 
 		template <class To, class From>
-		[[nodiscard]] To unrestricted_cast(From a_from)
+		[[nodiscard]] To unrestricted_cast(From a_from) noexcept
 		{
 			if constexpr (std::is_same_v<
 							  std::remove_cv_t<From>,
