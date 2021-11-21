@@ -680,29 +680,40 @@ namespace REL
 
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
-			binary_io::file_istream in(a_filename);
-			header_t                header;
-			header.read(in);
-			if (header.version() != a_version) {
-				stl::report_and_fail("version mismatch"sv);
-			}
+			try {
+				binary_io::file_istream in(a_filename);
+				header_t                header;
+				header.read(in);
+				if (header.version() != a_version) {
+					stl::report_and_fail("version mismatch"sv);
+				}
 
-			auto mapname = L"CommonLibSSEOffsets-v2-"s;
-			mapname += a_version.wstring();
-			const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
-			if (!_mmap.open(mapname, byteSize) &&
-				!_mmap.create(mapname, byteSize)) {
-				stl::report_and_fail("failed to create shared mapping"sv);
-			}
+				auto mapname = L"CommonLibSSEOffsets-v2-"s;
+				mapname += a_version.wstring();
+				const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
+				if (!_mmap.open(mapname, byteSize) &&
+					!_mmap.create(mapname, byteSize)) {
+					stl::report_and_fail("failed to create shared mapping"sv);
+				}
 
-			_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-			unpack_file(in, header);
-			std::sort(
-				_id2offset.begin(),
-				_id2offset.end(),
-				[](auto&& a_lhs, auto&& a_rhs) {
-					return a_lhs.id < a_rhs.id;
-				});
+				_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+				unpack_file(in, header);
+				std::sort(
+					_id2offset.begin(),
+					_id2offset.end(),
+					[](auto&& a_lhs, auto&& a_rhs) {
+						return a_lhs.id < a_rhs.id;
+					});
+			} catch (const std::system_error&) {
+				stl::report_and_fail(
+					fmt::format(
+						"Failed to locate an appropriate address library for game version: {}\n"
+						"This means you are missing the address library for this specific version of "
+						"the game. Please continue to the mod page for address library to download "
+						"an appropriate version. If one is not available, then it is likely that "
+						"address library has not yet added support for this version of the game."sv,
+						a_version.string()));
+			}
 		}
 
 		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
