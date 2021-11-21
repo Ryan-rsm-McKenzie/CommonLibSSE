@@ -626,7 +626,7 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != 1) {
+				if (format != 2) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -672,9 +672,12 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-			auto       filename = L"Data/SKSE/Plugins/version-"s;
-			filename += version.wstring();
-			filename += L".bin"sv;
+			const auto filename =
+				stl::utf8_to_utf16(
+					fmt::format(
+						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
+						version.string()))
+					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);
 		}
 
