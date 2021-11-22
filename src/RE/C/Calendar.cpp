@@ -72,7 +72,7 @@ namespace RE
 	void Calendar::GetTimeDateString(char* a_dest, std::uint32_t a_max, bool a_showYear) const
 	{
 		using func_t = decltype(&Calendar::GetTimeDateString);
-		REL::Relocation<func_t> func{ REL::Offset(0x5C7630) };
+		REL::Relocation<func_t> func{ REL::ID(36311) };
 		return func(this, a_dest, a_max, a_showYear);
 	}
 

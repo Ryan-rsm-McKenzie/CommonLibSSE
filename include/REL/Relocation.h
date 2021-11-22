@@ -626,7 +626,7 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != 1) {
+				if (format != 2) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -672,9 +672,12 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-			auto       filename = L"Data/SKSE/Plugins/version-"s;
-			filename += version.wstring();
-			filename += L".bin"sv;
+			const auto filename =
+				stl::utf8_to_utf16(
+					fmt::format(
+						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
+						version.string()))
+					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);
 		}
 
@@ -707,12 +710,12 @@ namespace REL
 			} catch (const std::system_error&) {
 				stl::report_and_fail(
 					fmt::format(
-						"Failed to locate an appropriate address library for game version: {}\n"
+						"Failed to locate an appropriate address library with the path: {}\n"
 						"This means you are missing the address library for this specific version of "
 						"the game. Please continue to the mod page for address library to download "
 						"an appropriate version. If one is not available, then it is likely that "
 						"address library has not yet added support for this version of the game."sv,
-						a_version.string()));
+						stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)));
 			}
 		}
 

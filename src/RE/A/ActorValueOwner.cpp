@@ -5,7 +5,7 @@ namespace RE
 	float ActorValueOwner::GetArmorRatingSkillMultiplier(float a_skillLevel) const
 	{
 		using func_t = decltype(&ActorValueOwner::GetArmorRatingSkillMultiplier);
-		REL::Relocation<func_t> func(REL::Offset(0x3D6410));
+		REL::Relocation<func_t> func(REL::ID(26424));
 		return func(this, a_skillLevel);
 	}
 

@@ -18,14 +18,14 @@ namespace RE
 	void ActorEquipManager::EquipShout(Actor* a_actor, TESShout* a_shout)
 	{
 		using func_t = decltype(&ActorEquipManager::EquipShout);
-		REL::Relocation<func_t> func{ REL::Offset(0x65D9D0) };
+		REL::Relocation<func_t> func{ REL::ID(38897) };
 		return func(this, a_actor, a_shout);
 	}
 
 	void ActorEquipManager::EquipSpell(Actor* a_actor, SpellItem* a_spell, const BGSEquipSlot* a_slot)
 	{
 		using func_t = decltype(&ActorEquipManager::EquipSpell);
-		REL::Relocation<func_t> func{ REL::Offset(0x65D8F0) };
+		REL::Relocation<func_t> func{ REL::ID(38895) };
 		return func(this, a_actor, a_spell, a_slot);
 	}
 
