@@ -10,9 +10,9 @@ namespace RE
 	class CombatAimController;
 	class CombatAreaStandard;
 	class CombatGroup;
-	class CombatInventoryController;
+	class CombatInventory;
 	class CombatTargetSelectorStandard;
-	class CombatTimers;
+	class CombatState;
 	class TESCombatStyle;
 
 	class CombatController
@@ -23,8 +23,8 @@ namespace RE
 
 		// members
 		CombatGroup*                            combatGroup;             // 00
-		CombatTimers*                           timers;                  // 08
-		CombatInventoryController*              inventoryController;     // 10
+		CombatState*                            state;                   // 08
+		CombatInventory*                        inventory;               // 10
 		Data18*                                 data18;                  // 18
 		Data20*                                 data20;                  // 20
 		ActorHandle                             actorHandle;             // 28

@@ -25,7 +25,7 @@ namespace RE
 		std::uint32_t         Unk_0A(BGSEquipSlot a_slot) override;                       // 0A
 		float                 GetItemScoreMult(CombatController* a_controller) override;  // 0C
 		bool                  Unk_0E(CombatController* a_controller) override;            // 0E
-		bool                  CanCast(CombatController* a_controller) override;           // 0F - { return true; }
+		bool                  CheckShouldEquip(CombatController* a_controller) override;  // 0F - { return true; }
 		void                  Unk_10() override;                                          // 10
 		void                  Unk_11() override;                                          // 11
 		bool                  HasItem() override;                                         // 12 - { return unk10 && effect; }

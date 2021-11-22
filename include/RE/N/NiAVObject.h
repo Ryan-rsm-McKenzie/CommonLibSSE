@@ -2,6 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSShaderMaterial.h"
+#include "RE/C/CollisionLayers.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiSmartPointer.h"
@@ -118,6 +119,7 @@ namespace RE
 		[[nodiscard]] TESObjectREFR* GetUserData() const;
 		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
 		void                         SetAppCulled(bool a_cull);
+		void                         SetCollisionLayer(COL_LAYER a_collisionLayer);
 		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void                         SetRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 		void                         TintScenegraph(const NiColorA& a_color);

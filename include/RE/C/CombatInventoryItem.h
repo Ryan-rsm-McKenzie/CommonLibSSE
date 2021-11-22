@@ -47,7 +47,7 @@ namespace RE
 		virtual float                 GetItemScoreMult(CombatController* a_controller) = 0;  // 0C
 		virtual CombatInventoryItem*  CreateClone() = 0;                                     // 0D
 		virtual bool                  Unk_0E(CombatController* a_controller);                // 0E
-		virtual bool                  CanCast(CombatController* a_controller);               // 0F - { return !data08->combatFleeing; }
+		virtual bool                  CheckShouldEquip(CombatController* a_controller);      // 0F - { return !data08->combatFleeing; }
 		virtual void                  Unk_10();                                              // 10
 		virtual void                  Unk_11();                                              // 11
 		virtual void                  Unk_12();                                              // 12

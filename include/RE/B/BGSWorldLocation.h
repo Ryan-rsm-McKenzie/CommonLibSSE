@@ -6,11 +6,11 @@ namespace RE
 {
 	class TESForm;
 
-	struct CombatLocation
+	struct BGSWorldLocation
 	{
 		// members
 		NiPoint3 pos;               // 00
 		TESForm* cellOrWorldSpace;  // 0C
 	};
-	static_assert(sizeof(CombatLocation) == 0x18);
+	static_assert(sizeof(BGSWorldLocation) == 0x18);
 }

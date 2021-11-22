@@ -19,18 +19,18 @@ namespace RE
 	class WadingWaterData;
 	class TESWaterObject;
 
-	class BGSWaterSystemManager : public BSTSingletonSDM<BGSWaterSystemManager>
+	class TESWaterSystem : public BSTSingletonSDM<TESWaterSystem>
 	{
 	public:
-		[[nodiscard]] static BGSWaterSystemManager* GetSingleton()
+		[[nodiscard]] static TESWaterSystem* GetSingleton()
 		{
-			REL::Relocation<BGSWaterSystemManager**> singleton{ REL::Offset(0x1F5B298) };
+			REL::Relocation<TESWaterSystem**> singleton{ REL::Offset(0x1F5B298) };
 			return *singleton;
 		}
 
-		void CreateBulletWaterDisplacement(const NiPoint3& a_pos, float a_scale)
+		void AddRipple(const NiPoint3& a_pos, float a_scale)
 		{
-			using func_t = decltype(&BGSWaterSystemManager::CreateBulletWaterDisplacement);
+			using func_t = decltype(&TESWaterSystem::AddRipple);
 			REL::Relocation<func_t> func{ REL::Offset(0x04E3600) };
 			return func(this, a_pos, a_scale);
 		}
@@ -87,5 +87,5 @@ namespace RE
 		mutable BSSpinLock                           lock;                     // 120
 		NiPointer<BSTriShape>                        water2048;                // 128
 	};
-	static_assert(sizeof(BGSWaterSystemManager) == 0x130);
+	static_assert(sizeof(TESWaterSystem) == 0x130);
 };

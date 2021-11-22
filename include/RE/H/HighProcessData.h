@@ -307,7 +307,7 @@ namespace RE
 		bool                                                  farGeometry;                    // 468
 		bool                                                  unk469;                         // 469
 		bool                                                  unk46A;                         // 46A
-		bool                                                  unk46B;                         // 46B
+		bool                                                  deathDialogue;                  // 46B
 		bool                                                  unk46C;                         // 46C
 		bool                                                  unk46D;                         // 46D
 		bool                                                  unk46E;                         // 46E

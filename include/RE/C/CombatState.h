@@ -2,22 +2,22 @@
 
 #include "RE/A/AITimeStamp.h"
 #include "RE/A/AITimer.h"
+#include "RE/B/BGSWorldLocation.h"
 #include "RE/B/BSTArray.h"
-#include "RE/C/CombatLocation.h"
 #include "RE/N/NiPoint3.h"
 
 namespace RE
 {
 	class CombatController;
 
-	class CombatTimers
+	class CombatState
 	{
 	public:
 		struct Data80
 		{
-			CombatLocation unk00;  // 10
-			AITimeStamp    unk18;  // 18
-			float          unk20;  // 20
+			BGSWorldLocation unk00;  // 10
+			AITimeStamp      unk18;  // 18
+			float            unk20;  // 20
 		};
 		static_assert(sizeof(Data80) == 0x20);
 
@@ -57,5 +57,5 @@ namespace RE
 		AITimer           threatRatioUpdateTimer;        // AC
 		AITimer           threatUpdateTimer;             // B4
 	};
-	static_assert(sizeof(CombatTimers) == 0xC0);
+	static_assert(sizeof(CombatState) == 0xC0);
 }

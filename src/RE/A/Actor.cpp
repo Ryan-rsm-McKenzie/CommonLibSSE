@@ -157,6 +157,13 @@ namespace RE
 		return func(this);
 	}
 
+	void Actor::DeselectSpell(SpellItem* a_spell)
+	{
+		using func_t = decltype(&Actor::DeselectSpell);
+		REL::Relocation<func_t> func{ REL::Offset(0x6581F0) };
+		return func(this, a_spell);
+	}
+
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = decltype(&Actor::DispelWornItemEnchantments);
@@ -586,13 +593,6 @@ namespace RE
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
-	}
-
-	void Actor::RemoveSelectedSpell(SpellItem* a_spell)
-	{
-		using func_t = decltype(&Actor::RemoveSelectedSpell);
-		REL::Relocation<func_t> func{ REL::Offset(0x6581F0) };
-		return func(this, a_spell);
 	}
 
 	bool Actor::RemoveSpell(SpellItem* a_spell)

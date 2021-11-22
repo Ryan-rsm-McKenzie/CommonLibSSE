@@ -14,10 +14,10 @@ namespace RE
 	class TESObjectWEAP;
 	class TESForm;
 
-	class CombatInventoryController
+	class CombatInventory
 	{
 	public:
-		struct UnkStruct
+		struct CombatEquipment
 		{
 			BSTArray<void*> unk00;
 			std::uint32_t   unk18;
@@ -26,7 +26,7 @@ namespace RE
 			float           unk24;  //combat range
 			std::uint32_t   unk28;
 		};
-		static_assert(sizeof(UnkStruct) == 0x30);
+		static_assert(sizeof(CombatEquipment) == 0x30);
 
 		struct Data178
 		{
@@ -49,8 +49,8 @@ namespace RE
 		std::uint64_t                            unk100;             // 100
 		std::uint64_t                            unk108;             // 108
 		std::uint64_t                            unk110;             // 110
-		UnkStruct                                unk118;             // 118
-		UnkStruct                                unk148;             // 148
+		CombatEquipment                          unk118;             // 118
+		CombatEquipment                          unk148;             // 148
 		BSTArray<Data178>                        unk178;             // 178
 		std::int32_t                             unk190;             // 190
 		AITimer                                  unk194;             // 194
@@ -64,7 +64,7 @@ namespace RE
 		float                                    unk1B8;             // 1B8
 		float                                    unk1BC;             // 1BC
 		float                                    unk1C0;             // 1C0
-		std::uint8_t                             unk1C4;             // 1C4
+		bool                                     dirty;              // 1C4
 	};
-	static_assert(sizeof(CombatInventoryController) == 0x1C8);
+	static_assert(sizeof(CombatInventory) == 0x1C8);
 }

@@ -175,7 +175,7 @@ set(SOURCES
 	include/RE/B/BGSTypedItem.h
 	include/RE/B/BGSVoiceType.h
 	include/RE/B/BGSVolumetricLighting.h
-	include/RE/B/BGSWaterSystemManager.h
+	include/RE/B/BGSWorldLocation.h
 	include/RE/B/BSAnimNote.h
 	include/RE/B/BSAnimNoteListener.h
 	include/RE/B/BSAnimationGraphChannel.h
@@ -381,7 +381,7 @@ set(SOURCES
 	include/RE/C/CombatController.h
 	include/RE/C/CombatGroup.h
 	include/RE/C/CombatGroupDetectionListener.h
-	include/RE/C/CombatInventoryController.h
+	include/RE/C/CombatInventory.h
 	include/RE/C/CombatInventoryItem.h
 	include/RE/C/CombatInventoryItemMagic.h
 	include/RE/C/CombatInventoryItemMagicT.h
@@ -389,13 +389,12 @@ set(SOURCES
 	include/RE/C/CombatInventoryItemScroll.h
 	include/RE/C/CombatInventoryItemShout.h
 	include/RE/C/CombatInventoryItemStaff.h
-	include/RE/C/CombatLocation.h
 	include/RE/C/CombatMagicCaster.h
 	include/RE/C/CombatMagicCasterOffensive.h
 	include/RE/C/CombatMagicCasterRestore.h
 	include/RE/C/CombatMagicCasterTargetEffect.h
 	include/RE/C/CombatObject.h
-	include/RE/C/CombatTimers.h
+	include/RE/C/CombatState.h
 	include/RE/C/CommandEffect.h
 	include/RE/C/CommandTable.h
 	include/RE/C/CommonTypeTraits.h
@@ -1275,6 +1274,7 @@ set(SOURCES
 	include/RE/T/TESWaitStopEvent.h
 	include/RE/T/TESWaterForm.h
 	include/RE/T/TESWaterObject.h
+	include/RE/T/TESWaterSystem.h
 	include/RE/T/TESWeather.h
 	include/RE/T/TESWeightForm.h
 	include/RE/T/TESWordOfPower.h

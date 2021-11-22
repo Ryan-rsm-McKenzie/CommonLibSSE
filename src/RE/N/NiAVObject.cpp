@@ -108,6 +108,13 @@ namespace RE
 		a_cull ? flags.set(Flag::kHidden) : flags.reset(Flag::kHidden);
 	}
 
+	void NiAVObject::SetCollisionLayer(COL_LAYER a_collisionLayer)
+	{
+		using func_t = decltype(&NiAVObject::SetCollisionLayer);
+		REL::Relocation<func_t> func{ REL::Offset(0xDEE3C0) };
+		return func(this, a_collisionLayer);
+	}
+
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);
