@@ -382,17 +382,13 @@ namespace SKSE
 		char                pluginName[256] = {};
 		char                author[256] = {};
 		char                supportEmail[256] = {};
-		union
-		{
-			struct
-			{
-				bool addressLibrary: 1;
-				bool sigScanning: 1;
-			};
-			std::uint32_t padding = 0;
-		};
-		std::uint32_t compatibleVersions[16] = {};
-		std::uint32_t xseMinimum = 0;
+		bool                addressLibrary: 1 = false;
+		bool                sigScanning: 1 = false;
+		std::uint8_t        padding1: 6 = 0;
+		std::uint8_t        padding2 = 0;
+		std::uint16_t       padding3 = 0;
+		std::uint32_t       compatibleVersions[16] = {};
+		std::uint32_t       xseMinimum = 0;
 
 	private:
 		static constexpr void SetCharBuffer(
@@ -409,7 +405,8 @@ namespace SKSE
 	static_assert(offsetof(PluginVersionData, pluginName) == 0x008);
 	static_assert(offsetof(PluginVersionData, author) == 0x108);
 	static_assert(offsetof(PluginVersionData, supportEmail) == 0x208);
-	static_assert(offsetof(PluginVersionData, padding) == 0x308);
+	static_assert(offsetof(PluginVersionData, padding2) == 0x309);
+	static_assert(offsetof(PluginVersionData, padding3) == 0x30A);
 	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
 	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x34C);
 	static_assert(sizeof(PluginVersionData) == 0x350);
