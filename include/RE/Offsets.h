@@ -20,7 +20,6 @@ namespace RE
 			inline constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(37925));
 			inline constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(38751));
 			inline constexpr REL::ID UpdateWeaponAbility(static_cast<std::uint64_t>(38752));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(207511));
 		}
 
 		namespace ActorEquipManager
@@ -372,7 +371,6 @@ namespace RE
 			inline constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(40456));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403521));
 			inline constexpr REL::ID StartGrabObject(static_cast<std::uint64_t>(40552));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(208040));
 		}
 
 		namespace PlayerControls
@@ -447,7 +445,6 @@ namespace RE
 			inline constexpr REL::ID HasOverlays(static_cast<std::uint64_t>(24790));
 			inline constexpr REL::ID SetSkinFromTint(static_cast<std::uint64_t>(24710));
 			inline constexpr REL::ID UpdateNeck(static_cast<std::uint64_t>(24711));
-			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(195816));
 		}
 
 		namespace TESObjectREFR
