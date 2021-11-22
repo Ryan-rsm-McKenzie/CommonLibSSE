@@ -710,12 +710,12 @@ namespace REL
 			} catch (const std::system_error&) {
 				stl::report_and_fail(
 					fmt::format(
-						"Failed to locate an appropriate address library for game version: {}\n"
+						"Failed to locate an appropriate address library with the path: {}\n"
 						"This means you are missing the address library for this specific version of "
 						"the game. Please continue to the mod page for address library to download "
 						"an appropriate version. If one is not available, then it is likely that "
 						"address library has not yet added support for this version of the game."sv,
-						a_version.string()));
+						stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)));
 			}
 		}
 
