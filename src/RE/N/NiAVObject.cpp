@@ -92,7 +92,7 @@ namespace RE
 	void NiAVObject::RemoveDecals()
 	{
 		using func_t = decltype(&NiAVObject::RemoveDecals);
-		REL::Relocation<func_t> func{ REL::ID(15547) };
+		REL::Relocation<func_t> func{ REL::ID(15723) };
 		return func(this);
 	}
 
