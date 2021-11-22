@@ -17,20 +17,6 @@
 
 namespace RE
 {
-	void NiAVObject::ClearDecals()
-	{
-		using func_t = decltype(&NiAVObject::ClearDecals);
-		REL::Relocation<func_t> func{ REL::ID(15723) };
-		return func(this);
-	}
-
-	void NiAVObject::ClearWeaponBlood()
-	{
-		using func_t = decltype(&NiAVObject::ClearWeaponBlood);
-		REL::Relocation<func_t> func{ REL::ID(30154) };
-		return func(this);
-	}
-
 	void NiAVObject::CullNode(bool a_cull)
 	{
 		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {
@@ -103,6 +89,13 @@ namespace RE
 		return hasShaderType;
 	}
 
+	void NiAVObject::RemoveDecals()
+	{
+		using func_t = decltype(&NiAVObject::RemoveDecals);
+		REL::Relocation<func_t> func{ REL::ID(15547) };
+		return func(this);
+	}
+
 	void NiAVObject::SetAppCulled(bool a_cull)
 	{
 		a_cull ? flags.set(Flag::kHidden) : flags.reset(Flag::kHidden);
@@ -127,13 +120,6 @@ namespace RE
 		using func_t = decltype(&NiAVObject::SetMotionType);
 		REL::Relocation<func_t> func{ Offset::NiAVObject::SetMotionType };
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
-	}
-
-	void NiAVObject::SetRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
-	{
-		using func_t = decltype(&NiAVObject::SetRigidConstraints);
-		REL::Relocation<func_t> func{ REL::ID(78103) };
-		return func(this, a_enable, a_arg2, a_arg3);
 	}
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
@@ -259,5 +245,12 @@ namespace RE
 			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
+	}
+
+	void NiAVObject::UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
+	{
+		using func_t = decltype(&NiAVObject::UpdateRigidConstraints);
+		REL::Relocation<func_t> func{ REL::ID(78103) };
+		return func(this, a_enable, a_arg2, a_arg3);
 	}
 }
