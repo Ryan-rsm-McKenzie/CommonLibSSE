@@ -14,7 +14,7 @@ namespace RE
 
 		static bool ShouldUseTaskQueue();
 
-		std::uint32_t QueueAddRipple(float a_scale, const NiPoint3& a_pos);                       // 45
+		std::uint32_t QueueAddRipple(float a_scale, const NiPoint3& a_pos);                          // 45
 		std::uint32_t QueueRemoveSpell(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem);  // 93
 	};
 	//static_assert(sizeof(TaskQueueInterface) == 0x);
