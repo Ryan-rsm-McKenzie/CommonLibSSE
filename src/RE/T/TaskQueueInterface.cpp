@@ -15,9 +15,9 @@ namespace RE
 		return func();
 	}
 
-	std::uint32_t TaskQueueInterface::QueueCreateRipple(float a_scale, const NiPoint3& a_pos)
+	std::uint32_t TaskQueueInterface::QueueAddRipple(float a_scale, const NiPoint3& a_pos)
 	{
-		using func_t = decltype(&TaskQueueInterface::QueueCreateRipple);
+		using func_t = decltype(&TaskQueueInterface::QueueAddRipple);
 		REL::Relocation<func_t> func{ REL::ID(36953) };
 		return func(this, a_scale, a_pos);
 	}
