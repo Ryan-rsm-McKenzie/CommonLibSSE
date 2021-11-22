@@ -114,7 +114,7 @@ namespace RE
 	BSTempEffectParticle* TESObjectCELL::PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target)
 	{
 		using func_t = decltype(&TESObjectCELL::PlaceParticleEffect);
-		REL::Relocation<func_t> func{ REL::Offset(0x04655F0) };
+		REL::Relocation<func_t> func{ REL::ID(30072) };
 		return func(this, a_lifetime, a_modelName, a_normal, a_pos, a_scale, a_flags, a_target);
 	}
 

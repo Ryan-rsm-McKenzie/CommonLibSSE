@@ -5,7 +5,7 @@ namespace RE
 	BSTEventSource<ShoutAttack::Event>* ShoutAttack::GetEventSource()
 	{
 		using func_t = decltype(&ShoutAttack::GetEventSource);
-		REL::Relocation<func_t> func{ REL::Offset(0x6F0370) };
+		REL::Relocation<func_t> func{ REL::ID(41071) };
 		return func();
 	}
 }

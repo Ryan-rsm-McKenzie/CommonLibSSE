@@ -35,7 +35,7 @@ namespace RE
 		BSLightingShaderMaterialLODLandscape* Ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialLODLandscape::Ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x13F6E60) };
+			REL::Relocation<func_t> func{ REL::ID(106817) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

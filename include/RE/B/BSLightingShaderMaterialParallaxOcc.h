@@ -37,7 +37,7 @@ namespace RE
 		BSLightingShaderMaterialParallaxOcc* Ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialParallaxOcc::Ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x13F5540) };
+			REL::Relocation<func_t> func{ REL::ID(106772) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

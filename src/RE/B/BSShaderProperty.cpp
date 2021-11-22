@@ -11,14 +11,14 @@ namespace RE
 	void BSShaderProperty::SetMaterial(BSShaderMaterial* a_material, bool a_unk1)
 	{
 		using func_t = decltype(&BSShaderProperty::SetMaterial);
-		REL::Relocation<func_t> func{ REL::Offset(0x13B7B10) };
+		REL::Relocation<func_t> func{ REL::ID(105544) };
 		return func(this, a_material, a_unk1);
 	}
 
 	void BSShaderProperty::SetFlags(EShaderPropertyFlag8 a_flag, bool a_toggle)
 	{
 		using func_t = decltype(&BSShaderProperty::SetFlags);
-		REL::Relocation<func_t> func{ REL::Offset(0x13B7A00) };
+		REL::Relocation<func_t> func{ REL::ID(105540) };
 		return func(this, a_flag, a_toggle);
 	}
 }

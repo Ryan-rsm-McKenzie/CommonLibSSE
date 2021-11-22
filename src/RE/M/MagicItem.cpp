@@ -41,7 +41,7 @@ namespace RE
 	bool MagicItem::IsValid() const
 	{
 		using func_t = decltype(&MagicItem::IsValid);
-		REL::Relocation<func_t> func{ REL::Offset(0x10A840) };
+		REL::Relocation<func_t> func{ REL::ID(11290) };
 		return func(this);
 	}
 }

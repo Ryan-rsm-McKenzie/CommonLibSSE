@@ -13,7 +13,7 @@ namespace RE
 	ObjectRefHandle& TESQuest::CreateRefHandleByAliasID(ObjectRefHandle& a_handle, std::uint32_t a_aliasID)
 	{
 		using func_t = decltype(&TESQuest::CreateRefHandleByAliasID);
-		REL::Relocation<func_t> func{ REL::Offset(0x38F8C0) };
+		REL::Relocation<func_t> func{ REL::ID(25066) };
 		return func(this, a_handle, a_aliasID);
 	}
 

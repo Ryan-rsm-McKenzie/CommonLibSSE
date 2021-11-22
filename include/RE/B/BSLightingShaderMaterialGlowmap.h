@@ -33,7 +33,7 @@ namespace RE
 		BSLightingShaderMaterialGlowmap* Ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialGlowmap::Ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x13F4C40) };
+			REL::Relocation<func_t> func{ REL::ID(106752) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

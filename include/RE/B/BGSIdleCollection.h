@@ -46,7 +46,7 @@ namespace RE
 		[[nodiscard]] BGSIdleCollection* Ctor()
 		{
 			using func_t = decltype(&BGSIdleCollection::Ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x190EC0) };
+			REL::Relocation<func_t> func{ REL::ID(14227) };
 			return func(this);
 		}
 	};

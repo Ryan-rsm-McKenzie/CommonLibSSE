@@ -76,7 +76,7 @@ namespace RE
 	void Actor::AddToFaction(TESFaction* a_faction, std::int8_t a_rank)
 	{
 		using func_t = decltype(&Actor::AddToFaction);
-		REL::Relocation<func_t> func{ REL::Offset(0x061F220) };
+		REL::Relocation<func_t> func{ REL::ID(37686) };
 		return func(this, a_faction, a_rank);
 	}
 
@@ -153,14 +153,14 @@ namespace RE
 	bool Actor::Decapitate()
 	{
 		using func_t = decltype(&Actor::Decapitate);
-		REL::Relocation<func_t> func{ REL::Offset(0x00619050) };
+		REL::Relocation<func_t> func{ REL::ID(37639) };
 		return func(this);
 	}
 
 	void Actor::DeselectSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::DeselectSpell);
-		REL::Relocation<func_t> func{ REL::Offset(0x6581F0) };
+		REL::Relocation<func_t> func{ REL::ID(38769) };
 		return func(this, a_spell);
 	}
 
@@ -213,7 +213,7 @@ namespace RE
 	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
 	{
 		using func_t = decltype(&Actor::GetActorValueModifier);
-		REL::Relocation<func_t> func{ REL::Offset(0x06468C0) };
+		REL::Relocation<func_t> func{ REL::ID(38469) };
 		return func(this, a_modifier, a_value);
 	}
 
@@ -380,7 +380,7 @@ namespace RE
 	SOUL_LEVEL Actor::GetSoulSize() const
 	{
 		using func_t = decltype(&Actor::GetSoulSize);
-		REL::Relocation<func_t> func{ REL::Offset(0x065A970) };
+		REL::Relocation<func_t> func{ REL::ID(38817) };
 		return func(this);
 	}
 
@@ -435,7 +435,7 @@ namespace RE
 	bool Actor::HasSpell(SpellItem* a_spell) const
 	{
 		using func_t = decltype(&Actor::HasSpell);
-		REL::Relocation<func_t> func{ REL::Offset(0x0658B40) };
+		REL::Relocation<func_t> func{ REL::ID(38782) };
 		return func(this, a_spell);
 	}
 
@@ -513,7 +513,7 @@ namespace RE
 	bool Actor::IsLimbGone(std::uint32_t a_limb)
 	{
 		using func_t = decltype(&Actor::IsLimbGone);
-		REL::Relocation<func_t> func{ REL::Offset(0x2A7730) };
+		REL::Relocation<func_t> func{ REL::ID(19765) };
 		return func(this, a_limb);
 	}
 
@@ -564,7 +564,7 @@ namespace RE
 	void Actor::KillImmediate()
 	{
 		using func_t = decltype(&Actor::KillImmediate);
-		REL::Relocation<func_t> func{ REL::Offset(0x622550) };
+		REL::Relocation<func_t> func{ REL::ID(37735) };
 		return func(this);
 	}
 

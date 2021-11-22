@@ -11,7 +11,7 @@ namespace RE
 	public:
 		[[nodiscard]] static ActorValueList* GetSingleton()
 		{
-			REL::Relocation<ActorValueList**> singleton{ REL::Offset(0x1F58C18) };
+			REL::Relocation<ActorValueList**> singleton{ REL::ID(400267) };
 			return *singleton;
 		}
 

@@ -9,7 +9,7 @@ namespace RE
 	bool MagicTarget::DispelEffect(MagicItem* a_spell, BSPointerHandle<Actor>& a_caster, ActiveEffect* a_effect)
 	{
 		using func_t = decltype(&MagicTarget::DispelEffect);
-		REL::Relocation<func_t> func{ REL::Offset(0x56DF10) };
+		REL::Relocation<func_t> func{ REL::ID(34505) };
 		return func(this, a_spell, a_caster, a_effect);
 	}
 

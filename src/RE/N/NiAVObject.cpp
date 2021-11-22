@@ -20,14 +20,14 @@ namespace RE
 	void NiAVObject::ClearDecals()
 	{
 		using func_t = decltype(&NiAVObject::ClearDecals);
-		REL::Relocation<func_t> func{ REL::Offset(0x1D7E40) };
+		REL::Relocation<func_t> func{ REL::ID(15723) };
 		return func(this);
 	}
 
 	void NiAVObject::ClearWeaponBlood()
 	{
 		using func_t = decltype(&NiAVObject::ClearWeaponBlood);
-		REL::Relocation<func_t> func{ REL::Offset(0x46C8B0) };
+		REL::Relocation<func_t> func{ REL::ID(30154) };
 		return func(this);
 	}
 
@@ -111,8 +111,15 @@ namespace RE
 	void NiAVObject::SetCollisionLayer(COL_LAYER a_collisionLayer)
 	{
 		using func_t = decltype(&NiAVObject::SetCollisionLayer);
-		REL::Relocation<func_t> func{ REL::Offset(0xDEE3C0) };
+		REL::Relocation<func_t> func{ REL::ID(77998) };
 		return func(this, a_collisionLayer);
+	}
+
+	void NiAVObject::SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_arg2)
+	{
+		using func_t = decltype(&NiAVObject::SetCollisionLayerAndGroup);
+		REL::Relocation<func_t> func{ REL::ID(77999) };
+		return func(this, a_collisionLayer, a_arg2);
 	}
 
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
@@ -125,7 +132,7 @@ namespace RE
 	void NiAVObject::SetRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
 	{
 		using func_t = decltype(&NiAVObject::SetRigidConstraints);
-		REL::Relocation<func_t> func{ REL::Offset(0xDF54A0) };
+		REL::Relocation<func_t> func{ REL::ID(78103) };
 		return func(this, a_enable, a_arg2, a_arg3);
 	}
 
@@ -252,12 +259,5 @@ namespace RE
 			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
-	}
-
-	void NiAVObject::UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2)
-	{
-		using func_t = decltype(&NiAVObject::UpdateRigidBodySettings);
-		REL::Relocation<func_t> func{ REL::Offset(0xDEE3E0) };
-		return func(this, a_type, a_arg2);
 	}
 }

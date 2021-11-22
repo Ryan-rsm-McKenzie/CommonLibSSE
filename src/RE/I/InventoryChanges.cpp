@@ -44,7 +44,7 @@ namespace RE
 	std::uint32_t InventoryChanges::GetWornMask()
 	{
 		using func_t = decltype(&InventoryChanges::GetWornMask);
-		REL::Relocation<func_t> func{ REL::Offset(0x1E4B40) };
+		REL::Relocation<func_t> func{ REL::ID(16044) };
 		return func(this);
 	}
 

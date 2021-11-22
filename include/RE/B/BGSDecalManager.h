@@ -15,7 +15,7 @@ namespace RE
 	public:
 		static BGSDecalManager* GetSingleton()
 		{
-			REL::Relocation<BGSDecalManager**> singleton{ REL::Offset(0x1F5EA88) };
+			REL::Relocation<BGSDecalManager**> singleton{ REL::ID(400561) };
 			return *singleton;
 		}
 

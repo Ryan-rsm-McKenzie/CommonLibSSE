@@ -5,7 +5,7 @@ namespace RE
 	BSTEventSource<TESHarvestedEvent::ItemHarvested>* TESHarvestedEvent::GetEventSource()
 	{
 		using func_t = decltype(&TESHarvestedEvent::GetEventSource);
-		REL::Relocation<func_t> func{ REL::Offset(0x01A8990) };
+		REL::Relocation<func_t> func{ REL::ID(14875) };
 		return func();
 	}
 }

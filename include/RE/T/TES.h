@@ -67,14 +67,14 @@ namespace RE
 		TESObjectCELL* GetCell(const NiPoint3& a_position) const
 		{
 			using func_t = decltype(&TES::GetCell);
-			REL::Relocation<func_t> func{ REL::Offset(0x15E310) };
+			REL::Relocation<func_t> func{ REL::ID(13322) };
 			return func(this, a_position);
 		}
 
 		float GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
 		{
 			using func_t = decltype(&TES::GetWaterHeight);
-			REL::Relocation<func_t> func{ REL::Offset(0x160790) };
+			REL::Relocation<func_t> func{ REL::ID(13358) };
 			return func(this, a_pos, a_cell);
 		}
 

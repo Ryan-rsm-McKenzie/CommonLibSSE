@@ -120,6 +120,7 @@ namespace RE
 		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
 		void                         SetAppCulled(bool a_cull);
 		void                         SetCollisionLayer(COL_LAYER a_collisionLayer);
+		void                         SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_arg2);
 		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
 		void                         SetRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 		void                         TintScenegraph(const NiColorA& a_color);
@@ -128,7 +129,6 @@ namespace RE
 		void                         UpdateHairColor(const NiColor& a_color);
 		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
 		void                         UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
-		void                         UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2);
 
 		// members
 		NiNode*                               parent;                   // 030

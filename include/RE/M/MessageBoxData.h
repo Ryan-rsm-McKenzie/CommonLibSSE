@@ -19,7 +19,7 @@ namespace RE
 		void QueueMessage()
 		{
 			using func_t = decltype(&MessageBoxData::QueueMessage);
-			REL::Relocation<func_t> func{ REL::Offset(0x8DAC20) };
+			REL::Relocation<func_t> func{ REL::ID(52271) };
 			return func(this);
 		}
 

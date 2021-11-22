@@ -14,7 +14,7 @@ namespace RE
 	public:
 		static CrosshairPickData* GetSingleton()
 		{
-			REL::Relocation<CrosshairPickData**> singleton{ REL::Offset(0x2F9B8F0) };
+			REL::Relocation<CrosshairPickData**> singleton{ REL::ID(401585) };
 			return *singleton;
 		}
 

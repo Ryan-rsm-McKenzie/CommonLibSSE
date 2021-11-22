@@ -30,7 +30,7 @@ namespace RE
 		BSLightingShaderMaterialFacegenTint* Ctor()
 		{
 			using func_t = decltype(&BSLightingShaderMaterialFacegenTint::Ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x13F6200) };
+			REL::Relocation<func_t> func{ REL::ID(106794) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

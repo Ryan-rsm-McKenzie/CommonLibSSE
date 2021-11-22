@@ -6,7 +6,7 @@ namespace RE
 {
 	TESObjectBOOK* BookMenu::GetTargetForm()
 	{
-		REL::Relocation<TESObjectBOOK**> book{ REL::Offset(0x2FE6C10) };
+		REL::Relocation<TESObjectBOOK**> book{ REL::ID(405835) };
 		return *book;
 	}
 

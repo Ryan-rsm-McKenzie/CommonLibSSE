@@ -281,7 +281,7 @@ namespace RE
 	void ExtraDataList::SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword)
 	{
 		using func_t = decltype(&ExtraDataList::SetLinkedRef);
-		REL::Relocation<func_t> func{ REL::Offset(0x121AC0) };
+		REL::Relocation<func_t> func{ REL::ID(11779) };
 		return func(this, a_targetRef, a_keyword);
 	}
 
