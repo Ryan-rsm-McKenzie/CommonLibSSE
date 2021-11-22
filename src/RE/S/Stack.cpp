@@ -28,14 +28,14 @@ namespace RE
 		Variable& Stack::GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint)
 		{
 			using func_t = decltype(&Stack::GetStackFrameVariable);
-			REL::Relocation<func_t> func{ REL::Offset(0x136E240) };
+			REL::Relocation<func_t> func{ REL::ID(104484) };
 			return func(this, a_frame, a_index, a_pageHint);
 		}
 
 		void Stack::Dtor()
 		{
 			using func_t = decltype(&Stack::Dtor);
-			REL::Relocation<func_t> func{ REL::Offset(0x136DD30) };
+			REL::Relocation<func_t> func{ REL::ID(104480) };
 			return func(this);
 		}
 	}

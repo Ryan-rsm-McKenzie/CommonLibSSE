@@ -185,7 +185,7 @@ namespace RE
 		inline bhkWorld* GetbhkWorld() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
-			REL::Relocation<func_t> func{ REL::Offset(0x2772D0) };
+			REL::Relocation<func_t> func{ REL::ID(18995) };
 			return func(this);
 		}
 

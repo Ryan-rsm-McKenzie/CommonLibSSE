@@ -11,14 +11,14 @@ namespace RE
 {
 	BSScaleformManager* BSScaleformManager::GetSingleton()
 	{
-		REL::Relocation<BSScaleformManager**> singleton{ REL::Offset(0x2FBFD80) };
+		REL::Relocation<BSScaleformManager**> singleton{ REL::ID(402775) };
 		return *singleton;
 	}
 
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
-		REL::Relocation<func_t> func{ REL::Offset(0xF10E00) };
+		REL::Relocation<func_t> func{ REL::ID(82325) };
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 
@@ -181,13 +181,13 @@ namespace RE
 				static_cast<double>(state->screenWidth) /
 				static_cast<double>(state->screenHeight);
 			if (aspectRatio > 4.0 / 3.0) {
-				REL::Relocation<const Setting*> fSafeZoneXWide{ REL::Offset(0x1E9E990) };
-				REL::Relocation<const Setting*> fSafeZoneYWide{ REL::Offset(0x1E9E9A8) };
+				REL::Relocation<const Setting*> fSafeZoneXWide{ REL::ID(389569) };
+				REL::Relocation<const Setting*> fSafeZoneYWide{ REL::ID(389572) };
 
 				return std::make_pair(fSafeZoneXWide->GetFloat(), fSafeZoneYWide->GetFloat());
 			} else {
-				REL::Relocation<const Setting*> fSafeZoneX{ REL::Offset(0x1E9E9C0) };
-				REL::Relocation<const Setting*> fSafeZoneY{ REL::Offset(0x1E9E9D8) };
+				REL::Relocation<const Setting*> fSafeZoneX{ REL::ID(389575) };
+				REL::Relocation<const Setting*> fSafeZoneY{ REL::ID(389578) };
 
 				return std::make_pair(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat());
 			}
@@ -201,7 +201,7 @@ namespace RE
 	bool BSScaleformManager::FileExists(const char* a_fileName)
 	{
 		using func_t = decltype(&BSScaleformManager::FileExists);
-		REL::Relocation<func_t> func{ REL::Offset(0xF14210) };
+		REL::Relocation<func_t> func{ REL::ID(82411) };
 		return func(a_fileName);
 	}
 }

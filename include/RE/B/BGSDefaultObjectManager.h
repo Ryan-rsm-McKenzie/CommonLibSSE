@@ -432,7 +432,7 @@ namespace RE
 		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
 		{
 			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
-			REL::Relocation<func_t> func{ REL::Offset(0x182100) };
+			REL::Relocation<func_t> func{ REL::ID(13894) };
 			return func();
 		}
 

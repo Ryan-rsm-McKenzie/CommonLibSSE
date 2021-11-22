@@ -12,7 +12,7 @@ namespace RE
 
 	TESObjectREFR* BookMenu::GetTargetReference()
 	{
-		REL::Relocation<TESObjectREFRPtr*> refptr{ REL::Offset(0x2FE6C38) };
+		REL::Relocation<TESObjectREFRPtr*> refptr{ REL::ID(405840) };
 		return refptr->get();
 	}
 }
