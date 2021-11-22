@@ -534,9 +534,9 @@ namespace SKSE
 				const std::filesystem::path p = a_loc.file_name();
 				auto                        filename = p.lexically_normal().generic_string();
 
-				const std::regex r{ R"(^(?:[^\\\/]*[\\\/])?(?:include|src)[\\\/](.*)$)" };
+				const std::regex r{ R"(^((?:^|[\\\/])(?:include|src)[\\\/](.*)$)" };
 				std::smatch      matches;
-				if (std::regex_match(filename, matches, r)) {
+				if (std::regex_search(filename, matches, r)) {
 					filename = matches[1].str();
 				}
 
