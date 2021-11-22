@@ -6,7 +6,7 @@ namespace RE
 	void HitData::Populate(Actor* a_aggressor, Actor* a_target, InventoryEntryData* a_weapon)
 	{
 		using func_t = decltype(&HitData::Populate);
-		REL::Relocation<func_t> func(REL::Offset(0x76EDB0));
+		REL::Relocation<func_t> func(REL::ID(44001));
 		return func(this, a_aggressor, a_target, a_weapon);
 	}
 }

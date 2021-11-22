@@ -177,14 +177,14 @@ namespace RE
 			inline BSFixedString* ctor8(const char* a_data)
 			{
 				using func_t = decltype(&BSFixedString::ctor8);
-				REL::Relocation<func_t> func{ REL::Offset(0xC4E920) };
+				REL::Relocation<func_t> func{ REL::ID(69161) };
 				return func(this, a_data);
 			}
 
 			inline BSFixedString* ctor16(const wchar_t* a_data)
 			{
 				using func_t = decltype(&BSFixedString::ctor16);
-				REL::Relocation<func_t> func{ REL::Offset(0xC4F2E0) };
+				REL::Relocation<func_t> func{ REL::ID(69176) };
 				return func(this, a_data);
 			}
 
