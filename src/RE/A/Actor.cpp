@@ -344,6 +344,13 @@ namespace RE
 		return func(this, a_perk);
 	}
 
+	bool Actor::HasSpell(RE::SpellItem* a_spell) const
+	{
+		using func_t = decltype(&Actor::HasSpell);
+		REL::Relocation<func_t> func{ REL::ID(38782) };
+		return func(this, a_spell);
+	}
+
 	void Actor::InterruptCast(bool a_restoreMagicka) const
 	{
 		using func_t = decltype(&Actor::InterruptCast);

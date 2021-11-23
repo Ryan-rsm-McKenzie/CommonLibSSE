@@ -104,6 +104,20 @@ namespace RE
 		return static_cast<bool>(actorDoingPlayerCommand);
 	}
 
+	bool PlayerCharacter::IsAttacking() const
+	{
+		using func_t = decltype(&PlayerCharacter::IsAttacking);
+		REL::Relocation<func_t> func{ REL::ID(38590) };
+		return func(this);
+	}
+
+	bool PlayerCharacter::IsBlocking() const
+	{
+		using func_t = decltype(&PlayerCharacter::IsBlocking);
+		REL::Relocation<func_t> func{ REL::ID(37952) };
+		return func(this);
+	}
+
 	bool PlayerCharacter::IsGrabbing() const
 	{
 		return static_cast<bool>(grabbedObject);

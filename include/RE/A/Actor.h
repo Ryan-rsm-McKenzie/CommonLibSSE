@@ -503,6 +503,7 @@ namespace RE
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasPerk(BGSPerk* a_perk) const;
+		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
 		bool                         IsAIEnabled() const;
 		bool                         IsAMount() const;
