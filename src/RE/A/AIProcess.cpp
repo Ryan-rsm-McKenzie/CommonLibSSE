@@ -9,7 +9,7 @@ namespace RE
 	void AIProcess::ClearMuzzleFlashes()
 	{
 		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
-		REL::Relocation<func_t> func{ REL::ID(38495) };
+		REL::Relocation<func_t> func{ REL::ID(39504) };
 		return func(this);
 	}
 	

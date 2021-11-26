@@ -612,7 +612,7 @@ namespace RE
 	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
 	{
 		using func_t = decltype(&Actor::SetLifeState);
-		REL::Relocation<func_t> func{ REL::ID(36604) };
+		REL::Relocation<func_t> func{ REL::ID(37612) };
 		return func(this, a_lifeState);
 	}
 
@@ -626,14 +626,14 @@ namespace RE
 	void Actor::StopInteractingQuick(bool a_unk02)
 	{
 		using func_t = decltype(&Actor::StopInteractingQuick);
-		REL::Relocation<func_t> func{ REL::ID(37752) };
+		REL::Relocation<func_t> func{ REL::ID(38697) };
 		return func(this, a_unk02);
 	}
 
 	void Actor::StopMoving(float a_delta)
 	{
 		using func_t = decltype(&Actor::StopMoving);
-		REL::Relocation<func_t> func{ REL::ID(36801) };
+		REL::Relocation<func_t> func{ REL::ID(37817) };
 		return func(this, a_delta);
 	}
 
