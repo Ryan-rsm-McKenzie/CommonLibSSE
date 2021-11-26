@@ -6,6 +6,13 @@
 
 namespace RE
 {
+	void AIProcess::ClearMuzzleFlashes()
+	{
+		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
+		REL::Relocation<func_t> func{ REL::ID(38495) };
+		return func(this);
+	}
+	
 	float AIProcess::GetCachedHeight() const
 	{
 		return high ? high->cachedActorHeight : static_cast<float>(-1.0);

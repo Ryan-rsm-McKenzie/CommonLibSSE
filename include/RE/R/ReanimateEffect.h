@@ -11,16 +11,16 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_ReanimateEffect;
 
 		// override (CommandEffect)
-		virtual void Unk_04(void) override;                        // 04
-		virtual void LoadGame(BGSSaveFormBuffer* a_buf) override;  // 08
-		virtual void SaveGame(BGSLoadFormBuffer* a_buf) override;  // 09
-		virtual void Unk_10(void) override;                        // 0A
-		virtual void Unk_12(void) override;                        // 12
+		void Unk_04(void) override;                        // 04
+		void LoadGame(BGSSaveFormBuffer* a_buf) override;  // 08
+		void SaveGame(BGSLoadFormBuffer* a_buf) override;  // 09
+		void Unk_10(void) override;                        // 0A
+		void Unk_12(void) override;                        // 12
 
-		virtual ~ReanimateEffect();  // 13
+		~ReanimateEffect() override;  // 13
 
-		virtual void Unk_14() override;  // 14
-		virtual void Unk_15() override;  // 15
+		void Start() override;   // 14
+		void Finish() override;  // 15
 
 		// members
 		bool          unk98;  // 98

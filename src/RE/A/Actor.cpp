@@ -609,11 +609,32 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
+	{
+		using func_t = decltype(&Actor::SetLifeState);
+		REL::Relocation<func_t> func{ REL::ID(36604) };
+		return func(this, a_lifeState);
+	}
+
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
 		REL::Relocation<func_t> func{ REL::ID(37422) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
+	}
+
+	void Actor::StopInteractingQuick(bool a_unk02)
+	{
+		using func_t = decltype(&Actor::StopInteractingQuick);
+		REL::Relocation<func_t> func{ REL::ID(37752) };
+		return func(this, a_unk02);
+	}
+
+	void Actor::StopMoving(float a_delta)
+	{
+		using func_t = decltype(&Actor::StopMoving);
+		REL::Relocation<func_t> func{ REL::ID(36801) };
+		return func(this, a_delta);
 	}
 
 	void Actor::SwitchRace(TESRace* a_race, bool a_player)

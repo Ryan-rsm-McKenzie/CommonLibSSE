@@ -18,11 +18,15 @@ namespace RE
 {
 	class ActorKnowledge;
 	class BGSAttackData;
+	class BGSProjectile;
 	class DialogueItem;
 	class IAnimationSetCallbackFunctor;
 	class NiBillboardNode;
 	class NiRefObject;
+	class NiAVObject;
+	class NiPointLight;
 	class TESObjectREFR;
+	class TESObjectWEAP;
 	class StandardDetectionListener;
 	struct Crime;
 	struct QueuedDialogueType;
@@ -117,20 +121,26 @@ namespace RE
 		};
 		static_assert(sizeof(Data208) == 0x38);
 
-		struct Data3C8
+		struct MuzzleFlash
 		{
 		public:
 			// members
-			std::uint64_t          unk00;  // 00
-			std::uint64_t          unk08;  // 08
-			NiPointer<NiRefObject> unk10;  // 10
-			NiPointer<NiRefObject> unk18;  // 18
-			NiPointer<NiRefObject> unk20;  // 20
-			std::uint64_t          unk28;  // 28
-			std::uint64_t          unk30;  // 30
-			std::uint64_t          unk38;  // 38
+			bool                    unk00;                // 00
+			bool                    unk01;                // 01
+			bool                    unk02;                // 02
+			bool                    unk03;                // 03
+			float                   unk04;                // 04
+			float                   muzzleFlashDuration;  // 08
+			std::uint32_t           unk0C;                // 0C
+			NiPointer<NiAVObject>   projectile3D;         // 10
+			NiPointer<NiAVObject>   projectileNode;       // 18
+			NiPointer<NiPointLight> attachedLight;        // 20
+			BGSProjectile*          baseProjectile;       // 28
+			TESObjectWEAP*          weaponSource;         // 30
+			ActorHandle             shooterHandle;        // 38
+			std::uint32_t           unk3C;                // 3C
 		};
-		static_assert(sizeof(Data3C8) == 0x40);
+		static_assert(sizeof(MuzzleFlash) == 0x40);
 
 		// members
 		stl::enumeration<VOICE_STATE, std::uint32_t>          voiceState;                     // 000
@@ -276,7 +286,7 @@ namespace RE
 		std::uint32_t                                         pad3B4;                         // 3B4
 		void*                                                 unk3B8;                         // 3B8
 		std::uint64_t                                         unk3C0;                         // 3C0
-		Data3C8*                                              unk3C8;                         // 3C8
+		MuzzleFlash*                                          muzzleFlash;                         // 3C8
 		std::uint32_t                                         unk3D0;                         // 3D0
 		std::uint32_t                                         pad3D4;                         // 3D4
 		DetectionEvent*                                       actorsGeneratedDetectionEvent;  // 3D8

@@ -138,6 +138,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
+		void                    ClearMuzzleFlashes();
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
 		ActorHandle             GetCommandingActor() const;

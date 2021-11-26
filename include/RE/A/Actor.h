@@ -537,7 +537,10 @@ namespace RE
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
+		void                         StopInteractingQuick(bool a_unk02);
+		void                         StopMoving(float a_delta);
 		void                         SwitchRace(TESRace* a_race, bool a_player);
 		void                         UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
 		void                         Update3DModel();

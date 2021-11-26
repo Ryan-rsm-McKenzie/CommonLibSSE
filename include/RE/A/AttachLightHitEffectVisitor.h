@@ -16,7 +16,7 @@ namespace RE
 			virtual ~AttachLightHitEffectVisitor();  // 00
 
 			// override (ActiveEffect::ForEachHitEffectVisitor)
-			virtual std::uint32_t Accept(ReferenceEffect* a_hitEffect) override;  // 01
+			std::uint32_t Accept(ReferenceEffect* a_hitEffect) override;  // 01
 
 			// members
 			NiAVObject*   actorRoot;        // 08

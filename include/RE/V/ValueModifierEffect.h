@@ -11,18 +11,18 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ValueModifierEffect;
 
 		// override (ActiveEffect)
-		virtual void Unk_01(void) override;  // 01
-		virtual void Unk_04(void) override;  // 04
-		virtual void Unk_06(void) override;  // 06
-		virtual void Unk_11(void) override;  // 11 - { return  1; };
-		virtual void Unk_12(void) override;  // 12
+		void Unk_01(void) override;  // 01
+		void Unk_04(void) override;  // 04
+		void Unk_06(void) override;  // 06
+		void Unk_11(void) override;  // 11 - { return  1; };
+		void Unk_12(void) override;  // 12
 
-		virtual ~ValueModifierEffect();  // 13
+		~ValueModifierEffect() override;  // 13
 
-		virtual void Unk_14(void) override;  // 14
-		virtual void Unk_15(void) override;  // 15
-		virtual void Unk_17(void) override;  // 17
-		virtual void Unk_18(void) override;  // 18
+		void Start() override;       // 14
+		void Finish() override;      // 15
+		void Unk_17(void) override;  // 17
+		void Unk_18(void) override;  // 18
 
 		// add
 		virtual void Unk_19(void);  // 19

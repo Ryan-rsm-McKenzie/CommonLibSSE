@@ -13,14 +13,14 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_LightEffect;
 
 		// override (ActiveEffect)
-		virtual void Unk_04(void) override;  // 04
-		virtual void Unk_10(void) override;  // 0A
-		virtual void Unk_11(void) override;  // 0B
+		void Unk_04(void) override;  // 04
+		void Unk_10(void) override;  // 0A
+		void Unk_11(void) override;  // 0B
 
-		virtual ~LightEffect();  // 13
+		~LightEffect() override;  // 13
 
-		virtual void Unk_14() override;  // 14
-		virtual void Unk_15() override;  // 15
+		void Start() override;   // 14
+		void Finish() override;  // 15
 
 		// members
 		NiPointer<NiPointLight> light;  // 90

@@ -1053,6 +1053,7 @@
 #include "RE/P/PackUnpackImpl.h"
 #include "RE/P/PackageLocation.h"
 #include "RE/P/PackedInstructionStream.h"
+#include "RE/P/ParalysisEffect.h"
 #include "RE/P/PathingCell.h"
 #include "RE/P/PerkEntryVisitor.h"
 #include "RE/P/PerkRankVisitor.h"

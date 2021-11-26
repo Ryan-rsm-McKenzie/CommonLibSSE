@@ -75,8 +75,8 @@ namespace RE
 
 		virtual ~ActiveEffect();  // 13
 
-		virtual void Unk_14(void);  // 14 - { return; }
-		virtual void Unk_15(void);  // 15 - { return; }
+		virtual void Start();       // 14 - { return; }
+		virtual void Finish();      // 15 - { return; }
 		virtual void Unk_16(void);  // 16
 		virtual void Unk_17(void);  // 17 - { return 1; }
 		virtual void Unk_18(void);  // 18 - { return 1.0; }

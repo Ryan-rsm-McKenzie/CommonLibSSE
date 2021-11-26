@@ -20,8 +20,8 @@ namespace RE
 
 		~SummonCreatureEffect() override;  // 13
 
-		void Unk_14(void) override;  // 14
-		void Unk_15(void) override;  // 15
+		void Start() override;   // 14
+		void Finish() override;  // 15
 
 		// members
 		std::uint64_t unk90;  // 90
