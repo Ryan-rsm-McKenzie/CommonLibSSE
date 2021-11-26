@@ -180,6 +180,8 @@ namespace RE
 
 				kDoesntLightLandscape = 1 << 17,
 
+				kIgnoreFriendlyHits = 1 << 20,  // Actor
+
 				kNoAIAcquire = 1 << 25,
 				kCollisionGeometry_Filter = 1 << 26,
 				kCollisionGeometry_BoundingBox = 1 << 27,
