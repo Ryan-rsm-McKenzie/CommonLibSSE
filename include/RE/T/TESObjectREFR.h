@@ -417,6 +417,7 @@ namespace RE
 		bool                                    IsLocked() const;
 		bool                                    IsMarkedForDeletion() const;
 		bool                                    IsOffLimits();
+		void                                    MoveTo(TESObjectREFR* a_target);
 		bool                                    MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                    MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
 		void                                    PlayAnimation(stl::zstring a_from, stl::zstring a_to);
