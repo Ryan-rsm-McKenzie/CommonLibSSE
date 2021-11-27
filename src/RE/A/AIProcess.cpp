@@ -12,7 +12,7 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(39504) };
 		return func(this);
 	}
-	
+
 	float AIProcess::GetCachedHeight() const
 	{
 		return high ? high->cachedActorHeight : static_cast<float>(-1.0);

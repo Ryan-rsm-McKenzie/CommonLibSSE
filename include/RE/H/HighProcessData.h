@@ -286,7 +286,7 @@ namespace RE
 		std::uint32_t                                         pad3B4;                         // 3B4
 		void*                                                 unk3B8;                         // 3B8
 		std::uint64_t                                         unk3C0;                         // 3C0
-		MuzzleFlash*                                          muzzleFlash;                         // 3C8
+		MuzzleFlash*                                          muzzleFlash;                    // 3C8
 		std::uint32_t                                         unk3D0;                         // 3D0
 		std::uint32_t                                         pad3D4;                         // 3D4
 		DetectionEvent*                                       actorsGeneratedDetectionEvent;  // 3D8
