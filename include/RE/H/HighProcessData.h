@@ -21,10 +21,11 @@ namespace RE
 	class BGSProjectile;
 	class DialogueItem;
 	class IAnimationSetCallbackFunctor;
+	class MagicItem;
 	class NiBillboardNode;
-	class NiRefObject;
 	class NiAVObject;
 	class NiPointLight;
+	class NiRefObject;
 	class TESObjectREFR;
 	class TESObjectWEAP;
 	class StandardDetectionListener;
@@ -168,7 +169,7 @@ namespace RE
 		float                                                 activationHeight;               // 0DC
 		RefHandle                                             unk0E0;                         // 0E0
 		std::uint32_t                                         unk0E4;                         // 0E4
-		std::uint64_t                                         unk0E8;                         // 0E8
+		MagicItem*                                            reanimateSpell;                 // 0E8
 		BSFixedString                                         voiceSubtitle;                  // 0F0
 		float                                                 unk0F8;                         // 0F8
 		float                                                 unk0FC;                         // 0FC

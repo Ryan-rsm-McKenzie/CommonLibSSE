@@ -22,6 +22,7 @@ namespace RE
 	class Actor;
 	class ActorCause;
 	class BGSAnimationSequencer;
+	class BGSArtObject;
 	class BGSDialogueBranch;
 	class BipedAnim;
 	class BSAnimNoteReceiver;
@@ -34,16 +35,19 @@ namespace RE
 	class InventoryEntryData;
 	class MagicCaster;
 	class MagicTarget;
+	class ModelReferenceEffect;
 	class NiAVObject;
 	class NiControllerManager;
 	class NiControllerSequence;
 	class NiNode;
 	class NiObject;
 	class Projectile;
+	class ShaderReferenceEffect;
 	class TargetEntry;
 	class TESActorBase;
 	class TESBoundObject;
 	class TESContainer;
+	class TESEffectShader;
 	class TrapData;
 	class TrapEntry;
 	struct BGSDecalGroup;
@@ -406,6 +410,8 @@ namespace RE
 		bool                                    HasQuestObject() const;
 		void                                    InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                    InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
+		ModelReferenceEffect*                   InstantiateHitArt(BGSArtObject* a_art, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
+		ShaderReferenceEffect*                  InstantiateHitShader(TESEffectShader* a_shader, float a_dur, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		bool                                    Is3DLoaded() const;
 		bool                                    IsActivationBlocked() const;
 		bool                                    IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;

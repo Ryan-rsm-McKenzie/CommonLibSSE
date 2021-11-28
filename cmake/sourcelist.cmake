@@ -1182,6 +1182,7 @@ set(SOURCES
 	include/RE/T/TESEquipEvent.h
 	include/RE/T/TESEyes.h
 	include/RE/T/TESFaction.h
+	include/RE/T/TESFastTravelEndEvent.h
 	include/RE/T/TESFile.h
 	include/RE/T/TESFlora.h
 	include/RE/T/TESForm.h

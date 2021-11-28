@@ -36,9 +36,9 @@ namespace RE
 
 		// members
 		std::uint64_t                      unk128;              // 128
-		BSTArray<void*>                    unk130;              // 130
-		BSTArray<void*>                    unk148;              // 148
-		BSTArray<NiPointer<BSLight>>       lights;              // 160
+		BSTArray<NiPointer<BSLight>>       unk130;              // 130
+		BSTArray<NiPointer<BSLight>>       unk148;              // 148
+		BSTArray<NiPointer<BSLight>>       unk160;              // 160
 		BSTArray<void*>                    unk178;              // 178
 		BSTArray<void*>                    unk190;              // 190
 		mutable BSSpinLock                 unk1A8;              // 1A8
@@ -78,7 +78,7 @@ namespace RE
 		std::uint64_t                      unk2D8;              // 2D8
 		std::uint64_t                      unk2E0;              // 2E0
 		NiPoint3                           unk2E8;              // 2E8
-		NiPoint3                           unk2F4;              // 2F4
+		NiPoint3                           cameraPos;           // 2F4
 		std::uint8_t                       unk300;              // 300
 		std::uint8_t                       pad301;              // 301
 		std::uint16_t                      pad302;              // 302
