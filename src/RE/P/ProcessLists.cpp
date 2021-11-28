@@ -21,4 +21,11 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(41340) };
 		return func(this, a_actor, a_notAlarm);
 	}
+
+	std::int32_t ProcessLists::RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCheck)
+	{
+		using func_t = decltype(&ProcessLists::RequestHighestDetectionLevelAgainstActor);
+		REL::Relocation<func_t> func{ REL::ID(41408) };
+		return func(this, a_actor, a_LOSCheck);
+	}
 }

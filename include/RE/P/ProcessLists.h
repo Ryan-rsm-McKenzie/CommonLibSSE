@@ -33,6 +33,7 @@ namespace RE
 		static ProcessLists* GetSingleton();
 
 		void ClearCachedFactionFightReactions() const;
+		std::int32_t RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCount);
 		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
 
 		// members

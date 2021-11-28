@@ -492,6 +492,13 @@ namespace RE
 		return func(this, a_race, a_player);
 	}
 
+	void Actor::TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime)
+	{
+		using func_t = decltype(&Actor::TrespassAlarm);
+		REL::Relocation<func_t> func{ REL::ID(37427) };
+		return func(this, a_ref, a_ownership, a_crime);
+	}
+
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
 	{
 		using func_t = decltype(&Actor::UpdateArmorAbility);

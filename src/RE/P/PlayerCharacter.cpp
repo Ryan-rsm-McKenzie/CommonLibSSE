@@ -136,4 +136,11 @@ namespace RE
 		REL::Relocation<func_t> func(REL::ID(40488));
 		return func(this, a_skill, a_experience);
 	}
+
+	void PlayerCharacter::SetEscaping(bool a_flag, bool a_escaped)
+	{
+		using func_t = decltype(&PlayerCharacter::SetEscaping);
+		REL::Relocation<func_t> func{ REL::ID(40660) };
+		return func(this, a_flag, a_escaped);
+	}
 }
