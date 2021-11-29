@@ -246,17 +246,17 @@ namespace RE
 		return ObjectRefHandle(this);
 	}
 
-	float TESObjectREFR::GetHeadingAngle(const NiPoint3&* a_objPos, bool a_absolute) const
+	float TESObjectREFR::GetHeadingAngle(const NiPoint3& a_objPos, bool a_absolute) const
 	{
 		auto theta = std::atan2f(a_objPos.x - this->GetPositionX(), a_objPos.y - this->GetPositionY());
-		auto heading = static_cast<float>(180.0 / std::numbers::pi * (theta - this->GetAngleZ()));
+		auto heading = static_cast<float>(180.0f / std::numbers::pi * (theta - this->GetAngleZ()));
 
-		if (heading < -180.0) {
-			heading += 360.0;
+		if (heading < -180.0f) {
+			heading += 360.0f;
 		}
 
-		if (heading > 180.0) {
-			heading -= 360.0;
+		if (heading > 180.0f) {
+			heading -= 360.0f;
 		}
 
 		return a_absolute ? abs(heading) : heading;
