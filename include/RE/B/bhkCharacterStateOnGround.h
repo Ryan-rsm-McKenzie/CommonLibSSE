@@ -2,7 +2,6 @@
 
 #include "RE/B/bhkCharacterState.h"
 
-
 namespace RE
 {
 	class bhkCharacterStateOnGround : public bhkCharacterState
@@ -10,13 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkCharacterStateOnGround;
 
-
-		virtual ~bhkCharacterStateOnGround();  // 00
+		~bhkCharacterStateOnGround() override;  // 00
 
 		// override (bhkCharacterState)
-		virtual hkpCharacterStateType GetType() const override;	 // 03 - { return kOnGround; }
-		virtual void				  Unk_08(void) override;	 // 08
-
+		hkpCharacterStateType GetType() const override;  // 03 - { return kOnGround; }
+		void                  Unk_08(void) override;     // 08
 
 		// members
 		std::uint64_t unk10;  // 10

@@ -3,7 +3,6 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraFlags : public BSExtraData
@@ -11,7 +10,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraFlags;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFlags;
-
 
 		enum class Flag
 		{
@@ -23,18 +21,16 @@ namespace RE
 			kPlayerHasTaken = 1 << 5
 		};
 
-
-		virtual ~ExtraFlags();	// 00
+		~ExtraFlags() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kFlags; }
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kFlags; }
 
 		[[nodiscard]] constexpr bool IsActivationBlocked() const noexcept { return flags.all(Flag::kBlockActivate); }
 
-
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 10
-		std::uint32_t						  pad14;  // 14
+		std::uint32_t                         pad14;  // 14
 	};
 	static_assert(sizeof(ExtraFlags) == 0x18);
 }

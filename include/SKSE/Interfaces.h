@@ -9,24 +9,21 @@
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"
 
-
 namespace SKSE
 {
 	struct PluginInfo;
 
-
 	class QueryInterface
 	{
 	public:
-		std::uint32_t EditorVersion() const;
-		bool		  IsEditor() const;
-		REL::Version  RuntimeVersion() const;
-		std::uint32_t SKSEVersion() const;
+		[[nodiscard]] std::uint32_t EditorVersion() const;
+		[[nodiscard]] bool          IsEditor() const;
+		[[nodiscard]] REL::Version  RuntimeVersion() const;
+		[[nodiscard]] std::uint32_t SKSEVersion() const;
 
 	protected:
-		const detail::SKSEInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSEInterface* GetProxy() const;
 	};
-
 
 	class LoadInterface : public QueryInterface
 	{
@@ -44,12 +41,11 @@ namespace SKSE
 			kTotal
 		};
 
-		PluginHandle	  GetPluginHandle() const;
-		const PluginInfo* GetPluginInfo(const char* a_name) const;
-		std::uint32_t	  GetReleaseIndex() const;
-		void*			  QueryInterface(std::uint32_t a_id) const;
+		[[nodiscard]] PluginHandle  GetPluginHandle() const;
+		const PluginInfo*           GetPluginInfo(const char* a_name) const;
+		[[nodiscard]] std::uint32_t GetReleaseIndex() const;
+		[[nodiscard]] void*         QueryInterface(std::uint32_t a_id) const;
 	};
-
 
 	class ScaleformInterface
 	{
@@ -62,15 +58,14 @@ namespace SKSE
 			kVersion = 2
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
 		bool Register(RegCallback* a_callback, const char* a_name) const;
 		void Register(RegInvCallback* a_callback) const;
 
 	protected:
-		const detail::SKSEScaleformInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSEScaleformInterface* GetProxy() const;
 	};
-
 
 	class SerializationInterface
 	{
@@ -83,7 +78,7 @@ namespace SKSE
 			kVersion = 4
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
 		void SetUniqueID(std::uint32_t a_uid) const;
 
@@ -116,7 +111,7 @@ namespace SKSE
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T) * N);
 		}
 
-		bool OpenRecord(std::uint32_t a_type, std::uint32_t a_version) const;
+		[[nodiscard]] bool OpenRecord(std::uint32_t a_type, std::uint32_t a_version) const;
 
 		bool WriteRecordData(const void* a_buf, std::uint32_t a_length) const;
 
@@ -172,9 +167,8 @@ namespace SKSE
 		bool ResolveHandle(RE::VMHandle a_oldHandle, RE::VMHandle& a_newHandle) const;
 
 	protected:
-		const detail::SKSESerializationInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSESerializationInterface* GetProxy() const;
 	};
-
 
 	class TaskInterface
 	{
@@ -186,7 +180,7 @@ namespace SKSE
 			kVersion = 2
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
 		void AddTask(TaskFn a_task) const;
 		void AddTask(TaskDelegate* a_task) const;
@@ -199,8 +193,8 @@ namespace SKSE
 		public:
 			Task(TaskFn&& a_fn);
 
-			virtual void Run() override;
-			virtual void Dispose() override;
+			void Run() override;
+			void Dispose() override;
 
 		private:
 			TaskFn _fn;
@@ -211,16 +205,15 @@ namespace SKSE
 		public:
 			UITask(TaskFn&& a_fn);
 
-			virtual void Run() override;
-			virtual void Dispose() override;
+			void Run() override;
+			void Dispose() override;
 
 		private:
 			TaskFn _fn;
 		};
 
-		const detail::SKSETaskInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSETaskInterface* GetProxy() const;
 	};
-
 
 	class PapyrusInterface
 	{
@@ -233,7 +226,7 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
 		template <class Last>
 		bool Register(Last a_last) const
@@ -248,23 +241,22 @@ namespace SKSE
 		}
 
 	protected:
-		const detail::SKSEPapyrusInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSEPapyrusInterface* GetProxy() const;
 
 	private:
 		bool Register_Impl(RegFunction1* a_fn) const;
 		bool Register_Impl(RegFunction2* a_fn) const;
 	};
 
-
 	class MessagingInterface
 	{
 	public:
 		struct Message
 		{
-			const char*	  sender;
+			const char*   sender;
 			std::uint32_t type;
 			std::uint32_t dataLen;
-			void*		  data;
+			void*         data;
 		};
 
 		using EventCallback = void(Message* a_msg);
@@ -300,17 +292,16 @@ namespace SKSE
 			kTotal
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
-		bool  Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
-		void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
-		bool  RegisterListener(EventCallback* a_callback) const;
-		bool  RegisterListener(const char* a_sender, EventCallback* a_callback) const;
+		bool                Dispatch(std::uint32_t a_messageType, void* a_data, std::uint32_t a_dataLen, const char* a_receiver) const;
+		[[nodiscard]] void* GetEventDispatcher(Dispatcher a_dispatcherID) const;
+		bool                RegisterListener(EventCallback* a_callback) const;
+		bool                RegisterListener(const char* a_sender, EventCallback* a_callback) const;
 
 	protected:
-		const detail::SKSEMessagingInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSEMessagingInterface* GetProxy() const;
 	};
-
 
 	class ObjectInterface
 	{
@@ -320,16 +311,15 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
-		SKSEDelayFunctorManager&	 GetDelayFunctorManager() const;
-		SKSEObjectRegistry&			 GetObjectRegistry() const;
-		SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
+		[[nodiscard]] SKSEDelayFunctorManager&     GetDelayFunctorManager() const;
+		[[nodiscard]] SKSEObjectRegistry&          GetObjectRegistry() const;
+		[[nodiscard]] SKSEPersistentObjectStorage& GetPersistentObjectStorage() const;
 
 	private:
-		const detail::SKSEObjectInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSEObjectInterface* GetProxy() const;
 	};
-
 
 	class TrampolineInterface
 	{
@@ -339,15 +329,14 @@ namespace SKSE
 			kVersion = 1
 		};
 
-		std::uint32_t Version() const;
+		[[nodiscard]] std::uint32_t Version() const;
 
 		[[nodiscard]] void* AllocateFromBranchPool(std::size_t a_size) const;
 		[[nodiscard]] void* AllocateFromLocalPool(std::size_t a_size) const;
 
 	private:
-		const detail::SKSETrampolineInterface* GetProxy() const;
+		[[nodiscard]] const detail::SKSETrampolineInterface* GetProxy() const;
 	};
-
 
 	struct PluginInfo
 	{
@@ -357,7 +346,7 @@ namespace SKSE
 		};
 
 		std::uint32_t infoVersion;
-		const char*	  name;
+		const char*   name;
 		std::uint32_t version;
 	};
 }

@@ -2,20 +2,16 @@
 
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class MapMenu;
-
 
 	class MapInputHandler : public MenuEventHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_MapInputHandler;
 
-
-		virtual ~MapInputHandler();	 // 00
-
+		virtual ~MapInputHandler();  // 00
 
 		// members
 		MapMenu* mapMenu;  // 10

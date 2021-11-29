@@ -3,7 +3,6 @@
 #include "RE/A/AutoRegisterFactory.h"
 #include "RE/B/BSTDerivedCreator.h"
 
-
 namespace RE
 {
 	// 08
@@ -11,6 +10,6 @@ namespace RE
 	struct AutoRegisterCreator : public AutoRegisterFactory<BSTDerivedCreator<Derived, typename Manager::mapped_type>, Manager>
 	{
 	public:
-		virtual ~AutoRegisterCreator();	 // 00
+		virtual ~AutoRegisterCreator();  // 00
 	};
 }

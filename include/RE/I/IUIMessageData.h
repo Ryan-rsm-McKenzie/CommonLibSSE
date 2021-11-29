@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class IUIMessageData
@@ -8,9 +7,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_IUIMessageData;
 
-
 		virtual ~IUIMessageData() = default;  // 00
-
 
 		// members
 		std::uint16_t unk08;  // 08

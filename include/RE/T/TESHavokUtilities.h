@@ -1,11 +1,9 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkpCollidable;
 	class TESObjectREFR;
-
 
 	namespace TESHavokUtilities
 	{

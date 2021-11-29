@@ -2,7 +2,6 @@
 
 #include "RE/I/ImageSpaceModifierInstanceTemp.h"
 
-
 namespace RE
 {
 	struct ImageSpaceModData
@@ -32,18 +31,15 @@ namespace RE
 			kTotal = 18
 		};
 
-
 		// members
-		float data[kTotal];	 // 00
+		float data[kTotal];  // 00
 	};
 	static_assert(sizeof(ImageSpaceModData) == 0x48);
-
 
 	class ImageSpaceModifierInstanceDOF : public ImageSpaceModifierInstanceTemp
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
-
 
 		enum class DepthOfFieldMode
 		{
@@ -53,16 +49,14 @@ namespace RE
 			kNone = 3
 		};
 
-
-		virtual ~ImageSpaceModifierInstanceDOF();  // 00
+		~ImageSpaceModifierInstanceDOF() override;  // 00
 
 		// override (ImageSpaceModifierInstanceTemp)
-		virtual void Unk_26(void) override;	 // 26
-		virtual void Unk_28(void) override;	 // 28
-
+		void Unk_26(void) override;  // 26
+		void Unk_28(void) override;  // 28
 
 		// members
-		ImageSpaceModData data;	 // 30
+		ImageSpaceModData data;  // 30
 	};
 	static_assert(sizeof(ImageSpaceModifierInstanceDOF) == 0x78);
 }

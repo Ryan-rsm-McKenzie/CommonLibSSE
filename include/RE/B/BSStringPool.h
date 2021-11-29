@@ -2,12 +2,10 @@
 
 #include "RE/B/BSAtomic.h"
 
-
 namespace RE
 {
 	using GlobalStringHandle = char*;
 	using GlobalStringHandleW = wchar_t*;
-
 
 	struct BSStringPool
 	{
@@ -42,7 +40,7 @@ namespace RE
 			inline void acquire()
 			{
 				stl::atomic_ref flags{ _flags };
-				std::uint16_t	expected{ 0 };
+				std::uint16_t   expected{ 0 };
 				do {
 					expected = flags;
 					if ((expected & kRefCountMask) >= kRefCountMask) {
@@ -83,17 +81,17 @@ namespace RE
 				return reinterpret_cast<const wchar_t*>(this + 1);
 			}
 
-			[[nodiscard]] constexpr bool wide() const noexcept { return _flags & kWide; }
+			[[nodiscard]] constexpr bool wide() const noexcept { return static_cast<bool>(_flags & kWide); }
 
 			// members
-			Entry*				   _left;	// 00
-			std::uint16_t		   _flags;	// 08
-			volatile std::uint16_t _crc;	// 08
+			Entry*                 _left;   // 00
+			std::uint16_t          _flags;  // 08
+			volatile std::uint16_t _crc;    // 08
 			union
 			{
 				std::uint32_t _length;
-				Entry*		  _right;
-			};	// 10
+				Entry*        _right;
+			};  // 10
 		};
 		static_assert(sizeof(Entry) == 0x18);
 	};
@@ -110,9 +108,9 @@ namespace RE
 		static BucketTable* GetSingleton();
 
 		// members
-		BSStringPool::Entry* buckets[0x10000];		  // 00000 - index using hash & kEntryIndexMask
-		mutable BSSpinLock	 locks[0x10000 / 0x800];  // 80000 - index using hash & kLockIndexMask
-		bool				 initialized;			  // 80100
+		BSStringPool::Entry* buckets[0x10000];        // 00000 - index using hash & kEntryIndexMask
+		mutable BSSpinLock   locks[0x10000 / 0x800];  // 80000 - index using hash & kLockIndexMask
+		bool                 initialized;             // 80100
 	};
 	static_assert(sizeof(BucketTable) == 0x80108);
 }

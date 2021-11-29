@@ -2,7 +2,6 @@
 
 #include "RE/I/IMovementState.h"
 
-
 namespace RE
 {
 	enum class ACTOR_LIFE_STATE : std::uint32_t
@@ -17,7 +16,6 @@ namespace RE
 		kEssentialDown = 7,
 		kBleedout = 8
 	};
-
 
 	enum class ATTACK_STATE_ENUM : std::uint32_t
 	{
@@ -40,7 +38,6 @@ namespace RE
 		kFired = 17
 	};
 
-
 	enum class FLY_STATE : std::uint32_t
 	{
 		kNone = 0,
@@ -51,7 +48,6 @@ namespace RE
 		kPerching = 5,
 		kAction = 6
 	};
-
 
 	enum class KNOCK_STATE_ENUM : std::uint32_t
 	{
@@ -66,7 +62,6 @@ namespace RE
 		kWaitForTaskQueue = 8
 	};
 
-
 	enum class SIT_SLEEP_STATE : std::uint32_t
 	{
 		kNormal = 0,
@@ -74,7 +69,7 @@ namespace RE
 		kWaitingForSitAnim = 2,
 
 		kIsSitting = 3,
-		kRidingMount = kIsSitting,
+		kRidingMount = static_cast<std::underlying_type_t<SIT_SLEEP_STATE>>(kIsSitting),
 
 		kWantToStand = 4,
 
@@ -83,7 +78,6 @@ namespace RE
 		kIsSleeping = 7,
 		kWantToWake = 8
 	};
-
 
 	enum class WEAPON_STATE : std::uint32_t
 	{
@@ -95,79 +89,75 @@ namespace RE
 		kSheathing = 5
 	};
 
-
 	class ActorState : public IMovementState
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorState;
 
-
 		struct ActorState1
 		{
 		public:
 			// members
-			std::uint32_t	  movingBack : 1;		 // 0:00
-			std::uint32_t	  movingForward : 1;	 // 0:01
-			std::uint32_t	  movingRight : 1;		 // 0:02
-			std::uint32_t	  movingLeft : 1;		 // 0:03
-			std::uint32_t	  unk04 : 2;			 // 0:04
-			std::uint32_t	  walking : 1;			 // 0:06
-			std::uint32_t	  running : 1;			 // 0:07
-			std::uint32_t	  sprinting : 1;		 // 0:08
-			std::uint32_t	  sneaking : 1;			 // 0:09
-			std::uint32_t	  swimming : 1;			 // 0:10
-			std::uint32_t	  unk11 : 3;			 // 0:11
-			SIT_SLEEP_STATE	  sitSleepState : 4;	 // 0:14
-			FLY_STATE		  flyState : 3;			 // 0:18
-			ACTOR_LIFE_STATE  lifeState : 4;		 // 0:21
-			KNOCK_STATE_ENUM  knockState : 3;		 // 0:25
-			ATTACK_STATE_ENUM meleeAttackState : 4;	 // 0:28
+			std::uint32_t     movingBack: 1;        // 0:00
+			std::uint32_t     movingForward: 1;     // 0:01
+			std::uint32_t     movingRight: 1;       // 0:02
+			std::uint32_t     movingLeft: 1;        // 0:03
+			std::uint32_t     unk04: 2;             // 0:04
+			std::uint32_t     walking: 1;           // 0:06
+			std::uint32_t     running: 1;           // 0:07
+			std::uint32_t     sprinting: 1;         // 0:08
+			std::uint32_t     sneaking: 1;          // 0:09
+			std::uint32_t     swimming: 1;          // 0:10
+			std::uint32_t     unk11: 3;             // 0:11
+			SIT_SLEEP_STATE   sitSleepState: 4;     // 0:14
+			FLY_STATE         flyState: 3;          // 0:18
+			ACTOR_LIFE_STATE  lifeState: 4;         // 0:21
+			KNOCK_STATE_ENUM  knockState: 3;        // 0:25
+			ATTACK_STATE_ENUM meleeAttackState: 4;  // 0:28
 		};
 		static_assert(sizeof(ActorState1) == 0x4);
-
 
 		struct ActorState2
 		{
 		public:
 			// members
-			std::uint32_t talkingToPlayer : 1;	// 0:00
-			std::uint32_t forceRun : 1;			// 0:01
-			std::uint32_t forceSneak : 1;		// 0:02
-			std::uint32_t headTracking : 1;		// 0:03
-			std::uint32_t reanimating : 1;		// 0:04
-			WEAPON_STATE  weaponState : 3;		// 0:05
-			std::uint32_t wantBlocking : 1;		// 0:08
-			std::uint32_t flightBlocked : 1;	// 0:09
-			std::uint32_t recoil : 2;			// 0:10
-			std::uint32_t allowFlying : 1;		// 0:12
-			std::uint32_t staggered : 1;		// 0:13
-			std::uint32_t unk14 : 18;			// 0:14
+			std::uint32_t talkingToPlayer: 1;  // 0:00
+			std::uint32_t forceRun: 1;         // 0:01
+			std::uint32_t forceSneak: 1;       // 0:02
+			std::uint32_t headTracking: 1;     // 0:03
+			std::uint32_t reanimating: 1;      // 0:04
+			WEAPON_STATE  weaponState: 3;      // 0:05
+			std::uint32_t wantBlocking: 1;     // 0:08
+			std::uint32_t flightBlocked: 1;    // 0:09
+			std::uint32_t recoil: 2;           // 0:10
+			std::uint32_t allowFlying: 1;      // 0:12
+			std::uint32_t staggered: 1;        // 0:13
+			std::uint32_t unk14: 18;           // 0:14
 		};
 		static_assert(sizeof(ActorState2) == 0x4);
 
-
-		virtual ~ActorState();	// 00
+		~ActorState() override;  // 00
 
 		// override (IMovementState)
-		virtual void Unk_01(void) override;	 // 01 - { return 0; }
-		virtual void Unk_02(void) override;	 // 02 - { return; }
-		virtual void Unk_03(void) override;	 // 03 - { return; }
-		virtual void Unk_04(void) override;	 // 04 - { return; }
-		virtual void Unk_05(void) override;	 // 05 - { return 0.0; }
-		virtual void Unk_06(void) override;	 // 06 - { return 0.0; }
-		virtual void Unk_07(void) override;	 // 07 - { return; }
-		virtual void Unk_08(void) override;	 // 08 - { return 0; }
+		void Unk_01(void) override;  // 01 - { return 0; }
+		void Unk_02(void) override;  // 02 - { return; }
+		void Unk_03(void) override;  // 03 - { return; }
+		void Unk_04(void) override;  // 04 - { return; }
+		void Unk_05(void) override;  // 05 - { return 0.0; }
+		void Unk_06(void) override;  // 06 - { return 0.0; }
+		void Unk_07(void) override;  // 07 - { return; }
+		void Unk_08(void) override;  // 08 - { return 0; }
 
 		// add
-		virtual void Unk_14(void);	// 14
-		virtual void Unk_15(void);	// 15
+		virtual void Unk_14(void);  // 14
+		virtual void Unk_15(void);  // 15
 
 		[[nodiscard]] ATTACK_STATE_ENUM GetAttackState() const noexcept { return actorState1.meleeAttackState; }
-		[[nodiscard]] FLY_STATE			GetFlyState() const noexcept { return actorState1.flyState; }
-		[[nodiscard]] KNOCK_STATE_ENUM	GetKnockState() const noexcept { return actorState1.knockState; }
-		[[nodiscard]] ACTOR_LIFE_STATE	GetLifeState() const noexcept { return actorState1.lifeState; }
-		[[nodiscard]] SIT_SLEEP_STATE	GetSitSleepState() const noexcept { return actorState1.sitSleepState; }
-		[[nodiscard]] WEAPON_STATE		GetWeaponState() const noexcept { return actorState2.weaponState; }
+		[[nodiscard]] FLY_STATE         GetFlyState() const noexcept { return actorState1.flyState; }
+		[[nodiscard]] KNOCK_STATE_ENUM  GetKnockState() const noexcept { return actorState1.knockState; }
+		[[nodiscard]] ACTOR_LIFE_STATE  GetLifeState() const noexcept { return actorState1.lifeState; }
+		[[nodiscard]] SIT_SLEEP_STATE   GetSitSleepState() const noexcept { return actorState1.sitSleepState; }
+		[[nodiscard]] WEAPON_STATE      GetWeaponState() const noexcept { return actorState2.weaponState; }
 
 		[[nodiscard]] bool IsBleedingOut() const noexcept
 		{
@@ -191,9 +181,9 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] bool IsSneaking() const noexcept { return actorState1.sneaking; }
-		[[nodiscard]] bool IsSprinting() const noexcept { return actorState1.sprinting; }
-		[[nodiscard]] bool IsSwimming() const noexcept { return actorState1.swimming; }
+		[[nodiscard]] bool IsSneaking() const noexcept { return static_cast<bool>(actorState1.sneaking); }
+		[[nodiscard]] bool IsSprinting() const noexcept { return static_cast<bool>(actorState1.sprinting); }
+		[[nodiscard]] bool IsSwimming() const noexcept { return static_cast<bool>(actorState1.swimming); }
 		[[nodiscard]] bool IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconcious; }
 
 		[[nodiscard]] bool IsWeaponDrawn() const noexcept
@@ -207,7 +197,6 @@ namespace RE
 				return false;
 			}
 		}
-
 
 		// members
 		ActorState1 actorState1;  // 08

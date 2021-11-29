@@ -4,7 +4,6 @@
 
 #define GFC_REFCOUNTALLOC_CHECK_DELETE(class_name, p)
 
-
 namespace RE
 {
 	// Adds new/delete overrides

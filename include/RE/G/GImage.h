@@ -3,7 +3,6 @@
 #include "RE/G/GImageBase.h"
 #include "RE/G/GRefCountBaseNTS.h"
 
-
 namespace RE
 {
 	class GImage :
@@ -11,7 +10,7 @@ namespace RE
 		public GImageBase
 	{
 	public:
-		virtual ~GImage();	// 00
+		~GImage() override;  // 00
 	};
 	static_assert(sizeof(GImage) == 0x48);
 }

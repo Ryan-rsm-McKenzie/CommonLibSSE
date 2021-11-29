@@ -2,7 +2,6 @@
 
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class TESModelRDT : public TESModel
@@ -10,8 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESModelRDT;
 
-
-		virtual ~TESModelRDT();	 // 00
+		~TESModelRDT() override;  // 00
 	};
 	static_assert(sizeof(TESModelRDT) == 0x28);
 }

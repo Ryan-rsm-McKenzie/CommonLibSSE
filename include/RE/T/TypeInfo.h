@@ -1,12 +1,10 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class ObjectTypeInfo;
-
 
 		class TypeInfo
 		{
@@ -33,7 +31,6 @@ namespace RE
 				// an object is an array if its first bit is set
 			};
 
-
 			TypeInfo();
 			explicit TypeInfo(RawType a_type);
 			TypeInfo(const TypeInfo& a_rhs);
@@ -50,20 +47,20 @@ namespace RE
 			friend bool operator>(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 			friend bool operator>=(const TypeInfo& a_lhs, const TypeInfo& a_rhs);
 
-			RawType			GetRawType() const;
-			ObjectTypeInfo* GetTypeInfo() const;
-			RawType			GetUnmangledRawType() const;
-			bool			IsArray() const;
-			bool			IsBool() const;
-			bool			IsFloat() const;
-			bool			IsInt() const;
-			bool			IsLiteralArray() const;
-			bool			IsNoneArray() const;
-			bool			IsNoneObject() const;
-			bool			IsObject() const;
-			bool			IsObjectArray() const;
-			bool			IsString() const;
-			void			SetType(RawType a_type);
+			[[nodiscard]] RawType         GetRawType() const;
+			[[nodiscard]] ObjectTypeInfo* GetTypeInfo() const;
+			[[nodiscard]] RawType         GetUnmangledRawType() const;
+			[[nodiscard]] bool            IsArray() const;
+			[[nodiscard]] bool            IsBool() const;
+			[[nodiscard]] bool            IsFloat() const;
+			[[nodiscard]] bool            IsInt() const;
+			[[nodiscard]] bool            IsLiteralArray() const;
+			[[nodiscard]] bool            IsNoneArray() const;
+			[[nodiscard]] bool            IsNoneObject() const;
+			[[nodiscard]] bool            IsObject() const;
+			[[nodiscard]] bool            IsObjectArray() const;
+			[[nodiscard]] bool            IsString() const;
+			void                          SetType(RawType a_type);
 
 		protected:
 			// members

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct GStatGroups
@@ -42,12 +41,11 @@ namespace RE
 			// 16 slots for HeapSummary
 
 			// How many entries we support by default
-			kGStat_MaxId = 64 << 6,	 // 64 * 64 = 4096
+			kGStat_MaxId = 64 << 6,  // 64 * 64 = 4096
 			kGStat_EntryCount = 512
 		};
 	};
 	using GStatGroup = GStatGroups::GStatGroup;
-
 
 	struct GStatRenderers
 	{
@@ -76,7 +74,6 @@ namespace RE
 		};
 	};
 	using GStatRenderer = GStatRenderers::GStatRenderer;
-
 
 	enum class GHeapID : UPInt
 	{

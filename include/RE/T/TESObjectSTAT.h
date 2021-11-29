@@ -4,7 +4,6 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	struct TESObjectSTATData  // DNAM
@@ -15,25 +14,22 @@ namespace RE
 			kNone = 0
 		};
 
-
 		// members
-		float								  materialThresholdAngle;  // 00 - (30 - 120)
-		std::uint32_t						  pad04;				   // 04
-		BGSMaterialObject*					  materialObj;			   // 08
-		stl::enumeration<Flag, std::uint32_t> flags;				   // 10
-		std::uint32_t						  pad14;				   // 14
+		float                                 materialThresholdAngle;  // 00 - (30 - 120)
+		std::uint32_t                         pad04;                   // 04
+		BGSMaterialObject*                    materialObj;             // 08
+		stl::enumeration<Flag, std::uint32_t> flags;                   // 10
+		std::uint32_t                         pad14;                   // 14
 	};
 	static_assert(sizeof(TESObjectSTATData) == 0x18);
 
-
 	class TESObjectSTAT :
-		public TESBoundObject,		// 00
-		public TESModelTextureSwap	// 30
+		public TESBoundObject,      // 00
+		public TESModelTextureSwap  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectSTAT;
 		inline static constexpr auto FORMTYPE = FormType::Static;
-
 
 		struct RecordFlags
 		{
@@ -56,21 +52,19 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESObjectSTAT();  // 00
+		~TESObjectSTAT() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void ClearData() override;				// 05
-		virtual bool Load(TESFile* a_mod) override;		// 06
-		virtual void InitItemImpl() override;			// 13
-		virtual bool GetPlayable() const override;		// 19 - { return true; }
-		virtual bool IsHeadingMarker() const override;	// 1A - { return (flags >> 2) & 1; }
+		void               ClearData() override;              // 05
+		bool               Load(TESFile* a_mod) override;     // 06
+		void               InitItemImpl() override;           // 13
+		bool               GetPlayable() const override;      // 19 - { return true; }
+		[[nodiscard]] bool IsHeadingMarker() const override;  // 1A - { return (flags >> 2) & 1; }
 
-		bool HasTreeLOD() const;
-
+		[[nodiscard]] bool HasTreeLOD() const;
 
 		// members
-		TESObjectSTATData data;	 // 68 - DNAM
+		TESObjectSTATData data;  // 68 - DNAM
 	};
 	static_assert(sizeof(TESObjectSTAT) == 0x80);
 }

@@ -2,7 +2,6 @@
 
 #include "RE/M/MemoryManager.h"
 
-
 namespace RE
 {
 	template <class T, std::uint32_t N>
@@ -34,16 +33,13 @@ namespace RE
 		void deallocate(value_type* a_ptr) { free(a_ptr); }
 	};
 
-
 	template <class T, std::uint32_t N>
 	class FixedLengthMemoryManagementPol
 	{
 	public:
 		using value_type = T;
 
-
 		constexpr FixedLengthMemoryManagementPol() noexcept = default;
-
 
 		FixedLengthMemoryManagementPol(const FixedLengthMemoryManagementPol& a_rhs) { copy_from(a_rhs); }
 		FixedLengthMemoryManagementPol(FixedLengthMemoryManagementPol&& a_rhs) { copy_from(a_rhs); }
@@ -79,9 +75,8 @@ namespace RE
 			std::memcpy(_buffer, a_rhs._buffer, sizeof(value_type) * N);
 		}
 
-		value_type _buffer[N]{ 0 };	 // 00
+		value_type _buffer[N]{ 0 };  // 00
 	};
-
 
 	template <class CharT, std::uint32_t N, template <class, std::uint32_t> class Allocator>
 	class BSStringT : public Allocator<CharT, N>
@@ -187,13 +182,13 @@ namespace RE
 			return data()[a_pos];
 		}
 
-		[[nodiscard]] constexpr reference		front() noexcept { return operator[](0); }
+		[[nodiscard]] constexpr reference       front() noexcept { return operator[](0); }
 		[[nodiscard]] constexpr const_reference front() const noexcept { return operator[](0); }
 
-		[[nodiscard]] constexpr reference		back() noexcept { return operator[](size() - 1); }
+		[[nodiscard]] constexpr reference       back() noexcept { return operator[](size() - 1); }
 		[[nodiscard]] constexpr const_reference back() const noexcept { return operator[](size() - 1); }
 
-		[[nodiscard]] constexpr pointer		  data() noexcept { return _data ? _data : EMPTY; }
+		[[nodiscard]] constexpr pointer       data() noexcept { return _data ? _data : EMPTY; }
 		[[nodiscard]] constexpr const_pointer data() const noexcept { return _data ? _data : EMPTY; }
 
 		[[nodiscard]] constexpr const_pointer c_str() const noexcept { return data(); }
@@ -225,7 +220,6 @@ namespace RE
 		[[nodiscard]] static int stricmp(const char* a_lhs, const char* a_rhs) { return _stricmp(a_lhs, a_rhs); }
 
 		[[nodiscard]] static int stricmp(const wchar_t* a_lhs, const wchar_t* a_rhs) { return _wcsicmp(a_lhs, a_rhs); }
-
 
 		[[nodiscard]] pointer allocate(std::uint32_t a_num) { return allocator_type::allocate(a_num); }
 
@@ -271,10 +265,10 @@ namespace RE
 		static constexpr value_type EMPTY[]{ 0 };
 
 		// members
-		pointer		  _data{ nullptr };	 // ?? (00)
-		size_type	  _size{ 0 };		 // ?? (08)
-		size_type	  _capacity{ 0 };	 // ?? (0A)
-		std::uint32_t _pad0C{ 0 };		 // ?? (0C)
+		pointer       _data{ nullptr };  // ?? (00)
+		size_type     _size{ 0 };        // ?? (08)
+		size_type     _capacity{ 0 };    // ?? (0A)
+		std::uint32_t _pad0C{ 0 };       // ?? (0C)
 	};
 
 	using BSString = BSStringT<char, static_cast<std::uint32_t>(-1), DynamicMemoryManagementPol>;

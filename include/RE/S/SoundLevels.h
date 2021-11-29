@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class SOUND_LEVEL

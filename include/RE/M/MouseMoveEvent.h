@@ -2,7 +2,6 @@
 
 #include "RE/I/IDEvent.h"
 
-
 namespace RE
 {
 	class MouseMoveEvent : public IDEvent
@@ -10,9 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MouseMoveEvent;
 
-
-		virtual ~MouseMoveEvent();	// 00
-
+		~MouseMoveEvent() override;  // 00
 
 		// members
 		std::int32_t mouseInputX;  // 28

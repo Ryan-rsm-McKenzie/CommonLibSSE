@@ -4,7 +4,6 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	enum class MARKER_TYPE
@@ -70,7 +69,6 @@ namespace RE
 		kDLC02_ToSolstheim = 58
 	};
 
-
 	class MapMarkerData
 	{
 	public:
@@ -87,20 +85,17 @@ namespace RE
 			kUnk7 = 1 << 7
 		};
 
-
 		constexpr void SetHidden(bool a_value) noexcept { a_value ? flags.set(Flag::kShowAllHidden) : flags.reset(Flag::kShowAllHidden); }
 		constexpr void SetVisible(bool a_value) noexcept { a_value ? flags.set(Flag::kVisible) : flags.reset(Flag::kVisible); }
 
-
 		// members
-		TESFullName									locationName;  // 00
-		stl::enumeration<Flag, std::uint8_t>		flags;		   // 10
-		stl::enumeration<MARKER_TYPE, std::uint8_t> type;		   // 11
-		std::uint16_t								pad02;		   // 12
-		std::uint32_t								pad04;		   // 14
+		TESFullName                                 locationName;  // 00
+		stl::enumeration<Flag, std::uint8_t>        flags;         // 10
+		stl::enumeration<MARKER_TYPE, std::uint8_t> type;          // 11
+		std::uint16_t                               pad02;         // 12
+		std::uint32_t                               pad04;         // 14
 	};
 	static_assert(sizeof(MapMarkerData) == 0x18);
-
 
 	class ExtraMapMarker : public BSExtraData
 	{
@@ -108,16 +103,14 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMapMarker;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMapMarker;
 
-
-		virtual ~ExtraMapMarker();	// 00
+		virtual ~ExtraMapMarker();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kMapMarker; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02
-
+		virtual ExtraDataType GetType() const override;                             // 01 - { return kMapMarker; }
+		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
-		MapMarkerData* mapData;	 // 10
+		MapMarkerData* mapData;  // 10
 	};
 	static_assert(sizeof(ExtraMapMarker) == 0x18);
 }

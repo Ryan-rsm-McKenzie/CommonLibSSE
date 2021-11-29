@@ -2,7 +2,6 @@
 
 #include "RE/H/hkpCharacterProxy.h"
 
-
 namespace RE
 {
 	class ahkpCharacterProxy : public hkpCharacterProxy
@@ -10,9 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ahkpCharacterProxy;
 
-
-		virtual ~ahkpCharacterProxy();	// 00
-
+		~ahkpCharacterProxy() override;  // 00
 
 		// members
 		std::uint64_t unk0F0;  // 0F0

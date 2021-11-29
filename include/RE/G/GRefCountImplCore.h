@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GRefCountImplCore
@@ -8,8 +7,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_GRefCountImplCore;
 
-
-		virtual ~GRefCountImplCore() = default;	 // 00
+		virtual ~GRefCountImplCore() = default;  // 00
 
 		static void CheckInvalidDelete(GRefCountImplCore*) {}
 
@@ -17,8 +15,8 @@ namespace RE
 
 	protected:
 		// members
-		volatile std::uint32_t _refCount{ 1 };	// 08
-		std::uint32_t		   _pad0C{ 0 };		// 0C
+		volatile std::uint32_t _refCount{ 1 };  // 08
+		std::uint32_t          _pad0C{ 0 };     // 0C
 	};
 	static_assert(sizeof(GRefCountImplCore) == 0x10);
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class QUEST_OBJECTIVE_STATE

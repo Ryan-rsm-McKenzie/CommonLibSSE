@@ -2,7 +2,6 @@
 
 #include "RE/G/GRefCountImplCore.h"
 
-
 namespace RE
 {
 	class GRefCountNTSImpl : public GRefCountImplCore

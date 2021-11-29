@@ -4,11 +4,9 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class BSAnimationGraphManager;
-
 
 	class ExtraAnimGraphManager : public BSExtraData
 	{
@@ -16,15 +14,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraAnimGraphManager;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAnimGraphManager;
 
-
-		virtual ~ExtraAnimGraphManager();  // 00
+		~ExtraAnimGraphManager() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kAnimGraphManager; }
-
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kAnimGraphManager; }
 
 		// members
-		BSTSmartPointer<BSAnimationGraphManager> animGraphMgr;	// 10
+		BSTSmartPointer<BSAnimationGraphManager> animGraphMgr;  // 10
 	};
 	static_assert(sizeof(ExtraAnimGraphManager) == 0x18);
 }

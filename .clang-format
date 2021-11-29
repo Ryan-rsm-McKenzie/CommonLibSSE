@@ -2,16 +2,18 @@
 AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: 'false'
+AlignConsecutiveBitFields: 'false'
 AlignConsecutiveDeclarations: 'true'
-AlignConsecutiveMacros: 'true'
+AlignConsecutiveMacros: 'false'
 AlignEscapedNewlines: Left
-AlignOperands: 'true'
+AlignOperands: Align
 AlignTrailingComments: 'true'
 AllowAllArgumentsOnNextLine: 'false'
 AllowAllConstructorInitializersOnNextLine: 'false'
 AllowAllParametersOfDeclarationOnNextLine: 'false'
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortEnumsOnASingleLine: 'true'
 AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLambdasOnASingleLine: All
@@ -21,22 +23,25 @@ AlwaysBreakBeforeMultilineStrings: 'true'
 AlwaysBreakTemplateDeclarations: 'Yes'
 BinPackArguments: 'true'
 BinPackParameters: 'true'
+BitFieldColonSpacing: After
 BraceWrapping:
     AfterCaseLabel: 'true'
     AfterClass: 'true'
     AfterControlStatement: 'false'
     AfterEnum: 'true'
-    AfterExternBlock: 'true'
     AfterFunction: 'true'
     AfterNamespace: 'true'
     AfterStruct: 'true'
     AfterUnion: 'true'
+    AfterExternBlock: 'true'
     BeforeCatch: 'false'
     BeforeElse: 'false'
+    BeforeLambdaBody: 'false'
+    BeforeWhile: 'false'
     IndentBraces: 'false'
     SplitEmptyFunction: 'false'
-    SplitEmptyNamespace: 'false'
     SplitEmptyRecord: 'false'
+    SplitEmptyNamespace: 'false'
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
 BreakBeforeTernaryOperators: 'false'
@@ -56,13 +61,14 @@ FixNamespaceComments: 'false'
 IncludeBlocks: Preserve
 IndentCaseBlocks: 'true'
 IndentCaseLabels: 'false'
+IndentExternBlock: Indent
 IndentGotoLabels: 'false'
 IndentPPDirectives: AfterHash
 IndentWidth: 4
 IndentWrappedFunctionNames: 'true'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
 Language: Cpp
-MaxEmptyLinesToKeep: 2
+MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
 PointerAlignment: Left
 ReflowComments : 'false'
@@ -87,9 +93,9 @@ SpacesInConditionalStatement: 'false'
 SpacesInContainerLiterals: 'true'
 SpacesInParentheses: 'false'
 SpacesInSquareBrackets: 'false'
-Standard: c++17
+Standard: Latest
 TabWidth: 4
 UseCRLF: 'true'
-UseTab: Always
+UseTab: AlignWithSpaces
 
 ...

@@ -4,11 +4,9 @@
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSMultiBoundRoom;
-
 
 	class ExtraRoom : public BSExtraData
 	{
@@ -16,12 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraRoom;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRoom;
 
-
-		virtual ~ExtraRoom();  // 00
+		~ExtraRoom() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kRoom; }
-
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kRoom; }
 
 		// members
 		NiPointer<BSMultiBoundRoom> room;  // 10

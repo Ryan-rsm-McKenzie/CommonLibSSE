@@ -6,7 +6,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	struct DIALOGUE_DATA  // DATA
@@ -17,13 +16,12 @@ namespace RE
 			kDoAllBeforeRepeating = 1 << 0
 		};
 
-
 		enum class Subtype
 		{
 			kCustom = 0,
 			kForceGreet = 1,
 			kRumors = 2,
-			kUnk3 = 3,	// custom?
+			kUnk3 = 3,  // custom?
 			kIntimidate = 4,
 			kFlatter = 5,
 			kBribe = 6,
@@ -125,22 +123,19 @@ namespace RE
 			kLeaveWaterBreath = 102
 		};
 
-
-		stl::enumeration<TopicFlag, std::uint8_t>	  topicFlags;  // 0
-		stl::enumeration<DIALOGUE_TYPE, std::uint8_t> type;		   // 1
-		stl::enumeration<Subtype, std::uint16_t>	  subtype;	   // 2
+		stl::enumeration<TopicFlag, std::uint8_t>     topicFlags;  // 0
+		stl::enumeration<DIALOGUE_TYPE, std::uint8_t> type;        // 1
+		stl::enumeration<Subtype, std::uint16_t>      subtype;     // 2
 	};
 	static_assert(sizeof(DIALOGUE_DATA) == 0x4);
 
-
 	class TESTopic :
-		public TESForm,		// 00
-		public TESFullName	// 20
+		public TESForm,     // 00
+		public TESFullName  // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESTopic;
 		inline static constexpr auto FORMTYPE = FormType::Dialogue;
-
 
 		struct RecordFlags
 		{
@@ -151,33 +146,31 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESTopic();  // 00
+		~TESTopic() override;  // 00
 
 		// override (TESForm)
-		virtual bool		Load(TESFile* a_mod) override;				  // 06
-		virtual void		InitItemImpl() override;					  // 13
-		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
-		virtual bool		IsParentForm() override;					  // 34 - { return true; }
-		virtual bool		IsFormTypeChild(FormType a_type) override;	  // 36 - { return a_type == FormType::Info }
+		bool        Load(TESFile* a_mod) override;                // 06
+		void        InitItemImpl() override;                      // 13
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { bool result = formEditorID == a_str; formEditorID = a_str; return result; }
+		bool        IsParentForm() override;                      // 34 - { return true; }
+		bool        IsFormTypeChild(FormType a_type) override;    // 36 - { return a_type == FormType::Info }
 
 		// override (TESFullName)
-		virtual std::uint32_t GetFullNameLength() const override;  // 04
-		virtual const char*	  GetFullName() const override;		   // 05
+		std::uint32_t             GetFullNameLength() const override;  // 04
+		[[nodiscard]] const char* GetFullName() const override;        // 05
 
-		float GetPriority() const;
-
+		[[nodiscard]] float GetPriority() const;
 
 		// members
-		DIALOGUE_DATA	   data;					 // 30 - DATA
-		std::uint32_t	   priorityAndJournalIndex;	 // 34 - PNAM
-		BGSDialogueBranch* ownerBranch;				 // 38 - BNAM
-		TESQuest*		   ownerQuest;				 // 40 -	QNAM
-		TESTopicInfo**	   topicInfos;				 // 48 - infoTopics[infoCount]
-		std::uint32_t	   numTopicInfos;			 // 50 - TIFC
-		std::uint32_t	   firstFileOffset;			 // 54
-		BSFixedString	   formEditorID;			 // 58
+		DIALOGUE_DATA      data;                     // 30 - DATA
+		std::uint32_t      priorityAndJournalIndex;  // 34 - PNAM
+		BGSDialogueBranch* ownerBranch;              // 38 - BNAM
+		TESQuest*          ownerQuest;               // 40 -	QNAM
+		TESTopicInfo**     topicInfos;               // 48 - infoTopics[infoCount]
+		std::uint32_t      numTopicInfos;            // 50 - TIFC
+		std::uint32_t      firstFileOffset;          // 54
+		BSFixedString      formEditorID;             // 58
 	};
 	static_assert(sizeof(TESTopic) == 0x60);
 }

@@ -2,7 +2,6 @@
 
 #include "RE/T/TESCamera.h"
 
-
 namespace RE
 {
 	class RaceSexCamera : public TESCamera
@@ -10,13 +9,11 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_RaceSexCamera;
 
-
-		virtual ~RaceSexCamera();  // 00
+		~RaceSexCamera() override;  // 00
 
 		// override (TESCamera)
-		virtual void SetCameraRoot(NiPointer<NiNode> a_root) override;	// 01
-		virtual void Update() override;									// 02
-
+		void SetCameraRoot(NiPointer<NiNode> a_root) override;  // 01
+		void Update() override;                                 // 02
 
 		// members
 		std::uint64_t unk38;  // 38

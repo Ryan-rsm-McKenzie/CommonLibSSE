@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	// auto registers the factory with the manager
@@ -9,6 +8,6 @@ namespace RE
 	{
 	public:
 		static_assert(sizeof(AutoRegisterFactory) == 0x8);
-		virtual ~AutoRegisterFactory();	 // 00
+		virtual ~AutoRegisterFactory();  // 00
 	};
 }

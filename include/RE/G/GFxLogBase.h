@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxLogConstants.h"
 
-
 namespace RE
 {
 	template <class Derived>
@@ -12,7 +11,7 @@ namespace RE
 		virtual ~GFxLogBase() {}  // 00
 
 		// add
-		virtual bool IsVerboseActionErrors() const { return true; }	 // 01
+		[[nodiscard]] virtual bool IsVerboseActionErrors() const { return true; }  // 01
 	};
 	static_assert(sizeof(GFxLogBase<void*>) == 0x8);
 }

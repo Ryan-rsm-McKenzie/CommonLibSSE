@@ -2,7 +2,6 @@
 
 #include "RE/C/CRC.h"
 
-
 namespace RE
 {
 	template <class T>
@@ -189,7 +188,7 @@ namespace RE
 		}
 
 		// members
-		element_type* _ptr{ nullptr };	// 0
+		element_type* _ptr{ nullptr };  // 0
 	};
 	//static_assert(sizeof(NiPointer<void*>) == 0x8);
 
@@ -249,7 +248,6 @@ namespace RE
 	};
 }
 
-
 #define NiSmartPointer(className) \
 	class className;              \
-	using className##Ptr = RE::NiPointer<className>;
+	using className##Ptr = RE::NiPointer<className>

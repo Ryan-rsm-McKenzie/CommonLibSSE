@@ -4,20 +4,17 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSSoundDescriptor;
 
-
 	class BGSSoundDescriptorForm :
-		public TESForm,			   // 00
+		public TESForm,            // 00
 		public BSISoundDescriptor  // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptorForm;
 		inline static constexpr auto FORMTYPE = FormType::SoundRecord;
-
 
 		struct RecordFlags
 		{
@@ -28,18 +25,16 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSSoundDescriptorForm();	// 00
+		~BGSSoundDescriptorForm() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;						   // 05
-		virtual bool Load(TESFile* a_mod) override;				   // 06
-		virtual void InitItemImpl() override;					   // 13
-		virtual bool SetFormEditorID(const char* a_str) override;  // 33
+		void ClearData() override;                         // 05
+		bool Load(TESFile* a_mod) override;                // 06
+		void InitItemImpl() override;                      // 13
+		bool SetFormEditorID(const char* a_str) override;  // 33
 
 		// add
-		virtual std::uint32_t GetDescriptorType();	// 3B - { return soundDescriptor->GetType(); }
-
+		virtual std::uint32_t GetDescriptorType();  // 3B - { return soundDescriptor->GetType(); }
 
 		// members
 		BGSSoundDescriptor* soundDescriptor;  // 28

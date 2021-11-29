@@ -2,11 +2,9 @@
 
 #include "RE/H/hkpShapeRayCastOutput.h"
 
-
 namespace RE
 {
 	class hkpCollidable;
-
 
 	struct hkpWorldRayCastOutput : public hkpShapeRayCastOutput
 	{
@@ -19,9 +17,8 @@ namespace RE
 			rootCollidable = nullptr;
 		}
 
-
 		// members
-		const hkpCollidable* rootCollidable{ nullptr };	 // 50
+		const hkpCollidable* rootCollidable{ nullptr };  // 50
 	};
 	static_assert(sizeof(hkpWorldRayCastOutput) == 0x60);
 }

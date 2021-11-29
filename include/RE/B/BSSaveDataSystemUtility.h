@@ -3,27 +3,22 @@
 #include "RE/B/BSString.h"
 #include "RE/B/BSTEvent.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 
-
 	class BSSaveDataSystemUtility :
-		public BSTEventSource<BSSaveDataEvent>	// 008
+		public BSTEventSource<BSSaveDataEvent>  // 008
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility;
-
 
 		class Entry
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSSaveDataSystemUtility__Entry;
 
-
-			virtual void Unk_00(void);	// 00
-
+			virtual void Unk_00(void);  // 00
 
 			// members
 			std::uint64_t unk008;  // 008
@@ -63,9 +58,9 @@ namespace RE
 			std::uint64_t unk118;  // 118
 			std::uint64_t unk120;  // 120
 			std::uint64_t unk128;  // 128
-			BSString	  unk130;  // 130
-			BSString	  unk140;  // 140
-			BSString	  unk150;  // 150
+			BSString      unk130;  // 130
+			BSString      unk140;  // 140
+			BSString      unk150;  // 150
 			std::uint64_t unk160;  // 160
 			std::uint64_t unk168;  // 168
 			std::uint64_t unk170;  // 170
@@ -75,38 +70,36 @@ namespace RE
 			std::uint64_t unk190;  // 190
 		};
 
-
-		virtual ~BSSaveDataSystemUtility();	 // 00
+		virtual ~BSSaveDataSystemUtility();  // 00
 
 		// add
-		virtual bool	CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) = 0;								 // 01
-		virtual errno_t PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;	 // 02 - a_dst must be 0x104 in length
-		virtual void	Unk_03(void);																					 // 03 - { return Unk_04(); }
-		virtual void	Unk_04(void);																					 // 04 - { return; }
-		virtual void	Unk_05(void);																					 // 05
-		virtual void	Unk_06(void) = 0;																				 // 06
-		virtual void	Unk_07(void);																					 // 07
-		virtual void	Unk_08(void);																					 // 08 - { return; }
-		virtual void	Unk_09(void);																					 // 09 - { return; }
-		virtual void	Unk_0A(void);																					 // 0A
-		virtual void	Unk_0B(void);																					 // 0B - { return; }
-		virtual void	Unk_0C(void);																					 // 0C
-		virtual void	Unk_0D(void);																					 // 0D - { return; }
-		virtual void	Unk_0E(void);																					 // 0E - { return 1; }
-		virtual void	Unk_0F(void);																					 // 0F - { return 1; }
-		virtual void	Unk_10(void);																					 // 10 - { return 0; }
-		virtual void	Unk_11(void);																					 // 11 - { return; }
-
+		virtual bool    CreateSaveDirectory(const char* a_pathName, bool a_ignoreINI) = 0;                               // 01
+		virtual errno_t PrepareFileSavePath(const char* a_fileName, char* a_dst, bool a_tmpSave, bool a_ignoreINI) = 0;  // 02 - a_dst must be 0x104 in length
+		virtual void    Unk_03(void);                                                                                    // 03 - { return Unk_04(); }
+		virtual void    Unk_04(void);                                                                                    // 04 - { return; }
+		virtual void    Unk_05(void);                                                                                    // 05
+		virtual void    Unk_06(void) = 0;                                                                                // 06
+		virtual void    Unk_07(void);                                                                                    // 07
+		virtual void    Unk_08(void);                                                                                    // 08 - { return; }
+		virtual void    Unk_09(void);                                                                                    // 09 - { return; }
+		virtual void    Unk_0A(void);                                                                                    // 0A
+		virtual void    Unk_0B(void);                                                                                    // 0B - { return; }
+		virtual void    Unk_0C(void);                                                                                    // 0C
+		virtual void    Unk_0D(void);                                                                                    // 0D - { return; }
+		virtual void    Unk_0E(void);                                                                                    // 0E - { return 1; }
+		virtual void    Unk_0F(void);                                                                                    // 0F - { return 1; }
+		virtual void    Unk_10(void);                                                                                    // 10 - { return 0; }
+		virtual void    Unk_11(void);                                                                                    // 11 - { return; }
 
 		// members
-		std::uint32_t unk060;		// 060
-		std::uint32_t profileHash;	// 064
-		std::uint64_t unk068;		// 068
-		Entry		  entry;		// 070
-		std::uint64_t unk208;		// 208
-		std::uint64_t unk210;		// 210
-		std::uint64_t unk218;		// 218
-		std::uint64_t unk220;		// 220
+		std::uint32_t unk060;       // 060
+		std::uint32_t profileHash;  // 064
+		std::uint64_t unk068;       // 068
+		Entry         entry;        // 070
+		std::uint64_t unk208;       // 208
+		std::uint64_t unk210;       // 210
+		std::uint64_t unk218;       // 218
+		std::uint64_t unk220;       // 220
 	};
 	static_assert(sizeof(BSSaveDataSystemUtility) == 0x228);
 }

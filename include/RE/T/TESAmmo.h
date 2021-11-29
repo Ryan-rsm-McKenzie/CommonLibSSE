@@ -13,7 +13,6 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	struct AMMO_DATA  // DATA
@@ -27,34 +26,31 @@ namespace RE
 			kNonBolt = 1 << 2
 		};
 
-
 		// members
-		BGSProjectile*						 projectile;  // 00
-		stl::enumeration<Flag, std::uint8_t> flags;		  // 08
-		std::uint8_t						 pa09;		  // 09
-		std::uint16_t						 pa0A;		  // 0A
-		float								 damage;	  // 0C
+		BGSProjectile*                       projectile;  // 00
+		stl::enumeration<Flag, std::uint8_t> flags;       // 08
+		std::uint8_t                         pa09;        // 09
+		std::uint16_t                        pa0A;        // 0A
+		float                                damage;      // 0C
 	};
 	static_assert(sizeof(AMMO_DATA) == 0x10);
 
-
 	class TESAmmo :
-		public TESBoundObject,			   // 000
-		public TESFullName,				   // 030
-		public TESModelTextureSwap,		   // 040
-		public TESIcon,					   // 078
-		public BGSMessageIcon,			   // 088
-		public TESValueForm,			   // 0A0
-		public TESWeightForm,			   // 0B0
+		public TESBoundObject,             // 000
+		public TESFullName,                // 030
+		public TESModelTextureSwap,        // 040
+		public TESIcon,                    // 078
+		public BGSMessageIcon,             // 088
+		public TESValueForm,               // 0A0
+		public TESWeightForm,              // 0B0
 		public BGSDestructibleObjectForm,  // 0C0
-		public BGSPickupPutdownSounds,	   // 0D0
-		public TESDescription,			   // 0E8
-		public BGSKeywordForm			   // 0F8
+		public BGSPickupPutdownSounds,     // 0D0
+		public TESDescription,             // 0E8
+		public BGSKeywordForm              // 0F8
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESAmmo;
 		inline static constexpr auto FORMTYPE = FormType::Ammo;
-
 
 		struct RecordFlags
 		{
@@ -66,28 +62,26 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESAmmo();	 // 00
+		~TESAmmo() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void		InitializeData() override;											 // 04
-		virtual bool		Load(TESFile* a_mod) override;										 // 06
-		virtual void		SaveGame(BGSSaveFormBuffer* a_buf) override;						 // 0E
-		virtual void		LoadGame(BGSLoadFormBuffer* a_buf) override;						 // 0F
-		virtual void		InitItemImpl() override;											 // 13
-		virtual bool		GetPlayable() const override;										 // 19 - { return ~((data.flags >> 1) & 1); }
-		virtual NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;				 // 40
-		virtual void		HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;	 // 4E
+		void        InitializeData() override;                                           // 04
+		bool        Load(TESFile* a_mod) override;                                       // 06
+		void        SaveGame(BGSSaveFormBuffer* a_buf) override;                         // 0E
+		void        LoadGame(BGSLoadFormBuffer* a_buf) override;                         // 0F
+		void        InitItemImpl() override;                                             // 13
+		bool        GetPlayable() const override;                                        // 19 - { return ~((data.flags >> 1) & 1); }
+		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                 // 40
+		void        HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;  // 4E
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		bool IgnoresNormalWeaponResistance();
 		bool IsBolt();
 
-
 		// members
-		AMMO_DATA	  data;		  // 110 - DATA
+		AMMO_DATA     data;       // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
 	};
 	static_assert(sizeof(TESAmmo) == 0x128);

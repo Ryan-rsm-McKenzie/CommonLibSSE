@@ -1,100 +1,80 @@
 cmake_minimum_required(VERSION 3.19)
 
+# singleton target across multiple projects
+if(TARGET CommonLibSSE)
+	return() 
+endif()
+
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 
-if (NOT DEFINED SKSE_USE_VCPKG AND CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-	set(SKSE_USE_VCPKG ON CACHE BOOL "Use vcpkg to grab dependencies.")
-endif()
+# called via add_subdirectory()
+if (NOT LINKAGE_OVERRIDE)
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
 
-if (DEFINED SKSE_USE_VCPKG AND SKSE_USE_VCPKG)
-	set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
-	set(VCPKG_TARGET_TRIPLET "x64-windows-static-md" CACHE STRING "")
 endif()
-
-# ---- Project ----
 
 project(
 	CommonLibSSE
 	LANGUAGES CXX
 )
 
-# ---- Include guards ----
-
-if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
-	message(
-		FATAL_ERROR
-			"In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
-)
-endif()
-
-# ---- Dependencies ----
-
-find_package(Boost
-	REQUIRED
-	COMPONENTS
-		atomic
-)
-find_package(span-lite REQUIRED CONFIG)
-find_package(spdlog REQUIRED CONFIG)
-
-# ---- Add source files ----
-
-include(cmake/headerlist.cmake)
-include(cmake/sourcelist.cmake)
-
-source_group(
-	TREE
-		${CMAKE_CURRENT_SOURCE_DIR}
-	FILES
-		${headers}
-		${sources}
-)
-
-# ---- Create library ----
-
 include(GNUInstallDirs)
 
+if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+	message(FATAL_ERROR "in-source builds are not allowed")
+endif()
+
+find_package(binary_io REQUIRED CONFIG)
+find_package(Boost MODULE REQUIRED)
+find_package(spdlog REQUIRED CONFIG)
+
+execute_process(COMMAND powershell -ExecutionPolicy Bypass -File "${CMAKE_CURRENT_SOURCE_DIR}/!Update.ps1" "SOURCEGEN" "${PROJECT_VERSION}" "${CMAKE_CURRENT_BINARY_DIR}")
+include(${CMAKE_CURRENT_BINARY_DIR}/sourcelist.cmake)
+source_group(
+	TREE 
+	"${CMAKE_CURRENT_SOURCE_DIR}"
+	FILES 
+	${SOURCES}
+)
+
 add_library(
-	${PROJECT_NAME}
+	"${PROJECT_NAME}"
 	STATIC
-	${headers}
-	${sources}
+	${SOURCES}
 	.clang-format
 	CommonLibSSE.natvis
 )
 
-add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+add_library("${PROJECT_NAME}::${PROJECT_NAME}" ALIAS "${PROJECT_NAME}")
 
 target_compile_definitions(
-	${PROJECT_NAME}
+	"${PROJECT_NAME}"
 	PUBLIC
+		BOOST_STL_INTERFACES_DISABLE_CONCEPTS
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
-		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK>"
+		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
 )
 
 target_compile_features(
-	${PROJECT_NAME}
+	"${PROJECT_NAME}"
 	PUBLIC
-		cxx_std_17
+		cxx_std_20
 )
 
 if (MSVC)
 	target_compile_options(
-		${PROJECT_NAME}
+		"${PROJECT_NAME}"
 		PRIVATE
-			/MP	# Build with Multiple Processes
-			
-			/experimental:external
-			/external:anglebrackets
-			/external:W0
-			
 			# warnings -> errors
 			/we4715	# 'function' : not all control paths return a value
-			
+
 			# disable warnings
 			/wd4061 # enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 			/wd4200 # nonstandard extension used : zero-sized array in struct/union
+			/wd4201 # nonstandard extension used : nameless struct/union
 			/wd4265 # 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
 			/wd4266 # 'function' : no override available for virtual member function from base 'type'; function is hidden
 			/wd4371 # 'classname': layout of class may have changed from a previous version of the compiler due to better packing of member 'member'
@@ -117,52 +97,63 @@ if (MSVC)
 endif()
 
 target_include_directories(
-	${PROJECT_NAME}
-	PUBLIC 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+	"${PROJECT_NAME}"
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
 target_link_libraries(
-	${PROJECT_NAME}
+	"${PROJECT_NAME}"
 	PUBLIC
-		Boost::atomic
-		nonstd::span-lite
+		binary_io::binary_io
+		Boost::headers
 		spdlog::spdlog
 		Version.lib
 )
 
 target_precompile_headers(
-	${PROJECT_NAME}
+	"${PROJECT_NAME}"
 	PRIVATE
 		include/SKSE/Impl/PCH.h
 )
 
-# ---- Create an installable target ----
-
 install(
-	TARGETS ${PROJECT_NAME}
-	EXPORT ${PROJECT_NAME}-targets
+	TARGETS "${PROJECT_NAME}"
+	EXPORT "${PROJECT_NAME}-targets"
 )
 
 install(
-	FILES ${headers}
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+	EXPORT "${PROJECT_NAME}-targets"
+	NAMESPACE "${PROJECT_NAME}::"
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
 
 configure_file(
 	cmake/config.cmake.in
-	${PROJECT_NAME}Config.cmake
+	"${PROJECT_NAME}Config.cmake"
 	@ONLY
 )
 
 install(
-	FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+	FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
 )
 
 install(
-	EXPORT ${PROJECT_NAME}-targets
-	NAMESPACE ${PROJECT_NAME}::
-	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+	DIRECTORY
+		"include/RE"
+		"include/REL"
+		"include/SKSE"
+	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
+
+# called via !Rebuild.ps1
+if(DEFINED GROUP)
+set_target_properties(
+	${PROJECT_NAME}
+	PROPERTIES
+	FOLDER
+	${GROUP}
+)
+endif()

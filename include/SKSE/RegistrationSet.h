@@ -12,7 +12,6 @@
 #include "SKSE/Impl/RegistrationTraits.h"
 #include "SKSE/Interfaces.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -48,14 +47,12 @@ namespace SKSE
 			bool Unregister(const void* a_object, RE::VMTypeID a_typeID);
 
 			std::set<RE::VMHandle> _handles;
-			std::string			   _eventName;
-			mutable Lock		   _lock;
+			std::string            _eventName;
+			mutable Lock           _lock;
 		};
-
 
 		template <class Enable, class... Args>
 		class RegistrationSet;
-
 
 		template <class... Args>
 		class RegistrationSet<
@@ -96,7 +93,7 @@ namespace SKSE
 			inline void QueueEvent(Args... a_args)
 			{
 				std::tuple args(VMArg(std::forward<Args>(a_args))...);
-				auto	   task = GetTaskInterface();
+				auto       task = GetTaskInterface();
 				assert(task);
 				if (task) {
 					task->AddTask([args, this]() mutable {
@@ -112,7 +109,6 @@ namespace SKSE
 				SendEvent(std::get<I>(std::forward<Tuple>(a_tuple)).Unpack()...);
 			}
 		};
-
 
 		template <>
 		class RegistrationSet<void> : public RegistrationSetBase
@@ -157,7 +153,6 @@ namespace SKSE
 			}
 		};
 	}
-
 
 	template <class... Args>
 	using RegistrationSet = Impl::RegistrationSet<void, Args...>;

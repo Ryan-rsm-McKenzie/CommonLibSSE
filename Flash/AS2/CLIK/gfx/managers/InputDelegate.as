@@ -1,5 +1,5 @@
 /**
- * InputDelegate receives commands from the game, by intercepting keys, controller buttons, etc, and dispatches Input events. InputDetail objects are generated containing a navigation equivelant. FocusHandler will instantiate an InputDelegate when input is required.
+ * InputDelegate receives commands from the game, by intercepting keys, controller buttons, etc, and dispatches Input events. InputDetail objects are generated containing a navigation equivalent. FocusHandler will instantiate an InputDelegate when input is required.
  */
 
 

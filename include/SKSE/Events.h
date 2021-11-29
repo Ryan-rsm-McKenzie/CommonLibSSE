@@ -7,7 +7,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace SKSE
 {
 	struct ModCallbackEvent
@@ -16,10 +15,9 @@ namespace SKSE
 		// members
 		RE::BSFixedString eventName;
 		RE::BSFixedString strArg;
-		float			  numArg;
-		RE::TESForm*	  sender;
+		float             numArg;
+		RE::TESForm*      sender;
 	};
-
 
 	struct CameraEvent
 	{
@@ -29,14 +27,12 @@ namespace SKSE
 		RE::TESCameraState* newState;
 	};
 
-
 	struct CrosshairRefEvent
 	{
 	public:
 		// members
 		RE::NiPointer<RE::TESObjectREFR> crosshairRef;
 	};
-
 
 	struct ActionEvent
 	{
@@ -56,7 +52,6 @@ namespace SKSE
 			kEndSheathe = 10
 		};
 
-
 		enum class Slot
 		{
 			kLeft = 0,
@@ -64,14 +59,12 @@ namespace SKSE
 			kVoice = 2
 		};
 
-
 		// members
 		stl::enumeration<Type, std::uint32_t> type;
-		RE::Actor*							  actor;
-		RE::TESForm*						  sourceForm;
+		RE::Actor*                            actor;
+		RE::TESForm*                          sourceForm;
 		stl::enumeration<Slot, std::uint32_t> slot;
 	};
-
 
 	struct NiNodeUpdateEvent
 	{

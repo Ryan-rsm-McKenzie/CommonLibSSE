@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	using UPInt = std::size_t;

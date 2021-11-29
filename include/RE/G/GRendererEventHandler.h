@@ -3,11 +3,9 @@
 #include "RE/G/GList.h"
 #include "RE/G/GNewOverrideBase.h"
 
-
 namespace RE
 {
 	class GRenderer;
-
 
 	class GRendererEventHandler :
 		public GListNode<GRendererEventHandler>,
@@ -20,12 +18,10 @@ namespace RE
 			kRendererReleased
 		};
 
-
-		virtual ~GRendererEventHandler() = default;	 // 00
+		virtual ~GRendererEventHandler() = default;  // 00
 
 		// add
 		virtual void OnEvent(GRenderer* a_renderer, EventType a_changeType);  // 01
-
 
 		// members
 		GRenderer* renderer;  // 18

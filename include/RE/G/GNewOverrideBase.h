@@ -2,7 +2,6 @@
 
 #include "RE/G/GMemory.h"
 
-
 namespace RE
 {
 	template <std::uint32_t Stat>
@@ -13,7 +12,6 @@ namespace RE
 		{
 			kStatType = Stat
 		};
-
 
 		GFC_MEMORY_REDEFINE_NEW(GNewOverrideBase, Stat);
 	};

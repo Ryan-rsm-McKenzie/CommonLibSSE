@@ -2,14 +2,12 @@
 
 #include "RE/B/BSInputDevice.h"
 
-
 namespace RE
 {
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSKeyboardDevice;
-
 
 		struct Keys
 		{
@@ -129,12 +127,11 @@ namespace RE
 		};
 		using Key = Keys::Key;
 
-
-		virtual ~BSKeyboardDevice();  // 00
+		~BSKeyboardDevice() override;  // 00
 
 		// add
-		virtual void Unk_09(void) = 0;	// 09
-		virtual void Unk_0A(void) = 0;	// 0A
+		virtual void Unk_09(void) = 0;  // 09
+		virtual void Unk_0A(void) = 0;  // 0A
 	};
 	static_assert(sizeof(BSKeyboardDevice) == 0x70);
 }

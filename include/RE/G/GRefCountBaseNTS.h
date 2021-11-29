@@ -3,7 +3,6 @@
 #include "RE/G/GRefCountBaseStatImpl.h"
 #include "RE/G/GRefCountNTSImpl.h"
 
-
 namespace RE
 {
 	template <class C, std::uint32_t Stat>
@@ -14,7 +13,6 @@ namespace RE
 		{
 			kStatType = Stat
 		};
-
 
 		GRefCountBaseNTS() = default;
 	};

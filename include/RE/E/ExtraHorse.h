@@ -4,7 +4,6 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraHorse : public BSExtraData
@@ -13,17 +12,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraHorse;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHorse;
 
-
-		virtual ~ExtraHorse();	// 00
+		~ExtraHorse() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;								// 01 - { return kHorse; }
-		virtual bool		  IsNotEqual(const BSExtraData* a_rhs) const override;	// 02 - { return horseRef != a_rhs->horseRef; }
-
+		ExtraDataType GetType() const override;                             // 01 - { return kHorse; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return horseRef != a_rhs->horseRef; }
 
 		// members
 		ObjectRefHandle horseRef;  // 10
-		std::uint32_t	pad14;	   // 14
+		std::uint32_t   pad14;     // 14
 	};
 	static_assert(sizeof(ExtraHorse) == 0x18);
 }

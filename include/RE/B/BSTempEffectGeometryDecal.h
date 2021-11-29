@@ -6,7 +6,6 @@
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
-
 namespace RE
 {
 	class BSGeometry;
@@ -14,39 +13,36 @@ namespace RE
 	class BGSTextureSet;
 	class QueuedTempEffect;
 
-
 	class BSTempEffectGeometryDecal : public BSTempEffect
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectGeometryDecal;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectGeometryDecal;
 
+		~BSTempEffectGeometryDecal() override;  // 00
 
-		virtual ~BSTempEffectGeometryDecal();  // 00
-
-		virtual const NiRTTI*	 GetRTTI() const override;		 // 02
-		virtual void			 Initialize() override;			 // 25
-		virtual void			 Attach() override;				 // 26
-		virtual bool			 Update(float a_arg1) override;	 // 28
-		virtual NiAVObject*		 Get3D() const override;		 // 29
-		virtual TEMP_EFFECT_TYPE GetType() const override;		 // 2C - { return kGeometryDecal; }
-
+		const NiRTTI*                  GetRTTI() const override;       // 02
+		void                           Initialize() override;          // 25
+		void                           Attach() override;              // 26
+		bool                           Update(float a_arg1) override;  // 28
+		NiAVObject*                    Get3D() const override;         // 29
+		[[nodiscard]] TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kGeometryDecal; }
 
 		// members
-		NiPointer<BSGeometry>			  decal;				   // 30
-		NiPointer<BSGeometry>			  attachedGeometry;		   // 38
-		NiPointer<NiNode>				  attachedGeometryParent;  // 40
-		NiPointer<NiNode>				  decalNode;			   // 48
-		BSTSmartPointer<QueuedTempEffect> queuedDecal;			   // 50
-		BGSTextureSet*					  texSet;				   // 58
-		BGSTextureSet*					  texSet2;				   // 60
-		NiMatrix3						  rotation;				   // 68
-		NiPoint3						  origin;				   // 8C
-		NiPoint3						  direction;			   // 98
-		float							  width;				   // A4
-		std::uint32_t					  unkA8;				   // A8
-		std::uint32_t					  flags;				   // AC
-		bool							  unkB0;				   // B0
+		NiPointer<BSGeometry>             decal;                   // 30
+		NiPointer<BSGeometry>             attachedGeometry;        // 38
+		NiPointer<NiNode>                 attachedGeometryParent;  // 40
+		NiPointer<NiNode>                 decalNode;               // 48
+		BSTSmartPointer<QueuedTempEffect> queuedDecal;             // 50
+		BGSTextureSet*                    texSet;                  // 58
+		BGSTextureSet*                    texSet2;                 // 60
+		NiMatrix3                         rotation;                // 68
+		NiPoint3                          origin;                  // 8C
+		NiPoint3                          direction;               // 98
+		float                             width;                   // A4
+		std::uint32_t                     unkA8;                   // A8
+		std::uint32_t                     flags;                   // AC
+		bool                              unkB0;                   // B0
 	};
 	static_assert(sizeof(BSTempEffectGeometryDecal) == 0xB8);
 }

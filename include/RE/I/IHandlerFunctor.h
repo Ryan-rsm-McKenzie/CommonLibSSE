@@ -5,7 +5,6 @@
 #include "RE/B/BSTObjectDictionary.h"
 #include "RE/B/BSTSmartPointer.h"
 
-
 namespace RE
 {
 	template <class Handler, class Parameter>
@@ -24,17 +23,14 @@ namespace RE
 			return ExecuteHandler(a_handler, a_parameter);
 		}
 
-
 		// members
 		std::uint32_t pad0C;  // 0C
 	};
 	//static_assert(sizeof(IHandlerFunctor) == 0x10);
 
-
 	class Actor;
 	using AnimHandler = IHandlerFunctor<Actor, BSFixedString>;
 	static_assert(sizeof(AnimHandler) == 0x10);
-
 
 	template <class T, class Key>
 	class HandlerCreationMissPolicy
@@ -44,15 +40,13 @@ namespace RE
 	};
 	//static_assert(sizeof(HandlerCreationMissPolicy) == 0x8);
 
-
 	template <class T, class Key>
 	class NoInitializationPolicy
 	{
 	public:
-		virtual ~NoInitializationPolicy();	// 00
+		virtual ~NoInitializationPolicy();  // 00
 	};
 	//static_assert(sizeof(NoInitializationPolicy) == 0x8);
-
 
 	class HandlerDictionary :
 		public BSTObjectDictionary<

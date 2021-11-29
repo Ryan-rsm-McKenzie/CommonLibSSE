@@ -19,8 +19,8 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-						 a_number :
-						 a_number + a_multiple - remainder;
+                       a_number :
+                       a_number + a_multiple - remainder;
 		}
 
 		[[nodiscard]] constexpr std::size_t rounddown(std::size_t a_number, std::size_t a_multiple) noexcept
@@ -31,8 +31,8 @@ namespace SKSE
 
 			const auto remainder = a_number % a_multiple;
 			return remainder == 0 ?
-						 a_number :
-						 a_number - remainder;
+                       a_number :
+                       a_number - remainder;
 		}
 	}
 
@@ -150,7 +150,7 @@ namespace SKSE
 		template <std::size_t N, class F>
 		std::uintptr_t write_branch(std::uintptr_t a_src, F a_dst)
 		{
-			return write_branch<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
+			return write_branch<N>(a_src, stl::unrestricted_cast<std::uintptr_t>(a_dst));
 		}
 
 		template <std::size_t N>
@@ -175,7 +175,7 @@ namespace SKSE
 		template <std::size_t N, class F>
 		std::uintptr_t write_call(std::uintptr_t a_src, F a_dst)
 		{
-			return write_call<N>(a_src, unrestricted_cast<std::uintptr_t>(a_dst));
+			return write_call<N>(a_src, stl::unrestricted_cast<std::uintptr_t>(a_dst));
 		}
 
 	private:
@@ -200,7 +200,7 @@ namespace SKSE
 			{
 				// jmp/call [rip + imm32]
 				std::uint8_t opcode;  // 0 - 0xE9/0xE8
-				std::int32_t disp;	  // 1
+				std::int32_t disp;    // 1
 			};
 			static_assert(offsetof(SrcAssembly, opcode) == 0x0);
 			static_assert(offsetof(SrcAssembly, disp) == 0x1);
@@ -211,10 +211,10 @@ namespace SKSE
 			struct TrampolineAssembly
 			{
 				// jmp [rip]
-				std::uint8_t  jmp;	  // 0 - 0xFF
+				std::uint8_t  jmp;    // 0 - 0xFF
 				std::uint8_t  modrm;  // 1 - 0x25
-				std::int32_t  disp;	  // 2 - 0x00000000
-				std::uint64_t addr;	  // 6 - [rip]
+				std::int32_t  disp;   // 2 - 0x00000000
+				std::uint64_t addr;   // 6 - [rip]
 			};
 			static_assert(offsetof(TrampolineAssembly, jmp) == 0x0);
 			static_assert(offsetof(TrampolineAssembly, modrm) == 0x1);
@@ -234,14 +234,14 @@ namespace SKSE
 			const auto disp =
 				reinterpret_cast<const std::byte*>(mem) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(SrcAssembly));
-			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
+			if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
 				stl::report_and_fail("displacement is out of range"sv);
 			}
 
 			SrcAssembly assembly;
 			assembly.opcode = a_opcode;
 			assembly.disp = static_cast<std::int32_t>(disp);
-			REL::safe_write(a_src, assembly);
+			REL::safe_write(a_src, &assembly, sizeof(assembly));
 
 			mem->jmp = static_cast<std::uint8_t>(0xFF);
 			mem->modrm = static_cast<std::uint8_t>(0x25);
@@ -256,8 +256,8 @@ namespace SKSE
 			{
 				// jmp/call [rip + imm32]
 				std::uint8_t opcode;  // 0 - 0xFF
-				std::uint8_t modrm;	  // 1 - 0x25/0x15
-				std::int32_t disp;	  // 2
+				std::uint8_t modrm;   // 1 - 0x25/0x15
+				std::int32_t disp;    // 2
 			};
 			static_assert(offsetof(Assembly, opcode) == 0x0);
 			static_assert(offsetof(Assembly, modrm) == 0x1);
@@ -276,7 +276,7 @@ namespace SKSE
 			const auto disp =
 				reinterpret_cast<const std::byte*>(mem) -
 				reinterpret_cast<const std::byte*>(a_src + sizeof(Assembly));
-			if (!in_range(disp)) {	// the trampoline should already be in range, so this should never happen
+			if (!in_range(disp)) {  // the trampoline should already be in range, so this should never happen
 				stl::report_and_fail("displacement is out of range"sv);
 			}
 
@@ -284,7 +284,7 @@ namespace SKSE
 			assembly.opcode = static_cast<std::uint8_t>(0xFF);
 			assembly.modrm = a_modrm;
 			assembly.disp = static_cast<std::int32_t>(disp);
-			REL::safe_write(a_src, assembly);
+			REL::safe_write(a_src, &assembly, sizeof(assembly));
 
 			*mem = a_dst;
 		}
@@ -327,7 +327,7 @@ namespace SKSE
 
 		void log_stats() const;
 
-		bool in_range(std::ptrdiff_t a_disp) const
+		[[nodiscard]] bool in_range(std::ptrdiff_t a_disp) const
 		{
 			constexpr auto min = std::numeric_limits<std::int32_t>::min();
 			constexpr auto max = std::numeric_limits<std::int32_t>::max();
@@ -350,10 +350,10 @@ namespace SKSE
 
 		std::map<std::uintptr_t, std::byte*> _5branches;
 		std::map<std::uintptr_t, std::byte*> _6branches;
-		std::string							 _name{ "Default Trampoline"sv };
-		deleter_type						 _deleter;
-		std::byte*							 _data{ nullptr };
-		std::size_t							 _capacity{ 0 };
-		std::size_t							 _size{ 0 };
+		std::string                          _name{ "Default Trampoline"sv };
+		deleter_type                         _deleter;
+		std::byte*                           _data{ nullptr };
+		std::size_t                          _capacity{ 0 };
+		std::size_t                          _size{ 0 };
 	};
 }

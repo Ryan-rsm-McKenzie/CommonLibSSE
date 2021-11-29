@@ -2,7 +2,6 @@
 
 #include "RE/G/GArrayDataBase.h"
 
-
 namespace RE
 {
 	template <class T, class Allocator, class SizePolicy>

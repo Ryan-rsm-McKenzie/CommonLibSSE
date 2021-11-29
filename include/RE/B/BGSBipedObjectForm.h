@@ -2,10 +2,9 @@
 
 #include "RE/B/BaseFormComponent.h"
 
-
 namespace RE
 {
-	struct BIPED_MODEL	// BOD2
+	struct BIPED_MODEL  // BOD2
 	{
 	public:
 		enum class BipedObjectSlot
@@ -30,7 +29,6 @@ namespace RE
 			kFX01 = 1 << 31
 		};
 
-
 		enum class ArmorType
 		{
 			kLightArmor,
@@ -38,47 +36,41 @@ namespace RE
 			kClothing
 		};
 
-
 		// members
-		stl::enumeration<BipedObjectSlot, std::uint32_t> bipedObjectSlots;	// 0
-		stl::enumeration<ArmorType, std::uint32_t>		 armorType;			// 4
+		stl::enumeration<BipedObjectSlot, std::uint32_t> bipedObjectSlots;  // 0
+		stl::enumeration<ArmorType, std::uint32_t>       armorType;         // 4
 	};
 	static_assert(sizeof(BIPED_MODEL) == 0x8);
-
 
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBipedObjectForm;
 
-
 		using ArmorType = BIPED_MODEL::ArmorType;
 		using BipedObjectSlot = BIPED_MODEL::BipedObjectSlot;
 		using FirstPersonFlag = BIPED_MODEL::BipedObjectSlot;
 
-
-		virtual ~BGSBipedObjectForm();	// 00
+		~BGSBipedObjectForm() override;  // 00
 
 		// override (BaseFormComponent)
-		virtual void InitializeDataComponent() override;				// 01
-		virtual void ClearDataComponent() override;						// 02 - { return; }
-		virtual void CopyComponent(BaseFormComponent* a_rhs) override;	// 03
+		void InitializeDataComponent() override;                // 01
+		void ClearDataComponent() override;                     // 02 - { return; }
+		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
-
-		BipedObjectSlot AddSlotToMask(BipedObjectSlot a_slot);
-		ArmorType		GetArmorType() const;
-		BipedObjectSlot GetSlotMask() const;
-		bool			HasPartOf(BipedObjectSlot a_flag) const;
-		bool			IsClothing() const;
-		bool			IsHeavyArmor() const;
-		bool			IsLightArmor() const;
-		bool			IsShield() const;
-		BipedObjectSlot RemoveSlotFromMask(BipedObjectSlot a_slot);
-		void			SetSlotMask(BipedObjectSlot a_mask);
-
+		BipedObjectSlot               AddSlotToMask(BipedObjectSlot a_slot);
+		[[nodiscard]] ArmorType       GetArmorType() const;
+		[[nodiscard]] BipedObjectSlot GetSlotMask() const;
+		[[nodiscard]] bool            HasPartOf(BipedObjectSlot a_flag) const;
+		[[nodiscard]] bool            IsClothing() const;
+		[[nodiscard]] bool            IsHeavyArmor() const;
+		[[nodiscard]] bool            IsLightArmor() const;
+		[[nodiscard]] bool            IsShield() const;
+		BipedObjectSlot               RemoveSlotFromMask(BipedObjectSlot a_slot);
+		void                          SetSlotMask(BipedObjectSlot a_mask);
 
 		// members
-		BIPED_MODEL bipedModelData;	 // 08 - BOD2
+		BIPED_MODEL bipedModelData;  // 08 - BOD2
 	};
 	static_assert(sizeof(BGSBipedObjectForm) == 0x10);
 }

@@ -3,7 +3,6 @@
 #include "RE/N/NiTDefaultAllocator.h"
 #include "RE/N/NiTPointerListBase.h"
 
-
 namespace RE
 {
 	template <class T>

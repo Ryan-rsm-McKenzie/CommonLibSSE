@@ -5,12 +5,10 @@
 #include "RE/G/GNewOverrideBase.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	class GFxResourceLibBase;
 	class GFxResourceReport;
-
 
 	// Resource is an interface for casting to different types of resources.
 	class GFxResource : public GNewOverrideBase<GStatGroups::kGStat_Default_Mem>
@@ -46,7 +44,6 @@ namespace RE
 			kTypeCode_Shift = 8
 		};
 
-
 		// An enumeration listing the attributes of the image resource to use such as bitmap, gradient or font texture etc.
 		enum class ResourceUse
 		{
@@ -60,29 +57,29 @@ namespace RE
 			kTypeCode_Mask = 0xFF
 		};
 
-
 		GFxResource();
-		virtual ~GFxResource();	 // 00
+		virtual ~GFxResource();  // 00
 
 		// add
-		virtual GFxResourceKey	   GetKey();					 // 01
-		virtual std::uint32_t	   GetResourceTypeCode() const;	 // 02
-		virtual GFxResourceReport* GetResourceReport();			 // 03
+		virtual GFxResourceKey              GetKey();                     // 01
+		[[nodiscard]] virtual std::uint32_t GetResourceTypeCode() const;  // 02
+		virtual GFxResourceReport*          GetResourceReport();          // 03
 
-		static std::uint32_t MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse = ResourceUse::kNone);	 // Creates a resource type code which is a combination of ResourceType and ResourceUse.
+		static std::uint32_t MakeTypeCode(ResourceType a_resourceType, ResourceUse a_resourceUse = ResourceUse::kNone);  // Creates a resource type code which is a combination of ResourceType and ResourceUse.
 
-		void		 AddRef();										  // Thread-safe reference count implementation; increments the reference count.
-		bool		 AddRef_NotZero();								  // Thread-safe reference count implementation ; increments a reference count if it is not zero.
-		std::int32_t GetRefCount() const;							  // Thread-Safe reference count implementation; returns the reference count.
-		void		 SetOwnerResourceLib(GFxResourceLibBase* a_lib);  // Assigns owner library for resource.
-		ResourceType GetResourceType() const;						  // Obtains the resource type.
-		ResourceUse	 GetResourceUse() const;						  // Obtains the type of resource use.
+		void                       AddRef();                                        // Thread-safe reference count implementation; increments the reference count.
+		bool                       AddRef_NotZero();                                // Thread-safe reference count implementation ; increments a reference count if it is not zero.
+		void                       Release();                                       // Thread-Safe reference count implementation; release the resources.
+		[[nodiscard]] std::int32_t GetRefCount() const;                             // Thread-Safe reference count implementation; returns the reference count.
+		void                       SetOwnerResourceLib(GFxResourceLibBase* a_lib);  // Assigns owner library for resource.
+		[[nodiscard]] ResourceType GetResourceType() const;                         // Obtains the resource type.
+		[[nodiscard]] ResourceUse  GetResourceUse() const;                          // Obtains the type of resource use.
 
 	protected:
 		// members
-		GAtomicInt<std::int32_t> _refCount;	 // 10
-		std::uint32_t			 _pad14;	 // 14
-		GFxResourceLibBase*		 _lib;		 // 18
+		GAtomicInt<std::int32_t> _refCount;  // 08
+		std::uint32_t            _pad0C;     // 0C
+		GFxResourceLibBase*      _lib;       // 10
 	};
 	static_assert(sizeof(GFxResource) == 0x18);
 }

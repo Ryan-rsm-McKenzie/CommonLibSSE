@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	struct BottomBar

@@ -5,17 +5,15 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
-
 namespace RE
 {
 	class TESWordOfPower :
-		public TESForm,		// 00
-		public TESFullName	// 20
+		public TESForm,     // 00
+		public TESFullName  // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWordOfPower;
 		inline static constexpr auto FORMTYPE = FormType::WordOfPower;
-
 
 		struct RecordFlags
 		{
@@ -26,15 +24,13 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESWordOfPower();	// 00
+		~TESWordOfPower() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
-		BSFixedString translation;	// 30 - TNAM
+		BSFixedString translation;  // 30 - TNAM
 	};
 	static_assert(sizeof(TESWordOfPower) == 0x38);
 }

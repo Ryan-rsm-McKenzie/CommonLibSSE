@@ -5,36 +5,32 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/G/GFxValue.h"
 
-
 namespace RE
 {
 	class BSSaveDataEvent;
 	struct BGSSaveLoadManagerEvent;
 
-
 	class UISaveLoadManager :
-		public BSTSingletonSDM<UISaveLoadManager>,	  // 10
-		public BSTEventSink<BSSaveDataEvent>,		  // 00
+		public BSTSingletonSDM<UISaveLoadManager>,    // 10
+		public BSTEventSink<BSSaveDataEvent>,         // 00
 		public BSTEventSink<BGSSaveLoadManagerEvent>  // 08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
-
-		virtual ~UISaveLoadManager();  // 00
+		~UISaveLoadManager() override;  // 00
 
 		// override (BSTEventSink<BSSaveDataEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;	 // 01
+		BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
 
 		// override (BSTEventSink<BGSSaveLoadManagerEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;	 // 01
-
+		BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
 
 		// members
-		void*		  unk18;  // 18
+		void*         unk18;  // 18
 		std::uint64_t unk20;  // 20
 		BSFixedString unk28;  // 28
-		GFxValue	  unk30;  // 30
+		GFxValue      unk30;  // 30
 		BSFixedString unk48;  // 48
 		std::uint64_t unk50;  // 50
 		std::uint64_t unk58;  // 58

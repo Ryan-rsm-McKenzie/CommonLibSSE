@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxResourceID
@@ -15,15 +14,14 @@ namespace RE
 				kGenMask = 0x00030000,
 
 				kSWF = 0,
-				kStatic = 1 << 12,
-				kExport = 1 << 13,
+				kStatic = 1 << 16,
+				kExport = 1 << 17,
 
 				kTypeShift = 18,
 
 				kInvalidID = (1 << kTypeShift) | kSWF
 			};
 		};
-
 
 		struct IDTypes
 		{
@@ -33,10 +31,9 @@ namespace RE
 				kInternalConstant = (0 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
 				kGradientImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
 				kDynFontImage = (2 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic,
-				kFontImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kStatic
+				kFontImage = (1 << IDTypeConstants::kTypeShift) | IDTypeConstants::kExport
 			};
 		};
-
 
 		class HashOp
 		{
@@ -44,21 +41,20 @@ namespace RE
 			UPInt operator()(const GFxResourceID& a_idRef);
 		};
 
-
 		GFxResourceID();
 		explicit GFxResourceID(std::uint32_t a_resID);
 		GFxResourceID(const GFxResourceID& a_rhs);
 
 		GFxResourceID& operator=(const GFxResourceID& a_rhs);
-		bool		   operator==(const GFxResourceID& a_rhs) const;
-		bool		   operator!=(const GFxResourceID& a_rhs) const;
-		bool		   operator==(std::uint32_t a_idVal) const;
-		bool		   operator!=(std::uint32_t a_idVal) const;
+		bool           operator==(const GFxResourceID& a_rhs) const;
+		bool           operator!=(const GFxResourceID& a_rhs) const;
+		bool           operator==(std::uint32_t a_idVal) const;
+		bool           operator!=(std::uint32_t a_idVal) const;
 
-		std::uint32_t	GetIDValue() const;
-		std::uint32_t	GetIDIndex() const;
-		IDTypes::IDType GetIDType() const;
-		GFxResourceID	GenerateNextID();
+		[[nodiscard]] std::uint32_t   GetIDValue() const;
+		[[nodiscard]] std::uint32_t   GetIDIndex() const;
+		[[nodiscard]] IDTypes::IDType GetIDType() const;
+		GFxResourceID                 GenerateNextID();
 
 	protected:
 		// members

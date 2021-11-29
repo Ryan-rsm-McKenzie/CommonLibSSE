@@ -10,7 +10,7 @@ class gfx.utils.Delegate extends Object
 	/**
 	 * Creates a function wrapper for the original function so that it runs in the provided context.
 	 * @parameter obj Context in which to run the function.
-	 * @paramater func Function to run.
+	 * @parameter func Function to run.
 	 * @return A wrapper function that when called will make the appropriate scoped callback.
 	*/
 	public static function create(obj: Object, func: Function): Function

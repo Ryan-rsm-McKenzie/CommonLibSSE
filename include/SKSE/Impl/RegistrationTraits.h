@@ -4,7 +4,6 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESObjectREFR.h"
 
-
 namespace SKSE
 {
 	namespace Impl
@@ -40,7 +39,6 @@ namespace SKSE
 					std::decay_t<T>>>
 		{};
 
-
 		// default
 		template <class T, class = void>
 		class VMArg
@@ -73,7 +71,6 @@ namespace SKSE
 		private:
 			T _arg;
 		};
-
 
 		// forms
 		template <class T>
@@ -117,7 +114,6 @@ namespace SKSE
 			RE::FormID _formID;
 		};
 
-
 		// objects
 		template <class T>
 		class VMArg<
@@ -155,7 +151,6 @@ namespace SKSE
 		private:
 			RE::NiPointer<std::remove_pointer_t<value_type>> _object;
 		};
-
 
 		template <class T>
 		VMArg(T&&) -> VMArg<T>;

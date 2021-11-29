@@ -5,7 +5,6 @@
 #include "RE/B/BSTArray.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraFriendHits : public BSExtraData
@@ -14,15 +13,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraFriendHits;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFriendHits;
 
-
-		virtual ~ExtraFriendHits();	 // 00
+		~ExtraFriendHits() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kFriendHits; }
-
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kFriendHits; }
 
 		// members
-		BSTArray<AITimeStamp> hits;	 // 10
+		BSTArray<AITimeStamp> hits;  // 10
 	};
 	static_assert(sizeof(ExtraFriendHits) == 0x28);
 }

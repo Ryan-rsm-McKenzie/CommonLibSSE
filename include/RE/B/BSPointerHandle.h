@@ -63,7 +63,7 @@ namespace RE
 		}
 
 		[[nodiscard]] explicit operator bool() const noexcept { return has_value(); }
-		[[nodiscard]] bool	   has_value() const noexcept { return _handle != 0; }
+		[[nodiscard]] bool     has_value() const noexcept { return _handle != 0; }
 
 		[[nodiscard]] value_type value() const noexcept { return _handle; }
 
@@ -190,6 +190,16 @@ namespace RE
 	using ActorHandle = BSPointerHandle<Actor>;
 	using ProjectileHandle = BSPointerHandle<Projectile>;
 	using ObjectRefHandle = BSPointerHandle<TESObjectREFR>;
+
+	template <class T>
+	struct BSCRC32<BSPointerHandle<T>>
+	{
+	public:
+		[[nodiscard]] std::uint32_t operator()(const BSPointerHandle<T>& a_handle) const noexcept
+		{
+			return BSCRC32<typename BSPointerHandle<T>::native_handle_type>()(a_handle.native_handle());
+		}
+	};
 
 	template <class T, class Manager>
 	class BSPointerHandleManagerInterface

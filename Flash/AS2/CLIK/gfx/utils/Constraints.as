@@ -106,8 +106,8 @@ class gfx.utils.Constraints
 
 
 	/**
-	 * Get the contraints rules for a given object.
-	 * @param clip A reference to the MovieClip the contraints apply to.
+	 * Get the constraints rules for a given object.
+	 * @param clip A reference to the MovieClip the constraints apply to.
 	 * @returns the constraints rules object for the specified clip
 	 */
 	public function getElement(clip: Object): Object

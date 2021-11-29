@@ -12,25 +12,23 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
 	class TESObjectMISC :
-		public TESBoundObject,			   // 000
-		public TESFullName,				   // 030
-		public TESModelTextureSwap,		   // 040
-		public TESIcon,					   // 078
-		public TESValueForm,			   // 088
-		public TESWeightForm,			   // 098
+		public TESBoundObject,             // 000
+		public TESFullName,                // 030
+		public TESModelTextureSwap,        // 040
+		public TESIcon,                    // 078
+		public TESValueForm,               // 088
+		public TESWeightForm,              // 098
 		public BGSDestructibleObjectForm,  // 0A8
-		public BGSMessageIcon,			   // 0B8
-		public BGSPickupPutdownSounds,	   // 0D0
-		public BGSKeywordForm			   // 0E8
+		public BGSMessageIcon,             // 0B8
+		public BGSPickupPutdownSounds,     // 0D0
+		public BGSKeywordForm              // 0E8
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectMISC;
 		inline static constexpr auto FORMTYPE = FormType::Misc;
-
 
 		struct RecordFlags
 		{
@@ -42,22 +40,21 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESObjectMISC();  // 00
+		~TESObjectMISC() override;  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;				   // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-		virtual void InitItemImpl() override;					   // 13
+		bool Load(TESFile* a_mod) override;                // 06
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
+		void InitItemImpl() override;                      // 13
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		// add
-		virtual void SaveImpl();										 // 53 - { return; }
-		virtual void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID);	 // 54 - { return; }
-		virtual void InitImpl();										 // 55 - { return; }
+		virtual void SaveImpl();                                         // 53 - { return; }
+		virtual void LoadImpl(TESFile* a_mod, std::uint32_t a_chunkID);  // 54 - { return; }
+		virtual void InitImpl();                                         // 55 - { return; }
 	};
 	static_assert(sizeof(TESObjectMISC) == 0x100);
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -12,19 +11,16 @@ namespace RE
 			next{ 0 }
 		{}
 
-
 		void Remove()
 		{
 			prev->next = next;
 			next->prev = prev;
 		}
 
-
-		GListNode<T>* prev;	 // 00
-		GListNode<T>* next;	 // 08
+		GListNode<T>* prev;  // 00
+		GListNode<T>* next;  // 08
 	};
 	static_assert(sizeof(GListNode<void*>) == 0x10);
-
 
 	// circular doubly-linked list
 	// classes must derive from GListNode
@@ -41,8 +37,7 @@ namespace RE
 		using reference = value_type&;
 		using const_reference = const value_type&;
 		using pointer = value_type*;
-		using const_pointer = std::pointer_traits<pointer>::rebind<const value_type>;
-
+		using const_pointer = typename std::pointer_traits<pointer>::template rebind<const value_type>;
 
 		template <class U>
 		struct iterator_traits
@@ -53,7 +48,6 @@ namespace RE
 			using reference = U&;
 			using iterator_category = std::bidirectional_iterator_tag;
 		};
-
 
 		template <class U>
 		class iterator_base : public iterator_traits<U>
@@ -70,22 +64,18 @@ namespace RE
 			using reference = typename Traits::reference;
 			using iterator_category = typename Traits::iterator_category;
 
-
 			iterator_base() :
 				_cur{ 0 }
 			{}
-
 
 			iterator_base(Node* a_node)
 			{
 				_cur = a_node;
 			}
 
-
 			iterator_base(const iterator_base& a_rhs) :
 				_cur(a_rhs._cur)
 			{}
-
 
 			iterator_base(iterator_base&& a_rhs) :
 				_cur(std::move(a_rhs._cur))
@@ -93,12 +83,10 @@ namespace RE
 				a_rhs._cur = 0;
 			}
 
-
 			static void swap(iterator_base& a_lhs, iterator_base& a_rhs)
 			{
 				std::swap(a_lhs._cur, a_rhs._cur);
 			}
-
 
 			iterator_base& operator=(const iterator_base& a_rhs)
 			{
@@ -106,37 +94,31 @@ namespace RE
 				swap(*this, tmp);
 			}
 
-
 			iterator_base& operator=(iterator_base&& a_rhs)
 			{
 				_cur = std::move(a_rhs._cur);
 				a_rhs._cur = 0;
 			}
 
-
 			[[nodiscard]] reference operator*() const
 			{
 				return (reference)*_cur;
 			}
-
 
 			[[nodiscard]] pointer operator->() const
 			{
 				return std::pointer_traits<pointer>::pointer_to(operator*());
 			}
 
-
 			[[nodiscard]] bool operator==(const iterator_base& a_rhs) const
 			{
 				return _cur == a_rhs._cur;
 			}
 
-
 			[[nodiscard]] bool operator!=(const iterator_base& a_rhs) const
 			{
 				return !operator==(a_rhs);
 			}
-
 
 			// prefix
 			iterator_base& operator++()
@@ -144,7 +126,6 @@ namespace RE
 				_cur = _cur->next;
 				return *this;
 			}
-
 
 			// postfix
 			iterator_base operator++(int)
@@ -154,14 +135,12 @@ namespace RE
 				return tmp;
 			}
 
-
 			// prefix
 			iterator_base& operator--()
 			{
 				_cur = _cur->prev;
 				return *this;
 			}
-
 
 			// postifx
 			iterator_base operator--(int)
@@ -175,12 +154,10 @@ namespace RE
 			Node* _cur;
 		};
 
-
 		using iterator = iterator_base<T>;
 		using const_iterator = iterator_base<const T>;
 		using reverse_iterator = std::reverse_iterator<iterator>;
 		using const_reverse_iterator = std::reverse_iterator<const_iterator>;
-
 
 		GList() :
 			_root{}
@@ -188,110 +165,92 @@ namespace RE
 			_root.next = _root.prev = &_root;
 		}
 
-
 		reference front()
 		{
 			return (reference)_root.next;
 		}
 
-
-		const_reference front() const
+		[[nodiscard]] const_reference front() const
 		{
 			return (const_reference)_root.next;
 		}
-
 
 		reference back()
 		{
 			return (reference)_root.prev;
 		}
 
-
-		const_reference back() const
+		[[nodiscard]] const_reference back() const
 		{
 			return (const_reference)_root.prev;
 		}
-
 
 		iterator begin() noexcept
 		{
 			return iterator(_root.next);
 		}
 
-
-		const_iterator begin() const noexcept
+		[[nodiscard]] const_iterator begin() const noexcept
 		{
 			return const_iterator(_root.next);
 		}
 
-
-		const_iterator cbegin() const noexcept
+		[[nodiscard]] const_iterator cbegin() const noexcept
 		{
 			return const_iterator(_root.next);
 		}
-
 
 		iterator end() noexcept
 		{
 			return iterator(&_root);
 		}
 
-
-		const_iterator end() const noexcept
+		[[nodiscard]] const_iterator end() const noexcept
 		{
 			return const_iterator(const_cast<GListNode<value_type>*>(&_root));
 		}
 
-
-		const_iterator cend() const noexcept
+		[[nodiscard]] const_iterator cend() const noexcept
 		{
 			return const_iterator(const_cast<GListNode<value_type>*>(&_root));
 		}
-
 
 		reverse_iterator rbegin() noexcept
 		{
 			return reverse_iterator(_root.prev);
 		}
 
-
-		const_reverse_iterator rbegin() const noexcept
+		[[nodiscard]] const_reverse_iterator rbegin() const noexcept
 		{
 			return const_reverse_iterator(_root.prev);
 		}
 
-
-		const_reverse_iterator crbegin() const noexcept
+		[[nodiscard]] const_reverse_iterator crbegin() const noexcept
 		{
 			return const_reverse_iterator(_root.prev);
 		}
-
 
 		reverse_iterator rend() noexcept
 		{
 			return reverse_iterator(&_root);
 		}
 
-
-		const_reverse_iterator rend() const noexcept
+		[[nodiscard]] const_reverse_iterator rend() const noexcept
 		{
 			return const_reverse_iterator(const_cast<GListNode<value_type>*>(&_root));
 		}
 
-
-		const_reverse_iterator crend() const noexcept
+		[[nodiscard]] const_reverse_iterator crend() const noexcept
 		{
 			return const_reverse_iterator(const_cast<GListNode<value_type>*>(&_root));
 		}
-
 
 		[[nodiscard]] bool empty() const noexcept
 		{
 			return _root.next == &_root;
 		}
 
-
-		size_type size() const noexcept
+		[[nodiscard]] size_type size() const noexcept
 		{
 			size_type size = 0;
 			for (auto it = begin(); it != end(); ++it) {
@@ -300,12 +259,10 @@ namespace RE
 			return size;
 		}
 
-
 		void clear() noexcept
 		{
 			_root.next = _root.prev = &_root;
 		}
-
 
 		iterator insert(const_iterator a_pos, const T& a_value)
 		{
@@ -317,20 +274,17 @@ namespace RE
 			return { node };
 		}
 
-
 		iterator erase(const_iterator a_pos)
 		{
 			a_pos._cur->prev->next = a_pos._cur->next;
 			a_pos._cur->next->prev = a_pos._cur->prev;
 		}
 
-
 		iterator erase(const_iterator a_first, const_iterator a_last)
 		{
 			a_first._cur->prev->next = a_last._cur->next;
 			a_last._cur->next->prev = a_first._cur->prev;
 		}
-
 
 		void push_back(const T& a_value)
 		{
@@ -341,13 +295,11 @@ namespace RE
 			_root.prev = node;
 		}
 
-
 		void pop_back()
 		{
 			_root.prev = _root.prev->prev;
 			_root.prev->next = &_root;
 		}
-
 
 		void push_front(const T& a_value)
 		{
@@ -358,13 +310,11 @@ namespace RE
 			_root.next = node;
 		}
 
-
 		void pop_front()
 		{
 			_root.next = _root.next->next;
 			_root.next->prev = &_root;
 		}
-
 
 		void merge(GList& a_other)
 		{
@@ -372,7 +322,6 @@ namespace RE
 				push_front(a_other.front());
 			}
 		}
-
 
 	protected:
 		// members
