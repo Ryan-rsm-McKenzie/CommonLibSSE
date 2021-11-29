@@ -97,25 +97,25 @@ namespace RE
 		std::uint32_t                  unk24C;                       // 24C
 
 		// add
-		inline bool SetGraphVariableBool(const BSFixedString& a_variableName, const bool& a_out) const 
+		inline bool SetGraphVariableBool(const BSFixedString& a_variableName, const bool a_in) const 
 		{
 			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableBool);
 			REL::Relocation<func_t> func{ REL::ID(62708) };
-			return func(this, a_variableName, a_out);
+			return func(this, a_variableName, a_in);
 		}
 
-		inline bool SetGraphVariableFloat(const BSFixedString& a_variableName, const float& a_out) const
+		inline bool SetGraphVariableFloat(const BSFixedString& a_variableName, const float a_in) const
 		{
 			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableFloat);
 			REL::Relocation<func_t> func{ REL::ID(62709) };
-			return func(this, a_variableName, a_out);
+			return func(this, a_variableName, a_in);
 		}
 
-		inline bool SetGraphVariableInt(const BSFixedString& a_variableName, const std::int32& a_out) const
+		inline bool SetGraphVariableInt(const BSFixedString& a_variableName, const std::int32_t a_in) const
 		{
 			using func_t = decltype(&BShkbAnimationGraph::SetGraphVariableInt);
 			REL::Relocation<func_t> func{ REL::ID(62710) };
-			return func(this, a_variableName, a_out);
+			return func(this, a_variableName, a_in);
 		}
 	};
 	static_assert(sizeof(BShkbAnimationGraph) == 0x250);
