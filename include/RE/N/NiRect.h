@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -14,23 +13,21 @@ namespace RE
 			bottom(a_bottom)
 		{}
 
-
-		T GetWidth() const
+		[[nodiscard]] T GetWidth() const
 		{
 			return right > left ? (right - left) : (left - right);
 		}
 
-
-		T GetHeight() const
+		[[nodiscard]] T GetHeight() const
 		{
 			return top > bottom ? (top - bottom) : (bottom - top);
 		}
 
 	protected:
 		// members
-		T left;	   // 00
+		T left;    // 00
 		T right;   // ??
-		T top;	   // ??
+		T top;     // ??
 		T bottom;  // ??
 	};
 	static_assert(sizeof(NiRect<float>) == 0x10);

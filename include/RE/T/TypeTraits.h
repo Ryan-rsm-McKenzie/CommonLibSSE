@@ -4,12 +4,10 @@
 #include "RE/R/ReferenceArray.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	struct StaticFunctionTag
 	{};
-
 
 	namespace BSScript
 	{
@@ -33,7 +31,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_reference_wrapper_v = is_reference_wrapper<T>::value;
 
-
 		template <class T>
 		struct is_not_reference_wrapper :
 			std::negation<
@@ -42,7 +39,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_not_reference_wrapper_v = is_not_reference_wrapper<T>::value;
-
 
 		template <class T, class = void>
 		struct _unwrapped_type
@@ -70,13 +66,11 @@ namespace RE
 		template <class T>
 		using unwrapped_type_t = typename unwrapped_type<T>::type;
 
-
 		template <TypeInfo::RawType V>
 		struct vm_type_constant :
 			std::integral_constant<
 				TypeInfo::RawType, V>
 		{};
-
 
 		template <class, class = void>
 		struct _vm_type;
@@ -132,7 +126,6 @@ namespace RE
 		template <class T>
 		inline constexpr TypeInfo::RawType vm_type_v = vm_type<T>::value;
 
-
 		template <class T>
 		struct is_static_base :
 			std::is_same<
@@ -143,7 +136,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_static_base_v = is_static_base<T>::value;
 
-
 		template <class T>
 		struct is_static_base_pointer :
 			std::conjunction<
@@ -153,7 +145,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_static_base_pointer_v = is_static_base_pointer<T>::value;
-
 
 		template <class T>
 		struct is_valid_base :
@@ -166,7 +157,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_valid_base_v = is_valid_base<T>::value;
-
 
 		template <class T>
 		struct is_valid_parameter :
@@ -185,7 +175,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_valid_parameter_v = is_valid_parameter<T>::value;
 
-
 		template <class T>
 		struct is_parameter_convertible :
 			std::conjunction<
@@ -203,7 +192,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_parameter_convertible_v = is_parameter_convertible<T>::value;
 
-
 		template <class T>
 		struct is_valid_return :
 			std::conjunction<
@@ -214,7 +202,6 @@ namespace RE
 
 		template <class T>
 		inline constexpr bool is_valid_return_v = is_valid_return<T>::value;
-
 
 		template <class T>
 		struct is_return_convertible :
@@ -227,7 +214,6 @@ namespace RE
 		template <class T>
 		inline constexpr bool is_return_convertible_v = is_return_convertible<T>::value;
 
-
 		template <class R, class Cls, class... Args>
 		struct is_valid_short_sig :
 			std::conjunction<
@@ -238,7 +224,6 @@ namespace RE
 
 		template <class R, class Cls, class... Args>
 		inline constexpr bool is_valid_short_sig_v = is_valid_short_sig<R, Cls, Args...>::value;
-
 
 		template <class Int, class R, class Cls, class... Args>
 		struct is_valid_long_sig :

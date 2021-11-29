@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkpWeldingUtility
@@ -11,7 +10,6 @@ namespace RE
 			kNumAngles = 31
 		};
 
-
 		enum class WeldingType
 		{
 			kAntiClockwise = 0,
@@ -19,7 +17,6 @@ namespace RE
 			kTwoSided = 5,
 			kNone = 6
 		};
-
 
 		enum SectorType
 		{
@@ -30,15 +27,14 @@ namespace RE
 			kAccept1 = 3
 		};
 
-
 		struct SinCosTableEntry
 		{
 		public:
 			// members
 			float cosAccept0;  // 00
 			float sinAccept0;  // 04
-			float cosSnap0;	   // 08
-			float cosSnap1;	   // 0C
+			float cosSnap0;    // 08
+			float cosSnap1;    // 0C
 			float cosAccept1;  // 10
 			float sinAccept1;  // 14
 		};

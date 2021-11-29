@@ -14,27 +14,24 @@
 #include "RE/T/TESValueForm.h"
 #include "RE/T/TESWeightForm.h"
 
-
 namespace RE
 {
-	struct OBJ_BOOK	 // DATA
+	struct OBJ_BOOK  // DATA
 	{
 		enum class Flag
 		{
 			kNone = 0,
 			kAdvancesActorValue = 1 << 0,
 			kCantTake = 1 << 1,
-			kTeachesSpell = 1 << 2,	 // takes priority over skill
+			kTeachesSpell = 1 << 2,  // takes priority over skill
 			kHasBeenRead = 1 << 3
 		};
-
 
 		enum class Type
 		{
 			kBookTome = 0x00,
 			kNoteScroll = static_cast<std::underlying_type_t<Type>>(-1),
 		};
-
 
 		union Teaches
 		{
@@ -43,37 +40,33 @@ namespace RE
 		};
 		static_assert(sizeof(Teaches) == 0x8);
 
-
-		Flag GetSanitizedType() const;
-
+		[[nodiscard]] Flag GetSanitizedType() const;
 
 		// members
-		stl::enumeration<Flag, std::uint8_t> flags;	   // 00
-		stl::enumeration<Type, std::uint8_t> type;	   // 01
-		std::uint16_t						 pad02;	   // 02
-		std::uint32_t						 pad04;	   // 04
-		Teaches								 teaches;  // 08
+		stl::enumeration<Flag, std::uint8_t> flags;    // 00
+		stl::enumeration<Type, std::uint8_t> type;     // 01
+		std::uint16_t                        pad02;    // 02
+		std::uint32_t                        pad04;    // 04
+		Teaches                              teaches;  // 08
 	};
 	static_assert(sizeof(OBJ_BOOK) == 0x10);
 
-
 	class TESObjectBOOK :
-		public TESBoundObject,			   // 00
-		public TESFullName,				   // 30
-		public TESModelTextureSwap,		   // 40
-		public TESIcon,					   // 78
-		public TESValueForm,			   // 88
-		public TESWeightForm,			   // 98
-		public TESDescription,			   // A8
+		public TESBoundObject,             // 00
+		public TESFullName,                // 30
+		public TESModelTextureSwap,        // 40
+		public TESIcon,                    // 78
+		public TESValueForm,               // 88
+		public TESWeightForm,              // 98
+		public TESDescription,             // A8
 		public BGSDestructibleObjectForm,  // B8
-		public BGSMessageIcon,			   // C8
-		public BGSPickupPutdownSounds,	   // E0
-		public BGSKeywordForm			   // F8
+		public BGSMessageIcon,             // C8
+		public BGSPickupPutdownSounds,     // E0
+		public BGSKeywordForm              // F8
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
 		inline static constexpr auto FORMTYPE = FormType::Book;
-
 
 		struct ChangeFlags
 		{
@@ -84,7 +77,6 @@ namespace RE
 			};
 		};
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -94,35 +86,34 @@ namespace RE
 			};
 		};
 
-		virtual ~TESObjectBOOK();  // 00
+		~TESObjectBOOK() override;  // 00
 
 		// override (TESBoundObject)
-		virtual void InitializeData() override;																																   // 04
-		virtual void ClearData() override;																																	   // 05 - { return TESForm::ClearData(); }
-		virtual bool Load(TESFile* a_mod) override;																															   // 06
-		virtual void SaveGame(BGSSaveFormBuffer* a_buf) override;																											   // 0E
-		virtual void LoadGame(BGSLoadFormBuffer* a_buf) override;																											   // 0F
-		virtual void InitItemImpl() override;																																   // 13
-		virtual bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		virtual bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;																					   // 4D
+		void InitializeData() override;                                                                                                                                // 04
+		void ClearData() override;                                                                                                                                     // 05 - { return TESForm::ClearData(); }
+		bool Load(TESFile* a_mod) override;                                                                                                                            // 06
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                              // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
+		void InitItemImpl() override;                                                                                                                                  // 13
+		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
+		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4D
 
 		// override (BGSKeywordForm)
-		virtual BGSKeyword* GetDefaultKeyword() const override;	 // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		bool	   TeachesSkill() const;
-		bool	   TeachesSpell() const;
-		bool	   IsRead() const;
-		bool	   CanBeTaken() const;
-		bool	   IsBookTome() const;
-		bool	   IsNoteScroll() const;
-		ActorValue GetSkill() const;
-		SpellItem* GetSpell();
-
+		[[nodiscard]] bool       TeachesSkill() const;
+		[[nodiscard]] bool       TeachesSpell() const;
+		[[nodiscard]] bool       IsRead() const;
+		[[nodiscard]] bool       CanBeTaken() const;
+		[[nodiscard]] bool       IsBookTome() const;
+		[[nodiscard]] bool       IsNoteScroll() const;
+		[[nodiscard]] ActorValue GetSkill() const;
+		SpellItem*               GetSpell();
 
 		// members
-		OBJ_BOOK	   data;				 // 110 - DATA
-		TESObjectSTAT* inventoryModel;		 // 120 - INAM
-		TESDescription itemCardDescription;	 // 128 - CNAM
+		OBJ_BOOK       data;                 // 110 - DATA
+		TESObjectSTAT* inventoryModel;       // 120 - INAM
+		TESDescription itemCardDescription;  // 128 - CNAM
 	};
 	static_assert(sizeof(TESObjectBOOK) == 0x138);
 }

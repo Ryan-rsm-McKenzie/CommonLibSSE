@@ -4,7 +4,6 @@
 #include "RE/G/GRefCountBaseStatImpl.h"
 #include "RE/G/GRefCountImpl.h"
 
-
 namespace RE
 {
 	// Overrides new/delete operators to use MemoryHeap

@@ -4,14 +4,12 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/T/TypeInfo.h"
 
-
 namespace RE
 {
 	namespace BSScript
 	{
 		class Array;
 		class Object;
-
 
 		class Variable
 		{
@@ -21,19 +19,17 @@ namespace RE
 				Value(void* a_val = nullptr);
 				~Value();
 
-
 				// members
-				std::int32_t			i;
-				std::uint32_t			u;
-				float					f;
-				bool					b;
-				void*					p;
-				BSTSmartPointer<Array>	arr;
+				std::int32_t            i;
+				std::uint32_t           u;
+				float                   f;
+				bool                    b;
+				void*                   p;
+				BSTSmartPointer<Array>  arr;
 				BSTSmartPointer<Object> obj;
-				BSFixedString			str;
+				BSFixedString           str;
 			};
 			static_assert(sizeof(Value) == 0x8);
-
 
 			Variable();
 			Variable(const TypeInfo& a_type);
@@ -51,24 +47,24 @@ namespace RE
 			bool operator<=(const Variable& a_rhs) const;
 			bool operator>=(const Variable& a_rhs) const;
 
-			bool IsArray() const;
-			bool IsBool() const;
-			bool IsFloat() const;
-			bool IsInt() const;
-			bool IsLiteralArray() const;
-			bool IsNoneArray() const;
-			bool IsNoneObject() const;
-			bool IsObject(void) const;
-			bool IsObjectArray() const;
-			bool IsString() const;
+			[[nodiscard]] bool IsArray() const;
+			[[nodiscard]] bool IsBool() const;
+			[[nodiscard]] bool IsFloat() const;
+			[[nodiscard]] bool IsInt() const;
+			[[nodiscard]] bool IsLiteralArray() const;
+			[[nodiscard]] bool IsNoneArray() const;
+			[[nodiscard]] bool IsNoneObject() const;
+			[[nodiscard]] bool IsObject(void) const;
+			[[nodiscard]] bool IsObjectArray() const;
+			[[nodiscard]] bool IsString() const;
 
-			std::int32_t			GetSInt() const;
-			std::uint32_t			GetUInt() const;
-			float					GetFloat() const;
-			bool					GetBool() const;
-			BSTSmartPointer<Array>	GetArray() const;
-			BSTSmartPointer<Object> GetObject() const;
-			std::string_view		GetString() const;
+			[[nodiscard]] std::int32_t            GetSInt() const;
+			[[nodiscard]] std::uint32_t           GetUInt() const;
+			[[nodiscard]] float                   GetFloat() const;
+			[[nodiscard]] bool                    GetBool() const;
+			[[nodiscard]] BSTSmartPointer<Array>  GetArray() const;
+			[[nodiscard]] BSTSmartPointer<Object> GetObject() const;
+			[[nodiscard]] std::string_view        GetString() const;
 
 			void SetNone();
 			void SetSInt(std::int32_t a_val);
@@ -91,10 +87,9 @@ namespace RE
 			void Cleanup();
 			void Assign(const Variable& a_rhs);
 
-
 			// members
 			TypeInfo varType;  // 00
-			Value	 value;	   // 08
+			Value    value;    // 08
 		};
 		static_assert(sizeof(Variable) == 0x10);
 	}

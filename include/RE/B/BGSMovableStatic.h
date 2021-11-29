@@ -5,7 +5,6 @@
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESObjectSTAT.h"
 
-
 namespace RE
 {
 	struct MOVABLE_STATIC_DATA
@@ -17,22 +16,19 @@ namespace RE
 			kOnLocalMap = 1 << 0
 		};
 
-
 		// members
-		stl::enumeration<Flag, std::uint8_t> flags;	 // 0
+		stl::enumeration<Flag, std::uint8_t> flags;  // 0
 	};
 	static_assert(sizeof(MOVABLE_STATIC_DATA) == 0x1);
 
-
 	class BGSMovableStatic :
-		public TESFullName,				   // 00
+		public TESFullName,                // 00
 		public BGSDestructibleObjectForm,  // 10
-		public TESObjectSTAT			   // 20
+		public TESObjectSTAT               // 20
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMovableStatic;
 		inline static constexpr auto FORMTYPE = FormType::MovableStatic;
-
 
 		struct RecordFlags
 		{
@@ -52,21 +48,19 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSMovableStatic();  // 00
+		~BGSMovableStatic() override;  // 00
 
 		// override (TESObjectSTAT)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
-
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
-		BGSSoundDescriptorForm* soundLoop;	// A0 - SNAM
-		MOVABLE_STATIC_DATA		data;		// A8
-		std::uint8_t			padA9;		// A9
-		std::uint16_t			padAA;		// AA
-		std::uint32_t			padAC;		// AC
+		BGSSoundDescriptorForm* soundLoop;  // A0 - SNAM
+		MOVABLE_STATIC_DATA     data;       // A8
+		std::uint8_t            padA9;      // A9
+		std::uint16_t           padAA;      // AA
+		std::uint32_t           padAC;      // AC
 	};
 	static_assert(sizeof(BGSMovableStatic) == 0xB0);
 }

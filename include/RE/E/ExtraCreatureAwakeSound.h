@@ -4,7 +4,6 @@
 #include "RE/B/BSSoundHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class ExtraCreatureAwakeSound : public BSExtraData
@@ -13,12 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraCreatureAwakeSound;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCreatureAwakeSound;
 
-
-		virtual ~ExtraCreatureAwakeSound();	 // 00
+		~ExtraCreatureAwakeSound() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kCreatureAwakeSound; }
-
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kCreatureAwakeSound; }
 
 		// members
 		BSSoundHandle handle;  // 10

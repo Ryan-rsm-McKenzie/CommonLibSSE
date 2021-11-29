@@ -2,20 +2,17 @@
 
 #include "RE/B/BSFixedString.h"
 
-
 namespace RE
 {
 	class TESFile;
 	class TESForm;
 	class TESQuest;
 
-
 	class BGSBaseAlias
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
 		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
-
 
 		enum class FLAGS
 		{
@@ -44,9 +41,8 @@ namespace RE
 			kNoPickpocket = 1 << 21,
 			kDataAlias = 1 << 22,
 			kSceneOptional = 1 << 24,
-			kCreateIn = 1 << 31	 // BGSRefAlias
+			kCreateIn = 1 << 31  // BGSRefAlias
 		};
-
 
 		enum class FILL_TYPE  // BGSRefAlias
 		{
@@ -60,27 +56,25 @@ namespace RE
 			kNearAlias = 7
 		};
 
-
 		virtual ~BGSBaseAlias();  // 00
 
 		// add
-		virtual bool				 Load(TESFile* a_mod) = 0;		 // 01
-		virtual void				 InitItem(TESForm* a_form) = 0;	 // 02
-		virtual const BSFixedString& QType() const = 0;				 // 03
+		virtual bool                               Load(TESFile* a_mod) = 0;       // 01
+		virtual void                               InitItem(TESForm* a_form) = 0;  // 02
+		[[nodiscard]] virtual const BSFixedString& QType() const = 0;              // 03
 
-		const BSFixedString& GetTypeString() const;
-		VMTypeID			 GetVMTypeID() const;
-		bool				 IsQuestObject() const;
-
+		[[nodiscard]] const BSFixedString& GetTypeString() const;
+		[[nodiscard]] VMTypeID             GetVMTypeID() const;
+		[[nodiscard]] bool                 IsQuestObject() const;
 
 		// members
-		BSFixedString							   aliasName;	 // 08 - ALID
-		TESQuest*								   owningQuest;	 // 10
-		std::uint32_t							   aliasID;		 // 18 - ALST/ALLS
-		stl::enumeration<FLAGS, std::uint32_t>	   flags;		 // 1C - FNAM
-		stl::enumeration<FILL_TYPE, std::uint16_t> fillType;	 // 20
-		std::uint16_t							   pad22;		 // 22
-		std::uint32_t							   pad24;		 // 24
+		BSFixedString                              aliasName;    // 08 - ALID
+		TESQuest*                                  owningQuest;  // 10
+		std::uint32_t                              aliasID;      // 18 - ALST/ALLS
+		stl::enumeration<FLAGS, std::uint32_t>     flags;        // 1C - FNAM
+		stl::enumeration<FILL_TYPE, std::uint16_t> fillType;     // 20
+		std::uint16_t                              pad22;        // 22
+		std::uint32_t                              pad24;        // 24
 	};
 	static_assert(sizeof(BGSBaseAlias) == 0x28);
 }

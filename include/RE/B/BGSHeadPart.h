@@ -8,20 +8,18 @@
 #include "RE/T/TESModelTextureSwap.h"
 #include "RE/T/TESModelTri.h"
 
-
 namespace RE
 {
 	class BGSHeadPart :
-		public TESForm,				// 000
-		public TESFullName,			// 020
-		public TESModelTextureSwap	// 030
+		public TESForm,             // 000
+		public TESFullName,         // 020
+		public TESModelTextureSwap  // 030
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSHeadPart;
 		inline static constexpr auto FORMTYPE = FormType::HeadPart;
 
-
-		enum class Flag	 // DATA
+		enum class Flag  // DATA
 		{
 			kNone = 0,
 			kPlayable = 1 << 0,
@@ -31,8 +29,7 @@ namespace RE
 			kUseSolidTint = 1 << 4
 		};
 
-
-		enum class HeadPartType	 // PNAM
+		enum class HeadPartType  // PNAM
 		{
 			kMisc = 0x0,
 			kFace = 0x1,
@@ -44,7 +41,6 @@ namespace RE
 
 			kTotal
 		};
-
 
 		struct MorphIndices
 		{
@@ -59,7 +55,6 @@ namespace RE
 		};
 		using MorphIndex = MorphIndices::MorphIndex;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -70,31 +65,29 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSHeadPart();	 // 00
+		~BGSHeadPart() override;  // 00
 
 		// override (TESForm)
-		virtual void		InitializeData() override;					  // 04
-		virtual void		ClearData() override;						  // 05
-		virtual bool		Load(TESFile* a_mod) override;				  // 06
-		virtual void		InitItemImpl() override;					  // 13
-		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
+		void        InitializeData() override;                    // 04
+		void        ClearData() override;                         // 05
+		bool        Load(TESFile* a_mod) override;                // 06
+		void        InitItemImpl() override;                      // 13
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		bool IsExtraPart();
 
-
 		// members
-		stl::enumeration<Flag, std::uint8_t>		  flags;						 // 068 - DATA
-		std::uint8_t								  pad069;						 // 069
-		std::uint16_t								  pad06A;						 // 06A
-		stl::enumeration<HeadPartType, std::uint32_t> type;							 // 06C - PNAM
-		BSTArray<BGSHeadPart*>						  extraParts;					 // 070
-		BGSTextureSet*								  textureSet;					 // 088 - TNAM
-		TESModelTri									  morphs[MorphIndices::kTotal];	 // 090
-		BGSColorForm*								  color;						 // 108 - CNAM
-		BGSListForm*								  validRaces;					 // 110 - RNAM
-		BSFixedString								  formEditorID;					 // 118 - EDID
+		stl::enumeration<Flag, std::uint8_t>          flags;                         // 068 - DATA
+		std::uint8_t                                  pad069;                        // 069
+		std::uint16_t                                 pad06A;                        // 06A
+		stl::enumeration<HeadPartType, std::uint32_t> type;                          // 06C - PNAM
+		BSTArray<BGSHeadPart*>                        extraParts;                    // 070
+		BGSTextureSet*                                textureSet;                    // 088 - TNAM
+		TESModelTri                                   morphs[MorphIndices::kTotal];  // 090
+		BGSColorForm*                                 color;                         // 108 - CNAM
+		BGSListForm*                                  validRaces;                    // 110 - RNAM
+		BSFixedString                                 formEditorID;                  // 118 - EDID
 	};
 	static_assert(sizeof(BGSHeadPart) == 0x120);
 }

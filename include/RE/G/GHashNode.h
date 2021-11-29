@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class C, class U, class Hash>
@@ -10,30 +9,25 @@ namespace RE
 		using FirstType = C;
 		using SecondType = U;
 
-
 		struct NodeRef
 		{
-			const C* first;	  // 00
+			const C* first;   // 00
 			const U* second;  // 08
-
 
 			NodeRef(const C& a_first, const U& a_second) :
 				first(&a_first),
 				second(&a_second)
 			{}
 
-
 			NodeRef(const NodeRef& a_src) :
 				first(a_src.first),
 				second(a_src.second)
 			{}
 
-
-			inline UPInt GetHash() const
+			[[nodiscard]] inline UPInt GetHash() const
 			{
 				return Hash()(*first);
 			}
-
 
 			operator const C&() const
 			{
@@ -41,7 +35,6 @@ namespace RE
 			}
 		};
 		static_assert(sizeof(NodeRef) == 0x10);
-
 
 		struct NodeHashF
 		{
@@ -53,7 +46,6 @@ namespace RE
 		};
 		static_assert(sizeof(NodeHashF) == 0x1);
 
-
 		struct NodeAltHashF
 		{
 			template <class K>
@@ -64,18 +56,15 @@ namespace RE
 		};
 		static_assert(sizeof(NodeAltHashF) == 0x1);
 
-
 		GHashNode(const GHashNode& a_src) :
 			first(a_src.first),
 			second(a_src.second)
 		{}
 
-
 		GHashNode(const NodeRef& a_src) :
 			first(*a_src.first),
 			second(*a_src.second)
 		{}
-
 
 		void operator=(const NodeRef& a_src)
 		{
@@ -83,13 +72,11 @@ namespace RE
 			second = *a_src.second;
 		}
 
-
 		template <class K>
 		bool operator==(const K& a_src) const
 		{
 			return (first == a_src);
 		}
-
 
 		template <class K>
 		static UPInt CalcHash(const K& a_data)
@@ -97,12 +84,10 @@ namespace RE
 			return Hash()(a_data);
 		}
 
-
-		inline UPInt GetHash() const
+		[[nodiscard]] inline UPInt GetHash() const
 		{
 			return Hash()(first);
 		}
-
 
 		// members
 		C first;   // 00

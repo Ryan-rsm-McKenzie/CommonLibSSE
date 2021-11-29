@@ -3,11 +3,9 @@
 #include "RE/B/BSExtraData.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class SeenData;
-
 
 	class ExtraSeenData : public BSExtraData
 	{
@@ -15,15 +13,13 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSeenData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSeenData;
 
-
-		virtual ~ExtraSeenData();  // 00
+		~ExtraSeenData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kSeenData; }
-
+		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kSeenData; }
 
 		// members
-		SeenData* seenData;	 // 10
+		SeenData* seenData;  // 10
 	};
 	static_assert(sizeof(ExtraSeenData) == 0x18);
 }

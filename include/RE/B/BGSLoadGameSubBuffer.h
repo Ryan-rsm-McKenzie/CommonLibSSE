@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	struct BGSSaveLoadBuffer
@@ -10,7 +9,6 @@ namespace RE
 		char* buffer;  // 00
 	};
 	static_assert(sizeof(BGSSaveLoadBuffer) == 0x8);
-
 
 	struct BGSLoadGameSubBuffer
 	{

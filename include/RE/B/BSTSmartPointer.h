@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -11,7 +10,6 @@ namespace RE
 			a_ptr->IncRef();
 		}
 
-
 		static void Release(T* a_ptr)
 		{
 			if (a_ptr->DecRef() == 0) {
@@ -20,24 +18,19 @@ namespace RE
 		}
 	};
 
-
 	template <class T>
 	struct BSTSmartPointerAutoPtr
 	{
-		template <class T>
 		constexpr static void Acquire(T* a_ptr)
 		{
 			return;
 		}
 
-
-		template <class T>
 		static void Release(T* a_ptr)
 		{
 			delete a_ptr;
 		}
 	};
-
 
 	template <class T, template <class> class RefManager = BSTSmartPointerIntrusiveRefCount>
 	class BSTSmartPointer
@@ -234,7 +227,7 @@ namespace RE
 		}
 
 		// members
-		element_type* _ptr;	 // 0
+		element_type* _ptr;  // 0
 	};
 	static_assert(sizeof(BSTSmartPointer<void*>) == 0x8);
 
@@ -283,12 +276,10 @@ namespace RE
 	template <class T>
 	BSTSmartPointer(T*) -> BSTSmartPointer<T, BSTSmartPointerIntrusiveRefCount>;
 
-
 	template <class T>
 	using BSTAutoPointer = BSTSmartPointer<T, BSTSmartPointerAutoPtr>;
 	static_assert(sizeof(BSTAutoPointer<void*>) == 0x8);
 }
-
 
 #define BSSmartPointer(className) \
 	class className;              \

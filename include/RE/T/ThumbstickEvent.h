@@ -2,14 +2,12 @@
 
 #include "RE/I/IDEvent.h"
 
-
 namespace RE
 {
 	class ThumbstickEvent : public IDEvent
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ThumbstickEvent;
-
 
 		struct InputTypes
 		{
@@ -21,10 +19,8 @@ namespace RE
 		};
 		using InputType = InputTypes::InputType;
 
-
-		bool IsLeft() const;
-		bool IsRight() const;
-
+		[[nodiscard]] bool IsLeft() const;
+		[[nodiscard]] bool IsRight() const;
 
 		// members
 		float xValue;  // 28

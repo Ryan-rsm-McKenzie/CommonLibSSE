@@ -5,18 +5,16 @@
 #include "RE/T/TESObjectMISC.h"
 #include "RE/T/TESQualityForm.h"
 
-
 namespace RE
 {
 	class BGSApparatus :
-		public TESObjectMISC,	// 000
-		public TESQualityForm,	// 100
-		public TESDescription	// 110
+		public TESObjectMISC,   // 000
+		public TESQualityForm,  // 100
+		public TESDescription   // 110
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSApparatus;
 		inline static constexpr auto FORMTYPE = FormType::Apparatus;
-
 
 		struct RecordFlags
 		{
@@ -27,11 +25,10 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSApparatus();  // 00
+		~BGSApparatus() override;  // 00
 
 		// override (TESObjectMISC)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
+		bool Load(TESFile* a_mod) override;  // 06
 	};
 	static_assert(sizeof(BGSApparatus) == 0x120);
 }

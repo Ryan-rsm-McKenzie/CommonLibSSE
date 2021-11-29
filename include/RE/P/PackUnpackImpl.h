@@ -9,7 +9,6 @@
 
 // DO NOT INCLUDE EXCEPT IN MEGA HEADER!!!
 
-
 namespace RE
 {
 	namespace BSScript
@@ -40,14 +39,14 @@ namespace RE
 			}
 
 			BSTSmartPointer<Array> array;
-			TypeInfo			   typeInfo(GetRawType<typename U::value_type>());
+			TypeInfo               typeInfo(GetRawType<typename U::value_type>());
 			if (!vm->CreateArray(typeInfo, static_cast<std::uint32_t>(a_src.size()), array) || !array) {
 				assert(false);
 				return;
 			}
 
-			auto		  it = a_src.begin();
-			auto		  end = a_src.end();
+			auto          it = a_src.begin();
+			auto          end = a_src.end();
 			std::uint32_t i = 0;
 			while (it != end) {
 				if constexpr (std::is_same_v<U, std::vector<bool>>) {
@@ -60,7 +59,6 @@ namespace RE
 
 			a_dst->SetArray(std::move(array));
 		}
-
 
 		// T requires:
 		//	* default constructible
@@ -77,7 +75,11 @@ namespace RE
 			assert(a_src);
 
 			std::remove_const_t<T> container;
-			auto				   array = a_src->GetArray();
+			if (a_src->IsNoneObject()) {
+				return container;
+			}
+
+			auto array = a_src->GetArray();
 			if (!array) {
 				assert(false);
 				return container;

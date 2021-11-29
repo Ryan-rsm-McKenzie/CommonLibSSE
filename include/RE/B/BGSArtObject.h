@@ -4,17 +4,15 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESModelTextureSwap.h"
 
-
 namespace RE
 {
 	class BGSArtObject :
-		public TESBoundObject,		// 00
-		public TESModelTextureSwap	// 30
+		public TESBoundObject,      // 00
+		public TESModelTextureSwap  // 30
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSArtObject;
 		inline static constexpr auto FORMTYPE = FormType::ArtObject;
-
 
 		enum class ArtType
 		{
@@ -22,7 +20,6 @@ namespace RE
 			kMagicHitEffect = 1,
 			kMagicEnchantEffect = 2
 		};
-
 
 		struct RecordFlags
 		{
@@ -33,8 +30,7 @@ namespace RE
 			};
 		};
 
-
-		struct Data	 // DNAM
+		struct Data  // DNAM
 		{
 		public:
 			// members
@@ -42,16 +38,14 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x4);
 
-
-		virtual ~BGSArtObject();  // 00
+		~BGSArtObject() override;  // 00
 
 		// override (TESBoundObject)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
-
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
-		Data		  data;	  // 68 - DNAM
+		Data          data;   // 68 - DNAM
 		std::uint32_t pad6C;  // 6C
 	};
 	static_assert(sizeof(BGSArtObject) == 0x70);

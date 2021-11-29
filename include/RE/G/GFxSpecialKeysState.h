@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GFxSpecialKeysState
@@ -18,7 +17,6 @@ namespace RE
 			kInitializedBit = 1 << 7,
 			kInitializedMask = 0xFF
 		};
-
 
 		std::uint8_t states;  // 0
 	};

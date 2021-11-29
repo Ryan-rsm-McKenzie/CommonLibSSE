@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSAssociationType : public TESForm
@@ -13,13 +12,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSAssociationType;
 		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
-
 		enum class FLAGS  // DATA
 		{
 			kNone = 0,
 			kFamily = 1 << 0
 		};
-
 
 		struct RecordFlags
 		{
@@ -29,7 +26,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Members
 		{
@@ -42,7 +38,6 @@ namespace RE
 			};
 		};
 
-
 		struct Sexes
 		{
 			enum
@@ -54,18 +49,16 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSAssociationType();	// 00
+		~BGSAssociationType() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
-		BSFixedString						   associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
-		stl::enumeration<FLAGS, std::uint32_t> flags;											   // 40 - DATA
-		std::uint32_t						   pad44;											   // 44
+		BSFixedString                          associationLabels[Members::kTotal][Sexes::kTotal];  // 20 - MPRT - FCHT
+		stl::enumeration<FLAGS, std::uint32_t> flags;                                              // 40 - DATA
+		std::uint32_t                          pad44;                                              // 44
 	};
 	static_assert(sizeof(BGSAssociationType) == 0x48);
 }

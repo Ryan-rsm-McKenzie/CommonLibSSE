@@ -1,11 +1,9 @@
 #pragma once
 
-
 namespace RE
 {
 	using hkQuadReal = __m128;
 	static_assert(sizeof(hkQuadReal) == 0x10);
-
 
 	class hkVector4Comparison
 	{
@@ -33,7 +31,6 @@ namespace RE
 			kYZW = 14,
 			kXYZW = 15
 		};
-
 
 		// members
 		hkQuadReal mask;  // 00

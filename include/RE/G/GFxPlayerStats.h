@@ -2,7 +2,6 @@
 
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	struct GFxStatMovieData
@@ -28,7 +27,6 @@ namespace RE
 			kGFxStatMD_Bind_Tks
 		};
 	};
-
 
 	struct GFxStatMovieViews
 	{
@@ -61,7 +59,6 @@ namespace RE
 		};
 	};
 
-
 	struct GFxStatIMEs
 	{
 		enum GFxStatIME : std::uint32_t
@@ -72,7 +69,6 @@ namespace RE
 			kGFxStatIME_Mem
 		};
 	};
-
 
 	struct GFxStatFontCaches
 	{

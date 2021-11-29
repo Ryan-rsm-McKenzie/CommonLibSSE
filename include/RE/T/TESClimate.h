@@ -7,7 +7,6 @@
 #include "RE/T/TESTexture.h"
 #include "RE/W/WeatherType.h"
 
-
 namespace RE
 {
 	class TESClimate : public TESForm
@@ -15,7 +14,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_TESClimate;
 		inline static constexpr auto FORMTYPE = FormType::Climate;
-
 
 		struct SkyObjects
 		{
@@ -29,7 +27,6 @@ namespace RE
 		};
 		using SkyObject = SkyObjects::SkyObject;
 
-
 		struct RecordFlags
 		{
 			enum RecordFlag : std::uint32_t
@@ -38,7 +35,6 @@ namespace RE
 				kIgnored = 1 << 12
 			};
 		};
-
 
 		struct Timing
 		{
@@ -52,50 +48,44 @@ namespace RE
 				kSecunda = 1 << 7
 			};
 
-
 			struct Interval
 			{
 			public:
-				std::tm ConvertInterval(std::uint8_t a_time) const;
-				std::tm GetBeginTime() const;
-				std::tm GetEndTime() const;
-
+				[[nodiscard]] std::tm ConvertInterval(std::uint8_t a_time) const;
+				[[nodiscard]] std::tm GetBeginTime() const;
+				[[nodiscard]] std::tm GetEndTime() const;
 
 				// members
-				std::uint8_t begin;	 // 0
-				std::uint8_t end;	 // 1
+				std::uint8_t begin;  // 0
+				std::uint8_t end;    // 1
 			};
 			static_assert(sizeof(Interval) == 0x2);
 
-
-			bool		 IncludesMasser() const;
-			bool		 IncludesSecunda() const;
-			std::uint8_t GetPhaseLength() const;
-
+			[[nodiscard]] bool         IncludesMasser() const;
+			[[nodiscard]] bool         IncludesSecunda() const;
+			[[nodiscard]] std::uint8_t GetPhaseLength() const;
 
 			// members
-			Interval										sunrise;		  // 0
-			Interval										sunset;			  // 2
-			std::uint8_t									volatility;		  // 4
+			Interval                                        sunrise;          // 0
+			Interval                                        sunset;           // 2
+			std::uint8_t                                    volatility;       // 4
 			stl::enumeration<MoonPhaseLength, std::uint8_t> moonPhaseLength;  // 5
-			std::uint8_t									unk6;			  // 6
-			std::uint8_t									unk7;			  // 7
+			std::uint8_t                                    unk6;             // 6
+			std::uint8_t                                    unk7;             // 7
 		};
 		static_assert(sizeof(Timing) == 0x8);
 
-
-		virtual ~TESClimate();	// 00
+		~TESClimate() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// members
-		TESModel				   nightSky;						// 20
-		BSSimpleList<WeatherType*> weatherList;						// 48 - WLST
-		TESTexture				   skyObjects[SkyObjects::kTotal];	// 58 - FNAM - GNAM
-		Timing					   timing;							// 78 - TNAM
+		TESModel                   nightSky;                        // 20
+		BSSimpleList<WeatherType*> weatherList;                     // 48 - WLST
+		TESTexture                 skyObjects[SkyObjects::kTotal];  // 58 - FNAM - GNAM
+		Timing                     timing;                          // 78 - TNAM
 	};
 	static_assert(sizeof(TESClimate) == 0x80);
 }

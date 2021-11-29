@@ -4,20 +4,17 @@
 #include "RE/B/BSTList.h"
 #include "RE/E/ExtraDataTypes.h"
 
-
 namespace RE
 {
 	class TESTopicInfo;
 
-
 	struct SayOnceTopicInfos
 	{
-		TESTopicInfo* info;		  // 00
+		TESTopicInfo* info;       // 00
 		std::int32_t  dateStamp;  // 08
-		float		  hourStamp;  // 0C
+		float         hourStamp;  // 0C
 	};
 	static_assert(sizeof(SayOnceTopicInfos) == 0x10);
-
 
 	class ExtraSayTopicInfoOnceADay : public BSExtraData
 	{
@@ -25,12 +22,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSayTopicInfoOnceADay;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSayTopicInfoOnceADay;
 
-
 		virtual ~ExtraSayTopicInfoOnceADay();  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;	 // 01 - { return kSayTopicInfoOnceADay; }
-
+		virtual ExtraDataType GetType() const override;  // 01 - { return kSayTopicInfoOnceADay; }
 
 		// members
 		BSSimpleList<SayOnceTopicInfos*>* saidOnceTopicInfos;  // 10

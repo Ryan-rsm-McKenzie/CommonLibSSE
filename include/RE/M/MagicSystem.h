@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	namespace MagicSystem
@@ -18,7 +17,6 @@ namespace RE
 			kShoutWhileRecovering = 8
 		};
 
-
 		enum class CastingSource
 		{
 			kLeftHand = 0,
@@ -27,7 +25,6 @@ namespace RE
 			kInstant = 3
 		};
 
-
 		enum class CastingType
 		{
 			kConstantEffect = 0,
@@ -35,7 +32,6 @@ namespace RE
 			kConcentration = 2,
 			kScroll = 3
 		};
-
 
 		enum class Delivery
 		{
@@ -46,7 +42,6 @@ namespace RE
 			kTargetLocation = 4
 		};
 
-
 		enum class SoundID
 		{
 			kDrawSheatheLPM = 0,
@@ -56,7 +51,6 @@ namespace RE
 			kCastLoop = 4,
 			kHit = 5
 		};
-
 
 		enum class SpellType
 		{
@@ -69,10 +63,10 @@ namespace RE
 			kEnchantment = 6,
 
 			kPotion = 7,
-			kAlchemy = kPotion,
+			kAlchemy = static_cast<std::underlying_type_t<SpellType>>(kPotion),
 
 			kWortCraft = 8,
-			kIngredient = kWortCraft,
+			kIngredient = static_cast<std::underlying_type_t<SpellType>>(kWortCraft),
 
 			kLeveledSpell = 9,
 			kAddiction = 10,
@@ -80,7 +74,6 @@ namespace RE
 			kStaffEnchantment = 12,
 			kScroll = 13
 		};
-
 
 		enum class WardState
 		{

@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSOutfit : public TESForm
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSOutfit;
 		inline static constexpr auto FORMTYPE = FormType::Outfit;
-
 
 		struct RecordFlags
 		{
@@ -23,17 +21,15 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSOutfit();  // 00
+		~BGSOutfit() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;			 // 05
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
-
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
-		BSTArray<TESForm*> outfitItems;	 // 20 - INAM
+		BSTArray<TESForm*> outfitItems;  // 20 - INAM
 	};
 	static_assert(sizeof(BGSOutfit) == 0x38);
 }

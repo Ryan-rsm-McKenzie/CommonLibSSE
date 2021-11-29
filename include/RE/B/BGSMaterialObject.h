@@ -7,18 +7,16 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESModel.h"
 
-
 namespace RE
 {
 	class BGSMaterialObject :
-		public TESForm,			 // 00
-		public TESModel,		 // 20
-		public BSMaterialObject	 // 48
+		public TESForm,          // 00
+		public TESModel,         // 20
+		public BSMaterialObject  // 48
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMaterialObject;
 		inline static constexpr auto FORMTYPE = FormType::MaterialObject;
-
 
 		struct RecordFlags
 		{
@@ -29,25 +27,22 @@ namespace RE
 			};
 		};
 
-
 		struct FILE_DATA
 		{
-			char*		  buffer;	   // 00
+			char*         buffer;      // 00
 			std::uint32_t bufferSize;  // 08
-			std::uint32_t pad0C;	   // 0C
+			std::uint32_t pad0C;       // 0C
 		};
 		static_assert(sizeof(FILE_DATA) == 0x10);
 
-
-		virtual ~BGSMaterialObject();  // 00
+		~BGSMaterialObject() override;  // 00
 
 		// override (TESForm)
-		virtual void ClearData() override;			 // 05
-		virtual bool Load(TESFile* a_mod) override;	 // 06
+		void ClearData() override;           // 05
+		bool Load(TESFile* a_mod) override;  // 06
 
 		// override (BSMaterialObject)
-		virtual void EnsureLoaded() override;  // 01
-
+		void EnsureLoaded() override;  // 01
 
 		// members
 		BSTArray<FILE_DATA> fileData;  // A0 - DNAM

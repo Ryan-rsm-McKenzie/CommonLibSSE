@@ -10,7 +10,6 @@
 #include "RE/V/Variable.h"
 #include "RE/V/VirtualMachine.h"
 
-
 namespace RE
 {
 	namespace BSScript
@@ -26,7 +25,6 @@ namespace RE
 					std::get<I>(std::forward<Tuple>(a_tuple))...);
 			}
 
-
 			template <class F, class Tuple, class... Args>
 			inline constexpr decltype(auto) CallBack(F&& a_func, Tuple&& a_tuple, Args&&... a_args)
 			{
@@ -37,14 +35,12 @@ namespace RE
 					std::forward<Args>(a_args)...);
 			}
 
-
 			template <class... Args, std::size_t... I>
 			std::tuple<Args...> MakeTupleImpl(const StackFrame& a_frame, std::uint32_t a_page, std::index_sequence<I...>)
 			{
 				return std::forward_as_tuple(
 					a_frame.GetStackFrameVariable(I, a_page).Unpack<Args>()...);
 			}
-
 
 			// tuple element construction order isn't guaranteed, so we need to wrap it
 			template <class... Args>
@@ -54,7 +50,6 @@ namespace RE
 			}
 		}
 
-
 		template <bool IS_LONG, class F, class R, class Base, class... Args>
 		class NativeFunction : public NF_util::NativeFunctionBase
 		{
@@ -63,11 +58,9 @@ namespace RE
 			using base_type = Base;
 			using function_type = F;
 
-
 			NativeFunction() = delete;
 			NativeFunction(const NativeFunction&) = delete;
 			NativeFunction(NativeFunction&&) = delete;
-
 
 			NativeFunction(std::string_view a_fnName, std::string_view a_className, function_type a_callback) :
 				NF_util::NativeFunctionBase(a_fnName, a_className, is_static_base_v<base_type>, sizeof...(Args)),
@@ -78,17 +71,14 @@ namespace RE
 				_retType = GetRawType<result_type>();
 			}
 
+			~NativeFunction() override = default;  // 00
 
-			virtual ~NativeFunction() = default;  // 00
-
-
-			virtual bool HasStub() const override  // 15
+			bool HasStub() const override  // 15
 			{
 				return static_cast<bool>(_stub);
 			}
 
-
-			virtual bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
+			bool MarshallAndDispatch(Variable& a_baseValue, [[maybe_unused]] Internal::VirtualMachine& a_vm, [[maybe_unused]] VMStackID a_stackID, Variable& a_resultValue, const StackFrame& a_frame) const override  // 16
 			{
 				base_type base{};
 				if constexpr (std::negation_v<is_static_base<base_type>>) {
@@ -123,14 +113,12 @@ namespace RE
 
 		protected:
 			// members
-			std::function<function_type> _stub;	 // 50
+			std::function<function_type> _stub;  // 50
 		};
 	}
 
-
 	template <class F, class = void>
 	class NativeFunction;
-
 
 	template <class R, class Cls, class... Args>
 	class NativeFunction<R(Cls, Args...), std::enable_if_t<BSScript::is_valid_short_sig_v<R, Cls, Args...>>> :
@@ -139,7 +127,6 @@ namespace RE
 	private:
 		using super = BSScript::NativeFunction<false, R(Cls, Args...), R, Cls, Args...>;
 
-
 	public:
 		using result_type = typename super::result_type;
 		using base_type = typename super::base_type;
@@ -147,7 +134,6 @@ namespace RE
 
 		using super::super;
 	};
-
 
 	template <class Int, class R, class Cls, class... Args>
 	class NativeFunction<R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig_v<Int, R, Cls, Args...>>> :
@@ -156,7 +142,6 @@ namespace RE
 	private:
 		using super = BSScript::NativeFunction<true, R(BSScript::Internal::VirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
 
-
 	public:
 		using result_type = typename super::result_type;
 		using base_type = typename super::base_type;
@@ -164,7 +149,6 @@ namespace RE
 
 		using super::super;
 	};
-
 
 	template <class Int, class R, class Cls, class... Args>
 	class NativeFunction<R(BSScript::IVirtualMachine*, Int, Cls, Args...), std::enable_if_t<BSScript::is_valid_long_sig_v<Int, R, Cls, Args...>>> :
@@ -173,7 +157,6 @@ namespace RE
 	private:
 		using super = BSScript::NativeFunction<true, R(BSScript::IVirtualMachine*, Int, Cls, Args...), R, Cls, Args...>;
 
-
 	public:
 		using result_type = typename super::result_type;
 		using base_type = typename super::base_type;
@@ -182,10 +165,8 @@ namespace RE
 		using super::super;
 	};
 
-
 	template <class F>
 	NativeFunction(std::string_view, std::string_view, F) -> NativeFunction<std::remove_pointer_t<F>>;
-
 
 	namespace BSScript
 	{

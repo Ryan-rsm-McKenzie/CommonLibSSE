@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class hkStringPtr
@@ -9,15 +8,14 @@ namespace RE
 		// member types
 		using size_type = std::int32_t;
 
-
 		// members access
-		const char* data() const noexcept;
-		const char* c_str() const noexcept;
+		[[nodiscard]] const char* data() const noexcept;
+		[[nodiscard]] const char* c_str() const noexcept;
 
 		// capacity
-		[[nodiscard]] bool empty() const noexcept;
-		size_type		   size() const;
-		size_type		   length() const;
+		[[nodiscard]] bool      empty() const noexcept;
+		[[nodiscard]] size_type size() const;
+		[[nodiscard]] size_type length() const;
 
 	protected:
 		enum
@@ -25,8 +23,7 @@ namespace RE
 			kManaged = 1 << 0
 		};
 
-
-		const char* _data;	// 0
+		const char* _data;  // 0
 	};
 	static_assert(sizeof(hkStringPtr) == 0x8);
 }

@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	enum class ActorValue
@@ -35,7 +34,7 @@ namespace RE
 		kStamina = 26,
 		kHealRate = 27,
 		kMagickaRate = 28,
-		StaminaRate = 29,
+		KStaminaRate = 29,
 		kSpeedMult = 30,
 		kInventoryWeight = 31,
 		kCarryWeight = 32,
@@ -163,7 +162,7 @@ namespace RE
 		kAttackDamageMult = 154,
 		kHealRateMult = 155,
 		kMagickaRateMult = 156,
-		StaminaRateMult = 157,
+		kStaminaRateMult = 157,
 		kWerewolfPerks = 158,
 		kVampirePerks = 159,
 		kGrabActorOffset = 160,
@@ -173,7 +172,6 @@ namespace RE
 
 		kTotal
 	};
-
 
 	struct ACTOR_VALUE_MODIFIERS
 	{

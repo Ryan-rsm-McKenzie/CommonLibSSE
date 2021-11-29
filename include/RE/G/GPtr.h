@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	template <class T>
@@ -197,7 +196,7 @@ namespace RE
 		}
 
 		// members
-		element_type* _ptr;	 // 0
+		element_type* _ptr;  // 0
 	};
 	//static_assert(sizeof(GPtr<void*>) == 0x8);
 
@@ -206,7 +205,7 @@ namespace RE
 	{
 		auto ptr = GPtr<T>{ new T(std::forward<Args>(a_args)...) };
 		if (ptr) {
-			ptr->Release();	 // ensure lifetime ends with smart pointer
+			ptr->Release();  // ensure lifetime ends with smart pointer
 		}
 		return ptr;
 	}

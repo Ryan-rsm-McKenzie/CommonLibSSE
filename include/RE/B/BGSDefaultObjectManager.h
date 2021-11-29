@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	struct DEFAULT_OBJECTS
@@ -381,7 +380,6 @@ namespace RE
 	};
 	using DEFAULT_OBJECT = DEFAULT_OBJECTS::DEFAULT_OBJECT;
 
-
 	enum class DEFAULT_OBJECT_TYPE
 	{
 		kMisc = 0,
@@ -393,33 +391,29 @@ namespace RE
 		kKeywords = 6
 	};
 
-
 	struct DEFAULT_OBJECT_DATA
 	{
 	public:
 		// members
-		const char*											 name;		   // 00
-		stl::enumeration<FormType, std::uint8_t>			 type;		   // 08
-		std::uint8_t										 pad09;		   // 09
-		std::uint16_t										 pad0A;		   // 0A
-		char												 uniqueID[4];  // 0C
-		stl::enumeration<DEFAULT_OBJECT_TYPE, std::uint32_t> doType;	   // 10
-		std::uint32_t										 pad14;		   // 14
+		const char*                                          name;         // 00
+		stl::enumeration<FormType, std::uint8_t>             type;         // 08
+		std::uint8_t                                         pad09;        // 09
+		std::uint16_t                                        pad0A;        // 0A
+		char                                                 uniqueID[4];  // 0C
+		stl::enumeration<DEFAULT_OBJECT_TYPE, std::uint32_t> doType;       // 10
+		std::uint32_t                                        pad14;        // 14
 	};
 	static_assert(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
 
-
 	class BGSDefaultObjectManager :
-		public TESForm,										  // 000
+		public TESForm,                                       // 000
 		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 020
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
 
-
 		using DefaultObject = DEFAULT_OBJECT;
 		inline static constexpr auto FORMTYPE = FormType::DefaultObject;
-
 
 		struct RecordFlags
 		{
@@ -428,42 +422,44 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSDefaultObjectManager();	 // 00
+		~BGSDefaultObjectManager() override;  // 00
 
 		// override (TESForm)
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
-		static BGSDefaultObjectManager* GetSingleton();
+		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
+		{
+			using func_t = decltype(&BGSDefaultObjectManager::GetSingleton);
+			REL::Relocation<func_t> func{ REL::ID(10878) };
+			return func();
+		}
 
-		TESForm* GetObject(DefaultObject a_object);
-		TESForm* GetObject(std::size_t a_idx);
+		[[nodiscard]] TESForm* GetObject(DefaultObject a_object) const noexcept { return GetObject(stl::to_underlying(a_object)); }
 
 		template <class T>
-		T* GetObject(DefaultObject a_object)
+		[[nodiscard]] T* GetObject(DefaultObject a_object) const noexcept
 		{
-			return GetObject<T>(to_underlying(a_object));
+			return GetObject<T>(stl::to_underlying(a_object));
+		}
+
+		[[nodiscard]] TESForm* GetObject(std::size_t a_idx) const noexcept
+		{
+			assert(a_idx < stl::to_underlying(DefaultObject::kTotal));
+			return objectInit[a_idx] ? objects[a_idx] : nullptr;
 		}
 
 		template <class T>
-		T* GetObject(std::size_t a_idx)
+		[[nodiscard]] T* GetObject(std::size_t a_idx) const noexcept
 		{
-			auto obj = GetObject(a_idx);
-			if (obj) {
-				const bool isType = obj->Is(T::FORMTYPE);
-				assert(isType);
-				return isType ? static_cast<T*>(obj) : nullptr;
-			} else {
-				return nullptr;
-			}
+			const auto obj = GetObject(a_idx);
+			return obj ? obj->As<T>() : nullptr;
 		}
-
 
 		// members
-		TESForm*	  objects[DEFAULT_OBJECTS::kTotal];		// 020 - DNAM
-		bool		  objectInit[DEFAULT_OBJECTS::kTotal];	// B80
-		std::uint32_t padCEC;								// CEC
+		TESForm*      objects[DEFAULT_OBJECTS::kTotal];     // 020 - DNAM
+		bool          objectInit[DEFAULT_OBJECTS::kTotal];  // B80
+		std::uint32_t padCEC;                               // CEC
 	};
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
 }

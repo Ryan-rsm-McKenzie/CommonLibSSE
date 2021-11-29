@@ -4,7 +4,6 @@
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
 
-
 namespace RE
 {
 	class ScriptLocals;
@@ -19,7 +18,6 @@ namespace RE
 	struct SCRIPT_LOCAL;
 	struct SCRIPT_PARAMETER;
 	struct SCRIPT_REFERENCED_OBJECT;
-
 
 	enum class SCRIPT_PARAM_TYPE
 	{
@@ -106,138 +104,126 @@ namespace RE
 		kRegion = 0x52
 	};
 
-
 	// basically the unique id for the function, there's ~5000 of these
 	enum class SCRIPT_OUTPUT
 	{
 	};
 
-
 	enum class SCRIPT_ERROR
 	{
 	};
-
 
 	struct SCRIPT_HEADER
 	{
 	public:
 		// members
-		std::uint32_t variableCount;		// 00
-		std::uint32_t refObjectCount;		// 04
-		std::uint32_t dataSize;				// 08
-		std::uint32_t lastID;				// 0C
-		bool		  isQuestScript;		// 10
-		bool		  isMagicEffectScript;	// 11
-		bool		  isCompiled;			// 12
-		std::uint8_t  pad13;				// 13
+		std::uint32_t variableCount;        // 00
+		std::uint32_t refObjectCount;       // 04
+		std::uint32_t dataSize;             // 08
+		std::uint32_t lastID;               // 0C
+		bool          isQuestScript;        // 10
+		bool          isMagicEffectScript;  // 11
+		bool          isCompiled;           // 12
+		std::uint8_t  pad13;                // 13
 	};
 	static_assert(sizeof(SCRIPT_HEADER) == 0x14);
-
 
 	struct SCRIPT_PARAMETER
 	{
 	public:
 		// members
-		const char*										   paramName;  // 00
+		const char*                                        paramName;  // 00
 		stl::enumeration<SCRIPT_PARAM_TYPE, std::uint32_t> paramType;  // 08
-		bool											   optional;   // 0C
-		std::uint8_t									   pad0D;	   // 0D
-		std::uint16_t									   pad0E;	   // 0E
+		bool                                               optional;   // 0C
+		std::uint8_t                                       pad0D;      // 0D
+		std::uint16_t                                      pad0E;      // 0E
 	};
 	static_assert(sizeof(SCRIPT_PARAMETER) == 0x10);
-
 
 	struct SCRIPT_REFERENCED_OBJECT
 	{
 	public:
 		// members
-		BSString	  editorID;	   // 00
-		TESForm*	  form;		   // 10
+		BSString      editorID;    // 00
+		TESForm*      form;        // 10
 		std::uint32_t variableID;  // 18
-		std::uint32_t pad1C;	   // 1C
+		std::uint32_t pad1C;       // 1C
 	};
 	static_assert(sizeof(SCRIPT_REFERENCED_OBJECT) == 0x20);
-
 
 	struct ACTION_OBJECT
 	{
 	public:
 		// members
-		TESForm*	  form;	  // 00
+		TESForm*      form;   // 00
 		std::uint32_t flags;  // 08
 		std::uint32_t pad0C;  // 0C
 	};
 	static_assert(sizeof(ACTION_OBJECT) == 0x10);
 
-
 	struct SCRIPT_LOCAL
 	{
 	public:
 		// members
-		std::uint32_t id;		  // 0
-		float		  value;	  // 4
-		bool		  isInteger;  // 8
-		std::uint8_t  pad9;		  // 9
-		std::uint16_t padA;		  // A
+		std::uint32_t id;         // 0
+		float         value;      // 4
+		bool          isInteger;  // 8
+		std::uint8_t  pad9;       // 9
+		std::uint16_t padA;       // A
 	};
 	static_assert(sizeof(SCRIPT_LOCAL) == 0xC);
-
 
 	struct SCRIPT_EFFECT_DATA
 	{
 	public:
 		// members
-		bool		  scriptEffectStart;   // 00
-		bool		  scriptEffectFinish;  // 01
-		std::uint16_t pad02;			   // 02
-		float		  secondsElapsed;	   // 04
+		bool          scriptEffectStart;   // 00
+		bool          scriptEffectFinish;  // 01
+		std::uint16_t pad02;               // 02
+		float         secondsElapsed;      // 04
 	};
 	static_assert(sizeof(SCRIPT_EFFECT_DATA) == 0x8);
-
 
 	class ScriptLocals
 	{
 	public:
 		// members
-		Script*						  masterScript;		 // 00
-		char						  flags;			 // 08
-		std::uint8_t				  pad09;			 // 09
-		std::uint16_t				  pad0A;			 // 0A
-		std::uint32_t				  pad0C;			 // 0C
-		BSSimpleList<ACTION_OBJECT*>* actionList;		 // 10
-		BSSimpleList<SCRIPT_LOCAL*>*  localList;		 // 18
-		SCRIPT_EFFECT_DATA*			  scriptEffectData;	 // 20
+		Script*                       masterScript;      // 00
+		char                          flags;             // 08
+		std::uint8_t                  pad09;             // 09
+		std::uint16_t                 pad0A;             // 0A
+		std::uint32_t                 pad0C;             // 0C
+		BSSimpleList<ACTION_OBJECT*>* actionList;        // 10
+		BSSimpleList<SCRIPT_LOCAL*>*  localList;         // 18
+		SCRIPT_EFFECT_DATA*           scriptEffectData;  // 20
 	};
 	static_assert(sizeof(ScriptLocals) == 0x28);
-
 
 	struct ScriptVariable
 	{
 	public:
 		// members
-		SCRIPT_LOCAL  data;	  // 00
+		SCRIPT_LOCAL  data;   // 00
 		std::uint32_t pad0C;  // 0C
-		BSString	  name;	  // 10
+		BSString      name;   // 10
 	};
 	static_assert(sizeof(ScriptVariable) == 0x20);
-
 
 	struct SCRIPT_LINE
 	{
 	public:
 		// members
-		std::uint32_t								   lineNumber;		// 000
-		char										   line[512];		// 004
-		std::uint32_t								   size;			// 204
-		std::uint32_t								   offset;			// 208
-		char										   output[512];		// 20C
-		std::uint32_t								   outputSize;		// 40C
-		stl::enumeration<SCRIPT_OUTPUT, std::uint32_t> expression;		// 410
-		std::uint32_t								   refObjectIndex;	// 414
-		stl::enumeration<SCRIPT_ERROR, std::uint32_t>  scriptError;		// 418
+		std::uint32_t                                  lineNumber;      // 000
+		char                                           line[512];       // 004
+		std::uint32_t                                  size;            // 204
+		std::uint32_t                                  offset;          // 208
+		char                                           output[512];     // 20C
+		std::uint32_t                                  outputSize;      // 40C
+		stl::enumeration<SCRIPT_OUTPUT, std::uint32_t> expression;      // 410
+		std::uint32_t                                  refObjectIndex;  // 414
+		stl::enumeration<SCRIPT_ERROR, std::uint32_t>  scriptError;     // 418
 	};
 	static_assert(sizeof(SCRIPT_LINE) == 0x41C);
-
 
 	struct SCRIPT_FUNCTION
 	{
@@ -253,10 +239,8 @@ namespace RE
 			};
 		};
 
-
 		struct StringChunk;
 		struct IntegerChunk;
-
 
 		struct Chunk
 		{
@@ -265,58 +249,50 @@ namespace RE
 			IntegerChunk* AsInteger();
 		};
 
-
 		struct StringChunk : public Chunk
 		{
 		public:
-			std::string GetString() const;
-			Chunk*		GetNext();
-
+			[[nodiscard]] std::string GetString() const;
+			Chunk*                    GetNext();
 
 			// members
 			std::uint16_t length;  // 00
-			char		  str[0];  // 02
+			char          str[0];  // 02
 		};
 		static_assert(sizeof(StringChunk) == 0x2);
-
 
 #pragma pack(push, 1)
 		struct IntegerChunk : public Chunk
 		{
 		public:
-			int	   GetInteger() const;
-			Chunk* GetNext();
-
+			[[nodiscard]] int GetInteger() const;
+			Chunk*            GetNext();
 
 			// members
-			char		 magic;	 // 00
-			std::int32_t value;	 // 01
+			char         magic;  // 00
+			std::int32_t value;  // 01
 		};
 		static_assert(offsetof(IntegerChunk, value) == 0x1);
 		static_assert(sizeof(IntegerChunk) == 0x5);
 #pragma pack(pop)
 
-
 		struct ScriptData
 		{
 		public:
-			Chunk*		  GetChunk();
+			Chunk*        GetChunk();
 			StringChunk*  GetStringChunk();
 			IntegerChunk* GetIntegerChunk();
 
-
 			// members
-			std::uint16_t opcode;	  // 00
+			std::uint16_t opcode;     // 00
 			std::uint16_t chunkSize;  // 02
 			std::uint16_t numParams;  // 04
 		};
 		static_assert(sizeof(ScriptData) == 0x6);
 
-
 		using Execute_t = bool(const SCRIPT_PARAMETER* a_paramInfo, ScriptData* a_scriptData, TESObjectREFR* a_thisObj, TESObjectREFR* a_containingObj, Script* a_scriptObj, ScriptLocals* a_locals, double& a_result, std::uint32_t& a_opcodeOffsetPtr);
 		using Compile_t = bool(std::uint16_t a_numParams, const SCRIPT_PARAMETER* a_paramInfo, SCRIPT_LINE* a_lineBuf, ScriptCompileData* a_scriptBuf);
 		using Condition_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
-
 
 		static SCRIPT_FUNCTION* GetFirstScriptCommand();
 		static SCRIPT_FUNCTION* LocateScriptCommand(const char* a_longName);
@@ -333,25 +309,24 @@ namespace RE
 
 		void SetParameters();
 
-
 		// members
-		const char*		  functionName;			// 00
-		const char*		  shortName;			// 08
-		SCRIPT_OUTPUT	  output;				// 10
-		std::uint32_t	  pad14;				// 14
-		const char*		  helpString;			// 18
-		bool			  referenceFunction;	// 20
-		std::uint8_t	  pad21;				// 21
-		std::uint16_t	  numParams;			// 22
-		std::uint32_t	  pad24;				// 24
-		SCRIPT_PARAMETER* params;				// 28
-		Execute_t*		  executeFunction;		// 30
-		Compile_t*		  compileFunction;		// 38
-		Condition_t*	  conditionFunction;	// 40
-		bool			  editorFilter;			// 48
-		bool			  invalidatesCellList;	// 49
-		std::uint16_t	  pad4A;				// 4A
-		std::uint32_t	  pad4C;				// 4C
+		const char*       functionName;         // 00
+		const char*       shortName;            // 08
+		SCRIPT_OUTPUT     output;               // 10
+		std::uint32_t     pad14;                // 14
+		const char*       helpString;           // 18
+		bool              referenceFunction;    // 20
+		std::uint8_t      pad21;                // 21
+		std::uint16_t     numParams;            // 22
+		std::uint32_t     pad24;                // 24
+		SCRIPT_PARAMETER* params;               // 28
+		Execute_t*        executeFunction;      // 30
+		Compile_t*        compileFunction;      // 38
+		Condition_t*      conditionFunction;    // 40
+		bool              editorFilter;         // 48
+		bool              invalidatesCellList;  // 49
+		std::uint16_t     pad4A;                // 4A
+		std::uint32_t     pad4C;                // 4C
 	};
 	static_assert(sizeof(SCRIPT_FUNCTION) == 0x50);
 }

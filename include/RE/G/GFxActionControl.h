@@ -2,7 +2,6 @@
 
 #include "RE/G/GFxState.h"
 
-
 namespace RE
 {
 	class GFxActionControl : public GFxState
@@ -13,11 +12,10 @@ namespace RE
 			kNone = 0,
 			kVerbose = 1 << 0,
 			kSuppressErrors = 1 << 1,
-			kLogRootFilenames = 1 << 2,	  // Display filename for root movie
+			kLogRootFilenames = 1 << 2,   // Display filename for root movie
 			kLogChildFilenames = 1 << 3,  // Display filename for child movie
-			kLongFilenames = 1 << 4		  // Display full path
+			kLongFilenames = 1 << 4       // Display full path
 		};
-
 
 		inline GFxActionControl(ActionControlFlags a_actionFlags = ActionControlFlags::kLogChildFilenames) :
 			GFxState(StateType::kActionControl),
@@ -25,9 +23,8 @@ namespace RE
 			pad1C(0)
 		{}
 
-
-		constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
-		constexpr void				 SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
+		[[nodiscard]] constexpr ActionControlFlags GetFlags() const { return *actionFlags; }
+		constexpr void                             SetFlags(ActionControlFlags a_actionFlags) { actionFlags = a_actionFlags; }
 
 		constexpr void SetVerboseLogging() noexcept { actionFlags.set(ActionControlFlags::kVerbose); }
 		constexpr void UnsetVerboseLogging() noexcept { actionFlags.reset(ActionControlFlags::kVerbose); }
@@ -47,10 +44,9 @@ namespace RE
 		constexpr void SetLongFilenameLogging() noexcept { actionFlags.set(ActionControlFlags::kLongFilenames); }
 		constexpr void UnsetLongFilenameLogging() noexcept { actionFlags.reset(ActionControlFlags::kLongFilenames); }
 
-
 		// members
 		stl::enumeration<ActionControlFlags, std::uint32_t> actionFlags;  // 18
-		std::uint32_t										pad1C;		  // 1C
+		std::uint32_t                                       pad1C;        // 1C
 	};
 	static_assert(sizeof(GFxActionControl) == 0x20);
 }

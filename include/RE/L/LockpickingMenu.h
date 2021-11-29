@@ -5,50 +5,46 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 
-
 namespace RE
 {
 	class MenuOpenCloseEvent;
 	class TESObjectREFR;
 
-
 	// menuDepth = 3
 	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate
 	// context = kLockpicking
 	class LockpickingMenu :
-		public IMenu,							 // 00
-		public MenuEventHandler,				 // 30
-		public BSTEventSink<MenuOpenCloseEvent>	 // 40
+		public IMenu,                            // 00
+		public MenuEventHandler,                 // 30
+		public BSTEventSink<MenuOpenCloseEvent>  // 40
 	{
 	public:
-		inline static constexpr auto	  RTTI = RTTI_LockpickingMenu;
+		inline static constexpr auto      RTTI = RTTI_LockpickingMenu;
 		constexpr static std::string_view MENU_NAME = "Lockpicking Menu";
 
-
-		virtual ~LockpickingMenu();	 // 00
+		~LockpickingMenu() override;  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
 		// override (MenuEventHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;				// 01
-		virtual bool ProcessThumbstick(ThumbstickEvent* a_event) override;	// 03
-		virtual bool ProcessMouseMove(MouseMoveEvent* a_event) override;	// 04
-		virtual bool ProcessButton(ButtonEvent* a_event) override;			// 05
+		bool CanProcess(InputEvent* a_event) override;              // 01
+		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+		bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		virtual BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		[[nodiscard]] TESObjectREFR* GetTargetReference();
 
-
 		// members
-		void*		  unk048;  // 048
-		void*		  unk050;  // 050
-		float		  unk058;  // 058
+		void*         unk048;  // 048
+		void*         unk050;  // 050
+		float         unk058;  // 058
 		std::uint32_t unk05C;  // 05C
 		std::uint64_t unk060;  // 060
-		float		  unk068;  // 068
+		float         unk068;  // 068
 		std::uint32_t unk06C;  // 06C
 		std::uint64_t unk070;  // 070
 		std::uint32_t unk078;  // 078
@@ -63,10 +59,10 @@ namespace RE
 		std::uint64_t unk0B0;  // 0B0
 		std::uint64_t unk0B8;  // 0B8
 		std::uint64_t unk0C0;  // 0C0
-		float		  unk0C8;  // 0C8
+		float         unk0C8;  // 0C8
 		std::uint32_t unk0CC;  // 0CC
 		std::uint64_t unk0D0;  // 0D0
-		float		  unk0D8;  // 0D8
+		float         unk0D8;  // 0D8
 		std::uint32_t unk0DC;  // 0DC
 		std::uint32_t unk0E0;  // 0E0
 		std::uint32_t unk0E4;  // 0E4

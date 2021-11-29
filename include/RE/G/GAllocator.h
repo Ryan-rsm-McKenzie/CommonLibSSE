@@ -4,7 +4,6 @@
 #include "RE/G/GConstructorMov.h"
 #include "RE/G/GStats.h"
 
-
 namespace RE
 {
 	template <class T, std::uint32_t SID = GStatGroup::kGStat_Default_Mem>

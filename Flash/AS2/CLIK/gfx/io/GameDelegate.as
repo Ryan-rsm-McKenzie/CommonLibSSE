@@ -1,5 +1,5 @@
 /**
- * The GameDelegate marshalls calls from Flash into the Game Engine, and vice versa using an ID-system. An immediate result returned from the Game Engine will be passed back to the calling object via the provided scope and callBack. Asynchronous results require an appropriate callback already installed with the GameDelegate.
+ * The GameDelegate marshals calls from Flash into the Game Engine, and vice versa using an ID-system. An immediate result returned from the Game Engine will be passed back to the calling object via the provided scope and callBack. Asynchronous results require an appropriate callback already installed with the GameDelegate.
  */
 
 

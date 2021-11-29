@@ -3,17 +3,14 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/I/IAIWorldLocationHandle.h"
 
-
 namespace RE
 {
 	class TESForm;
-
 
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PackageLocation;
-
 
 		enum class Type
 		{
@@ -31,32 +28,28 @@ namespace RE
 			kNearSelf = 12,
 		};
 
-
 		union Data
 		{
 			~Data() {}
 
-
-			TESForm*		object;
+			TESForm*        object;
 			ObjectRefHandle refHandle;
 		};
 		static_assert(sizeof(Data) == 0x8);
 
-
-		virtual ~PackageLocation();	 // 00
+		~PackageLocation() override;  // 00
 
 		// override (IAIWorldLocationHandle)
-		virtual const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;						// 01
-		virtual PackageLocation*		GetAsPackageLocation() override;													// 02 - { return this; }
-		virtual bool					IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;	// 03
-
+		const IAIWorldLocation* AllocateLocation(AIWorldLocationContext* a_context) override;                       // 01
+		PackageLocation*        GetAsPackageLocation() override;                                                    // 02 - { return this; }
+		bool                    IsRefAtLocation(AIWorldLocationContext* a_context, TESObjectREFR* a_ref) override;  // 03
 
 		// members
 		stl::enumeration<Type, std::uint8_t> locType;  // 08
-		std::uint8_t						 pad09;	   // 09
-		std::uint16_t						 pad0A;	   // 0A
-		std::uint32_t						 rad;	   // 0C
-		Data								 data;	   // 10
+		std::uint8_t                         pad09;    // 09
+		std::uint16_t                        pad0A;    // 0A
+		std::uint32_t                        rad;      // 0C
+		Data                                 data;     // 10
 	};
 	static_assert(sizeof(PackageLocation) == 0x18);
 }

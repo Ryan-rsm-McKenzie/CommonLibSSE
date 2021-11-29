@@ -8,7 +8,7 @@
 	<li><i>value</i>: The status value of an event or action. It is interpolated between the minimum and maximum values to generate a frame number to be played.</li>
 	<li><i>minimum</i>: The minimum value used to interpolate the target frame.</li>
 	<li><i>maximum</i>: The maximum value used to interpolate the target frame.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	There are no states for the StatusIndicator component. The component’s frames are used to display the status of an event or action.

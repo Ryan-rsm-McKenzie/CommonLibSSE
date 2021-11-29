@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class TESGlobal : public TESForm
@@ -13,14 +12,12 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_TESGlobal;
 		inline static constexpr auto FORMTYPE = FormType::Global;
 
-
 		enum class Type
 		{
 			kFloat = 'f',
 			kLong = 'l',
 			kShort = 's'
 		};
-
 
 		struct RecordFlags
 		{
@@ -32,21 +29,19 @@ namespace RE
 			};
 		};
 
-
-		virtual ~TESGlobal();  // 00
+		~TESGlobal() override;  // 00
 
 		// override (TESform)
-		virtual bool		Load(TESFile* a_mod) override;				  // 06
-		virtual const char* GetFormEditorID() const override;			  // 32 - { return formEditorID.c_str(); }
-		virtual bool		SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
-
+		bool        Load(TESFile* a_mod) override;                // 06
+		const char* GetFormEditorID() const override;             // 32 - { return formEditorID.c_str(); }
+		bool        SetFormEditorID(const char* a_str) override;  // 33 - { formEditorID = a_str; return true; }
 
 		// members
-		BSString							 formEditorID;	// 20 - EDID
-		stl::enumeration<Type, std::uint8_t> type;			// 30 - ENAM
-		std::uint8_t						 pad31;			// 31
-		std::uint16_t						 pad32;			// 32
-		float								 value;			// 34 - FLTV
+		BSString                             formEditorID;  // 20 - EDID
+		stl::enumeration<Type, std::uint8_t> type;          // 30 - ENAM
+		std::uint8_t                         pad31;         // 31
+		std::uint16_t                        pad32;         // 32
+		float                                value;         // 34 - FLTV
 	};
 	static_assert(sizeof(TESGlobal) == 0x38);
 }

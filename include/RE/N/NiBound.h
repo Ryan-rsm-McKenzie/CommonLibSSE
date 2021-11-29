@@ -2,7 +2,6 @@
 
 #include "RE/N/NiPoint3.h"
 
-
 namespace RE
 {
 	class NiBound
@@ -10,7 +9,7 @@ namespace RE
 	public:
 		// members
 		NiPoint3 center;  // 00
-		float	 radius;  // 0C
+		float    radius;  // 0C
 	};
 	static_assert(sizeof(NiBound) == 0x10);
 }

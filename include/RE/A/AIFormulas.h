@@ -1,11 +1,9 @@
 #pragma once
 
-
 namespace RE
 {
 	class Actor;
 	class TESForm;
-
 
 	namespace AIFormulas
 	{

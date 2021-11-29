@@ -2,7 +2,6 @@
 
 #include "RE/N/NiAllocator.h"
 
-
 namespace RE
 {
 	class NiMemManager
@@ -16,9 +15,8 @@ namespace RE
 		bool  TrackAllocate(const void* const a_mem, std::size_t a_sizeInBytes, NiMemEventType a_eventType, const char* a_sourceFile = nullptr, std::int32_t a_sourceLine = -1, const char* a_function = nullptr);
 		bool  TrackDeallocate(const void* const a_mem, NiMemEventType a_eventType);
 
-
 		// members
-		NiAllocator* allocator;	 // 00
+		NiAllocator* allocator;  // 00
 	};
 	static_assert(sizeof(NiMemManager) == 0x8);
 }

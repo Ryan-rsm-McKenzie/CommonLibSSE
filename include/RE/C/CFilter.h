@@ -2,7 +2,6 @@
 
 #include "RE/C/CollisionLayers.h"
 
-
 namespace RE
 {
 	enum class BIPED_PART
@@ -38,7 +37,6 @@ namespace RE
 		kAddonArm = 28
 	};
 
-
 	class CFilter
 	{
 	public:
@@ -49,7 +47,6 @@ namespace RE
 
 			kLayerMask = 0x7F  // COL_LAYER
 		};
-
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;  // 0

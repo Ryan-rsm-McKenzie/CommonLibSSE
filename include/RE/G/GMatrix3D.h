@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class GMatrix3D
@@ -9,7 +8,6 @@ namespace RE
 		GMatrix3D() :
 			data{ 0.0 }
 		{}
-
 
 		GMatrix3D& operator=(const GMatrix3D& a_rhs)
 		{
@@ -20,7 +18,6 @@ namespace RE
 			}
 			return *this;
 		}
-
 
 		float data[4][4];  // 00
 	};

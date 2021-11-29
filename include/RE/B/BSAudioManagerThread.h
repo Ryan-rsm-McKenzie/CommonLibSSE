@@ -2,7 +2,6 @@
 
 #include "RE/B/BSThread.h"
 
-
 namespace RE
 {
 	class BSAudioManagerThread : public BSThread
@@ -10,12 +9,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSAudioManagerThread;
 
-
-		virtual ~BSAudioManagerThread();  // 00
+		~BSAudioManagerThread() override;  // 00
 
 		// override (BSThread)
-		virtual void Unk_01(void) override;	 // 01
-
+		void Unk_01(void) override;  // 01
 
 		// members
 		std::uint64_t unk50;  // 50

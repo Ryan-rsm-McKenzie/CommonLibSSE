@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiAnimationKey
@@ -18,7 +17,6 @@ namespace RE
 			kTotal
 		};
 
-
 		enum class KeyType
 		{
 			kNoInterp,
@@ -31,14 +29,13 @@ namespace RE
 			kTotal
 		};
 
-
 		NiAnimationKey();
 		NiAnimationKey(float a_time);
 		~NiAnimationKey();
 
-		float			GetTime() const;
-		void			SetTime(float a_time);
-		NiAnimationKey* GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize) const;
+		[[nodiscard]] float           GetTime() const;
+		void                          SetTime(float a_time);
+		[[nodiscard]] NiAnimationKey* GetKeyAt(std::uint32_t a_index, std::uint8_t a_keySize) const;
 
 	protected:
 		// members

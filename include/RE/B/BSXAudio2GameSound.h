@@ -3,43 +3,40 @@
 #include "RE/B/BSGameSound.h"
 #include "RE/I/IXAudio2VoiceCallback.h"
 
-
 namespace RE
 {
 	class BSXAudio2GameSound :
-		public BSGameSound,			  // 000
+		public BSGameSound,           // 000
 		public IXAudio2VoiceCallback  // 0C8
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSXAudio2GameSound;
 
-
 		// override (BSGameSound)
-		virtual void Unk_00(void) override;	 // 00
+		void Unk_00(void) override;  // 00
 
-		virtual ~BSXAudio2GameSound();	// 01
+		~BSXAudio2GameSound() override;  // 01
 
-		virtual void Unk_04(void) override;	 // 04
-		virtual void Unk_06(void) override;	 // 06
-		virtual void Unk_07(void) override;	 // 07
-		virtual void Unk_08(void) override;	 // 08
-		virtual void Unk_09(void) override;	 // 09
-		virtual void Unk_0A(void) override;	 // 0A
-		virtual void Unk_0B(void) override;	 // 0B
-		virtual void Unk_0C(void) override;	 // 0C
-		virtual void Unk_0D(void) override;	 // 0D
-		virtual void Unk_0E(void) override;	 // 0E
-		virtual void Unk_0F(void) override;	 // 0F
-		virtual void Unk_10(void) override;	 // 10
-		virtual void Unk_11(void) override;	 // 11
-		virtual void Unk_12(void) override;	 // 12
-		virtual void Unk_13(void) override;	 // 13
-		virtual void Unk_14(void) override;	 // 14
-		virtual void Unk_15(void) override;	 // 15
-		virtual void Unk_16(void) override;	 // 16
-		virtual void Unk_17(void) override;	 // 17
-		virtual void Unk_18(void) override;	 // 18
-
+		void Unk_04(void) override;  // 04
+		void Unk_06(void) override;  // 06
+		void Unk_07(void) override;  // 07
+		void Unk_08(void) override;  // 08
+		void Unk_09(void) override;  // 09
+		void Unk_0A(void) override;  // 0A
+		void Unk_0B(void) override;  // 0B
+		void Unk_0C(void) override;  // 0C
+		void Unk_0D(void) override;  // 0D
+		void Unk_0E(void) override;  // 0E
+		void Unk_0F(void) override;  // 0F
+		void Unk_10(void) override;  // 10
+		void Unk_11(void) override;  // 11
+		void Unk_12(void) override;  // 12
+		void Unk_13(void) override;  // 13
+		void Unk_14(void) override;  // 14
+		void Unk_15(void) override;  // 15
+		void Unk_16(void) override;  // 16
+		void Unk_17(void) override;  // 17
+		void Unk_18(void) override;  // 18
 
 		// members
 		std::uint64_t unk0C8;  // 0C8

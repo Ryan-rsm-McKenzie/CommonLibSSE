@@ -2,7 +2,6 @@
 
 #include "RE/N/NiTListBase.h"
 
-
 namespace RE
 {
 	template <class Allocator, class T>

@@ -8,8 +8,8 @@
 	<li><i>value</i>: The numeric value displayed by the NumericStepper.</li>
 	<li><i>minimum</i>: The minimum value of the NumericStepper’s range.</li>
 	<li><i>maximum</i>: The maximum value of the NumericStepper’s range.</li>
-	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overriden from the game engine using GFx FunctionObjects.</li>
-	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overriden from the game engine using GFx FunctionObjects.</li></ul>
+	<li><i>enableInitCallback</i>: If set to true, _global.CLIK_loadCallback() will be fired when a component is loaded and _global.CLIK_unloadCallback will be called when the component is unloaded. These methods receive the instance name, target path, and a reference the component as parameters.  _global.CLIK_loadCallback and _global.CLIK_unloadCallback should be overridden from the game engine using GFx FunctionObjects.</li>
+	<li><i>soundMap</i>: Mapping between events and sound process. When an event is fired, the associated sound process will be fired via _global.gfxProcessSound, which should be overridden from the game engine using GFx FunctionObjects.</li></ul>
 
 	<b>States</b>
 	The NumericStepper component supports three states based on its focused and disabled properties. <ul>
@@ -121,7 +121,7 @@ class gfx.controls.NumericStepper extends UIComponent
 
 
 	/**
-	 * The value of the numeric stepper. The {@code value} property will always be kept between the {@code mimimum} and {@code maximum}.
+	 * The value of the numeric stepper. The {@code value} property will always be kept between the {@code minimum} and {@code maximum}.
 	 * @see #minimum
 	 * @see #maximum
 	 */

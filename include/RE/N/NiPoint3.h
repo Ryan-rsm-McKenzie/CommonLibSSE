@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace RE
 {
 	class NiPoint3
@@ -13,27 +12,28 @@ namespace RE
 			y(a_y),
 			z(a_z){};
 
-		float&		 operator[](std::size_t a_idx);
+		float&       operator[](std::size_t a_idx);
 		const float& operator[](std::size_t a_idx) const;
-		bool		 operator==(const NiPoint3& a_rhs) const;
-		bool		 operator!=(const NiPoint3& a_rhs) const;
-		NiPoint3	 operator+(const NiPoint3& a_rhs) const;
-		NiPoint3	 operator-(const NiPoint3& a_rhs) const;
-		float		 operator*(const NiPoint3& a_rhs) const;
-		NiPoint3	 operator*(float a_scalar) const;
-		NiPoint3	 operator/(float a_scalar) const;
-		NiPoint3	 operator-() const;
-		NiPoint3&	 operator+=(const NiPoint3& a_rhs);
-		NiPoint3&	 operator-=(const NiPoint3& a_rhs);
-		NiPoint3&	 operator*=(float a_scalar);
-		NiPoint3&	 operator/=(float a_scalar);
+		bool         operator==(const NiPoint3& a_rhs) const;
+		bool         operator!=(const NiPoint3& a_rhs) const;
+		NiPoint3     operator+(const NiPoint3& a_rhs) const;
+		NiPoint3     operator-(const NiPoint3& a_rhs) const;
+		float        operator*(const NiPoint3& a_rhs) const;
+		NiPoint3     operator*(float a_scalar) const;
+		NiPoint3     operator/(float a_scalar) const;
+		NiPoint3     operator-() const;
+		NiPoint3&    operator+=(const NiPoint3& a_rhs);
+		NiPoint3&    operator-=(const NiPoint3& a_rhs);
+		NiPoint3&    operator*=(float a_scalar);
+		NiPoint3&    operator/=(float a_scalar);
 
-		float	 SqrLength() const;
-		float	 Length() const;
-		float	 Unitize();
-		NiPoint3 Cross(const NiPoint3& pt) const;
-		NiPoint3 UnitCross(const NiPoint3& a_pt) const;
-
+		[[nodiscard]] NiPoint3 Cross(const NiPoint3& pt) const;
+		[[nodiscard]] float    GetDistance(const NiPoint3& a_pt) const noexcept;
+		[[nodiscard]] float    GetSquaredDistance(const NiPoint3& a_pt) const noexcept;
+		[[nodiscard]] float    Length() const;
+		[[nodiscard]] float    SqrLength() const;
+		[[nodiscard]] NiPoint3 UnitCross(const NiPoint3& a_pt) const;
+		float                  Unitize();
 
 		// members
 		float x{ 0.0F };  // 0

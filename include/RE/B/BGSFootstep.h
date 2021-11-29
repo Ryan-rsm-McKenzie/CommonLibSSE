@@ -4,7 +4,6 @@
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
-
 namespace RE
 {
 	class BGSFootstep : public TESForm
@@ -12,7 +11,6 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSFootstep;
 		inline static constexpr auto FORMTYPE = FormType::Footstep;
-
 
 		struct RecordFlags
 		{
@@ -23,17 +21,15 @@ namespace RE
 			};
 		};
 
-
-		virtual ~BGSFootstep();	 // 00
+		~BGSFootstep() override;  // 00
 
 		// override (TESForm)
-		virtual void InitializeData() override;		 // 04
-		virtual bool Load(TESFile* a_mod) override;	 // 06
-		virtual void InitItemImpl() override;		 // 13
-
+		void InitializeData() override;      // 04
+		bool Load(TESFile* a_mod) override;  // 06
+		void InitItemImpl() override;        // 13
 
 		// members
-		BSFixedString	  tag;		  // 20 - ANAM
+		BSFixedString     tag;        // 20 - ANAM
 		BGSImpactDataSet* impactSet;  // 28 - DATA
 	};
 	static_assert(sizeof(BGSFootstep) == 0x30);

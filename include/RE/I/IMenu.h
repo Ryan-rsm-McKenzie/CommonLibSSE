@@ -6,12 +6,10 @@
 #include "RE/G/GPtr.h"
 #include "RE/U/UserEvents.h"
 
-
 namespace RE
 {
 	class CallbackProcessor;
 	class UIMessage;
-
 
 	enum class UI_MENU_FLAGS
 	{
@@ -46,7 +44,6 @@ namespace RE
 		kUsesMovementToDirection = 1 << 27
 	};
 
-
 	enum class UI_MESSAGE_RESULTS
 	{
 		kHandled = 0,
@@ -54,30 +51,27 @@ namespace RE
 		kPassOn = 2
 	};
 
-
 	class IMenu : public FxDelegateHandler
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_IMenu;
 
-
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;
 
-
-		virtual ~IMenu() = default;	 // 00
+		~IMenu() override = default;  // 00
 
 		// override (FxDelegateHandler)
-		virtual void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
+		void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
 
 		// add
-		virtual void			   PostCreate();												 // 02 - { return; }
-		virtual void			   Unk_03(void);												 // 03 - { return; }
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);						 // 04
-		virtual void			   AdvanceMovie(float a_interval, std::uint32_t a_currentTime);	 // 05
-		virtual void			   PostDisplay();												 // 06
-		virtual void			   PreDisplay();												 // 07 - { return; } - only available if kRendersOffscreenTargets is set
-		virtual void			   RefreshPlatform();											 // 08
+		virtual void               PostCreate();                                                 // 02 - { return; }
+		virtual void               Unk_03(void);                                                 // 03 - { return; }
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);                         // 04
+		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime);  // 05
+		virtual void               PostDisplay();                                                // 06
+		virtual void               PreDisplay();                                                 // 07 - { return; } - only available if kRendersOffscreenTargets is set
+		virtual void               RefreshPlatform();                                            // 08
 
 		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept { return menuFlags.all(Flag::kAdvancesUnderPauseMenu); }
 		[[nodiscard]] constexpr bool AllowSaving() const noexcept { return menuFlags.all(Flag::kAllowSaving); }
@@ -108,16 +102,15 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesMenuContext() const noexcept { return menuFlags.all(Flag::kUsesMovementToDirection); }
 		[[nodiscard]] constexpr bool UsesMovementToDirection() const noexcept { return menuFlags.all(Flag::kUpdateUsesCursor); }
 
-
 		// members
-		GPtr<GFxMovieView>							   uiMovie{ nullptr };				// 10
-		std::int8_t									   depthPriority{ 3 };				// 18
-		std::uint8_t								   pad19{ 0 };						// 19
-		std::uint16_t								   pad20{ 0 };						// 1A
-		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };		// 1C
-		stl::enumeration<Context, std::uint32_t>	   inputContext{ Context::kNone };	// 20
-		std::uint32_t								   pad24{ 0 };						// 24
-		GPtr<FxDelegate>							   fxDelegate{ nullptr };			// 28
+		GPtr<GFxMovieView>                             uiMovie{ nullptr };              // 10
+		std::int8_t                                    depthPriority{ 3 };              // 18
+		std::uint8_t                                   pad19{ 0 };                      // 19
+		std::uint16_t                                  pad20{ 0 };                      // 1A
+		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };        // 1C
+		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone };  // 20
+		std::uint32_t                                  pad24{ 0 };                      // 24
+		GPtr<FxDelegate>                               fxDelegate{ nullptr };           // 28
 	};
 	static_assert(sizeof(IMenu) == 0x30);
 }
