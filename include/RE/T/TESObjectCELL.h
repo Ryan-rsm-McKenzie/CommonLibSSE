@@ -16,6 +16,7 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESObjectREFR.h"
+#include "RE/B/BSTempEffectParticle.h"
 
 namespace RE
 {
@@ -185,6 +186,8 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(18536) };
 			return func(this);
 		}
+
+		BSTempEffectParticle* PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target);
 
 		void           ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
 		void           ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;

@@ -95,6 +95,13 @@ namespace RE
 		return cellFlags.all(Flag::kIsInteriorCell);
 	}
 
+	BSTempEffectParticle* TESObjectCELL::PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target)
+	{
+		using func_t = decltype(&TESObjectCELL::PlaceParticleEffect);
+		REL::Relocation<func_t> func{ REL::ID(29219) };
+		return func(this, a_lifetime, a_modelName, a_normal, a_pos, a_scale, a_flags, a_target);
+	}
+
 	void TESObjectCELL::SetActorOwner(TESNPC* a_owner)
 	{
 		SetOwner(a_owner);

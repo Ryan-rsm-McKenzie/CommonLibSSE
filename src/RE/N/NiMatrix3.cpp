@@ -5,6 +5,14 @@
 
 namespace RE
 {
+	NiPoint3 NiMatrix3::operator*(const NiPoint3& a_rhs) const
+	{
+		return NiPoint3(
+			entry[0][0] * a_rhs.x + entry[0][1] * a_rhs.y + entry[0][2] * a_rhs.z,
+			entry[1][0] * a_rhs.x + entry[1][1] * a_rhs.y + entry[1][2] * a_rhs.z,
+			entry[2][0] * a_rhs.x + entry[2][1] * a_rhs.y + entry[2][2] * a_rhs.z);
+	}
+
 	bool NiMatrix3::ToEulerAnglesXYZ(NiPoint3& a_angle) const
 	{
 		return ToEulerAnglesXYZ(a_angle.x, a_angle.y, a_angle.z);
