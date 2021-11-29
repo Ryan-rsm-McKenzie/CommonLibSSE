@@ -56,6 +56,8 @@ namespace RE
 		virtual void                        OnCopyReference();                                                                             // 51 - { return; }
 		virtual void                        OnFinishScale();                                                                               // 52 - { return; }
 
+		void NotifyPickup(std::uint32_t a_count, std::uint8_t a_arg2, bool a_playSound, void* a_arg4);
+
 		// members
 		BOUND_DATA    boundData;  // 20 - OBND
 		std::uint32_t pad2C;      // 2C

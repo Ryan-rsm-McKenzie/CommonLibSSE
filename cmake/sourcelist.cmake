@@ -1435,6 +1435,7 @@ set(SOURCES
 	src/RE/T/TES.cpp
 	src/RE/T/TESAIForm.cpp
 	src/RE/T/TESAmmo.cpp
+	src/RE/T/TESBoundObject.cpp
 	src/RE/T/TESCamera.cpp
 	src/RE/T/TESClimate.cpp
 	src/RE/T/TESCondition.cpp

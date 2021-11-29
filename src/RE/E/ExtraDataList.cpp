@@ -203,6 +203,13 @@ namespace RE
 		return xZone ? xZone->zone : nullptr;
 	}
 
+	ExtraContainerChanges* ExtraDataList::GetContainerChanges()
+	{
+		using func_t = decltype(&ExtraDataList::GetContainerChanges);
+		REL::Relocation<func_t> func{ REL::ID(11717) };
+		return func(this);
+	}
+
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
 		auto                  xRef = GetByType<ExtraReferenceHandle>();

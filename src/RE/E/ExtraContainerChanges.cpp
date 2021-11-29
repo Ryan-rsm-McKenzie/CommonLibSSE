@@ -25,4 +25,11 @@ namespace RE
 	{
 		return ExtraDataType::kContainerChanges;
 	}
+
+	void* ExtraContainerChanges::AddInventoryItem(TESBoundObject* a_object, void* a_arg2, std::int32_t a_count, void* a_arg4)
+	{
+		using func_t = decltype(&ExtraContainerChanges::AddInventoryItem);
+		REL::Relocation<func_t> func{ REL::ID(16053) };
+		return func(this, a_object, a_arg2, a_count, a_arg4);
+	}
 }

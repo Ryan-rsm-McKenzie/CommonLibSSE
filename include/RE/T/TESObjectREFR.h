@@ -345,6 +345,7 @@ namespace RE
 		static bool                     LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 		static TESObjectREFR*           FindReferenceFor3D(NiAVObject* a_object3D);
 
+		bool                                    ActivateRef(TESObjectREFR* a_activator, std::uint8_t a_arg2, TESBoundObject* a_object, std::int32_t a_count, bool a_defaultProcessingOnly);
 		ObjectRefHandle                         CreateRefHandle();
 		void                                    DoTrap(TrapData& a_data);
 		void                                    DoTrap(TrapEntry* a_trap, TargetEntry* a_target);

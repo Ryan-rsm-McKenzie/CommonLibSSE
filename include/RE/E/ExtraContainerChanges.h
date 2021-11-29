@@ -5,7 +5,11 @@
 
 namespace RE
 {
+	class ExtraDataList;
 	class InventoryChanges;
+	class TESBoundObject;
+	class TESForm;
+	class TESObjectREFR;
 
 	class ExtraContainerChanges : public BSExtraData
 	{
@@ -19,6 +23,8 @@ namespace RE
 
 		// override (BSExtraData)
 		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kContainerChanges; }
+
+		void* AddInventoryItem(TESBoundObject* a_object, void* a_arg2, std::int32_t a_count, void* a_arg4);
 
 		// members
 		InventoryChanges* changes;  // 10

@@ -101,11 +101,25 @@ namespace RE
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
 
+	void AIProcess::KnockExplosion(Actor* a_actor, const NiPoint3& a_sourceLocation, float a_magnitude)
+	{
+		using func_t = decltype(&AIProcess::KnockExplosion);
+		REL::Relocation<func_t> func{ REL::ID(39895) };
+		return func(this, a_actor, a_sourceLocation, a_magnitude);
+	}
+
 	void AIProcess::SetArrested(bool a_arrested)
 	{
 		if (high) {
 			high->arrested = a_arrested;
 		}
+	}
+
+	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
+	{
+		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
+		REL::Relocation<func_t> func{ REL::ID() };
+		return func(this, a_actor, a_location, a_soundLevel, a_ref);
 	}
 
 	void AIProcess::SetCachedHeight(float a_height)

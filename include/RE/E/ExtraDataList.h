@@ -143,18 +143,19 @@ namespace RE
 
 		bool RemoveByType(ExtraDataType a_type);
 
-		BSExtraData*          Add(BSExtraData* a_toAdd);
-		ObjectRefHandle       GetAshPileRef();
-		std::int32_t          GetCount() const;
-		const char*           GetDisplayName(TESBoundObject* a_baseObject);
-		BGSEncounterZone*     GetEncounterZone();
-		ExtraTextDisplayData* GetExtraTextDisplayData();
-		TESObjectREFR*        GetLinkedRef(BGSKeyword* a_keyword);
-		TESForm*              GetOwner();
-		SOUL_LEVEL            GetSoulLevel() const;
-		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
-		void                  SetInventoryChanges(InventoryChanges* a_changes);
-		void                  SetOwner(TESForm* a_owner);
+		BSExtraData*           Add(BSExtraData* a_toAdd);
+		ObjectRefHandle        GetAshPileRef();
+		ExtraContainerChanges* GetContainerChanges();
+		std::int32_t           GetCount() const;
+		const char*            GetDisplayName(TESBoundObject* a_baseObject);
+		BGSEncounterZone*      GetEncounterZone();
+		ExtraTextDisplayData*  GetExtraTextDisplayData();
+		TESObjectREFR*         GetLinkedRef(BGSKeyword* a_keyword);
+		TESForm*               GetOwner();
+		SOUL_LEVEL             GetSoulLevel() const;
+		void                   SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
+		void                   SetInventoryChanges(InventoryChanges* a_changes);
+		void                   SetOwner(TESForm* a_owner);
 
 	protected:
 		struct PresenceBitfield

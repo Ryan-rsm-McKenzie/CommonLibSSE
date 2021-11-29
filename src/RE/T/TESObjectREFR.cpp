@@ -47,6 +47,13 @@ namespace RE
 		return func(a_object3D);
 	}
 
+	bool TESObjectREFR::ActivateRef(TESObjectREFR* a_activator, std::uint8_t a_arg2, TESBoundObject* a_object, std::int32_t a_count, bool a_defaultProcessingOnly)
+	{
+		using func_t = decltype(&TESObjectREFR::ActivateRef);
+		REL::Relocation<func_t> func{ REL::ID(19796) };
+		return func(this, a_activator, a_arg2, a_object, a_count, a_defaultProcessingOnly);
+	}
+
 	ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
 		return GetHandle();
