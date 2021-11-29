@@ -59,13 +59,11 @@ if ($a_mode -eq 'COPY') { # post build copy event
     }
 
     $vcpkg = [IO.File]::ReadAllText("$PSScriptRoot/vcpkg.json") | ConvertFrom-Json
-    if (-not $vcpkg.'install-name') {
-        $MO2Base = "$GameBase/MO2/mods/$a_project"
-    } elseif ($vcpkg.'install-name' -eq '') { 
-        $MO2Base = "$GameBase/MO2/mods/$a_project"
-    } else {
+    if ($vcpkg | Get-Member install-name) {
         $destination = $vcpkg.'install-name'
         $MO2Base = "$GameBase/MO2/mods/$destination"
+    } else {
+        $MO2Base = "$GameBase/MO2/mods/$a_project"
     }
     
     # binary
@@ -126,25 +124,23 @@ if ($a_mode -eq 'COPY') { # post build copy event
         # update vcpkg.json accordinly
         $vcpkg = [IO.File]::ReadAllText("$PSScriptRoot/vcpkg.json") | ConvertFrom-Json
         $vcpkg.'version-string' = $a_version
-        if (-not $vcpkg.'script-version') {
-            $vcpkg | Add-Member -Name 'script-version' -Value $env:DKScriptVersion -MemberType NoteProperty
-        } else {
+        if ($vcpkg | Get-Member script-version) {
             $vcpkg.'script-version' = $env:DKScriptVersion
-        }
-        if (-not $vcpkg.'build-config') {
-            $vcpkg | Add-Member -Name 'build-config' -Value $env:BuildConfig -MemberType NoteProperty
         } else {
+            $vcpkg | Add-Member -Name 'script-version' -Value $env:DKScriptVersion -MemberType NoteProperty
+        }
+        if ($vcpkg | Get-Member build-config) {
             $vcpkg.'build-config' = $env:BuildConfig
+        } else {
+            $vcpkg | Add-Member -Name 'build-config' -Value $env:BuildConfig -MemberType NoteProperty
         }
-        if (-not $vcpkg.'build-target') {
-            $vcpkg | Add-Member -Name 'build-target' -Value $env:BuildTarget -MemberType NoteProperty
-        } else {
+        if ($vcpkg | Get-Member build-target) {
             $vcpkg.'build-target' = $env:BuildTarget
-        }        
-        if (-not $vcpkg.'install-name') {
-            $vcpkg | Add-Member -Name 'install-name' -Value '' -MemberType NoteProperty
         } else {
-            $vcpkg.'install-name' = $env:BuildTarget
+            $vcpkg | Add-Member -Name 'build-target' -Value $env:BuildTarget -MemberType NoteProperty
+        }
+        if (-not ($vcpkg | Get-Member install-name)) {
+            $vcpkg | Add-Member -Name 'install-name' -Value $Folder -MemberType NoteProperty
         }
         $vcpkg = $vcpkg | ConvertTo-Json
         [IO.File]::WriteAllText("$PSScriptRoot/vcpkg.json", $vcpkg) # damn you encoding
@@ -159,11 +155,12 @@ if ($a_mode -eq 'COPY') { # post build copy event
 }
 
 Write-Host "`t<$Folder> [$a_mode] DONE"
+
 # SIG # Begin signature block
 # MIIR2wYJKoZIhvcNAQcCoIIRzDCCEcgCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQU8EfVKotZYrsR9+3RsLe4BUZl
-# oseggg1BMIIDBjCCAe6gAwIBAgIQNkaQTCtrQ7NPmyNqlKMtlDANBgkqhkiG9w0B
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUnPLwdnY9SqQouHG7YRuq0RBw
+# fLSggg1BMIIDBjCCAe6gAwIBAgIQNkaQTCtrQ7NPmyNqlKMtlDANBgkqhkiG9w0B
 # AQsFADAbMRkwFwYDVQQDDBBBVEEgQXV0aGVudGljb2RlMB4XDTIxMTEyODE1MTMy
 # N1oXDTIyMTEyODE1MzMyN1owGzEZMBcGA1UEAwwQQVRBIEF1dGhlbnRpY29kZTCC
 # ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANoBGMeVEUQXzEw352NicaE9
@@ -237,23 +234,23 @@ Write-Host "`t<$Folder> [$a_mode] DONE"
 # AQEwLzAbMRkwFwYDVQQDDBBBVEEgQXV0aGVudGljb2RlAhA2RpBMK2tDs0+bI2qU
 # oy2UMAkGBSsOAwIaBQCgeDAYBgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqG
 # SIb3DQEJAzEMBgorBgEEAYI3AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3
-# AgEVMCMGCSqGSIb3DQEJBDEWBBQwbpgHBvALRQrFqcYmRZOKDIGyiTANBgkqhkiG
-# 9w0BAQEFAASCAQDWRWh5pMljPH9vSvk7MsUD50NQjWb7o6u/WzeIkY4vEVBX1V5r
-# 5Me4Obkk/YTHpOD2BfNcXaPruCs+sDrsq1m9XtkHuK43XzlaL7Q9/iDibad59zz4
-# 61fZCdUjRXLlPb7PEk25fauF7AcRPKAdMIhzfQ/rzpslQ8cbGcjQrA86L01u8oUv
-# N4PwFlQC5DFWyPOcaEYQxVoiAewb90eiTAm8l0f0aQV1O8N8EmvEgo5CtQJa23Eq
-# ZtBDMMIQKCBWfMlsleH8zGdansBf2F9sXJYy4nUEC1CNM4fdgo13FcikYgcHA0om
-# zAxVN3v6lUoQtJZoQB2GzWTGncwydCPrvjayoYICMDCCAiwGCSqGSIb3DQEJBjGC
+# AgEVMCMGCSqGSIb3DQEJBDEWBBT9s0QVaRHA3lDzpGjG3JXmjZUwiTANBgkqhkiG
+# 9w0BAQEFAASCAQAVDZMBqyFQVjUU+axVhcOiNajNzhLc7bJFs1hY2ofMyaf3BNf8
+# JpQOT5Qia6ow3KA9c87fkqA6EbcS/2PPOh1rQW2abZiFJB/Yc6f9BkUIuA0uHCtE
+# u9EKLpQKTS7YA0Az/BLZYJphl+yD1G6jdABSTDFHdkNKtxRr3pSgs3iQFxb5s1kb
+# D29i9zzkwV+a/8QwuSgq0s+WnzZvmto73marGKppBjTnjUmpBst2AvCG5froe8bF
+# JTa/9qfhWZg/wsWkCNm2eD6A3YPdPiyCQYnyUJ5jLhAKi/drmx5bj+ht2osRFq0f
+# 4CiTwtRqXs166IJ9jyYs8O1uS7Qg1SDUCeRzoYICMDCCAiwGCSqGSIb3DQEJBjGC
 # Ah0wggIZAgEBMIGGMHIxCzAJBgNVBAYTAlVTMRUwEwYDVQQKEwxEaWdpQ2VydCBJ
 # bmMxGTAXBgNVBAsTEHd3dy5kaWdpY2VydC5jb20xMTAvBgNVBAMTKERpZ2lDZXJ0
 # IFNIQTIgQXNzdXJlZCBJRCBUaW1lc3RhbXBpbmcgQ0ECEA1CSuC+Ooj/YEAhzhQA
 # 8N0wDQYJYIZIAWUDBAIBBQCgaTAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwG
-# CSqGSIb3DQEJBTEPFw0yMTExMjkxMjM5NTVaMC8GCSqGSIb3DQEJBDEiBCBo6Kjd
-# iA0fLpZDzfA/fAfmhrLKeO4l35TkOgbBDJei7TANBgkqhkiG9w0BAQEFAASCAQCy
-# u2xjYBx1q223VldgyNSdEna0z7XGzlThJf07B8mTW2xIb3iHzO92ytEum9Gcc3F3
-# hQMzqtuASzjVqE/5de1jOnbrY6yDiQ8nkyHjrGp3G1UxbSplh2cflRmqBy4Lq91n
-# UOMSWqyIEueV9kOQk3uNRsXuhq0FYgxxaSiQAF6RaXmtdnC1iZGhHKl33OvKrVt3
-# Px3TSkiKHg8GSJ8q8J1O6KVASvJWW1EHPZCw/ejN0x3FPr1JrXMoVtsfB5DEtnUf
-# b4GRaYl7eRftVsZt5v991LTARCc/7Y8tBX29R8WX5SYr2VCrUiJKvFrUoQfFg7Ln
-# NCAiFTiOw3b8tgwHHlEj
+# CSqGSIb3DQEJBTEPFw0yMTExMjkxMzA1NDBaMC8GCSqGSIb3DQEJBDEiBCC3Ir3U
+# yajc3nry4l0QKPNOJnx7o+Kq3DJajTpiTmKRyjANBgkqhkiG9w0BAQEFAASCAQCk
+# 3qLhULpk/1fqXmHRl2Yz8IAlP5dykKbkqbj9cTaJzKInCmcD8M+6GlpqHj3qOP/2
+# 3Y4FsDhHR96iq/bQQLYw40BIN/Dhk89fMTbO4EuRzFX/5iT5U2+4PYUL3Iqr6x8T
+# mJgrNo3mMe+QkhyHe8IdzLeQjJ2vdxAylp4Y2TcKu4KtHNPFj6Whq0/bFkhn1TKI
+# 2CATV0gsMSOmPgvNbtqhi4A0zDvrHxQsrMquXraQqzt14xMQizOE03+MMPGfoFXR
+# ry/CEN8VBVIo4nOL8MA2H6bLMtDiaa/g2dewar3KKBIMFuN6yMRtwzGTglkNow2T
+# qCtzF5QMmylCX7VgNk/A
 # SIG # End signature block
