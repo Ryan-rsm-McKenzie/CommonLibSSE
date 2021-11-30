@@ -62,6 +62,36 @@ namespace RE
 		return DoTrap2(a_trap, a_target);
 	}
 
+
+	std::optional<RE::NiPoint3> TESObjectREFR::FindNearestVertex(const float minimum_offset)
+	{
+		auto cell = this->GetParentCell();
+
+		if (!cell || !cell->navMeshes) {
+			return std::nullopt;
+		}
+
+		auto& navMeshes = *cell->navMeshes;
+
+		auto shortestDistance = std::numeric_limits<float>::max();
+
+		std::optional<RE::NiPoint3> pos = std::nullopt;
+
+		for (auto& navMesh : navMeshes.navMeshes) {
+			for (auto& vertex : navMesh->vertices) {
+				auto linearDistance = this->GetPosition().GetDistance(vertex.location);
+
+				if (linearDistance < shortestDistance && linearDistance >= minimum_offset) {
+					shortestDistance = linearDistance;
+					pos.emplace(vertex.location);
+				}
+			}
+		}
+
+		return pos;
+	}
+
+
 	NiAVObject* TESObjectREFR::Get3D() const
 	{
 		return Get3D2();
@@ -562,6 +592,18 @@ namespace RE
 	{
 		return IsCrimeToActivate();
 	}
+
+
+	bool TESObjectREFR::MoveToNearestNavmesh(const float minimum_offset)
+	{
+		auto nearestVertex = this->FindNearestVertex(minimum_offset);
+		if (!nearestVertex) 
+			return false;
+
+		MoveTo_Impl(CreateRefHandle(), GetParentCell(), GetWorldspace(), std::move(*nearestVertex), GetAngle());
+		return true;
+	}
+
 
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName)
 	{
