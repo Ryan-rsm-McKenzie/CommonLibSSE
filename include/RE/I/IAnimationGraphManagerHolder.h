@@ -3,6 +3,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
@@ -41,6 +42,10 @@ namespace RE
 		bool GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out) const;
 		bool GetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t& a_out) const;
 		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out) const;
+		bool SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in) const;
+		bool SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in) const;
+		bool SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in) const;
+		bool SetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_in) const;
 		bool SetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_in);
 	};
 	static_assert(sizeof(IAnimationGraphManagerHolder) == 0x8);
