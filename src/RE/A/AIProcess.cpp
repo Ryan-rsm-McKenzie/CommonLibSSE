@@ -118,7 +118,7 @@ namespace RE
 	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
-		REL::Relocation<func_t> func{ REL::ID() };
+		REL::Relocation<func_t> func{ REL::ID(39286) };
 		return func(this, a_actor, a_location, a_soundLevel, a_ref);
 	}
 
