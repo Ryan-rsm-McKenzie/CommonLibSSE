@@ -120,7 +120,7 @@ namespace RE
 	public:
 		static ScriptEventSourceHolder* GetSingleton();
 
-		//void SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef);
+		void SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef);
 		void SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened);
 
 		template <class T>
