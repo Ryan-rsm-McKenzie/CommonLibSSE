@@ -66,21 +66,16 @@ namespace RE
 	std::optional<RE::NiPoint3> TESObjectREFR::FindNearestVertex(const float minimum_offset)
 	{
 		auto cell = this->GetParentCell();
-
-		if (!cell || !cell->navMeshes) {
+		if (!cell || !cell->navMeshes) 
 			return std::nullopt;
-		}
 
 		auto& navMeshes = *cell->navMeshes;
-
 		auto shortestDistance = std::numeric_limits<float>::max();
-
 		std::optional<RE::NiPoint3> pos = std::nullopt;
 
 		for (auto& navMesh : navMeshes.navMeshes) {
 			for (auto& vertex : navMesh->vertices) {
 				auto linearDistance = this->GetPosition().GetDistance(vertex.location);
-
 				if (linearDistance < shortestDistance && linearDistance >= minimum_offset) {
 					shortestDistance = linearDistance;
 					pos.emplace(vertex.location);

@@ -271,6 +271,7 @@ namespace RE
 		virtual void          Unk_12E(void);                                                   // 12E - { return 0; }
 
 		static PlayerCharacter* GetSingleton();
+		static bool             IsGodMode();
 
 		void                     ActivatePickRef();
 		void                     AddSkillExperience(ActorValue a_skill, float a_experience);
@@ -287,7 +288,6 @@ namespace RE
 		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 		bool                     HasActorDoingCommand() const;
 		bool                     IsGrabbing() const;
-		bool					 IsGodMode();
 		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void					 SetGodMode(bool a_enable);
 		void                     StartGrabObject();

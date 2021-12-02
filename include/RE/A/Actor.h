@@ -516,6 +516,7 @@ namespace RE
 		bool                         IsGhost() const;
 		bool                         IsGuard() const;
 		bool                         IsHostileToActor(Actor* a_actor);
+		bool                         IsInJumpState() const;
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool						 IsMoving() const;
 		bool                         IsOnMount() const;

@@ -431,6 +431,12 @@ namespace RE
 		return func(this, a_actor);
 	}
 
+	bool Actor::IsInJumpState() const
+	{
+		bool result = false;
+		return GetGraphVariableBool("bInJumpState", result) && result;
+	}
+
 	bool Actor::IsMoving() const
 	{
 		using func_t = decltype(&Actor::IsMoving);
