@@ -7,14 +7,6 @@ endif()
 
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 
-# called via add_subdirectory()
-if (NOT LINKAGE_OVERRIDE)
-set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
-set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
-
-endif()
-
 project(
 	CommonLibSSE
 	LANGUAGES CXX
@@ -30,13 +22,11 @@ find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 
-execute_process(COMMAND powershell -ExecutionPolicy Bypass -File "${CMAKE_CURRENT_SOURCE_DIR}/!Update.ps1" "SOURCEGEN" "${PROJECT_VERSION}" "${CMAKE_CURRENT_BINARY_DIR}")
-include(${CMAKE_CURRENT_BINARY_DIR}/sourcelist.cmake)
+include(cmake/sourcelist.cmake)
+
 source_group(
-	TREE 
-	"${CMAKE_CURRENT_SOURCE_DIR}"
-	FILES 
-	${SOURCES}
+	TREE "${CMAKE_CURRENT_SOURCE_DIR}"
+	FILES ${SOURCES}
 )
 
 add_library(
