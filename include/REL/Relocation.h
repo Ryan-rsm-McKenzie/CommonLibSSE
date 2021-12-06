@@ -63,7 +63,7 @@ namespace REL
 		class memory_map
 		{
 		public:
-			constexpr memory_map() noexcept = default;
+			memory_map() noexcept = default;
 			memory_map(const memory_map&) = delete;
 
 			memory_map(memory_map&& a_rhs) noexcept :
@@ -90,7 +90,7 @@ namespace REL
 				return *this;
 			}
 
-			[[nodiscard]] constexpr void* data() noexcept { return _view; }
+			[[nodiscard]] void* data() noexcept { return _view; }
 
 			bool open(stl::zwstring a_name, std::size_t a_size);
 			bool create(stl::zwstring a_name, std::size_t a_size);
@@ -291,6 +291,11 @@ namespace REL
 		[[nodiscard]] constexpr reference       operator[](std::size_t a_idx) noexcept { return _impl[a_idx]; }
 		[[nodiscard]] constexpr const_reference operator[](std::size_t a_idx) const noexcept { return _impl[a_idx]; }
 
+		[[nodiscard]] constexpr decltype(auto) begin() const noexcept { return _impl.begin(); }
+		[[nodiscard]] constexpr decltype(auto) cbegin() const noexcept { return _impl.cbegin(); }
+		[[nodiscard]] constexpr decltype(auto) end() const noexcept { return _impl.end(); }
+		[[nodiscard]] constexpr decltype(auto) cend() const noexcept { return _impl.cend(); }
+
 		[[nodiscard]] std::strong_ordering constexpr compare(const Version& a_rhs) const noexcept
 		{
 			for (std::size_t i = 0; i < _impl.size(); ++i) {
@@ -384,17 +389,17 @@ namespace REL
 			total
 		};
 
-		constexpr Segment() noexcept = default;
+		Segment() noexcept = default;
 
-		constexpr Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept :
+		Segment(std::uintptr_t a_proxyBase, std::uintptr_t a_address, std::uintptr_t a_size) noexcept :
 			_proxyBase(a_proxyBase),
 			_address(a_address),
 			_size(a_size)
 		{}
 
-		[[nodiscard]] constexpr std::uintptr_t address() const noexcept { return _address; }
-		[[nodiscard]] constexpr std::size_t    offset() const noexcept { return address() - _proxyBase; }
-		[[nodiscard]] constexpr std::size_t    size() const noexcept { return _size; }
+		[[nodiscard]] std::uintptr_t address() const noexcept { return _address; }
+		[[nodiscard]] std::size_t    offset() const noexcept { return address() - _proxyBase; }
+		[[nodiscard]] std::size_t    size() const noexcept { return _size; }
 
 		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(address()); }
 
@@ -419,10 +424,11 @@ namespace REL
 			return singleton;
 		}
 
-		[[nodiscard]] constexpr std::uintptr_t base() const noexcept { return _base; }
-		[[nodiscard]] constexpr Version        version() const noexcept { return _version; }
+		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
+		[[nodiscard]] stl::zwstring  filename() const noexcept { return _filename; }
+		[[nodiscard]] Version        version() const noexcept { return _version; }
 
-		[[nodiscard]] constexpr Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
+		[[nodiscard]] Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
 
 		[[nodiscard]] void* pointer() const noexcept { return reinterpret_cast<void*>(base()); }
 
@@ -649,9 +655,9 @@ namespace REL
 				a_in.read(_pointerSize, _addressCount);
 			}
 
-			[[nodiscard]] constexpr std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
-			[[nodiscard]] constexpr std::uint64_t pointer_size() const noexcept { return static_cast<std::uint64_t>(_pointerSize); }
-			[[nodiscard]] constexpr Version       version() const noexcept { return _version; }
+			[[nodiscard]] std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
+			[[nodiscard]] std::uint64_t pointer_size() const noexcept { return static_cast<std::uint64_t>(_pointerSize); }
+			[[nodiscard]] Version       version() const noexcept { return _version; }
 
 		private:
 			Version      _version;
