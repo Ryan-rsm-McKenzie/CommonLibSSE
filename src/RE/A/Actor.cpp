@@ -100,6 +100,13 @@ namespace RE
 		xTalk->talk = a_talk;
 	}
 
+	bool Actor::CanAttackActor(Actor* a_actor)
+	{
+		using func_t = decltype(&Actor::CanAttackActor);
+		REL::Relocation<func_t> func{ REL::ID(36532) };
+		return func(this, a_actor);
+	}
+
 	bool Actor::CanFlyHere() const
 	{
 		const auto* worldSpace = GetWorldspace();
