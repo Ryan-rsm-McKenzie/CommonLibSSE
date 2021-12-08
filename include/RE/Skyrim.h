@@ -879,6 +879,7 @@
 #include "RE/M/MenuEventHandler.h"
 #include "RE/M/MenuOpenCloseEvent.h"
 #include "RE/M/MenuOpenHandler.h"
+#include "RE/M/MenuScreenData.h"
 #include "RE/M/MenuTopicManager.h"
 #include "RE/M/MessageBoxData.h"
 #include "RE/M/MessageBoxMenu.h"
