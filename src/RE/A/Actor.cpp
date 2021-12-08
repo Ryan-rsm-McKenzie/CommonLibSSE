@@ -103,7 +103,7 @@ namespace RE
 	bool Actor::CanAttackActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::CanAttackActor);
-		REL::Relocation<func_t> func{ REL::ID(36532) };
+		REL::Relocation<func_t> func{ REL::ID(37532) };
 		return func(this, a_actor);
 	}
 
