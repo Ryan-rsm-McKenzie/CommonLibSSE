@@ -137,9 +137,7 @@ namespace SKSE
 						return std::isxdigit(static_cast<unsigned char>(c));
 					});
 				}
-				return std::ranges::all_of(a_str, [](char c) {
-					return std::isxdigit(static_cast<unsigned char>(c));
-				});
+				return false;
 			}
 
 			inline bool is_only_letter(std::string_view a_str)
