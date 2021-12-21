@@ -13,6 +13,7 @@
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTransform.h"
 #include "RE/T/TESForm.h"
 
 namespace RE
@@ -400,6 +401,7 @@ namespace RE
 		NiControllerSequence*                   GetSequence(stl::zstring a_name) const;
 		std::uint32_t                           GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const;
 		float                                   GetSubmergedWaterLevel(float a_zPos, TESObjectCELL* a_cell) const;
+		void                                    GetTransform(NiTransform& a_transform) const;
 		float                                   GetWaterHeight() const;
 		float                                   GetWeight() const;
 		float                                   GetWeightInContainer();

@@ -448,6 +448,13 @@ namespace RE
 		return level <= 1.0f ? level : 1.0f;
 	}
 
+	void TESObjectREFR::GetTransform(NiTransform& a_transform) const
+	{
+		using func_t = decltype(&TESObjectREFR::GetTransform);
+		REL::Relocation<func_t> func{ REL::ID(19326) };
+		return func(this, a_transform);
+	}
+
 	float TESObjectREFR::GetWaterHeight() const
 	{
 		float           waterHeight = -NI_INFINITY;

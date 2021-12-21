@@ -21,6 +21,7 @@ namespace RE
 	class NavMeshInfoMap;
 	class NiNode;
 	class Sky;
+	class TESLandTexture;
 	class TESNPC;
 	class TESObjectCELL;
 	class TESObjectREFR;
@@ -68,6 +69,13 @@ namespace RE
 		{
 			using func_t = decltype(&TES::GetCell);
 			REL::Relocation<func_t> func{ REL::ID(13322) };
+			return func(this, a_position);
+		}
+
+		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const
+		{
+			using func_t = decltype(&TES::GetLandTexture);
+			REL::Relocation<func_t> func{ REL::ID(13202) };
 			return func(this, a_position);
 		}
 

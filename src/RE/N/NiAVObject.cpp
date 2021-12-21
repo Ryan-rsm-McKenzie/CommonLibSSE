@@ -9,6 +9,7 @@
 #include "RE/B/BSShaderProperty.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSVisit.h"
+#include "RE/B/BSXFlags.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiNode.h"
 #include "RE/N/NiProperty.h"
@@ -69,6 +70,12 @@ namespace RE
 		return nullptr;
 	}
 
+	bool NiAVObject::HasAnimation()
+	{
+		const auto bsxFlags = GetExtraData<BSXFlags>("BSX");
+		return bsxFlags && ((bsxFlags->value & 2) != 0);
+	}
+
 	bool NiAVObject::HasShaderType(BSShaderMaterial::Feature a_type)
 	{
 		bool hasShaderType = false;
@@ -120,6 +127,40 @@ namespace RE
 		using func_t = decltype(&NiAVObject::SetMotionType);
 		REL::Relocation<func_t> func{ Offset::NiAVObject::SetMotionType };
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
+	}
+
+	void NiAVObject::SetProjectedUVData(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow)
+	{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
+			using Flag = BSShaderProperty::EShaderPropertyFlag;
+			using Flag8 = BSShaderProperty::EShaderPropertyFlag8;
+			using Feature = BSShaderMaterial::Feature;
+
+			auto effect = a_geometry->properties[BSGeometry::States::kEffect];
+			auto lightingShader = netimmerse_cast<BSLightingShaderProperty*>(effect.get());
+			if (lightingShader) {
+				if (lightingShader->flags.any(Flag::kSkinned) || lightingShader->flags.any(Flag::kTreeAnim)) {
+					return BSVisit::BSVisitControl::kContinue;
+				}
+
+				if (const auto material = lightingShader->material; material) {
+					if (const auto feature = material->GetFeature(); feature == Feature::kParallax || feature == Feature::kMultilayerParallax || feature == Feature::kFaceGen || feature == Feature::kMultiTexLand) {
+						return BSVisit::BSVisitControl::kContinue;
+					}
+				}
+
+				lightingShader->SetFlags(Flag8::kProjectedUV, true);
+				if (a_isSnow) {
+					lightingShader->SetFlags(Flag8::kSnow, true);
+				}
+
+				lightingShader->projectedUVParams = a_projectedUVParams;
+				lightingShader->projectedUVColor = a_projectedUVColor;
+
+				lightingShader->InitializeGeometry(a_geometry);
+			}
+			return BSVisit::BSVisitControl::kContinue;
+		});
 	}
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
@@ -216,38 +257,6 @@ namespace RE
 				}
 			}
 
-			return BSVisit::BSVisitControl::kContinue;
-		});
-	}
-
-	void NiAVObject::UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow)
-	{
-		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geometry) -> BSVisit::BSVisitControl {
-			using Flag = BSShaderProperty::EShaderPropertyFlag;
-			using Flag8 = BSShaderProperty::EShaderPropertyFlag8;
-
-			auto effect = a_geometry->properties[BSGeometry::States::kEffect];
-			auto lightingShader = netimmerse_cast<BSLightingShaderProperty*>(effect.get());
-			if (lightingShader) {
-				if (lightingShader->flags.any(Flag::kSkinned) || lightingShader->flags.any(Flag::kTreeAnim)) {
-					return BSVisit::BSVisitControl::kContinue;
-				}
-
-				const auto material = lightingShader->material;
-				if (material && material->GetFeature() == BSShaderMaterial::Feature::kParallax) {
-					return BSVisit::BSVisitControl::kContinue;
-				}
-
-				lightingShader->SetFlags(Flag8::kProjectedUV, true);
-				if (a_isSnow) {
-					lightingShader->SetFlags(Flag8::kSnow, true);
-				}
-
-				lightingShader->projectedUVParams = a_projectedUVParams;
-				lightingShader->projectedUVColor = a_projectedUVColor;
-
-				lightingShader->InitializeGeometry(a_geometry);
-			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
 	}

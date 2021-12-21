@@ -243,6 +243,17 @@ namespace SKSE
 				}
 			}
 
+			inline void replace_last_instance(std::string& a_str, std::string_view a_search, std::string_view a_replace)
+			{
+				if (a_search.empty()) {
+					return;
+				}
+
+				if (auto pos = a_str.rfind(a_search); pos != std::string::npos) {
+					a_str.replace(pos, a_search.length(), a_replace);
+				}
+			}
+
 			inline std::vector<std::string> split(const std::string& a_str, const std::string& a_deliminator)
 			{
 				std::vector<std::string> list;

@@ -115,18 +115,19 @@ namespace RE
 		[[nodiscard]] bool           GetAppCulled() const;
 		[[nodiscard]] BSGeometry*    GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
 		[[nodiscard]] TESObjectREFR* GetUserData() const;
+		[[nodiscard]] bool           HasAnimation();
 		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
 		void                         RemoveDecals();
 		void                         SetAppCulled(bool a_cull);
 		void                         SetCollisionLayer(COL_LAYER a_collisionLayer);
 		void                         SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_arg2);
 		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		void                         SetProjectedUVData(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
 		void                         TintScenegraph(const NiColorA& a_color);
 		void                         Update(NiUpdateData& a_data);
 		void                         UpdateBodyTint(const NiColor& a_color);
 		void                         UpdateHairColor(const NiColor& a_color);
 		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
-		void                         UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
 		void                         UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 
 		// members
