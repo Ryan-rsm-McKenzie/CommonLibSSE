@@ -1,11 +1,18 @@
 cmake_minimum_required(VERSION 3.19)
 
+set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+if(${MTD})
+set(VCPKG_TARGET_TRIPLET "x64-windows-static-md" CACHE STRING "")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL" CACHE STRING "")
+else()
+set(VCPKG_TARGET_TRIPLET "x64-windows-static" CACHE STRING "")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>" CACHE STRING "")
+endif()
+
 # singleton target across multiple projects
 if(TARGET CommonLibSSE)
 	return() 
 endif()
-
-option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 
 project(
 	CommonLibSSE
@@ -18,12 +25,15 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
+if(${ANNIVERSARY_EDITION})
 find_package(binary_io REQUIRED CONFIG)
+endif()
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 
-include(cmake/sourcelist.cmake)
-
+# source files
+execute_process(COMMAND powershell -ExecutionPolicy Bypass -File "${CMAKE_CURRENT_SOURCE_DIR}/!Update.ps1" "SOURCEGEN" "${PROJECT_VERSION}" "${CMAKE_CURRENT_BINARY_DIR}")
+include(${CMAKE_CURRENT_BINARY_DIR}/sourcelist.cmake)
 source_group(
 	TREE "${CMAKE_CURRENT_SOURCE_DIR}"
 	FILES ${SOURCES}
@@ -45,7 +55,7 @@ target_compile_definitions(
 		BOOST_STL_INTERFACES_DISABLE_CONCEPTS
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
-		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
+		SKSE_SUPPORT_XBYAK=1
 )
 
 target_compile_features(
@@ -54,7 +64,7 @@ target_compile_features(
 		cxx_std_20
 )
 
-if (MSVC)
+if(MSVC)
 	target_compile_options(
 		"${PROJECT_NAME}"
 		PRIVATE
@@ -96,11 +106,18 @@ target_include_directories(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
-		binary_io::binary_io
 		Boost::headers
 		spdlog::spdlog
 		Version.lib
 )
+
+if(${ANNIVERSARY_EDITION})
+target_link_libraries(
+	"${PROJECT_NAME}"
+	PUBLIC
+		binary_io::binary_io
+)
+endif()
 
 target_precompile_headers(
 	"${PROJECT_NAME}"

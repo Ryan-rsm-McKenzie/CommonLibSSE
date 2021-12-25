@@ -19,7 +19,7 @@ namespace RE
 		virtual ~MagicCaster();  // 00
 
 		// add
-		virtual void Unk_01(void);  // 01
+		virtual void InstantCast(SpellItem* spell, bool noHitEffectArt, Actor* target, float effectiveness, bool hostileEffectivenessOnly, float magnitudeOverride, Actor* cause);  // 01
 		virtual void Unk_02(void);  // 02
 		virtual void Unk_03(void);  // 03
 		virtual void Unk_04(void);  // 04
