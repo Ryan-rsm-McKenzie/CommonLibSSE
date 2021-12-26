@@ -976,6 +976,7 @@ set(SOURCES
 	include/RE/N/NiBooleanExtraData.h
 	include/RE/N/NiBound.h
 	include/RE/N/NiCamera.h
+	include/RE/N/NiCloningProcess.h
 	include/RE/N/NiCollisionObject.h
 	include/RE/N/NiColor.h
 	include/RE/N/NiColorData.h
