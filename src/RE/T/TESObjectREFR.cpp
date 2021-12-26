@@ -451,7 +451,7 @@ namespace RE
 	void TESObjectREFR::GetTransform(NiTransform& a_transform) const
 	{
 		using func_t = decltype(&TESObjectREFR::GetTransform);
-		REL::Relocation<func_t> func{ REL::ID(19326) };
+		REL::Relocation<func_t> func{ REL::ID(19753) };
 		return func(this, a_transform);
 	}
 
