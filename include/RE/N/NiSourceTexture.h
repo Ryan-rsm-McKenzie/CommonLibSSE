@@ -34,8 +34,6 @@ namespace RE
 		void          Unk_29(void) override;     // 29 - { return; }
 		void          Unk_2A(void) override;     // 2A - { return; }
 
-
-
 		// members
 		BSResource::Stream*  unk40;            // 40
 		BSGraphics::Texture* rendererTexture;  // 48
