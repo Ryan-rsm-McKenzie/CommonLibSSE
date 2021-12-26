@@ -75,7 +75,7 @@ namespace RE
 		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const
 		{
 			using func_t = decltype(&TES::GetLandTexture);
-			REL::Relocation<func_t> func{ REL::ID(13202) };
+			REL::Relocation<func_t> func{ REL::ID(13348) };
 			return func(this, a_position);
 		}
 
