@@ -38,6 +38,13 @@ namespace RE
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
 
+		static BGSMaterialType* GetMaterialType(MATERIAL_ID a_materialID)
+		{
+			using func_t = decltype(&BGSMaterialType::GetMaterialType);
+			REL::Relocation<func_t> func{ REL::ID(20529) };
+			return func(a_materialID);
+		}
+
 		// members
 		BGSMaterialType*                      parentType;          // 20 - PNAM
 		BSFixedString                         materialName;        // 28 - MNAM

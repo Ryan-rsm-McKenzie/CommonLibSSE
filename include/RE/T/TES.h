@@ -4,6 +4,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/I/ICellAttachDetachEventSource.h"
+#include "RE/M/MaterialIDs.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
 
@@ -76,6 +77,13 @@ namespace RE
 		{
 			using func_t = decltype(&TES::GetLandTexture);
 			REL::Relocation<func_t> func{ REL::ID(13348) };
+			return func(this, a_position);
+		}
+
+		MATERIAL_ID GetLandMaterialType(const NiPoint3& a_position) const
+		{
+			using func_t = decltype(&TES::GetLandMaterialType);
+			REL::Relocation<func_t> func{ REL::ID(13203) };
 			return func(this, a_position);
 		}
 
