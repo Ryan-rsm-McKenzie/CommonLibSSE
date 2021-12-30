@@ -346,6 +346,13 @@ namespace RE
 		return nullptr;
 	}
 
+	bool Actor::HasLOS(Actor* a_target, std::uint32_t a_arg1) const
+	{
+		using func_t = decltype(&Actor::HasLOS);
+		REL::Relocation<func_t> func{ REL::ID(36745) };
+		return func(this, a_target, a_arg1);
+	}
+
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);

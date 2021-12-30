@@ -22,7 +22,7 @@ namespace RE
 		GFxValue      sneakAnim;        // 40
 		GFxValue      sneakTextHolder;  // 58
 		GFxValue      sneakText;        // 70
-		std::uint32_t unk88;            // 88
+		std::int32_t  unk88;            // 88
 		std::uint32_t unk8C;            // 8C
 		std::uint8_t  unk90;            // 90
 		std::uint8_t  unk91;            // 91

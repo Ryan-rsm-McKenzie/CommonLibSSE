@@ -4,6 +4,7 @@
 
 #include "RE/A/AIFormulas.h"
 #include "RE/A/AIProcess.h"
+#include "RE/A/AITimer.h"
 #include "RE/A/AITimeStamp.h"
 #include "RE/A/AbsorbEffect.h"
 #include "RE/A/AbstractHeap.h"
@@ -170,6 +171,7 @@
 #include "RE/B/BGSTypedItem.h"
 #include "RE/B/BGSVoiceType.h"
 #include "RE/B/BGSVolumetricLighting.h"
+#include "RE/B/BGSWorldLocation.h"
 #include "RE/B/BSAnimNote.h"
 #include "RE/B/BSAnimNoteListener.h"
 #include "RE/B/BSAnimationGraphChannel.h"
@@ -349,6 +351,7 @@
 #include "RE/C/CodeTasklet.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/C/Color.h"
+#include "RE/C/CombatGroup.h"
 #include "RE/C/CombatGroupDetectionListener.h"
 #include "RE/C/CommandTable.h"
 #include "RE/C/CommonTypeTraits.h"
