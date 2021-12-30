@@ -3,10 +3,11 @@
 #include "RE/A/AITimeStamp.h"
 #include "RE/A/AITimer.h"
 #include "RE/A/Actor.h"
+#include "RE/B/BGSWorldLocation.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/C/CombatGroupDetectionListener.h"
-#include "RE/B/BGSWorldLocation.h"
+
 
 namespace RE
 {
