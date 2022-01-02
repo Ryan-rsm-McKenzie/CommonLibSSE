@@ -140,7 +140,14 @@ namespace RE
 		return obj ? obj->As<TESContainer>() : nullptr;
 	}
 
-	const char* TESObjectREFR::GetDisplayFullName()
+    BGSLocation* TESObjectREFR::GetCurrentLocation() const
+	{
+		using func_t = decltype(&TESObjectREFR::GetCurrentLocation);
+		REL::Relocation<func_t> func{ REL::ID(19385) };
+		return func(this);
+	}
+
+    const char* TESObjectREFR::GetDisplayFullName()
 	{
 		using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
 		REL::Relocation<func_t> func{ Offset::TESObjectREFR::GetDisplayFullName };

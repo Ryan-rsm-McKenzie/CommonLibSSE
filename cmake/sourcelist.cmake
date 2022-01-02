@@ -1262,6 +1262,7 @@ set(SOURCES
 	include/RE/T/TESResetEvent.h
 	include/RE/T/TESResolveNPCTemplatesEvent.h
 	include/RE/T/TESShout.h
+	include/RE/T/TESSleepStopEvent.h
 	include/RE/T/TESSoulGem.h
 	include/RE/T/TESSound.h
 	include/RE/T/TESSpellCastEvent.h

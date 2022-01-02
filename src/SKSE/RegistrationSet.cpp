@@ -191,7 +191,10 @@ namespace SKSE
 				if (!a_intfc->ResolveHandle(handle, handle)) {
 					log::warn("Failed to resolve handle ({})", handle);
 				} else {
-					_handles.insert(handle);
+					auto result = _handles.insert(handle);
+					if (!result.second) {
+						log::error("Loaded duplicate handle ({})", handle);
+					}
 				}
 			}
 
@@ -224,7 +227,9 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 
-			if (result.second) {
+			if (!result.second) {
+				log::warn("Handle already registered ({})", handle);
+			} else {
 				policy->PersistHandle(handle);
 			}
 
