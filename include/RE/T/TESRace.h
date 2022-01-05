@@ -307,6 +307,7 @@ namespace RE
 
 		[[nodiscard]] bool AllowsPCDialogue() const;
 		[[nodiscard]] bool AllowsPickpocket() const;
+		[[nodiscard]] bool IsChildRace() const;
 
 		// members
 		TESModel                                       skeletonModels[SEXES::kTotal];                  // 098 - ANAM
