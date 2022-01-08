@@ -217,7 +217,7 @@ namespace REL
 		};
 
 		template <std::size_t N>
-		struct pattern_impl
+		requires(N % 3 == 0) struct pattern_impl
 		{
 			static constexpr auto Size = N / 3;
 
