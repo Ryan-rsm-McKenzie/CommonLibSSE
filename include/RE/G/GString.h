@@ -7,6 +7,24 @@ namespace RE
 	class GString
 	{
 	public:
+		class HashFunctor
+		{
+		public:
+			UPInt operator()(const GString& a_data) const
+			{
+				return BernsteinHashFunction(a_data.data(), a_data.size());
+			}
+		};
+
+		class NoCaseHashFunctor
+		{
+		public:
+			UPInt operator()(const GString& a_data) const
+			{
+				return BernsteinHashFunctionCIS(a_data.data(), a_data.size());
+			}
+		};
+
 		using value_type = char;  // can also be wchar_t
 		using size_type = UPInt;
 		using reference = value_type&;
@@ -116,6 +134,8 @@ namespace RE
 		inline friend bool operator!=(const std::string_view& a_lhs, const GString& a_rhs) { return !(a_lhs == a_rhs); }
 
 		static UPInt BernsteinHashFunction(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
+
+		static UPInt BernsteinHashFunctionCIS(const void* a_dataIn, UPInt a_size, UPInt a_seed = 5381);
 
 	protected:
 		GString*                ctor(const char* a_str);

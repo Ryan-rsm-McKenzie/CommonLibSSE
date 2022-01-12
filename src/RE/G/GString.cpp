@@ -242,6 +242,21 @@ namespace RE
 		return hash;
 	}
 
+	UPInt GString::BernsteinHashFunctionCIS(const void* a_dataIn, UPInt a_size, UPInt a_seed)
+	{
+		assert(a_dataIn);
+		auto         dataIn = static_cast<const std::uint8_t*>(a_dataIn);
+		UPInt        hash;
+		std::uint8_t byte = 0;
+		for (hash = a_seed; a_size; hash = byte ^ 33 * hash) {
+			byte = *(dataIn + a_size-- - 1);
+			if (byte - 65 <= 25) {
+				byte += 32;
+			}
+		}
+		return hash;
+	}
+
 	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
