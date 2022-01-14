@@ -142,7 +142,7 @@ namespace RE
 		}
 
 		template <class T>
-		inline void SendEvent(T* a_event)
+		inline void SendEvent(const T* a_event)
 		{
 			GetEventSource<T>()->SendEvent(a_event);
 		}

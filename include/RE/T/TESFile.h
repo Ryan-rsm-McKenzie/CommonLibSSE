@@ -46,10 +46,13 @@ namespace RE
 		};
 
 		TESFile*                              Duplicate(std::uint32_t a_cacheSize = 0x4000);
+		[[nodiscard]] std::uint8_t            GetCompileIndex() const noexcept { return compileIndex; }
 		std::uint32_t                         GetCurrentSubRecordType();
 		[[nodiscard]] constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
 		[[nodiscard]] constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
+		[[nodiscard]] std::string_view        GetFilename() const noexcept { return { fileName }; }
 		FormType                              GetFormType();
+		[[nodiscard]] std::uint16_t           GetSmallFileCompileIndex() const noexcept { return smallFileCompileIndex; }
 		[[nodiscard]] constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
 		[[nodiscard]] constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
 		[[nodiscard]] constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
