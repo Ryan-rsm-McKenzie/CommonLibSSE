@@ -104,6 +104,13 @@ namespace RE
 		return static_cast<bool>(actorDoingPlayerCommand);
 	}
 
+	void PlayerCharacter::IncrementSkill(ActorValue a_skill, float a_value)
+	{
+		using func_t = decltype(&PlayerCharacter::IncrementSkill);
+		REL::Relocation<func_t> func{ REL::ID(40489) };
+		return func(this, a_skill, a_value);
+	}
+
 	bool PlayerCharacter::IsGrabbing() const
 	{
 		return static_cast<bool>(grabbedObject);

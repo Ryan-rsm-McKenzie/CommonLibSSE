@@ -286,6 +286,7 @@ namespace RE
 		BSTArray<TintMask*>&     GetTintList();
 		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 		bool                     HasActorDoingCommand() const;
+		void                     IncrementSkill(ActorValue a_skill, float a_value);
 		bool                     IsGrabbing() const;
 		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void                     SetEscaping(bool a_flag, bool a_escaped);
