@@ -320,7 +320,7 @@ namespace RE
 		void                    Unk_96(void) override;                                                                                                                                                                                                // 096
 		void                    SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                                                        // 098
 		bool                    IsDead(bool a_notEssential = true) const override;                                                                                                                                                                    // 099
-		void                    Unk_9C(void) override;                                                                                                                                                                                                // 09C
+		bool                    ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime) override;                                                                                                                         // 09C
 		void                    Unk_9D(void) override;                                                                                                                                                                                                // 09D
 		TESAmmo*                GetCurrentAmmo() const override;                                                                                                                                                                                      // 09E
 		void                    UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                                                                 // 0A1
@@ -377,7 +377,7 @@ namespace RE
 		virtual void                 AttachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CD
 		virtual void                 DetachArrow(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                          // 0CE
 		virtual bool                 AddShout(TESShout* a_shout);                                                                                                                                                     // 0CF
-		virtual void                 Unk_D0(void);                                                                                                                                                                    // 0D0 - { return; }
+		virtual void                 UnlockWord(TESWordOfPower* a_power);                                                                                                                                             // 0D0 - { return; }
 		virtual void                 Unk_D1(void);                                                                                                                                                                    // 0D1
 		virtual std::uint32_t        UseAmmo(std::uint32_t a_shotCount);                                                                                                                                              // 0D2
 		virtual bool                 CalculateCachedOwnerIsInCombatantFaction() const;                                                                                                                                // 0D3
@@ -422,8 +422,8 @@ namespace RE
 		virtual void                 ForEachPerk(PerkEntryVisitor& a_visitor) const;                                                                                                                                  // 0FA
 		virtual void                 AddPerk(BGSPerk* a_perk, std::uint32_t a_rank = 0);                                                                                                                              // 0FB - { return; }
 		virtual void                 RemovePerk(BGSPerk* a_perk);                                                                                                                                                     // 0FC - { return; }
-		virtual void                 Unk_FD(void);                                                                                                                                                                    // 0FD - { return; }
-		virtual void                 Unk_FE(void);                                                                                                                                                                    // 0FE - { return; }
+		virtual void                 ApplyTemporaryPerk(BGSPerk* a_perk);                                                                                                                                             // 0FD - { return; }
+		virtual void                 RemoveTemporaryPerk(BGSPerk* a_perk);                                                                                                                                            // 0FE - { return; }
 		virtual bool                 HasPerkEntries(EntryPoint a_entryType) const;                                                                                                                                    // 0FF
 		virtual void                 ForEachPerkEntry(EntryPoint a_entryType, PerkEntryVisitor& a_visitor) const;                                                                                                     // 100
 		virtual void                 ApplyPerksFromBase();                                                                                                                                                            // 101
@@ -469,9 +469,12 @@ namespace RE
 		static NiPointer<Actor> LookupByHandle(RefHandle a_refHandle);
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
+		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		bool                         AddSpell(SpellItem* a_spell);
+		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
+		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
 		bool                         CanPickpocket() const;
 		bool                         CanTalkToPlayer() const;
@@ -479,11 +482,15 @@ namespace RE
 		void                         ClearExpressionOverride();
 		inline void                  ClearExtraArrows() { RemoveExtraArrows3D(); }
 		ActorHandle                  CreateRefHandle();
+		bool                         Decapitate();
+		void                         DeselectSpell(SpellItem* a_spell);
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
+		void                         EnableAI(bool a_enable);
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
+		float                        GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
@@ -499,10 +506,14 @@ namespace RE
 		std::uint16_t                GetLevel() const;
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
+		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
+		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
+		bool                         HasKeywordString(std::string_view a_formEditorID);
 		bool                         HasPerk(BGSPerk* a_perk) const;
+		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
 		bool                         IsAIEnabled() const;
 		bool                         IsAMount() const;
@@ -514,6 +525,7 @@ namespace RE
 		bool                         IsGhost() const;
 		bool                         IsGuard() const;
 		bool                         IsHostileToActor(Actor* a_actor);
+		bool                         IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsOnMount() const;
 		bool                         IsPlayerTeammate() const;
@@ -521,10 +533,15 @@ namespace RE
 		bool                         IsSneaking() const;
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
+		void                         KillImmediate();
+		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink);
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
+		void                         StopInteractingQuick(bool a_unk02);
+		void                         StopMoving(float a_delta);
 		void                         SwitchRace(TESRace* a_race, bool a_player);
 		void                         TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime);
 		void                         UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
@@ -532,6 +549,7 @@ namespace RE
 		void                         UpdateHairColor();
 		void                         UpdateSkinColor();
 		void                         UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
+		void                         VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                         VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		bool                         WouldBeStealing(const TESObjectREFR* a_target) const;
 

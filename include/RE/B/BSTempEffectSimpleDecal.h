@@ -19,6 +19,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffectSimpleDecal;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffectSimpleDecal;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDecal;
 
 		~BSTempEffectSimpleDecal() override;  // 00
 

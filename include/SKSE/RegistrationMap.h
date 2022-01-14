@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/A/ActiveEffect.h"
 #include "RE/B/BGSBaseAlias.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/F/FunctionArguments.h"
@@ -19,7 +20,10 @@ namespace SKSE
 		class RegistrationMapBase
 		{
 		public:
-			RegistrationMapBase();
+			using Key = std::variant<std::string, RE::FormID, RE::FormType>;
+
+			RegistrationMapBase() = delete;
+			RegistrationMapBase(const std::string_view& a_eventName);
 			RegistrationMapBase(const RegistrationMapBase& a_rhs);
 			RegistrationMapBase(RegistrationMapBase&& a_rhs);
 			~RegistrationMapBase();
@@ -27,25 +31,33 @@ namespace SKSE
 			RegistrationMapBase& operator=(const RegistrationMapBase& a_rhs);
 			RegistrationMapBase& operator=(RegistrationMapBase&& a_rhs);
 
-			bool Register(const RE::TESForm* a_form, RE::BSFixedString a_callback);
-			bool Register(const RE::BGSBaseAlias* a_alias, RE::BSFixedString a_callback);
-			bool Unregister(const RE::TESForm* a_form);
-			bool Unregister(const RE::BGSBaseAlias* a_alias);
+			bool Register(const RE::TESForm* a_form, Key a_key);
+			bool Register(const RE::BGSBaseAlias* a_alias, Key a_key);
+			bool Register(const RE::ActiveEffect* a_activeEffect, Key a_key);
+			bool Unregister(const RE::TESForm* a_form, Key a_key);
+			bool Unregister(const RE::BGSBaseAlias* a_alias, Key a_key);
+			bool Unregister(const RE::ActiveEffect* a_activeEffect, Key a_key);
+			void UnregisterAll(const RE::TESForm* a_form);
+			void UnregisterAll(const RE::BGSBaseAlias* a_alias);
+			void UnregisterAll(const RE::ActiveEffect* a_activeEffect);
+			void UnregisterAll(RE::VMHandle a_handle);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);
 			bool Load(SerializationInterface* a_intfc);
+			void Revert(SerializationInterface*);
 
 		protected:
 			using Lock = std::recursive_mutex;
 			using Locker = std::lock_guard<Lock>;
-			using EventName = std::string;
 
-			bool Register(const void* a_object, RE::BSFixedString a_callback, RE::VMTypeID a_typeID);
-			bool Unregister(const void* a_object, RE::VMTypeID a_typeID);
+			bool Register(const void* a_object, Key a_key, RE::VMTypeID a_typeID);
+			bool Unregister(const void* a_object, Key a_key, RE::VMTypeID a_typeID);
+			void UnregisterAll(const void* a_object, RE::VMTypeID a_typeID);
 
-			std::map<RE::VMHandle, EventName> _regs;
-			mutable Lock                      _lock;
+			std::map<Key, std::set<RE::VMHandle>> _regs;
+			std::string                           _eventName;
+			mutable Lock                          _lock;
 		};
 
 		template <class Enable, class... Args>
@@ -59,75 +71,101 @@ namespace SKSE
 			Args...> :
 			public RegistrationMapBase
 		{
-		public:
-			RegistrationMap() = default;
-			RegistrationMap(const RegistrationMap&) = default;
-			RegistrationMap(RegistrationMap&&) = default;
-
-			~RegistrationMap() = default;
-
-			RegistrationMap& operator=(const RegistrationMap& a_rhs) = default;
-			RegistrationMap& operator=(RegistrationMap&& a_rhs) = default;
-
-			inline void SendEvent(Args... a_args)
-			{
-				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				for (auto& reg : _regs) {
-					auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
-					vm->SendEvent(reg.first, reg.second.c_str(), args);
-				}
-			}
-
-			inline void QueueEvent(Args... a_args)
-			{
-				std::tuple args(VMArg(std::forward<Args>(a_args))...);
-				auto       task = GetTaskInterface();
-				assert(task);
-				if (task) {
-					task->AddTask([args, this]() mutable {
-						SendEvent_Tuple(std::move(args), index_sequence_for_tuple<decltype(args)>{});
-					});
-				}
-			}
-
 		private:
-			template <class Tuple, std::size_t... I>
-			inline void SendEvent_Tuple(Tuple&& a_tuple, std::index_sequence<I...>)
-			{
-				SendEvent(std::get<I>(std::forward<Tuple>(a_tuple)).Unpack()...);
-			}
-		};
+			using super = RegistrationMapBase;
 
-		template <>
-		class RegistrationMap<void> : public RegistrationMapBase
-		{
 		public:
-			RegistrationMap() = default;
+			RegistrationMap() = delete;
 			RegistrationMap(const RegistrationMap&) = default;
 			RegistrationMap(RegistrationMap&&) = default;
+
+			inline RegistrationMap(const std::string_view& a_eventName) :
+				super(a_eventName)
+			{}
 
 			~RegistrationMap() = default;
 
 			RegistrationMap& operator=(const RegistrationMap&) = default;
 			RegistrationMap& operator=(RegistrationMap&&) = default;
 
-			inline void SendEvent()
+			inline void SendEvent(Key a_key, Args... a_args)
 			{
+				RE::BSFixedString eventName(_eventName);
+
 				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				if (vm) {
-					for (auto& reg : _regs) {
-						auto args = RE::MakeFunctionArguments();
-						vm->SendEvent(reg.first, reg.second.c_str(), args);
+				for (auto& [key, handles] : _regs) {
+					if (key == a_key) {
+						for (auto& handle : handles) {
+							auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
+							vm->SendEvent(handle, eventName, args);
+						}
 					}
 				}
 			}
 
-			inline void QueueEvent()
+			inline void QueueEvent(Key a_key, Args... a_args)
+			{
+				std::tuple args(VMArg(std::forward<Args>(a_args))...);
+				auto       task = GetTaskInterface();
+				assert(task);
+				if (task) {
+					task->AddTask([a_key, args, this]() mutable {
+						SendEvent_Tuple(a_key, std::move(args), index_sequence_for_tuple<decltype(args)>{});
+					});
+				}
+			}
+
+		private:
+			template <class Tuple, std::size_t... I>
+			inline void SendEvent_Tuple(Key a_key, Tuple&& a_tuple, std::index_sequence<I...>)
+			{
+				SendEvent(a_key, std::get<I>(std::forward<Tuple>(a_tuple)).Unpack()...);
+			}
+		};
+
+		template <>
+		class RegistrationMap<void> : public RegistrationMapBase
+		{
+		private:
+			using super = RegistrationMapBase;
+
+		public:
+			RegistrationMap() = delete;
+			RegistrationMap(const RegistrationMap&) = default;
+			RegistrationMap(RegistrationMap&&) = default;
+
+			inline RegistrationMap(const std::string_view& a_eventName) :
+				super(a_eventName)
+			{}
+
+			~RegistrationMap() = default;
+
+			RegistrationMap& operator=(const RegistrationMap&) = default;
+			RegistrationMap& operator=(RegistrationMap&&) = default;
+
+			inline void SendEvent(Key a_key)
+			{
+				RE::BSFixedString eventName(_eventName);
+
+				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+				if (vm) {
+					for (auto& [key, handles] : _regs) {
+						if (key == a_key) {
+							for (auto& handle : handles) {
+								auto args = RE::MakeFunctionArguments();
+								vm->SendEvent(handle, eventName, args);
+							}
+						}
+					}
+				}
+			}
+
+			inline void QueueEvent(Key a_key)
 			{
 				auto task = GetTaskInterface();
 				assert(task);
-				task->AddTask([this]() {
-					SendEvent();
+				task->AddTask([a_key, this]() {
+					SendEvent(a_key);
 				});
 			}
 		};

@@ -5,6 +5,12 @@ namespace RE
 	class BSTimer
 	{
 	public:
+		static float GetCurrentGlobalTimeMult()
+		{
+			REL::Relocation<float*> value{ REL::ID(388443) };
+			return *value;
+		}
+
 		// members
 		std::uint64_t unk00;                          // 00
 		std::uint32_t lastPerformanceCount;           // 08

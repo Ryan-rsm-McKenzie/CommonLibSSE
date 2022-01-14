@@ -37,4 +37,11 @@ namespace RE
 	{
 		return GetData1();
 	}
+
+	bool MagicItem::IsValid() const
+	{
+		using func_t = decltype(&MagicItem::IsValid);
+		REL::Relocation<func_t> func{ REL::ID(11290) };
+		return func(this);
+	}
 }

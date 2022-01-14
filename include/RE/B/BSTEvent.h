@@ -64,6 +64,12 @@ namespace RE
 			}
 		}
 
+		template <class Event>
+		inline void AddEventSink(BSTEventSink<Event>* a_sink)
+		{
+			AddEventSink(a_sink);
+		}
+
 		void RemoveEventSink(Sink* a_eventSink)
 		{
 			if (!a_eventSink) {

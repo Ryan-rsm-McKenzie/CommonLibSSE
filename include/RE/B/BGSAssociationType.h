@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAssociationType;
+		inline static constexpr auto VTABLE = VTABLE_BGSAssociationType;
 		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
 		enum class FLAGS  // DATA

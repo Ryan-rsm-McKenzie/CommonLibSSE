@@ -11,6 +11,17 @@ namespace RE
 	class hkpCollidable : public hkpCdBody
 	{
 	public:
+		enum BelongsTo : std::uint32_t
+		{
+			kTerrain = 1 << 16
+		};
+
+		enum CollisionFilterInfo : std::uint32_t
+		{
+			kBelongsTo = 0xFFFF0000,
+			kCollidesWith = 0x0000FFFF
+		};
+
 		enum class ForceCollideOntoPpuReasons
 		{
 			kUserRequest = 1 << 0,

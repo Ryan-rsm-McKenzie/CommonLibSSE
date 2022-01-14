@@ -18,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSShaderParticleGeometryData;
+		inline static constexpr auto VTABLE = VTABLE_BGSShaderParticleGeometryData;
 		inline static constexpr auto FORMTYPE = FormType::ShaderParticleGeometryData;
 
 		enum class DataID

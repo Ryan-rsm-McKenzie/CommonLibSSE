@@ -68,6 +68,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLocation;
+		inline static constexpr auto VTABLE = VTABLE_BGSLocation;
 		inline static constexpr auto FORMTYPE = FormType::Location;
 
 		struct ChangeFlags

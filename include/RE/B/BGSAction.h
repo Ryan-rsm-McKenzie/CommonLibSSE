@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSAction;
+		inline static constexpr auto VTABLE = VTABLE_BGSAction;
 		inline static constexpr auto FORMTYPE = FormType::Action;
 
 		struct RecordFlags

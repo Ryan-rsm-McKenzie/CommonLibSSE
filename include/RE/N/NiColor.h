@@ -5,6 +5,8 @@ namespace RE
 	class NiColor;
 	class NiColorA;
 
+	struct Color;
+
 	class NiColor
 	{
 	public:
@@ -41,6 +43,14 @@ namespace RE
 			blue(a_blue)
 		{}
 
+		constexpr NiColor(std::uint32_t a_hexValue) noexcept :
+			red(((a_hexValue >> 16) & 0xFF) / 255.0f),
+			green(((a_hexValue >> 8) & 0xFF) / 255.0f),
+			blue(((a_hexValue)&0xFF) / 255.0f)
+		{
+		}
+
+		NiColor(const Color& a_rhs);
 		~NiColor() noexcept = default;
 
 		constexpr NiColor& operator=(const NiColor& a_rhs) noexcept
@@ -92,6 +102,132 @@ namespace RE
 			return std::addressof(red)[a_idx];
 		}
 
+		[[nodiscard]] NiColor operator+(const NiColor& a_rhs) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] += a_rhs[i];
+			}
+			return tmp;
+		}
+
+		NiColor& operator+=(const NiColor& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) += a_rhs[i];
+			}
+			return *this;
+		}
+
+		[[nodiscard]] NiColor operator-(const NiColor& a_rhs) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] -= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		NiColor& operator-=(const NiColor& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) -= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend NiColor operator-(float a_lhs, const NiColor& a_rhs)
+		{
+			return NiColor(
+				a_lhs - a_rhs.red,
+				a_lhs - a_rhs.green,
+				a_lhs - a_rhs.blue);
+		}
+
+		[[nodiscard]] NiColor operator*(const NiColor& a_rhs) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] *= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		NiColor& operator*=(const NiColor& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) *= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend NiColor operator*(float a_lhs, const NiColor& a_rhs)
+		{
+			return NiColor(
+				a_lhs * a_rhs.red,
+				a_lhs * a_rhs.green,
+				a_lhs * a_rhs.blue);
+		}
+
+		[[nodiscard]] NiColor operator/(const NiColor& a_rhs) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] /= a_rhs[i];
+			}
+			return tmp;
+		}
+
+		NiColor& operator/=(const NiColor& a_rhs) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) /= a_rhs[i];
+			}
+			return *this;
+		}
+
+		friend NiColor operator/(float a_lhs, const NiColor& a_rhs)
+		{
+			return NiColor(
+				a_lhs / a_rhs.red,
+				a_lhs / a_rhs.green,
+				a_lhs / a_rhs.blue);
+		}
+
+		[[nodiscard]] NiColor operator+(float a_value) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] += a_value;
+			}
+			return tmp;
+		}
+
+		NiColor& operator+=(float a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) += a_value;
+			}
+			return *this;
+		}
+
+		[[nodiscard]] NiColor operator-(float a_value) const noexcept
+		{
+			NiColor tmp = *this;
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				tmp[i] -= a_value;
+			}
+			return tmp;
+		}
+
+		NiColor& operator-=(float a_value) noexcept
+		{
+			for (std::size_t i = 0; i < kTotal; ++i) {
+				operator[](i) -= a_value;
+			}
+			return *this;
+		}
+
 		[[nodiscard]] NiColor operator*(float a_value) const noexcept
 		{
 			NiColor tmp = *this;
@@ -125,6 +261,9 @@ namespace RE
 			}
 			return *this;
 		}
+
+		[[nodiscard]] static std::uint32_t ColorToInt(const NiColor& a_rhs);
+		[[nodiscard]] static std::string   ColorToString(const NiColor& a_rhs);
 
 		// members
 		float red;    // 0

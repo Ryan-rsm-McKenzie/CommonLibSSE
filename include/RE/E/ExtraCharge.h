@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraCharge;
+		inline static constexpr auto VTABLE = VTABLE_ExtraCharge;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCharge;
 
 		ExtraCharge();

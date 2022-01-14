@@ -23,9 +23,9 @@ namespace RE
 		[[nodiscard]] Type GetType() const override;                           // 25 - { return Type::kShade; }
 
 		// add
-		virtual void Unk_27(void);  // 27 - { return 1; }
-		virtual void Unk_28(void);  // 28 - { return 1; }
-		virtual void Unk_29(void);  // 29 - { return; }
+		virtual bool InitializeGeometry(BSGeometry* a_geometry);  // 27 - { return 1; }
+		virtual bool InitializeShader(BSGeometry* a_geometry);    // 28 - { return 1; }
+		virtual void Unk_29(void);                                // 29 - { return; }
 	};
 	static_assert(sizeof(NiShadeProperty) == 0x30);
 }

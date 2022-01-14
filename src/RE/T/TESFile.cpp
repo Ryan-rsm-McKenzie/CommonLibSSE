@@ -23,6 +23,15 @@ namespace RE
 		return func(this);
 	}
 
+	bool TESFile::IsFormInMod(FormID formID) const
+	{
+		if (!IsLight() && (formID >> 24) == compileIndex)
+			return true;
+		if (IsLight() && (formID >> 24) == 0xFE && ((formID & 0x00FFF000) >> 12) == smallFileCompileIndex)
+			return true;
+		return false;
+	}
+
 	void TESFile::ReadData(void* a_buf, std::uint32_t a_size)
 	{
 		using func_t = decltype(&TESFile::ReadData);

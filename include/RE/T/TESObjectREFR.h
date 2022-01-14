@@ -13,14 +13,17 @@
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTransform.h"
 #include "RE/T/TESForm.h"
 
 namespace RE
 {
 	enum class LOCK_LEVEL;
+	class hkpCollidable;
 	class Actor;
 	class ActorCause;
 	class BGSAnimationSequencer;
+	class BGSArtObject;
 	class BGSDialogueBranch;
 	class BipedAnim;
 	class BSAnimNoteReceiver;
@@ -33,16 +36,19 @@ namespace RE
 	class InventoryEntryData;
 	class MagicCaster;
 	class MagicTarget;
+	class ModelReferenceEffect;
 	class NiAVObject;
 	class NiControllerManager;
 	class NiControllerSequence;
 	class NiNode;
 	class NiObject;
 	class Projectile;
+	class ShaderReferenceEffect;
 	class TargetEntry;
 	class TESActorBase;
 	class TESBoundObject;
 	class TESContainer;
+	class TESEffectShader;
 	class TrapData;
 	class TrapEntry;
 	struct BGSDecalGroup;
@@ -103,6 +109,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectREFR;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectREFR;
 		inline static constexpr auto FORMTYPE = FormType::Reference;
 
 		using Count = std::int32_t;
@@ -177,6 +184,8 @@ namespace RE
 				kNeverFades = 1 << 16,  // TESObjectLIGH
 
 				kDoesntLightLandscape = 1 << 17,
+
+				kIgnoreFriendlyHits = 1 << 20,  // Actor
 
 				kNoAIAcquire = 1 << 25,
 				kCollisionGeometry_Filter = 1 << 26,
@@ -334,7 +343,7 @@ namespace RE
 		virtual bool                              IsDead(bool a_notEssential = true) const;                                                                                                                                                                    // 99
 		virtual BSAnimNoteReceiver*               CreateAnimNoteReceiver();                                                                                                                                                                                    // 9A
 		virtual BSAnimNoteReceiver*               GetAnimNoteReceiver();                                                                                                                                                                                       // 9B
-		virtual void                              Unk_9C(void);                                                                                                                                                                                                // 9C
+		virtual bool                              ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);                                                                                                                         // 9C
 		virtual void                              Unk_9D(void);                                                                                                                                                                                                // 9D - { return 0; }
 		virtual TESAmmo*                          GetCurrentAmmo() const;                                                                                                                                                                                      // 9E - { return 0; }
 		virtual BGSDecalGroup*                    GetDecalGroup() const;                                                                                                                                                                                       // 9F
@@ -362,6 +371,7 @@ namespace RE
 		const BSTSmartPointer<BipedAnim>&       GetBiped() const;
 		const BSTSmartPointer<BipedAnim>&       GetBiped(bool a_firstPerson) const;
 		TESContainer*                           GetContainer() const;
+		BGSLocation*                            GetCurrentLocation() const;
 		const char*                             GetDisplayFullName();
 		InventoryDropMap                        GetDroppedInventory();
 		InventoryDropMap                        GetDroppedInventory(std::function<bool(TESBoundObject&)> a_filter);
@@ -370,6 +380,8 @@ namespace RE
 		std::optional<double>                   GetEnchantmentCharge() const;
 		TESFaction*                             GetFactionOwner();
 		ObjectRefHandle                         GetHandle();
+		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
+		float                                   GetHeight() const;
 		InventoryItemMap                        GetInventory();
 		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter);
 		std::int32_t                            GetInventoryCount();
@@ -390,6 +402,9 @@ namespace RE
 		[[nodiscard]] constexpr float           GetPositionZ() const noexcept { return data.location.z; }
 		NiControllerSequence*                   GetSequence(stl::zstring a_name) const;
 		std::uint32_t                           GetStealValue(const InventoryEntryData* a_entryData, std::uint32_t a_numItems, bool a_useMult) const;
+		float                                   GetSubmergedWaterLevel(float a_zPos, TESObjectCELL* a_cell) const;
+		void                                    GetTransform(NiTransform& a_transform) const;
+		float                                   GetWaterHeight() const;
 		float                                   GetWeight() const;
 		float                                   GetWeightInContainer();
 		TESWorldSpace*                          GetWorldspace() const;
@@ -399,6 +414,8 @@ namespace RE
 		bool                                    HasQuestObject() const;
 		void                                    InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                    InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
+		ModelReferenceEffect*                   InstantiateHitArt(BGSArtObject* a_art, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
+		ShaderReferenceEffect*                  InstantiateHitShader(TESEffectShader* a_shader, float a_dur, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		bool                                    Is3DLoaded() const;
 		bool                                    IsActivationBlocked() const;
 		bool                                    IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;
@@ -410,6 +427,7 @@ namespace RE
 		bool                                    IsLocked() const;
 		bool                                    IsMarkedForDeletion() const;
 		bool                                    IsOffLimits();
+		void                                    MoveTo(TESObjectREFR* a_target);
 		bool                                    MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                    MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
 		void                                    PlayAnimation(stl::zstring a_from, stl::zstring a_to);

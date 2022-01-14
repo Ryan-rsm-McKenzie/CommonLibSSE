@@ -16,6 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_SpellItem;
+		inline static constexpr auto VTABLE = VTABLE_SpellItem;
 		inline static constexpr auto FORMTYPE = FormType::Spell;
 
 		enum class SpellFlag

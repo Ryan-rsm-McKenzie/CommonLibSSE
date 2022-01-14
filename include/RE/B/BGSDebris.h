@@ -4,18 +4,19 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/ID.h"
 #include "RE/T/TESForm.h"
 
 namespace RE
 {
-	namespace BSResource
-	{
-		struct ID;
-	}
-
 	struct BGSDebrisData
 	{
 	public:
+		BGSDebrisData();
+		BGSDebrisData(const char* a_fileName);
+
+		~BGSDebrisData() = default;
+
 		enum class BGSDebrisDataFlags
 		{
 			kNone = 0,
@@ -39,6 +40,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDebris;
+		inline static constexpr auto VTABLE = VTABLE_BGSDebris;
 		inline static constexpr auto FORMTYPE = FormType::Debris;
 
 		struct RecordFlags

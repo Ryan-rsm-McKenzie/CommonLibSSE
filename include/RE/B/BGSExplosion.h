@@ -53,6 +53,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSExplosion;
+		inline static constexpr auto VTABLE = VTABLE_BGSExplosion;
 		inline static constexpr auto FORMTYPE = FormType::Explosion;
 
 		struct RecordFlags

@@ -19,7 +19,7 @@ namespace RE
 			if (vm && vm->GetScriptObjectType(a_typeID, classPtr) && classPtr) {
 				return classPtr->GetRawType();
 			} else {
-				SKSE::log::error("Failed to get vm type id for class!");
+				SKSE::log::error("Failed to get vm type id for class {}!", a_typeID);
 				return TypeInfo::RawType::kNone;
 			}
 		}

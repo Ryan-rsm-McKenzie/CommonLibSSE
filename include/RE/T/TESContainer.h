@@ -3,6 +3,8 @@
 #include "RE/B/BaseFormComponent.h"
 #include "RE/C/ContainerItemExtra.h"
 
+#include "RE/M/MemoryManager.h"
+
 namespace RE
 {
 	class TESBoundObject;
@@ -10,6 +12,13 @@ namespace RE
 	struct ContainerObject
 	{
 	public:
+		ContainerObject();
+		ContainerObject(TESBoundObject* a_obj, std::int32_t a_count);
+
+		~ContainerObject() = default;
+
+		TES_HEAP_REDEFINE_NEW();
+
 		// members
 		std::int32_t        count;      // 00 - CNTO~
 		std::uint32_t       pad04;      // 04
@@ -42,8 +51,11 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
-		std::int32_t                                  CountObjectsInContainer(TESBoundObject* a_object) const;
+		std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
+		std::optional<std::uint32_t>    GetContainerObjectIndex(TESBoundObject* a_object, std::int32_t a_count) const;
+		bool                            AddObjectToContainer(TESBoundObject* a_object, std::int32_t a_count, TESForm* a_owner);
+		std::int32_t                    CountObjectsInContainer(TESBoundObject* a_object) const;
+		bool                            RemoveObjectFromContainer(TESBoundObject* a_object, std::int32_t a_count);
 
 		// members
 		ContainerObject** containerObjects;     // 08

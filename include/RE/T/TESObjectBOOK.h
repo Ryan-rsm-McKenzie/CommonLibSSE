@@ -66,6 +66,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectBOOK;
 		inline static constexpr auto FORMTYPE = FormType::Book;
 
 		struct ChangeFlags

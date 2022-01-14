@@ -53,6 +53,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectTREE;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectTREE;
 		inline static constexpr auto FORMTYPE = FormType::Tree;
 
 		enum class etTreeType

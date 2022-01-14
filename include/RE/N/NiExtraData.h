@@ -26,6 +26,8 @@ namespace RE
 		[[nodiscard]] virtual bool IsCloneable() const;   // 26 - { return true; }
 
 		static NiExtraData* Create(std::size_t a_size, std::uintptr_t a_vtbl);
+		template <class T>
+		static T* Create();
 
 		[[nodiscard]] const BSFixedString& GetName() const;
 		void                               SetName(const BSFixedString& a_name);
@@ -34,4 +36,11 @@ namespace RE
 		BSFixedString name;  // 10
 	};
 	static_assert(sizeof(NiExtraData) == 0x18);
+
+	template <class T>
+	T* NiExtraData::Create()
+	{
+		REL::Relocation<std::uintptr_t> vtbl{ T::VTABLE[0] };
+		return static_cast<T*>(Create(sizeof(T), vtbl.address()));
+	}
 }

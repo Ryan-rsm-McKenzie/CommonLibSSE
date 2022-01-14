@@ -137,6 +137,21 @@ namespace RE
 		return extraDataSize;
 	}
 
+	bool NiObjectNET::HasExtraData(const BSFixedString& a_key) const
+	{
+		if (a_key.empty() || !extra || extraDataSize == 0) {
+			return false;
+		}
+
+		for (std::uint16_t i = 0; i < extraDataSize; i++) {
+			if (auto extraData = extra[i]; extraData && !extraData->name.empty() && stl::string::iequals(extraData->name, a_key)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	bool NiObjectNET::InsertExtraData(NiExtraData* a_extra)
 	{
 		if (!a_extra) {

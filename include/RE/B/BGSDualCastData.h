@@ -31,6 +31,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDualCastData;
+		inline static constexpr auto VTABLE = VTABLE_BGSDualCastData;
 		inline static constexpr auto FORMTYPE = FormType::DualCastData;
 
 		struct RecordFlags

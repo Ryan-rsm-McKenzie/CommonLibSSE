@@ -18,9 +18,9 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;           // 19
 		bool          RegisterStreamables(NiStream& a_stream) override;  // 1A
 		void          SaveBinary(NiStream& a_stream) override;           // 1B
-		void          Unk_26(void) override;                             // 26
-		hkpWorld*     GetWorld() override;                               // 27 - { return world; }
-		void          Unk_28(void) override;                             // 28 - { return world; }
+		void          AdjustRefCount(bool a_increment) override;         // 26
+		hkpWorld*     GetWorld1() override;                              // 27 - { return world; }
+		ahkpWorld*    GetWorld2() override;                              // 28 - { return world; }
 		void          Unk_29(void) override;                             // 29
 
 		// add

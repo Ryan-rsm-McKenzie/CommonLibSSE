@@ -11,4 +11,9 @@ namespace RE
 	{
 		return data.flags.all(RACE_DATA::Flag::kAllowPickpocket);
 	}
+
+	bool TESRace::IsChildRace() const
+	{
+		return data.flags.all(RACE_DATA::Flag::kChild);
+	}
 }

@@ -138,6 +138,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
+		inline static constexpr auto VTABLE = VTABLE_PlayerCharacter;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		enum class EventType
@@ -291,6 +292,18 @@ namespace RE
 		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void                     SetEscaping(bool a_flag, bool a_escaped);
 		void                     StartGrabObject();
+
+		template <class T>
+		inline BSTEventSource<T>* GetEventSource()
+		{
+			return static_cast<BSTEventSource<T>*>(this);
+		}
+
+		template <class T>
+		inline void AddEventSink(BSTEventSink<T>* a_sink)
+		{
+			GetEventSource<T>()->AddEventSink(a_sink);
+		}
 
 		// members
 		std::uint32_t                                           unk3D8;                                       // 3D8

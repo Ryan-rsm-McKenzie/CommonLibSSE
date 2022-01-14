@@ -79,6 +79,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSProjectile;
+		inline static constexpr auto VTABLE = VTABLE_BGSProjectile;
 		inline static constexpr auto FORMTYPE = FormType::Projectile;
 
 		struct RecordFlags
@@ -101,6 +102,29 @@ namespace RE
 		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                                                                                                      // 40
 		void        UnClone3D(TESObjectREFR* a_ref) override;                                                                                                                 // 41
 		bool        GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
+
+		[[nodiscard]] std::uint32_t GetType() const
+		{
+			using Type = BGSProjectileData::Type;
+
+			if (data.types.all(Type::kMissile)) {
+				return 1;
+			} else if (data.types.all(Type::kGrenade)) {
+				return 2;
+			} else if (data.types.all(Type::kBeam)) {
+				return 3;
+			} else if (data.types.all(Type::kFlamethrower)) {
+				return 4;
+			} else if (data.types.all(Type::kCone)) {
+				return 5;
+			} else if (data.types.all(Type::kBarrier)) {
+				return 6;
+			} else if (data.types.all(Type::kArrow)) {
+				return 7;
+			} else {
+				return 0;
+			}
+		}
 
 		// members
 		BGSProjectileData data;              // 080 - DATA

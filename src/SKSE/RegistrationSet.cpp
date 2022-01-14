@@ -184,6 +184,7 @@ namespace SKSE
 
 			Locker locker(_lock);
 			_handles.clear();
+
 			RE::VMHandle handle;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(handle);
@@ -198,6 +199,11 @@ namespace SKSE
 			}
 
 			return true;
+		}
+
+		void RegistrationSetBase::Revert(SerializationInterface*)
+		{
+			Clear();
 		}
 
 		bool RegistrationSetBase::Register(const void* a_object, RE::VMTypeID a_typeID)
@@ -226,6 +232,7 @@ namespace SKSE
 			} else {
 				policy->PersistHandle(handle);
 			}
+
 			return result.second;
 		}
 
@@ -249,7 +256,26 @@ namespace SKSE
 			Locker locker(_lock);
 			auto   it = _handles.find(handle);
 			if (it == _handles.end()) {
-				log::warn("Could not find registration");
+				return false;
+			} else {
+				policy->ReleaseHandle(*it);
+				_handles.erase(it);
+				return true;
+			}
+		}
+
+		bool RegistrationSetBase::Unregister(RE::VMHandle a_handle)
+		{
+			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+			auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
+			if (!policy) {
+				log::error("Failed to get handle policy!");
+				return false;
+			}
+
+			Locker locker(_lock);
+			auto   it = _handles.find(a_handle);
+			if (it == _handles.end()) {
 				return false;
 			} else {
 				policy->ReleaseHandle(*it);

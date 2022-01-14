@@ -134,6 +134,9 @@ namespace RE
 		[[nodiscard]] ACTOR_MOOD       GetMoodLevel() const;
 		[[nodiscard]] ACTOR_MORALITY   GetMoralityLevel() const;
 		[[nodiscard]] bool             NoSlowApproach() const;
+		void                           SetAggressionLevel(ACTOR_AGGRESSION a_level);
+		void                           SetAssistanceLevel(ACTOR_ASSISTANCE a_level);
+		void                           SetConfidenceLevel(ACTOR_CONFIDENCE a_level);
 
 		// members
 		AIDATA_GAME aiData;      // 08 - AIDT

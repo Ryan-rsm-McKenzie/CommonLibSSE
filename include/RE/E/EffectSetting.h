@@ -24,6 +24,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_EffectSetting;
+		inline static constexpr auto VTABLE = VTABLE_EffectSetting;
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);
@@ -138,6 +139,9 @@ namespace RE
 		[[nodiscard]] constexpr ActorValue   GetMagickSkill() const noexcept { return data.associatedSkill; }
 		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
 		[[nodiscard]] constexpr bool         HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
+		[[nodiscard]] bool                   HasKeyword(std::string_view a_editorID) { return HasKeywordString(a_editorID); }
+		[[nodiscard]] bool                   IsDetrimental() const noexcept { return data.flags.all(EffectSettingData::Flag::kDetrimental); }
+		[[nodiscard]] bool                   IsHostile() const noexcept { return data.flags.all(EffectSettingData::Flag::kHostile); }
 
 		// members
 		FilterValidation_t*          filterValidationFunction;   // 058

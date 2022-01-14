@@ -1,2 +1,4 @@
 /build*
 CMakeUserPresets.json
+/out*
+/.vs*

@@ -185,6 +185,7 @@ namespace RE
 		[[nodiscard]] bool IsSprinting() const noexcept { return static_cast<bool>(actorState1.sprinting); }
 		[[nodiscard]] bool IsSwimming() const noexcept { return static_cast<bool>(actorState1.swimming); }
 		[[nodiscard]] bool IsUnconscious() const noexcept { return GetLifeState() == ACTOR_LIFE_STATE::kUnconcious; }
+		[[nodiscard]] bool IsWalking() const noexcept { return actorState1.walking; }
 
 		[[nodiscard]] bool IsWeaponDrawn() const noexcept
 		{

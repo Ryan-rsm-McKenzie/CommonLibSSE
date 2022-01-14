@@ -6,6 +6,13 @@
 
 namespace RE
 {
+	void AIProcess::ClearMuzzleFlashes()
+	{
+		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
+		REL::Relocation<func_t> func{ REL::ID(39504) };
+		return func(this);
+	}
+
 	float AIProcess::GetCachedHeight() const
 	{
 		return high ? high->cachedActorHeight : static_cast<float>(-1.0);
@@ -43,6 +50,18 @@ namespace RE
 		} else {
 			return {};
 		}
+	}
+
+	TESPackage* AIProcess::GetRunningPackage() const
+	{
+		TESPackage* package = nullptr;
+		if (middleHigh) {
+			package = middleHigh->runOncePackage.package;
+		}
+		if (!package) {
+			package = currentPackage.package;
+		}
+		return package;
 	}
 
 	bool AIProcess::InHighProcess() const

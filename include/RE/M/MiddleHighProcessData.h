@@ -262,7 +262,7 @@ namespace RE
 		float                                          unk2B8;                      // 2B8
 		float                                          unk2BC;                      // 2BC
 		float                                          unk2C0;                      // 2C0
-		float                                          unk2C4;                      // 2C4
+		float                                          torchEvaluationTimer;        // 2C4
 		float                                          alphaMult;                   // 2C8
 		float                                          scriptRefractPower;          // 2CC
 		float                                          unk2D0;                      // 2D0
@@ -299,7 +299,7 @@ namespace RE
 		bool                                           beenAttacked;                // 322
 		bool                                           unk323;                      // 323
 		bool                                           unk324;                      // 324
-		bool                                           unk325;                      // 325
+		bool                                           soulTrapped;                 // 325
 		bool                                           unk326;                      // 326
 		bool                                           unk327;                      // 327
 		bool                                           unk328;                      // 328
@@ -312,7 +312,7 @@ namespace RE
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330
 		bool                                           unk331;                      // 331
-		bool                                           unk332;                      // 332
+		bool                                           inDeferredKill;              // 332
 		bool                                           pad333;                      // 333
 		std::uint32_t                                  pad334;                      // 334
 	};

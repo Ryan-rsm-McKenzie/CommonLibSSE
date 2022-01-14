@@ -19,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NavMeshInfoMap;
+		inline static constexpr auto VTABLE = VTABLE_NavMeshInfoMap;
 		inline static constexpr auto FORMTYPE = FormType::Navigation;
 
 		struct RecordFlags

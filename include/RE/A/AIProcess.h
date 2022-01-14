@@ -139,6 +139,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
+		void                    ClearMuzzleFlashes();
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
 		ActorHandle             GetCommandingActor() const;
@@ -146,6 +147,7 @@ namespace RE
 		TESForm*                GetEquippedRightHand();
 		[[nodiscard]] bool      GetIsSummonedCreature() const noexcept;
 		ObjectRefHandle         GetOccupiedFurniture() const;
+		TESPackage*             GetRunningPackage() const;
 		bool                    InHighProcess() const;
 		bool                    InMiddleHighProcess() const;
 		bool                    InMiddleLowProcess() const;

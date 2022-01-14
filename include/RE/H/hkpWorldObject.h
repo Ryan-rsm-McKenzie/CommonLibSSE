@@ -13,6 +13,7 @@ namespace RE
 	class hkpCollidable;
 	class hkpShapeModifier;
 	class hkpWorld;
+	class TESObjectREFR;
 
 	namespace hkWorldOperation
 	{
@@ -56,6 +57,8 @@ namespace RE
 
 		const hkpCollidable* GetCollidable() const;
 		hkpCollidable*       GetCollidableRW();
+		const hkpShape*      GetShape() const;
+		TESObjectREFR*       GetUserData() const;
 
 		// members
 		hkpWorld*            world;             // 10

@@ -19,6 +19,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ScrollItem;
+		inline static constexpr auto VTABLE = VTABLE_ScrollItem;
 		inline static constexpr auto FORMTYPE = FormType::Scroll;
 
 		struct RecordFlags

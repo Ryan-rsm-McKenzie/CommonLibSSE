@@ -19,6 +19,7 @@
 #include "RE/N/NiAVObject.h"
 #include "RE/N/NiControllerManager.h"
 #include "RE/N/NiControllerSequence.h"
+#include "RE/N/NiMath.h"
 #include "RE/N/NiTimeController.h"
 #include "RE/T/TESContainer.h"
 #include "RE/T/TESEnchantableForm.h"
@@ -146,6 +147,13 @@ namespace RE
 		return obj ? obj->As<TESContainer>() : nullptr;
 	}
 
+	BGSLocation* TESObjectREFR::GetCurrentLocation() const
+	{
+		using func_t = decltype(&TESObjectREFR::GetCurrentLocation);
+		REL::Relocation<func_t> func{ REL::ID(19812) };
+		return func(this);
+	}
+
 	const char* TESObjectREFR::GetDisplayFullName()
 	{
 		using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
@@ -251,6 +259,32 @@ namespace RE
 	ObjectRefHandle TESObjectREFR::GetHandle()
 	{
 		return ObjectRefHandle(this);
+	}
+
+	float TESObjectREFR::GetHeadingAngle(const NiPoint3& a_pos, bool a_abs)
+	{
+		float theta = NiFastATan2(a_pos.x - GetPositionX(), a_pos.y - GetPositionY());
+		float heading = rad_to_deg(theta - GetAngleZ());
+
+		if (heading < -180.0f) {
+			heading += 360.0f;
+		}
+
+		if (heading > 180.0f) {
+			heading -= 360.0f;
+		}
+
+		return a_abs ? NiAbs(heading) : heading;
+	}
+
+	float TESObjectREFR::GetHeight() const
+	{
+		const auto min = GetBoundMin();
+		const auto max = GetBoundMax();
+		const auto diff = max.z - min.z;
+		const auto height = GetBaseHeight() * diff;
+
+		return height;
 	}
 
 	auto TESObjectREFR::GetInventory()
@@ -412,6 +446,44 @@ namespace RE
 		return func(this, a_entryData, a_numItems, a_useMult);
 	}
 
+	float TESObjectREFR::GetSubmergedWaterLevel(float a_zPos, TESObjectCELL* a_cell) const
+	{
+		auto waterHeight = a_cell && a_cell != parentCell ? a_cell->GetWaterHeight() : GetWaterHeight();
+
+		if (waterHeight == -NI_INFINITY && a_cell) {
+			waterHeight = a_cell->GetWaterHeight();
+		}
+
+		if (waterHeight <= a_zPos) {
+			return 0.0f;
+		}
+
+		auto level = (waterHeight - a_zPos) / GetHeight();
+		return level <= 1.0f ? level : 1.0f;
+	}
+
+	void TESObjectREFR::GetTransform(NiTransform& a_transform) const
+	{
+		using func_t = decltype(&TESObjectREFR::GetTransform);
+		REL::Relocation<func_t> func{ REL::ID(19753) };
+		return func(this, a_transform);
+	}
+
+	float TESObjectREFR::GetWaterHeight() const
+	{
+		float           waterHeight = -NI_INFINITY;
+		constexpr float flt_max = -NI_INFINITY;
+
+		if (loadedData) {
+			waterHeight = loadedData->relevantWaterHeight;
+			if (waterHeight != flt_max) {
+				return waterHeight;
+			}
+		}
+
+		return parentCell ? parentCell->GetWaterHeight() : waterHeight;
+	}
+
 	float TESObjectREFR::GetWeight() const
 	{
 		auto obj = GetObjectReference();
@@ -473,6 +545,20 @@ namespace RE
 		using func_t = decltype(&TESObjectREFR::InitInventoryIfRequired);
 		REL::Relocation<func_t> func{ Offset::TESObjectREFR::InitInventoryIfRequired };
 		return func(this, a_ignoreContainerExtraData);
+	}
+
+	ModelReferenceEffect* TESObjectREFR::InstantiateHitArt(BGSArtObject* a_art, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
+	{
+		using func_t = decltype(&TESObjectREFR::InstantiateHitArt);
+		REL::Relocation<func_t> func{ REL::ID(22769) };
+		return func(this, a_art, a_dur, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
+	}
+
+	ShaderReferenceEffect* TESObjectREFR::InstantiateHitShader(TESEffectShader* a_shader, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
+	{
+		using func_t = decltype(&TESObjectREFR::InstantiateHitShader);
+		REL::Relocation<func_t> func{ REL::ID(19872) };
+		return func(this, a_shader, a_dur, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
 	}
 
 	bool TESObjectREFR::Is3DLoaded() const
@@ -552,6 +638,14 @@ namespace RE
 	bool TESObjectREFR::IsOffLimits()
 	{
 		return IsCrimeToActivate();
+	}
+
+	void TESObjectREFR::MoveTo(TESObjectREFR* a_target)
+	{
+		assert(a_target);
+
+		auto handle = a_target->GetHandle();
+		MoveTo_Impl(handle, a_target->GetParentCell(), a_target->GetWorldspace(), a_target->GetPosition(), a_target->data.angle);
 	}
 
 	bool TESObjectREFR::MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName)

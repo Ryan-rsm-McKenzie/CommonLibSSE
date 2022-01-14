@@ -83,6 +83,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSBodyPartData;
+		inline static constexpr auto VTABLE = VTABLE_BGSBodyPartData;
 		inline static constexpr auto FORMTYPE = FormType::BodyPartData;
 
 		struct RecordFlags

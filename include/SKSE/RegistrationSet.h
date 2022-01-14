@@ -34,10 +34,12 @@ namespace SKSE
 			bool Unregister(const RE::TESForm* a_form);
 			bool Unregister(const RE::BGSBaseAlias* a_alias);
 			bool Unregister(const RE::ActiveEffect* a_effect);
+			bool Unregister(RE::VMHandle a_handle);
 			void Clear();
 			bool Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version);
 			bool Save(SerializationInterface* a_intfc);
 			bool Load(SerializationInterface* a_intfc);
+			void Revert(SerializationInterface*);
 
 		protected:
 			using Lock = std::recursive_mutex;

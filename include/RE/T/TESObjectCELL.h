@@ -19,7 +19,9 @@
 
 namespace RE
 {
+	class BSTempEffectParticle;
 	class bhkWorld;
+	class BSPortalGraph;
 	class NavMesh;
 	class NiNode;
 
@@ -69,7 +71,7 @@ namespace RE
 	{
 	public:
 		// members
-		void*                                                unk000;                // 000 - smart ptr
+		NiPointer<BSPortalGraph>                             portalGraph;           // 000 - smart ptr
 		NiPointer<NiNode>                                    cell3D;                // 008
 		void*                                                unk010;                // 010 - smart ptr
 		void*                                                unk018;                // 018 - smart ptr
@@ -102,6 +104,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectCELL;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectCELL;
 		inline static constexpr auto FORMTYPE = FormType::Cell;
 
 		enum class Flag  // DATA
@@ -115,7 +118,8 @@ namespace RE
 			kPublicArea = 1 << 5,
 			kHandChanged = 1 << 6,
 			kShowSky = 1 << 7,
-			kUseSkyLighting = 1 << 8
+			kUseSkyLighting = 1 << 8,
+			kWarnToLeave = 1 << 9
 		};
 
 		enum class CellState
@@ -191,20 +195,32 @@ namespace RE
 		EXTERIOR_DATA* GetCoordinates();
 		TESFaction*    GetFactionOwner();
 		INTERIOR_DATA* GetLighting();
-		float          GetNorthRotation();
-		TESForm*       GetOwner();
-		bool           IsAttached() const;
-		bool           IsExteriorCell() const;
-		bool           IsInteriorCell() const;
-		void           SetActorOwner(TESNPC* a_owner);
-		void           SetFactionOwner(TESFaction* a_owner);
-		void           SetFogColor(Color a_near, Color a_far);
-		void           SetFogPlanes(float a_near, float a_far);
-		void           SetFogPower(float a_power);
-		void           SetHandChanged(bool a_changed);
-		void           SetOwner(TESForm* a_owner);
-		void           SetPublic(bool a_public);
-		bool           UsesSkyLighting() const;
+
+		inline BGSLocation* GetLocation() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetLocation);
+			REL::Relocation<func_t> func{ REL::ID(18905) };
+			return func(this);
+		}
+
+		float    GetNorthRotation();
+		TESForm* GetOwner();
+		float    GetWaterHeight() const;
+		bool     IsAttached() const;
+		bool     IsExteriorCell() const;
+		bool     IsInteriorCell() const;
+
+		BSTempEffectParticle* PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target);
+
+		void SetActorOwner(TESNPC* a_owner);
+		void SetFactionOwner(TESFaction* a_owner);
+		void SetFogColor(Color a_near, Color a_far);
+		void SetFogPlanes(float a_near, float a_far);
+		void SetFogPower(float a_power);
+		void SetHandChanged(bool a_changed);
+		void SetOwner(TESForm* a_owner);
+		void SetPublic(bool a_public);
+		bool UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock                        grassCreateLock;   // 030

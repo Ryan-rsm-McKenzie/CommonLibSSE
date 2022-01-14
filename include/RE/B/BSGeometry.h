@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/N/NiAVObject.h"
+#include "RE/N/NiSkinPartition.h"
 #include "RE/N/NiSmartPointer.h"
 
 namespace RE
@@ -69,6 +70,8 @@ namespace RE
 		virtual BSMultiIndexTriShape*   AsMultiIndexTriShape();    // 35 - { return 0; }
 		virtual BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
 		virtual void                    Unk_37(void);              // 37 - { return 0; }
+
+		[[nodiscard]] bool HasVertexFlag(NiSkinPartition::Vertex::Flags a_flag) { return (NiSkinPartition::GetVertexFlags(vertexDesc) & a_flag) == a_flag; }
 
 		// members
 		NiBound                              modelBound;                  // 110

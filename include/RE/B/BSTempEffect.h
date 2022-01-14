@@ -30,6 +30,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSTempEffect;
 		inline static constexpr auto Ni_RTTI = NiRTTI_BSTempEffect;
+		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDefault;
 
 		~BSTempEffect() override;  // 00
 
@@ -74,6 +75,28 @@ namespace RE
 		virtual bool                           GetStackableMatch(BSTempEffect* a_effect) const;  // 33 - { return false; }
 		virtual void                           Push();                                           // 34 - { return; }
 		virtual void                           Pop();                                            // 35 - { return; }
+
+		template <
+			class T,
+			class = std::enable_if_t<
+				std::negation_v<
+					std::disjunction<
+						std::is_pointer<T>,
+						std::is_reference<T>,
+						std::is_const<T>,
+						std::is_volatile<T>>>>>
+		[[nodiscard]] T* As() noexcept;
+
+		template <
+			class T,
+			class = std::enable_if_t<
+				std::negation_v<
+					std::disjunction<
+						std::is_pointer<T>,
+						std::is_reference<T>,
+						std::is_const<T>,
+						std::is_volatile<T>>>>>
+		[[nodiscard]] const T* As() const noexcept;
 
 		// members
 		float          lifetime;     // 10

@@ -14,7 +14,7 @@ namespace RE
 		pad1B(0),
 		pad1C(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraEnchantment::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

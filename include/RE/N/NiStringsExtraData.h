@@ -9,6 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiStringsExtraData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiStringsExtraData;
+		inline static constexpr auto VTABLE = VTABLE_NiStringsExtraData;
 
 		~NiStringsExtraData() override;  // 00
 
@@ -20,6 +21,12 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A - { return NiExtraData::RegisterStreamables(a_stream); }
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C
+
+		static NiStringsExtraData*   Create(const BSFixedString& a_name, const std::vector<BSFixedString>& a_strings);
+		std::optional<std::uint32_t> GetIndex(const BSFixedString& a_element) const;
+		bool                         Insert(const BSFixedString& a_element);
+		bool                         Remove(const BSFixedString& a_element);
+		bool                         Replace(const BSFixedString& a_from, const BSFixedString& a_to);
 
 		// members
 		std::uint32_t size;   // 18

@@ -13,6 +13,8 @@ namespace RE
 		{
 			enum Key : std::uint32_t
 			{
+				kNone = 0x00,
+
 				kEscape = 0x01,
 				kNum1 = 0x02,
 				kNum2 = 0x03,

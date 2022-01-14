@@ -12,7 +12,7 @@ namespace RE
 		BSExtraData(),
 		changes(a_changes)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraContainerChanges::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 

@@ -12,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSReverbParameters;
+		inline static constexpr auto VTABLE = VTABLE_BGSReverbParameters;
 		inline static constexpr auto FORMTYPE = FormType::ReverbParam;
 
 		struct RecordFlags

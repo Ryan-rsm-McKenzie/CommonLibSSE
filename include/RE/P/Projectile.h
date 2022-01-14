@@ -1,18 +1,21 @@
 #pragma once
 
+#include "RE/B/BGSProjectile.h"
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
 #include "RE/F/FormTypes.h"
-#include "RE/M/MagicSystem.h"
+#include "RE/I/ImpactResults.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiTransform.h"
 #include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {
 	class bhkCollisionObject;
 	class bhkSimpleShapePhantom;
+	class BGSMaterialType;
 	class QueuedFile;
 
 	class Projectile : public TESObjectREFR
@@ -24,16 +27,19 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint64_t                 unk00;     // 00
-			std::uint64_t                 unk08;     // 08
-			std::uint64_t                 unk10;     // 10
-			ObjectRefHandle               collidee;  // 18
-			NiPointer<bhkCollisionObject> colObj;    // 20
-			std::uint64_t                 unk28;     // 28
-			std::uint64_t                 unk30;     // 30
-			std::uint64_t                 unk38;     // 38
-			std::uint64_t                 unk40;     // 40
-			std::uint64_t                 unk48;     // 48
+			NiPoint3                      desiredTargetLoc;    // 00
+			NiPoint3                      negativeVelocity;    // 0C
+			ObjectRefHandle               collidee;            // 18
+			NiPointer<bhkCollisionObject> colObj;              // 20
+			BGSMaterialType*              material;            // 28
+			std::int32_t                  damageRootNodeType;  // 30
+			std::uint32_t                 unk34;               // 34
+			NiNode*                       damageRootNode;      // 38
+			ImpactResult                  impactResult;        // 40
+			std::uint16_t                 unk44;               // 44
+			std::uint16_t                 unk46;               // 46
+			std::uint8_t                  unk48;               // 48
+			std::uint8_t                  unk49;               // 49
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 
@@ -95,25 +101,21 @@ namespace RE
 		virtual void Handle3DLoaded();               // C0 - { return; }
 		virtual void Unk_C1(void);                   // C1 - { return 0; }
 
+		inline float GetHeight() const
+		{
+			auto obj = GetObjectReference();
+			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
+		}
+
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098
-		float                      unk0A8;             // 0A8
-		float                      unk0AC;             // 0AC
-		std::uint64_t              unk0B0;             // 0B0
-		float                      unk0B8;             // 0B8
-		float                      unk0BC;             // 0BC
-		std::uint64_t              unk0C0;             // 0C0
-		float                      unk0C8;             // 0C8
-		float                      unk0CC;             // 0CC
-		std::uint64_t              unk0D0;             // 0D0
-		float                      unk0D8;             // 0D8
+		NiTransform                unk0A8;             // 0A8
 		float                      unk0DC;             // 0DC
 		bhkSimpleShapePhantom*     unk0E0;             // 0E0 - smart ptr
 		mutable BSSpinLock         unk0E8;             // 0E8
-		NiPoint3                   unk0F0;             // 0F0
-		float                      unk0FC;             // 0FC
-		float                      unk100;             // 100
-		float                      unk104;             // 104
+		NiPoint3                   velocity;           // 0F0
+		NiPoint3                   linearVelocity;     // 0FC
 		void*                      unk108;             // 108 - smart ptr
 		void*                      unk110;             // 110 - smart ptr
 		NiPointer<ActorCause>      actorCause;         // 118
@@ -134,7 +136,7 @@ namespace RE
 		float                      unk188;             // 188
 		float                      unk18C;             // 18C
 		float                      range;              // 190
-		std::uint32_t              unk194;             // 194
+		float                      lifeRemaining;      // 194
 		float                      unk198;             // 198
 		float                      unk19C;             // 19C
 		std::uint64_t              unk1A0;             // 1A0

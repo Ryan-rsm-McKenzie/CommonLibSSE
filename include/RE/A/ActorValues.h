@@ -170,7 +170,7 @@ namespace RE
 		kUnknown162 = 162,
 		kReflectDamage = 163,
 
-		kTotal
+		kTotal = 164
 	};
 
 	struct ACTOR_VALUE_MODIFIERS

@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRegionList;
+		inline static constexpr auto VTABLE = VTABLE_TESRegionList;
 
 		virtual ~TESRegionList();  // 00
 
