@@ -102,7 +102,7 @@ namespace RE
 			kFace = 10,
 			kParallax = 11,
 			kModelSpaceNormals = 12,
-			kkNonProjectiveShadows = 13,
+			kNonProjectiveShadows = 13,
 			kMultiTextureLandscape = 14,
 			kRefraction = 15,
 			kRefractionFalloff = 16,
