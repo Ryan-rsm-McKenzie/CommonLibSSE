@@ -58,6 +58,7 @@ static_assert(
 #pragma warning(push)
 #include <binary_io/file_stream.hpp>
 #include <boost/stl_interfaces/iterator_interface.hpp>
+#include <fmt/format.h>
 #include <spdlog/spdlog.h>
 #pragma warning(pop)
 
