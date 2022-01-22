@@ -528,6 +528,7 @@ namespace RE
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void						 MoveToPackageLoaction(bool a_arg1 = false) const;
+		[[nodiscard]] bool           NotShowOnStealthMeter() const noexcept { return boolFlags.all(BOOL_FLAGS::kDoNotShowOnStealthMeter); }
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
