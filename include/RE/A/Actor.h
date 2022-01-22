@@ -526,6 +526,7 @@ namespace RE
 		bool                         IsSneaking() const;
 		bool                         IsStaggering() const;
 		[[nodiscard]] bool           IsSummoned() const noexcept;
+		[[nodiscard]] bool           IsSummonedByPlayer() const noexcept;
 		bool                         IsTrespassing() const;
 		void						 MoveToPackageLoaction(bool a_arg1 = false) const;
 		[[nodiscard]] bool           NotShowOnStealthMeter() const noexcept { return boolFlags.all(BOOL_FLAGS::kDoNotShowOnStealthMeter); }

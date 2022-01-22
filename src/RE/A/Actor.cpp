@@ -498,6 +498,11 @@ namespace RE
 		return currentProcess && currentProcess->GetIsSummonedCreature();
 	}
 
+	bool Actor::IsSummonedByPlayer() const noexcept
+	{
+		return GetCommandingActor().get() && GetCommandingActor().get()->IsPlayerRef();
+	}
+
 	bool Actor::IsTrespassing() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
