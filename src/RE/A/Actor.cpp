@@ -500,7 +500,7 @@ namespace RE
 
 	bool Actor::IsSummonedByPlayer() const noexcept
 	{
-		return GetCommandingActor().get() && GetCommandingActor().get()->IsPlayerRef();
+		return IsSummoned() && GetCommandingActor().get() && GetCommandingActor().get()->IsPlayerRef();
 	}
 
 	bool Actor::IsTrespassing() const
