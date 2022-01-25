@@ -2,6 +2,7 @@
 
 #include "RE/B/BSTArray.h"
 #include "RE/B/bhkEntity.h"
+#include "RE/H/hkQuaternion.h"
 
 namespace RE
 {
@@ -33,16 +34,16 @@ namespace RE
 		void          Unk_32(void) override;                              // 32
 
 		// add
-		virtual void Unk_33(void);  // 33
-		virtual void Unk_34(void);  // 34
-		virtual void Unk_35(void);  // 35
-		virtual void Unk_36(void);  // 36
-		virtual void Unk_37(void);  // 37
-		virtual void Unk_38(void);  // 38
-		virtual void Unk_39(void);  // 39
-		virtual void Unk_3A(void);  // 3A
-		virtual void Unk_3B(void);  // 3B
-		virtual void Unk_3C(void);  // 3C
+		virtual hkVector4&   getPosition(hkVector4& position);                           // 33
+		virtual hkVector4&   getRotation(hkQuaternion& rotation);                        // 34
+		virtual void         setPosition(hkVector4& position);                           // 35
+		virtual void         setRotation(hkQuaternion& rotation);                        // 36
+		virtual void         setPositionAndRotation(hkVector4& pos, hkQuaternion& rot);  // 37
+		virtual hkVector4&   getCenterOfMassLocal(hkVector4& centerOfMassLocal);         // 38
+		virtual hkVector4&   getCenterOfMassInWorld(hkVector4& centerOfMassWorld);       // 39
+		virtual hkTransform& getTransform(hkTransform& transform);                       // 3A
+		virtual void         getAabbWorldspace(hkAabb& aabb);                            // 3B
+		virtual void         Unk_3C(void);                                               // 3C
 
 		// members
 		BSTArray<void*> unk28;  // 28 - array of smart ptrs
