@@ -13,7 +13,7 @@ namespace RE
 		class Traverser : public LocationTraverser
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI__void___cdecl_BSResource__RegisterPrefix_char_const_____ptr64_char_const_____ptr64_BSResource__Location_____ptr64_____2___Traverser;
+			inline static constexpr auto RTTI = RTTI_BSResource__RegisterPrefix__2__Traverser;
 
 			// override (LocationTraverser)
 			void ProcessName(const char* a_name, Location& a_location) override;  // 00

@@ -12,7 +12,7 @@ namespace RE
 		public:
 			[[nodiscard]] static State* GetSingleton()
 			{
-				REL::Relocation<State*> singleton{ REL::ID(524998) };
+				REL::Relocation<State*> singleton{ REL::ID(411479) };
 				return singleton.get();
 			}
 

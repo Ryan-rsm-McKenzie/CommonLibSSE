@@ -27,7 +27,7 @@ namespace RE
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
-		REL::Relocation<func_t> func{ REL::ID(39568) };
+		REL::Relocation<func_t> func{ REL::ID(40654) };
 		return func(this, a_containerRef, a_entry, a_number, a_fromContainer);
 	}
 
@@ -126,14 +126,14 @@ namespace RE
 	bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
 	{
 		using func_t = decltype(&PlayerCharacter::CenterOnCell_Impl);
-		REL::Relocation<func_t> func{ REL::ID(39365) };
+		REL::Relocation<func_t> func{ REL::ID(40437) };
 		return func(this, a_cellName, a_cell);
 	}
 
 	void PlayerCharacter::AddSkillExperience(ActorValue a_skill, float a_experience)
 	{
 		using func_t = decltype(&PlayerCharacter::AddSkillExperience);
-		REL::Relocation<func_t> func(REL::ID(39413));
+		REL::Relocation<func_t> func(REL::ID(40488));
 		return func(this, a_skill, a_experience);
 	}
 }

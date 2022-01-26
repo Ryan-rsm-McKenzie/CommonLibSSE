@@ -5,6 +5,11 @@ namespace RE
 	GFxResourceKey::KeyInterface::~KeyInterface()
 	{}
 
+	const char* GFxResourceKey::KeyInterface::GetFileURL([[maybe_unused]] KeyHandle a_data) const
+	{
+		return nullptr;
+	}
+
 	GFxResourceKey::GFxResourceKey() :
 		_keyInterface(nullptr),
 		_keyData(nullptr)

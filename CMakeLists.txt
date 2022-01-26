@@ -13,6 +13,7 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
+find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 
@@ -58,6 +59,7 @@ if (MSVC)
 			# disable warnings
 			/wd4061 # enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 			/wd4200 # nonstandard extension used : zero-sized array in struct/union
+			/wd4201 # nonstandard extension used : nameless struct/union
 			/wd4265 # 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
 			/wd4266 # 'function' : no override available for virtual member function from base 'type'; function is hidden
 			/wd4371 # 'classname': layout of class may have changed from a previous version of the compiler due to better packing of member 'member'
@@ -89,6 +91,7 @@ target_include_directories(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
+		binary_io::binary_io
 		Boost::headers
 		spdlog::spdlog
 		Version.lib

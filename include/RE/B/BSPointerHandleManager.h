@@ -27,7 +27,7 @@ namespace RE
 
 		[[nodiscard]] static auto GetHandleEntries()
 		{
-			REL::Relocation<Entry(*)[0x100000]> entries{ REL::ID(514478) };
+			REL::Relocation<Entry(*)[0x100000]> entries{ REL::ID(400622) };
 			return std::span<Entry, 0x100000>{ *entries };
 		}
 	};

@@ -29,16 +29,16 @@ namespace SKSE
 				if (a_event && a_event->errorMsg && std::regex_search(a_event->errorMsg, _filter)) {
 					switch (a_event->severity) {
 					case Severity::kInfo:
-						log::info(a_event->errorMsg);
+						log::info("{}"sv, a_event->errorMsg);
 						break;
 					case Severity::kWarning:
-						log::warn(a_event->errorMsg);
+						log::warn("{}"sv, a_event->errorMsg);
 						break;
 					case Severity::kError:
-						log::error(a_event->errorMsg);
+						log::error("{}"sv, a_event->errorMsg);
 						break;
 					case Severity::kFatal:
-						log::critical(a_event->errorMsg);
+						log::critical("{}"sv, a_event->errorMsg);
 						break;
 					}
 				}

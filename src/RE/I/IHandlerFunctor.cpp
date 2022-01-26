@@ -4,7 +4,7 @@ namespace RE
 {
 	HandlerDictionary* HandlerDictionary::GetSingleton()
 	{
-		REL::Relocation<HandlerDictionary**> singleton{ REL::ID(518086) };
+		REL::Relocation<HandlerDictionary**> singleton{ REL::ID(404607) };
 		return *singleton;
 	}
 }

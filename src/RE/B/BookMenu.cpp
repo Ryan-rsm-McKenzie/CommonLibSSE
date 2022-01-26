@@ -6,7 +6,7 @@ namespace RE
 {
 	TESObjectREFR* BookMenu::GetTargetReference()
 	{
-		REL::Relocation<TESObjectREFRPtr*> refptr{ REL::ID(519300) };
+		REL::Relocation<TESObjectREFRPtr*> refptr{ REL::ID(405840) };
 		return refptr->get();
 	}
 }
