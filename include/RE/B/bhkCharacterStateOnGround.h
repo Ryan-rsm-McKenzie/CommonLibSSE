@@ -12,8 +12,8 @@ namespace RE
 		~bhkCharacterStateOnGround() override;  // 00
 
 		// override (bhkCharacterState)
-		hkpCharacterStateType GetType() const override;  // 03 - { return kOnGround; }
-		void                  Unk_08(void) override;     // 08
+		hkpCharacterStateType GetType() const override;                                                    // 03 - { return kOnGround; }
+		void                  SimulateStatePhysics(bhkCharacterController* characterController) override;  // 08
 
 		// members
 		std::uint64_t unk10;  // 10

@@ -330,6 +330,10 @@ namespace RE
 		bool                         MagicTargetIsActor() const override;  // 003 - { return true; }
 		BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;       // 007
 
+		// override (ActorState)
+		void GetPosition(NiPoint3& a_pos) override;    // 03
+		void GetRotation(NiPoint3& a_angle) override;  // 04
+
 		// add
 		virtual void                 Unk_A2(void);                                                                                                                                                                    // 0A2
 		virtual void                 PlayPickUpSound(TESBoundObject* a_object, bool a_pickup, bool a_use);                                                                                                            // 0A3

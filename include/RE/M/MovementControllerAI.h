@@ -1,20 +1,24 @@
 #pragma once
 
 #include "RE/B/BSIntrusiveRefCounted.h"
-#include "RE/I/IMovementControllerRegisterInterface.h"
-#include "RE/I/IMovementSelectIdle.h"
-#include "RE/I/IMovementDirectControl.h"
-#include "RE/I/IMovementPlannerDirectControl.h"
-#include "RE/I/IMovementMotionDrivenControl.h"
-#include "RE/I/IMovementMessageInterface.h"
-#include "RE/I/IMovementSetGoal.h"
-#include "RE/I/IMovementQueryPathingState.h"
-#include "RE/I/IMovementPlannerSetArbitration.h"
-#include "RE/I/IMovementSetTweener.h"
-#include "RE/I/IMovementQueryTweener.h"
+#include "RE/B/BSFixedString.h"
 
 namespace RE
 {
+	class MovementArbiter;
+	class MovementAgent;
+	class ActorState;
+	class IMovementSelectIdle;
+	class IMovementDirectControl;
+	class IMovementPlannerDirectControl;
+	class IMovementMotionDrivenControl;
+	class IMovementMessageInterface;
+	class IMovementSetGoal;
+	class IMovementQueryPathingState;
+	class IMovementSetTweener;
+	class IMovementQueryTweener;
+	class IMovementPlannerSetArbitration;
+
 	class IMovementControllerDataTracker;
 
 	class MovementControllerAI :
@@ -43,15 +47,16 @@ namespace RE
 		std::uint32_t                   unk00C;                            // 00C
 		std::uint32_t                   movementArbitersCount1;            // 010
 		std::uint32_t                   unk014;                            // 014
-		std::uint64_t                   movementArbitersObfuscatedList;    // 018
+		MovementArbiter*                movementArbiters;                  // 018
 		std::uint64_t                   unk020;                            // 020
 		std::uint32_t                   movementArbitersCount2;            // 028
 		std::uint32_t                   unk02C;                            // 02C
-		std::uint64_t                   unk030;                            // 030
-		std::uint64_t                   unk038;                            // 038
-		std::uint64_t                   unk040;                            // 040
+		std::uint32_t                   unk030;                            // 030
+		MovementAgent*                  movementAgents;                    // 038
+		std::uint32_t                   unk040;                            // 040
+		std::uint32_t                   unk044;                            // 044
 		std::uint64_t                   unk048;                            // 048
-		std::uint64_t                   unk050;                            // 050
+		BSFixedString                   currentMovementStateStr;           // 050 - "CurrentMovementState"
 		ActorState*                     actorState;                        // 058
 		BSFixedString                   movementSelectIdleStr;             // 060 - "IMovementSelectIdle"
 		IMovementSelectIdle*            movementSelectIdle;                // 068

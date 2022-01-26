@@ -12,11 +12,12 @@ namespace RE
 		~bhkCharacterStateInAir() override;  // 00
 
 		// override (bhkCharacterState)
-		hkpCharacterStateType GetType() const override;  // 03 - { return kInAir; }
-		void                  Unk_08(void) override;     // 08
+		hkpCharacterStateType GetType() const override;                                                    // 03 - { return kInAir; }
+		void                  SimulateStatePhysics(bhkCharacterController* characterController) override;  // 08
 
 		// members
-		std::uint64_t unk10;  // 10
+		float         maxVelocityDelta;  // 10
+		std::uint32_t pad14;             // 14
 	};
 	static_assert(sizeof(bhkCharacterStateInAir) == 0x18);
 }

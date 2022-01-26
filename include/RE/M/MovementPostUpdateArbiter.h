@@ -33,14 +33,14 @@ namespace RE
 		//void Unk_04(void) override;  // 04
 
 		// members
-		std::uint64_t unk020;  // 020
-		std::uint64_t unk028;  // 028
-		std::uint64_t unk030;  // 030
-		std::uint64_t unk038;  // 038
-		std::uint64_t unk040;  // 040
-		std::uint64_t unk048;  // 048
-		std::uint64_t unk050;  // 050
-		std::uint64_t unk058;  // 058
+		std::uint64_t unk020;    // 020
+		std::uint64_t unk028;    // 028
+		std::uint64_t unk030;    // 030
+		std::uint32_t unk038;    // 038
+		NiPoint3      position;  // 03C
+		NiPoint3      rotation;  // 048
+		std::uint32_t unk054;    // 054
+		std::uint64_t unk058;    // 058
 	};
 	static_assert(sizeof(MovementPostUpdateArbiter) == 0x60);
 }

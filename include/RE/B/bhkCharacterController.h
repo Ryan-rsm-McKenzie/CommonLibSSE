@@ -21,6 +21,8 @@ namespace RE
 	class hkpRigidBody;
 	class hkTransform;
 	class hkVector4;
+	class bhkWorld;
+	class bhkSimpleShapePhantom;
 
 	enum class CHARACTER_FLAGS
 	{
@@ -70,24 +72,24 @@ namespace RE
 		~bhkCharacterController() override;  // 00
 
 		// add
-		virtual void  GetPositionImpl(hkVector4& a_pos, bool a_applyCenterOffset) const = 0;                    // 02
-		virtual void  SetPositionImpl(const hkVector4& a_pos, bool a_applyCenterOffset, bool a_forceWarp) = 0;  // 03
-		virtual void  GetTransformImpl(hkTransform& a_tranform) const = 0;                                      // 04
-		virtual void  SetTransformImpl(const hkTransform& a_tranform) = 0;                                      // 05
-		virtual void  GetLinearVelocityImpl(hkVector4& a_velocity) const = 0;                                   // 06
-		virtual void  SetLinearVelocityImpl(const hkVector4& a_velocity) = 0;                                   // 07
-		virtual void  Unk_08(void) = 0;                                                                         // 08
-		virtual void  Unk_09(void) = 0;                                                                         // 09
-		virtual void  Unk_0A(void) = 0;                                                                         // 0A
-		virtual void  Unk_0B(void) = 0;                                                                         // 0B
-		virtual void  Unk_0C(void) = 0;                                                                         // 0C
-		virtual void  CheckSupportImpl() = 0;                                                                   // 0D
-		virtual void  Unk_0E(void) = 0;                                                                         // 0E
-		virtual void  Unk_0F(void) = 0;                                                                         // 0F
-		virtual void  Unk_10(void) = 0;                                                                         // 10
-		virtual float GetVDBAlpha() const = 0;                                                                  // 11
-		virtual void  Unk_12(void) = 0;                                                                         // 12
-		virtual void  Unk_13(void) = 0;                                                                         // 13
+		virtual void      GetPositionImpl(hkVector4& a_pos, bool a_applyCenterOffset) const = 0;                    // 02
+		virtual void      SetPositionImpl(const hkVector4& a_pos, bool a_applyCenterOffset, bool a_forceWarp) = 0;  // 03
+		virtual void      GetTransformImpl(hkTransform& a_tranform) const = 0;                                      // 04
+		virtual void      SetTransformImpl(const hkTransform& a_tranform) = 0;                                      // 05
+		virtual void      GetLinearVelocityImpl(hkVector4& a_velocity) const = 0;                                   // 06
+		virtual void      SetLinearVelocityImpl(const hkVector4& a_velocity) = 0;                                   // 07
+		virtual void      Unk_08(void) = 0;                                                                         // 08
+		virtual void      Unk_09(void) = 0;                                                                         // 09
+		virtual void      Unk_0A(void) = 0;                                                                         // 0A
+		virtual void      Unk_0B(void) = 0;                                                                         // 0B
+		virtual void      Unk_0C(void) = 0;                                                                         // 0C
+		virtual void      CheckSupportImpl() = 0;                                                                   // 0D
+		virtual void      Unk_0E(void) = 0;                                                                         // 0E
+		virtual bhkWorld* GetHavokWorld() = 0;                                                                      // 0F
+		virtual void      Unk_10(void) = 0;                                                                         // 10
+		virtual float     GetVDBAlpha() const = 0;                                                                  // 11
+		virtual void      Unk_12(void) = 0;                                                                         // 12
+		virtual void      Unk_13(void) = 0;                                                                         // 13
 
 		inline void GetPosition(hkVector4& a_pos, bool a_applyCenterOffset) const { return GetPositionImpl(a_pos, a_applyCenterOffset); }
 
@@ -106,14 +108,13 @@ namespace RE
 		hkVector4                                        supportNorm;                // 110
 		BSBound                                          collisionBound;             // 120
 		BSBound                                          bumperCollisionBound;       // 150
-		std::uint64_t                                    unk180;                     // 180
-		std::uint64_t                                    unk188;                     // 188
+		hkVector4                                        deltaPos;                   // 180
 		bhkICharOrientationController*                   orientationCtrl;            // 190
 		std::uint64_t                                    pad198;                     // 198
 		hkpSurfaceInfo                                   surfaceInfo;                // 1A0
 		hkpCharacterContext                              context;                    // 1E0
 		stl::enumeration<CHARACTER_FLAGS, std::uint32_t> flags;                      // 218
-		hkpCharacterStateType                            wantState;                  // 218
+		hkpCharacterStateType                            wantState;                  // 21C
 		float                                            velocityTime;               // 220
 		float                                            rotMod;                     // 224
 		float                                            rotModTime;                 // 228
@@ -134,12 +135,16 @@ namespace RE
 		float                                            speedPct;                   // 264
 		std::uint32_t                                    pushCount;                  // 268
 		std::uint32_t                                    unk26C;                     // 26C
-		std::uint64_t                                    unk270;                     // 270
-		std::uint64_t                                    unk278;                     // 278
+		bhkSimpleShapePhantom*                           unk270;                     // 270
+		std::uint32_t                                    unk278;                     // 278
+		std::uint32_t                                    unk27C;                     // 27C
 		NiPointer<bhkShape>                              shapes[2];                  // 280
-		std::uint64_t                                    unk290;                     // 290
-		std::uint64_t                                    unk298;                     // 298
-		std::uint64_t                                    unk2A0;                     // 2A0
+		float                                            unk290;                     // 290
+		std::uint32_t                                    unk294;                     // 294
+		float                                            unk298;                     // 298
+		std::uint32_t                                    unk29C;                     // 29C
+		std::uint32_t                                    unk2A0;                     // 2A0
+		std::uint32_t                                    unk2A4;                     // 2A4
 		std::uint64_t                                    unk2A8;                     // 2A8
 		hkRefPtr<hkpRigidBody>                           supportBody;                // 2B0
 		float                                            bumpedForce;                // 2B8
@@ -147,10 +152,15 @@ namespace RE
 		hkRefPtr<hkpRigidBody>                           bumpedBody;                 // 2C0
 		hkRefPtr<hkpRigidBody>                           bumpedCharCollisionObject;  // 2C8
 		BSTHashMap<UnkKey, UnkValue>                     unk2D0;                     // 2D0
-		std::uint64_t                                    unk300;                     // 300
+		float                                            unk300;                     // 300
+		std::uint32_t                                    unk304;                     // 304
 		std::uint64_t                                    unk308;                     // 308
-		std::uint64_t                                    unk310;                     // 310
-		std::uint64_t                                    unk318;                     // 318
+		std::uint32_t                                    unk310;                     // 310
+		std::uint32_t                                    unk314;                     // 314
+		std::uint32_t                                    unk318;                     // 318
+		std::uint8_t                                     unk31C;                     // 31C
+		std::uint8_t                                     unk31D;                     // 31D
+		std::uint16_t                                    unk31E;                     // 31E
 		std::uint64_t                                    unk320;                     // 320
 		std::uint64_t                                    unk328;                     // 328
 	};

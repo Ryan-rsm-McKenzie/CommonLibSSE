@@ -7,6 +7,7 @@
 namespace RE
 {
 	class hkpCharacterProxy;
+	class bhkCachingShapePhantom;
 
 	class bhkCharProxyController :
 		public hkpCharacterProxyListener,  // 000
@@ -31,9 +32,9 @@ namespace RE
 		hkpCharacterProxy* GetCharacterProxy() const;
 
 		// members
-		bhkCharacterProxy proxy;   // 340
-		void*             unk5A0;  // 5A0 - smart ptr
-		std::uint64_t     unk5A8;  // 5A8
+		bhkCharacterProxy       proxy;   // 340
+		bhkCachingShapePhantom* unk5A0;  // 5A0
+		std::uint64_t           unk5A8;  // 5A8
 	};
 	static_assert(sizeof(bhkCharProxyController) == 0x5B0);
 }

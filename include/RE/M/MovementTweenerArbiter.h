@@ -3,10 +3,19 @@
 #include "RE/M/MovementArbiter.h"
 #include "RE/I/IMovementSetTweener.h"
 #include "RE/I/IMovementQueryTweener.h"
+#include "RE/M/MovementTweenerAgentAnimationDriven.h"
 
 namespace RE
 {
 	class IMovementControllerDataTracker;
+
+	class AnimationDrivenData
+	{
+		NiTransform                          niTransform;                          // 00
+		std::uint32_t                        pad34;                                // 34
+		MovementTweenerAgentAnimationDriven* movementTweenerAgentAnimationDriven;  // 38
+	};
+	static_assert(sizeof(AnimationDrivenData) == 0x40);
 
 	class MovementTweenerArbiter :
 		public MovementArbiter,       // 000
@@ -68,9 +77,10 @@ namespace RE
 		std::uint64_t                   unk148;                         // 148
 		std::uint64_t                   unk150;                         // 150
 		std::uint64_t                   unk158;                         // 158
-		std::uint64_t                   unk160;                         // 160
+		AnimationDrivenData*            animationDrivenData;            // 160
 		std::uint64_t                   unk168;                         // 168
-		std::uint64_t                   unk170;                         // 170
+		std::uint32_t                   animationDrivenDataCount;       // 170
+		std::uint32_t                   unk174;                         // 174
 		MovementControllerNPC*          movementControllerNPC;          // 178
 		IMovementControllerDataTracker* movementControllerDataTracker;  // 180
 	};

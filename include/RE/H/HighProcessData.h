@@ -310,7 +310,7 @@ namespace RE
 		bool                                                  unk46C;                         // 46C
 		bool                                                  unk46D;                         // 46D
 		bool                                                  unk46E;                         // 46E
-		bool                                                  unk46F;                         // 46F
+		bool                                                  isRotationAllowed;              // 46F
 		bool                                                  unk470;                         // 470
 		bool                                                  unk471;                         // 471
 		bool                                                  unk472;                         // 472

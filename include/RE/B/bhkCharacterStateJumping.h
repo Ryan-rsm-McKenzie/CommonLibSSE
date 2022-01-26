@@ -12,8 +12,8 @@ namespace RE
 		~bhkCharacterStateJumping() override;  // 00
 
 		// override (bhkCharacterState)
-		hkpCharacterStateType GetType() const override;  // 03 - { return kJumping; }
-		void                  Unk_08(void) override;     // 08
+		hkpCharacterStateType GetType() const override;                                                    // 03 - { return kJumping; }
+		void                  SimulateStatePhysics(bhkCharacterController* characterController) override;  // 08
 	};
 	static_assert(sizeof(bhkCharacterStateJumping) == 0x10);
 }

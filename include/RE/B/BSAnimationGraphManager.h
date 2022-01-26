@@ -33,10 +33,11 @@ namespace RE
 	struct BSAnimationGraphVariableCache
 	{
 	public:
+
 		// members
-		BSTArray<AnimVariableCacheInfo> variableCache;  // 00
-		void*                           unk18;          // 18
-		void*                           unk20;          // 20 - smart ptr
+		BSTArray<AnimVariableCacheInfo> variableCache;        // 00
+		BSSpinLock*                     updateLock;           // 18
+		BShkbAnimationGraph*            animationGraphCache;  // 20 - smart ptr
 	};
 	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
 
@@ -81,7 +82,7 @@ namespace RE
 		mutable BSSpinLock                                  updateLock;            // 98
 		mutable BSSpinLock                                  dependentManagerLock;  // A0
 		std::uint32_t                                       activeGraph;           // A8
-		std::uint32_t                                       generateDepth;         // A8
+		std::uint32_t                                       generateDepth;         // AC
 	};
 	static_assert(sizeof(BSAnimationGraphManager) == 0xB0);
 }
