@@ -70,6 +70,7 @@ namespace RE
 			inline BSFixedString& operator=(BSFixedString&& a_rhs)
 			{
 				if (this != std::addressof(a_rhs)) {
+					try_release();
 					_data = a_rhs._data;
 					a_rhs._data = nullptr;
 				}
