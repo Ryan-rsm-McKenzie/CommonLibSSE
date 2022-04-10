@@ -45,7 +45,7 @@ jobs:
 
       - name: Configure CMake
         working-directory: ${{ github.workspace }}/main
-        run: cmake --preset vs2019-windows-vcpkg
+        run: cmake --preset vs2022-windows-vcpkg
 
       - name: Build
         working-directory: ${{ github.workspace }}/main
