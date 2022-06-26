@@ -19,7 +19,7 @@ namespace RE
 	};
 	static_assert(sizeof(BGSStoryEventMember) == 0x18);
 
-	struct BGSRegisteredStoryEvent  // ENAM
+	class BGSRegisteredStoryEvent  // ENAM
 	{
 		char                           uniqueID[4];  // 00
 		std::uint32_t                  pad04;        // 04

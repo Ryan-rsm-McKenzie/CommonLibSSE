@@ -24,6 +24,13 @@ namespace RE
 		return func(this);
 	}
 
+	void PlayerCharacter::AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type)
+	{
+		using func_t = decltype(&PlayerCharacter::AddPlayerAddItemEvent);
+		REL::Relocation<func_t> func{ REL::ID(40456) };
+		return func(this, a_object, a_owner, a_container, a_type);
+	}
+
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);

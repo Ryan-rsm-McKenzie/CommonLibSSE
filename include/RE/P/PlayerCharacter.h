@@ -19,6 +19,8 @@
 
 namespace RE
 {
+	enum class AQUIRE_TYPE;
+
 	class Actor;
 	class BGSInstancedQuestObjective;
 	class BGSLocation;
@@ -34,6 +36,7 @@ namespace RE
 	class NiAVObject;
 	class NiNode;
 	class ObjectListItem;
+	class TESObject;
 	class TESObjectREFR;
 	class TintMask;
 	class UserEventEnabledEvent;
@@ -273,6 +276,7 @@ namespace RE
 		static PlayerCharacter* GetSingleton();
 
 		void                     ActivatePickRef();
+		void                     AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type);
 		void                     AddSkillExperience(ActorValue a_skill, float a_experience);
 		bool                     AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
 		bool                     CenterOnCell(const char* a_cellName);
