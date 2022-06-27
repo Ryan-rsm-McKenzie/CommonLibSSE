@@ -2,96 +2,17 @@
 
 namespace RE
 {
-	GFxValue::DisplayInfo::DisplayInfo() :
-		_x(0.0),
-		_y(0.0),
-		_rotation(0.0),
-		_xScale(0.0),
-		_yScale(0.0),
-		_alpha(0.0),
-		_visible(false),
-		_pad31(0),
-		_pad32(0),
-		_pad34(0),
-		_z(0.0),
-		_xRotation(0.0),
-		_yRotation(0.0),
-		_zScale(0.0),
-		_fov(0.0),
-		_viewMatrix3D(),
-		_perspMatrix3D(),
-		_flags(Flag::kNone),
-		_padD2(0),
-		_padD4(0)
-	{}
-
 	GFxValue::DisplayInfo::DisplayInfo(double a_x, double a_y) :
 		_x(a_x),
-		_y(a_y),
-		_rotation(0.0),
-		_xScale(0.0),
-		_yScale(0.0),
-		_alpha(0.0),
-		_visible(false),
-		_pad31(0),
-		_pad32(0),
-		_pad34(0),
-		_z(0.0),
-		_xRotation(0.0),
-		_yRotation(0.0),
-		_zScale(0.0),
-		_fov(0.0),
-		_viewMatrix3D(),
-		_perspMatrix3D(),
-		_flags(Flag::kX, Flag::kY),
-		_padD2(0),
-		_padD4(0)
+		_y(a_y)
 	{}
 
 	GFxValue::DisplayInfo::DisplayInfo(double a_rotation) :
-		_x(0.0),
-		_y(0.0),
-		_rotation(a_rotation),
-		_xScale(0.0),
-		_yScale(0.0),
-		_alpha(0.0),
-		_visible(false),
-		_pad31(0),
-		_pad32(0),
-		_pad34(0),
-		_z(0.0),
-		_xRotation(0.0),
-		_yRotation(0.0),
-		_zScale(0.0),
-		_fov(0.0),
-		_viewMatrix3D(),
-		_perspMatrix3D(),
-		_flags(Flag::kRotation),
-		_padD2(0),
-		_padD4(0)
+		_rotation(a_rotation)
 	{}
 
 	GFxValue::DisplayInfo::DisplayInfo(bool a_visible) :
-		_x(0.0),
-		_y(0.0),
-		_rotation(0.0),
-		_xScale(0.0),
-		_yScale(0.0),
-		_alpha(0.0),
-		_visible(a_visible),
-		_pad31(0),
-		_pad32(0),
-		_pad34(0),
-		_z(0.0),
-		_xRotation(0.0),
-		_yRotation(0.0),
-		_zScale(0.0),
-		_fov(0.0),
-		_viewMatrix3D(),
-		_perspMatrix3D(),
-		_flags(Flag::kVisible),
-		_padD2(0),
-		_padD4(0)
+		_visible(a_visible)
 	{}
 
 	void GFxValue::DisplayInfo::Clear()

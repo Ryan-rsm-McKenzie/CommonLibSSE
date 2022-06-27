@@ -139,7 +139,7 @@ namespace RE
 				kViewMatrix3D = 1 << 13
 			};
 
-			DisplayInfo();                        // Initializes the DisplayInfo structure.
+			DisplayInfo() = default;              // Initializes the DisplayInfo structure.
 			DisplayInfo(double a_x, double a_y);  // Initializes the DisplayInfo structure.
 			DisplayInfo(double a_rotation);       // Initializes the DisplayInfo structure.
 			DisplayInfo(bool a_visible);          // Initializes the DisplayInfo structure.
@@ -185,26 +185,26 @@ namespace RE
 			void ClearFlags(Flag a_flags);
 
 			// members
-			double                                _x;              // 00
-			double                                _y;              // 08
-			double                                _rotation;       // 10
-			double                                _xScale;         // 18
-			double                                _yScale;         // 20
-			double                                _alpha;          // 28
-			bool                                  _visible;        // 30
-			std::uint8_t                          _pad31;          // 31
-			std::uint16_t                         _pad32;          // 32
-			std::uint32_t                         _pad34;          // 34
-			double                                _z;              // 38
-			double                                _xRotation;      // 40
-			double                                _yRotation;      // 48
-			double                                _zScale;         // 50
-			double                                _fov;            // 58
-			GMatrix3D                             _viewMatrix3D;   // 60
-			GMatrix3D                             _perspMatrix3D;  // A0
-			stl::enumeration<Flag, std::uint16_t> _flags;          // E0
-			std::uint16_t                         _padD2;          // E2
-			std::uint32_t                         _padD4;          // E4
+			double                                _x = 0.0;              // 00
+			double                                _y = 0.0;              // 08
+			double                                _rotation = 0.0;       // 10
+			double                                _xScale = 0.0;         // 18
+			double                                _yScale = 0.0;         // 20
+			double                                _alpha = 0.0;          // 28
+			bool                                  _visible = false;      // 30
+			std::uint8_t                          _pad31 = 0;            // 31
+			std::uint16_t                         _pad32 = 0;            // 32
+			std::uint32_t                         _pad34 = 0;            // 34
+			double                                _z = 0.0;              // 38
+			double                                _xRotation = 0.0;      // 40
+			double                                _yRotation = 0.0;      // 48
+			double                                _zScale = 0.0;         // 50
+			double                                _fov = 0.0;            // 58
+			GMatrix3D                             _viewMatrix3D;         // 60
+			GMatrix3D                             _perspMatrix3D;        // A0
+			stl::enumeration<Flag, std::uint16_t> _flags = Flag::kNone;  // E0
+			std::uint16_t                         _padD2 = 0;            // E2
+			std::uint32_t                         _padD4 = 0;            // E4
 		};
 		static_assert(sizeof(DisplayInfo) == 0xE8);
 
