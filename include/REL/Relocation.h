@@ -700,19 +700,20 @@ namespace REL
 				auto mapname = L"CommonLibSSEOffsets-v2-"s;
 				mapname += a_version.wstring();
 				const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
-				if (!_mmap.open(mapname, byteSize) &&
-					!_mmap.create(mapname, byteSize)) {
+				if (_mmap.open(mapname, byteSize)) {
+					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+				} else if (_mmap.create(mapname, byteSize)) {
+					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+					unpack_file(in, header);
+					std::sort(
+						_id2offset.begin(),
+						_id2offset.end(),
+						[](auto&& a_lhs, auto&& a_rhs) {
+							return a_lhs.id < a_rhs.id;
+						});
+				} else {
 					stl::report_and_fail("failed to create shared mapping"sv);
 				}
-
-				_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-				unpack_file(in, header);
-				std::sort(
-					_id2offset.begin(),
-					_id2offset.end(),
-					[](auto&& a_lhs, auto&& a_rhs) {
-						return a_lhs.id < a_rhs.id;
-					});
 			} catch (const std::system_error&) {
 				stl::report_and_fail(
 					fmt::format(
