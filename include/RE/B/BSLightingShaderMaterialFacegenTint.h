@@ -9,6 +9,8 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialFacegenTint;
+		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialFacegenTint;
+		inline static constexpr auto FEATURE = Feature::kFaceGenRGBTint;
 
 		~BSLightingShaderMaterialFacegenTint() override;  // 00
 
@@ -17,12 +19,21 @@ namespace RE
 		void              CopyMembers(BSShaderMaterial* a_other) override;  // 02
 		std::uint32_t     ComputeCRC32(void) override;                      // 04
 		Feature           GetFeature() const override;                      // 06 - { return Feature::kFaceGenRGBTint; }
-		void              SaveBinary(void) override;                        // 0C
-		void              LoadBinary(void) override;                        // 0D
+		void              SaveBinary(NiStream& a_stream) override;          // 0C
+		void              LoadBinary(NiStream& a_stream) override;          // 0D
 
 		// members
 		NiColor       tintColor;  // A0
 		std::uint32_t padAC;      // AC
+
+	protected:
+		BSLightingShaderMaterialFacegenTint* Ctor()
+		{
+			using func_t = decltype(&BSLightingShaderMaterialFacegenTint::Ctor);
+			REL::Relocation<func_t> func{ REL::ID(106794) };
+			return func(this);
+		}
+		friend class BSLightingShaderMaterialBase;
 	};
 	static_assert(sizeof(BSLightingShaderMaterialFacegenTint) == 0xB0);
 }

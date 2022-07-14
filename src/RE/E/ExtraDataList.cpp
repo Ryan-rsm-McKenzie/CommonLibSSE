@@ -11,6 +11,7 @@
 #include "RE/E/ExtraOwnership.h"
 #include "RE/E/ExtraReferenceHandle.h"
 #include "RE/E/ExtraSoul.h"
+#include "RE/E/ExtraTeleport.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/G/GameSettingCollection.h"
 #include "RE/T/TESBoundObject.h"
@@ -203,6 +204,13 @@ namespace RE
 		return xZone ? xZone->zone : nullptr;
 	}
 
+	ExtraContainerChanges* ExtraDataList::GetContainerChanges()
+	{
+		using func_t = decltype(&ExtraDataList::GetContainerChanges);
+		REL::Relocation<func_t> func{ REL::ID(11717) };
+		return func(this);
+	}
+
 	ExtraTextDisplayData* ExtraDataList::GetExtraTextDisplayData()
 	{
 		auto                  xRef = GetByType<ExtraReferenceHandle>();
@@ -254,6 +262,15 @@ namespace RE
 		return xSoul ? *xSoul->soul : SOUL_LEVEL::kNone;
 	}
 
+	ObjectRefHandle ExtraDataList::GetTeleportLinkedDoor()
+	{
+		auto xTeleport = GetByType<ExtraTeleport>();
+
+		return xTeleport && xTeleport->teleportData ?
+                   xTeleport->teleportData->linkedDoor :
+                   ObjectRefHandle();
+	}
+
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);
@@ -266,6 +283,13 @@ namespace RE
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
 		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
 		return func(this, a_changes);
+	}
+
+	void ExtraDataList::SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword)
+	{
+		using func_t = decltype(&ExtraDataList::SetLinkedRef);
+		REL::Relocation<func_t> func{ REL::ID(11779) };
+		return func(this, a_targetRef, a_keyword);
 	}
 
 	void ExtraDataList::SetOwner(TESForm* a_owner)

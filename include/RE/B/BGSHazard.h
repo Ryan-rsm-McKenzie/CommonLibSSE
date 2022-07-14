@@ -44,6 +44,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSHazard;
+		inline static constexpr auto VTABLE = VTABLE_BGSHazard;
 		inline static constexpr auto FORMTYPE = FormType::Hazard;
 
 		struct RecordFlags

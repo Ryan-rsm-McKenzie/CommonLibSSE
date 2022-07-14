@@ -16,6 +16,8 @@
 namespace RE
 {
 	class BGSTerrainManager;
+	class BSPortalGraph;
+	class NiNode;
 
 	struct WORLD_MAP_DATA  // MNAM
 	{
@@ -116,6 +118,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESWorldSpace;
+		inline static constexpr auto VTABLE = VTABLE_TESWorldSpace;
 		inline static constexpr auto FORMTYPE = FormType::WorldSpace;
 
 		enum class Flag
@@ -176,7 +179,9 @@ namespace RE
 		bool        IsParentForm() override;                                            // 34 - { return true; }
 		bool        IsFormTypeChild(FormType a_type) override;                          // 36
 
-		[[nodiscard]] bool HasMaxHeightData() const;
+		[[nodiscard]] bool           HasMaxHeightData() const;
+		[[nodiscard]] TESObjectCELL* GetSkyCell();
+		[[nodiscard]] float          GetWaterHeight() const;
 
 		// members
 		BSTHashMap<CellID, TESObjectCELL*>                            cellMap;                  // 058
@@ -192,11 +197,11 @@ namespace RE
 		NiTPointerMap<std::uint32_t, BSSimpleList<TESObjectREFR*>*>*  overlappedMultiboundMap;  // 0F0
 		TESObjectCELL*                                                skyCell;                  // 0F8
 		BSTHashMap<FormID, BGSLocation*>                              locationMap;              // 100
-		void*                                                         unk130;                   // 130 - smart ptr
+		NiPointer<BSPortalGraph>                                      portalGraph;              // 130 - smart ptr
 		void*                                                         unk138;                   // 138
 		void*                                                         unk140;                   // 140
-		void*                                                         unk148;                   // 148 - smart ptr
-		void*                                                         unk150;                   // 150 - smart ptr
+		NiPointer<NiNode>                                             multiBoundNode;           // 148 - smart ptr
+		NiPointer<NiNode>                                             portalSharedNode;         // 150 - smart ptr
 		TESWorldSpace*                                                parentWorld;              // 158 - WNAM
 		BGSLightingTemplate*                                          lightingTemplate;         // 160 - LTMP
 		TESWaterForm*                                                 worldWater;               // 168 - NAM2

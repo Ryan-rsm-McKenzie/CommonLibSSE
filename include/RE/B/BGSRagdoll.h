@@ -15,6 +15,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRagdoll;
+		inline static constexpr auto VTABLE = VTABLE_BGSRagdoll;
 		inline static constexpr auto FORMTYPE = FormType::Ragdoll;
 
 		struct RecordFlags

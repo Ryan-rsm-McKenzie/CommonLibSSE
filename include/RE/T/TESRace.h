@@ -146,6 +146,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESRace;
+		inline static constexpr auto VTABLE = VTABLE_TESRace;
 		inline static constexpr auto FORMTYPE = FormType::Race;
 
 		enum class EquipmentFlag
@@ -306,6 +307,7 @@ namespace RE
 
 		[[nodiscard]] bool AllowsPCDialogue() const;
 		[[nodiscard]] bool AllowsPickpocket() const;
+		[[nodiscard]] bool IsChildRace() const;
 
 		// members
 		TESModel                                       skeletonModels[SEXES::kTotal];                  // 098 - ANAM

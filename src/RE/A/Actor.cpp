@@ -4,8 +4,11 @@
 #include "RE/B/BGSAttackData.h"
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSDefaultObjectManager.h"
+#include "RE/B/BSAnimationGraphManager.h"
 #include "RE/B/BSFaceGenAnimationData.h"
 #include "RE/B/BSFaceGenNiNode.h"
+#include "RE/B/BShkbAnimationGraph.h"
+#include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
 #include "RE/F/FormTraits.h"
@@ -37,11 +40,44 @@ namespace RE
 		return LookupReferenceByHandle(a_refHandle, a_refrOut);
 	}
 
+	bool Actor::AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const
+	{
+		BSAnimationGraphManagerPtr graphManager;
+		GetAnimationGraphManager(graphManager);
+		if (graphManager) {
+			bool sinked = false;
+			for (auto& animationGraph : graphManager->graphs) {
+				if (sinked) {
+					break;
+				}
+				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (auto& sink : eventSource->sinks) {
+					if (sink == a_sink) {
+						sinked = true;
+						break;
+					}
+				}
+			}
+			if (!sinked) {
+				graphManager->graphs.front()->GetEventSource<BSAnimationGraphEvent>()->AddEventSink(a_sink);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::AddSpell);
 		REL::Relocation<func_t> func{ Offset::Actor::AddSpell };
 		return func(this, a_spell);
+	}
+
+	void Actor::AddToFaction(TESFaction* a_faction, std::int8_t a_rank)
+	{
+		using func_t = decltype(&Actor::AddToFaction);
+		REL::Relocation<func_t> func{ REL::ID(37686) };
+		return func(this, a_faction, a_rank);
 	}
 
 	void Actor::AllowBleedoutDialogue(bool a_canTalk)
@@ -62,6 +98,13 @@ namespace RE
 		}
 
 		xTalk->talk = a_talk;
+	}
+
+	bool Actor::CanAttackActor(Actor* a_actor)
+	{
+		using func_t = decltype(&Actor::CanAttackActor);
+		REL::Relocation<func_t> func{ REL::ID(37532) };
+		return func(this, a_actor);
 	}
 
 	bool Actor::CanFlyHere() const
@@ -114,6 +157,20 @@ namespace RE
 		return GetHandle();
 	}
 
+	bool Actor::Decapitate()
+	{
+		using func_t = decltype(&Actor::Decapitate);
+		REL::Relocation<func_t> func{ REL::ID(37639) };
+		return func(this);
+	}
+
+	void Actor::DeselectSpell(SpellItem* a_spell)
+	{
+		using func_t = decltype(&Actor::DeselectSpell);
+		REL::Relocation<func_t> func{ REL::ID(38769) };
+		return func(this, a_spell);
+	}
+
 	void Actor::DispelWornItemEnchantments()
 	{
 		using func_t = decltype(&Actor::DispelWornItemEnchantments);
@@ -126,6 +183,19 @@ namespace RE
 		using func_t = decltype(&Actor::DoReset3D);
 		REL::Relocation<func_t> func{ Offset::Actor::DoReset3D };
 		return func(this, a_updateWeight);
+	}
+
+	void Actor::EnableAI(bool a_enable)
+	{
+		if (a_enable) {
+			boolBits.set(Actor::BOOL_BITS::kProcessMe);
+		} else {
+			boolBits.reset(Actor::BOOL_BITS::kProcessMe);
+			auto controller = GetCharController();
+			if (controller) {
+				controller->SetLinearVelocityImpl(0.0f);
+			}
+		}
 	}
 
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
@@ -145,6 +215,13 @@ namespace RE
 	{
 		auto obj = GetBaseObject();
 		return obj ? obj->As<TESNPC>() : nullptr;
+	}
+
+	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
+	{
+		using func_t = decltype(&Actor::GetActorValueModifier);
+		REL::Relocation<func_t> func{ REL::ID(38469) };
+		return func(this, a_modifier, a_value);
 	}
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
@@ -289,17 +366,29 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
-	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	TESObjectARMO* Actor::GetSkin() const
 	{
-		if (const auto worn = GetWornArmor(a_slot); worn) {
-			return worn;
-		} else if (const auto base = GetActorBase(); base && base->skin) {
+		if (const auto base = GetActorBase(); base && base->skin) {
 			return base->skin;
 		} else if (const auto aRace = GetRace(); aRace && aRace->skin) {
 			return aRace->skin;
 		}
-
 		return nullptr;
+	}
+
+	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	{
+		if (const auto worn = GetWornArmor(a_slot); worn) {
+			return worn;
+		}
+		return GetSkin();
+	}
+
+	SOUL_LEVEL Actor::GetSoulSize() const
+	{
+		using func_t = decltype(&Actor::GetSoulSize);
+		REL::Relocation<func_t> func{ REL::ID(38817) };
+		return func(this);
 	}
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
@@ -337,11 +426,24 @@ namespace RE
 		return nullptr;
 	}
 
+	bool Actor::HasKeywordString(std::string_view a_formEditorID)
+	{
+		const auto base = GetActorBase();
+		return base && base->HasKeyword(a_formEditorID);
+	}
+
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);
 		REL::Relocation<func_t> func{ Offset::Actor::HasPerk };
 		return func(this, a_perk);
+	}
+
+	bool Actor::HasSpell(SpellItem* a_spell) const
+	{
+		using func_t = decltype(&Actor::HasSpell);
+		REL::Relocation<func_t> func{ REL::ID(38782) };
+		return func(this, a_spell);
 	}
 
 	void Actor::InterruptCast(bool a_restoreMagicka) const
@@ -415,6 +517,13 @@ namespace RE
 		return func(this, a_actor);
 	}
 
+	bool Actor::IsLimbGone(std::uint32_t a_limb)
+	{
+		using func_t = decltype(&Actor::IsLimbGone);
+		REL::Relocation<func_t> func{ REL::ID(19765) };
+		return func(this, a_limb);
+	}
+
 	bool Actor::IsOnMount() const
 	{
 		return !IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
@@ -459,6 +568,35 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
 	}
 
+	void Actor::KillImmediate()
+	{
+		using func_t = decltype(&Actor::KillImmediate);
+		REL::Relocation<func_t> func{ REL::ID(37735) };
+		return func(this);
+	}
+
+	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink)
+	{
+		BSAnimationGraphManagerPtr graphManager;
+		GetAnimationGraphManager(graphManager);
+		if (graphManager) {
+			bool sinked = true;
+			for (auto& animationGraph : graphManager->graphs) {
+				if (!sinked) {
+					break;
+				}
+				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (auto& sink : eventSource->sinks) {
+					if (sink == a_sink) {
+						eventSource->RemoveEventSink(a_sink);
+						sinked = false;
+						break;
+					}
+				}
+			}
+		}
+	}
+
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
@@ -478,6 +616,13 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
+	{
+		using func_t = decltype(&Actor::SetLifeState);
+		REL::Relocation<func_t> func{ REL::ID(37612) };
+		return func(this, a_lifeState);
+	}
+
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
@@ -485,11 +630,32 @@ namespace RE
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
+	void Actor::StopInteractingQuick(bool a_unk02)
+	{
+		using func_t = decltype(&Actor::StopInteractingQuick);
+		REL::Relocation<func_t> func{ REL::ID(38697) };
+		return func(this, a_unk02);
+	}
+
+	void Actor::StopMoving(float a_delta)
+	{
+		using func_t = decltype(&Actor::StopMoving);
+		REL::Relocation<func_t> func{ REL::ID(37817) };
+		return func(this, a_delta);
+	}
+
 	void Actor::SwitchRace(TESRace* a_race, bool a_player)
 	{
 		using func_t = decltype(&Actor::SwitchRace);
 		REL::Relocation<func_t> func{ Offset::Actor::SwitchRace };
 		return func(this, a_race, a_player);
+	}
+
+	void Actor::TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime)
+	{
+		using func_t = decltype(&Actor::TrespassAlarm);
+		REL::Relocation<func_t> func{ REL::ID(37427) };
+		return func(this, a_ref, a_ownership, a_crime);
 	}
 
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
@@ -551,6 +717,31 @@ namespace RE
 		using func_t = decltype(&Actor::UpdateWeaponAbility);
 		REL::Relocation<func_t> func{ Offset::Actor::UpdateWeaponAbility };
 		return func(this, a_weapon, a_extraData, a_leftHand);
+	}
+
+	void Actor::VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor)
+	{
+		enum
+		{
+			k3rd,
+			k1st,
+			kTotal
+		};
+
+		char addonString[WinAPI::MAX_PATH]{ '\0' };
+		a_arma->GetNodeName(addonString, this, a_armor, -1);
+		std::array<NiAVObject*, kTotal> skeletonRoot = { Get3D(k3rd), Get3D(k1st) };
+		if (skeletonRoot[k1st] == skeletonRoot[k3rd]) {
+			skeletonRoot[k1st] = nullptr;
+		}
+		for (std::size_t i = 0; i < skeletonRoot.size(); ++i) {
+			if (skeletonRoot[i]) {
+				const auto obj = skeletonRoot[i]->GetObjectByName(addonString);
+				if (obj) {
+					a_visitor(i == k1st, *obj);
+				}
+			}
+		}
 	}
 
 	bool Actor::VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor)

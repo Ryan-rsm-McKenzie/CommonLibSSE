@@ -22,9 +22,15 @@ namespace RE
 		virtual bool                      HasKeyword(const BGSKeyword* a_keyword) const;  // 04
 		[[nodiscard]] virtual BGSKeyword* GetDefaultKeyword() const;                      // 05 - { return 0; }
 
-		[[nodiscard]] bool                       HasKeyword(FormID a_formID) const;
-		[[nodiscard]] std::optional<BGSKeyword*> GetKeywordAt(std::uint32_t a_idx) const;
-		[[nodiscard]] std::uint32_t              GetNumKeywords() const;
+		bool                                       AddKeyword(BGSKeyword* a_keyword);
+		[[nodiscard]] bool                         ContainsKeywordString(std::string_view a_editorID) const;
+		[[nodiscard]] bool                         HasKeyword(FormID a_formID) const;
+		[[nodiscard]] bool                         HasKeywordString(std::string_view a_editorID) const;
+		[[nodiscard]] std::optional<BGSKeyword*>   GetKeywordAt(std::uint32_t a_idx) const;
+		[[nodiscard]] std::optional<std::uint32_t> GetKeywordIndex(BGSKeyword* a_keyword) const;
+		[[nodiscard]] std::uint32_t                GetNumKeywords() const;
+		bool                                       RemoveKeyword(std::uint32_t a_index);
+		bool                                       RemoveKeyword(BGSKeyword* a_keyword);
 
 		// members
 		BGSKeyword**  keywords;     // 08 - KWDA

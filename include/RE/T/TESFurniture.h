@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESFurniture;
+		inline static constexpr auto VTABLE = VTABLE_TESFurniture;
 		inline static constexpr auto FORMTYPE = FormType::Furniture;
 
 		enum class ActiveMarker
@@ -42,7 +43,11 @@ namespace RE
 			kSit23 = 1 << 23,
 			kDisablesActivation = 1 << 25,
 			kIsPerch = 1 << 26,
-			kMustExitToTalk = 1 << 27
+			kMustExitToTalk = 1 << 27,
+			kSit28 = 1 << 28,
+			kCanLean = 1 << 29,
+			kCanSit = 1 << 30,
+			kCanSleep = 1 << 31
 		};
 
 		struct RecordFlags

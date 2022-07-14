@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMusicTrackFormWrapper;
+		inline static constexpr auto VTABLE = VTABLE_BGSMusicTrackFormWrapper;
 		inline static constexpr auto FORMTYPE = FormType::MusicTrack;
 
 		struct RecordFlags

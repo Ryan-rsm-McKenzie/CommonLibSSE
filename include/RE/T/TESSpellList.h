@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BaseFormComponent.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -15,6 +16,19 @@ namespace RE
 
 		struct SpellData  // SPLO
 		{
+			SpellData();
+			~SpellData() = default;
+
+			bool                         AddLevSpell(TESLevSpell* a_spell);
+			bool                         AddShout(TESShout* a_spell);
+			bool                         AddSpell(SpellItem* a_spell);
+			std::optional<std::uint32_t> GetIndex(SpellItem* a_spell);
+			std::optional<std::uint32_t> GetIndex(TESLevSpell* a_spell);
+			std::optional<std::uint32_t> GetIndex(TESShout* a_spell);
+			bool                         RemoveSpell(SpellItem* a_spell);
+
+			TES_HEAP_REDEFINE_NEW();
+
 			SpellItem**   spells;        // 00
 			TESLevSpell** levSpells;     // 08
 			TESShout**    shouts;        // 10

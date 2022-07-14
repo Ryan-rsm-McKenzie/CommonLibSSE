@@ -30,9 +30,9 @@ namespace RE
 		};
 
 		// members
-		TESObjectCELL** cells;  // 18 - (memory allocated using 0x8 * numGrids * numGrids)
-		NiPoint3        unk20;  // 20
-		bool            unk2C;  // 2C
+		TESObjectCELL** cells;           // 18 - (memory allocated using 0x8 * numGrids * numGrids)
+		NiPoint3        unk20;           // 20
+		bool            land3DAttached;  // 2C
 	};
 	static_assert(sizeof(GridCellArray) == 0x30);
 };

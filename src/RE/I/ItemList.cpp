@@ -4,6 +4,14 @@
 
 namespace RE
 {
+	auto ItemList::GetSelectedEntry()
+		-> InventoryEntryData*
+	{
+		using func_t = decltype(&ItemList::GetSelectedEntry);
+		REL::Relocation<func_t> func{ REL::ID(51018) };
+		return func(this);
+	}
+
 	auto ItemList::GetSelectedItem()
 		-> Item*
 	{

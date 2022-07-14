@@ -53,6 +53,7 @@ namespace RE
 		[[nodiscard]] std::string_view        GetFilename() const noexcept { return { fileName }; }
 		FormType                              GetFormType();
 		[[nodiscard]] std::uint16_t           GetSmallFileCompileIndex() const noexcept { return smallFileCompileIndex; }
+		[[nodiscard]] bool                    IsFormInMod(FormID a_formID) const;
 		[[nodiscard]] constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
 		[[nodiscard]] constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
 		[[nodiscard]] constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }

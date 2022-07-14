@@ -19,7 +19,7 @@ namespace RE
 		void          LinkObject(NiStream& a_stream) override;            // 19
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
-		void          Unk_26(void) override;                              // 26
+		void          AdjustRefCount(bool a_increment) override;          // 26
 		void          Unk_2B(void) override;                              // 2B
 		void          Unk_2C(void) override;                              // 2C - { return 40; }
 		void          Unk_2D(void) override;                              // 2D

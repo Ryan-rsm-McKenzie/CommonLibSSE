@@ -9,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSRelationship;
+		inline static constexpr auto VTABLE = VTABLE_BGSRelationship;
 		inline static constexpr auto FORMTYPE = FormType::Relationship;
 
 		enum class RELATIONSHIP_LEVEL

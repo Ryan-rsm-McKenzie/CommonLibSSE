@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSMovementType;
+		inline static constexpr auto VTABLE = VTABLE_BGSMovementType;
 		inline static constexpr auto FORMTYPE = FormType::MovementType;
 
 		struct RecordFlags

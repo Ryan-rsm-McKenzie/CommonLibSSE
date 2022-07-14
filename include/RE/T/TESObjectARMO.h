@@ -37,6 +37,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectARMO;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectARMO;
 		inline static constexpr auto FORMTYPE = FormType::Armor;
 
 		struct RecordFlags
@@ -62,7 +63,9 @@ namespace RE
 		// override (BGSKeywordForm)
 		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
-		float GetArmorRating();
+		float          GetArmorRating();
+		TESObjectARMA* GetArmorAddon(TESRace* a_race);
+		TESObjectARMA* GetArmorAddonByMask(TESRace* a_race, BipedObjectSlot a_slot);
 
 		// members
 		std::uint32_t            armorRating;    // 200 - DNAM - CK value * 100 as a std::uint32_t

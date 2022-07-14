@@ -12,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESGrass;
+		inline static constexpr auto VTABLE = VTABLE_TESGrass;
 		inline static constexpr auto FORMTYPE = FormType::Grass;
 
 		enum class GRASS_WATER_STATE

@@ -7,6 +7,24 @@
 namespace RE
 {
 	class NiUpdateData;
+	struct BGSDecalGroup;
+	struct DECAL_CREATION_DATA;
+
+	struct DECAL_APPLICATION_DATA
+	{
+	public:
+		// members
+		DECAL_CREATION_DATA* decalCreationData;           // 00
+		bool                 forceDecal;                  // 08
+		bool                 unk09;                       // 09
+		std::uint32_t        decalCount;                  // 0C
+		std::uint32_t        skinDecalCount;              // 10
+		std::uint32_t        skinDecalCountCurrentFrame;  // 14
+		std::uint32_t        decalCountCurrentFrame;      // 18
+		std::uint32_t        unk1C;                       // 1C
+		BGSDecalGroup*       decalGroup;                  // 20
+	};
+	static_assert(sizeof(DECAL_APPLICATION_DATA) == 0x28);
 
 	class NiNode : public NiAVObject
 	{

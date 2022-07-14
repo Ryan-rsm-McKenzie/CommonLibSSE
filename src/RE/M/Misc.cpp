@@ -1,7 +1,12 @@
 #include "RE/M/Misc.h"
 
+#include "RE/B/BSTCreateFactoryManager.h"
+#include "RE/B/BSTDerivedCreator.h"
+#include "RE/G/GameSettingCollection.h"
 #include "RE/I/INIPrefSettingCollection.h"
 #include "RE/I/INISettingCollection.h"
+#include "RE/I/InterfaceStrings.h"
+#include "RE/M/MessageBoxData.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/Setting.h"
 #include "RE/T/TESObjectREFR.h"
@@ -36,6 +41,36 @@ namespace RE
 		return func(a_notification, a_soundToPlay, a_cancelIfAlreadyQueued);
 	}
 
+	void DebugMessageBox(const BSString& a_message)
+	{
+		const auto factoryManager = MessageDataFactoryManager::GetSingleton();
+		const auto uiStrHolder = InterfaceStrings::GetSingleton();
+
+		if (factoryManager && uiStrHolder) {
+			const auto factory = factoryManager->GetCreator<MessageBoxData>(uiStrHolder->messageBoxData);
+			const auto messageBox = factory ? factory->Create() : nullptr;
+			if (messageBox) {
+				messageBox->unk38 = 0;
+				messageBox->unk3C = -1;
+				messageBox->unk48 = 10;
+				messageBox->bodyText = a_message;
+				const auto gameSettings = GameSettingCollection::GetSingleton();
+				const auto sOk = gameSettings ? gameSettings->GetSetting("sOk") : nullptr;
+				if (sOk) {
+					messageBox->buttonText.push_back(sOk->GetString());
+					messageBox->unk38 = 25;
+					messageBox->QueueMessage();
+				}
+			}
+		}
+	}
+
+	float GetDurationOfApplicationRunTime()
+	{
+		REL::Relocation<float*> runtime{ REL::ID(410201) };
+		return *runtime;
+	}
+
 	Setting* GetINISetting(const char* a_name)
 	{
 		Setting* setting = nullptr;
@@ -64,13 +99,6 @@ namespace RE
 		using func_t = decltype(&PlaySound);
 		REL::Relocation<func_t> func{ Offset::PlaySound };
 		return func(a_editorID);
-	}
-
-	void ApplyPerkEntries(std::uint8_t a_perkEntryCode, RE::Actor* a_perkOwner, RE::TESForm* a_form, float* a_value)
-	{
-		using func_t = decltype(&ApplyPerkEntries);
-		REL::Relocation<func_t> func{ REL::ID(23526) };
-		return func(a_perkEntryCode, a_perkOwner, a_form, a_value);
 	}
 
 	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)

@@ -41,4 +41,26 @@ namespace RE
 	{
 		return aiData.noSlowApproach;
 	}
+
+	void TESAIForm::SetAggressionLevel(ACTOR_AGGRESSION a_level)
+	{
+		const auto level = stl::to_underlying(a_level);
+		aiData.aggression1 = (level & 1) != 0;
+		aiData.aggression2 = (level & 2) != 0;
+	}
+
+	void TESAIForm::SetAssistanceLevel(ACTOR_ASSISTANCE a_level)
+	{
+		const auto level = stl::to_underlying(a_level);
+		aiData.assistance1 = (level & 1) != 0;
+		aiData.assistance2 = (level & 2) != 0;
+	}
+
+	void TESAIForm::SetConfidenceLevel(ACTOR_CONFIDENCE a_level)
+	{
+		const auto level = stl::to_underlying(a_level);
+		aiData.confidence1 = (level & 1) != 0;
+		aiData.confidence2 = (level & 2) != 0;
+		aiData.confidence3 = (level & 4) != 0;
+	}
 }

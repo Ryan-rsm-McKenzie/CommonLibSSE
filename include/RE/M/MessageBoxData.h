@@ -16,6 +16,13 @@ namespace RE
 
 		~MessageBoxData() override;  // 00
 
+		void QueueMessage()
+		{
+			using func_t = decltype(&MessageBoxData::QueueMessage);
+			REL::Relocation<func_t> func{ REL::ID(52271) };
+			return func(this);
+		}
+
 		// members
 		BSString                             bodyText;    // 10
 		BSTArray<BSString>                   buttonText;  // 20

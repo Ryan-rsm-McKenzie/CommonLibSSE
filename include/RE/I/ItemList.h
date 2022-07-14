@@ -24,6 +24,7 @@ namespace RE
 		};
 		static_assert(sizeof(Item) == 0x40);
 
+		InventoryEntryData* GetSelectedEntry();
 		Item* GetSelectedItem();
 		void  Update();
 		void  Update(TESObjectREFR* a_owner);

@@ -14,6 +14,34 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiSkinPartition;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinPartition;
 
+		struct Vertex
+		{
+			enum Flags : std::uint16_t
+			{
+				kVertex = 1 << 0,
+				kUV = 1 << 1,
+				kUV_2 = 1 << 2,
+				kNormal = 1 << 3,
+				kTangent = 1 << 4,
+				kColors = 1 << 5,
+				kSkinned = 1 << 6,
+				kLandData = 1 << 7,
+				kEyeData = 1 << 8,
+				kFullPrec = 1 << 10
+			};
+
+			enum Masks : std::uint64_t
+			{
+				kVERT = 0xFFFFFFFFFFFFFFF0LL,
+				kUVS = 0xFFFFFFFFFFFFFF0FLL,
+				kNBT = 0xFFFFFFFFFFFFF0FFLL,
+				kSKCOL = 0xFFFFFFFFFFFF0FFFLL,
+				kDATA = 0xFFFFFFFFFFF0FFFFLL,
+				kOFFSET = 0xFFFFFF0000000000LL,
+				kFLAGS = ~(kOFFSET)
+			};
+		};
+
 		struct TriShape
 		{
 			ID3D11Buffer*          vertexBuffer;   // 00
@@ -59,6 +87,8 @@ namespace RE
 
 		// add
 		virtual void Unk_25(void);  // 25
+
+		[[nodiscard]] static Vertex::Flags GetVertexFlags(std::uint64_t vertexDesc) { return Vertex::Flags((vertexDesc & stl::to_underlying(Vertex::Masks::kOFFSET)) >> 44); };
 
 		// members
 		std::uint32_t          numPartitions;  // 10

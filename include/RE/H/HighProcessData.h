@@ -18,10 +18,16 @@ namespace RE
 {
 	class ActorKnowledge;
 	class BGSAttackData;
+	class BGSProjectile;
 	class DialogueItem;
 	class IAnimationSetCallbackFunctor;
+	class MagicItem;
 	class NiBillboardNode;
+	class NiAVObject;
+	class NiPointLight;
 	class NiRefObject;
+	class TESObjectREFR;
+	class TESObjectWEAP;
 	class StandardDetectionListener;
 	struct Crime;
 	struct QueuedDialogueType;
@@ -116,20 +122,26 @@ namespace RE
 		};
 		static_assert(sizeof(Data208) == 0x38);
 
-		struct Data3C8
+		struct MuzzleFlash
 		{
 		public:
 			// members
-			std::uint64_t          unk00;  // 00
-			std::uint64_t          unk08;  // 08
-			NiPointer<NiRefObject> unk10;  // 10
-			NiPointer<NiRefObject> unk18;  // 18
-			NiPointer<NiRefObject> unk20;  // 20
-			std::uint64_t          unk28;  // 28
-			std::uint64_t          unk30;  // 30
-			std::uint64_t          unk38;  // 38
+			bool                    unk00;                // 00
+			bool                    unk01;                // 01
+			bool                    unk02;                // 02
+			bool                    unk03;                // 03
+			float                   unk04;                // 04
+			float                   muzzleFlashDuration;  // 08
+			std::uint32_t           unk0C;                // 0C
+			NiPointer<NiAVObject>   projectile3D;         // 10
+			NiPointer<NiAVObject>   projectileNode;       // 18
+			NiPointer<NiPointLight> attachedLight;        // 20
+			BGSProjectile*          baseProjectile;       // 28
+			TESObjectWEAP*          weaponSource;         // 30
+			ActorHandle             shooterHandle;        // 38
+			std::uint32_t           unk3C;                // 3C
 		};
-		static_assert(sizeof(Data3C8) == 0x40);
+		static_assert(sizeof(MuzzleFlash) == 0x40);
 
 		// members
 		stl::enumeration<VOICE_STATE, std::uint32_t>          voiceState;                     // 000
@@ -157,7 +169,7 @@ namespace RE
 		float                                                 activationHeight;               // 0DC
 		RefHandle                                             unk0E0;                         // 0E0
 		std::uint32_t                                         unk0E4;                         // 0E4
-		std::uint64_t                                         unk0E8;                         // 0E8
+		MagicItem*                                            reanimateSpell;                 // 0E8
 		BSFixedString                                         voiceSubtitle;                  // 0F0
 		float                                                 unk0F8;                         // 0F8
 		float                                                 unk0FC;                         // 0FC
@@ -174,8 +186,8 @@ namespace RE
 		float                                                 unk128;                         // 128
 		float                                                 unk12C;                         // 12C
 		stl::enumeration<FADE_STATE, std::uint32_t>           fadeState;                      // 130
-		std::uint32_t                                         unk134;                         // 134
-		std::uint64_t                                         unk138;                         // 138
+		float                                                 unk134;                         // 134
+		TESObjectREFR*                                        fadeTrigger;                    // 138
 		std::uint64_t                                         unk140;                         // 140
 		std::uint64_t                                         unk148;                         // 148
 		std::uint64_t                                         unk150;                         // 150
@@ -275,7 +287,7 @@ namespace RE
 		std::uint32_t                                         pad3B4;                         // 3B4
 		void*                                                 unk3B8;                         // 3B8
 		std::uint64_t                                         unk3C0;                         // 3C0
-		Data3C8*                                              unk3C8;                         // 3C8
+		MuzzleFlash*                                          muzzleFlash;                    // 3C8
 		std::uint32_t                                         unk3D0;                         // 3D0
 		std::uint32_t                                         pad3D4;                         // 3D4
 		DetectionEvent*                                       actorsGeneratedDetectionEvent;  // 3D8
@@ -306,7 +318,7 @@ namespace RE
 		bool                                                  farGeometry;                    // 468
 		bool                                                  unk469;                         // 469
 		bool                                                  unk46A;                         // 46A
-		bool                                                  unk46B;                         // 46B
+		bool                                                  deathDialogue;                  // 46B
 		bool                                                  unk46C;                         // 46C
 		bool                                                  unk46D;                         // 46D
 		bool                                                  unk46E;                         // 46E

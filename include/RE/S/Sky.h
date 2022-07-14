@@ -51,6 +51,8 @@ namespace RE
 
 		static Sky* GetSingleton();
 
+		[[nodiscard]] bool GetIsSnowing();
+
 		// members
 		NiPointer<BSMultiBoundNode>           root;                            // 008
 		NiPointer<NiNode>                     moonsRoot;                       // 010

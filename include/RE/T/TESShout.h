@@ -18,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESShout;
+		inline static constexpr auto VTABLE = VTABLE_TESShout;
 		inline static constexpr auto FORMTYPE = FormType::Shout;
 
 		struct RecordFlags

@@ -110,6 +110,7 @@ namespace RE
 		Effect*                   GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
 		Data*                     GetData();
 		[[nodiscard]] const Data* GetData() const;
+		bool                      IsValid() const;
 
 		// members
 		BSTArray<Effect*>           effects;          // 58

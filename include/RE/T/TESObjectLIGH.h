@@ -31,7 +31,9 @@ namespace RE
 		kSpotShadow = 1 << 10,
 		kHemiShadow = 1 << 11,
 		kOmniShadow = 1 << 12,
-		kPortalStrict = 1 << 13
+		kPortalStrict = 1 << 13,
+
+		kType = kSpotlight | kSpotShadow | kHemiShadow | kOmniShadow
 	};
 
 	struct OBJ_LIGH  // DATA
@@ -64,6 +66,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESObjectLIGH;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectLIGH;
 		inline static constexpr auto FORMTYPE = FormType::Light;
 
 		struct RecordFlags

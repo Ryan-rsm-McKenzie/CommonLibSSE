@@ -10,6 +10,7 @@ namespace RE
 	class Actor;
 	class bhkCharacterController;
 	class HighProcess;
+	class NiPoint3;
 	class TESForm;
 	struct HighProcessData;
 	struct MiddleHighProcessData;
@@ -138,6 +139,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
+		void                    ClearMuzzleFlashes();
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
 		ActorHandle             GetCommandingActor() const;
@@ -145,13 +147,16 @@ namespace RE
 		TESForm*                GetEquippedRightHand();
 		[[nodiscard]] bool      GetIsSummonedCreature() const noexcept;
 		ObjectRefHandle         GetOccupiedFurniture() const;
+		TESPackage*             GetRunningPackage() const;
 		bool                    InHighProcess() const;
 		bool                    InMiddleHighProcess() const;
 		bool                    InMiddleLowProcess() const;
 		bool                    InLowProcess() const;
 		bool                    IsArrested() const;
 		bool                    IsGhost() const;
+		void                    KnockExplosion(Actor* a_actor, const NiPoint3& a_sourceLocation, float a_magnitude);
 		void                    SetArrested(bool a_arrested);
+		void                    SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref);
 		void                    SetCachedHeight(float a_height);
 		void                    Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
 		void                    Update3DModel(Actor* a_actor);

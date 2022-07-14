@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSIdleMarker;
+		inline static constexpr auto VTABLE = VTABLE_BGSIdleMarker;
 		inline static constexpr auto FORMTYPE = FormType::IdleMarker;
 
 		struct RecordFlags

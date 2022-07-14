@@ -9,9 +9,11 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraNorthRotation;
+		inline static constexpr auto VTABLE = VTABLE_ExtraNorthRotation;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNorthRotation;
 
-		~ExtraNorthRotation() override;  // 00
+		ExtraNorthRotation();
+		~ExtraNorthRotation() override = default;  // 00
 
 		// override (BSExtraData)
 		[[nodiscard]] ExtraDataType GetType() const override;  // 01 - { return kNorthRotation; }

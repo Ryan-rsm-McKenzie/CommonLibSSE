@@ -7,6 +7,7 @@
 
 namespace RE
 {
+	class bhkShape;
 	class hkAabb;
 	class hkSphere;
 	class hkTransform;
@@ -112,7 +113,7 @@ namespace RE
 		virtual hkVector4Comparison      CastRayBundleImpl(const hkpShapeRayBundleCastInput& a_input, hkpShapeRayBundleCastOutput& a_output, const hkVector4Comparison& a_mask) const;  // 0A
 
 		// members
-		std::uint64_t userData;  // 10
+		bhkShape*     userData;  // 10
 		hkpShapeType  type;      // 18
 		std::uint32_t pad1C;     // 1C
 	};

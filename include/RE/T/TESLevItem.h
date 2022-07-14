@@ -12,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESLevItem;
+		inline static constexpr auto VTABLE = VTABLE_TESLevItem;
 		inline static constexpr auto FORMTYPE = FormType::LeveledItem;
 
 		struct ChangeFlags

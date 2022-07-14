@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraOwnership;
+		inline static constexpr auto VTABLE = VTABLE_ExtraOwnership;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOwnership;
 
 		ExtraOwnership();

@@ -43,6 +43,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSEncounterZone;
+		inline static constexpr auto VTABLE = VTABLE_BGSEncounterZone;
 		inline static constexpr auto FORMTYPE = FormType::EncounterZone;
 
 		struct ChangeFlags

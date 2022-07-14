@@ -12,16 +12,18 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
+		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialLandscape;
+		inline static constexpr auto FEATURE = Feature::kMultiTexLandLODBlend;
 
 		~BSLightingShaderMaterialLandscape() override;  // 00
 
 		// override (BSLightingShaderMaterialBase)
-		BSShaderMaterial* Create() override;                              // 01
-		void              CopyMembers(BSShaderMaterial* a_src) override;  // 02
-		Feature           GetFeature() const override;                    // 06 - { return Feature::kMultiTexLandLODBlend; }
-		void              ClearTextures(void) override;                   // 09
-		void              ReceiveValuesFromRootMaterial(void) override;   // 0A
-		void              GetTextures(void) override;                     // 0B
+		BSShaderMaterial* Create() override;                                                                                                                 // 01
+		void              CopyMembers(BSShaderMaterial* a_src) override;                                                                                     // 02
+		Feature           GetFeature() const override;                                                                                                       // 06 - { return Feature::kMultiTexLandLODBlend; }
+		void              ClearTextures() override;                                                                                                          // 09
+		void              ReceiveValuesFromRootMaterial(bool a_skinned, bool a_rimLighting, bool a_softLighting, bool a_backLighting, bool a_MSN) override;  // 0A
+		void              GetTextures(void) override;                                                                                                        // 0B
 
 		// members
 		std::uint32_t              numLandscapeTextures;        // 0A0
@@ -37,6 +39,15 @@ namespace RE
 		float                      terrainTexOffsetY;           // 14C
 		float                      terrainTexFade;              // 150
 		std::uint32_t              pad154;                      // 154
+
+	protected:
+		BSLightingShaderMaterialLandscape* Ctor()
+		{
+			using func_t = decltype(&BSLightingShaderMaterialLandscape::Ctor);
+			REL::Relocation<func_t> func{ REL::ID(106809) };
+			return func(this);
+		}
+		friend class BSLightingShaderMaterialBase;
 	};
 	static_assert(sizeof(BSLightingShaderMaterialLandscape) == 0x158);
 }

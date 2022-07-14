@@ -38,7 +38,10 @@ namespace RE
 		[[nodiscard]] Type GetType() const override;                           // 25 - { return Type::kAlpha; }
 
 		// members
-		std::uint64_t unk30;  // 30
+		std::uint16_t alphaFlags;      // 30
+		std::uint8_t  alphaThreshold;  // 32
+		std::uint8_t  pad33;           // 33
+		std::uint32_t pad34;           // 34
 	};
 	static_assert(sizeof(NiAlphaProperty) == 0x38);
 }

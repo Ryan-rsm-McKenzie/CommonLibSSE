@@ -35,6 +35,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESIdleForm;
+		inline static constexpr auto VTABLE = VTABLE_TESIdleForm;
 		inline static constexpr auto FORMTYPE = FormType::Idle;
 
 		struct RecordFlags

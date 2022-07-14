@@ -39,7 +39,8 @@ namespace RE
 		std::uint32_t LoadScripts();
 		TESForm*      LookupForm(FormID a_rawFormID, std::string_view a_modName);
 		template <class T>
-		T* LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		T*     LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		FormID LookupFormID(FormID a_rawFormID, std::string_view a_modName);
 
 		const TESFile*              LookupModByName(std::string_view a_modName);
 		std::optional<std::uint8_t> GetModIndex(std::string_view a_modName);

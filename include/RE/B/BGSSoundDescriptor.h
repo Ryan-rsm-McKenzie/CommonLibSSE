@@ -12,6 +12,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptor;
+		inline static constexpr auto VTABLE = VTABLE_BGSSoundDescriptor;
 
 		~BGSSoundDescriptor() override;  // 00
 

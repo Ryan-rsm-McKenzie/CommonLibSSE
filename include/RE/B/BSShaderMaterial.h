@@ -23,6 +23,7 @@ namespace RE
 			kParallaxOcc = 7,
 			kMultiTexLand = 8,
 			kLODLand = 9,
+			kUnknown = 10,
 			kMultilayerParallax = 11,
 			kTreeAnim = 12,
 			kMultiIndexTriShapeSnow = 14,
@@ -56,7 +57,8 @@ namespace RE
 		NiPoint2      texCoordOffset[2];  // 0C
 		NiPoint2      texCoordScale[2];   // 1C
 		std::uint32_t hashKey;            // 2C
-		std::uint64_t unk30;              // 30
+		std::uint32_t unk30;              // 30
+		std::uint32_t unk34;              // 34
 	};
 	static_assert(sizeof(BSShaderMaterial) == 0x38);
 }

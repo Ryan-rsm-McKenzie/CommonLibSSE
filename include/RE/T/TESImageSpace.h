@@ -96,6 +96,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_TESImageSpace;
+		inline static constexpr auto VTABLE = VTABLE_TESImageSpace;
 		inline static constexpr auto FORMTYPE = FormType::ImageSpace;
 
 		struct RecordFlags

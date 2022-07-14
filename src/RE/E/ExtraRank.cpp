@@ -11,7 +11,7 @@ namespace RE
 		rank(a_rank),
 		pad14(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraRank::Vtbl };
+		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
