@@ -46,5 +46,5 @@ namespace RE
 		std::uint32_t           pad1DC;         // 1DC
 		BSTArray<CollisionData> collisionData;  // 1E0
 	};
-	static_assert(sizeof(BarrierProjectile) == 0x1F8);
+	static_assert(sizeof(BarrierProjectile) == 0x200);
 }

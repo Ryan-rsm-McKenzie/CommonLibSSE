@@ -58,5 +58,5 @@ namespace RE
 		BSSoundHandle                          sound;           // C8
 		stl::enumeration<Flags, std::uint32_t> flags;           // D4
 	};
-	static_assert(sizeof(Hazard) == 0xD8);
+	static_assert(sizeof(Hazard) == 0xE0);
 }

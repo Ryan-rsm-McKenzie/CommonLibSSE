@@ -598,5 +598,5 @@ namespace RE
 	private:
 		TESFaction* GetCrimeFactionImpl() const;
 	};
-	static_assert(sizeof(Actor) == 0x2B0);
+	static_assert(sizeof(Actor) == 0x2B8);
 }

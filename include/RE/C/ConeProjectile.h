@@ -54,5 +54,5 @@ namespace RE
 		hkRefPtr<hkpSphereShape> collisionShape;                // 1F8
 		BSTArray<void*>          collisions;                    // 200
 	};
-	static_assert(sizeof(ConeProjectile) == 0x218);
+	static_assert(sizeof(ConeProjectile) == 0x220);
 }

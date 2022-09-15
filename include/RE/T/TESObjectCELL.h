@@ -232,5 +232,5 @@ namespace RE
 		BGSLightingTemplate*                      lightingTemplate;  // 130 - LTMP
 		std::uint64_t                             unk138;            // 138
 	};
-	static_assert(sizeof(TESObjectCELL) == 0x140);
+	static_assert(sizeof(TESObjectCELL) == 0x148);
 }

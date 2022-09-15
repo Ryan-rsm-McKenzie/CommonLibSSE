@@ -45,5 +45,5 @@ namespace RE
 		std::uint8_t  unk1DD;                 // 1DD
 		std::uint16_t unk1DE;                 // 1DE
 	};
-	static_assert(sizeof(MissileProjectile) == 0x1E0);
+	static_assert(sizeof(MissileProjectile) == 0x1E8);
 }

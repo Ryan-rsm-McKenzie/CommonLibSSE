@@ -47,5 +47,5 @@ namespace RE
 		// members
 		std::uint64_t unk238;  // 238
 	};
-	static_assert(sizeof(BeamProjectile) == 0x240);
+	static_assert(sizeof(BeamProjectile) == 0x248);
 }
