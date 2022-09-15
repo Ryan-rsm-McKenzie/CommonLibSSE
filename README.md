@@ -24,3 +24,6 @@
 
 ## Notes
 * CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need the runtime component.
+
+## Tutorial
+Learn how to build your very first SKSE plugin using CommonLib by following [this video tutorial](https://www.youtube.com/watch?v=FLRhsrQ8mqw).
