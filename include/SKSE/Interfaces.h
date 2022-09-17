@@ -412,11 +412,11 @@ namespace SKSE
 	static_assert(offsetof(PluginVersionData, pluginName) == 0x008);
 	static_assert(offsetof(PluginVersionData, author) == 0x108);
 	static_assert(offsetof(PluginVersionData, supportEmail) == 0x208);
-	static_assert(offsetof(PluginVersionData, padding2) == 0x309);
-	static_assert(offsetof(PluginVersionData, padding3) == 0x30A);
-	static_assert(offsetof(PluginVersionData, padding5) == 0x30D);
-	static_assert(offsetof(PluginVersionData, padding6) == 0x30E);
-	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x310);
-	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x350);
+	static_assert(offsetof(PluginVersionData, padding2) == 0x305);
+	static_assert(offsetof(PluginVersionData, padding3) == 0x306);
+	static_assert(offsetof(PluginVersionData, padding5) == 0x309);
+	static_assert(offsetof(PluginVersionData, padding6) == 0x30A);
+	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
+	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x34C);
 	static_assert(sizeof(PluginVersionData) == 0x350);
 }
