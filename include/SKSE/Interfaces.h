@@ -418,5 +418,5 @@ namespace SKSE
 	static_assert(offsetof(PluginVersionData, padding6) == 0x30E);
 	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x310);
 	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x350);
-	static_assert(sizeof(PluginVersionData) == 0x354);
+	static_assert(sizeof(PluginVersionData) == 0x350);
 }
