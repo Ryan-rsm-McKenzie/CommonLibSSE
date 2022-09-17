@@ -383,7 +383,7 @@ namespace SKSE
 		std::uint32_t       pluginVersion = 0;
 		char                pluginName[256] = {};
 		char                author[256] = {};
-		char                supportEmail[256] = {};
+		char                supportEmail[252] = {};
 		bool                noStructUse: 1 = false;
 		std::uint8_t        padding1: 7 = 0;
 		std::uint8_t        padding2 = 0;
