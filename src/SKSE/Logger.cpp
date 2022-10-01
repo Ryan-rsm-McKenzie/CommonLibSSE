@@ -103,7 +103,9 @@ namespace SKSE
 			}
 
 			std::filesystem::path path = knownPath.get();
-			path /= "My Games/Skyrim Special Edition/SKSE"sv;
+			path /= "My Games"sv;
+			path /= *REL::Relocation<const char**>(REL::ID(380738)).get();
+			path /= "SKSE"sv;
 			return path;
 		}
 	}
