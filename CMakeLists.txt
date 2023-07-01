@@ -16,6 +16,7 @@ endif()
 find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
+find_package(fmt REQUIRED CONFIG)
 
 include(cmake/sourcelist.cmake)
 
@@ -94,6 +95,7 @@ target_link_libraries(
 		binary_io::binary_io
 		Boost::headers
 		spdlog::spdlog
+		fmt::fmt
 		Version.lib
 )
 
