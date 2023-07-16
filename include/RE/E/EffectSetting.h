@@ -24,10 +24,10 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_EffectSetting;
+		inline static constexpr auto FORMTYPE = FormType::MagicEffect;
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);
-		inline static constexpr auto FORMTYPE = FormType::MagicEffect;
 
 		struct RecordFlags
 		{
