@@ -265,7 +265,7 @@ namespace SKSE
 	{
 		auto result = GetProxy()->Dispatch(GetPluginHandle(), a_messageType, a_data, a_dataLen, a_receiver);
 		if (!result) {
-			log::error("Failed to dispatch message to {}", (a_receiver ? a_receiver : "all listeners"));
+			log::warn("Failed to dispatch message to {}", (a_receiver ? a_receiver : "all listeners"));
 		}
 		return result;
 	}
